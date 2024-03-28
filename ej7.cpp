@@ -10,19 +10,21 @@ struct persona{
 	string nya;
 };
 
-void vectorTrucho(persona* &v, int &max, int contador){
-	persona* aux = new persona[max*2];
+int vectorTrucho(persona* &v, int max, int contador){
+	persona* aux = new persona[max];
 	for (int i = 0; i < contador; i++)
 		aux[i] = v[i];
 
-	max *= 2;
 	delete[] v;
 	v = aux;
+
+	return max;
 }
-	
+
+// Esta funcion retorna true si la operaciÃ³n se pudo completar	
 bool empujar_atras(persona* &p, persona aux, int &max, int cont){
 	if (cont == max)
-		vectorTrucho(p,max,cont);
+		max = vectorTrucho(p,max*2,cont);
 	if (p == NULL)
 		return false;
 	
@@ -48,10 +50,14 @@ int main(int argc, char *argv[]) {
 		if (empujar_atras(p,aux,max,contador))
 			contador++;
 		else 
-			cout << "\nERROR: No hay más memoria disponible para guardar el arreglo";
+			cout << "\nERROR: No hay mas memoria disponible para guardar el arreglo";
 	}
-	
-	// Para darle uso al vector vamos a hacer la consigna 2 acá abajo
+
+	// Eliminemos los espacios del vector sin utilizar
+	if (contador < max)
+		max = vectorTrucho(p,contador,contador);
+
+	// Para darle uso al vector vamos a hacer la consigna 2 aca abajo
 	int aniomin = p[0].anio, aniomax = p[0].anio;
 	for (int i = 1; i < contador; i++)
 		if (aniomin > p[i].anio)
