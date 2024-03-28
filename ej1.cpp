@@ -3,7 +3,8 @@
 
 using namespace std;
 /*
-	Ej1: Usando recursividad para indicar lineas de un archivo 
+	1) Escriba un programa que indique cuántas líneas tiene un archivo de texto
+	Usando recursividad para indicar lineas de un archivo 
 	CA01: La consigna no indica el nombre que debe tener el archivo, ni donde debe estar, asi que 
 	le pediremos el nombre del archivo de texto al usuario.
 */
@@ -28,5 +29,7 @@ int main(int argc, const char** argv) {
 	}
 	int contador = contarlineas(file);
 	cout << "\nCantidad de lineas: " << contador;
+	
+	file.close();
 	return 0;
 }

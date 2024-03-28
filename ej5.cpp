@@ -1,11 +1,17 @@
 #include <iostream>
 #include <fstream>
 
-/*
-    EJ5, sin usar arrays, porque no se ve necesario, y de forma recursiva
-*/
-
 using namespace std;
+
+/*
+    5) Considere que se dispone de un archivo datos.txt donde se almacena en cada línea: un
+    número de orden(un entero), un año de nacimiento (un entero), un nombre y un apellido
+    separados por un espacio. Escribir un programa para indicar cuántos alumnos nacieron
+    antes del año 1995.
+    se deberá indicar: “2 alumnos nacieron antes del año 1995”
+
+    Sin usar arrays, porque no se ve necesario, y de forma recursiva
+*/
 
 int contador(ifstream &f){
     int nro;
@@ -28,5 +34,6 @@ int main(int argc, const char** argv) {
     }
     cantidad = contador(file);
     cout << cantidad << " alumnos nacieron antes del anio 1995";
+    file.close();
     return 0;
 }
