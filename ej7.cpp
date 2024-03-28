@@ -4,6 +4,18 @@
 
 using namespace std;
 
+/*
+	7) Se requiere desarrollar un programa en C++ que gestione registros de personas
+	almacenados en un archivo de texto llamado datos.txt.
+	El programa debe realizar las siguientes operaciones:
+	1- Leer los datos del archivo datos.txt y almacenarlos en un array dinámico de
+		registros de personas.
+	2 - Determinar y mostrar por pantalla el año de nacimiento mínimo, el año de
+		nacimiento máximo y el total de registros leídos.
+
+	# EJ7, Inspirado el concepto de <vector> según lo que me encontré en internet
+*/
+
 struct persona{
 	string dni;
 	int anio;
@@ -52,6 +64,7 @@ int main(int argc, char *argv[]) {
 		else 
 			cout << "\nERROR: No hay mas memoria disponible para guardar el arreglo";
 	}
+	file.close();
 
 	// Eliminemos los espacios del vector sin utilizar
 	if (contador < max)
