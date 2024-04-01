@@ -2,4 +2,4 @@
 /backup
 *.exe
 /.vscode
-
+/output
