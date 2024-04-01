@@ -5,8 +5,8 @@
 
 /*
     EJ6:  Dado un archivo de texto, con el formato:
-        palabra: definición
-    Realice una función que dada una palabra retorne la definición.
+        palabra: definicion
+    Realice una funcion que dada una palabra retorne la definicion.
 */
 using namespace std;
 
