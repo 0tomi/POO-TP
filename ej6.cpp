@@ -15,18 +15,37 @@ void convertir_min(string &text){
         tolower(text[i]);
 }
 
-bool checkPalabra(string text, string buscar){
-    convertir_min(text);
-    convertir_min(buscar);
-    buscar += ":";
-    int busqueda = text.find(buscar);
-    if (busqueda != -1)
-        return true;
-    return false;
+string retornarDefinicion(string palabra, string direccion){
+    ifstream file; file.open(direccion);
+    if (file.fail())
+        return "No se pudo abrir el archivo con direccion " + direccion;
+    string aux, linea;
+    convertir_min(palabra);
+    palabra += ":";
+    file >> aux;
+    file.ignore();
+    while(getline(file,linea)){
+        convertir_min(aux);
+        if (aux == palabra)
+            return linea;
+        file >> aux;
+        file.ignore();
+    }
+    file.close();
+    return "Definicion no encontrada";
 }
 
 int main(int argc, char const *argv[])
 {
+    string direccion;
+	string palabra;
+
+	cout << "Indique el nombre del archivo con definiciones: ";
+	getline(cin,direccion);
+	direccion = "./" + direccion + ".txt";
     
+    cin >> palabra;
+    cout << retornarDefinicion(palabra,direccion);
+
     return 0;
 }
