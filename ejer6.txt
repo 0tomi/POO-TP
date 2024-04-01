@@ -1,0 +1,6 @@
+Casa: Edificio o parte de el que constituye una vivienda particular.
+Perro: Animal domestico de la familia de los canidos, de olfato muy fino y buen oido.
+Gato: Animal domestico de la familia de los felidos, de tamano generalmente pequeno, cuerpo agil, orejas largas, pelo espeso y suave y garras retractiles.
+Libro: Conjunto de hojas de papel, pergamino o materiales semejantes, que estan cosidas o pegadas por uno de sus extremos y forman un volumen.
+Computadora: Maquina electronica capaz de procesar datos y realizar diversas operaciones.
+Telefono: Aparato telefonico, en cualquiera de sus tipos y modelos.
