@@ -11,7 +11,7 @@
 using namespace std;
 
 void convertir_min(string &text){
-    for (int i = 0; i < text.length; i++)
+    for (int i = 0; i < text.length(); i++)
         tolower(text[i]);
 }
 
