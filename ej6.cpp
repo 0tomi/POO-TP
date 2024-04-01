@@ -37,7 +37,8 @@ string retornarDefinicion(string palabra, string direccion){
 
 int main(int argc, char const *argv[])
 {
-    string direccion;
+
+  string direccion;
 	string palabra;
 
 	cout << "Indique el nombre del archivo con definiciones: ";
@@ -47,6 +48,7 @@ int main(int argc, char const *argv[])
 	cout << "\nIndique palabra a buscar: ";
     cin >> palabra;
     cout << retornarDefinicion(palabra,direccion);
+
 
     return 0;
 }
