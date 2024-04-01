@@ -11,7 +11,7 @@
 using namespace std;
 
 void convertir_min(string &text){
-    for (int i = 0; i < text.length; i++)
+    for (unsigned int i = 0; i < text.size(); i++)
         tolower(text[i]);
 }
 
@@ -44,6 +44,7 @@ int main(int argc, char const *argv[])
 	getline(cin,direccion);
 	direccion = "./" + direccion + ".txt";
     
+	cout << "\nIndique palabra a buscar: ";
     cin >> palabra;
     cout << retornarDefinicion(palabra,direccion);
 
