@@ -12,7 +12,7 @@ using namespace std;
 
 void convertir_min(string &text){
     for (unsigned int i = 0; i < text.size(); i++)
-        tolower(text[i]);
+       text[i] = tolower(text[i]);
 }
 
 string retornarDefinicion(string palabra, string direccion){
