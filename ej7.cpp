@@ -77,10 +77,7 @@ int main(int argc, char *argv[]) {
 	if (contador < max){
 		max = contador;
 		p = vectorTrucho(p,max,contador);
-	}
-
-	for (int i = 0; i < contador; i++)
-		cout << "|" << p[i].anio << "|" << p[i].dni << "|" << p[i].nya << endl;		
+	}	
 
 	// Para darle uso al vector vamos a hacer la consigna 2 aca abajo
 	int aniomin = p[0].anio, aniomax = p[0].anio;
