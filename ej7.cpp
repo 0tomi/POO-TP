@@ -22,21 +22,25 @@ struct persona{
 	string nya;
 };
 
-int vectorTrucho(persona* &v, int max, int contador){
+persona *vectorTrucho(persona* v, int max, int contador){
 	persona* aux = new persona[max];
+
+	if (aux == NULL)
+		return aux;
+
 	for (int i = 0; i < contador; i++)
 		aux[i] = v[i];
 
 	delete[] v;
-	v = aux;
-
-	return max;
+	return aux;
 }
 
 // Esta funcion retorna true si la operación se pudo completar	
 bool empujar_atras(persona* &p, persona aux, int &max, int cont){
-	if (cont == max)
-		max = vectorTrucho(p,max*2,cont);
+	if (cont == max){
+		max *= 2;
+		p = vectorTrucho(p,max,cont);
+	}
 	if (p == NULL)
 		return false;
 	
@@ -67,8 +71,13 @@ int main(int argc, char *argv[]) {
 	file.close();
 
 	// Eliminemos los espacios del vector sin utilizar
-	if (contador < max)
-		max = vectorTrucho(p,contador,contador);
+	if (contador < max){
+		max = contador;
+		p = vectorTrucho(p,max,contador);
+	}
+
+	for (int i = 0; i < contador; i++)
+		cout << "|" << p[i].anio << "|" << p[i].dni << "|" << p[i].nya << endl;		
 
 	// Para darle uso al vector vamos a hacer la consigna 2 aca abajo
 	int aniomin = p[0].anio, aniomax = p[0].anio;
