@@ -37,6 +37,9 @@ persona *vectorTrucho(persona* v, int max, int contador){
 
 // Esta funcion retorna true si la operación se pudo completar	
 bool empujar_atras(persona* &p, persona aux, int &max, int cont){
+
+	// Porque si no uso el aspersant no se puede modificar?
+
 	if (cont == max){
 		max *= 2;
 		p = vectorTrucho(p,max,cont);
