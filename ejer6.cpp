@@ -17,27 +17,40 @@ string definicion(string palabras[], string definiciones[], string palabra_a_bus
     }
     return "La palabra que intentas buscar no existe";
 }
+string* incrementar_tamanio(string* vec, int cont){
+    string* aux = new string[cont + 1];
+    for (int i = 0; i < cont; i++)
+    {
+        aux[i] = vec[i];
+    }
+    delete[] vec;
+    return aux;
+}
 int main(int argc, char const *argv[])
 {
     ifstream archivo;
-    int i = 0;
-    string palabras[100], definiciones[100], palabra_a_buscar;
+    string* palabras = new string[1];
+    string* definiciones = new string[1];
+    string palabra_a_buscar;
+    int cont = 0;
     archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer6.txt");
     if(archivo.fail()){
         cout << "Error al abrir el archivo";
         return 1;
     }
-
-    while (getline(archivo,palabras[i],':')){
-        getline(archivo, definiciones[i]);
-        i++;
+    while (getline(archivo,palabras[cont],':'))
+    {
+        getline(archivo,definiciones[cont]);
+        cont++;
+        palabras = incrementar_tamanio(palabras,cont);
+        definiciones = incrementar_tamanio(definiciones,cont);
     }
     archivo.close();
-    cout << "Ingrese la palabra a la que desea saber la definicion ";
-    getline(cin, palabra_a_buscar);
-    string mostrar_definicion = definicion(palabras,definiciones,palabra_a_buscar,i);
-
-    cout << mostrar_definicion;
-    
+    cout << "Ingrese la palabra que desea saber su definicion ";
+    getline(cin,palabra_a_buscar);
+    string mostrar_def = definicion(palabras,definiciones,palabra_a_buscar,cont);
+    cout << mostrar_def;
+    delete [] palabras;
+    delete [] definiciones;
     return 0;
 }
