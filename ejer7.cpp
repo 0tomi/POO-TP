@@ -29,6 +29,16 @@ struct datos{
     string nya;
 };
 
+datos* incrementar_tamanio(datos personas[],int cont){
+    datos* aux = new datos[cont + 1];
+    for (int i = 0; i < cont; i++)
+    {
+        aux[i] = personas[i];
+    }
+    delete[] personas;
+    return aux;
+}
+
 int main(int argc, char const *argv[])
 {
 
@@ -38,24 +48,21 @@ int main(int argc, char const *argv[])
         cout << "Error al abrir el archivo";
         return 1;
     }
-    int size = 0, i = 0;
+    int cont = 0;
     string aux;
-    while (getline(archivo,aux)){
-        size++;
-    }
-    datos *personas = new datos[size];
-    archivo.clear();
-    archivo.seekg(0,ios::beg); // para colocar el puntero al inicio del archivo
-    while (archivo >> personas[i].codigo_referencia >> personas[i].anio_nacimiento ){
+   
+    datos *personas = new datos[1];
+    while (archivo >> personas[cont].codigo_referencia >> personas[cont].anio_nacimiento ){
         archivo.ignore();
-        getline(archivo,personas[i].nya);
-        i++;
+        getline(archivo,personas[cont].nya);
+        cont++;
+        personas = incrementar_tamanio(personas,cont);
     }
 
     int anio_minimo = 9999;
     int anio_maximo = 0;
     
-    for (int k = 0; k < i; k++)
+    for (int k = 0; k < cont; k++)
     {
         if (personas[k].anio_nacimiento > anio_maximo){
             anio_maximo = personas[k].anio_nacimiento;
@@ -69,7 +76,7 @@ int main(int argc, char const *argv[])
     archivo.close();
 
     cout << "El anio de nacimiento minimo es: " << anio_minimo << " y el maximo es de: " << anio_maximo << endl;
-    cout << "Se leyeron : " << i << " registros";
+    cout << "Se leyeron : " << cont << " registros";
     delete[] personas;
     
 
