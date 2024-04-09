@@ -20,14 +20,21 @@ struct datos{
     int anio_nacimiento;
     string nya;
 };
+datos* incrementar_tamanio(datos* informacion, int cont){
+    datos* aux = new datos[cont + 1];
+    for (int i = 0; i < cont; i++)
+    {
+        aux[i] = informacion[i];
+    }
+    delete[] informacion;
+    return aux;
+}
 int main(int argc, char const *argv[])
 {
     const int anio = 1995;
-    int size, i = 0, alumnos_1995 = 0; // cuantos alumnos nacieron antes del 95
+    int  i = 0, alumnos_1995 = 0; // cuantos alumnos nacieron antes del 95
     ifstream archivo;
-    cout << "Ingrese la cantidad de alumnos: ";
-    cin >> size;
-    datos *informacion = new datos[size];
+    datos *informacion = new datos[1];
     archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer5_datos.txt");
     if(archivo.fail()){
         cout << "Error al abrir el archivo";
@@ -38,6 +45,7 @@ int main(int argc, char const *argv[])
     archivo.ignore();
     while (getline(archivo,informacion[i].nya)){
         i++;
+        informacion = incrementar_tamanio(informacion,i);
         archivo >> informacion[i].numero_orden;
         archivo >> informacion[i].anio_nacimiento;
         archivo.ignore();

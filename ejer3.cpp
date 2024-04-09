@@ -10,41 +10,39 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     ifstream archivo;
-    string parrafos[999], oraciones[999];
-    int cant_parrafos = 0; 
-    size_t posicion_inicial = 0;
-    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer3.txt") ;
-    if (archivo.fail()){
-        cout << "Error al abrir al archivo";
+    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer3.txt");
+    if (archivo.fail())
+    {
+        cout << "Error";
         return 1;
     }
-    while (getline(archivo,parrafos[cant_parrafos]))
+    
+    ofstream nuevo_archivo;
+    nuevo_archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer3_oraciones_separadas.txt");
+    if (nuevo_archivo.fail())
     {
-        cant_parrafos++;
+        cout << "Error";
+        return 1;
+    }
+    string lineas ;
+    while (getline(archivo,lineas))
+    {
+        size_t pos;
+        size_t inicio = 0;
+        while ((pos = lineas.find_first_of(".?!",inicio)) != string::npos)
+        {
+            string oracion = lineas.substr(inicio, pos - inicio + 1);
+            nuevo_archivo << oracion << endl;
+            inicio = pos + 1;
+        }
+        if (inicio < lineas.size()) // Escribir la ultima parte de la linea si no termina con .?!
+        {
+            nuevo_archivo << lineas.substr(inicio) << endl;
+        }
+        
     }
     archivo.close();
-
-
-    ofstream archivo_separado;
-    archivo_separado.open("C:/Users/Usuario/Desktop/tp_poo/ejer3_oraciones_separadas.txt");
-    if (archivo_separado.fail()){
-        cout << "Error al abrir al archivo";
-        return 1;
-    }
-
-    for (int i = 0; i < cant_parrafos; i++)
-    {
-        size_t posicion_final = parrafos[i].find_first_of(".!?", posicion_inicial);
-        while (posicion_final != string::npos)
-        {
-             archivo_separado << parrafos[i].substr(posicion_inicial, posicion_final - posicion_inicial + 1) << endl;
-             posicion_inicial += posicion_final + 1;
-             posicion_final = parrafos[i].find_first_of(".!?", posicion_inicial);
-        }
-
-    }
-    
-    
+    nuevo_archivo.close();
     
     return 0;
 }
