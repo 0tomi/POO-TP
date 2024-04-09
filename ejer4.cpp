@@ -22,8 +22,8 @@ int main(int argc, char const *argv[])
 {
     string direccion, renglon, texto, linea;
 		string  texo ="";
-		char car, car2;
-		int a=0;
+		char letra1, letra2;
+		int nro_linea = 1;
 		cout << "Indique el nombre del archivo: ";
 		getline(cin,direccion);
 		direccion = "./" + direccion + ".txt";
@@ -35,16 +35,16 @@ int main(int argc, char const *argv[])
 		}
 		else {
 			cout<<"Ingrese caracter a buscar: "<<endl;
-			cin>>car;
+			cin>>letra1;
 			cout<<"Ingrese caracter oara reemplazar: "<<endl;
-			cin>>car2;
+			cin>>letra2;
 			
 			while(getline(arc, renglon)){
-				int l=0;
-				linea=reemplaza(car, car2, renglon, l);
+				int cant_encuentros = 0;
+				linea=reemplaza(letra1, letra2, renglon, cant_encuentros);
 				texto +=linea+"\n";
-				cout<<"Linea "<<a<<" "<<l<<" veces reemplazada"<<endl;
-				a++;
+				cout<<"Linea "<<nro_linea<<" "<<cant_encuentros<<" veces reemplazada"<<endl;
+				nro_linea++;
 			}
 			ofstream file;
 			file.open(direccion);
