@@ -28,7 +28,7 @@ void push(nodoP* &inicio, nodoP datos){
     nodoP* nuevoNodo = new nodoP;
     *nuevoNodo = datos;
     if (inicio == NULL)
-        inicio = new nodoP;
+        inicio = nuevoNodo;
     else{
         nodoP* aux = inicio;
         while(aux->link != NULL)
@@ -55,16 +55,18 @@ int main(int argc, char *argv[]) {
         contador++;
 	}
 	file.close();
-
+	
 	// Calcular minimo
 	int aniomin = lista->anio; 
     int aniomax = lista->anio;
-    nodoP* auxP = lista;
-	while (auxP->link != NULL)
+    nodoP* auxP = lista->link;
+	while (auxP->link != NULL){
 		if (aniomin > auxP->anio)
 			aniomin = auxP->anio;
 		else if (aniomax < auxP->anio)
 			aniomax = auxP->anio;
+		auxP = auxP->link;
+	}
 	
 	cout << "\n Anio minimo de nacimiento: " << aniomin
 		<< "\n Anio maximo de nacimiento: " << aniomax
