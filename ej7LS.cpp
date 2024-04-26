@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 	while (file >> aux.dni >> aux.anio){
 		file.ignore();
 		getline(file,aux.nya);
-		push(list,aux);
+		push(lista,aux);
         contador++;
 	}
 	file.close();
@@ -59,12 +59,12 @@ int main(int argc, char *argv[]) {
 	// Calcular minimo
 	int aniomin = lista->anio; 
     int aniomax = lista->anio;
-    nodoP* aux = lista;
-	while (aux->link != NULL)
-		if (aniomin > lista->anio)
-			aniomin = lista->anio;
-		else if (aniomax < lista->anio)
-			aniomax = lista->anio;
+    nodoP* auxP = lista;
+	while (auxP->link != NULL)
+		if (aniomin > auxP->anio)
+			aniomin = auxP->anio;
+		else if (aniomax < auxP->anio)
+			aniomax = auxP->anio;
 	
 	cout << "\n Anio minimo de nacimiento: " << aniomin
 		<< "\n Anio maximo de nacimiento: " << aniomax
