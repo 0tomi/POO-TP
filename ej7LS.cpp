@@ -27,8 +27,7 @@ struct nodoP{
 void eliminarNodos(nodoP* &inicio){
 	nodoP* aux;
 	while (inicio != NULL){
-		cout << "\nentro";
-		inicio->link = aux; 
+		aux = inicio->link; 
 		delete inicio;
 		inicio = aux;
 	}
@@ -80,10 +79,6 @@ int main(int argc, char *argv[]) {
 		<< "\n Anio maximo de nacimiento: " << aniomax
 		<< "\n Total de registros leidos: " << contador;
 
-	eliminarNodos(lista);
-
-	if (lista == NULL)
-		cout << "\nlista vacía";
-
+	eliminarNodos(lista); 
 	return 0;
 }
