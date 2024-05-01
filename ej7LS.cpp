@@ -24,17 +24,25 @@ struct nodoP{
     nodoP* link = NULL;
 };
 
-void push(nodoP* &inicio, nodoP datos){
+void eliminarNodos(nodoP* &inicio){
+	nodoP* aux;
+	while (inicio != NULL){
+		cout << "\nentro";
+		inicio->link = aux; 
+		delete inicio;
+		inicio = aux;
+	}
+}
+
+nodoP* push(nodoP* inicio, nodoP datos){
     nodoP* nuevoNodo = new nodoP;
     *nuevoNodo = datos;
-    if (inicio == NULL)
-        inicio = nuevoNodo;
-    else{
-        nodoP* aux = inicio;
-        while(aux->link != NULL)
-            aux = aux->link;
-        aux->link = nuevoNodo;
-    }
+
+    if (inicio == NULL)	// si la lista esta vacía 
+		return nuevoNodo;
+       
+	nuevoNodo->link = inicio;
+	return nuevoNodo;
 }
 
 int main(int argc, char *argv[]) {
@@ -51,7 +59,7 @@ int main(int argc, char *argv[]) {
 	while (file >> aux.dni >> aux.anio){
 		file.ignore();
 		getline(file,aux.nya);
-		push(lista,aux);
+		lista = push(lista,aux);
         contador++;
 	}
 	file.close();
@@ -71,7 +79,11 @@ int main(int argc, char *argv[]) {
 	cout << "\n Anio minimo de nacimiento: " << aniomin
 		<< "\n Anio maximo de nacimiento: " << aniomax
 		<< "\n Total de registros leidos: " << contador;
-	
+
+	eliminarNodos(lista);
+
+	if (lista == NULL)
+		cout << "\nlista vacía";
 
 	return 0;
 }
