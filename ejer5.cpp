@@ -58,6 +58,6 @@ int main(int argc, char const *argv[])
         }
     }
     delete[] informacion;
-    cout << "La cantidad de alumnos que nacieron antes de 1995 es de: " << alumnos_1995; 
+    cout << "La cantidad de alumnos que nacieron antes de " <<  anio  << " es de: " << alumnos_1995; 
     return 0;
 }
