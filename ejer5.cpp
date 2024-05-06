@@ -35,7 +35,7 @@ int main(int argc, char const *argv[])
     int  i = 0, alumnos_1995 = 0; // cuantos alumnos nacieron antes del 95
     ifstream archivo;
     datos *informacion = new datos[1];
-    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer5_datos.txt");
+    archivo.open("../ejer5_datos.txt");
     if(archivo.fail()){
         cout << "Error al abrir el archivo";
         return 1;

@@ -27,7 +27,6 @@ struct listade{
     int anio;
     string nombre;
     listade *siguiente = NULL;
-    listade *anterior = NULL;
 };
 
 void agregar_dato(listade* &inicio, long dni, int anio, string nombre){
@@ -35,9 +34,7 @@ void agregar_dato(listade* &inicio, long dni, int anio, string nombre){
     aux->anio = anio;
     aux->dni = dni;
     aux->nombre = nombre;
-    aux->siguiente = inicio;
-    if(inicio != NULL)
-        inicio->anterior = aux;     
+    aux->siguiente = inicio;   
     inicio = aux;
 }
 int* calcular_min_max(listade* inicio){
@@ -82,7 +79,7 @@ int main(int argc, char const *argv[])
     int anio, cant_registros = 0;
     long dni;
     ifstream archivo;
-    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer7_datos.txt");
+    archivo.open("../ejer7_datos.txt");
     if (archivo.fail()){
         return 1;
     }

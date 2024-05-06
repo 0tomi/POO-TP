@@ -19,7 +19,7 @@ string* incrementar_tamanio(string* vec, int cont){
 int main(int argc, char const *argv[])
 {
     ifstream archivo;
-    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer2.txt");
+    archivo.open("../ejer2.txt");
     if(archivo.fail()){
         cout << "Error";
         return 1;

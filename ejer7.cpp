@@ -43,7 +43,7 @@ int main(int argc, char const *argv[])
 {
 
     ifstream archivo;
-    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer7_datos.txt");
+    archivo.open("../ejer7_datos.txt");
     if (archivo.fail()){
         cout << "Error al abrir el archivo";
         return 1;

@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
     string* definiciones = new string[1];
     string palabra_a_buscar;
     int cont = 0;
-    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer6.txt");
+    archivo.open("../ejer6.txt");
     if(archivo.fail()){
         cout << "Error al abrir el archivo";
         return 1;

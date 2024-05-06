@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     ifstream archivo;
-    archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer3.txt");
+    archivo.open("../ejer3.txt");
     if (archivo.fail())
     {
         cout << "Error";
@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
     }
     
     ofstream nuevo_archivo;
-    nuevo_archivo.open("C:/Users/Usuario/Desktop/tp_poo/ejer3_oraciones_separadas.txt");
+    nuevo_archivo.open("../ejer3_oraciones_separadas.txt");
     if (nuevo_archivo.fail())
     {
         cout << "Error";

@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 		int nro_linea = 1;
 		cout << "Indique el nombre del archivo: ";
 		getline(cin,direccion);
-		direccion = "./" + direccion + ".txt";
+		direccion = "../" + direccion + ".txt";
 		ifstream arc;
 		arc.open(direccion);
 		
