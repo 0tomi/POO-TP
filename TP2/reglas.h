@@ -9,7 +9,7 @@ class reglasNivel1{
         void resetReglas();
 
     private:
-        int fecha; // va a ser solo el anio
+        int fechaMin, fechaMax; // va a ser solo el anio
         int duracionDeEstancia;
         string* tipoDeVisita;
         string* nacionalidad;
