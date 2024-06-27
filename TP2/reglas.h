@@ -14,4 +14,8 @@ class reglasNivel1{
         string* tipoDeVisita;
         string* nacionalidad;
         string* EstadoCivil;
+
+        int maxVisitas;
+        int maxNacionalidad;
+        int maxEstadosCivil;
 };
