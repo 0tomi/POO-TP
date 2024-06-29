@@ -3,31 +3,49 @@
 
 Juego::Juego(){
     this->maxPaises = 20;
-    int contadorPaises = 0;
-    std::string direccionPaises = "./paises.txt";
-    ifstream Paises(direccionPaises);
-    if (Paises.fail())
-        exit(5);
 
-    this->paises = new std::string[maxPaises];
+    // Leemos los paises y los guardamos en el array de paises
+    this->LeerPaises();
+
+    // Seteamos las reglas del juego, pasando el array de paises.
+    this->rules = new reglas(this->paises, this->maxPaises);
+}
+
+void Juego::LeerPaises(){
+    int contadorPaises = 0;
+    // Abrir archivo
+    string direccionPaises = "./paises.txt";
+    ifstream Paises(direccionPaises);
+
+    // Si falla cerramos el programa
+    if (Paises.fail())
+        exit(1);
+
+    // Creamos el array que contendra los paises
+    this->paises = new string[this->maxPaises];
     
+    // Leer archivo
     while (getline(Paises, this->paises[contadorPaises])){
         contadorPaises++;
         
-        if (contadorPaises == maxPaises){
-            maxPaises += 20;
-            this->rescaleVector(this->paises, this->maxPaises);
+        if (contadorPaises == this->maxPaises){
+            this->maxPaises += 20;
+            this->rescaleVector(contadorPaises);
         }
     }
 
-    if (contadorPaises < this->maxPaises)
-        this->rescaleVector(this->paises, contadorPaises);
-    this->maxPaises = contadorPaises;
+    // Si el array quedo sobredimensionado, lo acortamos
+    if (contadorPaises < this->maxPaises){
+        this->maxPaises = contadorPaises;
+        this->rescaleVector(contadorPaises);
+    }
 }
 
-std::string* Juego::rescaleVector(std::string* &vector, int newMax){
-    std::string* newVector = new std::string[newMax];
-    
+void Juego::rescaleVector(int cont){
+    string* newVector = new string[maxPaises];
+    for (int i = 0; i < cont; i++)
+        newVector[i] = paises[i];
 
-
+    delete paises[];
+    paises = newVector;
 }
