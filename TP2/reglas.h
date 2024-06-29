@@ -1,10 +1,10 @@
 #include <string>
 using namespace std;
 
-class reglasNivel1{
+class reglas{
     public:
     // constructores:
-        reglasNivel1();
+        reglas();
     // metodos:
         void resetReglas();
 
