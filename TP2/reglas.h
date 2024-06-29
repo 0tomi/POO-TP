@@ -4,12 +4,13 @@ using namespace std;
 class reglas{
     public:
     // constructores:
-        reglas(string* paises, int maxPaises);
+        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita);
+        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, int cantidadMinimaPaisesPermitidos);
     // metodos:
-        void resetReglas();
+        void resetReglas(int cantidadMinimaPaisesPermitidos);
 
         // Getters
-        string* getPaisesPermitidos();
+        int* getPaisesPermitidos(int &max);
         string* getEstadoCivilPermitido();
         string* getTipoVisitaPermitida();
         int getFechaMinPermitida();
@@ -21,21 +22,27 @@ class reglas{
         string* paises;
         int maxPaises;
 
+        // Visitas
+        string* tipoVisitas;
+        int maxTiposVisitas;
+
         // Atributos
         int fechaMin, fechaMax; // va a ser solo el anio
-        int duracionDeEstancia;
-        string* tipoDeVisita;
-        string* nacionalidad;
-        string* EstadoCivil;
-
-        int maxVisitas;
-        int maxNacionalidad;
-        int maxEstadosCivil;
+        int duracionDeEstanciaValida;
+        int* paisesValidos;
+        string* tipoDeVisitaValida;
+        string* EstadoCivilValidos;
+        // Tope de arrays:
+        int maxPaisesPermitidos;
+        int maxEstadosCivilPermitidos;
+        int maxVisitasPermitidas;
 
         // Metodos Privados
         void setFechas();
         void setDuracionEstancia();
         void setTipoDeVisita();
-        void setPaisesPermitidos();
         void setEstadoCivil();
+
+        void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
+        bool checkRepetidos(int dato);
 };

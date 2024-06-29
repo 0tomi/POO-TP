@@ -8,26 +8,27 @@ Juego::Juego(){
     this->LeerPaises();
 
     // Seteamos las reglas del juego, pasando el array de paises.
-    this->rules = new reglas(this->paises, this->maxPaises);
+    this->rules = new reglas(this->paises, this->maxPaises, this->tipoVisitas, 3);
 }
 
 void Juego::LeerPaises(){
     int contadorPaises = 0;
     // Abrir archivo
     string direccionPaises = "./paises.txt";
-    ifstream Paises(direccionPaises);
+    ifstream ArchivoPaises(direccionPaises);
 
     // Si falla cerramos el programa
-    if (Paises.fail())
+    if (ArchivoPaises.fail())
         exit(1);
 
     // Creamos el array que contendra los paises
     this->paises = new string[this->maxPaises];
-    
+
     // Leer archivo
-    while (getline(Paises, this->paises[contadorPaises])){
+    while (getline(ArchivoPaises, this->paises[contadorPaises])){
         contadorPaises++;
         
+        // Si el array se nos queda chico, lo incrementamos
         if (contadorPaises == this->maxPaises){
             this->maxPaises += 20;
             this->rescaleVector(contadorPaises);
@@ -39,6 +40,8 @@ void Juego::LeerPaises(){
         this->maxPaises = contadorPaises;
         this->rescaleVector(contadorPaises);
     }
+
+    ArchivoPaises.close();
 }
 
 void Juego::rescaleVector(int cont){
@@ -46,6 +49,20 @@ void Juego::rescaleVector(int cont){
     for (int i = 0; i < cont; i++)
         newVector[i] = paises[i];
 
-    delete paises[];
+    delete[] paises;
     paises = newVector;
+}
+
+string* Juego::getPaises(int &max){
+    max = this->maxPaises;
+    return this->paises;
+}
+
+string* Juego::getVisitas(int &max){
+    max = 3;
+    return this->tipoVisitas;
+}
+
+reglas* Juego::getReglas(){
+    return this->rules;
 }
