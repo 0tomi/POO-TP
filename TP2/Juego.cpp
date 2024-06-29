@@ -8,7 +8,7 @@ Juego::Juego(){
     this->LeerPaises();
 
     // Seteamos las reglas del juego, pasando el array de paises.
-    this->rules = new reglas(this->paises, this->maxPaises, this->tipoVisitas, 3);
+    this->rules = new reglas(this->paises, this->maxPaises, this->tipoVisitas, 3, this->EstadosCiviles, 4);
 }
 
 void Juego::LeerPaises(){

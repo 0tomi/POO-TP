@@ -16,6 +16,7 @@ private:
     string* paises;
     int maxPaises;
     string tipoVisitas[3] = {"Turismo", "Trabajo", "Estudios"};
+    string EstadosCiviles[4] = {"Solter", "Casad", "Divorciad", "Viud"}; //La ultima letra se agrega en el pasaporte
 
     // Reglas
     reglas* rules;
