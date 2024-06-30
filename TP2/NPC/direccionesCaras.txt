@@ -1,0 +1,2 @@
+./npc1.png
+./npc2.png
