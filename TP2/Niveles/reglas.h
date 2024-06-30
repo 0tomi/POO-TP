@@ -1,11 +1,12 @@
-#include <string>
+#include "../AtributosComunes.cpp"
 using namespace std;
 
 class reglas{
     public:
     // constructores:
-        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, string* EstadosCiviles, int maxEC);
-        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, string* EstadosCiviles, int maxEC, int cantidadMinimaPaisesPermitidos);
+        reglas(AtributosComunes &atributos);
+        reglas(AtributosComunes &atributos, int cantidadMinimaPaisesPermitidos);
+
     // metodos:
         void resetReglas(int cantidadMinimaPaisesPermitidos);
 

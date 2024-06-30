@@ -8,7 +8,7 @@ Juego::Juego(){
     this->LeerPaises();
 
     // Seteamos las reglas del juego, pasando el array de paises.
-    this->rules = new reglas(this->paises, this->maxPaises, this->tipoVisitas, 3, this->EstadosCiviles, 4);
+    this->rules = new reglas(atributos);
 }
 
 void Juego::LeerPaises(){
@@ -41,6 +41,7 @@ void Juego::LeerPaises(){
         this->rescaleVector(contadorPaises);
     }
 
+    atributos.setAtributos(this->paises, this->maxPaises);
     ArchivoPaises.close();
 }
 
@@ -56,16 +57,6 @@ void Juego::rescaleVector(int cont){
 string* Juego::getPaises(int &max){
     max = this->maxPaises;
     return this->paises;
-}
-
-string* Juego::getVisitas(int &max){
-    max = 3;
-    return this->tipoVisitas;
-}
-
-string* Juego::getEstadosCiviles(int &max){
-    max = 4;
-    return this->EstadosCiviles;
 }
 
 reglas* Juego::getReglas(){
