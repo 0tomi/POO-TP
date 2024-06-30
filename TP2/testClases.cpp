@@ -14,6 +14,5 @@ int main(int argc, char const *argv[])
         cout<< arrayTest3[i] << endl;
     }
     
-
     return 0;
 }

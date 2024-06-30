@@ -10,7 +10,9 @@ public:
     // Esto despues lo eliminamos
     string* getPaises(int &maxPaises);
     string* getVisitas(int &maxVisitas);
+    string* getEstadosCiviles(int &maxEC);
     reglas* getReglas();
+    
 private:
     // Atributos
     string* paises;
