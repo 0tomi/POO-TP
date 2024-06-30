@@ -14,7 +14,7 @@ Juego::Juego(){
 void Juego::LeerPaises(){
     int contadorPaises = 0;
     // Abrir archivo
-    string direccionPaises = "./paises.txt";
+    string direccionPaises = "ArchivosTexto/paises.txt";
     ifstream ArchivoPaises(direccionPaises);
 
     // Si falla cerramos el programa

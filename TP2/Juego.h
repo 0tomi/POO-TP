@@ -1,4 +1,4 @@
-#include "reglas.cpp"
+#include "Niveles/reglas.cpp"
 
 // Falta completar
 class Juego{
