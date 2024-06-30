@@ -63,6 +63,11 @@ string* Juego::getVisitas(int &max){
     return this->tipoVisitas;
 }
 
+string* Juego::getEstadosCiviles(int &max){
+    max = 4;
+    return this->EstadosCiviles;
+}
+
 reglas* Juego::getReglas(){
     return this->rules;
 }
