@@ -1,20 +1,7 @@
-#include <string>
-using namespace std;
+#include "AtributosComunes.h"
 
-class AtributosComunes{
-public:
-    AtributosComunes();
-    void setAtributos(string* paises, int maxPaises);
-
-    string* getPaises(int &maxPaises);
-    string* getVisitas(int &maxVisitas);
-    string* getEstadosCiviles(int &maxEC);
-
-private:
-    string* paises; int maxPaises;
-    string tipoVisitas[3] = {"Turismo", "Trabajo", "Estudios"};
-    string EstadosCiviles[4] = {"Solter", "Casad", "Divorciad", "Viud"};
-};
+#ifndef ATRIBUTOSCOMUNES_CPP
+#define ATRIBUTOSCOMUNES_CPP
 
 AtributosComunes::AtributosComunes(){
     this->paises = NULL;
@@ -40,3 +27,5 @@ string* AtributosComunes::getEstadosCiviles(int &max){
     max = 4;
     return this->EstadosCiviles;
 }
+
+#endif

@@ -42,7 +42,7 @@ void Juego::LeerPaises(){
         this->rescaleVector(contadorPaises);
     }
 
-    atributos.setAtributos(this->paises, this->maxPaises);
+    atributos->setAtributos(this->paises, this->maxPaises);
     ArchivoPaises.close();
 }
 

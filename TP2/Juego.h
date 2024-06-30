@@ -1,5 +1,5 @@
 #include "Niveles/reglas.cpp"
-#include "AtributosComunes.cpp"
+#include "AtributosComun/AtributosComunes.cpp"
 
 // Falta completar
 class Juego{
