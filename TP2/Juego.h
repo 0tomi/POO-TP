@@ -17,8 +17,4 @@ private:
 
     // Reglas
     reglas* rules;
-
-    // Metodos auxiliares
-    string* rescaleVector(string* oldVector, int max, int cont);
-    void LeerPaises();
 };

@@ -18,6 +18,6 @@ class GeneradorDocumentacion{
         Documentacion* Doc2Generate;
     public:
         GeneradorDocumentacion(AtributosComunes* datos, reglas* rules); // en ultima instancia se le puede pasar la clase NPC pero no esta definida   
-        Documentacion* getDocumentos();
+        Documentacion* getDocumentos(NPC* info);
 };
 
