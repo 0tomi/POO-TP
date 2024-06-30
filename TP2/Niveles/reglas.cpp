@@ -1,6 +1,5 @@
 #include "reglas.h"
 #include <stdlib.h>
-#include <iostream>
 
 reglas::reglas(string* paises, int maxPaises, string* Visitas, int maxVist, string* EC, int maxEC){
     // # Seteamos atributos principales

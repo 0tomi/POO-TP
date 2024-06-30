@@ -4,9 +4,10 @@
 int main(int argc, char const *argv[])
 {
     Juego test;
-    int max;
-
     reglas* test2 = test.getReglas();
+
+    
+    int max;
     int* arrayTest3 = test2->getPaisesPermitidos(max);
 
     for (int i = 0; i < max; i++)
