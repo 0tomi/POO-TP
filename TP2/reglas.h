@@ -5,7 +5,7 @@ class reglas{
     public:
     // constructores:
         reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, string* EstadosCiviles, int maxEC);
-        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, int cantidadMinimaPaisesPermitidos);
+        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, string* EstadosCiviles, int maxEC, int cantidadMinimaPaisesPermitidos);
     // metodos:
         void resetReglas(int cantidadMinimaPaisesPermitidos);
 
