@@ -1,6 +1,8 @@
 #include "reglas.h"
 #include <stdlib.h>
 
+#ifndef REGLAS_CPP
+#define REGLAS_CPP
 reglas::reglas(AtributosComunes* atributos){
     // # Seteamos atributos principales
     this->paises = atributos->getPaises(this->maxPaises);
@@ -142,3 +144,5 @@ int reglas::getFechaMaxPermitida(){
 int reglas::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
 }
+
+#endif REGLAS_CPP

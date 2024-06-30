@@ -1,6 +1,8 @@
 #include "../AtributosComun/AtributosComunes.cpp"
 using namespace std;
 
+#ifndef REGLAS_H
+#define REGLAS_H
 class reglas{
     public:
     // constructores:
@@ -54,3 +56,5 @@ class reglas{
         void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
         bool checkRepetidos(int dato);
 };
+
+#endif REGLAS_H
