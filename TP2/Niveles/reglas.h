@@ -1,11 +1,14 @@
-#include <string>
+#include "../AtributosComun/AtributosComunes.cpp"
 using namespace std;
 
+#ifndef REGLAS_H
+#define REGLAS_H
 class reglas{
     public:
     // constructores:
-        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, string* EstadosCiviles, int maxEC);
-        reglas(string* paises, int maxPaises, string* tipoVisitas, int maxVisita, string* EstadosCiviles, int maxEC, int cantidadMinimaPaisesPermitidos);
+        reglas(AtributosComunes *atributos);
+        reglas(AtributosComunes *atributos, int cantidadMinimaPaisesPermitidos);
+
     // metodos:
         void resetReglas(int cantidadMinimaPaisesPermitidos);
 
@@ -53,3 +56,5 @@ class reglas{
         void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
         bool checkRepetidos(int dato);
 };
+
+#endif // REGLAS_H

@@ -1,14 +1,13 @@
 #include "reglas.h"
 #include <stdlib.h>
 
-reglas::reglas(string* paises, int maxPaises, string* Visitas, int maxVist, string* EC, int maxEC){
+#ifndef REGLAS_CPP
+#define REGLAS_CPP
+reglas::reglas(AtributosComunes* atributos){
     // # Seteamos atributos principales
-    this->paises = paises;
-    this->maxPaises = maxPaises;
-    this->maxTiposVisitas = maxVist;
-    this->tipoVisitas = Visitas;
-    this->estadosCiviles = EC;
-    this->maxEstadosCiviles = maxEC;
+    this->paises = atributos->getPaises(this->maxPaises);
+    this->tipoVisitas = atributos->getVisitas(this->maxTiposVisitas);
+    this->estadosCiviles = atributos->getEstadosCiviles(this->maxEstadosCiviles);
     srand(1);   // hay que cambiar esto para cuando este mas avanzado el juego a time null
 
     // # Inicializamos las reglas
@@ -145,3 +144,5 @@ int reglas::getFechaMaxPermitida(){
 int reglas::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
 }
+
+#endif // REGLAS_CPP

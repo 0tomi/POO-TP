@@ -2,16 +2,17 @@
 #include "Juego.h"
 
 Juego::Juego(){
-    this->maxPaises = 20;
+    this->atributos = new AtributosComunes();
 
     // Leemos los paises y los guardamos en el array de paises
     this->LeerPaises();
 
     // Seteamos las reglas del juego, pasando el array de paises.
-    this->rules = new reglas(this->paises, this->maxPaises, this->tipoVisitas, 3, this->EstadosCiviles, 4);
+    this->rules = new reglas(atributos);
 }
 
 void Juego::LeerPaises(){
+    int maxPaises = 20;
     int contadorPaises = 0;
     // Abrir archivo
     string direccionPaises = "ArchivosTexto/paises.txt";
@@ -22,50 +23,36 @@ void Juego::LeerPaises(){
         exit(1);
 
     // Creamos el array que contendra los paises
-    this->paises = new string[this->maxPaises];
+    string* paises = new string[maxPaises];
 
     // Leer archivo
-    while (getline(ArchivoPaises, this->paises[contadorPaises])){
+    while (getline(ArchivoPaises, paises[contadorPaises])){
         contadorPaises++;
         
         // Si el array se nos queda chico, lo incrementamos
-        if (contadorPaises == this->maxPaises){
-            this->maxPaises += 20;
-            this->rescaleVector(contadorPaises);
+        if (contadorPaises == maxPaises){
+            maxPaises += 20;
+            paises = rescaleVector(paises, maxPaises, contadorPaises);
         }
     }
 
     // Si el array quedo sobredimensionado, lo acortamos
-    if (contadorPaises < this->maxPaises){
-        this->maxPaises = contadorPaises;
-        this->rescaleVector(contadorPaises);
+    if (contadorPaises < maxPaises){
+        maxPaises = contadorPaises;
+        paises = rescaleVector(paises, maxPaises, contadorPaises);
     }
 
+    atributos->setAtributos(paises, maxPaises);
     ArchivoPaises.close();
 }
 
-void Juego::rescaleVector(int cont){
-    string* newVector = new string[maxPaises];
+string* Juego::rescaleVector(string* oldVector, int max, int cont){
+    string* newVector = new string[max];
     for (int i = 0; i < cont; i++)
-        newVector[i] = paises[i];
+        newVector[i] = oldVector[i];
 
-    delete[] paises;
-    paises = newVector;
-}
-
-string* Juego::getPaises(int &max){
-    max = this->maxPaises;
-    return this->paises;
-}
-
-string* Juego::getVisitas(int &max){
-    max = 3;
-    return this->tipoVisitas;
-}
-
-string* Juego::getEstadosCiviles(int &max){
-    max = 4;
-    return this->EstadosCiviles;
+    delete[] oldVector;
+    return newVector;
 }
 
 reglas* Juego::getReglas(){
