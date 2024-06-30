@@ -15,7 +15,8 @@ private:
     NPC* NPC2create;
 
     // Array con direcciones donde se encuentran las caras de los npcs
-    string* ImagenesNPCS;
+    string* LinksImagenesNPCS;
+    int topeImagenes;
     char generos[3] = {'M', 'H', 'X'};
 };
 
