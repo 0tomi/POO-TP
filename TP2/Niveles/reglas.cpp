@@ -145,4 +145,4 @@ int reglas::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
 }
 
-#endif REGLAS_CPP
+#endif // REGLAS_CPP

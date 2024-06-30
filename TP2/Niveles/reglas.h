@@ -57,4 +57,4 @@ class reglas{
         bool checkRepetidos(int dato);
 };
 
-#endif REGLAS_H
+#endif // REGLAS_H
