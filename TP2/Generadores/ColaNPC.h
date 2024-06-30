@@ -7,6 +7,7 @@ public:
     ColaNPC(reglas* rules, AtributosComunes atributos);
     void AddNPC(NPC* newNPC);
     NPC* GetNPC();
+
 private:
     NPC* frente; 
     NPC* fondo;
