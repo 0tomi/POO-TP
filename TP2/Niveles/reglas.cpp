@@ -5,8 +5,6 @@
 #define REGLAS_CPP
 reglas::reglas(AtributosComunes* atributos){
     // # Seteamos atributos principales
-    this->datos = atributos;
-
     this->paises = atributos->getPaises(this->maxPaises);
     this->tipoVisitas = atributos->getVisitas(this->maxTiposVisitas);
     this->estadosCiviles = atributos->getEstadosCiviles(this->maxEstadosCiviles);

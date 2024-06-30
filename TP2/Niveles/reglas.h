@@ -22,7 +22,6 @@ class reglas{
 
     private:
         // # Conjunto de elementos de los cuales obtendremos las reglas #
-        AtributosComunes* datos;
         string* paises;
         int maxPaises;
         
