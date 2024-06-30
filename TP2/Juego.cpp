@@ -2,6 +2,7 @@
 #include "Juego.h"
 
 Juego::Juego(){
+    this->atributos = new AtributosComunes();
     this->maxPaises = 20;
 
     // Leemos los paises y los guardamos en el array de paises

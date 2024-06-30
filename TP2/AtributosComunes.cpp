@@ -11,8 +11,7 @@ public:
     string* getEstadosCiviles(int &maxEC);
 
 private:
-    string* paises;
-    int maxPaises;
+    string* paises; int maxPaises;
     string tipoVisitas[3] = {"Turismo", "Trabajo", "Estudios"};
     string EstadosCiviles[4] = {"Solter", "Casad", "Divorciad", "Viud"};
 };

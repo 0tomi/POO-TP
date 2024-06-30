@@ -4,8 +4,8 @@ using namespace std;
 class reglas{
     public:
     // constructores:
-        reglas(AtributosComunes &atributos);
-        reglas(AtributosComunes &atributos, int cantidadMinimaPaisesPermitidos);
+        reglas(AtributosComunes *atributos);
+        //reglas(AtributosComunes *atributos, int cantidadMinimaPaisesPermitidos);
 
     // metodos:
         void resetReglas(int cantidadMinimaPaisesPermitidos);

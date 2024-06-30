@@ -14,7 +14,7 @@ public:
     
 private:
     // Atributos
-    AtributosComunes atributos;
+    AtributosComunes* atributos;
     
     string* paises;
     int maxPaises;
