@@ -1,6 +1,8 @@
 #include "Juego.cpp"
 #include <iostream>
 
+// usando ../ nos movemos 1 directorio para atras
+
 int main(int argc, char const *argv[])
 {
     Juego test;
