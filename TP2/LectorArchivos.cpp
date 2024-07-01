@@ -8,6 +8,7 @@ using namespace std;
 class LectorArchivos{
     public:
         LectorArchivos(string direccion);
+        void LeerArchivoNuevo(string direccion);
         string* getArray();
         int getTopeArray();
     private:
@@ -25,6 +26,10 @@ int LectorArchivos::getTopeArray(){
 }
 
 LectorArchivos::LectorArchivos(string direccion){
+    this->LeerArchivoNuevo(direccion);
+}
+
+void LectorArchivos::LeerArchivoNuevo(string direccion){
     this->max = 20;
     int contador = 0;
 
