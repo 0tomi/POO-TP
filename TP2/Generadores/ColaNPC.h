@@ -1,5 +1,5 @@
 #include "generadorDocs.h"
-#include "../Niveles/reglas.cpp"
+#include "../Reglas/reglas.cpp"
 #include "../AtributosComun/AtributosComunes.cpp"
 
 #ifndef COLANPC_H
