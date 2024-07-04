@@ -513,14 +513,11 @@ TP2_autogen/timestamp: \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/CMakeLists.txt \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.ui \
+<<<<<<< HEAD
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp \
@@ -539,6 +536,8 @@ TP2_autogen/timestamp: \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.h \
+=======
+>>>>>>> main
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/main.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h \

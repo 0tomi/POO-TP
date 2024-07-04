@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< HEAD
 24	227	7417709000021476	TP2_autogen/timestamp	223e3632e40ccb1f
 24	227	7417709000021476	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
 132	474	7417701027434192	CMakeFiles/TP2.dir/NPC/npc.cpp.obj	869ddfec854a9220
@@ -41,3 +42,38 @@
 512	2723	7417716999329828	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
 507	2824	7417717000340747	CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj	258164be2a750a9e
 2824	3065	7417717002717955	TP2.exe	6411fb9677aa3c96
+=======
+1	523	7417620879356124	TP2_autogen/timestamp	223e3632e40ccb1f
+1	523	7417620879356124	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+1	523	7417620879356124	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
+1	523	7417620879356124	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+2537	2927	7417620904008564	TP2.exe	9a4c51f798fbf70
+524	2530	7417620900064973	CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj	2a5f082cacfe365a
+526	2535	7417620900115022	CMakeFiles/TP2.dir/main.cpp.obj	e61980d90972d714
+529	2536	7417620900135034	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
+11	463	7417621285306573	TP2_autogen/timestamp	223e3632e40ccb1f
+11	463	7417621285306573	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+11	463	7417621285306573	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
+11	463	7417621285306573	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+464	2216	7417621303493130	CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj	2a5f082cacfe365a
+466	2247	7417621303793406	CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj	258164be2a750a9e
+468	2248	7417621303803423	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
+2248	2460	7417621305885311	TP2.exe	4426c114b143c2ee
+13	511	7417623006153939	TP2_autogen/timestamp	223e3632e40ccb1f
+13	511	7417623006153939	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+13	511	7417623006153939	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
+13	511	7417623006153939	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+511	2464	7417623026409752	CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj	2a5f082cacfe365a
+514	2496	7417623026730044	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
+516	2587	7417623027650880	CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj	258164be2a750a9e
+2588	2802	7417623029772809	TP2.exe	4426c114b143c2ee
+6	487	7417628258324693	TP2_autogen/timestamp	223e3632e40ccb1f
+6	487	7417628258324693	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+6	487	7417628258324693	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
+6	487	7417628258324693	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+487	2173	7417628275780581	CMakeFiles/TP2.dir/main.cpp.obj	e61980d90972d714
+489	2181	7417628275870669	CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj	2a5f082cacfe365a
+493	2258	7417628276631362	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
+491	2318	7417628277231905	CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj	258164be2a750a9e
+2318	2529	7417628279323809	TP2.exe	4426c114b143c2ee
+>>>>>>> main
