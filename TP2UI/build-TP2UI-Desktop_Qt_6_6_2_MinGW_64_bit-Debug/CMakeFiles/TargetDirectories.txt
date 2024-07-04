@@ -1,9 +1,0 @@
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/TP2UI.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/TP2UI_autogen_timestamp_deps.dir
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/TP2UI_autogen.dir
