@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/Escritorio.png</file>
+        <file>Resources/escritorio2.png</file>
+        <file>Resources/esquemaEscritorio.png</file>
+        <file>Resources/estancia.png</file>
+        <file>Resources/fondo.png</file>
+        <file>Resources/fondoaduana.png</file>
+        <file>Resources/fondoAlturas.png</file>
+        <file>Resources/mesa.png</file>
+        <file>Resources/mesa2.png</file>
+        <file>Resources/npc1.png</file>
+    </qresource>
+</RCC>

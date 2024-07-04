@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 
     // LectorArchivos test("../TP2/aceptar.txt"); Forma nueva de leer archivos
 
+
     MainWindow w;
     w.show();
 
