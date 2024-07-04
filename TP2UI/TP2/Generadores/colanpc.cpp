@@ -1,4 +1,4 @@
-#include "ColaNPC.h"
+#include "colanpc.h"
 
 ColaNPC::ColaNPC(AtributosComunes* datos, reglas* rules){
     this->frente = this->fondo = NULL;
@@ -7,7 +7,7 @@ ColaNPC::ColaNPC(AtributosComunes* datos, reglas* rules){
     this->GenerarNPC = new GeneradorNPC;
 }
 
-void ColaNPC::addNPC(NPC* newNPC){
+void ColaNPC::addNPC(){
     // Genero el NPC nuevo
     NPC* newNPC = this->GenerarNPC->getNPC();
     // Genero su documentacion
@@ -29,7 +29,7 @@ void ColaNPC::addNPC(NPC* newNPC){
 NPC* ColaNPC::getNPC(){
     // Si la cola esta vacia
     if (this->size == 0)
-        return NULL; 
+        return NULL;
 
     nodoNPC* node2remove = frente;
     NPC* npc = frente->info;

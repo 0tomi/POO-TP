@@ -1,5 +1,8 @@
-#include "Niveles/reglas.cpp"
-#include "AtributosComun/AtributosComunes.cpp"
+#ifndef JUEGO_H
+#define JUEGO_H
+
+#include "Reglas/reglas.h"
+#include "AtributosComunes/atributoscomunes.h"
 
 // Falta completar
 class Juego{
@@ -10,7 +13,7 @@ public:
 
     // Esto despues lo eliminamos
     reglas* getReglas();
-    
+
 private:
     // Atributos
     AtributosComunes* atributos;
@@ -18,3 +21,5 @@ private:
     // Reglas
     reglas* rules;
 };
+
+#endif // JUEGO_H

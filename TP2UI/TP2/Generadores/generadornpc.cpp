@@ -1,5 +1,6 @@
-#include "generadorNPC.h"
-#include "../LectorArchivos.cpp"
+#include "generadornpc.h"
+#include "generadornpc.h"
+#include "../lectorarchivos.h"
 #include <stdlib.h>
 
 GeneradorNPC::GeneradorNPC(){
@@ -17,7 +18,7 @@ NPC* GeneradorNPC::getNPC(){
     int valorCentinela2 = rand()%3;
     // Pickeamos una cara
     int valorCentinela = rand()%(this->topeLinksImagenes);
-    
+
 
     // Generamos NPC y lo retornamos
     this->NPC2create = new NPC(this->LinksImagenesNPCS[valorCentinela], this->generos[valorCentinela2]);
