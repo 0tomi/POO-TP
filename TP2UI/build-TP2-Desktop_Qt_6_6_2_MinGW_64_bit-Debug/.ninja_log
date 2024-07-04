@@ -1,16 +1,16 @@
 # ninja log v5
-18	179	7417707912460151	TP2_autogen/timestamp	223e3632e40ccb1f
-18	179	7417707912460151	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+24	227	7417709000021476	TP2_autogen/timestamp	223e3632e40ccb1f
+24	227	7417709000021476	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
 132	474	7417701027434192	CMakeFiles/TP2.dir/NPC/npc.cpp.obj	869ddfec854a9220
-18	179	7417707912460151	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
+24	227	7417709000021476	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
 144	206	7417701024751640	CMakeFiles/TP2.dir/Documentos/documentacion.cpp.obj	a677380006c31c4f
-18	179	7417707912460151	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+24	227	7417709000021476	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
 208	2058	7417674532853013	CMakeFiles/TP2.dir/lector2.cpp.obj	5a34f0ffd8214010
-1872	2103	7417707931657739	TP2.exe	48fc7e7dfa0708a2
+2145	2377	7417709021516980	TP2.exe	6411fb9677aa3c96
 123	1969	7417701042389387	CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj	2a5f082cacfe365a
 138	197	7417701024661553	CMakeFiles/TP2.dir/Documentos/pasaporte.cpp.obj	6ea1934c7e90c50a
 120	1981	7417701042509496	CMakeFiles/TP2.dir/main.cpp.obj	e61980d90972d714
-184	1872	7417707929385670	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
+233	2145	7417709019234909	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
 155	1158	7417703400767165	CMakeFiles/TP2.dir/Generadores/generadornpc.cpp.obj	1bc62d3cc31bd625
 127	2164	7417701044336395	CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj	258164be2a750a9e
 154	468	7417702042920560	CMakeFiles/TP2.dir/Reglas/reglas.cpp.obj	d3026a2cc1b85235
@@ -20,10 +20,4 @@
 141	198	7417701024661553	CMakeFiles/TP2.dir/Documentos/estancia.cpp.obj	bfacb50806f50630
 189	515	7417707915808258	CMakeFiles/TP2.dir/Generadores/generadordocumentacion.cpp.obj	b42aa915d88a2149
 187	506	7417707915728180	CMakeFiles/TP2.dir/Generadores/colanpc.cpp.obj	3241bcee184986e3
-24	227	7417709000021476	TP2_autogen/timestamp	223e3632e40ccb1f
-24	227	7417709000021476	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
-24	227	7417709000021476	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
-24	227	7417709000021476	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
 237	1404	7417709011828164	CMakeFiles/TP2.dir/juego.cpp.obj	6fd6962078ca4862
-233	2145	7417709019234909	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
-2145	2377	7417709021516980	TP2.exe	6411fb9677aa3c96
