@@ -1,8 +1,7 @@
-#include "../NPC/NPC.h"
+#ifndef GENERADORNPC_H
+#define GENERADORNPC_H
 
-#ifndef GENNPC_H
-#define GENNPC_H
-
+#include "../NPC/npc.h"
 #include <string>
 using namespace std;
 
@@ -16,8 +15,8 @@ private:
 
     // Array con direcciones donde se encuentran las caras de los npcs
     string* LinksImagenesNPCS;
-    int topeImagenes;
+    int topeLinksImagenes;
     char generos[3] = {'M', 'H', 'X'};
 };
 
-#endif // !GENNPC_H
+#endif // GENERADORNPC_H

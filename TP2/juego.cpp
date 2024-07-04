@@ -1,6 +1,5 @@
-#include <fstream>
-#include "LectorArchivos.cpp"
-#include "Juego.h"
+#include "lectorArchivos.h"
+#include "juego.h"
 
 Juego::Juego(){
     this->atributos = new AtributosComunes();
