@@ -255,9 +255,9 @@
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2UI/documento.h",
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2UI/Documentos/documentoUI.h",
 			"MU",
-			"EWIEGA46WW/moc_documento.cpp",
+			"SOYZ2DITOJ/moc_documentoUI.cpp",
 			null
 		],
 		[
@@ -338,7 +338,7 @@
 	"SOURCES" : 
 	[
 		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2UI/documento.cpp",
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2UI/Documentos/documentoUI.cpp",
 			"MU",
 			null
 		],

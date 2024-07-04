@@ -23,7 +23,18 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(TP2UI
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        documento.h documento.cpp documento.ui
+        Documentos/documentoUI.h Documentos/documentoUI.cpp Documentos/documentoUI.ui
+
+
+
+
+
+
+
+
+
+
+
 
     )
 # Define target properties for Android with Qt 6 as:

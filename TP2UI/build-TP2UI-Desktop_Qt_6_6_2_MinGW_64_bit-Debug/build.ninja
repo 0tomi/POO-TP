@@ -73,13 +73,13 @@ build CMakeFiles/TP2UI.dir/mainwindow.cpp.obj: CXX_COMPILER__TP2UI_unscanned_Deb
   OBJECT_DIR = CMakeFiles\TP2UI.dir
   OBJECT_FILE_DIR = CMakeFiles\TP2UI.dir
 
-build CMakeFiles/TP2UI.dir/documento.cpp.obj: CXX_COMPILER__TP2UI_unscanned_Debug C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2UI/documento.cpp || cmake_object_order_depends_target_TP2UI
+build CMakeFiles/TP2UI.dir/Documentos/documentoUI.cpp.obj: CXX_COMPILER__TP2UI_unscanned_Debug C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2UI/Documentos/documentoUI.cpp || cmake_object_order_depends_target_TP2UI
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
-  DEP_FILE = CMakeFiles\TP2UI.dir\documento.cpp.obj.d
+  DEP_FILE = CMakeFiles\TP2UI.dir\Documentos\documentoUI.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IC:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2UI-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2UI_autogen/include -isystem B:/QT/6.6.2/mingw_64/include/QtCore -isystem B:/QT/6.6.2/mingw_64/include -isystem B:/QT/6.6.2/mingw_64/mkspecs/win32-g++ -isystem B:/QT/6.6.2/mingw_64/include/QtWidgets -isystem B:/QT/6.6.2/mingw_64/include/QtGui
   OBJECT_DIR = CMakeFiles\TP2UI.dir
-  OBJECT_FILE_DIR = CMakeFiles\TP2UI.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP2UI.dir\Documentos
 
 
 # =============================================================================
@@ -89,7 +89,7 @@ build CMakeFiles/TP2UI.dir/documento.cpp.obj: CXX_COMPILER__TP2UI_unscanned_Debu
 #############################################
 # Link the executable TP2UI.exe
 
-build TP2UI.exe: CXX_EXECUTABLE_LINKER__TP2UI_Debug CMakeFiles/TP2UI.dir/TP2UI_autogen/mocs_compilation.cpp.obj CMakeFiles/TP2UI.dir/main.cpp.obj CMakeFiles/TP2UI.dir/mainwindow.cpp.obj CMakeFiles/TP2UI.dir/documento.cpp.obj | B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Gui.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a B$:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a || TP2UI_autogen TP2UI_autogen_timestamp_deps
+build TP2UI.exe: CXX_EXECUTABLE_LINKER__TP2UI_Debug CMakeFiles/TP2UI.dir/TP2UI_autogen/mocs_compilation.cpp.obj CMakeFiles/TP2UI.dir/main.cpp.obj CMakeFiles/TP2UI.dir/mainwindow.cpp.obj CMakeFiles/TP2UI.dir/Documentos/documentoUI.cpp.obj | B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Gui.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a B$:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a || TP2UI_autogen TP2UI_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = B:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a  B:/QT/6.6.2/mingw_64/lib/libQt6Gui.a  B:/QT/6.6.2/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  B:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -176,7 +176,7 @@ build TP2UI_autogen_timestamp_deps: phony CMakeFiles/TP2UI_autogen_timestamp_dep
 #############################################
 # Utility command for TP2UI_autogen
 
-build TP2UI_autogen: phony CMakeFiles/TP2UI_autogen TP2UI_autogen/include/ui_mainwindow.h TP2UI_autogen/include/ui_documento.h TP2UI_autogen/timestamp TP2UI_autogen/mocs_compilation.cpp TP2UI_autogen_timestamp_deps
+build TP2UI_autogen: phony CMakeFiles/TP2UI_autogen TP2UI_autogen/include/ui_mainwindow.h TP2UI_autogen/include/Documentos/ui_documentoUI.h TP2UI_autogen/timestamp TP2UI_autogen/mocs_compilation.cpp TP2UI_autogen_timestamp_deps
 
 
 #############################################
@@ -198,7 +198,7 @@ build CMakeFiles/TP2UI_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles
 #############################################
 # Phony custom command for CMakeFiles\TP2UI_autogen
 
-build CMakeFiles/TP2UI_autogen TP2UI_autogen/include/ui_mainwindow.h TP2UI_autogen/include/ui_documento.h | ${cmake_ninja_workdir}CMakeFiles/TP2UI_autogen ${cmake_ninja_workdir}TP2UI_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}TP2UI_autogen/include/ui_documento.h: phony TP2UI_autogen/timestamp || TP2UI_autogen_timestamp_deps
+build CMakeFiles/TP2UI_autogen TP2UI_autogen/include/ui_mainwindow.h TP2UI_autogen/include/Documentos/ui_documentoUI.h | ${cmake_ninja_workdir}CMakeFiles/TP2UI_autogen ${cmake_ninja_workdir}TP2UI_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}TP2UI_autogen/include/Documentos/ui_documentoUI.h: phony TP2UI_autogen/timestamp || TP2UI_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.
