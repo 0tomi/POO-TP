@@ -24,6 +24,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         Documentos/documentosui.h Documentos/documentosui.cpp Documentos/documentosui.ui
+<<<<<<< HEAD:TP2/CMakeLists.txt
         lectorarchivos.h lectorarchivos.cpp
         AtributosComunes/atributoscomunes.h AtributosComunes/atributoscomunes.cpp
         NPC/npc.h NPC/npc.cpp
@@ -38,6 +39,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
 
 
+=======
+>>>>>>> parent of a0e6b63 (LO QUE VA ANDANDO):TP2UI/TP2/CMakeLists.txt
 
     )
 # Define target properties for Android with Qt 6 as:
