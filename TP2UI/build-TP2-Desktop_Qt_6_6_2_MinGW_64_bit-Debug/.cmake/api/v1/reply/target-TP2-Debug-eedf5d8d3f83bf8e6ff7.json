@@ -75,21 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				"line" : 78,
-========
-				"line" : 64,
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				"line" : 61,
-========
-				"line" : 47,
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 				"parent" : 0
 			},
 			{
@@ -373,7 +365,6 @@
 				0,
 				1,
 				2,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				6,
 				9,
 				11,
@@ -386,9 +377,6 @@
 				25,
 				27,
 				29
-========
-				6
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 			]
 		}
 	],
@@ -512,7 +500,6 @@
 				0,
 				1,
 				2,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				6,
 				9,
 				11,
@@ -525,9 +512,6 @@
 				25,
 				27,
 				29
-========
-				6
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 			]
 		},
 		{
@@ -537,7 +521,6 @@
 				3,
 				5,
 				8,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				10,
 				12,
 				14,
@@ -550,9 +533,6 @@
 				28,
 				30,
 				31
-========
-				9
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 			]
 		},
 		{
@@ -561,22 +541,14 @@
 			[
 				4,
 				7,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				32
-========
-				10
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				33
-========
-				11
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 			]
 		}
 	],
@@ -628,7 +600,6 @@
 			"sourceGroupIndex" : 2
 		},
 		{
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 			"backtrace" : 4,
 			"path" : "lectorarchivos.h",
 			"sourceGroupIndex" : 1
@@ -750,8 +721,6 @@
 			"sourceGroupIndex" : 0
 		},
 		{
-========
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/target-TP2-Debug-c9589fdd80a93737fe21.json
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include/ui_mainwindow.h",

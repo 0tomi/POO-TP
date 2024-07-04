@@ -255,13 +255,24 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h",
+			"MU",
+			"WWU2VOAOT3/moc_atributoscomunes.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h",
+			"MU",
+			"SOYZ2DITOJ/moc_documentacion.cpp",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h",
 			"MU",
 			"SOYZ2DITOJ/moc_documentosui.cpp",
 			null
 		],
 		[
-<<<<<<< HEAD
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h",
 			"MU",
 			"SOYZ2DITOJ/moc_estancia.cpp",
@@ -316,8 +327,6 @@
 			null
 		],
 		[
-=======
->>>>>>> main
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -395,12 +404,21 @@
 	"SOURCES" : 
 	[
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp",
 			"MU",
 			null
 		],
 		[
-<<<<<<< HEAD
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp",
 			"MU",
 			null
@@ -446,8 +464,6 @@
 			null
 		],
 		[
-=======
->>>>>>> main
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/main.cpp",
 			"MU",
 			null

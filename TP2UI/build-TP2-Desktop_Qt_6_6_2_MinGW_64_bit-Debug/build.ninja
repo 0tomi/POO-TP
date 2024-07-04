@@ -81,7 +81,6 @@ build CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj: CXX_COMPILER__TP2_unsc
   OBJECT_DIR = CMakeFiles\TP2.dir
   OBJECT_FILE_DIR = CMakeFiles\TP2.dir\Documentos
 
-<<<<<<< HEAD
 build CMakeFiles/TP2.dir/lectorarchivos.cpp.obj: CXX_COMPILER__TP2_unscanned_Debug C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.cpp || cmake_object_order_depends_target_TP2
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\TP2.dir\lectorarchivos.cpp.obj.d
@@ -170,8 +169,6 @@ build CMakeFiles/TP2.dir/juego.cpp.obj: CXX_COMPILER__TP2_unscanned_Debug C$:/Us
   OBJECT_DIR = CMakeFiles\TP2.dir
   OBJECT_FILE_DIR = CMakeFiles\TP2.dir
 
-=======
->>>>>>> main
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TP2
@@ -180,11 +177,7 @@ build CMakeFiles/TP2.dir/juego.cpp.obj: CXX_COMPILER__TP2_unscanned_Debug C$:/Us
 #############################################
 # Link the executable TP2.exe
 
-<<<<<<< HEAD
 build TP2.exe: CXX_EXECUTABLE_LINKER__TP2_Debug CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj CMakeFiles/TP2.dir/main.cpp.obj CMakeFiles/TP2.dir/mainwindow.cpp.obj CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj CMakeFiles/TP2.dir/lectorarchivos.cpp.obj CMakeFiles/TP2.dir/AtributosComunes/atributoscomunes.cpp.obj CMakeFiles/TP2.dir/NPC/npc.cpp.obj CMakeFiles/TP2.dir/Documentos/pasaporte.cpp.obj CMakeFiles/TP2.dir/Documentos/estancia.cpp.obj CMakeFiles/TP2.dir/Documentos/documentacion.cpp.obj CMakeFiles/TP2.dir/Reglas/reglas.cpp.obj CMakeFiles/TP2.dir/Generadores/generadornpc.cpp.obj CMakeFiles/TP2.dir/Generadores/generadordocumentacion.cpp.obj CMakeFiles/TP2.dir/Generadores/colanpc.cpp.obj CMakeFiles/TP2.dir/juego.cpp.obj | B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Gui.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a B$:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a || TP2_autogen TP2_autogen_timestamp_deps
-=======
-build TP2.exe: CXX_EXECUTABLE_LINKER__TP2_Debug CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj CMakeFiles/TP2.dir/main.cpp.obj CMakeFiles/TP2.dir/mainwindow.cpp.obj CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj | B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Gui.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a B$:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a || TP2_autogen TP2_autogen_timestamp_deps
->>>>>>> main
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = B:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a  B:/QT/6.6.2/mingw_64/lib/libQt6Gui.a  B:/QT/6.6.2/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  B:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

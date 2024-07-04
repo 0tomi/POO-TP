@@ -75,21 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				"line" : 78,
-========
-				"line" : 63,
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				"line" : 61,
-========
-				"line" : 46,
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 				"parent" : 0
 			},
 			{
@@ -372,7 +364,6 @@
 			[
 				0,
 				1,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				2,
 				6,
 				9,
@@ -386,20 +377,17 @@
 				25,
 				27,
 				29
-========
-				2
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "TP2_autogen::@6890427a1f51a3e7e1df"
+			"id" : "TP2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "TP2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "TP2_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "TP2::@6890427a1f51a3e7e1df",
@@ -511,7 +499,6 @@
 			[
 				0,
 				1,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				2,
 				6,
 				9,
@@ -525,9 +512,6 @@
 				25,
 				27,
 				29
-========
-				2
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 			]
 		},
 		{
@@ -535,7 +519,6 @@
 			"sourceIndexes" : 
 			[
 				3,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				5,
 				8,
 				10,
@@ -550,9 +533,6 @@
 				28,
 				30,
 				31
-========
-				5
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 			]
 		},
 		{
@@ -560,23 +540,15 @@
 			"sourceIndexes" : 
 			[
 				4,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				7,
 				32
-========
-				6
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 				33
-========
-				7
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 			]
 		}
 	],
@@ -612,7 +584,6 @@
 			"sourceGroupIndex" : 2
 		},
 		{
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json
 			"backtrace" : 4,
 			"path" : "Documentos/documentosui.h",
 			"sourceGroupIndex" : 1
@@ -750,11 +721,15 @@
 			"sourceGroupIndex" : 0
 		},
 		{
-========
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-223ce63bb9f4ce7aa715.json
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include/ui_mainwindow.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include/Documentos/ui_documentosui.h",
 			"sourceGroupIndex" : 1
 		},
 		{

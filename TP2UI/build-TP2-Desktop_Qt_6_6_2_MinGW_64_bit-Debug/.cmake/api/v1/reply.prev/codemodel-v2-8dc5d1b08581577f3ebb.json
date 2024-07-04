@@ -7,11 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/codemodel-v2-8dc5d1b08581577f3ebb.json
 					"jsonFile" : "directory-.-Debug-a4fe160bb7cbbbf62c33.json",
-========
-					"jsonFile" : "directory-.-Debug-e001b19d22dc4c646149.json",
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/codemodel-v2-4969cb8dc103bccb8f2d.json
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -48,11 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "TP2::@6890427a1f51a3e7e1df",
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/codemodel-v2-8dc5d1b08581577f3ebb.json
 					"jsonFile" : "target-TP2-Debug-eedf5d8d3f83bf8e6ff7.json",
-========
-					"jsonFile" : "target-TP2-Debug-c9589fdd80a93737fe21.json",
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/codemodel-v2-4969cb8dc103bccb8f2d.json
 					"name" : "TP2",
 					"projectIndex" : 0
 				},
