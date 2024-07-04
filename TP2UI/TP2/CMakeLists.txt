@@ -30,6 +30,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/pasaporte.h Documentos/pasaporte.cpp
         Documentos/estancia.h Documentos/estancia.cpp
         Documentos/documentacion.h Documentos/documentacion.cpp
+        Reglas/reglas.h Reglas/reglas.cpp
+        Generadores/generadornpc.h Generadores/generadornpc.cpp
+        Generadores/generadordocumentacion.h Generadores/generadordocumentacion.cpp
+        Generadores/colanpc.h Generadores/colanpc.cpp
+        juego.h juego.cpp
 
 
 
