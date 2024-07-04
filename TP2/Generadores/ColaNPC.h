@@ -6,7 +6,7 @@
 #define COLANPC_H
 
 struct nodoNPC{
-    NPC* info;
+    NPC* info; 
     nodoNPC* link = NULL;
 };
 
