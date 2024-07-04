@@ -255,9 +255,45 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h",
+			"MU",
+			"WWU2VOAOT3/moc_atributoscomunes.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h",
+			"MU",
+			"SOYZ2DITOJ/moc_documentacion.cpp",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h",
 			"MU",
 			"SOYZ2DITOJ/moc_documentosui.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h",
+			"MU",
+			"SOYZ2DITOJ/moc_estancia.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h",
+			"MU",
+			"SOYZ2DITOJ/moc_pasaporte.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h",
+			"MU",
+			"XJOF3KNGPY/moc_npc.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.h",
+			"MU",
+			"EWIEGA46WW/moc_lectorarchivos.cpp",
 			null
 		],
 		[
@@ -338,7 +374,37 @@
 	"SOURCES" : 
 	[
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.cpp",
 			"MU",
 			null
 		],

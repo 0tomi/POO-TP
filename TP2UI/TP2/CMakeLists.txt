@@ -24,6 +24,15 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         Documentos/documentosui.h Documentos/documentosui.cpp Documentos/documentosui.ui
+        lectorarchivos.h lectorarchivos.cpp
+        AtributosComunes/atributoscomunes.h AtributosComunes/atributoscomunes.cpp
+        NPC/npc.h NPC/npc.cpp
+        Documentos/pasaporte.h Documentos/pasaporte.cpp
+        Documentos/estancia.h Documentos/estancia.cpp
+        Documentos/documentacion.h Documentos/documentacion.cpp
+
+
+
 
     )
 # Define target properties for Android with Qt 6 as:

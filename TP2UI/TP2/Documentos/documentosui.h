@@ -16,8 +16,8 @@ public:
     ~DocumentosUI();
 
 protected:
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
+    virtual void clickIzqEvent(QMouseEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
     QPoint m_dragStartPosition;
 
 private:
