@@ -15,6 +15,9 @@ public:
     explicit GameScreen(QWidget *parent = nullptr);
     ~GameScreen();
 
+public slots:
+    void EmpezarJuego();
+
 private:
     Ui::GameScreen *ui;
 };

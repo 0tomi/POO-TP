@@ -2,6 +2,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/QList \
   B:/QT/6.6.2/mingw_64/include/QtCore/QObject \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QPropertyAnimation \
   B:/QT/6.6.2/mingw_64/include/QtCore/QRect \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
@@ -9,6 +10,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q23utility.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qabstractanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qalgorithms.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qanystringview.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qarraydata.h \
@@ -37,6 +39,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qdatastream.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qdebug.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qeasingcurve.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qexceptionhandling.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qflags.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qfloat16.h \
@@ -75,6 +78,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qpoint.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qpointer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qprocessordetection.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qpropertyanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qrect.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qrefcount.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopedpointer.h \
@@ -120,6 +124,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qurl.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qutf8stringview.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qvariant.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qvariantanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
@@ -157,10 +162,12 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qvectornd.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QMainWindow \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QStackedWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qstackedwidget.h \
