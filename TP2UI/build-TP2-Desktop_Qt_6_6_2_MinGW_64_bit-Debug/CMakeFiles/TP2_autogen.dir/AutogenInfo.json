@@ -247,7 +247,8 @@
 		"B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginTargets.cmake",
 		"B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginTargets-relwithdebinfo.cmake",
 		"B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginAdditionalTargetInfo.cmake",
-		"B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/GNUInstallDirs.cmake"
+		"B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/GNUInstallDirs.cmake",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2",
 	"DEP_FILE" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/deps",
@@ -285,6 +286,12 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h",
+			"MU",
+			"SOYZ2DITOJ/moc_uaderpass.cpp",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h",
 			"MU",
 			"Q5K73KXH44/moc_colanpc.cpp",
@@ -309,9 +316,21 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h",
+			"MU",
+			"XJOF3KNGPY/moc_npcui.cpp",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.h",
 			"MU",
 			"VAIKVRY6FI/moc_reglas.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h",
+			"MU",
+			"EWIEGA46WW/moc_gamescreen.cpp",
 			null
 		],
 		[
@@ -330,6 +349,12 @@
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h",
+			"MU",
+			"EWIEGA46WW/moc_pantallainicio.cpp",
 			null
 		]
 	],
@@ -429,6 +454,11 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp",
 			"MU",
 			null
@@ -449,7 +479,17 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.cpp",
 			"MU",
 			null
 		],
@@ -470,6 +510,11 @@
 		],
 		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.cpp",
 			"MU",
 			null
 		]

@@ -1,0 +1,33 @@
+{
+	"BUILD_DIR" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2",
+	"CMAKE_SOURCE_DIR" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2",
+	"INCLUDE_DIR" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/estancia.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/mesa.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/UADER.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/esquemaEscritorio.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/escritorio2.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/Escritorio.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondoaduana.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/mesa2.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondoAlturas.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/npc1.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/DocumentoUaderiano.png",
+		"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondo.png"
+	],
+	"LOCK_FILE" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/TP2_autogen.dir/AutoRcc_Resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "Resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_Resources.cpp",
+	"RCC_EXECUTABLE" : "B:/QT/6.6.2/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/TP2_autogen.dir/AutoRcc_Resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources.qrc",
+	"VERBOSITY" : 0
+}

@@ -11,9 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,25 +20,23 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QWidget *centralwidget;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QWidget *PantallaJuego;
+    QHBoxLayout *horizontalLayout;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
-        centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName("centralwidget");
-        MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 24));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName("statusbar");
-        MainWindow->setStatusBar(statusbar);
+        MainWindow->resize(828, 654);
+        MainWindow->setMinimumSize(QSize(800, 600));
+        MainWindow->setMaximumSize(QSize(1920, 1080));
+        PantallaJuego = new QWidget(MainWindow);
+        PantallaJuego->setObjectName("PantallaJuego");
+        PantallaJuego->setMinimumSize(QSize(800, 600));
+        PantallaJuego->setMaximumSize(QSize(1920, 1080));
+        horizontalLayout = new QHBoxLayout(PantallaJuego);
+        horizontalLayout->setObjectName("horizontalLayout");
+        MainWindow->setCentralWidget(PantallaJuego);
 
         retranslateUi(MainWindow);
 
