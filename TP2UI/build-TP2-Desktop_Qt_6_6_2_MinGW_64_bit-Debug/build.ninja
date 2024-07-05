@@ -185,6 +185,22 @@ build CMakeFiles/TP2.dir/gamescreen.cpp.obj: CXX_COMPILER__TP2_unscanned_Debug C
   OBJECT_DIR = CMakeFiles\TP2.dir
   OBJECT_FILE_DIR = CMakeFiles\TP2.dir
 
+build CMakeFiles/TP2.dir/NPC/npcui.cpp.obj: CXX_COMPILER__TP2_unscanned_Debug C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp || cmake_object_order_depends_target_TP2
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\TP2.dir\NPC\npcui.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include -isystem B:/QT/6.6.2/mingw_64/include/QtCore -isystem B:/QT/6.6.2/mingw_64/include -isystem B:/QT/6.6.2/mingw_64/mkspecs/win32-g++ -isystem B:/QT/6.6.2/mingw_64/include/QtWidgets -isystem B:/QT/6.6.2/mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\TP2.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP2.dir\NPC
+
+build CMakeFiles/TP2.dir/Documentos/uaderpass.cpp.obj: CXX_COMPILER__TP2_unscanned_Debug C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp || cmake_object_order_depends_target_TP2
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\TP2.dir\Documentos\uaderpass.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include -isystem B:/QT/6.6.2/mingw_64/include/QtCore -isystem B:/QT/6.6.2/mingw_64/include -isystem B:/QT/6.6.2/mingw_64/mkspecs/win32-g++ -isystem B:/QT/6.6.2/mingw_64/include/QtWidgets -isystem B:/QT/6.6.2/mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\TP2.dir
+  OBJECT_FILE_DIR = CMakeFiles\TP2.dir\Documentos
+
 build CMakeFiles/TP2.dir/TP2_autogen/EWIEGA46WW/qrc_Resources.cpp.obj: CXX_COMPILER__TP2_unscanned_Debug C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/EWIEGA46WW/qrc_Resources.cpp || cmake_object_order_depends_target_TP2
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\TP2.dir\TP2_autogen\EWIEGA46WW\qrc_Resources.cpp.obj.d
@@ -201,7 +217,7 @@ build CMakeFiles/TP2.dir/TP2_autogen/EWIEGA46WW/qrc_Resources.cpp.obj: CXX_COMPI
 #############################################
 # Link the executable TP2.exe
 
-build TP2.exe: CXX_EXECUTABLE_LINKER__TP2_Debug CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj CMakeFiles/TP2.dir/main.cpp.obj CMakeFiles/TP2.dir/mainwindow.cpp.obj CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj CMakeFiles/TP2.dir/lectorarchivos.cpp.obj CMakeFiles/TP2.dir/AtributosComunes/atributoscomunes.cpp.obj CMakeFiles/TP2.dir/NPC/npc.cpp.obj CMakeFiles/TP2.dir/Documentos/pasaporte.cpp.obj CMakeFiles/TP2.dir/Documentos/estancia.cpp.obj CMakeFiles/TP2.dir/Documentos/documentacion.cpp.obj CMakeFiles/TP2.dir/Reglas/reglas.cpp.obj CMakeFiles/TP2.dir/Generadores/generadornpc.cpp.obj CMakeFiles/TP2.dir/Generadores/generadordocumentacion.cpp.obj CMakeFiles/TP2.dir/Generadores/colanpc.cpp.obj CMakeFiles/TP2.dir/juego.cpp.obj CMakeFiles/TP2.dir/pantallainicio.cpp.obj CMakeFiles/TP2.dir/gamescreen.cpp.obj CMakeFiles/TP2.dir/TP2_autogen/EWIEGA46WW/qrc_Resources.cpp.obj | B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Gui.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a B$:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a || TP2_autogen TP2_autogen_timestamp_deps
+build TP2.exe: CXX_EXECUTABLE_LINKER__TP2_Debug CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj CMakeFiles/TP2.dir/main.cpp.obj CMakeFiles/TP2.dir/mainwindow.cpp.obj CMakeFiles/TP2.dir/Documentos/documentosui.cpp.obj CMakeFiles/TP2.dir/lectorarchivos.cpp.obj CMakeFiles/TP2.dir/AtributosComunes/atributoscomunes.cpp.obj CMakeFiles/TP2.dir/NPC/npc.cpp.obj CMakeFiles/TP2.dir/Documentos/pasaporte.cpp.obj CMakeFiles/TP2.dir/Documentos/estancia.cpp.obj CMakeFiles/TP2.dir/Documentos/documentacion.cpp.obj CMakeFiles/TP2.dir/Reglas/reglas.cpp.obj CMakeFiles/TP2.dir/Generadores/generadornpc.cpp.obj CMakeFiles/TP2.dir/Generadores/generadordocumentacion.cpp.obj CMakeFiles/TP2.dir/Generadores/colanpc.cpp.obj CMakeFiles/TP2.dir/juego.cpp.obj CMakeFiles/TP2.dir/pantallainicio.cpp.obj CMakeFiles/TP2.dir/gamescreen.cpp.obj CMakeFiles/TP2.dir/NPC/npcui.cpp.obj CMakeFiles/TP2.dir/Documentos/uaderpass.cpp.obj CMakeFiles/TP2.dir/TP2_autogen/EWIEGA46WW/qrc_Resources.cpp.obj | B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Gui.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a B$:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a || TP2_autogen TP2_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = B:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a  B:/QT/6.6.2/mingw_64/lib/libQt6Gui.a  B:/QT/6.6.2/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  B:/QT/6.6.2/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -288,7 +304,7 @@ build TP2_autogen_timestamp_deps: phony CMakeFiles/TP2_autogen_timestamp_deps
 #############################################
 # Utility command for TP2_autogen
 
-build TP2_autogen: phony CMakeFiles/TP2_autogen TP2_autogen/include/ui_mainwindow.h TP2_autogen/include/Documentos/ui_documentosui.h TP2_autogen/include/ui_pantallainicio.h TP2_autogen/include/ui_gamescreen.h TP2_autogen/timestamp TP2_autogen/mocs_compilation.cpp TP2_autogen_timestamp_deps
+build TP2_autogen: phony CMakeFiles/TP2_autogen TP2_autogen/include/ui_mainwindow.h TP2_autogen/include/Documentos/ui_documentosui.h TP2_autogen/include/ui_pantallainicio.h TP2_autogen/include/ui_gamescreen.h TP2_autogen/include/NPC/ui_npcui.h TP2_autogen/include/Documentos/ui_uaderpass.h TP2_autogen/timestamp TP2_autogen/mocs_compilation.cpp TP2_autogen_timestamp_deps
 
 
 #############################################
@@ -304,7 +320,7 @@ build TP2_autogen/timestamp TP2_autogen/mocs_compilation.cpp | ${cmake_ninja_wor
 #############################################
 # Custom command for TP2_autogen\EWIEGA46WW\qrc_Resources.cpp
 
-build TP2_autogen/EWIEGA46WW/qrc_Resources.cpp | ${cmake_ninja_workdir}TP2_autogen/EWIEGA46WW/qrc_Resources.cpp: CUSTOM_COMMAND C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources.qrc CMakeFiles/TP2_autogen.dir/AutoRcc_Resources_EWIEGA46WW_Info.json C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/estancia.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/mesa.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/esquemaEscritorio.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/escritorio2.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/Escritorio.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondoaduana.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/mesa2.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondoAlturas.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/npc1.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondo.png B$:/QT/6.6.2/mingw_64/./bin/rcc.exe || TP2_autogen TP2_autogen_timestamp_deps
+build TP2_autogen/EWIEGA46WW/qrc_Resources.cpp | ${cmake_ninja_workdir}TP2_autogen/EWIEGA46WW/qrc_Resources.cpp: CUSTOM_COMMAND C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources.qrc CMakeFiles/TP2_autogen.dir/AutoRcc_Resources_EWIEGA46WW_Info.json C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/estancia.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/mesa.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/UADER.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/esquemaEscritorio.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/escritorio2.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/Escritorio.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondoaduana.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/mesa2.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondoAlturas.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/npc1.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/DocumentoUaderiano.png C$:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources/fondo.png B$:/QT/6.6.2/mingw_64/./bin/rcc.exe || TP2_autogen TP2_autogen_timestamp_deps
   COMMAND = cmd.exe /C "cd /D C:\Users\TomsS\Documents\C++\POO\POO-TP\TP2UI\build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug && B:\QT\Tools\CMake_64\bin\cmake.exe -E cmake_autorcc C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/TP2_autogen.dir/AutoRcc_Resources_EWIEGA46WW_Info.json Debug"
   DESC = Automatic RCC for Resources.qrc
   restat = 1
@@ -313,13 +329,13 @@ build TP2_autogen/EWIEGA46WW/qrc_Resources.cpp | ${cmake_ninja_workdir}TP2_autog
 #############################################
 # Phony custom command for CMakeFiles\TP2_autogen_timestamp_deps
 
-build CMakeFiles/TP2_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/TP2_autogen_timestamp_deps: phony B$:/QT/6.6.2/mingw_64/./bin/uic.exe B$:/QT/6.6.2/mingw_64/./bin/moc.exe B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a
+build CMakeFiles/TP2_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/TP2_autogen_timestamp_deps: phony B$:/QT/6.6.2/mingw_64/./bin/uic.exe B$:/QT/6.6.2/mingw_64/./bin/moc.exe B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a
 
 
 #############################################
 # Phony custom command for CMakeFiles\TP2_autogen
 
-build CMakeFiles/TP2_autogen TP2_autogen/include/ui_mainwindow.h TP2_autogen/include/Documentos/ui_documentosui.h TP2_autogen/include/ui_pantallainicio.h TP2_autogen/include/ui_gamescreen.h | ${cmake_ninja_workdir}CMakeFiles/TP2_autogen ${cmake_ninja_workdir}TP2_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}TP2_autogen/include/Documentos/ui_documentosui.h ${cmake_ninja_workdir}TP2_autogen/include/ui_pantallainicio.h ${cmake_ninja_workdir}TP2_autogen/include/ui_gamescreen.h: phony TP2_autogen/timestamp || TP2_autogen_timestamp_deps
+build CMakeFiles/TP2_autogen TP2_autogen/include/ui_mainwindow.h TP2_autogen/include/Documentos/ui_documentosui.h TP2_autogen/include/ui_pantallainicio.h TP2_autogen/include/ui_gamescreen.h TP2_autogen/include/NPC/ui_npcui.h TP2_autogen/include/Documentos/ui_uaderpass.h | ${cmake_ninja_workdir}CMakeFiles/TP2_autogen ${cmake_ninja_workdir}TP2_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}TP2_autogen/include/Documentos/ui_documentosui.h ${cmake_ninja_workdir}TP2_autogen/include/ui_pantallainicio.h ${cmake_ninja_workdir}TP2_autogen/include/ui_gamescreen.h ${cmake_ninja_workdir}TP2_autogen/include/NPC/ui_npcui.h ${cmake_ninja_workdir}TP2_autogen/include/Documentos/ui_uaderpass.h: phony TP2_autogen/timestamp || TP2_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.

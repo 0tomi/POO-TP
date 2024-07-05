@@ -16,7 +16,7 @@ DocumentosUI::~DocumentosUI()
     delete ui;
 }
 
-void DocumentosUI::clickIzqEvent(QMouseEvent *event) {
+void DocumentosUI::mousePressEvent(QMouseEvent *event) {
     // Si se preciona el clic izquierdo
     if (event->button() == Qt::LeftButton) {
         // Captamos la posicion del mouse

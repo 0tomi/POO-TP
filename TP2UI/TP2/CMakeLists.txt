@@ -39,6 +39,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         pantallainicio.h pantallainicio.cpp pantallainicio.ui
         Resources.qrc
         gamescreen.h gamescreen.cpp gamescreen.ui
+        NPC/npcui.h NPC/npcui.cpp NPC/npcui.ui
+        Documentos/uaderpass.h Documentos/uaderpass.cpp Documentos/uaderpass.ui
+
 
 
 

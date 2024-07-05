@@ -4,6 +4,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/QObject \
   B:/QT/6.6.2/mingw_64/include/QtCore/QPropertyAnimation \
   B:/QT/6.6.2/mingw_64/include/QtCore/QRect \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
@@ -12,6 +13,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/q23utility.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qabstractanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qalgorithms.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qanimationgroup.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qanystringview.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qarraydata.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qarraydataops.h \
@@ -83,6 +85,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qrefcount.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopedpointer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopeguard.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qsequentialanimationgroup.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qset.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata_impl.h \
@@ -129,6 +132,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/QKeyEvent \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QMouseEvent \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QTransform \
   B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qbitmap.h \
@@ -375,5 +380,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h

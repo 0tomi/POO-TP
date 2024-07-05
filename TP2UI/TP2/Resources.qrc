@@ -10,5 +10,7 @@
         <file>Resources/mesa.png</file>
         <file>Resources/mesa2.png</file>
         <file>Resources/npc1.png</file>
+        <file>Resources/DocumentoUaderiano.png</file>
+        <file>Resources/UADER.png</file>
     </qresource>
 </RCC>

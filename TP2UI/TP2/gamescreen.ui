@@ -117,6 +117,32 @@
 	border-image: url(:/Resources/escritorio2.png);
 }</string>
         </property>
+        <widget class="QPushButton" name="aceptarBoton">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>40</y>
+           <width>80</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Aceptar</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="rechazarBoton">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>80</y>
+           <width>80</width>
+           <height>27</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Rechazar</string>
+         </property>
+        </widget>
        </widget>
       </item>
       <item row="0" column="1">
@@ -150,8 +176,8 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>800</width>
-          <height>600</height>
+          <width>550</width>
+          <height>550</height>
          </size>
         </property>
         <property name="styleSheet">

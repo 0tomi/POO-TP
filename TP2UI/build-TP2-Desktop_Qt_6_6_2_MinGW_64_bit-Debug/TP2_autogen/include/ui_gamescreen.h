@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +26,8 @@ public:
     QGridLayout *gridLayout;
     QWidget *Mesa;
     QWidget *Escritorio;
+    QPushButton *aceptarBoton;
+    QPushButton *rechazarBoton;
     QWidget *Nose;
     QWidget *FondoNPC;
 
@@ -69,6 +72,12 @@ public:
         Escritorio->setStyleSheet(QString::fromUtf8("#Escritorio{\n"
 "	border-image: url(:/Resources/escritorio2.png);\n"
 "}"));
+        aceptarBoton = new QPushButton(Escritorio);
+        aceptarBoton->setObjectName("aceptarBoton");
+        aceptarBoton->setGeometry(QRect(450, 40, 80, 27));
+        rechazarBoton = new QPushButton(Escritorio);
+        rechazarBoton->setObjectName("rechazarBoton");
+        rechazarBoton->setGeometry(QRect(450, 80, 80, 27));
 
         gridLayout->addWidget(Escritorio, 1, 1, 2, 1);
 
@@ -89,7 +98,7 @@ public:
         sizePolicy1.setHeightForWidth(FondoNPC->sizePolicy().hasHeightForWidth());
         FondoNPC->setSizePolicy(sizePolicy1);
         FondoNPC->setMinimumSize(QSize(200, 250));
-        FondoNPC->setMaximumSize(QSize(800, 600));
+        FondoNPC->setMaximumSize(QSize(550, 550));
         FondoNPC->setStyleSheet(QString::fromUtf8("#FondoNPC{\n"
 "	border-image: url(:/Resources/fondoAlturas.png);\n"
 "}"));
@@ -108,6 +117,8 @@ public:
     void retranslateUi(QWidget *GameScreen)
     {
         GameScreen->setWindowTitle(QCoreApplication::translate("GameScreen", "Form", nullptr));
+        aceptarBoton->setText(QCoreApplication::translate("GameScreen", "Aceptar", nullptr));
+        rechazarBoton->setText(QCoreApplication::translate("GameScreen", "Rechazar", nullptr));
     } // retranslateUi
 
 };

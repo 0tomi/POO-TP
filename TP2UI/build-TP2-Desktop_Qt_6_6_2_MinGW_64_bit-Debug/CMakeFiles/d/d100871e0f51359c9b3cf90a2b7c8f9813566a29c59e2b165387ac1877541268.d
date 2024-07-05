@@ -3,6 +3,7 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtCore/QObject \
   B:/QT/6.6.2/mingw_64/include/QtCore/QPropertyAnimation \
   B:/QT/6.6.2/mingw_64/include/QtCore/QRect \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
@@ -11,6 +12,7 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtCore/q23utility.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qabstractanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qalgorithms.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qanimationgroup.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qanystringview.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qarraydata.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qarraydataops.h \
@@ -82,6 +84,7 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtCore/qrefcount.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopedpointer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopeguard.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qsequentialanimationgroup.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qset.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata_impl.h \
@@ -128,6 +131,8 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/QKeyEvent \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QMouseEvent \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QTransform \
   B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qbitmap.h \
@@ -554,6 +559,9 @@ TP2_autogen/timestamp: \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.ui \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp \
@@ -562,6 +570,9 @@ TP2_autogen/timestamp: \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.ui \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources.qrc \
