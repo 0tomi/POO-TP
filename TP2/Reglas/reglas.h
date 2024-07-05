@@ -1,60 +1,63 @@
-#include "../AtributosComun/AtributosComunes.cpp"
-using namespace std;
-
 #ifndef REGLAS_H
 #define REGLAS_H
+
+#include "../AtributosComunes/atributoscomunes.h"
+#include <string>
+using namespace std;
+
 class reglas{
-    public:
+public:
     // constructores:
-        reglas(AtributosComunes *atributos);
-        reglas(AtributosComunes *atributos, int cantidadMinimaPaisesPermitidos);
+    reglas(AtributosComunes *atributos);
+    reglas(AtributosComunes *atributos, int cantidadMinimaPaisesPermitidos);
 
     // metodos:
-        void resetReglas(int cantidadMinimaPaisesPermitidos);
+    void resetReglas(int cantidadMinimaPaisesPermitidos);
 
-        // Getters
-        int* getPaisesPermitidos(int &max);
-        string* getEstadoCivilPermitido(int &max);
-        string* getTipoVisitaPermitida(int &max);
-        int getFechaMinPermitida();
-        int getFechaMaxPermitida();
-        int getDuracionEstanciaPermitida();
+    // Getters
+    int* getPaisesPermitidos(int &max);
+    string* getEstadoCivilPermitido(int &max);
+    string* getTipoVisitaPermitida(int &max);
+    int getFechaMinPermitida();
+    int getFechaMaxPermitida();
+    int getDuracionEstanciaPermitida();
 
-    private:
-        // # Conjunto de elementos de los cuales obtendremos las reglas #
-        string* paises;
-        int maxPaises;
-        
-        string* tipoVisitas;
-        int maxTiposVisitas;
+private:
+    // # Conjunto de elementos de los cuales obtendremos las reglas #
+    string* paises;
+    int maxPaises;
 
-        string* estadosCiviles;
-        int maxEstadosCiviles;
+    string* tipoVisitas;
+    int maxTiposVisitas;
 
-        // # Conjunto de reglas #
-        int fechaMin, fechaMax; // va a ser solo el anio
-        int duracionDeEstanciaValida;
-        int* paisesValidos;
-        string* tipoDeVisitaValida;
-        string* EstadoCivilValidos;
+    string* estadosCiviles;
+    int maxEstadosCiviles;
 
-        // Tope de arrays:
-        int maxPaisesPermitidos;
-        int maxEstadosCivilPermitidos;
-        int maxVisitasPermitidas;
+    // # Conjunto de reglas #
+    int fechaMin, fechaMax; // va a ser solo el anio
+    int duracionDeEstanciaValida;
+    int* paisesValidos;
+    string* tipoDeVisitaValida;
+    string* EstadoCivilValidos;
 
-        // # Metodos para setear reglas validas #
-        void setFechasValidas();
-        void setDuracionEstanciaValida(int max, int min);
+    // Tope de arrays:
+    int maxPaisesPermitidos;
+    int maxEstadosCivilPermitidos;
+    int maxVisitasPermitidas;
 
-        void setEstadoCivilValidos();
-        void SeleccionarEstadosCivilesValidos(int CantidadEstadosValidos);
+    // # Metodos para setear reglas validas #
+    void setFechasValidas();
+    void setDuracionEstanciaValida(int max, int min);
 
-        void setTipoDeVisitaValidas();
-        void SeleccionarVisitasValidas(int CantidadVisitasValidas);
+    void setEstadoCivilValidos();
+    void SeleccionarEstadosCivilesValidos(int CantidadEstadosValidos);
 
-        void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
-        bool checkRepetidos(int dato);
+    void setTipoDeVisitaValidas();
+    void SeleccionarVisitasValidas(int CantidadVisitasValidas);
+
+    void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
+    bool checkRepetidos(int dato);
 };
+
 
 #endif // REGLAS_H
