@@ -280,7 +280,7 @@ build TP2_autogen/timestamp TP2_autogen/mocs_compilation.cpp | ${cmake_ninja_wor
 #############################################
 # Phony custom command for CMakeFiles\TP2_autogen_timestamp_deps
 
-build CMakeFiles/TP2_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/TP2_autogen_timestamp_deps: phony B$:/QT/6.6.2/mingw_64/./bin/moc.exe B$:/QT/6.6.2/mingw_64/./bin/uic.exe B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a
+build CMakeFiles/TP2_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/TP2_autogen_timestamp_deps: phony B$:/QT/6.6.2/mingw_64/./bin/uic.exe B$:/QT/6.6.2/mingw_64/./bin/moc.exe B$:/QT/6.6.2/mingw_64/lib/libQt6Widgets.a B$:/QT/6.6.2/mingw_64/lib/libQt6Core.a
 
 
 #############################################
