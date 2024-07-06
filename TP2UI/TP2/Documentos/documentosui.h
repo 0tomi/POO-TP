@@ -2,6 +2,10 @@
 #define DOCUMENTOSUI_H
 
 #include <QWidget>
+#include <QPropertyAnimation>
+#include <QSequentialAnimationGroup>
+#include <QGraphicsOpacityEffect>
+#include <QResizeEvent>
 
 namespace Ui {
 class DocumentosUI;
@@ -13,9 +17,26 @@ class DocumentosUI : public QWidget
 
 public:
     explicit DocumentosUI(QWidget *parent = nullptr);
+    void Entrar(int X, int Y);
+    void Sacar(int X);
+    void Centrar(int X, int Y);
     ~DocumentosUI();
 
+signals:
+    void animacionEntrarTerminada();
+
 protected:
+    // Centrar documento
+    QPropertyAnimation *animacionCentrar;
+
+    // Animaciones
+    QPropertyAnimation *animacionEntrada;
+    void PrepararAnimacionEntrada(int X, int Y);
+
+    QPropertyAnimation *animacionSalida;
+    void PrepararAnimacionSalida(int X);
+
+    // Mover en caso de hacer click
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     QPoint m_dragStartPosition;

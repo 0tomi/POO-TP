@@ -2,9 +2,6 @@
 #define GAMESCREEN_H
 
 #include <QWidget>
-#include <QPropertyAnimation>
-#include <QSequentialAnimationGroup>
-#include <QGraphicsOpacityEffect>
 #include <QResizeEvent>
 
 #include "NPC/npcui.h"
@@ -24,42 +21,39 @@ public:
 
 public slots:
     void EmpezarJuego();
-    void SacarNPC();
 
 private:
     Ui::GameScreen *ui;
+    QTimer *temporizadorBotones;
+
+    void RealizarConecciones();
+
+    // no se como hacer esto asi q lo voy a hacer asi nomas
+    void Acepto();
+    void Rechazo();
+    void SelloDocumento(bool Boton);
+    void BloquearBotones(bool Bloqueo);
+    // Otro metodo que voy  a poner simplemente porque no se como se hace.
+    void DesbloquearBotones();
 
     // Documentos
     DocumentosUI* doc;
+
+    void CentrarDocumentos();
+
     void SpawnearDocumento();
     void EntrarDOC();
-
-    QPropertyAnimation *animacionEntradaDOC;
-    void PrepararAnimacionEntradaDOC();
-
-    QPropertyAnimation *animacionSalidaDOC;
-    void PrepararAnimacionSalidaDOC();
-
-    void FletearDOC();
+    void SacarDOC();
 
     // NPCs
-    void SpawnearNPC();
-
     NPCUI *npcUI;
+
+    void SpawnearNPC();
     void EntrarNPC();
-
-    QPropertyAnimation *animacionEntrada;
-    void PrepararAnimacionEntradaNPC();
-
-    QPropertyAnimation *animacionSalida;
-    void PrepararAnimacionSalidaNPC();
+    void SacarNPC();
 
     // Reubicar NPCs en la escena
     void resizeEvent(QResizeEvent *event) override;
-
-private slots:
-    void FletearNPC();
-
 };
 
 #endif // GAMESCREEN_H
