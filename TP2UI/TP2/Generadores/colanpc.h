@@ -3,7 +3,7 @@
 
 #include "generadordocumentacion.h"
 #include "generadornpc.h" // a futuro para que tengan las cosas de los npcs
-#include "../Reglas/reglas.h"
+#include "../Reglas/reglasnivel1.h"
 #include "../AtributosComunes/atributoscomunes.h"
 
 struct nodoNPC{
@@ -13,12 +13,12 @@ struct nodoNPC{
 
 class ColaNPC{
 public:
-    ColaNPC(AtributosComunes* atributos, reglas* rules);
+    ColaNPC(AtributosComunes* atributos, Reglas* rules);
     void addNPC();
 
     // Vaciar cola tiene que eliminar los NPCS restantes, junto con sus documentos y demas
     void vaciarCola();
-    void actualizarReglas(reglas* rules);
+    void actualizarReglas(Reglas* rules);
 
     NPC* getNPC();
     int getSize();

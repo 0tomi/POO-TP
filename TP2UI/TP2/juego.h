@@ -1,7 +1,7 @@
 #ifndef JUEGO_H
 #define JUEGO_H
 
-#include "Reglas/reglas.h"
+#include "Reglas/reglasnivel5.h"
 #include "AtributosComunes/atributoscomunes.h"
 
 // Falta completar
@@ -12,14 +12,14 @@ public:
     void set();
 
     // Esto despues lo eliminamos
-    reglas* getReglas();
+    Reglas* getReglas(int numero);
 
 private:
     // Atributos
     AtributosComunes* atributos;
 
     // Reglas
-    reglas* rules;
+    Reglas* rules[5];
 };
 
 #endif // JUEGO_H

@@ -144,11 +144,13 @@ void GameScreen::SacarDOC()
 
 void GameScreen::SpawnearNPC()
 {
-    npcUI = new NPCUI(this);
+    npcUI = new NPCGenerico(this);
 
     QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
     layout->addWidget(npcUI);
     ui->FondoNPC->setLayout(layout);
+
+    npcUI->setFixedSize(300,300);
 
     npcUI->move(-500,0);
 }

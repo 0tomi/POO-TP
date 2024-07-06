@@ -30,7 +30,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/pasaporte.h Documentos/pasaporte.cpp
         Documentos/estancia.h Documentos/estancia.cpp
         Documentos/documentacion.h Documentos/documentacion.cpp
-        Reglas/reglas.h Reglas/reglas.cpp
+        Reglas/reglasnivel1.h Reglas/reglasnivel1.cpp
         Generadores/generadornpc.h Generadores/generadornpc.cpp
         Generadores/generadordocumentacion.h Generadores/generadordocumentacion.cpp
         Generadores/colanpc.h Generadores/colanpc.cpp
@@ -41,6 +41,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         gamescreen.h gamescreen.cpp gamescreen.ui
         NPC/npcui.h NPC/npcui.cpp NPC/npcui.ui
         Documentos/uaderpass.h Documentos/uaderpass.cpp Documentos/uaderpass.ui
+        Reglas/reglas.h Reglas/reglas.cpp
+        Reglas/reglasnivel2.h Reglas/reglasnivel2.cpp
+        Reglas/reglasnivel3.h Reglas/reglasnivel3.cpp
+        Reglas/reglasnivel4.h Reglas/reglasnivel4.cpp
+        Reglas/reglasnivel5.h Reglas/reglasnivel5.cpp
+        NPC/npcgenerico.h NPC/npcgenerico.cpp NPC/npcgenerico.ui
 
 
 

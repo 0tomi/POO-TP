@@ -3,11 +3,7 @@
 
 NPCUI::NPCUI(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::NPCUI)
-{
-    ui->setupUi(this);
-    setFixedSize(300,300);
-
+{   
     // Preparamos animaciones de entrada del NPC
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionSalida = new QPropertyAnimation(this, "pos");
