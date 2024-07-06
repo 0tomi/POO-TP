@@ -1,3 +1,0 @@
-pija: hola
-file: fail
-caca: me gusta la caca
