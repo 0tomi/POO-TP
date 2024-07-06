@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1047</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -81,14 +81,14 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>250</width>
           <height>200</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>550</width>
-          <height>550</height>
+          <width>600</width>
+          <height>600</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -100,10 +100,16 @@
       </item>
       <item row="0" column="1">
        <widget class="QWidget" name="Nose" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>100</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
-          <width>1920</width>
-          <height>1080</height>
+          <width>1350</width>
+          <height>400</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -129,8 +135,8 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>550</width>
-          <height>550</height>
+          <width>600</width>
+          <height>600</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -142,15 +148,21 @@
       </item>
       <item row="1" column="1" rowspan="2">
        <widget class="QWidget" name="Escritorio" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>500</width>
+          <width>400</width>
           <height>500</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>1920</width>
+          <width>1350</width>
           <height>1080</height>
          </size>
         </property>

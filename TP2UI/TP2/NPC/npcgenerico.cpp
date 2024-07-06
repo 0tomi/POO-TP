@@ -6,8 +6,7 @@ NPCGenerico::NPCGenerico(QWidget *parent)
     , ui(new Ui::NPCGenerico)
 {
     ui->setupUi(this);
-    setFixedSize(300,300);
-
+    //setFixedSize(300,300);
 }
 
 NPCGenerico::~NPCGenerico()

@@ -19,7 +19,7 @@ class NPCUI : public QWidget
 public:
     explicit NPCUI(QWidget *parent = nullptr);
     void Entrar(int X, int Y);
-    void Sacar(int Y);
+    void Sacar(int X, int Y);
     ~NPCUI();
 
 signals:
@@ -30,7 +30,7 @@ protected:
     void PrepararAnimacionEntrada(int X, int Y);
     QPropertyAnimation *animacionEntrada;
 
-    void PrepararAnimacionSalida(int Y);
+    void PrepararAnimacionSalida(int X, int Y);
     QPropertyAnimation *animacionSalida;
 
     // Termino animacion

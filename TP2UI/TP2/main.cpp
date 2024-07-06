@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 
     //GameScreen g;
     //g.show();
+    //g.EmpezarJuego();
 
     return a.exec();
 }

@@ -29,12 +29,17 @@ protected:
 
 private slots:
     void TransicionJuego();
+    void PrepararJuego();
     void IniciarJuego();
+
 
 private:
     Ui::MainWindow *ui;
 
     // Pantallas del juego:
+    void CrearPantallasJuego();
+    void CrearPantallaTransicion();
+
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
     GameScreen *gameScreen;

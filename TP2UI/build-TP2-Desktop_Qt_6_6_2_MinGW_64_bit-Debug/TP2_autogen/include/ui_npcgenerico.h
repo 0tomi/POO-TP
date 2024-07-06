@@ -28,12 +28,12 @@ public:
         if (NPCGenerico->objectName().isEmpty())
             NPCGenerico->setObjectName("NPCGenerico");
         NPCGenerico->resize(300, 300);
-        QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(NPCGenerico->sizePolicy().hasHeightForWidth());
         NPCGenerico->setSizePolicy(sizePolicy);
-        NPCGenerico->setMinimumSize(QSize(300, 300));
+        NPCGenerico->setMinimumSize(QSize(100, 100));
         NPCGenerico->setMaximumSize(QSize(300, 300));
         verticalLayout = new QVBoxLayout(NPCGenerico);
         verticalLayout->setSpacing(0);
