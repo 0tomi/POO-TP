@@ -1,17 +1,16 @@
 /********************************************************************************
-** Form generated from reading UI file 'NPCGenericoui.ui'
+** Form generated from reading UI file 'npcgenericoui.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_NPCGenericoUI_H
-#define UI_NPCGenericoUI_H
+#ifndef UI_NPCGENERICOUI_H
+#define UI_NPCGENERICOUI_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -21,7 +20,7 @@ class Ui_NPCGenericoUI
 {
 public:
     QVBoxLayout *verticalLayout;
-    QLabel *label;
+    QWidget *widget;
 
     void setupUi(QWidget *NPCGenericoUI)
     {
@@ -39,11 +38,11 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(NPCGenericoUI);
-        label->setObjectName("label");
-        label->setStyleSheet(QString::fromUtf8("border-image: url(:/Resources/npc1.png);"));
+        widget = new QWidget(NPCGenericoUI);
+        widget->setObjectName("widget");
+        widget->setStyleSheet(QString::fromUtf8("border-image: url(:/Resources/npc1.png);"));
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(widget);
 
 
         retranslateUi(NPCGenericoUI);
@@ -54,7 +53,6 @@ public:
     void retranslateUi(QWidget *NPCGenericoUI)
     {
         NPCGenericoUI->setWindowTitle(QCoreApplication::translate("NPCGenericoUI", "Form", nullptr));
-        label->setText(QString());
     } // retranslateUi
 
 };
@@ -65,4 +63,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_NPCGenericoUI_H
+#endif // UI_NPCGENERICOUI_H

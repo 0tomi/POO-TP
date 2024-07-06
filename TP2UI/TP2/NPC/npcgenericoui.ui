@@ -48,12 +48,9 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">
       <string notr="true">border-image: url(:/Resources/npc1.png);</string>
-     </property>
-     <property name="text">
-      <string/>
      </property>
     </widget>
    </item>
