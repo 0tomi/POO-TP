@@ -20,7 +20,7 @@ class Ui_NPCUI
 {
 public:
     QVBoxLayout *verticalLayout;
-    QWidget *CaraNPC;
+    QWidget *widget;
 
     void setupUi(QWidget *NPCUI)
     {
@@ -39,15 +39,11 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        CaraNPC = new QWidget(NPCUI);
-        CaraNPC->setObjectName("CaraNPC");
-        sizePolicy.setHeightForWidth(CaraNPC->sizePolicy().hasHeightForWidth());
-        CaraNPC->setSizePolicy(sizePolicy);
-        CaraNPC->setMinimumSize(QSize(200, 200));
-        CaraNPC->setMaximumSize(QSize(400, 400));
-        CaraNPC->setStyleSheet(QString::fromUtf8("border-image: url(:/Resources/npc1.png);"));
+        widget = new QWidget(NPCUI);
+        widget->setObjectName("widget");
+        widget->setStyleSheet(QString::fromUtf8("border-image: url(:/Resources/npc1.png);"));
 
-        verticalLayout->addWidget(CaraNPC);
+        verticalLayout->addWidget(widget);
 
 
         retranslateUi(NPCUI);

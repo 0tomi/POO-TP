@@ -5,10 +5,7 @@
 
 DocumentosUI::DocumentosUI(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::DocumentosUI)
 {
-    ui->setupUi(this);
-
     // Creamos las animaciones de entrada y salida
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionSalida = new QPropertyAnimation(this, "pos");

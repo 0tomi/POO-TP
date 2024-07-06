@@ -9,9 +9,13 @@ Juego::Juego(){
     this->atributos->setAtributos(LA.getArray(), LA.getTopeArray());
 
     // Seteamos las reglas del juego, pasando el array de paises.
-    this->rules = new reglas(atributos);
+    rules[0] = new ReglasNivel1(atributos);
+    rules[1] = new ReglasNivel2(rules[0]);
+    rules[2] = new ReglasNivel3(rules[1]);
+    rules[3] = new ReglasNivel4(rules[2]);
+    rules[4] = new ReglasNivel5(rules[3]);
 }
 
-reglas* Juego::getReglas(){
-    return this->rules;
+Reglas* Juego::getReglas(int numero){
+    return (numero < 5)? rules[numero]: NULL;
 }

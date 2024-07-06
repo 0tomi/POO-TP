@@ -26,11 +26,7 @@
 	"objects" : 
 	[
 		{
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/index-2024-07-04T04-34-05-0956.json
-			"jsonFile" : "codemodel-v2-8dc5d1b08581577f3ebb.json",
-========
-			"jsonFile" : "codemodel-v2-4969cb8dc103bccb8f2d.json",
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/index-2024-07-04T02-08-43-0566.json
+			"jsonFile" : "codemodel-v2-d95adad64d82b49974a2.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -48,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-20ac133fc744c2fa9f9f.json",
+			"jsonFile" : "cmakeFiles-v1-1cad410589ceeb2debd0.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -71,7 +67,7 @@
 		},
 		"cmakeFiles-v1" : 
 		{
-			"jsonFile" : "cmakeFiles-v1-20ac133fc744c2fa9f9f.json",
+			"jsonFile" : "cmakeFiles-v1-1cad410589ceeb2debd0.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -81,11 +77,7 @@
 		},
 		"codemodel-v2" : 
 		{
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/index-2024-07-04T04-34-05-0956.json
-			"jsonFile" : "codemodel-v2-8dc5d1b08581577f3ebb.json",
-========
-			"jsonFile" : "codemodel-v2-4969cb8dc103bccb8f2d.json",
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply/index-2024-07-04T02-08-43-0566.json
+			"jsonFile" : "codemodel-v2-d95adad64d82b49974a2.json",
 			"kind" : "codemodel",
 			"version" : 
 			{

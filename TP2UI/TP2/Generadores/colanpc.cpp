@@ -1,6 +1,6 @@
 #include "colanpc.h"
 
-ColaNPC::ColaNPC(AtributosComunes* datos, reglas* rules){
+ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
     this->frente = this->fondo = NULL;
     this->size = 0;
     this->GenerarDocumentacion = new GeneradorDocumentacion(datos ,rules);

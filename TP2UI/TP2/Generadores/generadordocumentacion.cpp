@@ -1,6 +1,6 @@
 #include "generadordocumentacion.h"
 
-GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, reglas *rules)
+GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *rules)
 {
     // Pendiente a implementar
 }
