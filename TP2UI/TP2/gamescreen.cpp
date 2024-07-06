@@ -94,7 +94,7 @@ void GameScreen::DesbloquearBotones()
 
 void GameScreen::SpawnearNPC()
 {
-    npcUI = new NPCGenerico(this);
+    npcUI = new NPCGenericoUI(this);
 
     QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
     layout->addWidget(npcUI);

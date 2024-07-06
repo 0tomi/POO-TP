@@ -26,6 +26,7 @@ public:
 
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
+    void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void TransicionJuego();

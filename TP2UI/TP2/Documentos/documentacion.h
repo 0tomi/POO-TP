@@ -5,12 +5,20 @@
 
 class Documentacion
 {
+public:
+    Documentacion(bool validez);
+    ~Documentacion();
+
+    bool getValida() const;
+    Pasaporte *getPasaport() const;
+    void setPasaport(Pasaporte *newPasaport);
+    Estancia *getEstancia() const;
+    void setEstancia(Estancia *newEstancia);
+
 private:
     Pasaporte* pasaport;
     Estancia* estancia;
-public:
     bool valida;
-    Documentacion();
 };
 
 #endif // DOCUMENTACION_H

@@ -8,16 +8,20 @@ using namespace std;
 class NPC
 {
 public:
-    NPC(string CaraURL, char Genero);
-    void setDocumentacion(Documentacion* docs);
+    explicit NPC(char Genero, char Tipo);
+    ~NPC();
 
-    string getCara();
+    virtual void setDocumentacion(Documentacion* docs);
     char getGenero();
     Documentacion* getDocumentos();
-private:
-    string CaraURL;
+    char getTipo();
+
+protected:
+
     char Genero;
+    char Tipo;
     Documentacion* documentos;
+
 };
 
 #endif // NPC_H

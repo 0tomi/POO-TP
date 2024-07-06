@@ -570,9 +570,11 @@ TP2_autogen/timestamp: \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.ui \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.ui \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.ui \

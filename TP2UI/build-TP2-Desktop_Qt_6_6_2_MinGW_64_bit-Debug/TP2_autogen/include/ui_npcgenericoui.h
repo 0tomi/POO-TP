@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'npcgenerico.ui'
+** Form generated from reading UI file 'NPCGenericoui.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_NPCGENERICO_H
-#define UI_NPCGENERICO_H
+#ifndef UI_NPCGenericoUI_H
+#define UI_NPCGenericoUI_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -17,52 +17,52 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_NPCGenerico
+class Ui_NPCGenericoUI
 {
 public:
     QVBoxLayout *verticalLayout;
     QLabel *label;
 
-    void setupUi(QWidget *NPCGenerico)
+    void setupUi(QWidget *NPCGenericoUI)
     {
-        if (NPCGenerico->objectName().isEmpty())
-            NPCGenerico->setObjectName("NPCGenerico");
-        NPCGenerico->resize(300, 300);
+        if (NPCGenericoUI->objectName().isEmpty())
+            NPCGenericoUI->setObjectName("NPCGenericoUI");
+        NPCGenericoUI->resize(300, 300);
         QSizePolicy sizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(NPCGenerico->sizePolicy().hasHeightForWidth());
-        NPCGenerico->setSizePolicy(sizePolicy);
-        NPCGenerico->setMinimumSize(QSize(100, 100));
-        NPCGenerico->setMaximumSize(QSize(300, 300));
-        verticalLayout = new QVBoxLayout(NPCGenerico);
+        sizePolicy.setHeightForWidth(NPCGenericoUI->sizePolicy().hasHeightForWidth());
+        NPCGenericoUI->setSizePolicy(sizePolicy);
+        NPCGenericoUI->setMinimumSize(QSize(100, 100));
+        NPCGenericoUI->setMaximumSize(QSize(300, 300));
+        verticalLayout = new QVBoxLayout(NPCGenericoUI);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(NPCGenerico);
+        label = new QLabel(NPCGenericoUI);
         label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("border-image: url(:/Resources/npc1.png);"));
 
         verticalLayout->addWidget(label);
 
 
-        retranslateUi(NPCGenerico);
+        retranslateUi(NPCGenericoUI);
 
-        QMetaObject::connectSlotsByName(NPCGenerico);
+        QMetaObject::connectSlotsByName(NPCGenericoUI);
     } // setupUi
 
-    void retranslateUi(QWidget *NPCGenerico)
+    void retranslateUi(QWidget *NPCGenericoUI)
     {
-        NPCGenerico->setWindowTitle(QCoreApplication::translate("NPCGenerico", "Form", nullptr));
+        NPCGenericoUI->setWindowTitle(QCoreApplication::translate("NPCGenericoUI", "Form", nullptr));
         label->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class NPCGenerico: public Ui_NPCGenerico {};
+    class NPCGenericoUI: public Ui_NPCGenericoUI {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_NPCGENERICO_H
+#endif // UI_NPCGenericoUI_H

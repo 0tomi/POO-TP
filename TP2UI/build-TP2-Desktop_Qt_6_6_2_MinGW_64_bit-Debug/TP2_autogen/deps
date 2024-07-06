@@ -567,8 +567,10 @@ TP2_autogen/timestamp: \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h \
-	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.cpp \
-	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h \
+	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp \
+	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h \
+	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp \
+	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.cpp \
@@ -602,7 +604,7 @@ TP2_autogen/timestamp: \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.ui \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.ui \
-	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.ui \
+	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.ui \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.ui \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.ui \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.ui \

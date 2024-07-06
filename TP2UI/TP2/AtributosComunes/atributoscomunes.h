@@ -12,6 +12,8 @@ public:
     string* getVisitas(int &maxVisitas);
     string* getEstadosCiviles(int &maxEC);
 
+    ~AtributosComunes();
+
 private:
     string* paises; int maxPaises;
     string tipoVisitas[3] = {"Turismo", "Trabajo", "Estudios"};

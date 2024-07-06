@@ -14,7 +14,11 @@ struct nodoNPC{
 class ColaNPC{
 public:
     ColaNPC(AtributosComunes* atributos, Reglas* rules);
-    void addNPC();
+    void addNPC(char Tipo);
+    void addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios);
+
+    // A futuro para cuando tengamos NPCs especiales
+    void addNPC(int CantAldeanos, int CantRefugiados, int CantDiplos, int CantRev, int CantEspeciales);
 
     // Vaciar cola tiene que eliminar los NPCS restantes, junto con sus documentos y demas
     void vaciarCola();

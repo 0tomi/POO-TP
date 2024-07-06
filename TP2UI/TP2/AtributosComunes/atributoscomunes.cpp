@@ -25,3 +25,8 @@ string* AtributosComunes::getEstadosCiviles(int &max){
     return this->EstadosCiviles;
 }
 
+AtributosComunes::~AtributosComunes()
+{
+    delete paises;
+}
+
