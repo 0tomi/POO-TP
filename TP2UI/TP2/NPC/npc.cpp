@@ -1,16 +1,12 @@
 #include "npc.h"
 
-NPC::NPC(string Cara, char Gen){
-    this->CaraURL = Cara;
+NPC::NPC(char Gen, char Type){
     this->Genero = Gen;
+    this->Tipo = Type;
 }
 
 void NPC::setDocumentacion(Documentacion* docs){
     this->documentos = docs;
-}
-
-string NPC::getCara(){
-    return this->CaraURL;
 }
 
 char NPC::getGenero(){
@@ -19,4 +15,15 @@ char NPC::getGenero(){
 
 Documentacion* NPC::getDocumentos(){
     return this->documentos;
+}
+
+char NPC::getTipo()
+{
+    return Tipo;
+}
+
+NPC::~NPC()
+{
+    delete documentos;
+    // y otras cosas si hace falta
 }

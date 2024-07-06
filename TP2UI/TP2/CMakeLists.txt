@@ -46,7 +46,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Reglas/reglasnivel3.h Reglas/reglasnivel3.cpp
         Reglas/reglasnivel4.h Reglas/reglasnivel4.cpp
         Reglas/reglasnivel5.h Reglas/reglasnivel5.cpp
-        NPC/npcgenerico.h NPC/npcgenerico.cpp NPC/npcgenerico.ui
+        NPC/npcgenericoui.h NPC/npcgenericoui.cpp NPC/npcgenericoui.ui
+        NPC/npccomun.h NPC/npccomun.cpp
 
 
 

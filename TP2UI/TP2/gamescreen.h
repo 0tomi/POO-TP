@@ -5,7 +5,7 @@
 #include <QResizeEvent>
 #include <QKeyEvent>
 
-#include "NPC/npcgenerico.h"
+#include "NPC/npcgenericoui.h"
 #include "Documentos/uaderpass.h"
 
 namespace Ui {

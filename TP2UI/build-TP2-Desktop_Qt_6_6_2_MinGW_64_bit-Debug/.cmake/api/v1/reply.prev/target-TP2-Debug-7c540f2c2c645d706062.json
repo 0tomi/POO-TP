@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 91,
+				"line" : 92,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 74,
+				"line" : 75,
 				"parent" : 0
 			},
 			{
@@ -387,18 +387,19 @@
 				50,
 				52,
 				54,
-				64
+				57,
+				66
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"id" : "TP2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "TP2_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "TP2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "TP2::@6890427a1f51a3e7e1df",
@@ -533,7 +534,8 @@
 				50,
 				52,
 				54,
-				64
+				57,
+				66
 			]
 		},
 		{
@@ -564,12 +566,13 @@
 				51,
 				53,
 				56,
-				57,
 				58,
 				59,
 				60,
 				61,
-				62
+				62,
+				63,
+				64
 			]
 		},
 		{
@@ -584,15 +587,15 @@
 				39,
 				42,
 				55,
-				63
+				65
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				65,
-				66
+				67,
+				68
 			]
 		}
 	],
@@ -903,6 +906,17 @@
 			"backtrace" : 4,
 			"path" : "NPC/npcgenerico.ui",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "NPC/npccomun.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "NPC/npccomun.cpp",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,

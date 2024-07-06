@@ -20,7 +20,7 @@ public:
     explicit NPCUI(QWidget *parent = nullptr);
     void Entrar(int X, int Y);
     void Sacar(int X, int Y);
-    ~NPCUI();
+    virtual ~NPCUI();
 
 signals:
     void animacionSalirTerminada();

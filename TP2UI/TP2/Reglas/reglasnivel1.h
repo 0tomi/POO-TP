@@ -23,6 +23,9 @@ public:
     int getFechaMaxPermitida();
     int getDuracionEstanciaPermitida();
 
+    // Destructor
+    ~ReglasNivel1();
+
 private:
     // # Conjunto de elementos de los cuales obtendremos las reglas #
     string* paises;
@@ -39,7 +42,7 @@ private:
     int duracionDeEstanciaValida;
     int* paisesValidos;
     string* tipoDeVisitaValida;
-    string* EstadoCivilValidos;
+    string* estadoCivilValidos;
 
     // Tope de arrays:
     int maxPaisesPermitidos;

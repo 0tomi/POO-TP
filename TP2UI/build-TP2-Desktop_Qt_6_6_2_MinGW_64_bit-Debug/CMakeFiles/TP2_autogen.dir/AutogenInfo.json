@@ -316,9 +316,15 @@
 			null
 		],
 		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h",
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h",
 			"MU",
-			"XJOF3KNGPY/moc_npcgenerico.cpp",
+			"XJOF3KNGPY/moc_npccomun.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h",
+			"MU",
+			"XJOF3KNGPY/moc_npcgenericoui.cpp",
 			null
 		],
 		[
@@ -515,7 +521,12 @@
 			null
 		],
 		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.cpp",
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp",
 			"MU",
 			null
 		],

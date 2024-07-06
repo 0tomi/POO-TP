@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -7,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Juego locura POO");
 
     CrearPantallasJuego();
 
@@ -38,6 +40,21 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
     }
     QMainWindow::keyPressEvent(event);  // Llama al método base para manejar otros eventos de teclado
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    // Mostrar un mensaje de confirmación
+    QMessageBox::StandardButton resBtn = QMessageBox::question(this, "Cerrar Juego",
+                                                               "¿Estás seguro de que quieres cerrar el Juego?",
+                                                               QMessageBox::No | QMessageBox::Yes,
+                                                               QMessageBox::Yes);
+    if (resBtn == QMessageBox::Yes) {
+        event->accept();  // Aceptar el evento y cerrar la ventana
+        QApplication::quit();  // Cerrar la aplicación
+    } else {
+        event->ignore();  // Ignorar el evento y no cerrar la ventana
+    }
 }
 
 void MainWindow::TransicionJuego()

@@ -33,16 +33,16 @@ void ReglasNivel1::setEstadoCivilValidos(){
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
     if (this->maxEstadosCivilPermitidos == maxEstadosCiviles)
-        this->EstadoCivilValidos = estadosCiviles;
+        this->estadoCivilValidos = estadosCiviles;
     else
         SeleccionarEstadosCivilesValidos(this->maxEstadosCivilPermitidos);
 }
 
 void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
-    this->EstadoCivilValidos = new string[CantidadECValidos];
+    this->estadoCivilValidos = new string[CantidadECValidos];
 
     for (int i = 0; i < CantidadECValidos; i++)
-        EstadoCivilValidos[i] = estadosCiviles[i];
+        estadoCivilValidos[i] = estadosCiviles[i];
 }
 
 void ReglasNivel1::setTipoDeVisitaValidas(){
@@ -134,7 +134,7 @@ int* ReglasNivel1::getPaisesPermitidos(int &max){
 
 string* ReglasNivel1::getEstadoCivilPermitido(int &max){
     max = this->maxEstadosCivilPermitidos;
-    return this->EstadoCivilValidos;
+    return this->estadoCivilValidos;
 }
 
 string* ReglasNivel1::getTipoVisitaPermitida(int &max){
@@ -152,4 +152,11 @@ int ReglasNivel1::getFechaMaxPermitida(){
 
 int ReglasNivel1::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
+}
+
+ReglasNivel1::~ReglasNivel1()
+{
+    delete paisesValidos;
+    delete tipoDeVisitaValida;
+    delete estadoCivilValidos;
 }
