@@ -8,12 +8,63 @@ DocumentosUI::DocumentosUI(QWidget *parent)
     , ui(new Ui::DocumentosUI)
 {
     ui->setupUi(this);
+
+    // Creamos las animaciones de entrada y salida
+    animacionEntrada = new QPropertyAnimation(this, "pos");
+    animacionSalida = new QPropertyAnimation(this, "pos");
+
+    // Creamos animacion para centrar
+    animacionCentrar = new QPropertyAnimation(this, "pos");
+
+    // Hacemos que cuando termine la animacion de salida, el documento desaparezca.
+    connect(animacionEntrada, &QPropertyAnimation::finished, this, &DocumentosUI::animacionEntrarTerminada);
+    connect(animacionSalida, &QPropertyAnimation::finished, this, &DocumentosUI::hide);
+
     qDebug() << "Me he manifestado xD";
+}
+
+void DocumentosUI::Entrar(int X, int Y)
+{
+    this->PrepararAnimacionEntrada(X,Y);
+    this->show();
+    this->animacionEntrada->start();
+}
+
+void DocumentosUI::Sacar(int X)
+{
+    this->PrepararAnimacionSalida(X);
+    this->animacionSalida->start();
 }
 
 DocumentosUI::~DocumentosUI()
 {
+    delete animacionCentrar;
+    delete animacionEntrada;
+    delete animacionSalida;
     delete ui;
+}
+
+void DocumentosUI::Centrar(int X, int Y)
+{
+    animacionCentrar->setDuration(500);
+    animacionCentrar->setStartValue(pos());
+    animacionCentrar->setEndValue(QPoint(X,Y));
+
+    animacionCentrar->start();
+}
+
+void DocumentosUI::PrepararAnimacionEntrada(int X, int Y)
+{
+    animacionEntrada->setDuration(1000);
+    animacionEntrada->setStartValue(QPoint(X,-500));
+    animacionEntrada->setEndValue(QPoint(X,Y));
+}
+
+void DocumentosUI::PrepararAnimacionSalida(int X)
+{
+    animacionSalida->setDuration(1000);
+    animacionSalida->setStartValue(this->pos());
+    animacionSalida->setEndValue(QPoint(X,-500));
 }
 
 void DocumentosUI::mousePressEvent(QMouseEvent *event) {

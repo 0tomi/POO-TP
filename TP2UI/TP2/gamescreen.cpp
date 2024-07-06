@@ -1,5 +1,6 @@
 #include "gamescreen.h"
 #include "ui_gamescreen.h"
+#include <QTimer>
 #include <QDebug>
 
 GameScreen::GameScreen(QWidget *parent)
@@ -8,25 +9,17 @@ GameScreen::GameScreen(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Setear temporizador para bloquear botones
+    temporizadorBotones = new QTimer(this);
+    temporizadorBotones->setSingleShot(true);
+
     // Agregamos el NPC y Documentos a la escena
-    this->SpawnearNPC();
-    this->SpawnearDocumento();
+    SpawnearNPC();
+    SpawnearDocumento();
 
-    // Preparamos animaciones de entrada del Doc
-    animacionEntradaDOC = new QPropertyAnimation(doc, "pos");
-    animacionSalidaDOC = new QPropertyAnimation(doc, "pos");
-    connect(animacionSalidaDOC, &QPropertyAnimation::finished, this, &GameScreen::FletearDOC);
+    BloquearBotones(true);
 
-    // Preparamos animaciones de entrada del NPC
-    animacionEntrada = new QPropertyAnimation(npcUI, "pos");
-    this->animacionSalida = new QPropertyAnimation(npcUI, "pos");
-    connect(animacionSalida, &QPropertyAnimation::finished, this, &GameScreen::FletearNPC);
-
-    connect(ui->aceptarBoton, &QPushButton::clicked, this,&GameScreen::SacarNPC);
-    connect(ui->rechazarBoton, &QPushButton::clicked, this,&GameScreen::EntrarNPC);
-
-    //EmpezarJuego();
-
+    RealizarConecciones();
 }
 
 GameScreen::~GameScreen()
@@ -39,14 +32,83 @@ void GameScreen::EmpezarJuego()
     // Arranca la wea esta weon
     qDebug() << "Comenze el juego";
     EntrarNPC();
-    EntrarDOC();
+}
+
+void GameScreen::RealizarConecciones()
+{
+    // Conecto los botones para que segun lo que haga el usuario, se evalue una cosa u otra.
+    connect(ui->aceptarBoton, &QPushButton::clicked, this, &GameScreen::Acepto);
+    connect(ui->rechazarBoton, &QPushButton::clicked, this, &GameScreen::Rechazo);
+
+    // Conectamos boton de centrar para centrar el documento.
+    connect(ui->BotonCentrar, &QPushButton::clicked, this, &GameScreen::CentrarDocumentos);
+
+    // Hago que al terminar la animacion de que un NPC se va, entre otro.
+    connect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
+
+    // Desbloquear botones cuando el documento se arroja sobre la mesa
+    connect(doc, &DocumentosUI::animacionEntrarTerminada, this, &GameScreen::DesbloquearBotones);
+
+    // Desbloquear botones despues de pasado un tiempo
+    connect(temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
+}
+
+void GameScreen::Acepto()
+{
+    SelloDocumento(true);
+}
+
+void GameScreen::Rechazo()
+{
+    SelloDocumento(false);
+}
+
+void GameScreen::SelloDocumento(bool Boton)
+{
+    SacarNPC();
+    BloquearBotones(true);
+}
+
+void GameScreen::BloquearBotones(bool Bloqueo)
+{
+    ui->BotonCentrar->setDisabled(Bloqueo);
+    ui->aceptarBoton->setDisabled(Bloqueo);
+    ui->rechazarBoton->setDisabled(Bloqueo);
+}
+
+void GameScreen::DesbloquearBotones()
+{
+    BloquearBotones(false);
+}
+
+void GameScreen::CentrarDocumentos()
+{
+    int centerX = ((ui->Escritorio->width()) - (doc->width())) /2;
+    int centerY = (((ui->Escritorio->height())) - (doc->height())) / 2;
+
+    // Bloqueamos los botones para que no bugeen el juego
+    BloquearBotones(true);
+    temporizadorBotones->start(700);
+
+    // Esto dsps iria con un for por cada documento
+    doc->Centrar(centerX, centerY);
 }
 
 void GameScreen::EntrarNPC()
 {
-    PrepararAnimacionEntradaNPC();
-    npcUI->show();
-    animacionEntrada->start();
+    int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
+    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
+
+    npcUI->Entrar(centerX, centerY);
+    EntrarDOC();
+}
+
+void GameScreen::SacarNPC()
+{
+    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
+    npcUI->Sacar(centerY);
+
+    SacarDOC();
 }
 
 void GameScreen::resizeEvent(QResizeEvent *event)
@@ -58,87 +120,37 @@ void GameScreen::resizeEvent(QResizeEvent *event)
     npcUI->move(centerX,centerY);
 }
 
-void GameScreen::SacarNPC()
-{
-    PrepararAnimacionSalidaNPC();
-    animacionSalida->start();
-}
-
 void GameScreen::SpawnearDocumento()
 {
-    doc = new UADERpass(this);
+    doc = new UADERpass(ui->Escritorio);
     doc->setFixedSize(300,300);
-
-    QVBoxLayout *layout = new QVBoxLayout(ui->Escritorio);
-    layout->addWidget(doc);
-    ui->Escritorio->setLayout(layout);
 
     doc->move(0,-500);
 }
 
 void GameScreen::EntrarDOC()
 {
-    PrepararAnimacionEntradaDOC();
-    doc->show();
-    animacionEntradaDOC->start();
-}
-
-void GameScreen::PrepararAnimacionEntradaDOC()
-{
     int centerX = ((ui->Escritorio->width()) - (doc->width())) /2;
     int centerY = (((ui->Escritorio->height())) - (doc->height())) / 2;
 
-    animacionEntradaDOC->setDuration(1000);
-    animacionEntradaDOC->setStartValue(QPoint(centerX,-500));
-    animacionEntradaDOC->setEndValue(QPoint(centerX,centerY));
+    doc->Entrar(centerX,centerY);
 }
 
-void GameScreen::PrepararAnimacionSalidaDOC()
+void GameScreen::SacarDOC()
 {
-    int centerX = ((ui->Escritorio->width())) - (doc->width()) / 2;
-
-    animacionSalidaDOC->setDuration(1000);
-    animacionSalidaDOC->setStartValue(doc->pos());
-    animacionSalidaDOC->setEndValue(QPoint(centerX,-500));
-}
-
-void GameScreen::FletearDOC()
-{
-    qDebug() << "desapareci";
-    doc->hide();
+    int centerX = ((ui->Escritorio->width()) - (doc->width())) / 2;
+    doc->Sacar(centerX);
 }
 
 void GameScreen::SpawnearNPC()
 {
     npcUI = new NPCUI(this);
-    npcUI->setFixedSize(300,300);
 
     QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
     layout->addWidget(npcUI);
     ui->FondoNPC->setLayout(layout);
+
     npcUI->move(-500,0);
 }
 
-void GameScreen::PrepararAnimacionEntradaNPC()
-{
-    int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
-    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
 
-    animacionEntrada->setDuration(1000);
-    animacionEntrada->setStartValue(QPoint(-500,centerY));
-    animacionEntrada->setEndValue(QPoint(centerX,centerY));
-}
-
-void GameScreen::PrepararAnimacionSalidaNPC()
-{
-    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
-
-    animacionSalida->setDuration(1000);
-    animacionSalida->setStartValue(npcUI->pos());
-    animacionSalida->setEndValue(QPoint(1000,centerY));
-}
-
-void GameScreen::FletearNPC()
-{
-    npcUI->hide();
-}

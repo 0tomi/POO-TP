@@ -1,10 +1,19 @@
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/SOYZ2DITOJ/moc_documentosui.cpp: C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QList \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QObject \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QPropertyAnimation \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QRect \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q23utility.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qabstractanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qalgorithms.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qanimationgroup.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qanystringview.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qarraydata.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qarraydataops.h \
@@ -28,9 +37,11 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qcontainerinfo.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qcontainertools_impl.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qcontiguouscache.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qcoreevent.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qdatastream.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qdebug.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qeasingcurve.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qexceptionhandling.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qflags.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qfloat16.h \
@@ -42,6 +53,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qglobalstatic.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qhash.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qhashfunctions.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qiodevice.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qiodevicebase.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qiterable.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qiterator.h \
@@ -57,6 +69,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qmetatype.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qminmax.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qnamespace.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qnativeinterface.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qnumeric.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qobject.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qobject_impl.h \
@@ -65,11 +78,14 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qoverload.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qpair.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qpoint.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qpointer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qprocessordetection.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qpropertyanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qrect.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qrefcount.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopedpointer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopeguard.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qsequentialanimationgroup.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qset.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata_impl.h \
@@ -108,37 +124,50 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qtversionchecks.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtypeinfo.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtypes.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qurl.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qutf8stringview.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qvariant.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qvariantanimation.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QTransform \
   B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qbitmap.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qbrush.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qcolor.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qcursor.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qevent.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qeventpoint.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qfont.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qfontinfo.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qfontmetrics.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qicon.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qimage.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qinputdevice.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpolygon.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qregion.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtransform.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qvector2d.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qvectornd.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \

@@ -3,9 +3,3 @@
 *.exe
 /.vscode
 /output
-/Testing
-*.log
-/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/Testing
-/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/Testing/Temporary
-TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/index-2024-07-04T04-44-06-0106.json
-TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/index-2024-07-04T04-44-06-0106.json

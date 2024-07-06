@@ -14,6 +14,8 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,11 +27,18 @@ public:
     QWidget *Contenedor;
     QGridLayout *gridLayout;
     QWidget *Mesa;
-    QWidget *Escritorio;
-    QPushButton *aceptarBoton;
-    QPushButton *rechazarBoton;
     QWidget *Nose;
     QWidget *FondoNPC;
+    QWidget *Escritorio;
+    QVBoxLayout *verticalLayout;
+    QWidget *ContenedorBotones;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *BotonCentrar;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *aceptarBoton;
+    QPushButton *rechazarBoton;
+    QWidget *Separador2;
+    QWidget *Separador1;
 
     void setupUi(QWidget *GameScreen)
     {
@@ -65,22 +74,6 @@ public:
 
         gridLayout->addWidget(Mesa, 2, 0, 1, 1);
 
-        Escritorio = new QWidget(Contenedor);
-        Escritorio->setObjectName("Escritorio");
-        Escritorio->setMinimumSize(QSize(500, 500));
-        Escritorio->setMaximumSize(QSize(1920, 1080));
-        Escritorio->setStyleSheet(QString::fromUtf8("#Escritorio{\n"
-"	border-image: url(:/Resources/escritorio2.png);\n"
-"}"));
-        aceptarBoton = new QPushButton(Escritorio);
-        aceptarBoton->setObjectName("aceptarBoton");
-        aceptarBoton->setGeometry(QRect(450, 40, 80, 27));
-        rechazarBoton = new QPushButton(Escritorio);
-        rechazarBoton->setObjectName("rechazarBoton");
-        rechazarBoton->setGeometry(QRect(450, 80, 80, 27));
-
-        gridLayout->addWidget(Escritorio, 1, 1, 2, 1);
-
         Nose = new QWidget(Contenedor);
         Nose->setObjectName("Nose");
         Nose->setMaximumSize(QSize(1920, 1080));
@@ -105,6 +98,84 @@ public:
 
         gridLayout->addWidget(FondoNPC, 0, 0, 2, 1);
 
+        Escritorio = new QWidget(Contenedor);
+        Escritorio->setObjectName("Escritorio");
+        Escritorio->setMinimumSize(QSize(500, 500));
+        Escritorio->setMaximumSize(QSize(1920, 1080));
+        Escritorio->setStyleSheet(QString::fromUtf8("#Escritorio{\n"
+"	border-image: url(:/Resources/escritorio2.png);\n"
+"}"));
+        verticalLayout = new QVBoxLayout(Escritorio);
+        verticalLayout->setObjectName("verticalLayout");
+        ContenedorBotones = new QWidget(Escritorio);
+        ContenedorBotones->setObjectName("ContenedorBotones");
+        ContenedorBotones->setMinimumSize(QSize(500, 100));
+        ContenedorBotones->setMaximumSize(QSize(1920, 150));
+        horizontalLayout_2 = new QHBoxLayout(ContenedorBotones);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        BotonCentrar = new QPushButton(ContenedorBotones);
+        BotonCentrar->setObjectName("BotonCentrar");
+        BotonCentrar->setMinimumSize(QSize(100, 50));
+        BotonCentrar->setMaximumSize(QSize(200, 75));
+        BotonCentrar->setCheckable(true);
+        BotonCentrar->setChecked(false);
+        BotonCentrar->setAutoExclusive(true);
+        BotonCentrar->setFlat(false);
+
+        horizontalLayout_2->addWidget(BotonCentrar);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        aceptarBoton = new QPushButton(ContenedorBotones);
+        aceptarBoton->setObjectName("aceptarBoton");
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(aceptarBoton->sizePolicy().hasHeightForWidth());
+        aceptarBoton->setSizePolicy(sizePolicy2);
+        aceptarBoton->setMinimumSize(QSize(50, 50));
+        aceptarBoton->setMaximumSize(QSize(200, 75));
+        aceptarBoton->setCheckable(true);
+        aceptarBoton->setChecked(false);
+        aceptarBoton->setAutoExclusive(true);
+
+        horizontalLayout_2->addWidget(aceptarBoton);
+
+        rechazarBoton = new QPushButton(ContenedorBotones);
+        rechazarBoton->setObjectName("rechazarBoton");
+        sizePolicy2.setHeightForWidth(rechazarBoton->sizePolicy().hasHeightForWidth());
+        rechazarBoton->setSizePolicy(sizePolicy2);
+        rechazarBoton->setMinimumSize(QSize(50, 50));
+        rechazarBoton->setMaximumSize(QSize(200, 75));
+        rechazarBoton->setCheckable(true);
+        rechazarBoton->setChecked(true);
+        rechazarBoton->setAutoExclusive(true);
+        rechazarBoton->setFlat(false);
+
+        horizontalLayout_2->addWidget(rechazarBoton);
+
+
+        verticalLayout->addWidget(ContenedorBotones);
+
+        Separador2 = new QWidget(Escritorio);
+        Separador2->setObjectName("Separador2");
+        Separador2->setMinimumSize(QSize(500, 100));
+        Separador2->setMaximumSize(QSize(1920, 200));
+
+        verticalLayout->addWidget(Separador2);
+
+        Separador1 = new QWidget(Escritorio);
+        Separador1->setObjectName("Separador1");
+        Separador1->setMinimumSize(QSize(500, 100));
+        Separador1->setMaximumSize(QSize(1920, 200));
+
+        verticalLayout->addWidget(Separador1);
+
+
+        gridLayout->addWidget(Escritorio, 1, 1, 2, 1);
+
 
         horizontalLayout->addWidget(Contenedor);
 
@@ -117,6 +188,7 @@ public:
     void retranslateUi(QWidget *GameScreen)
     {
         GameScreen->setWindowTitle(QCoreApplication::translate("GameScreen", "Form", nullptr));
+        BotonCentrar->setText(QCoreApplication::translate("GameScreen", "Centrar documentos", nullptr));
         aceptarBoton->setText(QCoreApplication::translate("GameScreen", "Aceptar", nullptr));
         rechazarBoton->setText(QCoreApplication::translate("GameScreen", "Rechazar", nullptr));
     } // retranslateUi
