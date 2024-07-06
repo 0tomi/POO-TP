@@ -29,8 +29,8 @@ GameScreen::~GameScreen()
 
 void GameScreen::EmpezarJuego()
 {
-    // Arranca la wea esta weon
-    qDebug() << "Comenze el juego";
+    // En caso de cortar la animacion de entrada antes de terminar, hay un temporizador que habilita los botones posados 0.8 segundos
+    temporizadorBotones->start(800);
     EntrarNPC();
 }
 
@@ -41,7 +41,7 @@ void GameScreen::RealizarConecciones()
     connect(ui->rechazarBoton, &QPushButton::clicked, this, &GameScreen::Rechazo);
 
     // Conectamos boton de centrar para centrar el documento.
-    connect(ui->BotonCentrar, &QPushButton::clicked, this, &GameScreen::CentrarDocumentos);
+    connect(ui->BotonCentrar, &QPushButton::clicked, this, &GameScreen::FuncionBotonCentral);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
@@ -76,22 +76,34 @@ void GameScreen::BloquearBotones(bool Bloqueo)
     ui->rechazarBoton->setDisabled(Bloqueo);
 }
 
-void GameScreen::DesbloquearBotones()
+void GameScreen::FuncionBotonCentral()
 {
-    BloquearBotones(false);
-}
-
-void GameScreen::CentrarDocumentos()
-{
-    int centerX = ((ui->Escritorio->width()) - (doc->width())) /2;
-    int centerY = (((ui->Escritorio->height())) - (doc->height())) / 2;
-
     // Bloqueamos los botones para que no bugeen el juego
     BloquearBotones(true);
     temporizadorBotones->start(700);
 
-    // Esto dsps iria con un for por cada documento
-    doc->Centrar(centerX, centerY);
+    CentrarDocumentos();
+}
+
+void GameScreen::DesbloquearBotones()
+{
+    BloquearBotones(false);
+    CentrarNPC();
+    CentrarDocumentos();
+}
+
+void GameScreen::SpawnearNPC()
+{
+    npcUI = new NPCGenerico(this);
+
+    QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
+    layout->addWidget(npcUI);
+    layout->setContentsMargins(40,80,40,0);
+    ui->FondoNPC->setLayout(layout);
+
+    npcUI->hide();
+
+    npcUI->move(-(npcUI->width()),0);
 }
 
 void GameScreen::EntrarNPC()
@@ -105,19 +117,35 @@ void GameScreen::EntrarNPC()
 
 void GameScreen::SacarNPC()
 {
-    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
-    npcUI->Sacar(centerY);
+    int SalidaEscena = ui->FondoNPC->width() + npcUI->width();
+    int centerY = ((ui->FondoNPC->height())) - (npcUI->height()) + 50;
+    npcUI->Sacar(SalidaEscena, centerY);
 
     SacarDOC();
+}
+
+void GameScreen::CentrarNPC()
+{
+    int centerX = (ui->FondoNPC->width() - npcUI->width()) /2;
+    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
+    npcUI->move(centerX,centerY);
+}
+
+void GameScreen::changeEvent(QEvent *event)
+{
+    QWidget::changeEvent(event);
+    if (event->type() == QEvent::WindowStateChange){
+        CentrarNPC();
+        CentrarDocumentos();
+    }
 }
 
 void GameScreen::resizeEvent(QResizeEvent *event)
 {
     // En caso de cambiar la ventana, ajustamos el tamaño del NPC
     QWidget::resizeEvent(event);
-    int centerX = (ui->FondoNPC->width() - npcUI->width()) /2;
-    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
-    npcUI->move(centerX,centerY);
+    CentrarNPC();
+    CentrarDocumentos();
 }
 
 void GameScreen::SpawnearDocumento()
@@ -125,7 +153,9 @@ void GameScreen::SpawnearDocumento()
     doc = new UADERpass(ui->Escritorio);
     doc->setFixedSize(300,300);
 
-    doc->move(0,-500);
+    doc->hide();
+
+    doc->move(0,-(doc->width()));
 }
 
 void GameScreen::EntrarDOC()
@@ -142,17 +172,14 @@ void GameScreen::SacarDOC()
     doc->Sacar(centerX);
 }
 
-void GameScreen::SpawnearNPC()
+void GameScreen::CentrarDocumentos()
 {
-    npcUI = new NPCGenerico(this);
+    int centerX = ((ui->Escritorio->width()) - (doc->width())) /2;
+    int centerY = (((ui->Escritorio->height())) - (doc->height())) / 2;
 
-    QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
-    layout->addWidget(npcUI);
-    ui->FondoNPC->setLayout(layout);
-
-    npcUI->setFixedSize(300,300);
-
-    npcUI->move(-500,0);
+    // Esto dsps iria con un for por cada documento
+    doc->Centrar(centerX, centerY);
 }
+
 
 

@@ -1625,6 +1625,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/QKeyEvent
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/QMouseEvent
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/QTransform

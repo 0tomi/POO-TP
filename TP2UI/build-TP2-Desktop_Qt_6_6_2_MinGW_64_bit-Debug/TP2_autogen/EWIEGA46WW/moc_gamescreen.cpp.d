@@ -131,6 +131,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QKeyEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QMouseEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QTransform \

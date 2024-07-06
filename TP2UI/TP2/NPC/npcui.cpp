@@ -17,24 +17,26 @@ void NPCUI::Entrar(int X, int Y)
     animacionEntrada->start();
 }
 
-void NPCUI::Sacar(int Y)
+void NPCUI::Sacar(int X, int Y)
 {
-    PrepararAnimacionSalida(Y);
+    PrepararAnimacionSalida(X,Y);
     animacionSalida->start();
 }
 
 void NPCUI::PrepararAnimacionEntrada(int X, int Y)
 {
     animacionEntrada->setDuration(1000);
-    animacionEntrada->setStartValue(QPoint(-500,Y));
+    animacionEntrada->setStartValue(QPoint(-(width()),Y+50));
     animacionEntrada->setEndValue(QPoint(X,Y));
+    animacionEntrada->setEasingCurve(QEasingCurve::OutExpo);
 }
 
-void NPCUI::PrepararAnimacionSalida(int Y)
+void NPCUI::PrepararAnimacionSalida(int X, int Y)
 {
     animacionSalida->setDuration(1000);
     animacionSalida->setStartValue(pos());
-    animacionSalida->setEndValue(QPoint(1000,Y));
+    animacionSalida->setEndValue(QPoint(X,Y)); // SUMAR LA RESOLUCION DEL WIDGET + EL NPC
+    animacionEntrada->setEasingCurve(QEasingCurve::InQuad);
 }
 
 void NPCUI::TerminoAnimacion()

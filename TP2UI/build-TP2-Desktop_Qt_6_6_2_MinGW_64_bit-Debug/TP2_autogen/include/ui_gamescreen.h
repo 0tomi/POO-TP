@@ -44,7 +44,7 @@ public:
     {
         if (GameScreen->objectName().isEmpty())
             GameScreen->setObjectName("GameScreen");
-        GameScreen->resize(800, 600);
+        GameScreen->resize(1920, 1047);
         GameScreen->setMinimumSize(QSize(800, 600));
         GameScreen->setMaximumSize(QSize(1920, 1080));
         horizontalLayout = new QHBoxLayout(GameScreen);
@@ -66,8 +66,8 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Mesa->sizePolicy().hasHeightForWidth());
         Mesa->setSizePolicy(sizePolicy);
-        Mesa->setMinimumSize(QSize(200, 200));
-        Mesa->setMaximumSize(QSize(550, 550));
+        Mesa->setMinimumSize(QSize(250, 200));
+        Mesa->setMaximumSize(QSize(600, 600));
         Mesa->setStyleSheet(QString::fromUtf8("#Mesa{\n"
 "	border-image: url(:/Resources/mesa2.png);\n"
 "}"));
@@ -76,7 +76,8 @@ public:
 
         Nose = new QWidget(Contenedor);
         Nose->setObjectName("Nose");
-        Nose->setMaximumSize(QSize(1920, 1080));
+        Nose->setMinimumSize(QSize(400, 100));
+        Nose->setMaximumSize(QSize(1350, 400));
         Nose->setStyleSheet(QString::fromUtf8("#Nose{\n"
 "	border-image: url(:/Resources/fondo.png);\n"
 "}"));
@@ -91,7 +92,7 @@ public:
         sizePolicy1.setHeightForWidth(FondoNPC->sizePolicy().hasHeightForWidth());
         FondoNPC->setSizePolicy(sizePolicy1);
         FondoNPC->setMinimumSize(QSize(200, 250));
-        FondoNPC->setMaximumSize(QSize(550, 550));
+        FondoNPC->setMaximumSize(QSize(600, 600));
         FondoNPC->setStyleSheet(QString::fromUtf8("#FondoNPC{\n"
 "	border-image: url(:/Resources/fondoAlturas.png);\n"
 "}"));
@@ -100,8 +101,13 @@ public:
 
         Escritorio = new QWidget(Contenedor);
         Escritorio->setObjectName("Escritorio");
-        Escritorio->setMinimumSize(QSize(500, 500));
-        Escritorio->setMaximumSize(QSize(1920, 1080));
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(Escritorio->sizePolicy().hasHeightForWidth());
+        Escritorio->setSizePolicy(sizePolicy2);
+        Escritorio->setMinimumSize(QSize(400, 500));
+        Escritorio->setMaximumSize(QSize(1350, 1080));
         Escritorio->setStyleSheet(QString::fromUtf8("#Escritorio{\n"
 "	border-image: url(:/Resources/escritorio2.png);\n"
 "}"));
@@ -130,11 +136,11 @@ public:
 
         aceptarBoton = new QPushButton(ContenedorBotones);
         aceptarBoton->setObjectName("aceptarBoton");
-        QSizePolicy sizePolicy2(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(aceptarBoton->sizePolicy().hasHeightForWidth());
-        aceptarBoton->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(aceptarBoton->sizePolicy().hasHeightForWidth());
+        aceptarBoton->setSizePolicy(sizePolicy3);
         aceptarBoton->setMinimumSize(QSize(50, 50));
         aceptarBoton->setMaximumSize(QSize(200, 75));
         aceptarBoton->setCheckable(true);
@@ -145,8 +151,8 @@ public:
 
         rechazarBoton = new QPushButton(ContenedorBotones);
         rechazarBoton->setObjectName("rechazarBoton");
-        sizePolicy2.setHeightForWidth(rechazarBoton->sizePolicy().hasHeightForWidth());
-        rechazarBoton->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(rechazarBoton->sizePolicy().hasHeightForWidth());
+        rechazarBoton->setSizePolicy(sizePolicy3);
         rechazarBoton->setMinimumSize(QSize(50, 50));
         rechazarBoton->setMaximumSize(QSize(200, 75));
         rechazarBoton->setCheckable(true);

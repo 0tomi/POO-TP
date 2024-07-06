@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QResizeEvent>
+#include <QKeyEvent>
 
 #include "NPC/npcgenerico.h"
 #include "Documentos/uaderpass.h"
@@ -33,6 +34,7 @@ private:
     void Rechazo();
     void SelloDocumento(bool Boton);
     void BloquearBotones(bool Bloqueo);
+    void FuncionBotonCentral();
     // Otro metodo que voy  a poner simplemente porque no se como se hace.
     void DesbloquearBotones();
 
@@ -51,8 +53,10 @@ private:
     void SpawnearNPC();
     void EntrarNPC();
     void SacarNPC();
+    void CentrarNPC();
 
     // Reubicar NPCs en la escena
+    void changeEvent(QEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
 };
 
