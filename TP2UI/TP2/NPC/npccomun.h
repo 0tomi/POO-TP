@@ -6,7 +6,7 @@
 class NPCcomun: public NPC
 {
 public:
-    NPCcomun(char Genero, char Tipo);
+    NPCcomun(char Genero, char Tipo, bool Validez);
 
     QString getCaraURL() const;
     void setCaraURL(const string &newCaraURL);

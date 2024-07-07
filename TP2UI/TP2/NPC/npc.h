@@ -1,27 +1,33 @@
 #ifndef NPC_H
 #define NPC_H
 
-#include "../Documentos/documentacion.h"
+#include "../Documentos/pasaporte.h"
+#include "../Documentos/estancia.h"
 #include <string>
 using namespace std;
 
 class NPC
 {
 public:
-    explicit NPC(char Genero, char Tipo);
+    explicit NPC(char Genero, char Tipo, bool Validez);
     ~NPC();
 
-    virtual void setDocumentacion(Documentacion* docs);
     char getGenero();
-    Documentacion* getDocumentos();
+    Documentacion** getDocumentos();
     char getTipo();
 
-protected:
+    bool getValidez() const;
 
+    virtual void setPasaporte(Pasaporte *newPasaporte);
+    virtual void setEstancia(Estancia *newEstancia);
+
+protected:
+    bool Validez;
     char Genero;
     char Tipo;
-    Documentacion* documentos;
-
+    Documentacion* documentos[10];
+    Pasaporte *pasaporte = nullptr;
+    Estancia *estancia = nullptr;
 };
 
 #endif // NPC_H

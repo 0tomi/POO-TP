@@ -1,6 +1,6 @@
 #include "npccomun.h"
 
-NPCcomun::NPCcomun(char newGenero, char newTipo): NPC(newGenero, newTipo) {
+NPCcomun::NPCcomun(char newGenero, char newTipo, bool Validez): NPC(newGenero, newTipo, Validez) {
     this->BarbaURL = "no";
 }
 

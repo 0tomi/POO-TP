@@ -280,6 +280,12 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h",
+			"MU",
+			"SOYZ2DITOJ/moc_gestordocumentosui.cpp",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h",
 			"MU",
 			"SOYZ2DITOJ/moc_pasaporte.cpp",
@@ -487,6 +493,11 @@
 		],
 		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp",
 			"MU",
 			null
 		],

@@ -21,8 +21,6 @@ GameScreen::GameScreen(QWidget *parent)
     SpawnearDocumento();
 
     BloquearBotones(true);
-
-    RealizarConecciones();
 }
 
 GameScreen::~GameScreen()
@@ -32,6 +30,7 @@ GameScreen::~GameScreen()
 
 void GameScreen::EmpezarJuego()
 {
+    RealizarConecciones();
     // En caso de cortar la animacion de entrada antes de terminar, hay un temporizador que habilita los botones posados 0.8 segundos
     temporizadorBotones->start(800);
     EntrarNPC();

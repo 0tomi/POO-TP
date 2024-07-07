@@ -1,7 +1,8 @@
 #ifndef PASAPORTE_H
 #define PASAPORTE_H
+#include "documentacion.h"
 
-class Pasaporte
+class Pasaporte: public Documentacion
 {
 public:
     Pasaporte();

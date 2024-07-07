@@ -7,6 +7,7 @@
 
 #include "NPC/npcgenericoui.h"
 #include "Documentos/uaderpass.h"
+#include "Documentos/gestordocumentosui.h"
 #include "juego.h"
 
 namespace Ui {
@@ -29,6 +30,7 @@ private:
     Juego* juego;
     ColaNPC* Cola;
     QTimer *temporizadorBotones;
+    GestorDocumentosUI documentos;
 
     void RealizarConecciones();
 

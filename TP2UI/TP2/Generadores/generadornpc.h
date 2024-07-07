@@ -8,7 +8,7 @@ using namespace std;
 class GeneradorNPC{
 public:
     GeneradorNPC();
-    NPC* getNPCgenerico(char tipo, unsigned int Semilla);
+    NPC* getNPCgenerico(char tipo, unsigned int Semilla, bool Validez);
     NPC *getSimilarNPC(NPC* ejemplo);
 
     ~GeneradorNPC();

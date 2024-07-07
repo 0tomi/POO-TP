@@ -1,5 +1,6 @@
 #include "colanpc.h"
 #include <ctime>
+#include <QDebug>
 
 ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
     this->frente = this->fondo = NULL;
@@ -8,11 +9,12 @@ ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
     this->GenerarNPC = new GeneradorNPC;
 }
 
-void ColaNPC::addNPC(char Tipo, unsigned int Semilla){
+void ColaNPC::addNPC(char Tipo, bool Validez ,unsigned int Semilla){
     // Genero el NPC nuevo
-    NPC* newNPC = this->GenerarNPC->getNPCgenerico(Tipo, Semilla);
+    qDebug() << Semilla;
+    NPC* newNPC = this->GenerarNPC->getNPCgenerico(Tipo, Semilla, Validez);
     // Genero su documentacion
-    newNPC->setDocumentacion(this->GenerarDocumentacion->getDocumentos(newNPC));
+    GenerarDocumentacion->getDocumentos(newNPC, Validez);
     // Genero el nodo de la cola donde estara el npc
     nodoNPC* newNode = new nodoNPC;
     newNode->info = newNPC;
@@ -43,7 +45,7 @@ void ColaNPC::vaciarCola()
 
 }
 
-void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios)
+void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
     unsigned int Semilla = time(NULL);
 
@@ -54,15 +56,24 @@ void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int Ca
 
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     int sorteo = rand()%4;
+    int sorteoValidez = rand()%20;
+    bool Validez;
 
     while (totalNPCs){
-        if (!(arrayTipos[sorteo])) // Si el contador es 0, activara el if, y sorteara otro tipo.
+        if (CantidadInvalidos)
+            if (sorteoValidez > 15){
+                Validez = false;
+                CantidadInvalidos--;
+            }
+        if (!(arrayTipos[sorteo])){ // Si el contador es 0, activara el if, y sorteara otro tipo.
             sorteo = rand()%4;
-        else{
-            addNPC(sorteo,Semilla++); // Sumamos a la cola el npc con el tipo sorteado.
+        } else {
+            addNPC(sorteo, Validez, Semilla); // Sumamos a la cola el npc con el tipo sorteado.
             arrayTipos[sorteo]--;
             totalNPCs--;
+            Semilla += 5; // para añadir mas aleatoriedad al asunto
         }
+        sorteoValidez = rand()%20;
     }
 }
 

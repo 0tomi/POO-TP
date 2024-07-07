@@ -1,24 +1,17 @@
 #ifndef DOCUMENTACION_H
 #define DOCUMENTACION_H
-#include "estancia.h"
-#include "pasaporte.h"
+/*
+   Esta clase hay que reworkearla para que no
+   sea mas una clase contenedora, sino abstracta base.
+   El tema es que habria que reworkear la clase NPC para
+   que sea el mismo quien posee la validez de sus documentos;
+   y para eso hay que modificar varias cosas. Asi que a futuro quedara.
+*/
 
 class Documentacion
 {
 public:
-    Documentacion(bool validez);
-    ~Documentacion();
-
-    bool getValida() const;
-    Pasaporte *getPasaport() const;
-    void setPasaport(Pasaporte *newPasaport);
-    Estancia *getEstancia() const;
-    void setEstancia(Estancia *newEstancia);
-
-private:
-    Pasaporte* pasaport;
-    Estancia* estancia;
-    bool valida;
+    Documentacion();
 };
 
 #endif // DOCUMENTACION_H
