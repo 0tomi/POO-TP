@@ -62,10 +62,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#Cuerpo{
-	
-	border-image: url(:/Resources/npc1.png);
-}</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>

@@ -50,10 +50,7 @@ public:
         Cuerpo = new QLabel(ContenedorNPC);
         Cuerpo->setObjectName("Cuerpo");
         Cuerpo->setGeometry(QRect(0, 0, 300, 300));
-        Cuerpo->setStyleSheet(QString::fromUtf8("#Cuerpo{\n"
-"	\n"
-"	border-image: url(:/Resources/npc1.png);\n"
-"}"));
+        Cuerpo->setStyleSheet(QString::fromUtf8(""));
         Cejas = new QLabel(ContenedorNPC);
         Cejas->setObjectName("Cejas");
         Cejas->setGeometry(QRect(125, 134, 50, 20));
