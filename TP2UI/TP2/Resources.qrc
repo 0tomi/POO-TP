@@ -12,5 +12,11 @@
         <file>Resources/npc1.png</file>
         <file>Resources/DocumentoUaderiano.png</file>
         <file>Resources/UADER.png</file>
+        <file>Resources/NPCs/Cuerpo1.png</file>
+        <file>Resources/NPCs/Barba1.png</file>
+        <file>Resources/NPCs/Boca1.png</file>
+        <file>Resources/NPCs/Cejas1.png</file>
+        <file>Resources/NPCs/Nariz1.png</file>
+        <file>Resources/NPCs/Ojos1.png</file>
     </qresource>
 </RCC>

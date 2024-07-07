@@ -48,10 +48,146 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="ContenedorNPC" native="true">
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/Resources/npc1.png);</string>
+      <string notr="true"/>
      </property>
+     <widget class="QLabel" name="Cuerpo">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>300</width>
+        <height>300</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#Cuerpo{
+	
+	border-image: url(:/Resources/npc1.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Cejas">
+      <property name="geometry">
+       <rect>
+        <x>125</x>
+        <y>134</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/NPCs/Cejas1.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Ojos">
+      <property name="geometry">
+       <rect>
+        <x>125</x>
+        <y>145</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/NPCs/Ojos1.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Nariz">
+      <property name="geometry">
+       <rect>
+        <x>124</x>
+        <y>159</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/NPCs/Nariz1.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Boca">
+      <property name="geometry">
+       <rect>
+        <x>125</x>
+        <y>170</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/NPCs/Boca1.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>Cuerpo</zorder>
+     <zorder>Ojos</zorder>
+     <zorder>Nariz</zorder>
+     <zorder>Boca</zorder>
+     <zorder>Cejas</zorder>
     </widget>
    </item>
   </layout>
