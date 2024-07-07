@@ -2,6 +2,8 @@
 #include "generadornpc.h"
 #include "../lectorarchivos.h"
 #include <stdlib.h>
+#include <ctime>
+#include <QDebug>
 
 GeneradorNPC::GeneradorNPC(){
     // # Deus ignoscat factis quae mox faciam. #
@@ -25,26 +27,32 @@ GeneradorNPC::GeneradorNPC(){
     LinksBocas = lector.getArray();
     topeLinksBocas = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLCaras.txt");
+    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLCejas.txt");
     LinksCejas = lector.getArray();
     topeLinksCejas = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLCaras.txt");
+    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLNariz.txt");
     LinksNariz = lector.getArray();
     topeLinksNariz = lector.getTopeArray();
+
 }
 
 
 // Esto necesita rework a futuro para distinguir entre caras de Mujeres y Hombres
-NPC* GeneradorNPC::getNPCgenerico(char tipo){
+NPC* GeneradorNPC::getNPCgenerico(char tipo, unsigned int Semilla){
     NPCcomun* NPCaCrear;
-    srand(1); // luego esto hay que cambiarlo por time null
+    srand(Semilla);
 
     if (tipo > 3)
         tipo = rand()%4;
 
     // Pickeamos un genero
-    int valorCentinela2 = rand()%3;
+    int valorCentinela2 = rand()%11;
+    if (valorCentinela2 < 5)
+        valorCentinela2 = 0;
+    else if (valorCentinela2 < 10)
+        valorCentinela2 = 1;
+    else valorCentinela2 = 2;
 
     // Generamos NPC con los datos basicos
     NPCaCrear = new NPCcomun(this->generos[valorCentinela2], tipo);
@@ -58,10 +66,12 @@ NPC* GeneradorNPC::getNPCgenerico(char tipo){
             NPCaCrear->setBarbaURL(getBarbaRandom());
     }
 
+    string ojos = getOjosRandom();
+
     // Resto del cuerpo
     NPCaCrear->setCaraURL(getCaraRandom(generos[valorCentinela2]));
     NPCaCrear->setCejasURL(getCejasRandom());
-    NPCaCrear->setOjosURL(getOjosRandom());
+    NPCaCrear->setOjosURL(ojos);
     NPCaCrear->setBocaURL(getBocaRandom());
     NPCaCrear->setNarizURL(getNarizRandom());
 
@@ -96,7 +106,7 @@ string GeneradorNPC::getCaraRandom(char genero)
     // Chance 50/50 de que use de mujer o de hombre.
     bool Cara2Usar = (CaraGeneroX < 5);
 
-    if (genero == 'M' || Cara2Usar)
+    if (genero == 'M' || (genero == 'X' && Cara2Usar))
         LinkCara = LinksCarasMujer[sorteo];
     else
         LinkCara = LinksCarasHombre[sorteo];

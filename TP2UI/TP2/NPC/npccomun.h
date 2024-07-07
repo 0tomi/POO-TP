@@ -1,37 +1,38 @@
 #ifndef NPCCOMUN_H
 #define NPCCOMUN_H
 #include "npc.h"
+#include <QString>
 
 class NPCcomun: public NPC
 {
 public:
     NPCcomun(char Genero, char Tipo);
 
-    string getCaraURL() const;
+    QString getCaraURL() const;
     void setCaraURL(const string &newCaraURL);
 
-    string getCejasURL() const;
+    QString getCejasURL() const;
     void setCejasURL(const string &newCejasURL);
 
-    string getOjosURL() const;
+    QString getOjosURL() const;
     void setOjosURL(const string &newOjosURL);
 
-    string getBocaURL() const;
+    QString getBocaURL() const;
     void setBocaURL(const string &newBocaURL);
 
-    string getNarizURL() const;
+    QString getNarizURL() const;
     void setNarizURL(const string &newNarizURL);
 
-    string getBarbaURL() const;
+    QString getBarbaURL() const;
     void setBarbaURL(const string &newBarbaURL);
 
 private:
-    string CaraURL;
-    string CejasURL;
-    string OjosURL;
-    string BocaURL;
-    string NarizURL;
-    string BarbaURL;
+    QString CaraURL;
+    QString CejasURL;
+    QString OjosURL;
+    QString BocaURL;
+    QString NarizURL;
+    QString BarbaURL;
 };
 
 #endif // NPCCOMUN_H

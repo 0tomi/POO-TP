@@ -4,62 +4,62 @@ NPCcomun::NPCcomun(char newGenero, char newTipo): NPC(newGenero, newTipo) {
     this->BarbaURL = "no";
 }
 
-string NPCcomun::getCaraURL() const
+QString NPCcomun::getCaraURL() const
 {
     return CaraURL;
 }
 
 void NPCcomun::setCaraURL(const string &newCaraURL)
 {
-    CaraURL = newCaraURL;
+    CaraURL = QString::fromStdString(newCaraURL);
 }
 
-string NPCcomun::getCejasURL() const
+QString NPCcomun::getCejasURL() const
 {
     return CejasURL;
 }
 
 void NPCcomun::setCejasURL(const string &newCejasURL)
 {
-    CejasURL = newCejasURL;
+    CejasURL = QString::fromStdString(newCejasURL);
 }
 
-string NPCcomun::getOjosURL() const
+QString NPCcomun::getOjosURL() const
 {
     return OjosURL;
 }
 
 void NPCcomun::setOjosURL(const string &newOjosURL)
 {
-    OjosURL = newOjosURL;
+    OjosURL = QString::fromStdString(newOjosURL);
 }
 
-string NPCcomun::getBocaURL() const
+QString NPCcomun::getBocaURL() const
 {
     return BocaURL;
 }
 
 void NPCcomun::setBocaURL(const string &newBocaURL)
 {
-    BocaURL = newBocaURL;
+    BocaURL = QString::fromStdString(newBocaURL);
 }
 
-string NPCcomun::getNarizURL() const
+QString NPCcomun::getNarizURL() const
 {
     return NarizURL;
 }
 
 void NPCcomun::setNarizURL(const string &newNarizURL)
 {
-    NarizURL = newNarizURL;
+    NarizURL = QString::fromStdString(newNarizURL);
 }
 
-string NPCcomun::getBarbaURL() const
+QString NPCcomun::getBarbaURL() const
 {
     return BarbaURL;
 }
 
 void NPCcomun::setBarbaURL(const string &newBarbaURL)
 {
-    BarbaURL = newBarbaURL;
+    BarbaURL = QString::fromStdString(newBarbaURL);
 }

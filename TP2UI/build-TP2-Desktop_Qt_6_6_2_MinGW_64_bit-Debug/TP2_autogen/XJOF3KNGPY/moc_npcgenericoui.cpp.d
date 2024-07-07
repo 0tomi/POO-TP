@@ -7,6 +7,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QString \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h \

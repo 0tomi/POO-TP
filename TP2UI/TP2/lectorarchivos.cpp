@@ -1,6 +1,8 @@
 #include "lectorarchivos.h"
 #include <fstream>
 #include <QCoreApplication>
+#include <QMessageBox>
+#include <QString>
 
 string* LectorArchivos::getArray(){
     return this->archivo;
@@ -22,8 +24,11 @@ void LectorArchivos::LeerArchivoNuevo(string direccion){
     ifstream ArchivoLectura(direccion);
 
     // Si falla cerramos el programa
-    if (ArchivoLectura.fail())
-        QCoreApplication::exit();
+    if (ArchivoLectura.fail()){
+        QString mensajeError = QString::fromStdString(direccion);
+        QMessageBox::critical(nullptr, "Error al leer el siguiente directorio:", mensajeError);
+        QCoreApplication::exit(-1);
+    }
 
     // Creamos el array que contendra los this->archivo
     this->archivo = new string[max];

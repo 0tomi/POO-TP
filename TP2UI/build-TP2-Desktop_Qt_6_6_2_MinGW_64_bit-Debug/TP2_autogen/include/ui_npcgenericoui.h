@@ -1,16 +1,17 @@
 /********************************************************************************
-** Form generated from reading UI file 'npcgenericoui.ui'
+** Form generated from reading UI file 'NPCGenericoUIui.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_NPCGENERICOUI_H
-#define UI_NPCGENERICOUI_H
+#ifndef UI_NPCGenericoUIUI_H
+#define UI_NPCGenericoUIUI_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -20,7 +21,12 @@ class Ui_NPCGenericoUI
 {
 public:
     QVBoxLayout *verticalLayout;
-    QWidget *widget;
+    QWidget *ContenedorNPC;
+    QLabel *Cuerpo;
+    QLabel *Cejas;
+    QLabel *Ojos;
+    QLabel *Nariz;
+    QLabel *Boca;
 
     void setupUi(QWidget *NPCGenericoUI)
     {
@@ -38,11 +44,44 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        widget = new QWidget(NPCGenericoUI);
-        widget->setObjectName("widget");
-        widget->setStyleSheet(QString::fromUtf8("border-image: url(:/Resources/npc1.png);"));
+        ContenedorNPC = new QWidget(NPCGenericoUI);
+        ContenedorNPC->setObjectName("ContenedorNPC");
+        ContenedorNPC->setStyleSheet(QString::fromUtf8(""));
+        Cuerpo = new QLabel(ContenedorNPC);
+        Cuerpo->setObjectName("Cuerpo");
+        Cuerpo->setGeometry(QRect(0, 0, 300, 300));
+        Cuerpo->setStyleSheet(QString::fromUtf8(""));
+        Cejas = new QLabel(ContenedorNPC);
+        Cejas->setObjectName("Cejas");
+        Cejas->setGeometry(QRect(104, 62, 90, 20));
+        Cejas->setMinimumSize(QSize(60, 20));
+        Cejas->setMaximumSize(QSize(90, 20));
+        Cejas->setStyleSheet(QString::fromUtf8(""));
+        Ojos = new QLabel(ContenedorNPC);
+        Ojos->setObjectName("Ojos");
+        Ojos->setGeometry(QRect(106, 79, 90, 30));
+        Ojos->setMinimumSize(QSize(50, 20));
+        Ojos->setMaximumSize(QSize(90, 30));
+        Ojos->setStyleSheet(QString::fromUtf8(""));
+        Nariz = new QLabel(ContenedorNPC);
+        Nariz->setObjectName("Nariz");
+        Nariz->setGeometry(QRect(110, 100, 71, 30));
+        Nariz->setMinimumSize(QSize(50, 20));
+        Nariz->setMaximumSize(QSize(80, 30));
+        Nariz->setStyleSheet(QString::fromUtf8(""));
+        Boca = new QLabel(ContenedorNPC);
+        Boca->setObjectName("Boca");
+        Boca->setGeometry(QRect(104, 128, 90, 20));
+        Boca->setMinimumSize(QSize(50, 20));
+        Boca->setMaximumSize(QSize(90, 20));
+        Boca->setStyleSheet(QString::fromUtf8(""));
+        Cuerpo->raise();
+        Ojos->raise();
+        Nariz->raise();
+        Boca->raise();
+        Cejas->raise();
 
-        verticalLayout->addWidget(widget);
+        verticalLayout->addWidget(ContenedorNPC);
 
 
         retranslateUi(NPCGenericoUI);
@@ -53,6 +92,11 @@ public:
     void retranslateUi(QWidget *NPCGenericoUI)
     {
         NPCGenericoUI->setWindowTitle(QCoreApplication::translate("NPCGenericoUI", "Form", nullptr));
+        Cuerpo->setText(QString());
+        Cejas->setText(QString());
+        Ojos->setText(QString());
+        Nariz->setText(QString());
+        Boca->setText(QString());
     } // retranslateUi
 
 };
@@ -63,4 +107,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_NPCGENERICOUI_H
+#endif // UI_NPCGenericoUIUI_H

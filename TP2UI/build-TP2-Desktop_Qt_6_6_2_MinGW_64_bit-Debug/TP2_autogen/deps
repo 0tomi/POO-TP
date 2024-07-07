@@ -6,6 +6,7 @@ TP2_autogen/timestamp: \
 	B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
 	B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
 	B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
+	B:/QT/6.6.2/mingw_64/include/QtCore/QString \
 	B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h \

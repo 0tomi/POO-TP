@@ -1,4 +1,5 @@
 #include "colanpc.h"
+#include <ctime>
 
 ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
     this->frente = this->fondo = NULL;
@@ -7,9 +8,9 @@ ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
     this->GenerarNPC = new GeneradorNPC;
 }
 
-void ColaNPC::addNPC(char Tipo){
+void ColaNPC::addNPC(char Tipo, unsigned int Semilla){
     // Genero el NPC nuevo
-    NPC* newNPC = this->GenerarNPC->getNPCgenerico(Tipo);
+    NPC* newNPC = this->GenerarNPC->getNPCgenerico(Tipo, Semilla);
     // Genero su documentacion
     newNPC->setDocumentacion(this->GenerarDocumentacion->getDocumentos(newNPC));
     // Genero el nodo de la cola donde estara el npc
@@ -24,7 +25,7 @@ void ColaNPC::addNPC(char Tipo){
         this->fondo = newNode;
     }
 
-    this->size++;
+    size++;
 }
 
 void ColaNPC::vaciarCola()
@@ -44,6 +45,8 @@ void ColaNPC::vaciarCola()
 
 void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios)
 {
+    unsigned int Semilla = time(NULL);
+
     int totalNPCs = CantAldeano + CantRefugiados + CantDiplos + CantRevolucionarios;
 
     // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
@@ -56,7 +59,7 @@ void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int Ca
         if (!(arrayTipos[sorteo])) // Si el contador es 0, activara el if, y sorteara otro tipo.
             sorteo = rand()%4;
         else{
-            addNPC(sorteo); // Sumamos a la cola el npc con el tipo sorteado.
+            addNPC(sorteo,Semilla++); // Sumamos a la cola el npc con el tipo sorteado.
             arrayTipos[sorteo]--;
             totalNPCs--;
         }
@@ -73,11 +76,12 @@ NPC* ColaNPC::getNPC(){
 
     frente = frente->link;
     delete node2remove;
-    this->size--;
+    size--;
 
     return npc;
 }
 
-int ColaNPC::getSize(){
-    return this->size;
+int ColaNPC::getSize() const
+{
+    return size;
 }

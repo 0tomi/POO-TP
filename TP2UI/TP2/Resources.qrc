@@ -12,5 +12,19 @@
         <file>Resources/npc1.png</file>
         <file>Resources/DocumentoUaderiano.png</file>
         <file>Resources/UADER.png</file>
+        <file>Resources/NPCs/Barba1.png</file>
+        <file>Resources/NPCs/Boca1.png</file>
+        <file>Resources/NPCs/Cejas1.png</file>
+        <file>Resources/NPCs/Nariz1.png</file>
+        <file>Resources/NPCs/Ojos1.png</file>
+        <file>Resources/NPCs/Boca2.png</file>
+        <file>Resources/NPCs/Ojos2.png</file>
+        <file>Resources/NPCs/Ojos3.png</file>
+        <file>Resources/NPCs/Ojos4.png</file>
+        <file>Resources/NPCs/Ojos5.png</file>
+        <file>Resources/NPCs/CuerpoHombre1.png</file>
+        <file>Resources/NPCs/CuerpoHombre2.png</file>
+        <file>Resources/NPCs/CuerpoMujer1.png</file>
+        <file>Resources/NPCs/CuerpoMujer2.png</file>
     </qresource>
 </RCC>
