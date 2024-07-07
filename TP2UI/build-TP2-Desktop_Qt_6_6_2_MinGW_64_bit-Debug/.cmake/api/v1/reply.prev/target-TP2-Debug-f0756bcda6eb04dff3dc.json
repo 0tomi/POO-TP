@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 92,
+				"line" : 96,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 75,
+				"line" : 79,
 				"parent" : 0
 			},
 			{
@@ -388,7 +388,9 @@
 				52,
 				54,
 				57,
-				66
+				59,
+				61,
+				70
 			]
 		}
 	],
@@ -535,7 +537,9 @@
 				52,
 				54,
 				57,
-				66
+				59,
+				61,
+				70
 			]
 		},
 		{
@@ -567,12 +571,14 @@
 				53,
 				56,
 				58,
-				59,
 				60,
-				61,
 				62,
 				63,
-				64
+				64,
+				65,
+				66,
+				67,
+				68
 			]
 		},
 		{
@@ -587,15 +593,15 @@
 				39,
 				42,
 				55,
-				65
+				69
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				67,
-				68
+				71,
+				72
 			]
 		}
 	],
@@ -916,6 +922,28 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "NPC/npccomun.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Documentos/gestordocumentosui.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Documentos/gestordocumentosui.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Documentos/pasediplomatico.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Documentos/pasediplomatico.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

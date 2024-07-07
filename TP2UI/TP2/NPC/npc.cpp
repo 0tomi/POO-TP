@@ -1,20 +1,21 @@
 #include "npc.h"
 
-NPC::NPC(char Gen, char Type){
+NPC::NPC(char Gen, char Type, bool newValidez){
     this->Genero = Gen;
     this->Tipo = Type;
-}
-
-void NPC::setDocumentacion(Documentacion* docs){
-    this->documentos = docs;
+    this->Validez = newValidez;
 }
 
 char NPC::getGenero(){
     return this->Genero;
 }
 
-Documentacion* NPC::getDocumentos(){
-    return this->documentos;
+Documentacion** NPC::getDocumentos(){
+    // aca setearia los distintos documentos
+    documentos[0] = pasaporte;
+    documentos[1] = estancia;
+
+    return documentos;
 }
 
 char NPC::getTipo()
@@ -22,8 +23,24 @@ char NPC::getTipo()
     return Tipo;
 }
 
+bool NPC::getValidez() const
+{
+    return Validez;
+}
+
+void NPC::setPasaporte(Pasaporte *newPasaporte)
+{
+    pasaporte = newPasaporte;
+}
+
+void NPC::setEstancia(Estancia *newEstancia)
+{
+    estancia = newEstancia;
+}
+
 NPC::~NPC()
 {
-    delete documentos;
+    delete pasaporte;
+    delete estancia;
     // y otras cosas si hace falta
 }

@@ -1,4 +1,5 @@
-TP2_autogen/timestamp: \
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/SOYZ2DITOJ/moc_gestordocumentosui.cpp: C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/QList \
   B:/QT/6.6.2/mingw_64/include/QtCore/QObject \
   B:/QT/6.6.2/mingw_64/include/QtCore/QPropertyAnimation \
@@ -6,7 +7,6 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
-  B:/QT/6.6.2/mingw_64/include/QtCore/QString \
   B:/QT/6.6.2/mingw_64/include/QtCore/QTimer \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
@@ -134,8 +134,6 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
-  B:/QT/6.6.2/mingw_64/include/QtGui/QKeyEvent \
-  B:/QT/6.6.2/mingw_64/include/QtGui/QMouseEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QTransform \
   B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h \
@@ -171,187 +169,13 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
-  B:/QT/6.6.2/mingw_64/include/QtWidgets/QMainWindow \
-  B:/QT/6.6.2/mingw_64/include/QtWidgets/QStackedWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
-  B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
-  B:/QT/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
-  B:/QT/6.6.2/mingw_64/include/QtWidgets/qstackedwidget.h \
-  B:/QT/6.6.2/mingw_64/include/QtWidgets/qtabwidget.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qwidget.h \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/Qt6Config.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/Qt6ConfigExtras.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/Qt6Targets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/Qt6VersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtFeature.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtFeatureCommon.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicTestHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicToolHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Core/QtInstallPaths.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateVersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6GuiVersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QJpegPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QTuioTouchPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsDirect2DIntegrationPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Gui/Qt6QWindowsIntegrationPluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6QWindowsVistaStylePluginTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateAdditionalTargetInfo.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfig.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersionImpl.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateTargets.cmake \
-  B:/QT/6.6.2/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateVersionlessTargets.cmake \
-  B:/QT/Tools/CMake_64/bin/cmake.exe \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeFindDependencyMacro.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeRCInformation.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CheckCXXCompilerFlag.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CheckCXXSourceCompiles.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CheckIncludeFileCXX.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/CheckLibraryExists.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Compiler/GNU.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/FindPackageMessage.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/FindThreads.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/FindVulkan.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/GNUInstallDirs.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Internal/CheckCompilerFlag.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Internal/CheckFlagCommonConfig.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-GNU-CXX-ABI.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-GNU-CXX.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-GNU.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-Initialize.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-windres.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows.cmake \
-  B:/QT/Tools/CMake_64/share/cmake-3.27/Modules/Platform/WindowsPaths.cmake \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/syslimits.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm \
@@ -551,68 +375,6 @@ TP2_autogen/timestamp: \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/CMakeLists.txt \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.ui \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.ui \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.ui \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.ui \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel4.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel4.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel5.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel5.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Resources.qrc \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.ui \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/main.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.ui \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.cpp \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.ui \
-  .qtc/package-manager/auto-setup.cmake \
-  CMakeFiles/3.27.7/CMakeCXXCompiler.cmake \
-  CMakeFiles/3.27.7/CMakeRCCompiler.cmake \
-  CMakeFiles/3.27.7/CMakeSystem.cmake \
-  TP2_autogen/moc_predefs.h
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h

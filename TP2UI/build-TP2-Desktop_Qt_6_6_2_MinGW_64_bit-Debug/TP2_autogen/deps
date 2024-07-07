@@ -7,6 +7,7 @@ TP2_autogen/timestamp: \
 	B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
 	B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
 	B:/QT/6.6.2/mingw_64/include/QtCore/QString \
+	B:/QT/6.6.2/mingw_64/include/QtCore/QTimer \
 	B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h \
@@ -22,6 +23,7 @@ TP2_autogen/timestamp: \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qatomic.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qatomic_cxx11.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qbasicatomic.h \
+	B:/QT/6.6.2/mingw_64/include/QtCore/qbasictimer.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qbindingstorage.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qbytearray.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -114,6 +116,7 @@ TP2_autogen/timestamp: \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qtdeprecationmarkers.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qtextstream.h \
+	B:/QT/6.6.2/mingw_64/include/QtCore/qtimer.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qtmetamacros.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qtnoop.h \
 	B:/QT/6.6.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -556,6 +559,8 @@ TP2_autogen/timestamp: \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
+	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp \
+	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h \
 	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp \

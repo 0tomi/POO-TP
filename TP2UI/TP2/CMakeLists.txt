@@ -48,6 +48,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Reglas/reglasnivel5.h Reglas/reglasnivel5.cpp
         NPC/npcgenericoui.h NPC/npcgenericoui.cpp NPC/npcgenericoui.ui
         NPC/npccomun.h NPC/npccomun.cpp
+        Documentos/gestordocumentosui.h Documentos/gestordocumentosui.cpp
+
+
+
 
 
 

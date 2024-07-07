@@ -39,7 +39,7 @@ GeneradorNPC::GeneradorNPC(){
 
 
 // Esto necesita rework a futuro para distinguir entre caras de Mujeres y Hombres
-NPC* GeneradorNPC::getNPCgenerico(char tipo, unsigned int Semilla){
+NPC* GeneradorNPC::getNPCgenerico(char tipo, unsigned int Semilla, bool Validez){
     NPCcomun* NPCaCrear;
     srand(Semilla);
 
@@ -55,7 +55,7 @@ NPC* GeneradorNPC::getNPCgenerico(char tipo, unsigned int Semilla){
     else valorCentinela2 = 2;
 
     // Generamos NPC con los datos basicos
-    NPCaCrear = new NPCcomun(this->generos[valorCentinela2], tipo);
+    NPCaCrear = new NPCcomun(this->generos[valorCentinela2], tipo, Validez);
 
     // si es hombre o X
     if (valorCentinela2 > 0){

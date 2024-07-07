@@ -1,7 +1,9 @@
 #ifndef ESTANCIA_H
 #define ESTANCIA_H
 
-class Estancia
+#include "documentacion.h"
+
+class Estancia: public Documentacion
 {
 public:
     Estancia();

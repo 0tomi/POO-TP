@@ -1,6 +1,7 @@
 #ifndef DOCUMENTOSUI_H
 #define DOCUMENTOSUI_H
 
+#include "documentacion.h"
 #include <QWidget>
 #include <QPropertyAnimation>
 #include <QSequentialAnimationGroup>
@@ -17,6 +18,7 @@ class DocumentosUI : public QWidget
 
 public:
     explicit DocumentosUI(QWidget *parent = nullptr);
+    virtual void setDocumentacionInfo(Documentacion *documento) = 0;
     void Entrar(int X, int Y);
     void Sacar(int X);
     void Centrar(int X, int Y);
