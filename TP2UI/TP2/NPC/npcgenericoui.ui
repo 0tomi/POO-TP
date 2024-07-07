@@ -71,26 +71,26 @@
      <widget class="QLabel" name="Cejas">
       <property name="geometry">
        <rect>
-        <x>125</x>
-        <y>134</y>
-        <width>50</width>
+        <x>104</x>
+        <y>62</y>
+        <width>90</width>
         <height>20</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
-        <width>50</width>
+        <width>60</width>
         <height>20</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>50</width>
+        <width>90</width>
         <height>20</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/Resources/NPCs/Cejas1.png);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -99,10 +99,10 @@
      <widget class="QLabel" name="Ojos">
       <property name="geometry">
        <rect>
-        <x>125</x>
-        <y>145</y>
-        <width>50</width>
-        <height>20</height>
+        <x>106</x>
+        <y>79</y>
+        <width>90</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -113,12 +113,12 @@
       </property>
       <property name="maximumSize">
        <size>
-        <width>50</width>
-        <height>20</height>
+        <width>90</width>
+        <height>30</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/Resources/NPCs/Ojos1.png);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -127,10 +127,10 @@
      <widget class="QLabel" name="Nariz">
       <property name="geometry">
        <rect>
-        <x>124</x>
-        <y>159</y>
-        <width>50</width>
-        <height>20</height>
+        <x>110</x>
+        <y>100</y>
+        <width>71</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -141,12 +141,12 @@
       </property>
       <property name="maximumSize">
        <size>
-        <width>50</width>
-        <height>20</height>
+        <width>80</width>
+        <height>30</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/Resources/NPCs/Nariz1.png);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
@@ -155,9 +155,9 @@
      <widget class="QLabel" name="Boca">
       <property name="geometry">
        <rect>
-        <x>125</x>
-        <y>170</y>
-        <width>50</width>
+        <x>104</x>
+        <y>128</y>
+        <width>90</width>
         <height>20</height>
        </rect>
       </property>
@@ -169,12 +169,12 @@
       </property>
       <property name="maximumSize">
        <size>
-        <width>50</width>
+        <width>90</width>
         <height>20</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/Resources/NPCs/Boca1.png);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>

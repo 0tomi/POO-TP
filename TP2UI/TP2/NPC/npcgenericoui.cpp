@@ -8,7 +8,6 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
 {
     ui->setupUi(this);
     setFixedSize(300,300);
-    ui->Cuerpo->setPixmap(QPixmap(":/Resources/NPCs/Cuerpo1.png"));
 }
 
 NPCGenericoUI::~NPCGenericoUI()
@@ -16,8 +15,14 @@ NPCGenericoUI::~NPCGenericoUI()
     delete ui;
 }
 
-void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
+void NPCGenericoUI::setNPC(NPCcomun *newNPCenEscena)
 {
     NPCenEscena = newNPCenEscena;
+
+    ui->Cuerpo->setPixmap(QPixmap(NPCenEscena->getCaraURL()));
+    ui->Boca->setPixmap(QPixmap(NPCenEscena->getBocaURL()));
+    ui->Ojos->setPixmap(QPixmap(NPCenEscena->getOjosURL()));
+    ui->Cejas->setPixmap(QPixmap(NPCenEscena->getCejasURL()));
+    ui->Nariz->setPixmap(QPixmap(NPCenEscena->getNarizURL()));
 }
 

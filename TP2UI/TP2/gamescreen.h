@@ -7,6 +7,7 @@
 
 #include "NPC/npcgenericoui.h"
 #include "Documentos/uaderpass.h"
+#include "juego.h"
 
 namespace Ui {
 class GameScreen;
@@ -25,6 +26,8 @@ public slots:
 
 private:
     Ui::GameScreen *ui;
+    Juego* juego;
+    ColaNPC* Cola;
     QTimer *temporizadorBotones;
 
     void RealizarConecciones();

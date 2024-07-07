@@ -14,7 +14,7 @@ struct nodoNPC{
 class ColaNPC{
 public:
     ColaNPC(AtributosComunes* atributos, Reglas* rules);
-    void addNPC(char Tipo);
+    void addNPC(char Tipo, unsigned int Semilla);
     void addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios);
 
     // A futuro para cuando tengamos NPCs especiales
@@ -25,7 +25,8 @@ public:
     void actualizarReglas(Reglas* rules);
 
     NPC* getNPC();
-    int getSize();
+
+    int getSize() const;
 
 private:
     nodoNPC* frente;

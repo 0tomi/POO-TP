@@ -14,8 +14,16 @@ Juego::Juego(){
     rules[2] = new ReglasNivel3(rules[1]);
     rules[3] = new ReglasNivel4(rules[2]);
     rules[4] = new ReglasNivel5(rules[3]);
+
+    Cola = new ColaNPC(atributos, rules[0]);
+    Cola->addNPC(2,1,1,0);
 }
 
 Reglas* Juego::getReglas(int numero){
     return (numero < 5)? rules[numero]: NULL;
+}
+
+ColaNPC *Juego::getCola()
+{
+    return this->Cola;
 }

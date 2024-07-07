@@ -9,6 +9,9 @@ GameScreen::GameScreen(QWidget *parent)
 {
     ui->setupUi(this);
 
+    juego = new Juego();
+    Cola = juego->getCola();
+
     // Setear temporizador para bloquear botones
     temporizadorBotones = new QTimer(this);
     temporizadorBotones->setSingleShot(true);
@@ -67,6 +70,10 @@ void GameScreen::SelloDocumento(bool Boton)
 {
     SacarNPC();
     BloquearBotones(true);
+    if (!(Cola->getSize())){
+        disconnect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
+        qDebug() << "Termino el juego";
+    }
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
@@ -94,6 +101,7 @@ void GameScreen::DesbloquearBotones()
 
 void GameScreen::SpawnearNPC()
 {
+    // Esto quedara asi hasta implementar los NPCs especiales
     npcUI = new NPCGenericoUI(this);
 
     QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
@@ -108,11 +116,20 @@ void GameScreen::SpawnearNPC()
 
 void GameScreen::EntrarNPC()
 {
-    int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
-    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
+    if (Cola->getSize()){
+        NPCcomun* datos = dynamic_cast<NPCcomun*>(Cola->getNPC());
+        NPCGenericoUI* SetearNPC = dynamic_cast<NPCGenericoUI*>(npcUI);
 
-    npcUI->Entrar(centerX, centerY);
-    EntrarDOC();
+        qDebug() << datos->getGenero();
+        SetearNPC->setNPC(datos);
+
+        int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
+        int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
+
+        npcUI->Entrar(centerX, centerY);
+
+        EntrarDOC();
+    }
 }
 
 void GameScreen::SacarNPC()

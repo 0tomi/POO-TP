@@ -1,0 +1,5 @@
+:/Resources/NPCs/Ojos1.png
+:/Resources/NPCs/Ojos2.png
+:/Resources/NPCs/Ojos3.png
+:/Resources/NPCs/Ojos4.png
+:/Resources/NPCs/Ojos5.png
