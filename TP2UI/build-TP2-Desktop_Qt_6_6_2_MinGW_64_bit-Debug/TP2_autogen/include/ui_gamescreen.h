@@ -44,7 +44,7 @@ public:
     {
         if (GameScreen->objectName().isEmpty())
             GameScreen->setObjectName("GameScreen");
-        GameScreen->resize(1920, 1047);
+        GameScreen->resize(800, 600);
         GameScreen->setMinimumSize(QSize(800, 600));
         GameScreen->setMaximumSize(QSize(1920, 1080));
         horizontalLayout = new QHBoxLayout(GameScreen);
@@ -66,7 +66,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Mesa->sizePolicy().hasHeightForWidth());
         Mesa->setSizePolicy(sizePolicy);
-        Mesa->setMinimumSize(QSize(250, 200));
+        Mesa->setMinimumSize(QSize(300, 250));
         Mesa->setMaximumSize(QSize(600, 600));
         Mesa->setStyleSheet(QString::fromUtf8("#Mesa{\n"
 "	border-image: url(:/Resources/mesa2.png);\n"
@@ -91,7 +91,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(FondoNPC->sizePolicy().hasHeightForWidth());
         FondoNPC->setSizePolicy(sizePolicy1);
-        FondoNPC->setMinimumSize(QSize(200, 250));
+        FondoNPC->setMinimumSize(QSize(300, 250));
         FondoNPC->setMaximumSize(QSize(600, 600));
         FondoNPC->setStyleSheet(QString::fromUtf8("#FondoNPC{\n"
 "	border-image: url(:/Resources/fondoAlturas.png);\n"

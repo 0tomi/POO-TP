@@ -9,9 +9,9 @@ ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
     this->GenerarNPC = new GeneradorNPC;
 }
 
-void ColaNPC::addNPC(char Tipo, bool Validez ,unsigned int Semilla){
+void ColaNPC::addNPC(int Tipo, bool Validez ,unsigned int Semilla){
     // Genero el NPC nuevo
-    qDebug() << Semilla;
+    qDebug() << Tipo;
     NPC* newNPC = this->GenerarNPC->getNPCgenerico(Tipo, Semilla, Validez);
     // Genero su documentacion
     GenerarDocumentacion->getDocumentos(newNPC, Validez);

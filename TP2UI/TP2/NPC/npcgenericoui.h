@@ -17,7 +17,7 @@ class NPCGenericoUI : public NPCUI
 public:
     explicit NPCGenericoUI(QWidget *parent = nullptr);
     ~NPCGenericoUI();
-    void setNPC(NPCcomun *newNPCenEscena);
+    void setNPC(NPC* newNPCenEscena);
 
 private:
     Ui::NPCGenericoUI *ui;

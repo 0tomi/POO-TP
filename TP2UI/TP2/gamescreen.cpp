@@ -9,6 +9,7 @@ GameScreen::GameScreen(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Seteamos el juego, y obtenemos la cola de NPCs.
     juego = new Juego();
     Cola = juego->getCola();
 
@@ -18,7 +19,7 @@ GameScreen::GameScreen(QWidget *parent)
 
     // Agregamos el NPC y Documentos a la escena
     SpawnearNPC();
-    SpawnearDocumento();
+    documentos.setUpDocumentos(1, ui->Escritorio);
 
     BloquearBotones(true);
 }
@@ -48,11 +49,14 @@ void GameScreen::RealizarConecciones()
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
 
-    // Desbloquear botones cuando el documento se arroja sobre la mesa
-    connect(doc, &DocumentosUI::animacionEntrarTerminada, this, &GameScreen::DesbloquearBotones);
-
     // Desbloquear botones despues de pasado un tiempo
     connect(temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
+}
+
+void GameScreen::FinalDePartida()
+{
+    // a desarrollar
+    disconnect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::FinalDePartida);
 }
 
 void GameScreen::Acepto()
@@ -68,9 +72,14 @@ void GameScreen::Rechazo()
 void GameScreen::SelloDocumento(bool Boton)
 {
     SacarNPC();
+    temporizadorBotones->start(1000);
     BloquearBotones(true);
     if (!(Cola->getSize())){
+        // Desconectamos las cosas que le dan progreso al juego
         disconnect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
+        connect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::FinalDePartida);
+        disconnect(temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
+
         qDebug() << "Termino el juego";
     }
 }
@@ -95,7 +104,6 @@ void GameScreen::DesbloquearBotones()
 {
     BloquearBotones(false);
     CentrarNPC();
-    CentrarDocumentos();
 }
 
 void GameScreen::SpawnearNPC()
@@ -115,12 +123,14 @@ void GameScreen::SpawnearNPC()
 
 void GameScreen::EntrarNPC()
 {
+    delete NPCenEscena;
     if (Cola->getSize()){
-        NPCcomun* datos = dynamic_cast<NPCcomun*>(Cola->getNPC());
-        NPCGenericoUI* SetearNPC = dynamic_cast<NPCGenericoUI*>(npcUI);
+        NPCenEscena = Cola->getNPC();
 
-        qDebug() << datos->getGenero();
-        SetearNPC->setNPC(datos);
+        qDebug() << NPCenEscena->getGenero();
+        qDebug() << NPCenEscena->getTipo();
+
+        npcUI->setNPC(NPCenEscena);
 
         int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
         int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
@@ -164,37 +174,20 @@ void GameScreen::resizeEvent(QResizeEvent *event)
     CentrarDocumentos();
 }
 
-void GameScreen::SpawnearDocumento()
-{
-    doc = new UADERpass(ui->Escritorio);
-    doc->setFixedSize(300,300);
-
-    doc->hide();
-
-    doc->move(0,-(doc->width()));
-}
-
 void GameScreen::EntrarDOC()
 {
-    int centerX = ((ui->Escritorio->width()) - (doc->width())) /2;
-    int centerY = (((ui->Escritorio->height())) - (doc->height())) / 2;
-
-    doc->Entrar(centerX,centerY);
+    documentos.setDocumento(NPCenEscena->getDocumentos(), NPCenEscena->getTipo());
+    documentos.Entrar();
 }
 
 void GameScreen::SacarDOC()
 {
-    int centerX = ((ui->Escritorio->width()) - (doc->width())) / 2;
-    doc->Sacar(centerX);
+    documentos.Salir();
 }
 
 void GameScreen::CentrarDocumentos()
 {
-    int centerX = ((ui->Escritorio->width()) - (doc->width())) /2;
-    int centerY = (((ui->Escritorio->height())) - (doc->height())) / 2;
-
-    // Esto dsps iria con un for por cada documento
-    doc->Centrar(centerX, centerY);
+    documentos.Centrar();
 }
 
 

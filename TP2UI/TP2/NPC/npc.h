@@ -9,7 +9,7 @@ using namespace std;
 class NPC
 {
 public:
-    explicit NPC(char Genero, char Tipo, bool Validez);
+    explicit NPC(char Genero, int Tipo, bool Validez);
     ~NPC();
 
     char getGenero();

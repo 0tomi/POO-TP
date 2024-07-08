@@ -1,13 +1,18 @@
 #include "gestordocumentosui.h"
+#include <QDebug>
 
 GestorDocumentosUI::GestorDocumentosUI()
 {
     Temporizador = new QTimer();
     Temporizador->setSingleShot(true);
     connect(Temporizador, &QTimer::timeout, this, &GestorDocumentosUI::Termino);
+
+    // Seteamos los documentos en nulo
+    for (int i = 0; i < 10; i++)
+        documentos[i] = nullptr;
 }
 
-void GestorDocumentosUI::setUpDocumentos(char Level, QWidget *objeto)
+void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
 {
     this->Escritorio = objeto;
     if (Level == 1)
@@ -30,15 +35,15 @@ void GestorDocumentosUI::deleteDocumentos()
         delete documentos[i];
 }
 
-void GestorDocumentosUI::setDocumento(Documentacion **info, char Tipo)
+void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
 {
-    documentos = info;
+    *documentos = *info;
     if (Tipo == 2)
         tienePase = true;
     else tienePase = false;
 
     for (int i = 0; i < topePerLevel; i++)
-        if (!(documentos[i] == nullptr))
+        if (documentos[i] != nullptr)
             documentosUI[i]->setDocumentacionInfo(documentos[i]);
     // en desarrollo
 }
@@ -66,7 +71,7 @@ void GestorDocumentosUI::EntrarDocumento(DocumentosUI *doc)
 {
     int centerX = ((Escritorio->width()) - (doc->width())) /2;
     int centerY = (((Escritorio->height())) - (doc->height())) / 2;
-    Temporizador->start(1000);
+    Temporizador->start(900);
     doc->Entrar(centerX,centerY);
 }
 
@@ -83,7 +88,8 @@ GestorDocumentosUI::~GestorDocumentosUI()
 {
     for (int i = 0; i < 10; i++)
         delete documentosUI[i];
-    delete[] documentos;
+    for (int i = 0; i < 10; i++)
+        delete documentos[i];
 }
 
 void GestorDocumentosUI::SalirDocumento(DocumentosUI *doc)
@@ -102,6 +108,7 @@ void GestorDocumentosUI::CentrarDocumento(DocumentosUI *doc)
 
 void GestorDocumentosUI::Termino()
 {
+    qDebug() << "Termino el cronometro";
     emit TerminoEntrada();
 }
 

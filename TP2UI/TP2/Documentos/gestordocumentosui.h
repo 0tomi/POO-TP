@@ -12,10 +12,10 @@ class GestorDocumentosUI: public QWidget
 public:
     GestorDocumentosUI();
 
-    void setUpDocumentos(char Level, QWidget *objeto);
+    void setUpDocumentos(int Level, QWidget *objeto);
     void deleteDocumentos();
 
-    void setDocumento(Documentacion **info, char Tipo);
+    void setDocumento(Documentacion **info, int Tipo);
 
     void Centrar();
     void Entrar();
@@ -30,7 +30,7 @@ private:
     QTimer *Temporizador; // Hasta no tener los pasaportes y DNIs, usare esto.
     QWidget *Escritorio;
     DocumentosUI* documentosUI[10];
-    Documentacion** documentos;
+    Documentacion* documentos[10];
     UADERpass* pase;
 
     bool tienePase;

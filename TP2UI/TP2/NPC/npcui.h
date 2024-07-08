@@ -7,6 +7,7 @@
 #include <QGraphicsOpacityEffect>
 #include <QResizeEvent>
 #include <QPropertyAnimation>
+#include "../NPC/npc.h"
 
 namespace Ui {
 class NPCUI;
@@ -18,6 +19,7 @@ class NPCUI : public QWidget
 
 public:
     explicit NPCUI(QWidget *parent = nullptr);
+    virtual void setNPC(NPC* newNPCenEscena) = 0;
     void Entrar(int X, int Y);
     void Sacar(int X, int Y);
     virtual ~NPCUI();

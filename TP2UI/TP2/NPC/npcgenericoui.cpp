@@ -15,9 +15,9 @@ NPCGenericoUI::~NPCGenericoUI()
     delete ui;
 }
 
-void NPCGenericoUI::setNPC(NPCcomun *newNPCenEscena)
+void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
 {
-    NPCenEscena = newNPCenEscena;
+    NPCcomun *NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
 
     ui->Cuerpo->setPixmap(QPixmap(NPCenEscena->getCaraURL()));
     ui->Boca->setPixmap(QPixmap(NPCenEscena->getBocaURL()));
