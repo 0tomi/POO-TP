@@ -32,8 +32,8 @@ private:
     Ui::GameScreen *ui;
     Juego* juego;
     ColaNPC* Cola;
-    QTimer *tiempoPartida;
-    QTimer *temporizadorBotones;
+    QTimer tiempoPartida;
+    QTimer temporizadorBotones;
     GestorDocumentosUI documentos;
 
     void RealizarConecciones();

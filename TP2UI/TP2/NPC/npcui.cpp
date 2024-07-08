@@ -14,8 +14,8 @@ NPCUI::NPCUI(QWidget *parent)
 void NPCUI::Entrar(int X, int Y)
 {
     PrepararAnimacionEntrada(X,Y);
-    this->show();
     animacionEntrada->start();
+    this->show();
 }
 
 void NPCUI::Sacar(int X, int Y)
@@ -34,7 +34,7 @@ void NPCUI::PrepararAnimacionEntrada(int X, int Y)
 
 void NPCUI::PrepararAnimacionSalida(int X, int Y)
 {
-    animacionSalida->setDuration(1000);
+    animacionSalida->setDuration(1500);
     animacionSalida->setStartValue(pos());
     animacionSalida->setEndValue(QPoint(X,Y)); // SUMAR LA RESOLUCION DEL WIDGET + EL NPC
     animacionEntrada->setEasingCurve(QEasingCurve::InQuad);
