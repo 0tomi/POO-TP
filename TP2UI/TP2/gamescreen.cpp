@@ -13,11 +13,12 @@ GameScreen::GameScreen(QWidget *parent)
     Cola = juego->getCola();
 
     // Temporizador de partida.
-    tiempoPartida = new QTimer(this);
+    //tiempoPartida = new QTimer(this);
 
     // Setear temporizador para bloquear botones
-    temporizadorBotones = new QTimer(this);
-    temporizadorBotones->setSingleShot(true);
+    //temporizadorBotones = new QTimer(this);
+   // temporizadorBotones->setSingleShot(true);
+    temporizadorBotones.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
     SpawnearNPC();
@@ -30,6 +31,7 @@ GameScreen::GameScreen(QWidget *parent)
 GameScreen::~GameScreen()
 {
     delete ui;
+    delete juego;
 }
 
 void GameScreen::RealizarConeccionesPrincipales()
@@ -46,9 +48,9 @@ void GameScreen::EmpezarJuego()
 {
     RealizarConecciones();
     // En caso de cortar la animacion de entrada antes de terminar, hay un temporizador que habilita los botones posados 0.8 segundos
-    temporizadorBotones->start(800);
+    temporizadorBotones.start(800);
 
-    tiempoPartida->start(8*60*1000); // 8 Minutos
+    tiempoPartida.start(8*60*1000); // 8 Minutos
 
     EntrarNPC();
 }
@@ -62,10 +64,10 @@ void GameScreen::RealizarConecciones()
     connect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
 
     // Desbloquear botones despues de pasado un tiempo
-    connect(temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
+    connect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
     // Conectamos el temporizador de partida para terminar la partida.
-    connect(tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
+    connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
 }
 
 void GameScreen::FinalDePartida()
@@ -75,12 +77,12 @@ void GameScreen::FinalDePartida()
     SacarNPC();
 
     // Conectamos el temporizador de partida para terminar la partida.
-    disconnect(tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
-    tiempoPartida->stop();
+    disconnect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
+    tiempoPartida.stop();
 
     // Desconectamos las cosas que le dan progreso al juego
     disconnect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
-    disconnect(temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
+    disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
     qDebug() << "Termino el juego";
 }
@@ -98,7 +100,7 @@ void GameScreen::Rechazo()
 void GameScreen::SelloDocumento(bool Boton)
 {
     SacarNPC();
-    temporizadorBotones->start(1000);
+    temporizadorBotones.start(2500);
     BloquearBotones(true);
     qDebug() << "Cola: " << Cola->getSize();
     if (!Cola->getSize())
@@ -116,7 +118,7 @@ void GameScreen::FuncionBotonCentral()
 {
     // Bloqueamos los botones para que no bugeen el juego
     BloquearBotones(true);
-    temporizadorBotones->start(700);
+    temporizadorBotones.start(700);
 
     CentrarDocumentos();
 }

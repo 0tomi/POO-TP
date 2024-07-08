@@ -11,10 +11,8 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
 
-    parpadeo = new QTimer;
-
-    ojosCerrados = new QPixmap(":/Resources/NPCs/OjosCerrados.png");
-    bocaCerrada = new QPixmap(":Resources/NPCs/BocaTriste.png");
+    ojosCerrados.load(":/Resources/NPCs/OjosCerrados.png");
+    bocaCerrada.load(":Resources/NPCs/BocaTriste.png");
 }
 
 NPCGenericoUI::~NPCGenericoUI()
@@ -24,46 +22,57 @@ NPCGenericoUI::~NPCGenericoUI()
 
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
 {
-    setearParpadear(false);
+    setearParpadear(true);
     qDebug() << "Nuevo NPC";
 
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
 
-    ojos = new QPixmap(NPCenEscena->getOjosURL());
+    // Obtenemos las partes del cuerpo del npc
+    ojos.load(NPCenEscena->getOjosURL());
+    cuerpo.load(NPCenEscena->getCaraURL());
+    boca.load(NPCenEscena->getBocaURL());
+    cejas.load(NPCenEscena->getCejasURL());
+    nariz.load(NPCenEscena->getNarizURL());
 
-    ui->Cuerpo->setPixmap(QPixmap(NPCenEscena->getCaraURL()));
-    ui->Boca->setPixmap(QPixmap(NPCenEscena->getBocaURL()));
-    ui->Ojos->setPixmap(*ojos);
-    ui->Cejas->setPixmap(QPixmap(NPCenEscena->getCejasURL()));
-    ui->Nariz->setPixmap(QPixmap(NPCenEscena->getNarizURL()));
+    // Colocamos la textura de cada parte donde debe.
+    ui->Cuerpo->setPixmap(cuerpo);
+    ui->Boca->setPixmap(boca);
+    ui->Ojos->setPixmap(ojos);
+    ui->Cejas->setPixmap(cejas);
+    ui->Nariz->setPixmap(nariz);
 }
 
 void NPCGenericoUI::Rechazado()
 {
-    disconnect(parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
-    parpadeo->stop();
-    ui->Boca->setPixmap(*bocaCerrada);
-    ui->Ojos->setPixmap(*ojosCerrados);
+    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
+    parpadeo.stop();
+    ui->Boca->setPixmap(bocaCerrada);
+    ui->Ojos->setPixmap(ojosCerrados);
 }
 
 void NPCGenericoUI::Parpadear()
 {
     if (parpadeando){
-        ui->Ojos->setPixmap(*ojos);
-        parpadeo->start(tiempoParpadeo->bounded(1000,2000));
+        ui->Ojos->setPixmap(ojos);
+        parpadeo.start(tiempoParpadeo->bounded(1000,2000));
         parpadeando = false;
     } else {
-        ui->Ojos->setPixmap(*ojosCerrados);
-        parpadeo->start(tiempoParpadeo->bounded(200,400));
+        ui->Ojos->setPixmap(ojosCerrados);
+        parpadeo.start(tiempoParpadeo->bounded(200,400));
         parpadeando = true;
     }
 }
 
 void NPCGenericoUI::setearParpadear(bool estado)
 {
-    parpadeo->start(1000);
+    // Desconectamos el parpadeo anterior para setear uno nuevo
+    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
+    parpadeo.stop();
+
+    // Armamos denuevo parpadeo (Todo esto es para evitar bugs)
+    parpadeo.start(1000);
     parpadeando = estado;
-    connect(parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
+    connect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
 }
 
 

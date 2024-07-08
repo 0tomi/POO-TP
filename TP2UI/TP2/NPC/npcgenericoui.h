@@ -22,18 +22,26 @@ public:
     void setNPC(NPC* newNPCenEscena);
     void Rechazado();
 
+protected:
+
+
 private:
     Ui::NPCGenericoUI *ui;
     NPCcomun *NPCenEscena;
 
+    // Facciones NPC
+    QPixmap ojos, cuerpo, boca, nariz, cejas;
+
+    // Parpadeo
     QRandomGenerator* tiempoParpadeo;
+    QTimer parpadeo;
+
     void Parpadear();
     void setearParpadear(bool estado);
     bool parpadeando;
-    QTimer* parpadeo;
-    QPixmap* ojos;
-    QPixmap* ojosCerrados;
-    QPixmap* bocaCerrada;
+
+    QPixmap ojosCerrados;
+    QPixmap bocaCerrada;
 };
 
 #endif // NPCGENERICOUI_H
