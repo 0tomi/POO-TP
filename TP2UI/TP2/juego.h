@@ -9,17 +9,31 @@
 class Juego{
 public:
     Juego();
-    void set();
+    void setNivel(int nivel);
+    void NextLevel();
 
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
     ColaNPC *getCola();
 
 private:
+    int NivelActual;
+
+    // Estadisticas del player
     int SocialCreditsEarnedInLevel;
     int TotalSocialCredits;
+    int Multas;
+    int CantidadNPCsRechazados;
+    int CantidadNPCsAceptados;
 
     ColaNPC* Cola;
+
+    // Niveles:
+    void setUpNivel0();
+    void setUpNivel1();
+    void setUpNivel2();
+    void setUpNivel3();
+    void setUpNivel4();
 
     // Atributos
     AtributosComunes* atributos;

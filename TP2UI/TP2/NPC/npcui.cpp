@@ -8,6 +8,7 @@ NPCUI::NPCUI(QWidget *parent)
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionSalida = new QPropertyAnimation(this, "pos");
     connect(animacionSalida, &QPropertyAnimation::finished, this, &NPCUI::TerminoAnimacion);
+    connect(animacionEntrada, &QPropertyAnimation::finished, this, &NPCUI::animacionEntrarTerminada);
 }
 
 void NPCUI::Entrar(int X, int Y)

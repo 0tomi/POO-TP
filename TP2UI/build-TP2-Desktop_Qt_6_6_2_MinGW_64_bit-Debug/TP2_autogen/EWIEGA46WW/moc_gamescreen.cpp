@@ -39,14 +39,14 @@ namespace {
 struct qt_meta_stringdata_CLASSGameScreenENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSGameScreenENDCLASS = QtMocHelpers::stringData(
     "GameScreen",
-    "EmpezarJuego",
+    "FinalDePartida",
     ""
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSGameScreenENDCLASS_t {
     uint offsetsAndSizes[6];
     char stringdata0[11];
-    char stringdata1[13];
+    char stringdata1[15];
     char stringdata2[1];
 };
 #define QT_MOC_LITERAL(ofs, len) \
@@ -54,11 +54,11 @@ struct qt_meta_stringdata_CLASSGameScreenENDCLASS_t {
 Q_CONSTINIT static const qt_meta_stringdata_CLASSGameScreenENDCLASS_t qt_meta_stringdata_CLASSGameScreenENDCLASS = {
     {
         QT_MOC_LITERAL(0, 10),  // "GameScreen"
-        QT_MOC_LITERAL(11, 12),  // "EmpezarJuego"
-        QT_MOC_LITERAL(24, 0)   // ""
+        QT_MOC_LITERAL(11, 14),  // "FinalDePartida"
+        QT_MOC_LITERAL(26, 0)   // ""
     },
     "GameScreen",
-    "EmpezarJuego",
+    "FinalDePartida",
     ""
 };
 #undef QT_MOC_LITERAL
@@ -79,7 +79,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGameScreenENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x0a,    1 /* Public */,
+       1,    0,   20,    2, 0x08,    1 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -96,7 +96,7 @@ Q_CONSTINIT const QMetaObject GameScreen::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSGameScreenENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<GameScreen, std::true_type>,
-        // method 'EmpezarJuego'
+        // method 'FinalDePartida'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -108,7 +108,7 @@ void GameScreen::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<GameScreen *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->EmpezarJuego(); break;
+        case 0: _t->FinalDePartida(); break;
         default: ;
         }
     }

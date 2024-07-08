@@ -45,6 +45,11 @@ void ColaNPC::vaciarCola()
 
 }
 
+void ColaNPC::actualizarReglas(Reglas *newRules, int nivel)
+{
+    GenerarDocumentacion->actualizarReglas(newRules, nivel);
+}
+
 void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
     int totalNPCs = CantAldeano + CantRefugiados + CantDiplos + CantRevolucionarios;
@@ -55,11 +60,11 @@ void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int Ca
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     int sorteo = Random->bounded(4);
     int sorteoValidez = Random->bounded(20);
-    bool Validez;
+    bool Validez = true;
 
     while (totalNPCs){
         if (CantidadInvalidos)
-            if (sorteoValidez > 15){
+            if (sorteoValidez > 13){
                 Validez = false;
                 CantidadInvalidos--;
             }
@@ -71,6 +76,7 @@ void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int Ca
             totalNPCs--;
         }
         sorteoValidez = Random->bounded(20);
+        Validez = true;
     }
 }
 

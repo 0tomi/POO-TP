@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QResizeEvent>
 #include <QKeyEvent>
+#include <QTimer>
 
 #include "NPC/npcgenericoui.h"
 #include "Documentos/uaderpass.h"
@@ -21,19 +22,22 @@ class GameScreen : public QWidget
 public:
     explicit GameScreen(QWidget *parent = nullptr);
     ~GameScreen();
-
-public slots:
     void EmpezarJuego();
+    void PrepararJuego(int Nivel);
+
+private slots:
+    void FinalDePartida();
 
 private:
     Ui::GameScreen *ui;
     Juego* juego;
     ColaNPC* Cola;
+    QTimer *tiempoPartida;
     QTimer *temporizadorBotones;
     GestorDocumentosUI documentos;
 
     void RealizarConecciones();
-    void FinalDePartida();
+    void RealizarConeccionesPrincipales();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

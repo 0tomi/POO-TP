@@ -28,10 +28,12 @@ private:
 
     QRandomGenerator* tiempoParpadeo;
     void Parpadear();
-    void setearParpadear();
+    void setearParpadear(bool estado);
     bool parpadeando;
     QTimer* parpadeo;
     QPixmap* ojos;
+    QPixmap* ojosCerrados;
+    QPixmap* bocaCerrada;
 };
 
 #endif // NPCGENERICOUI_H

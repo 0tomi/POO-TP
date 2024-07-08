@@ -26,9 +26,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QWidget *Contenedor;
     QGridLayout *gridLayout;
-    QWidget *Mesa;
-    QWidget *Nose;
-    QWidget *FondoNPC;
     QWidget *Escritorio;
     QVBoxLayout *verticalLayout;
     QWidget *ContenedorBotones;
@@ -39,12 +36,15 @@ public:
     QPushButton *rechazarBoton;
     QWidget *Separador2;
     QWidget *Separador1;
+    QWidget *FondoNPC;
+    QWidget *Nose;
+    QWidget *Mesa;
 
     void setupUi(QWidget *GameScreen)
     {
         if (GameScreen->objectName().isEmpty())
             GameScreen->setObjectName("GameScreen");
-        GameScreen->resize(800, 600);
+        GameScreen->resize(1280, 720);
         GameScreen->setMinimumSize(QSize(800, 600));
         GameScreen->setMaximumSize(QSize(1920, 1080));
         horizontalLayout = new QHBoxLayout(GameScreen);
@@ -59,53 +59,13 @@ public:
         gridLayout->setSpacing(0);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        Mesa = new QWidget(Contenedor);
-        Mesa->setObjectName("Mesa");
-        QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::MinimumExpanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(Mesa->sizePolicy().hasHeightForWidth());
-        Mesa->setSizePolicy(sizePolicy);
-        Mesa->setMinimumSize(QSize(300, 250));
-        Mesa->setMaximumSize(QSize(600, 600));
-        Mesa->setStyleSheet(QString::fromUtf8("#Mesa{\n"
-"	border-image: url(:/Resources/mesa2.png);\n"
-"}"));
-
-        gridLayout->addWidget(Mesa, 2, 0, 1, 1);
-
-        Nose = new QWidget(Contenedor);
-        Nose->setObjectName("Nose");
-        Nose->setMinimumSize(QSize(400, 100));
-        Nose->setMaximumSize(QSize(1350, 400));
-        Nose->setStyleSheet(QString::fromUtf8("#Nose{\n"
-"	border-image: url(:/Resources/fondo.png);\n"
-"}"));
-
-        gridLayout->addWidget(Nose, 0, 1, 1, 1);
-
-        FondoNPC = new QWidget(Contenedor);
-        FondoNPC->setObjectName("FondoNPC");
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(FondoNPC->sizePolicy().hasHeightForWidth());
-        FondoNPC->setSizePolicy(sizePolicy1);
-        FondoNPC->setMinimumSize(QSize(300, 250));
-        FondoNPC->setMaximumSize(QSize(600, 600));
-        FondoNPC->setStyleSheet(QString::fromUtf8("#FondoNPC{\n"
-"	border-image: url(:/Resources/fondoAlturas.png);\n"
-"}"));
-
-        gridLayout->addWidget(FondoNPC, 0, 0, 2, 1);
-
         Escritorio = new QWidget(Contenedor);
         Escritorio->setObjectName("Escritorio");
-        QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(Escritorio->sizePolicy().hasHeightForWidth());
-        Escritorio->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
+        sizePolicy.setHorizontalStretch(7);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Escritorio->sizePolicy().hasHeightForWidth());
+        Escritorio->setSizePolicy(sizePolicy);
         Escritorio->setMinimumSize(QSize(400, 500));
         Escritorio->setMaximumSize(QSize(1350, 1080));
         Escritorio->setStyleSheet(QString::fromUtf8("#Escritorio{\n"
@@ -136,11 +96,11 @@ public:
 
         aceptarBoton = new QPushButton(ContenedorBotones);
         aceptarBoton->setObjectName("aceptarBoton");
-        QSizePolicy sizePolicy3(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(aceptarBoton->sizePolicy().hasHeightForWidth());
-        aceptarBoton->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(aceptarBoton->sizePolicy().hasHeightForWidth());
+        aceptarBoton->setSizePolicy(sizePolicy1);
         aceptarBoton->setMinimumSize(QSize(50, 50));
         aceptarBoton->setMaximumSize(QSize(200, 75));
         aceptarBoton->setCheckable(true);
@@ -151,8 +111,8 @@ public:
 
         rechazarBoton = new QPushButton(ContenedorBotones);
         rechazarBoton->setObjectName("rechazarBoton");
-        sizePolicy3.setHeightForWidth(rechazarBoton->sizePolicy().hasHeightForWidth());
-        rechazarBoton->setSizePolicy(sizePolicy3);
+        sizePolicy1.setHeightForWidth(rechazarBoton->sizePolicy().hasHeightForWidth());
+        rechazarBoton->setSizePolicy(sizePolicy1);
         rechazarBoton->setMinimumSize(QSize(50, 50));
         rechazarBoton->setMaximumSize(QSize(200, 75));
         rechazarBoton->setCheckable(true);
@@ -168,7 +128,7 @@ public:
         Separador2 = new QWidget(Escritorio);
         Separador2->setObjectName("Separador2");
         Separador2->setMinimumSize(QSize(500, 100));
-        Separador2->setMaximumSize(QSize(1920, 200));
+        Separador2->setMaximumSize(QSize(500, 200));
 
         verticalLayout->addWidget(Separador2);
 
@@ -181,6 +141,47 @@ public:
 
 
         gridLayout->addWidget(Escritorio, 1, 1, 2, 1);
+
+        FondoNPC = new QWidget(Contenedor);
+        FondoNPC->setObjectName("FondoNPC");
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        sizePolicy2.setHorizontalStretch(3);
+        sizePolicy2.setVerticalStretch(1);
+        sizePolicy2.setHeightForWidth(FondoNPC->sizePolicy().hasHeightForWidth());
+        FondoNPC->setSizePolicy(sizePolicy2);
+        FondoNPC->setMinimumSize(QSize(300, 300));
+        FondoNPC->setMaximumSize(QSize(600, 600));
+        FondoNPC->setSizeIncrement(QSize(50, 0));
+        FondoNPC->setStyleSheet(QString::fromUtf8("#FondoNPC{\n"
+"	border-image: url(:/Resources/fondoAlturas.png);\n"
+"}"));
+
+        gridLayout->addWidget(FondoNPC, 0, 0, 2, 1);
+
+        Nose = new QWidget(Contenedor);
+        Nose->setObjectName("Nose");
+        Nose->setMinimumSize(QSize(400, 100));
+        Nose->setMaximumSize(QSize(1350, 400));
+        Nose->setStyleSheet(QString::fromUtf8("#Nose{\n"
+"	border-image: url(:/Resources/fondo.png);\n"
+"}"));
+
+        gridLayout->addWidget(Nose, 0, 1, 1, 1);
+
+        Mesa = new QWidget(Contenedor);
+        Mesa->setObjectName("Mesa");
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::MinimumExpanding);
+        sizePolicy3.setHorizontalStretch(1);
+        sizePolicy3.setVerticalStretch(2);
+        sizePolicy3.setHeightForWidth(Mesa->sizePolicy().hasHeightForWidth());
+        Mesa->setSizePolicy(sizePolicy3);
+        Mesa->setMinimumSize(QSize(300, 300));
+        Mesa->setMaximumSize(QSize(600, 600));
+        Mesa->setStyleSheet(QString::fromUtf8("#Mesa{\n"
+"	border-image: url(:/Resources/mesa2.png);\n"
+"}"));
+
+        gridLayout->addWidget(Mesa, 2, 0, 1, 1);
 
 
         horizontalLayout->addWidget(Contenedor);
