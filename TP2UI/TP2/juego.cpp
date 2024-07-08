@@ -1,5 +1,6 @@
 #include "lectorArchivos.h"
 #include "juego.h"
+#include <QDebug>
 
 Juego::Juego(){
     this->atributos = new AtributosComunes();
@@ -8,6 +9,11 @@ Juego::Juego(){
     LectorArchivos LA("../TP2/ArchivosTexto/paises.txt");
     this->atributos->setAtributos(LA.getArray(), LA.getTopeArray());
 
+    PrepararJuego(0);
+}
+
+void Juego::PrepararJuego(int Reset)
+{
     // Seteamos las reglas del juego, pasando el array de paises.
     rules[0] = new ReglasNivel1(atributos);
     rules[1] = new ReglasNivel2(rules[0]);
@@ -15,12 +21,25 @@ Juego::Juego(){
     rules[3] = new ReglasNivel4(rules[2]);
     rules[4] = new ReglasNivel5(rules[3]);
 
-    Cola = new ColaNPC(atributos, rules[0]);
+    if (!Reset)
+        Cola = new ColaNPC(atributos, rules[0]);
+    else
+        Cola->actualizarReglas(rules[0], 0);
+
 
     NivelActual = 0;
     // Test
     Cola->addNPC(2,1,1,0, 1);
     // setUpNivel0();
+
+    // Seteamos las estadisticas del jugador.
+    SocialCreditsEarnedInLevel = 0;
+    TotalSocialCredits = 0;
+    Multas = 0;
+    CantidadNPCsRechazados = 0;
+    CantidadNPCsAceptados = 0;
+
+    setDificultad(1);
 }
 
 void Juego::setNivel(int nivel)
@@ -32,9 +51,31 @@ void Juego::setNivel(int nivel)
     }
 }
 
+void Juego::setDificultad(int dificultad)
+{
+    switch (dificultad){
+        // Modo facil
+        case 1: MaxMultas = 6;
+                BonificadorPerderCreditosDificultad = 0.5;
+                BonificadorGanarCreditosDificultad = 1.5;
+               break;
+        // Modo DEMONIO
+        case 3: MaxMultas = 2;
+            BonificadorPerderCreditosDificultad = 1.5;
+            BonificadorGanarCreditosDificultad = 0.5;
+            break;
+        // Modo Normal
+        default:MaxMultas = 4;
+            BonificadorPerderCreditosDificultad = 1;
+            BonificadorGanarCreditosDificultad = 1;
+            break;
+        }
+}
+
 void Juego::NextLevel()
 {
     NivelActual++;
+    this->SocialCreditsEarnedInLevel = 0;
     Cola->actualizarReglas(rules[NivelActual], NivelActual);
     Cola->vaciarCola();
 
@@ -50,6 +91,20 @@ void Juego::NextLevel()
     }
 }
 
+void Juego::ResetJuego()
+{
+    SocialCreditsEarnedInLevel = 0;
+    TotalSocialCredits = 0;
+    Multas = 0;
+    CantidadNPCsRechazados = 0;
+    CantidadNPCsAceptados = 0;
+
+    for (int i = 0; i < 5; i++)
+        delete rules[i];
+
+    PrepararJuego(1);
+}
+
 Reglas* Juego::getReglas(int numero){
     return (numero < 5)? rules[numero]: NULL;
 }
@@ -57,6 +112,89 @@ Reglas* Juego::getReglas(int numero){
 ColaNPC *Juego::getCola()
 {
     return this->Cola;
+}
+
+int Juego::getSocialCreditsEarnedInLevel() const
+{
+    return SocialCreditsEarnedInLevel;
+}
+
+void Juego::SumarSocialCredits(int Tipo)
+{
+    int SocialCredits;
+    switch(Tipo){
+    case 0: SocialCredits = 10;
+        break;
+    case 1: SocialCredits = 15;
+        break;
+    case 2: SocialCredits = 25;
+        break;
+    default: SocialCredits = 0;
+        break;
+    };
+
+    SocialCreditsEarnedInLevel += (SocialCredits * BonificadorGanarCreditosDificultad);
+    TotalSocialCredits += SocialCreditsEarnedInLevel;
+}
+
+void Juego::RestarSocialCredits(int Tipo)
+{
+    int SocialCredits;
+    switch(Tipo){
+    case 0: SocialCredits = 15;
+        break;
+    case 1: SocialCredits = 25;
+        break;
+    case 2: SocialCredits = 25;
+        addMulta();
+        break;
+    default: SocialCredits = 25;
+        addMulta();
+        break;
+    };
+
+    SocialCreditsEarnedInLevel -= (SocialCredits * BonificadorPerderCreditosDificultad);
+    TotalSocialCredits -= SocialCreditsEarnedInLevel;
+}
+
+int Juego::getTotalSocialCredits() const
+{
+    return TotalSocialCredits;
+}
+
+int Juego::getMultas() const
+{
+    return Multas;
+}
+
+void Juego::addMulta()
+{
+    Multas++;
+}
+
+int Juego::getCantidadNPCsRechazados() const
+{
+    return CantidadNPCsRechazados;
+}
+
+void Juego::addNPCrechazado()
+{
+    CantidadNPCsRechazados++;
+}
+
+int Juego::getCantidadNPCsAceptados() const
+{
+    return CantidadNPCsAceptados;
+}
+
+void Juego::addNPCaceptado()
+{
+    CantidadNPCsAceptados++;
+}
+
+int Juego::getMaxMultas() const
+{
+    return MaxMultas;
 }
 
 void Juego::setUpNivel0()
