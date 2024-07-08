@@ -3,17 +3,21 @@
 
 #include "../NPC/npccomun.h"
 #include <string>
+#include <QRandomGenerator>
 using namespace std;
 
 class GeneradorNPC{
 public:
     GeneradorNPC();
-    NPC* getNPCgenerico(char tipo, unsigned int Semilla, bool Validez);
+    NPC* getNPCgenerico(int tipo , bool Validez);
     NPC *getSimilarNPC(NPC* ejemplo);
 
     ~GeneradorNPC();
 
 private:
+    // Generador de Numeros
+    QRandomGenerator* Random;
+
     // NPC que se va a generar
     NPC* NPC2create;
 

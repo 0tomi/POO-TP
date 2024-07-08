@@ -81,7 +81,7 @@ void MainWindow::IniciarJuego()
     pantallaTransicion->setGraphicsEffect(efecto);
     delete efecto;
 
-    gameScreen->EmpezarJuego();
+    gameScreen->EmpezarJuego(); // Nivel del juego, aca dsps iria el nivel que toca.
 }
 
 void MainWindow::CrearPantallasJuego()

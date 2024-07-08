@@ -7,6 +7,7 @@
 
 GeneradorNPC::GeneradorNPC(){
     // # Deus ignoscat factis quae mox faciam. #
+    Random = new QRandomGenerator(time(NULL));
 
     LectorArchivos lector("../TP2/ArchivosTexto/URLCarasHombre.txt");
     LinksCarasHombre = lector.getArray();
@@ -39,15 +40,14 @@ GeneradorNPC::GeneradorNPC(){
 
 
 // Esto necesita rework a futuro para distinguir entre caras de Mujeres y Hombres
-NPC* GeneradorNPC::getNPCgenerico(char tipo, unsigned int Semilla, bool Validez){
+NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
     NPCcomun* NPCaCrear;
-    srand(Semilla);
 
     if (tipo > 3)
-        tipo = rand()%4;
+        tipo = Random->bounded(4);
 
     // Pickeamos un genero
-    int valorCentinela2 = rand()%11;
+    int valorCentinela2 = Random->bounded(11);
     if (valorCentinela2 < 5)
         valorCentinela2 = 0;
     else if (valorCentinela2 < 10)
@@ -59,7 +59,7 @@ NPC* GeneradorNPC::getNPCgenerico(char tipo, unsigned int Semilla, bool Validez)
 
     // si es hombre o X
     if (valorCentinela2 > 0){
-        int TendraBarba = rand()%10;
+        int TendraBarba = Random->bounded(10);
         if (TendraBarba < 5 && valorCentinela2 == 1)
             NPCaCrear->setBarbaURL(getBarbaRandom());
         if (TendraBarba < 3 && valorCentinela2 == 2)
@@ -99,8 +99,8 @@ GeneradorNPC::~GeneradorNPC()
 
 string GeneradorNPC::getCaraRandom(char genero)
 {
-    int CaraGeneroX = rand()% 10;
-    int sorteo = rand()% topeLinksCaras;
+    int CaraGeneroX = Random->bounded(10);
+    int sorteo = Random->bounded(topeLinksCaras);
     string LinkCara;
 
     // Chance 50/50 de que use de mujer o de hombre.
@@ -117,30 +117,30 @@ string GeneradorNPC::getCaraRandom(char genero)
 
 string GeneradorNPC::getCejasRandom()
 {
-    int sorteo = rand() % topeLinksCejas;
+    int sorteo = Random->bounded(topeLinksCejas);
     return LinksCejas[sorteo];
 }
 
 string GeneradorNPC::getOjosRandom()
 {
-    int sorteo = rand() % topeLinksOjos;
+    int sorteo = Random->bounded(topeLinksOjos);
     return LinksOjos[sorteo];
 }
 
 string GeneradorNPC::getBocaRandom()
 {
-    int sorteo = rand() % topeLinksBocas;
+    int sorteo = Random->bounded(topeLinksBocas);
     return LinksBocas[sorteo];
 }
 
 string GeneradorNPC::getNarizRandom()
 {
-    int sorteo = rand() % topeLinksNariz;
+    int sorteo = Random->bounded(topeLinksNariz);
     return LinksNariz[sorteo];
 }
 
 string GeneradorNPC::getBarbaRandom()
 {
-    int sorteo = rand() % topeLinksBarbas;
+    int sorteo = Random->bounded(topeLinksBarbas);
     return LinksBarbas[sorteo];
 }
