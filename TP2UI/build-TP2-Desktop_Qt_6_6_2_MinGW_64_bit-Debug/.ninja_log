@@ -56,3 +56,16 @@
 293	3238	7421787607606635	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
 304	3241	7421787607646673	CMakeFiles/TP2.dir/gamescreen.cpp.obj	ac1a2d3bd2f2402f
 3241	3667	7421787611860509	TP2.exe	a249126151533350
+8	571	7421821318248560	TP2_autogen/timestamp	223e3632e40ccb1f
+8	571	7421821318248560	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+8	571	7421821318248560	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
+8	571	7421821318248560	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+585	2624	7421821339467881	CMakeFiles/TP2.dir/juego.cpp.obj	6fd6962078ca4862
+582	2626	7421821339497909	CMakeFiles/TP2.dir/Generadores/colanpc.cpp.obj	3241bcee184986e3
+579	2646	7421821339698086	CMakeFiles/TP2.dir/Generadores/generadornpc.cpp.obj	1bc62d3cc31bd625
+588	2999	7421821343231302	CMakeFiles/TP2.dir/pantallainicio.cpp.obj	ad190eb170226ea2
+571	3133	7421821344572528	CMakeFiles/TP2.dir/main.cpp.obj	e61980d90972d714
+577	3222	7421821345463336	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
+574	3233	7421821345583448	CMakeFiles/TP2.dir/TP2_autogen/mocs_compilation.cpp.obj	2a5f082cacfe365a
+591	3287	7421821346113927	CMakeFiles/TP2.dir/gamescreen.cpp.obj	ac1a2d3bd2f2402f
+3287	3739	7421821350603062	TP2.exe	a249126151533350

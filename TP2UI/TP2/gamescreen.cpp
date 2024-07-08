@@ -97,6 +97,11 @@ void GameScreen::SelloDocumento(bool Boton)
     temporizadorBotones.start(2500);
     BloquearBotones(true);
 
+    if (Boton == NPCenEscena->getValidez())
+        juego->SumarSocialCredits(NPCenEscena->getTipo());
+    else
+        juego->RestarSocialCredits(NPCenEscena->getTipo());
+
     qDebug() << "Cola: " << Cola->getSize();
 
     if (!Cola->getSize())
