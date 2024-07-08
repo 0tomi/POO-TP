@@ -5,6 +5,7 @@
 ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
     this->frente = this->fondo = NULL;
     this->size = 0;
+    this->sizeOriginal = 0;
     this->GenerarDocumentacion = new GeneradorDocumentacion(datos ,rules);
     this->GenerarNPC = new GeneradorNPC;
     this->Random = new QRandomGenerator(time(NULL));
@@ -28,6 +29,7 @@ void ColaNPC::addNPC(int Tipo, bool Validez){
     }
 
     size++;
+    sizeOriginal++;
 }
 
 void ColaNPC::vaciarCola()
@@ -43,6 +45,8 @@ void ColaNPC::vaciarCola()
         aux = aux2;
     }
 
+    this->sizeOriginal = 0;
+    this->size = 0;
 }
 
 void ColaNPC::actualizarReglas(Reglas *newRules, int nivel)
@@ -85,17 +89,30 @@ NPC* ColaNPC::getNPC(){
     if (this->size == 0)
         return NULL;
 
+    // Se elimina el NPC anterior, si es que hay anterior.
+    if (size < sizeOriginal)
+        delete NPCaRetornar;
+
     nodoNPC* node2remove = frente;
-    NPC* npc = frente->info;
+    NPCaRetornar = frente->info;
 
     frente = frente->link;
     delete node2remove;
     size--;
 
-    return npc;
+    return NPCaRetornar;
 }
 
 int ColaNPC::getSize() const
 {
     return size;
+}
+
+ColaNPC::~ColaNPC()
+{
+    this->vaciarCola();
+    delete NPCaRetornar;
+    delete Random;
+    delete GenerarNPC;
+    delete GenerarDocumentacion;
 }

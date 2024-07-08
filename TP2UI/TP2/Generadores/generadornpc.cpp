@@ -45,6 +45,8 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
 
     if (tipo > 3)
         tipo = Random->bounded(4);
+    if (tipo == 3)  // Porque los revolucionarios NO deben pasar
+        Validez = false;
 
     // Pickeamos un genero
     int valorCentinela2 = Random->bounded(11);

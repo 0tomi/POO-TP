@@ -3,6 +3,7 @@
 
 #include "pantallainicio.h"
 #include "gamescreen.h"
+#include "juego.h"
 
 #include <QMainWindow>
 #include <QStackedWidget>
@@ -36,6 +37,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    // Juego
+    Juego* juego;
 
     // Pantallas del juego:
     void CrearPantallasJuego();
