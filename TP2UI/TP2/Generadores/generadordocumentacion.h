@@ -18,7 +18,7 @@ private:
     Documentacion* Doc2Generate;
 public:
     GeneradorDocumentacion(AtributosComunes* datos, Reglas* rules); // en ultima instancia se le puede pasar la clase NPC pero no esta definida
-    Documentacion *getDocumentos(NPC* info, bool validez);
+    void *getDocumentos(NPC* info, bool validez);
 };
 
 #endif // GENERADORDOCUMENTACION_H

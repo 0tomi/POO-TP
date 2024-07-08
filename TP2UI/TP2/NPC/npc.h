@@ -9,12 +9,12 @@ using namespace std;
 class NPC
 {
 public:
-    explicit NPC(char Genero, char Tipo, bool Validez);
+    explicit NPC(char Genero, int Tipo, bool Validez);
     ~NPC();
 
     char getGenero();
     Documentacion** getDocumentos();
-    char getTipo();
+    int getTipo();
 
     bool getValidez() const;
 
@@ -24,7 +24,7 @@ public:
 protected:
     bool Validez;
     char Genero;
-    char Tipo;
+    int Tipo;
     Documentacion* documentos[10];
     Pasaporte *pasaporte = nullptr;
     Estancia *estancia = nullptr;

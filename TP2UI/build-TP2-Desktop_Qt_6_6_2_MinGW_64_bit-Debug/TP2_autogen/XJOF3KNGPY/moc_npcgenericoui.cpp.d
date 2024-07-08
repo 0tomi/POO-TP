@@ -3,11 +3,13 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/QList \
   B:/QT/6.6.2/mingw_64/include/QtCore/QObject \
   B:/QT/6.6.2/mingw_64/include/QtCore/QPropertyAnimation \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QRandomGenerator \
   B:/QT/6.6.2/mingw_64/include/QtCore/QRect \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
   B:/QT/6.6.2/mingw_64/include/QtCore/QString \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QTimer \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h \
@@ -23,6 +25,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qatomic.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qatomic_cxx11.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbasicatomic.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qbasictimer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbindingstorage.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbytearray.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -82,6 +85,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qpointer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qprocessordetection.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qpropertyanimation.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qrandom.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qrect.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qrefcount.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qscopedpointer.h \
@@ -115,6 +119,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtextstream.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/qtimer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtmetamacros.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtnoop.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -133,6 +138,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/QMouseEvent \
+  B:/QT/6.6.2/mingw_64/include/QtGui/QPixmap \
   B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent \
   B:/QT/6.6.2/mingw_64/include/QtGui/QTransform \
   B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h \
@@ -223,6 +229,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/postypes.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/predefined_ops.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ptr_traits.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.tcc \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/range_access.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/refwrap.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr.h \
@@ -300,6 +308,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_algorithm_defs.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_memory_defs.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_numeric_defs.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/random \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdexcept \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdlib.h \
@@ -334,11 +343,17 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/opt_random.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/emmintrin.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mm_malloc.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mmintrin.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/pmmintrin.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdarg.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdbool.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stddef.h \
   B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdint.h \
+  B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/xmmintrin.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_mac.h \
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_off_t.h \

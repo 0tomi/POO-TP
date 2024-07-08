@@ -33,6 +33,7 @@ private:
     GestorDocumentosUI documentos;
 
     void RealizarConecciones();
+    void FinalDePartida();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();
@@ -47,13 +48,12 @@ private:
     DocumentosUI* doc;
 
     void CentrarDocumentos();
-
-    void SpawnearDocumento();
     void EntrarDOC();
     void SacarDOC();
 
     // NPCs
-    NPCUI *npcUI;
+    NPCGenericoUI *npcUI;
+    NPC *NPCenEscena;
 
     void SpawnearNPC();
     void EntrarNPC();
