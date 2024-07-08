@@ -3,3 +3,7 @@
 *.exe
 /.vscode
 /output
+
+# Ignorar archivos de CMake #
+CMakeCache.txt
+CMakeCache.txt.prev
