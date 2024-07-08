@@ -30,10 +30,14 @@ public:
 
     int getSize() const;
 
+    ~ColaNPC();
+
 private:
     nodoNPC* frente;
     nodoNPC* fondo;
     int size;
+    int sizeOriginal;
+    NPC* NPCaRetornar;
 
     QRandomGenerator *Random;
     Reglas* reglas;

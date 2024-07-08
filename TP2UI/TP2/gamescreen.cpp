@@ -2,22 +2,16 @@
 #include "ui_gamescreen.h"
 #include <QDebug>
 
-GameScreen::GameScreen(QWidget *parent)
+GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GameScreen)
 {
     ui->setupUi(this);
 
     // Seteamos el juego, y obtenemos la cola de NPCs.
-    juego = new Juego();
+    juego = newJuego;
     Cola = juego->getCola();
 
-    // Temporizador de partida.
-    //tiempoPartida = new QTimer(this);
-
-    // Setear temporizador para bloquear botones
-    //temporizadorBotones = new QTimer(this);
-   // temporizadorBotones->setSingleShot(true);
     temporizadorBotones.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
@@ -31,7 +25,6 @@ GameScreen::GameScreen(QWidget *parent)
 GameScreen::~GameScreen()
 {
     delete ui;
-    delete juego;
 }
 
 void GameScreen::RealizarConeccionesPrincipales()
@@ -97,12 +90,15 @@ void GameScreen::Rechazo()
     SelloDocumento(false);
     npcUI->Rechazado();
 }
+
 void GameScreen::SelloDocumento(bool Boton)
 {
     SacarNPC();
     temporizadorBotones.start(2500);
     BloquearBotones(true);
+
     qDebug() << "Cola: " << Cola->getSize();
+
     if (!Cola->getSize())
         FinalDePartida();
 }
@@ -146,23 +142,23 @@ void GameScreen::SpawnearNPC()
 
 void GameScreen::EntrarNPC()
 {
-    delete NPCenEscena;
-    if (Cola->getSize()){
-        NPCenEscena = Cola->getNPC();
+    NPCenEscena = Cola->getNPC();
 
-        qDebug() << NPCenEscena->getGenero();
-        qDebug() << NPCenEscena->getTipo();
-        qDebug() << NPCenEscena->getValidez();
+    // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
+    qDebug() << NPCenEscena->getGenero();
+    qDebug() << NPCenEscena->getTipo();
+    qDebug() << NPCenEscena->getValidez();
+    // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
 
-        npcUI->setNPC(NPCenEscena);
+    npcUI->setNPC(NPCenEscena);
 
-        int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
-        int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
+    int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
+    int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
 
-        npcUI->Entrar(centerX, centerY);
+    npcUI->Entrar(centerX, centerY);
 
-        EntrarDOC();
-    }
+    EntrarDOC();
+
 }
 
 void GameScreen::SacarNPC()

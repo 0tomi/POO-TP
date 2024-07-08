@@ -20,7 +20,7 @@ class GameScreen : public QWidget
     Q_OBJECT
 
 public:
-    explicit GameScreen(QWidget *parent = nullptr);
+    explicit GameScreen(Juego* newJuego, QWidget *parent = nullptr);
     ~GameScreen();
     void EmpezarJuego();
     void PrepararJuego(int Nivel);

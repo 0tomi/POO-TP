@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete juego;
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -86,13 +87,16 @@ void MainWindow::IniciarJuego()
 
 void MainWindow::CrearPantallasJuego()
 {
+    // Iniciamos la logica del juego
+    juego = new Juego();
+
     // Seteamos el widget donde se acomodaran las distintas pantallas del juego
     pantallas = new QStackedWidget(this);
     setCentralWidget(pantallas);
 
     // Creamos las pantallas del juego
     pantallaInicio = new PantallaInicio(this);
-    gameScreen = new GameScreen(this);
+    gameScreen = new GameScreen(juego, this);
     CrearPantallaTransicion();
 
     // Añadimos las pantallas al stack
