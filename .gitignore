@@ -8,6 +8,9 @@
 CMakeCache.txt
 CMakeCache.txt.prev
 
+**/CMakeCache.txt
+**/CMakeCache.txt.prev
+
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
