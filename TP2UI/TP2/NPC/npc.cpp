@@ -21,7 +21,7 @@ Documentacion** NPC::getDocumentos(){
     return documentos;
 }
 
-char NPC::getTipo()
+int NPC::getTipo()
 {
     return Tipo;
 }

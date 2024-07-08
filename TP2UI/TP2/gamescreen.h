@@ -52,7 +52,7 @@ private:
     void SacarDOC();
 
     // NPCs
-    NPCUI *npcUI;
+    NPCGenericoUI *npcUI;
     NPC *NPCenEscena;
 
     void SpawnearNPC();

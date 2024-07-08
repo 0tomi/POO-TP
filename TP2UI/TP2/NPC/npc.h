@@ -14,7 +14,7 @@ public:
 
     char getGenero();
     Documentacion** getDocumentos();
-    char getTipo();
+    int getTipo();
 
     bool getValidez() const;
 
@@ -24,7 +24,7 @@ public:
 protected:
     bool Validez;
     char Genero;
-    char Tipo;
+    int Tipo;
     Documentacion* documentos[10];
     Pasaporte *pasaporte = nullptr;
     Estancia *estancia = nullptr;

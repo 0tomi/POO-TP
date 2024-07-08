@@ -67,8 +67,8 @@ void GameScreen::Acepto()
 void GameScreen::Rechazo()
 {
     SelloDocumento(false);
+    npcUI->Rechazado();
 }
-
 void GameScreen::SelloDocumento(bool Boton)
 {
     SacarNPC();

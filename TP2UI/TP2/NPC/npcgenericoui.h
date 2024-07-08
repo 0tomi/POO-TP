@@ -4,7 +4,9 @@
 #include "npcui.h"
 #include "npccomun.h"
 #include <QWidget>
-
+#include <QTimer>
+#include <QPixmap>
+#include <QRandomGenerator>
 
 namespace Ui {
 class NPCGenericoUI;
@@ -18,10 +20,18 @@ public:
     explicit NPCGenericoUI(QWidget *parent = nullptr);
     ~NPCGenericoUI();
     void setNPC(NPC* newNPCenEscena);
+    void Rechazado();
 
 private:
     Ui::NPCGenericoUI *ui;
-    NPCcomun* NPCenEscena;
+    NPCcomun *NPCenEscena;
+
+    QRandomGenerator* tiempoParpadeo;
+    void Parpadear();
+    void setearParpadear();
+    bool parpadeando;
+    QTimer* parpadeo;
+    QPixmap* ojos;
 };
 
 #endif // NPCGENERICOUI_H
