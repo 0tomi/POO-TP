@@ -8,7 +8,6 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
 {
     ui->setupUi(this);
     setFixedSize(300,300);
-    parpadeando = false;
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
 
@@ -23,6 +22,7 @@ NPCGenericoUI::~NPCGenericoUI()
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
 {
     parpadeo->start(1000);
+    parpadeando = false;
     connect(parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
 
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);

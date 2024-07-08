@@ -5,6 +5,7 @@
 #include "generadornpc.h" // a futuro para que tengan las cosas de los npcs
 #include "../Reglas/reglasnivel1.h"
 #include "../AtributosComunes/atributoscomunes.h"
+#include <QRandomGenerator>
 
 struct nodoNPC{
     NPC* info;
@@ -14,7 +15,7 @@ struct nodoNPC{
 class ColaNPC{
 public:
     ColaNPC(AtributosComunes* atributos, Reglas* rules);
-    void addNPC(int Tipo, bool Validez ,unsigned int Semilla);
+    void addNPC(int Tipo, bool Validez);
     void addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
 
     // A futuro para cuando tengamos NPCs especiales
@@ -32,6 +33,8 @@ private:
     nodoNPC* frente;
     nodoNPC* fondo;
     int size;
+
+    QRandomGenerator *Random;
 
     GeneradorNPC* GenerarNPC;
     GeneradorDocumentacion* GenerarDocumentacion;

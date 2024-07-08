@@ -5,7 +5,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // Pendiente a implementar
 }
 
-void *GeneradorDocumentacion::getDocumentos(NPC *npc, bool validez)
+void GeneradorDocumentacion::getDocumentos(NPC *npc, bool validez)
 {
     // A futuro, los nombres se deben decidir aca.
 
