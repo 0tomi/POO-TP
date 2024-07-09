@@ -9,33 +9,32 @@ GeneradorNPC::GeneradorNPC(){
     // # Deus ignoscat factis quae mox faciam. #
     Random = new QRandomGenerator(time(NULL));
 
-    LectorArchivos lector("../TP2/ArchivosTexto/URLCarasHombre.txt");
+    LectorArchivos lector(":/Resources/ArchivosTexto/URLCarasHombre.txt");
     LinksCarasHombre = lector.getArray();
     topeLinksCaras = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLCarasMujer.txt");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasMujer.txt");
     LinksCarasMujer = lector.getArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLBarbas.txt");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLBarbas.txt");
     LinksBarbas = lector.getArray();
     topeLinksBarbas = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLOjos.txt");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLOjos.txt");
     LinksOjos = lector.getArray();
     topeLinksOjos = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLBocas.txt");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLBocas.txt");
     LinksBocas = lector.getArray();
     topeLinksBocas = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLCejas.txt");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCejas.txt");
     LinksCejas = lector.getArray();
     topeLinksCejas = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("../TP2/ArchivosTexto/URLNariz.txt");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLNariz.txt");
     LinksNariz = lector.getArray();
     topeLinksNariz = lector.getTopeArray();
-
 }
 
 
