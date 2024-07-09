@@ -39,7 +39,7 @@ void ReglasNivel1::setEstadoCivilValidos(){
 }
 
 void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
-    this->estadoCivilValidos = new string[CantidadECValidos];
+    this->estadoCivilValidos = new QString[CantidadECValidos];
 
     for (int i = 0; i < CantidadECValidos; i++)
         estadoCivilValidos[i] = estadosCiviles[i];
@@ -57,7 +57,7 @@ void ReglasNivel1::setTipoDeVisitaValidas(){
 }
 
 void ReglasNivel1::SeleccionarVisitasValidas(int CantidadVisitasValidas){
-    this->tipoDeVisitaValida = new string[CantidadVisitasValidas];
+    this->tipoDeVisitaValida = new QString[CantidadVisitasValidas];
 
     for (int i = 0; i < CantidadVisitasValidas; i++)
         tipoDeVisitaValida[i] = tipoVisitas[i];
@@ -132,12 +132,12 @@ int* ReglasNivel1::getPaisesPermitidos(int &max){
     return this->paisesValidos;
 }
 
-string* ReglasNivel1::getEstadoCivilPermitido(int &max){
+QString* ReglasNivel1::getEstadoCivilPermitido(int &max){
     max = this->maxEstadosCivilPermitidos;
     return this->estadoCivilValidos;
 }
 
-string* ReglasNivel1::getTipoVisitaPermitida(int &max){
+QString* ReglasNivel1::getTipoVisitaPermitida(int &max){
     max = this->maxEstadosCivilPermitidos;
     return tipoDeVisitaValida;
 }

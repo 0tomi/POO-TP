@@ -1,9 +1,10 @@
 #ifndef REGLASNIVEL1_H
 #define REGLASNIVEL1_H
 
-#include "../AtributosComunes/atributoscomunes.h"
 #include "reglas.h"
-#include <string>
+#include "../AtributosComunes/atributoscomunes.h"
+#include <QString>
+
 using namespace std;
 
 class ReglasNivel1: public Reglas{
@@ -17,8 +18,8 @@ public:
 
     // Getters
     int* getPaisesPermitidos(int &max);
-    string* getEstadoCivilPermitido(int &max);
-    string* getTipoVisitaPermitida(int &max);
+    QString* getEstadoCivilPermitido(int &max);
+    QString* getTipoVisitaPermitida(int &max);
     int getFechaMinPermitida();
     int getFechaMaxPermitida();
     int getDuracionEstanciaPermitida();
@@ -28,21 +29,21 @@ public:
 
 private:
     // # Conjunto de elementos de los cuales obtendremos las reglas #
-    string* paises;
+    QString* paises;
     int maxPaises;
 
-    string* tipoVisitas;
+    QString* tipoVisitas;
     int maxTiposVisitas;
 
-    string* estadosCiviles;
+    QString* estadosCiviles;
     int maxEstadosCiviles;
 
     // # Conjunto de reglas #
     int fechaMin, fechaMax; // va a ser solo el anio
     int duracionDeEstanciaValida;
     int* paisesValidos;
-    string* tipoDeVisitaValida;
-    string* estadoCivilValidos;
+    QString* tipoDeVisitaValida;
+    QString* estadoCivilValidos;
 
     // Tope de arrays:
     int maxPaisesPermitidos;

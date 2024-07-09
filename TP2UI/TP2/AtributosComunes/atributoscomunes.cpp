@@ -5,22 +5,22 @@ AtributosComunes::AtributosComunes(){
     this->maxPaises = 0;
 }
 
-void AtributosComunes::setAtributos(string* pais, int maxPais){
+void AtributosComunes::setAtributos(QString* pais, int maxPais){
     this->paises = pais;
     this->maxPaises = maxPais;
 }
 
-string* AtributosComunes::getPaises(int &max){
+QString* AtributosComunes::getPaises(int &max){
     max = this->maxPaises;
     return this->paises;
 }
 
-string* AtributosComunes::getVisitas(int &max){
+QString* AtributosComunes::getVisitas(int &max){
     max = 3;
     return this->tipoVisitas;
 }
 
-string* AtributosComunes::getEstadosCiviles(int &max){
+QString* AtributosComunes::getEstadosCiviles(int &max){
     max = 4;
     return this->EstadosCiviles;
 }

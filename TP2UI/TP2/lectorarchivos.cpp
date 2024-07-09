@@ -1,10 +1,9 @@
 #include "lectorarchivos.h"
-#include <fstream>
 #include <QCoreApplication>
 #include <QMessageBox>
-#include <QString>
+#include <QFile>
 
-string* LectorArchivos::getArray(){
+QString* LectorArchivos::getArray(){
     return this->archivo;
 }
 
@@ -12,29 +11,29 @@ int LectorArchivos::getTopeArray(){
     return this->max;
 }
 
-LectorArchivos::LectorArchivos(string direccion){
+LectorArchivos::LectorArchivos(QString direccion){
     this->LeerArchivoNuevo(direccion);
 }
 
-void LectorArchivos::LeerArchivoNuevo(string direccion){
+void LectorArchivos::LeerArchivoNuevo(QString direccion){
+
     this->max = 20;
     int contador = 0;
 
     // Abrir archivo
-    ifstream ArchivoLectura(direccion);
-
-    // Si falla cerramos el programa
-    if (ArchivoLectura.fail()){
-        QString mensajeError = QString::fromStdString(direccion);
-        QMessageBox::critical(nullptr, "Error al leer el siguiente directorio:", mensajeError);
+    QFile ArchivoLectura(direccion);
+    if (!ArchivoLectura.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QMessageBox::critical(nullptr, "Error al leer el siguiente directorio:", direccion);
         QCoreApplication::exit(-1);
     }
 
     // Creamos el array que contendra los this->archivo
-    this->archivo = new string[max];
+    this->archivo = new QString[max];
 
-    // Leer archivo
-    while (getline(ArchivoLectura, this->archivo[contador])){
+    // Leo usando QTextStream
+    QTextStream in(&ArchivoLectura);
+    while (!in.atEnd()){
+        archivo[contador] = in.readLine();
         contador++;
 
         // Si el array se nos queda chico, lo incrementamos
@@ -54,7 +53,7 @@ void LectorArchivos::LeerArchivoNuevo(string direccion){
 }
 
 void LectorArchivos::rescaleVector(int cont){
-    string* newVector = new string[this->max];
+    QString* newVector = new QString[this->max];
     for (int i = 0; i < cont; i++)
         newVector[i] = this->archivo[i];
 

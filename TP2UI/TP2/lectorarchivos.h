@@ -1,19 +1,18 @@
 #ifndef LECTORARCHIVOS_H
 #define LECTORARCHIVOS_H
-
-#include <QString>
+#include <QTextStream>
 
 using namespace std;
 
 class LectorArchivos{
 public:
-    LectorArchivos(string direccion);
-    void LeerArchivoNuevo(string direccion);
-    string* getArray();
+    LectorArchivos(QString direccion);
+    void LeerArchivoNuevo(QString direccion);
+    QString* getArray();
     int getTopeArray();
 private:
     void rescaleVector(int cont);
-    string* archivo;
+    QString* archivo;
     int max;
 };
 

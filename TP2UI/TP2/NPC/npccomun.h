@@ -9,22 +9,22 @@ public:
     NPCcomun(char Genero, char Tipo, bool Validez);
 
     QString getCaraURL() const;
-    void setCaraURL(const string &newCaraURL);
+    void setCaraURL(const QString &newCaraURL);
 
     QString getCejasURL() const;
-    void setCejasURL(const string &newCejasURL);
+    void setCejasURL(const QString &newCejasURL);
 
     QString getOjosURL() const;
-    void setOjosURL(const string &newOjosURL);
+    void setOjosURL(const QString &newOjosURL);
 
     QString getBocaURL() const;
-    void setBocaURL(const string &newBocaURL);
+    void setBocaURL(const QString &newBocaURL);
 
     QString getNarizURL() const;
-    void setNarizURL(const string &newNarizURL);
+    void setNarizURL(const QString &newNarizURL);
 
     QString getBarbaURL() const;
-    void setBarbaURL(const string &newBarbaURL);
+    void setBarbaURL(const QString &newBarbaURL);
 
 private:
     QString CaraURL;
