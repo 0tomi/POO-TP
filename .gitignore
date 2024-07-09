@@ -15,6 +15,7 @@ CMakeCache.txt.prev
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
+*.log
 *~
 *.autosave
 *.a
