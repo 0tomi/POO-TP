@@ -3,6 +3,8 @@
 GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *rules)
 {
     // Pendiente a implementar
+    // News de generadores
+
     NivelActual = 0;
 }
 
@@ -13,7 +15,12 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     NPC2Generate = npc;
 
     // Aca iria el sorteo de cuales documentos seran verdaderos y cuales falsos.
-
+    if (Validez){
+        for (int i = 0; i < 10; i++)
+            DocsValidos[i] = true;
+    } else {
+        GenerarCantidadDocsInvalidos();
+    }
 
     GenerarDocumentosNivel1(Index);
     if (NivelActual >= 1){   // Generacion  Documentos de nivel 2
@@ -40,9 +47,9 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
     NPC2Generate->addDocumento(nullptr,Index);
-    Index = 2;
+    Index++;
 
-    // Generador de Estacionar
+    // Generador de Estancias
     NPC2Generate->addDocumento(nullptr,Index);
     Index++;
 }

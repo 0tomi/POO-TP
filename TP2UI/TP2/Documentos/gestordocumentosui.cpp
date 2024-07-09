@@ -45,16 +45,17 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
         tienePase = true;
     else tienePase = false;
 
-    /*
-        if (documentos[0] != nullptr){
-            DNIgenerico *identificacion = documentos[0];
-            if (identifacion->getPais() == "Aztana"){
-                documentosUI[0] = DNIUI;
-                DNIUI->setDocumentacionInfo(documentos[0], NPCui)
-            } else {
-                documentosUI[0] = PasaporteUI;
-                PasaporteUI->setDocumentacionInfo(documentos[0], NPCui)
-        }
+    /*  ### PARTE QUE SE ENCARGA DE SETEAR EL PASAPORTE O EL DNI SEGUN CORRESPONDA
+
+    if (documentos[0] != nullptr){
+        DNIgenerico *identificacion = documentos[0];
+        if (identifacion->getPais() == "Aztana"){
+            documentosUI[0] = DNIUI;
+            DNIUI->setDocumentacionInfo(documentos[0], NPCui)
+        } else {
+            documentosUI[0] = PasaporteUI;
+            PasaporteUI->setDocumentacionInfo(documentos[0], NPCui)
+    }
     */
 
     for (int i = 1; i < topePerLevel; i++)

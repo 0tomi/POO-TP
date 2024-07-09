@@ -21,11 +21,11 @@ private:
     int NivelActual;
 
     // Datos del Documento a generar:
-    NPC* datosDeNPC;
+    NPC* NPC2Generate;
     Documentacion* Doc2Generate;
 
     // Seleccion de documentos que seran falsos
-    bool ValidezDoc[10];
+    bool DocsValidos[10];
     int MaxDocumentosInvalidos;
     int CantDocumentosInvalidos;
     void GenerarCantidadDocsInvalidos();

@@ -18,16 +18,13 @@ public:
 
     bool getValidez() const;
 
-    virtual void setPasaporte(Pasaporte *newPasaporte);
-    virtual void setEstancia(Estancia *newEstancia);
+    void addDocumento(Documentacion *newDoc, int Index);
 
 protected:
     bool Validez;
     char Genero;
     int Tipo;
     Documentacion* documentos[10];
-    Pasaporte *pasaporte = nullptr;
-    Estancia *estancia = nullptr;
 };
 
 #endif // NPC_H
