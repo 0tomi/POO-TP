@@ -19,9 +19,23 @@ private:
     AtributosComunes* datos;
     Reglas* rules;
     int NivelActual;
+
     // Datos del Documento a generar:
     NPC* datosDeNPC;
     Documentacion* Doc2Generate;
+
+    // Seleccion de documentos que seran falsos
+    bool ValidezDoc[10];
+    int MaxDocumentosInvalidos;
+    int CantDocumentosInvalidos;
+    void GenerarCantidadDocsInvalidos();
+
+    // Generadores por niveles
+    void GenerarDocumentosNivel1(int &Index);
+    void GenerarDocumentosNivel2(int &Index);
+    void GenerarDocumentosNivel3(int &Index);
+    void GenerarDocumentosNivel4(int &Index);
+    void GenerarDocumentosNivel5(int &Index);
 };
 
 #endif // GENERADORDOCUMENTACION_H

@@ -48,7 +48,6 @@ void NPC::addDocumento(Documentacion *newDoc, int Index)
 
 NPC::~NPC()
 {
-    delete pasaporte;
-    delete estancia;
-    // y otras cosas si hace falta
+    for (int i = 0; i < 10; i++)
+        delete documentos[i];
 }
