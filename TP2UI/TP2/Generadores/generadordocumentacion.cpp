@@ -6,10 +6,15 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     NivelActual = 0;
 }
 
-void GeneradorDocumentacion::getDocumentos(NPC *npc, bool validez)
+void GeneradorDocumentacion::getDocumentos(NPC *npc, bool newValidez)
 {
-    // Generacion Documentos de nivel 1
+    // Index va a ser quien se encargue de decirle a NPC donde guardar los documentos (segun el tipo)
+    int Index = 0;
+    Validez = newValidez;
 
+    // Aca iria el sorteo de cuales documentos seran verdaderos y cuales falsos.
+
+    GenerarDocumentosNivel1(Index);
     if (NivelActual >= 1){   // Generacion  Documentos de nivel 2
 
     }
@@ -22,17 +27,15 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool validez)
     if (NivelActual >= 4){   // Generacion  Documentos de nivel 5
 
     }
-    // A futuro, los nombres se deben decidir aca.
-
-    // Aca iria el sorteo de cuales documentos seran verdaderos y cuales falsos.
-
-    // Devuelve los documentos, pendiente a implementar
-    npc->setEstancia(nullptr);
-    npc->setPasaporte(nullptr);
 }
 
 void GeneradorDocumentacion::actualizarReglas(Reglas *newRules, int Nivel)
 {
     this->rules = newRules;
     NivelActual = Nivel;
+}
+
+void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
+{
+
 }
