@@ -114,7 +114,6 @@ void GestorDocumentosUI::Termino()
 
 void GestorDocumentosUI::setUpDocumento(DocumentosUI *doc)
 {
-    doc->setFixedSize(300,300);
     doc->hide();
     doc->move(0,-(doc->width()));
 }

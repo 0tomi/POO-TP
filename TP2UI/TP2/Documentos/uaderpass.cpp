@@ -7,6 +7,7 @@ UADERpass::UADERpass(QWidget *parent)
     , ui(new Ui::UADERpass)
 {
     ui->setupUi(this);
+    setFixedSize(150,150);
 }
 
 void UADERpass::setDocumentacionInfo(Documentacion *documento)

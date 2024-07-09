@@ -99,6 +99,7 @@ void MainWindow::CrearPantallasJuego()
     gameScreen = new GameScreen(juego, this);
     CrearPantallaTransicion();
 
+
     // Añadimos las pantallas al stack
     pantallas->addWidget(pantallaInicio);
     pantallas->addWidget(gameScreen);
