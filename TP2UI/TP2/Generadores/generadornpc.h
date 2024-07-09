@@ -4,6 +4,8 @@
 #include "../NPC/npccomun.h"
 #include <string>
 #include <QRandomGenerator>
+#include <QString>
+
 using namespace std;
 
 class GeneradorNPC{
@@ -13,7 +15,6 @@ public:
     NPC *getSimilarNPC(NPC* ejemplo);
 
     ~GeneradorNPC();
-
 private:
     // Generador de Numeros
     QRandomGenerator* Random;
@@ -22,31 +23,31 @@ private:
     NPC* NPC2create;
 
     // Metodos par armar las selecciones random
-    string getCaraRandom(char Genero);
-    string getCejasRandom();
-    string getOjosRandom();
-    string getBocaRandom();
-    string getNarizRandom();
-    string getBarbaRandom();
+    QString getCaraRandom(char Genero);
+    QString getCejasRandom();
+    QString getOjosRandom();
+    QString getBocaRandom();
+    QString getNarizRandom();
+    QString getBarbaRandom();
 
     // ArrayS con direcciones donde se encuentran las caras de los npcs
-    string* LinksCarasHombre;
-    string* LinksCarasMujer;
+    QString* LinksCarasHombre;
+    QString* LinksCarasMujer;
     int topeLinksCaras;
 
-    string* LinksCejas;
+    QString* LinksCejas;
     int topeLinksCejas;
 
-    string* LinksOjos;
+    QString* LinksOjos;
     int topeLinksOjos;
 
-    string* LinksBocas;
+    QString* LinksBocas;
     int topeLinksBocas;
 
-    string* LinksNariz;
+    QString* LinksNariz;
     int topeLinksNariz;
 
-    string* LinksBarbas;
+    QString* LinksBarbas;
     int topeLinksBarbas;
 
     char generos[3] = {'M', 'H', 'X'};

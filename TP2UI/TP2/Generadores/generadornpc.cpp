@@ -68,7 +68,7 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
             NPCaCrear->setBarbaURL(getBarbaRandom());
     }
 
-    string ojos = getOjosRandom();
+    QString ojos = getOjosRandom();
 
     // Resto del cuerpo
     NPCaCrear->setCaraURL(getCaraRandom(generos[valorCentinela2]));
@@ -99,11 +99,11 @@ GeneradorNPC::~GeneradorNPC()
     delete LinksOjos;
 }
 
-string GeneradorNPC::getCaraRandom(char genero)
+QString GeneradorNPC::getCaraRandom(char genero)
 {
     int CaraGeneroX = Random->bounded(10);
     int sorteo = Random->bounded(topeLinksCaras);
-    string LinkCara;
+    QString LinkCara;
 
     // Chance 50/50 de que use de mujer o de hombre.
     bool Cara2Usar = (CaraGeneroX < 5);
@@ -117,31 +117,31 @@ string GeneradorNPC::getCaraRandom(char genero)
 
 }
 
-string GeneradorNPC::getCejasRandom()
+QString GeneradorNPC::getCejasRandom()
 {
     int sorteo = Random->bounded(topeLinksCejas);
     return LinksCejas[sorteo];
 }
 
-string GeneradorNPC::getOjosRandom()
+QString GeneradorNPC::getOjosRandom()
 {
     int sorteo = Random->bounded(topeLinksOjos);
     return LinksOjos[sorteo];
 }
 
-string GeneradorNPC::getBocaRandom()
+QString GeneradorNPC::getBocaRandom()
 {
     int sorteo = Random->bounded(topeLinksBocas);
     return LinksBocas[sorteo];
 }
 
-string GeneradorNPC::getNarizRandom()
+QString GeneradorNPC::getNarizRandom()
 {
     int sorteo = Random->bounded(topeLinksNariz);
     return LinksNariz[sorteo];
 }
 
-string GeneradorNPC::getBarbaRandom()
+QString GeneradorNPC::getBarbaRandom()
 {
     int sorteo = Random->bounded(topeLinksBarbas);
     return LinksBarbas[sorteo];

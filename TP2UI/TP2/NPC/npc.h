@@ -1,10 +1,7 @@
 #ifndef NPC_H
 #define NPC_H
 
-#include "../Documentos/pasaporte.h"
-#include "../Documentos/estancia.h"
-#include <string>
-using namespace std;
+#include "../Documentos/documentacion.h"
 
 class NPC
 {

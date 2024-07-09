@@ -9,9 +9,9 @@ QString NPCcomun::getCaraURL() const
     return CaraURL;
 }
 
-void NPCcomun::setCaraURL(const string &newCaraURL)
+void NPCcomun::setCaraURL(const QString &newCaraURL)
 {
-    CaraURL = QString::fromStdString(newCaraURL);
+    CaraURL = newCaraURL;
 }
 
 QString NPCcomun::getCejasURL() const
@@ -19,9 +19,9 @@ QString NPCcomun::getCejasURL() const
     return CejasURL;
 }
 
-void NPCcomun::setCejasURL(const string &newCejasURL)
+void NPCcomun::setCejasURL(const QString &newCejasURL)
 {
-    CejasURL = QString::fromStdString(newCejasURL);
+    CejasURL = newCejasURL;
 }
 
 QString NPCcomun::getOjosURL() const
@@ -29,9 +29,9 @@ QString NPCcomun::getOjosURL() const
     return OjosURL;
 }
 
-void NPCcomun::setOjosURL(const string &newOjosURL)
+void NPCcomun::setOjosURL(const QString &newOjosURL)
 {
-    OjosURL = QString::fromStdString(newOjosURL);
+    OjosURL = newOjosURL;
 }
 
 QString NPCcomun::getBocaURL() const
@@ -39,9 +39,9 @@ QString NPCcomun::getBocaURL() const
     return BocaURL;
 }
 
-void NPCcomun::setBocaURL(const string &newBocaURL)
+void NPCcomun::setBocaURL(const QString &newBocaURL)
 {
-    BocaURL = QString::fromStdString(newBocaURL);
+    BocaURL = newBocaURL;
 }
 
 QString NPCcomun::getNarizURL() const
@@ -49,9 +49,9 @@ QString NPCcomun::getNarizURL() const
     return NarizURL;
 }
 
-void NPCcomun::setNarizURL(const string &newNarizURL)
+void NPCcomun::setNarizURL(const QString &newNarizURL)
 {
-    NarizURL = QString::fromStdString(newNarizURL);
+    NarizURL = newNarizURL;
 }
 
 QString NPCcomun::getBarbaURL() const
@@ -59,7 +59,7 @@ QString NPCcomun::getBarbaURL() const
     return BarbaURL;
 }
 
-void NPCcomun::setBarbaURL(const string &newBarbaURL)
+void NPCcomun::setBarbaURL(const QString &newBarbaURL)
 {
-    BarbaURL = QString::fromStdString(newBarbaURL);
+    BarbaURL = newBarbaURL;
 }
