@@ -12,7 +12,7 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     tiempoParpadeo = new QRandomGenerator(time(NULL));
 
     ojosCerrados.load(":/Resources/NPCs/OjosCerrados.png");
-    bocaCerrada.load(":Resources/NPCs/BocaTriste.png");
+    bocaCerrada.load(":/Resources/NPCs/BocaTriste.png");
 }
 
 NPCGenericoUI::~NPCGenericoUI()
