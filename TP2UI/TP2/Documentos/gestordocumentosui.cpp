@@ -17,6 +17,8 @@ void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
     this->Escritorio = objeto;
     if (Level == 1)
         setUpLevel1();
+
+    // A desarrollar
 }
 
 void GestorDocumentosUI::setUpLevel1()
@@ -26,7 +28,8 @@ void GestorDocumentosUI::setUpLevel1()
     pase = new UADERpass(Escritorio);
     setUpDocumento(pase);
 
-    // resto de documentos
+    // New al resto de documentos
+
 }
 
 void GestorDocumentosUI::deleteDocumentos()
@@ -42,7 +45,20 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
         tienePase = true;
     else tienePase = false;
 
-    for (int i = 0; i < topePerLevel; i++)
+    /*  ### PARTE QUE SE ENCARGA DE SETEAR EL PASAPORTE O EL DNI SEGUN CORRESPONDA
+
+    if (documentos[0] != nullptr){
+        DNIgenerico *identificacion = documentos[0];
+        if (identifacion->getPais() == "Aztana"){
+            documentosUI[0] = DNIUI;
+            DNIUI->setDocumentacionInfo(documentos[0], NPCui)
+        } else {
+            documentosUI[0] = PasaporteUI;
+            PasaporteUI->setDocumentacionInfo(documentos[0], NPCui)
+    }
+    */
+
+    for (int i = 1; i < topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->setDocumentacionInfo(documentos[i]);
     // en desarrollo
@@ -114,7 +130,6 @@ void GestorDocumentosUI::Termino()
 
 void GestorDocumentosUI::setUpDocumento(DocumentosUI *doc)
 {
-    doc->setFixedSize(300,300);
     doc->hide();
     doc->move(0,-(doc->width()));
 }

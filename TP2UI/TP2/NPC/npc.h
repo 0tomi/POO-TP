@@ -10,24 +10,20 @@ class NPC
 {
 public:
     explicit NPC(char Genero, int Tipo, bool Validez);
-    ~NPC();
+    virtual ~NPC();
 
-    char getGenero();
-    Documentacion** getDocumentos();
-    int getTipo();
+    virtual char getGenero();
+    virtual Documentacion** getDocumentos();
+    virtual int getTipo();
+    virtual bool getValidez() const;
 
-    bool getValidez() const;
-
-    virtual void setPasaporte(Pasaporte *newPasaporte);
-    virtual void setEstancia(Estancia *newEstancia);
+    virtual void addDocumento(Documentacion *newDoc, int Index);
 
 protected:
     bool Validez;
     char Genero;
     int Tipo;
     Documentacion* documentos[10];
-    Pasaporte *pasaporte = nullptr;
-    Estancia *estancia = nullptr;
 };
 
 #endif // NPC_H
