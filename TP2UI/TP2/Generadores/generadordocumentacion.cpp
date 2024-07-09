@@ -43,6 +43,11 @@ void GeneradorDocumentacion::actualizarReglas(Reglas *newRules, int Nivel)
     NivelActual = Nivel;
 }
 
+void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
+{
+    // A DESARROLLAR
+}
+
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI

@@ -10,15 +10,14 @@ class NPC
 {
 public:
     explicit NPC(char Genero, int Tipo, bool Validez);
-    ~NPC();
+    virtual ~NPC();
 
-    char getGenero();
-    Documentacion** getDocumentos();
-    int getTipo();
+    virtual char getGenero();
+    virtual Documentacion** getDocumentos();
+    virtual int getTipo();
+    virtual bool getValidez() const;
 
-    bool getValidez() const;
-
-    void addDocumento(Documentacion *newDoc, int Index);
+    virtual void addDocumento(Documentacion *newDoc, int Index);
 
 protected:
     bool Validez;
