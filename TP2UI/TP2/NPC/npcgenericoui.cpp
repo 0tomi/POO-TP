@@ -81,9 +81,6 @@ void NPCGenericoUI::resizeEvent(QResizeEvent *event)
     }
 
     // Colocamos el nuevo tamanio a las labels
-    QPixmap imagenEscalada2 = ojos.scaled(newLargo,newAltura);
-    ui->Ojos->setPixmap(imagenEscalada2);
-    ui->Ojos->resize(newLargo,newAltura);
     QPixmap imagenEscalada = cuerpo.scaled(newLargo,newAltura);
     ui->Cuerpo->setPixmap(imagenEscalada);
     ui->Cuerpo->resize(newLargo,newAltura);
