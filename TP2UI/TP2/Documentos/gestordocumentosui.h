@@ -13,9 +13,11 @@ public:
     GestorDocumentosUI();
 
     void setUpDocumentos(int Level, QWidget *objeto);
+    void setUpNivel(int nivel);
     void deleteDocumentos();
 
     void setDocumento(Documentacion **info, int Tipo);
+    void nextNivel(int nivel);
 
     void Centrar();
     void Entrar();
@@ -43,9 +45,14 @@ private:
     void CentrarDocumento(DocumentosUI *doc);
 
     void Termino();
-
-    void setUpLevel1();
     void setUpDocumento(DocumentosUI *doc);
+
+    // Setup de niveles
+    void setUpLevel1();
+    void setUpLevel2();
+    void setUpLevel3();
+    void setUpLevel4();
+    void setUpLevel5();
 };
 
 #endif // GESTORDOCUMENTOSUI_H

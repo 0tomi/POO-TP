@@ -17,10 +17,20 @@ GestorDocumentosUI::GestorDocumentosUI()
 void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
 {
     this->Escritorio = objeto;
-    if (Level == 1)
-        setUpLevel1();
+    setUpNivel(Level);
+}
 
-    // A desarrollar
+void GestorDocumentosUI::setUpNivel(int nivel)
+{
+    setUpLevel1();
+    if (nivel >= 1)
+        setUpLevel2();
+    if (nivel >= 2)
+        setUpLevel3();
+    if (nivel >= 3)
+        setUpLevel4();
+    if (nivel >= 4)
+        setUpLevel5();
 }
 
 void GestorDocumentosUI::setUpLevel1()
@@ -30,7 +40,44 @@ void GestorDocumentosUI::setUpLevel1()
     pase = new UADERpass(Escritorio);
     setUpDocumento(pase);
 
-    // New al resto de documentos
+    // New al pasaporte, dni, y estancia
+
+}
+
+void GestorDocumentosUI::setUpLevel2()
+{
+    // News del pais de residencia
+
+    // News del proposito de viaje
+
+}
+
+void GestorDocumentosUI::setUpLevel3()
+{
+    // News del documento para saber si la persona viaja sola o con otros integrantes
+
+    // Es probable que esto no sea un documento, sino que sea algo de dialogo
+
+}
+
+void GestorDocumentosUI::setUpLevel4()
+{
+    // New paises de paso anteriores
+
+    // New Visas previas
+
+    // New Ocupacion
+
+    // New Bienes transportados
+
+    // vemos si meter todas estas cosas, porque es mucho, o capaz las distribuimos en otros niveles.
+}
+
+void GestorDocumentosUI::setUpLevel5()
+{
+    // new Verificacion de antecedentes
+
+    // new Busqueda elementos prohibidos
 
 }
 
@@ -64,6 +111,18 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
         if (documentos[i] != nullptr)
             documentosUI[i]->setDocumentacionInfo(documentos[i]);
     // en desarrollo
+}
+
+void GestorDocumentosUI::nextNivel(int nivel)
+{
+    if (nivel == 1)
+        setUpLevel2();
+    if (nivel == 2)
+        setUpLevel3();
+    if (nivel == 3)
+        setUpLevel4();
+    if (nivel == 4)
+        setUpLevel5();
 }
 
 void GestorDocumentosUI::Centrar()
