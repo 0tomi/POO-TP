@@ -19,11 +19,10 @@ class NPCGenericoUI : public NPCUI
 public:
     explicit NPCGenericoUI(QWidget *parent = nullptr);
     ~NPCGenericoUI();
-    void setNPC(NPC* newNPCenEscena);
+    void setNPC(NPC* newNPCenEscena) override;
     void Rechazado();
-
-protected:
-
+    void Entrar(int X, int Y) override;
+    void Sacar(int X, int Y) override;
 
 private:
     Ui::NPCGenericoUI *ui;

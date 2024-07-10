@@ -2,7 +2,7 @@
 #include <ctime>
 #include <QDebug>
 
-ColaNPC::ColaNPC(AtributosComunes* datos, Reglas* rules){
+ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules){
     this->frente = this->fondo = NULL;
     this->size = 0;
     this->sizeOriginal = 0;
@@ -49,9 +49,14 @@ void ColaNPC::vaciarCola()
     this->size = 0;
 }
 
-void ColaNPC::actualizarReglas(Reglas *newRules, int nivel)
+void ColaNPC::actualizarReglas(Reglas **newRules, int nivel)
 {
     GenerarDocumentacion->actualizarReglas(newRules, nivel);
+}
+
+void ColaNPC::nextNivel(int Nivel)
+{
+    GenerarDocumentacion->nextNivel(Nivel);
 }
 
 void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)

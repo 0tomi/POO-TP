@@ -10,6 +10,8 @@ GestorDocumentosUI::GestorDocumentosUI()
     // Seteamos los documentos en nulo
     for (int i = 0; i < 10; i++)
         documentos[i] = nullptr;
+    for (int i = 0; i < 10; i++)
+        documentosUI[i] = nullptr;
 }
 
 void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
@@ -106,6 +108,8 @@ GestorDocumentosUI::~GestorDocumentosUI()
         delete documentosUI[i];
     for (int i = 0; i < 10; i++)
         delete documentos[i];
+    delete Temporizador;
+    delete pase;
 }
 
 void GestorDocumentosUI::SalirDocumento(DocumentosUI *doc)

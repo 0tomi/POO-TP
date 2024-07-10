@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'NPCGenericoUIui.ui'
+** Form generated from reading UI file 'npcgenericoui.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_NPCGenericoUIUI_H
-#define UI_NPCGenericoUIUI_H
+#ifndef UI_NPCGENERICOUI_H
+#define UI_NPCGENERICOUI_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -107,4 +107,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_NPCGenericoUIUI_H
+#endif // UI_NPCGENERICOUI_H
