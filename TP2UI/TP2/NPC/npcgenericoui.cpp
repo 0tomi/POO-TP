@@ -7,7 +7,7 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     , ui(new Ui::NPCGenericoUI)
 {
     ui->setupUi(this);
-    setFixedSize(300,300);
+    //setFixedSize(300,300);
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
 
@@ -62,6 +62,33 @@ void NPCGenericoUI::Sacar(int X, int Y)
     parpadeo.stop();
 
     NPCUI::Sacar(X,Y);
+}
+
+void NPCGenericoUI::resizeEvent(QResizeEvent *event)
+{
+    QSize newSize = event->size();
+    int newLargo = newSize.width();
+    int newAltura = newSize.height();
+
+    if (newLargo > 400 && newAltura > 400)
+        newLargo = newAltura = 400;
+
+    // Calculando el nuevo ratio
+    if (newLargo / AspectRatio > newAltura) {
+        newLargo = newAltura * AspectRatio;
+    } else {
+        newAltura = newLargo / AspectRatio;
+    }
+
+    // Colocamos el nuevo tamanio a las labels
+    QPixmap imagenEscalada2 = ojos.scaled(newLargo,newAltura);
+    ui->Ojos->setPixmap(imagenEscalada2);
+    ui->Ojos->resize(newLargo,newAltura);
+    QPixmap imagenEscalada = cuerpo.scaled(newLargo,newAltura);
+    ui->Cuerpo->setPixmap(imagenEscalada);
+    ui->Cuerpo->resize(newLargo,newAltura);
+
+    NPCUI::resizeEvent(event);
 }
 
 void NPCGenericoUI::Parpadear()

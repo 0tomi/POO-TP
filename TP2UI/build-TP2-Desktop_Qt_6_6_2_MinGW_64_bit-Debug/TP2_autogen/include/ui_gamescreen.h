@@ -37,6 +37,7 @@ public:
     QWidget *Separador2;
     QWidget *Separador1;
     QWidget *FondoNPC;
+    QHBoxLayout *horizontalLayout_3;
     QWidget *Nose;
     QWidget *Mesa;
 
@@ -155,6 +156,9 @@ public:
         FondoNPC->setStyleSheet(QString::fromUtf8("#FondoNPC{\n"
 "	border-image: url(:/Resources/fondoAlturas.png);\n"
 "}"));
+        horizontalLayout_3 = new QHBoxLayout(FondoNPC);
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_3->setContentsMargins(-1, -1, -1, 0);
 
         gridLayout->addWidget(FondoNPC, 0, 0, 2, 1);
 

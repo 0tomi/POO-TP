@@ -38,8 +38,6 @@ DocumentosUI::~DocumentosUI()
     delete animacionCentrar;
     delete animacionEntrada;
     delete animacionSalida;
-
-    delete ui;
 }
 
 void DocumentosUI::Centrar(int X, int Y)

@@ -133,15 +133,16 @@ void GameScreen::DesbloquearBotones()
 void GameScreen::SpawnearNPC()
 {
     // Esto quedara asi hasta implementar los NPCs especiales
-    npcUI = new NPCGenericoUI(ui->FondoNPC);
+    //npcUI = new NPCGenericoUI(ui->FondoNPC);
 
     // ## FORMATO VIEJO QUE NO SE PORQUE USE ##
 
-    //npcUI = new NPCGenericoUI(this);
+    npcUI = new NPCGenericoUI(ui->FondoNPC);
     //QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
     //layout->addWidget(npcUI);
     //layout->setContentsMargins(40,80,40,0);
     //ui->FondoNPC->setLayout(layout);
+    ui->FondoNPC->layout()->addWidget(npcUI);
 
     npcUI->hide();
 
@@ -151,6 +152,7 @@ void GameScreen::SpawnearNPC()
 void GameScreen::EntrarNPC()
 {
     NPCenEscena = Cola->getNPC();
+
     // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
     qDebug() << NPCenEscena->getGenero();
     qDebug() << NPCenEscena->getTipo();
@@ -163,7 +165,6 @@ void GameScreen::EntrarNPC()
     int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
 
     npcUI->Entrar(centerX, centerY);
-
     EntrarDOC();
 
 }

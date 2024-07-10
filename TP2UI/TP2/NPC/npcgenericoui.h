@@ -24,6 +24,9 @@ public:
     void Entrar(int X, int Y) override;
     void Sacar(int X, int Y) override;
 
+protected:
+    void resizeEvent(QResizeEvent *event) override;
+
 private:
     Ui::NPCGenericoUI *ui;
     NPCcomun *NPCenEscena;

@@ -24,6 +24,7 @@ public:
     virtual void Sacar(int X, int Y);
     virtual ~NPCUI();
 
+
 signals:
     void animacionSalirTerminada();
     void animacionEntrarTerminada();
@@ -38,6 +39,10 @@ protected:
 
     // Termino animacion
     void TerminoAnimacion();
+
+    // Hacemos un Responsive de bajo presupuesto
+    void resizeEvent(QResizeEvent *event) override;
+    double AspectRatio; // Largo / Altura; para mantener el aspecto
 
 private:
     Ui::NPCUI *ui;
