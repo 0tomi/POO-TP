@@ -22,9 +22,9 @@ void Juego::PrepararJuego(int Reset)
     rules[4] = new ReglasNivel5(rules[3]);
 
     if (!Reset)
-        Cola = new ColaNPC(atributos, rules[0]);
+        Cola = new ColaNPC(atributos, rules);
     else
-        Cola->actualizarReglas(rules[0], 0);
+        Cola->actualizarReglas(rules, 0);
 
 
     NivelActual = 0;
@@ -46,7 +46,6 @@ void Juego::setNivel(int nivel)
 {
     if (nivel < 5){
         NivelActual = nivel;
-        Cola->actualizarReglas(rules[nivel], nivel);
         Cola->vaciarCola();
     }
 }
@@ -76,7 +75,7 @@ void Juego::NextLevel()
 {
     NivelActual++;
     this->SocialCreditsEarnedInLevel = 0;
-    Cola->actualizarReglas(rules[NivelActual], NivelActual);
+    Cola->nextNivel(NivelActual);
     Cola->vaciarCola();
 
     switch (NivelActual){

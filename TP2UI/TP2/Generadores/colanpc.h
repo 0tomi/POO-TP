@@ -14,7 +14,7 @@ struct nodoNPC{
 
 class ColaNPC{
 public:
-    ColaNPC(AtributosComunes* atributos, Reglas* rules);
+    ColaNPC(AtributosComunes* atributos, Reglas** rules);
     void addNPC(int Tipo, bool Validez);
     void addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
 
@@ -24,7 +24,8 @@ public:
 
     // Vaciar cola tiene que eliminar los NPCS restantes, junto con sus documentos y demas
     void vaciarCola();
-    void actualizarReglas(Reglas* rules, int nivel);
+    void actualizarReglas(Reglas** rules, int nivel);
+    void nextNivel(int Nivel);
 
     NPC* getNPC();
 
@@ -40,7 +41,6 @@ private:
     NPC* NPCaRetornar;
 
     QRandomGenerator *Random;
-    Reglas* reglas;
 
     GeneradorNPC* GenerarNPC;
     GeneradorDocumentacion* GenerarDocumentacion;

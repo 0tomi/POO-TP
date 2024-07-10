@@ -20,8 +20,8 @@ class NPCUI : public QWidget
 public:
     explicit NPCUI(QWidget *parent = nullptr);
     virtual void setNPC(NPC* newNPCenEscena) = 0;
-    void Entrar(int X, int Y);
-    void Sacar(int X, int Y);
+    virtual void Entrar(int X, int Y);
+    virtual void Sacar(int X, int Y);
     virtual ~NPCUI();
 
 signals:

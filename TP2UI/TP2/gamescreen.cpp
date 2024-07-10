@@ -151,7 +151,6 @@ void GameScreen::SpawnearNPC()
 void GameScreen::EntrarNPC()
 {
     NPCenEscena = Cola->getNPC();
-
     // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
     qDebug() << NPCenEscena->getGenero();
     qDebug() << NPCenEscena->getTipo();

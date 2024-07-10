@@ -22,7 +22,6 @@ NPCGenericoUI::~NPCGenericoUI()
 
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
 {
-    setearParpadear(true);
     qDebug() << "Nuevo NPC";
 
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
@@ -50,6 +49,21 @@ void NPCGenericoUI::Rechazado()
     ui->Ojos->setPixmap(ojosCerrados);
 }
 
+void NPCGenericoUI::Entrar(int X, int Y)
+{
+    setearParpadear(false);
+    NPCUI::Entrar(X,Y);
+}
+
+void NPCGenericoUI::Sacar(int X, int Y)
+{
+    // Desconectamos el parpadeo anterior para setear uno nuevo
+    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
+    parpadeo.stop();
+
+    NPCUI::Sacar(X,Y);
+}
+
 void NPCGenericoUI::Parpadear()
 {
     if (parpadeando){
@@ -65,10 +79,6 @@ void NPCGenericoUI::Parpadear()
 
 void NPCGenericoUI::setearParpadear(bool estado)
 {
-    // Desconectamos el parpadeo anterior para setear uno nuevo
-    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
-    parpadeo.stop();
-
     // Armamos denuevo parpadeo (Todo esto es para evitar bugs)
     parpadeo.start(1000);
     parpadeando = estado;
