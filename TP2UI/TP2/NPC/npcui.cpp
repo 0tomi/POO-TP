@@ -1,13 +1,9 @@
 #include "npcui.h"
 #include "ui_npcui.h"
-#include <QSize>
-#include <QDebug>
 
 NPCUI::NPCUI(QWidget *parent)
     : QWidget(parent)
-{
-    AspectRatio = 1.0 / 1.0;
-
+{   
     // Preparamos animaciones de entrada del NPC
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionSalida = new QPropertyAnimation(this, "pos");
@@ -50,29 +46,9 @@ void NPCUI::TerminoAnimacion()
     emit this->animacionSalirTerminada();
 }
 
-void NPCUI::resizeEvent(QResizeEvent *event)
-{
-    QSize newSize = event->size();
-    int newLargo = newSize.width();
-    int newAltura = newSize.height();
-
-    if (newLargo > 400 && newAltura > 400)
-        newLargo = newAltura = 400;
-
-    // Calculate the new size while maintaining the aspect ratio
-    if (newLargo / AspectRatio > newAltura) {
-        newLargo = newAltura * AspectRatio;
-    } else {
-        newAltura = newLargo / AspectRatio;
-    }
-
-    qDebug() << "Nueva res:" << newLargo << newAltura;
-    // Set the new size
-    this->resize(newLargo, newAltura);
-}
-
 NPCUI::~NPCUI()
 {
     delete animacionEntrada;
     delete animacionSalida;
+    delete ui;
 }
