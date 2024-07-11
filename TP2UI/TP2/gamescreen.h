@@ -5,11 +5,13 @@
 #include <QResizeEvent>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QSpacerItem>
 
 #include "NPC/npcgenericoui.h"
 #include "Documentos/uaderpass.h"
 #include "Documentos/gestordocumentosui.h"
 #include "juego.h"
+#include "GameScreen/tomibotones.h"
 
 namespace Ui {
 class GameScreen;
@@ -34,8 +36,15 @@ private:
     ColaNPC* Cola;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
+
     GestorDocumentosUI documentos;
 
+    TomiBotones* BotonAprobar;
+    TomiBotones* BotonRechazar;
+    TomiBotones* BotonCentrar;
+    QSpacerItem* EspaciadorBotones;
+
+    void SpawnearBotones();
     void RealizarConecciones();
     void RealizarConeccionesPrincipales();
 

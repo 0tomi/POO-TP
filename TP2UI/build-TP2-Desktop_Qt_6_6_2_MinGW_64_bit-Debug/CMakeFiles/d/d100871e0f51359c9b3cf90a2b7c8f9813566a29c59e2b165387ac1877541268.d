@@ -175,10 +175,12 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QMainWindow \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QStackedWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qstackedwidget.h \
@@ -580,12 +582,17 @@ TP2_autogen/timestamp: \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.ui \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.ui \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp \

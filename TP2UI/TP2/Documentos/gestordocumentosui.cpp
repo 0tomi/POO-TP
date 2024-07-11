@@ -35,7 +35,7 @@ void GestorDocumentosUI::setUpNivel(int nivel)
 
 void GestorDocumentosUI::setUpLevel1()
 {
-    this->topePerLevel = 4;
+    this->topePerLevel = 2;
     // aca tocara inicializar todos los documentos del respectivo level.
     pase = new UADERpass(Escritorio);
     setUpDocumento(pase);
@@ -159,6 +159,15 @@ void GestorDocumentosUI::Salir()
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
             SalirDocumento(documentosUI[i]);
+}
+
+void GestorDocumentosUI::DetenerAnimaciones()
+{
+    if (tienePase)
+        pase->PausarAnimacionCentrar();
+    for (int i = 0; i < this->topePerLevel; i++)
+        if (documentos[i] != nullptr)
+            documentosUI[i]->PausarAnimacionCentrar();
 }
 
 GestorDocumentosUI::~GestorDocumentosUI()

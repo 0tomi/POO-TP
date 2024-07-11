@@ -27,8 +27,8 @@ public:
         if (UADERpass->objectName().isEmpty())
             UADERpass->setObjectName("UADERpass");
         UADERpass->resize(300, 300);
-        UADERpass->setMinimumSize(QSize(300, 300));
-        UADERpass->setMaximumSize(QSize(400, 400));
+        UADERpass->setMinimumSize(QSize(150, 150));
+        UADERpass->setMaximumSize(QSize(300, 300));
         verticalLayout = new QVBoxLayout(UADERpass);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");

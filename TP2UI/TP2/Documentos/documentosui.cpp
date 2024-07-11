@@ -38,8 +38,6 @@ DocumentosUI::~DocumentosUI()
     delete animacionCentrar;
     delete animacionEntrada;
     delete animacionSalida;
-
-    delete ui;
 }
 
 void DocumentosUI::Centrar(int X, int Y)
@@ -49,6 +47,11 @@ void DocumentosUI::Centrar(int X, int Y)
     animacionCentrar->setEndValue(QPoint(X,Y));
 
     animacionCentrar->start();
+}
+
+void DocumentosUI::PausarAnimacionCentrar()
+{
+    animacionCentrar->pause();
 }
 
 void DocumentosUI::PrepararAnimacionEntrada(int X, int Y)

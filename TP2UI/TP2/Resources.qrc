@@ -37,5 +37,11 @@
         <file>Resources/ArchivosTexto/URLCejas.txt</file>
         <file>Resources/ArchivosTexto/URLNariz.txt</file>
         <file>Resources/ArchivosTexto/URLOjos.txt</file>
+        <file>Resources/MaterialPantallas/BotonAprobarApretado.png</file>
+        <file>Resources/MaterialPantallas/BotonAprobarSinApretar.png</file>
+        <file>Resources/MaterialPantallas/BotonDesaprobarApretado.png</file>
+        <file>Resources/MaterialPantallas/BotonDesaprobarNoApretado .png</file>
+        <file>Resources/MaterialPantallas/BotonCentrarBloqueado.png</file>
+        <file>Resources/MaterialPantallas/BotonCentrarDesbloqueado.png</file>
     </qresource>
 </RCC>

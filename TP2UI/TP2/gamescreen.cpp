@@ -18,6 +18,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     SpawnearNPC();
     documentos.setUpDocumentos(1, ui->Escritorio);
 
+    SpawnearBotones();
     RealizarConeccionesPrincipales();
     BloquearBotones(true);
 }
@@ -25,16 +26,19 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 GameScreen::~GameScreen()
 {
     delete ui;
+    delete BotonAprobar;
+    delete BotonRechazar;
+    delete BotonCentrar;
 }
 
 void GameScreen::RealizarConeccionesPrincipales()
 {
     // Conecto los botones para que segun lo que haga el usuario, se evalue una cosa u otra.
-    connect(ui->aceptarBoton, &QPushButton::clicked, this, &GameScreen::Acepto);
-    connect(ui->rechazarBoton, &QPushButton::clicked, this, &GameScreen::Rechazo);
+    connect(BotonAprobar, &TomiBotones::BotonApretado, this, &GameScreen::Acepto);
+    connect(BotonRechazar, &TomiBotones::BotonApretado, this, &GameScreen::Rechazo);
 
     // Conectamos boton de centrar para centrar el documento.
-    connect(ui->BotonCentrar, &QPushButton::clicked, this, &GameScreen::FuncionBotonCentral);
+    connect(BotonCentrar, &TomiBotones::BotonApretado, this, &GameScreen::FuncionBotonCentral);
 }
 
 void GameScreen::EmpezarJuego()
@@ -80,6 +84,34 @@ void GameScreen::FinalDePartida()
     qDebug() << "Termino el juego";
 }
 
+void GameScreen::SpawnearBotones()
+{
+    // Añadimos los botones a la escena
+    QString BotonAceptarDesbloqueado = ":/Resources/MaterialPantallas/BotonAprobarSinApretar.png";
+    QString BotonAceptarBloqueado = ":/Resources/MaterialPantallas/BotonAprobarApretado.png";
+    QString BotonRechazarDesbloqueado = ":/Resources/MaterialPantallas/BotonDesaprobarNoApretado .png";
+    QString BotonRechazarBloqueado = ":/Resources/MaterialPantallas/BotonDesaprobarApretado.png";
+    QString BotonCentrarBlock = ":/Resources/MaterialPantallas/BotonCentrarBloqueado.png";
+    QString BotonCentrarDesblock = ":/Resources/MaterialPantallas/BotonCentrarDesbloqueado.png";
+
+    BotonAprobar = new TomiBotones(BotonAceptarDesbloqueado, BotonAceptarBloqueado, ui->ContenedorBotones);
+    BotonRechazar = new TomiBotones(BotonRechazarDesbloqueado, BotonRechazarBloqueado, ui->ContenedorBotones);
+    BotonCentrar = new TomiBotones(BotonCentrarDesblock, BotonCentrarBlock,ui->ContenedorBotones);
+    EspaciadorBotones = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+    BotonAprobar->resize(200,125);
+    BotonRechazar->resize(200,125);
+
+    BotonAprobar->SetTiempoBloqueo(2500);
+    BotonRechazar->SetTiempoBloqueo(2500);
+    BotonCentrar->SetTiempoBloqueo(1000);
+
+    ui->ContenedorBotones->layout()->addWidget(BotonCentrar);
+    ui->ContenedorBotones->layout()->addItem(EspaciadorBotones);
+    ui->ContenedorBotones->layout()->addWidget(BotonAprobar);
+    ui->ContenedorBotones->layout()->addWidget(BotonRechazar);
+}
+
 void GameScreen::Acepto()
 {
     SelloDocumento(true);
@@ -93,6 +125,7 @@ void GameScreen::Rechazo()
 
 void GameScreen::SelloDocumento(bool Boton)
 {
+    documentos.DetenerAnimaciones();
     SacarNPC();
     temporizadorBotones.start(2500);
     BloquearBotones(true);
@@ -110,17 +143,14 @@ void GameScreen::SelloDocumento(bool Boton)
 
 void GameScreen::BloquearBotones(bool Bloqueo)
 {
-    ui->BotonCentrar->setDisabled(Bloqueo);
-    ui->aceptarBoton->setDisabled(Bloqueo);
-    ui->rechazarBoton->setDisabled(Bloqueo);
+    BotonCentrar->BloquearBoton(Bloqueo);
+    BotonAprobar->BloquearBoton(Bloqueo);
+    BotonRechazar->BloquearBoton(Bloqueo);
 }
 
 void GameScreen::FuncionBotonCentral()
 {
     // Bloqueamos los botones para que no bugeen el juego
-    BloquearBotones(true);
-    temporizadorBotones.start(700);
-
     CentrarDocumentos();
 }
 
@@ -133,15 +163,16 @@ void GameScreen::DesbloquearBotones()
 void GameScreen::SpawnearNPC()
 {
     // Esto quedara asi hasta implementar los NPCs especiales
-    npcUI = new NPCGenericoUI(ui->FondoNPC);
+    //npcUI = new NPCGenericoUI(ui->FondoNPC);
 
     // ## FORMATO VIEJO QUE NO SE PORQUE USE ##
 
-    //npcUI = new NPCGenericoUI(this);
+    npcUI = new NPCGenericoUI(ui->FondoNPC);
     //QVBoxLayout *layout = new QVBoxLayout(ui->FondoNPC);
     //layout->addWidget(npcUI);
     //layout->setContentsMargins(40,80,40,0);
     //ui->FondoNPC->setLayout(layout);
+    ui->FondoNPC->layout()->addWidget(npcUI);
 
     npcUI->hide();
 
@@ -151,6 +182,7 @@ void GameScreen::SpawnearNPC()
 void GameScreen::EntrarNPC()
 {
     NPCenEscena = Cola->getNPC();
+
     // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
     qDebug() << NPCenEscena->getGenero();
     qDebug() << NPCenEscena->getTipo();
@@ -163,7 +195,6 @@ void GameScreen::EntrarNPC()
     int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
 
     npcUI->Entrar(centerX, centerY);
-
     EntrarDOC();
 
 }

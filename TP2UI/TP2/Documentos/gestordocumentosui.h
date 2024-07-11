@@ -22,6 +22,7 @@ public:
     void Centrar();
     void Entrar();
     void Salir();
+    void DetenerAnimaciones();
 
     ~GestorDocumentosUI();
 

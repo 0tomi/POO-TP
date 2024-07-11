@@ -298,6 +298,12 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h",
+			"MU",
+			"ER3QNRLDTK/moc_tomibotones.cpp",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h",
 			"MU",
 			"Q5K73KXH44/moc_colanpc.cpp",
@@ -313,6 +319,12 @@
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h",
 			"MU",
 			"Q5K73KXH44/moc_generadornpc.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h",
+			"MU",
+			"XJOF3KNGPY/moc_gestornpcsui.cpp",
 			null
 		],
 		[
@@ -512,6 +524,11 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp",
 			"MU",
 			null
@@ -523,6 +540,11 @@
 		],
 		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp",
 			"MU",
 			null
 		],
