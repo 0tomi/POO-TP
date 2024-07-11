@@ -15,7 +15,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
 
     // Pendiente a implementar
     // News de generadores
-
+    generadorEstancia = new GenerarEstancia();
 }
 
 void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)

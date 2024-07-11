@@ -5,6 +5,7 @@
 #include "../Documentos/documentacion.h"
 #include "../Reglas/reglasnivel5.h"
 #include "../NPC/npc.h"
+#include "../Generadores/generarestancia.h"
 
 #include <QRandomGenerator>
 
@@ -19,7 +20,7 @@ public:
 
 private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
-
+    GenerarEstancia* generadorEstancia;
 
     // Datos del juego:
     AtributosComunes* datos;
