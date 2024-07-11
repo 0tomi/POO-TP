@@ -2,6 +2,7 @@
 #include "SOYZ2DITOJ/moc_documentosui.cpp"
 #include "SOYZ2DITOJ/moc_gestordocumentosui.cpp"
 #include "SOYZ2DITOJ/moc_uaderpass.cpp"
+#include "ER3QNRLDTK/moc_tomibotones.cpp"
 #include "XJOF3KNGPY/moc_npcgenericoui.cpp"
 #include "XJOF3KNGPY/moc_npcui.cpp"
 #include "EWIEGA46WW/moc_gamescreen.cpp"

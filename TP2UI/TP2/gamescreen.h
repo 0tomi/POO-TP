@@ -10,6 +10,7 @@
 #include "Documentos/uaderpass.h"
 #include "Documentos/gestordocumentosui.h"
 #include "juego.h"
+#include "GameScreen/tomibotones.h"
 
 namespace Ui {
 class GameScreen;
@@ -35,7 +36,10 @@ private:
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
     GestorDocumentosUI documentos;
+    TomiBotones* BotonAprobar;
+    TomiBotones* BotonRechazar;
 
+    void SpawnearBotones();
     void RealizarConecciones();
     void RealizarConeccionesPrincipales();
 

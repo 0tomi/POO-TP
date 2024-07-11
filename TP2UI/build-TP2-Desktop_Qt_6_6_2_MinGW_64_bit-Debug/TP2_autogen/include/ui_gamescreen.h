@@ -32,8 +32,6 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *BotonCentrar;
     QSpacerItem *horizontalSpacer;
-    QPushButton *aceptarBoton;
-    QPushButton *rechazarBoton;
     QWidget *Separador2;
     QWidget *Separador1;
     QWidget *FondoNPC;
@@ -95,34 +93,6 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        aceptarBoton = new QPushButton(ContenedorBotones);
-        aceptarBoton->setObjectName("aceptarBoton");
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(aceptarBoton->sizePolicy().hasHeightForWidth());
-        aceptarBoton->setSizePolicy(sizePolicy1);
-        aceptarBoton->setMinimumSize(QSize(50, 50));
-        aceptarBoton->setMaximumSize(QSize(200, 75));
-        aceptarBoton->setCheckable(true);
-        aceptarBoton->setChecked(false);
-        aceptarBoton->setAutoExclusive(true);
-
-        horizontalLayout_2->addWidget(aceptarBoton);
-
-        rechazarBoton = new QPushButton(ContenedorBotones);
-        rechazarBoton->setObjectName("rechazarBoton");
-        sizePolicy1.setHeightForWidth(rechazarBoton->sizePolicy().hasHeightForWidth());
-        rechazarBoton->setSizePolicy(sizePolicy1);
-        rechazarBoton->setMinimumSize(QSize(50, 50));
-        rechazarBoton->setMaximumSize(QSize(200, 75));
-        rechazarBoton->setCheckable(true);
-        rechazarBoton->setChecked(true);
-        rechazarBoton->setAutoExclusive(true);
-        rechazarBoton->setFlat(false);
-
-        horizontalLayout_2->addWidget(rechazarBoton);
-
 
         verticalLayout->addWidget(ContenedorBotones);
 
@@ -145,11 +115,11 @@ public:
 
         FondoNPC = new QWidget(Contenedor);
         FondoNPC->setObjectName("FondoNPC");
-        QSizePolicy sizePolicy2(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
-        sizePolicy2.setHorizontalStretch(3);
-        sizePolicy2.setVerticalStretch(1);
-        sizePolicy2.setHeightForWidth(FondoNPC->sizePolicy().hasHeightForWidth());
-        FondoNPC->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+        sizePolicy1.setHorizontalStretch(3);
+        sizePolicy1.setVerticalStretch(1);
+        sizePolicy1.setHeightForWidth(FondoNPC->sizePolicy().hasHeightForWidth());
+        FondoNPC->setSizePolicy(sizePolicy1);
         FondoNPC->setMinimumSize(QSize(300, 300));
         FondoNPC->setMaximumSize(QSize(600, 600));
         FondoNPC->setSizeIncrement(QSize(50, 0));
@@ -174,11 +144,11 @@ public:
 
         Mesa = new QWidget(Contenedor);
         Mesa->setObjectName("Mesa");
-        QSizePolicy sizePolicy3(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::MinimumExpanding);
-        sizePolicy3.setHorizontalStretch(1);
-        sizePolicy3.setVerticalStretch(2);
-        sizePolicy3.setHeightForWidth(Mesa->sizePolicy().hasHeightForWidth());
-        Mesa->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::MinimumExpanding);
+        sizePolicy2.setHorizontalStretch(1);
+        sizePolicy2.setVerticalStretch(2);
+        sizePolicy2.setHeightForWidth(Mesa->sizePolicy().hasHeightForWidth());
+        Mesa->setSizePolicy(sizePolicy2);
         Mesa->setMinimumSize(QSize(300, 300));
         Mesa->setMaximumSize(QSize(600, 600));
         Mesa->setStyleSheet(QString::fromUtf8("#Mesa{\n"
@@ -200,8 +170,6 @@ public:
     {
         GameScreen->setWindowTitle(QCoreApplication::translate("GameScreen", "Form", nullptr));
         BotonCentrar->setText(QCoreApplication::translate("GameScreen", "Centrar documentos", nullptr));
-        aceptarBoton->setText(QCoreApplication::translate("GameScreen", "Aceptar", nullptr));
-        rechazarBoton->setText(QCoreApplication::translate("GameScreen", "Rechazar", nullptr));
     } // retranslateUi
 
 };
