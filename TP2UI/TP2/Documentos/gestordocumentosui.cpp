@@ -37,11 +37,15 @@ void GestorDocumentosUI::setUpLevel1()
 {
     this->topePerLevel = 2;
     // aca tocara inicializar todos los documentos del respectivo level.
+
+    // New del uader pass (pase diplomatico)
     pase = new UADERpass(Escritorio);
     setUpDocumento(pase);
 
     // New al pasaporte, dni, y estancia
 
+    // New de estancia
+    documentosUI[1] = new estanciaUI(Escritorio);
 }
 
 void GestorDocumentosUI::setUpLevel2()

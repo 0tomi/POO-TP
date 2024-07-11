@@ -47,7 +47,7 @@ void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
 
 void ReglasNivel1::setTipoDeVisitaValidas(){
     // Generamos la cantidad de tipos de visitas validas
-    this->maxVisitasPermitidas = rand()%maxTiposVisitas + 1;
+    this->maxVisitasPermitidas = rand()%maxTiposVisitas;
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
     if (this->maxVisitasPermitidas == maxTiposVisitas)

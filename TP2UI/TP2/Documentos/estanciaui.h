@@ -22,7 +22,7 @@ public:
 
 private:
     Ui::estanciaUI *ui;
-    Estancia* estancia = dynamic_cast<Estancia>(DocumentacioInfo);
+    Estancia* estanciaInfo;
 };
 
 #endif // ESTANCIAUI_H

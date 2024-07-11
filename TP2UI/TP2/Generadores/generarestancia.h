@@ -8,7 +8,7 @@
 
 class GenerarEstancia {
 private:
-    QRandomGenerator* random;
+    QRandomGenerator* NumRandom;
     bool valido;
     QString* tipoVisitas;
     int topeTipoVisitas;
@@ -17,14 +17,12 @@ private:
     int duracMaximaEstancia;
 public:
     GenerarEstancia();
-    GenerarEstancia(QString*, int, QString*, int, int);
+    ~GenerarEstancia();
+    GenerarEstancia(QString* _tiposVisitas, int _topeTiposVisits, QString* _tiposVisitsVal, int _topeVisitsVal, int _duracMax);
     Estancia* getEstancia(bool valido); // Estancia a generar
 
     // getters
     QString* getTiposInvalidos(QString* tiposVisitas, QString* tiposVisitsVal, int &cantInvalidos);
-    int getTopeTipoVisitas();
-    int getTopeTipoVisitasVals();
-    bool getValidacion();
 };
 
 #endif // GENERARESTANCIA_H

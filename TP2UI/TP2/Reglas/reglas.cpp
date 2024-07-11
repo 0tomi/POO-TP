@@ -2,3 +2,8 @@
 
 Reglas::Reglas() {}
 
+Reglas::~Reglas()
+{
+
+}
+

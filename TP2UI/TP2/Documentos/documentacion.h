@@ -12,6 +12,7 @@ class Documentacion
 {
 public:
     Documentacion();
+    virtual ~Documentacion();
 };
 
 #endif // DOCUMENTACION_H

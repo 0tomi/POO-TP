@@ -2,85 +2,77 @@
 
 #include <stdlib.h>
 #include <ctime>
+#include <QDebug>
 
 GenerarEstancia::GenerarEstancia() {
-    random = new QRandomGenerator(time(NULL));
+
+}
+
+GenerarEstancia::~GenerarEstancia()
+{
+    delete NumRandom;
 }
 
 GenerarEstancia::GenerarEstancia(QString* _tiposVisitas, int _topeTiposVisits, QString* _tiposVisitsVal, int _topeVisitsVal, int _duracMax) {
     tipoVisitas = _tiposVisitas;
     topeTipoVisitas = _topeTiposVisits;
+
     tipoVisitasValidas = _tiposVisitsVal;
     topeVisitasValidas = _topeVisitsVal;
+
     duracMaximaEstancia = _duracMax;
+
+    NumRandom = new QRandomGenerator(time(NULL));
 }
 
 // getters:
-int GenerarEstancia::getTopeTipoVisitas() {
-    return topeTipoVisitas;
-}
-
-int GenerarEstancia::getTopeTipoVisitasVals() {
-    return topeVisitasValidas;
-}
-
-bool GenerarEstancia::getValidacion() {
-    return valido;
-}
-
 Estancia* GenerarEstancia::getEstancia(bool valido) {
-    int duracGenerar = 0; int opcion = random->bounded(1, 4);
+    int duracGenerar;
+    int opcion = NumRandom->bounded(1, 4);
     QString* tiposInvalidos = nullptr;
     QString tipoEstGenerar;
     int cantInvalidos = 0;
 
     if (valido) { // data valida
         // genero duracion estancia random (valida)
-        if (duracMaximaEstancia > 0) {
-            duracGenerar = random->bounded(3, duracMaximaEstancia);
-        }
-        // genero tipo estancia random (valida)
-        if (topeVisitasValidas > 0) {
-            tipoEstGenerar = tipoVisitasValidas[random->bounded(topeVisitasValidas)];
-        }
-    } else { // data invalida
+        duracGenerar = NumRandom->bounded(3, duracMaximaEstancia);
 
+        // genero tipo estancia random (valida)
+        int sorteo;
+        if (topeVisitasValidas == 1)
+            sorteo = 0;
+        else
+            sorteo = NumRandom->bounded(topeVisitasValidas);
+        tipoEstGenerar = tipoVisitasValidas[sorteo];
+    } else { // data invalida
         switch (opcion) {
         case 1: // genera solo duracion estancia invalida
             if (duracMaximaEstancia > 0) {
-                duracGenerar = random->bounded(10, duracMaximaEstancia);
+                duracGenerar = NumRandom->bounded(10, duracMaximaEstancia);
             }
             if (topeVisitasValidas > 0) {
-                tipoEstGenerar = tipoVisitasValidas[random->bounded(topeVisitasValidas)];
+                tipoEstGenerar = tipoVisitasValidas[NumRandom->bounded(topeVisitasValidas)];
             }
             break;
         case 2: // genero solo tipo estancia invalido
             if (duracMaximaEstancia > 0) {
-                duracGenerar = random->bounded(3, duracMaximaEstancia);
+                duracGenerar = NumRandom->bounded(3, duracMaximaEstancia);
             }
             tiposInvalidos = getTiposInvalidos(tipoVisitas, tipoVisitasValidas, cantInvalidos);
             if (cantInvalidos > 0) {
-                tipoEstGenerar = tiposInvalidos[random->bounded(cantInvalidos)];
+                tipoEstGenerar = tiposInvalidos[NumRandom->bounded(cantInvalidos)];
             }
             delete[] tiposInvalidos;
             break;
         case 3: // ambos datos invalidos
             if (duracMaximaEstancia > 0) {
-                duracGenerar = random->bounded(10, duracMaximaEstancia);
+                duracGenerar = NumRandom->bounded(10, duracMaximaEstancia);
             }
             tiposInvalidos = getTiposInvalidos(tipoVisitas, tipoVisitasValidas, cantInvalidos);
             if (cantInvalidos > 0) {
-                tipoEstGenerar = tiposInvalidos[random->bounded(cantInvalidos)];
+                tipoEstGenerar = tiposInvalidos[NumRandom->bounded(cantInvalidos)];
             }
             delete[] tiposInvalidos;
-            break;
-        default: // genera todos validos
-            if (duracMaximaEstancia > 0) {
-                duracGenerar = random->bounded(3, duracMaximaEstancia);
-            }
-            if (topeVisitasValidas > 0) {
-                tipoEstGenerar = tipoVisitasValidas[random->bounded(topeVisitasValidas)];
-            }
             break;
         }
     }

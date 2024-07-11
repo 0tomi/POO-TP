@@ -17,6 +17,7 @@ public:
     void getDocumentos(NPC* info, bool validez);
     void actualizarReglas(Reglas** rules, int Nivel);
     void nextNivel(int Nivel);
+    ~GeneradorDocumentacion();
 
 private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
@@ -24,7 +25,11 @@ private:
 
     // Datos del juego:
     AtributosComunes* datos;
-    Reglas* rules[5];
+    ReglasNivel1* reglasNivel1;
+    ReglasNivel2* reglasNivel2;
+    ReglasNivel3* reglasNivel3;
+    ReglasNivel4* reglasNivel4;
+    ReglasNivel5* reglasNivel5;
     QRandomGenerator NumeroRandom;
     int NivelActual;
 

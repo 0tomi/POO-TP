@@ -1,4 +1,4 @@
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/SOYZ2DITOJ/moc_gestordocumentosui.cpp: C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h \
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/SOYZ2DITOJ/moc_estanciaui.cpp: C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/QList \
   B:/QT/6.6.2/mingw_64/include/QtCore/QObject \
@@ -8,7 +8,6 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
   B:/QT/6.6.2/mingw_64/include/QtCore/QString \
-  B:/QT/6.6.2/mingw_64/include/QtCore/QTimer \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h \
@@ -24,7 +23,6 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qatomic.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qatomic_cxx11.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbasicatomic.h \
-  B:/QT/6.6.2/mingw_64/include/QtCore/qbasictimer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbindingstorage.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbytearray.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -117,7 +115,6 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtextstream.h \
-  B:/QT/6.6.2/mingw_64/include/QtCore/qtimer.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtmetamacros.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtnoop.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -383,6 +380,4 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaUI.h \
-  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h

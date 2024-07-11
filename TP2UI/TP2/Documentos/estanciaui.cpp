@@ -9,9 +9,11 @@ estanciaUI::estanciaUI(QWidget *parent)
     setFixedSize(200, 200);
 }
 
-estanciaUI::setDocumentacionInfo(Documentacion *documento) {
-    ui->tipoVisita->setText(estancia->getTipoEstancia());
-    ui->duracionVisita->setText(QString("%1 MESES").arg(estancia->getDuracEstancia()));
+void estanciaUI::setDocumentacionInfo(Documentacion *documento) {
+    estanciaInfo = dynamic_cast<Estancia*>(documento);
+
+    ui->tipoVisita->setText(estanciaInfo->getTipoEstancia());
+    ui->duracionVisita->setText(QString("%1 MESES").arg(estanciaInfo->getDuracEstancia()));
 }
 
 estanciaUI::~estanciaUI()
