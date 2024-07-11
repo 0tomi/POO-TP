@@ -14,6 +14,14 @@ GestorDocumentosUI::GestorDocumentosUI()
         documentosUI[i] = nullptr;
 }
 
+GestorDocumentosUI::~GestorDocumentosUI()
+{
+    for (int i = 0; i < 10; i++)
+        delete documentosUI[i];
+    delete Temporizador;
+    delete pase;
+}
+
 void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
 {
     this->Escritorio = objeto;
@@ -168,16 +176,6 @@ void GestorDocumentosUI::DetenerAnimaciones()
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->PausarAnimacionCentrar();
-}
-
-GestorDocumentosUI::~GestorDocumentosUI()
-{
-    for (int i = 0; i < 10; i++)
-        delete documentosUI[i];
-    for (int i = 0; i < 10; i++)
-        delete documentos[i];
-    delete Temporizador;
-    delete pase;
 }
 
 void GestorDocumentosUI::SalirDocumento(DocumentosUI *doc)
