@@ -1,7 +1,5 @@
 #include "tomibotones.h"
 #include "ui_tomibotones.h"
-#include <QDebug>
-#include <QPalette>
 
 TomiBotones::TomiBotones(QString Estado1, QString Estado2, QWidget *parent)
     : QWidget(parent)
@@ -30,8 +28,8 @@ void TomiBotones::SetTiempoBloqueo(int milisegundos)
 void TomiBotones::BloquearBoton(bool bloqueo)
 {
     if (bloqueo){
-        ui->Boton->setStyleSheet(SkinBotonBlock);
-        BotonBloqueado = true;
+        disconnect(&TemporizadorBotones, &QTimer::timeout, this, &TomiBotones::DesbloquearBoton);
+        PausarBoton();
     } else
         DesbloquearBoton();
 }
@@ -39,7 +37,6 @@ void TomiBotones::BloquearBoton(bool bloqueo)
 void TomiBotones::DesbloquearBoton()
 {
     disconnect(&TemporizadorBotones, &QTimer::timeout, this, &TomiBotones::DesbloquearBoton);
-    qDebug() << "Boton desbloqueado";
     ui->Boton->setStyleSheet(SkinBotonUnblock);
     BotonBloqueado = false;
     emit BottonLiberado();
@@ -62,10 +59,16 @@ void TomiBotones::CrearSkinBoton(QString Estado1, QString &Direccion)
     Direccion = "border-image: url(" + Estado1 + ");";
 }
 
+void TomiBotones::PausarBoton()
+{
+    ui->Boton->setStyleSheet(SkinBotonBlock);
+    BotonBloqueado = true;
+}
+
 void TomiBotones::Accion()
 {
     connect(&TemporizadorBotones, &QTimer::timeout, this, &TomiBotones::DesbloquearBoton);
     TemporizadorBotones.start(TiempoBloqueo);
     emit BotonApretado();
-    BloquearBoton(true);
+    PausarBoton();
 }

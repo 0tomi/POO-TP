@@ -1,3 +1,6 @@
 #include "gestornpcsui.h"
 
-GestorNPCsUI::GestorNPCsUI() {}
+GestorNPCsUI::GestorNPCsUI() {
+
+
+}

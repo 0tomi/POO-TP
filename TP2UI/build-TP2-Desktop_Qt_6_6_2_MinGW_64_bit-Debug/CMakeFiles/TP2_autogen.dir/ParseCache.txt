@@ -381,6 +381,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h
@@ -2113,8 +2114,10 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsexports.h
@@ -2531,10 +2534,12 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QMainWindow
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QStackedWidget
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qstackedwidget.h
@@ -3129,6 +3134,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp
  uic:ui_documentosui.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp
@@ -3531,6 +3537,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h
  mmc:Q_OBJECT
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QString
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QTimer
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h
@@ -3647,7 +3654,6 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h
- mdp:B:/QT/6.6.2/mingw_64/include/QtGui/QPixmap
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qbitmap.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qbrush.h

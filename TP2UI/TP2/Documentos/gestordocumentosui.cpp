@@ -161,6 +161,15 @@ void GestorDocumentosUI::Salir()
             SalirDocumento(documentosUI[i]);
 }
 
+void GestorDocumentosUI::DetenerAnimaciones()
+{
+    if (tienePase)
+        pase->PausarAnimacionCentrar();
+    for (int i = 0; i < this->topePerLevel; i++)
+        if (documentos[i] != nullptr)
+            documentosUI[i]->PausarAnimacionCentrar();
+}
+
 GestorDocumentosUI::~GestorDocumentosUI()
 {
     for (int i = 0; i < 10; i++)

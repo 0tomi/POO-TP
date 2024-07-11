@@ -41,5 +41,7 @@
         <file>Resources/MaterialPantallas/BotonAprobarSinApretar.png</file>
         <file>Resources/MaterialPantallas/BotonDesaprobarApretado.png</file>
         <file>Resources/MaterialPantallas/BotonDesaprobarNoApretado .png</file>
+        <file>Resources/MaterialPantallas/BotonCentrarBloqueado.png</file>
+        <file>Resources/MaterialPantallas/BotonCentrarDesbloqueado.png</file>
     </qresource>
 </RCC>

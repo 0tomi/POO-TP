@@ -5,6 +5,7 @@
 #include <QResizeEvent>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QSpacerItem>
 
 #include "NPC/npcgenericoui.h"
 #include "Documentos/uaderpass.h"
@@ -35,9 +36,13 @@ private:
     ColaNPC* Cola;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
+
     GestorDocumentosUI documentos;
+
     TomiBotones* BotonAprobar;
     TomiBotones* BotonRechazar;
+    TomiBotones* BotonCentrar;
+    QSpacerItem* EspaciadorBotones;
 
     void SpawnearBotones();
     void RealizarConecciones();

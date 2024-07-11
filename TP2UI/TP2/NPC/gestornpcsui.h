@@ -37,7 +37,7 @@ signals:
 private:
     ColaNPC* ColaNPCs;
     QWidget* Escenario;
-    NPC Npcs;
+    NPC* Npcs;
     int topeNPCs;
 };
 

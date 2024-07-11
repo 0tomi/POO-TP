@@ -13,8 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -30,8 +28,6 @@ public:
     QVBoxLayout *verticalLayout;
     QWidget *ContenedorBotones;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *BotonCentrar;
-    QSpacerItem *horizontalSpacer;
     QWidget *Separador2;
     QWidget *Separador1;
     QWidget *FondoNPC;
@@ -78,21 +74,6 @@ public:
         ContenedorBotones->setMaximumSize(QSize(1920, 150));
         horizontalLayout_2 = new QHBoxLayout(ContenedorBotones);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        BotonCentrar = new QPushButton(ContenedorBotones);
-        BotonCentrar->setObjectName("BotonCentrar");
-        BotonCentrar->setMinimumSize(QSize(100, 50));
-        BotonCentrar->setMaximumSize(QSize(200, 75));
-        BotonCentrar->setCheckable(true);
-        BotonCentrar->setChecked(false);
-        BotonCentrar->setAutoExclusive(true);
-        BotonCentrar->setFlat(false);
-
-        horizontalLayout_2->addWidget(BotonCentrar);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
 
         verticalLayout->addWidget(ContenedorBotones);
 
@@ -169,7 +150,6 @@ public:
     void retranslateUi(QWidget *GameScreen)
     {
         GameScreen->setWindowTitle(QCoreApplication::translate("GameScreen", "Form", nullptr));
-        BotonCentrar->setText(QCoreApplication::translate("GameScreen", "Centrar documentos", nullptr));
     } // retranslateUi
 
 };

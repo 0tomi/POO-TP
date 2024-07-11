@@ -22,6 +22,7 @@ public:
     void Entrar(int X, int Y);
     void Sacar(int X);
     void Centrar(int X, int Y);
+    void PausarAnimacionCentrar();
     ~DocumentosUI();
 
 signals:

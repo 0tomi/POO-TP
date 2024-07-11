@@ -1,5 +1,6 @@
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/ER3QNRLDTK/moc_tomibotones.cpp: C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QString \
   B:/QT/6.6.2/mingw_64/include/QtCore/QTimer \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
@@ -116,7 +117,6 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h \
-  B:/QT/6.6.2/mingw_64/include/QtGui/QPixmap \
   B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qbitmap.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qbrush.h \

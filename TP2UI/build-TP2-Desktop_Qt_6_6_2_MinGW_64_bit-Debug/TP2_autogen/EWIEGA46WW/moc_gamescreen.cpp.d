@@ -175,8 +175,10 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \

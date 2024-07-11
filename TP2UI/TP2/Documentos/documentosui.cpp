@@ -49,6 +49,11 @@ void DocumentosUI::Centrar(int X, int Y)
     animacionCentrar->start();
 }
 
+void DocumentosUI::PausarAnimacionCentrar()
+{
+    animacionCentrar->pause();
+}
+
 void DocumentosUI::PrepararAnimacionEntrada(int X, int Y)
 {
     animacionEntrada->setDuration(1000);

@@ -17,7 +17,6 @@ public:
     explicit TomiBotones(QString Estado1, QString Estado2, QWidget *parent = nullptr);
     void SetTiempoBloqueo(int milisegundos);
     void BloquearBoton(bool bloqueo);
-    void DesbloquearBoton();
     ~TomiBotones();
 
 signals:
@@ -35,6 +34,9 @@ private:
 
     void CrearSkinBoton(QString Estado1, QString &Direccion);
     bool BotonBloqueado;
+
+    void PausarBoton();
+    void DesbloquearBoton();
 
     int TiempoBloqueo;
     void Accion();
