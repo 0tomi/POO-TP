@@ -50,6 +50,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NPC/npccomun.h NPC/npccomun.cpp
         Documentos/gestordocumentosui.h Documentos/gestordocumentosui.cpp
         GameScreen/tomibotones.h GameScreen/tomibotones.cpp GameScreen/tomibotones.ui
+        NPC/gestornpcsui.h NPC/gestornpcsui.cpp
 
 
 

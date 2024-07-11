@@ -2,7 +2,6 @@
 #include "gamescreen.h"
 #include <QApplication>
 #include <QDebug>
-#include "GameScreen/tomibotones.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,11 +11,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    QString BotonRechazarDesbloqueado = ":/Resources/MaterialPantallas/BotonDesaprobarNoApretado .png";
-    QString BotonRechazarBloqueado = ":/Resources/MaterialPantallas/BotonDesaprobarApretado.png";
-
-    TomiBotones test(BotonRechazarDesbloqueado, BotonRechazarBloqueado);
-    test.show();
     //GameScreen g;
     //g.show();
     //g.EmpezarJuego();

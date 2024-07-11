@@ -35,7 +35,7 @@ void GestorDocumentosUI::setUpNivel(int nivel)
 
 void GestorDocumentosUI::setUpLevel1()
 {
-    this->topePerLevel = 4;
+    this->topePerLevel = 2;
     // aca tocara inicializar todos los documentos del respectivo level.
     pase = new UADERpass(Escritorio);
     setUpDocumento(pase);

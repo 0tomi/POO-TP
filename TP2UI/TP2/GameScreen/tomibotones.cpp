@@ -11,13 +11,10 @@ TomiBotones::TomiBotones(QString Estado1, QString Estado2, QWidget *parent)
     ui->setupUi(this);
 
     // Colocamos la imagen que va a tener el boton segun el estado.
-    //SkinBotonDesbloqueado.load(Estado1);
-    //SkinBotonBloqueado.load(Estado2);
     CrearSkinBoton(Estado1, SkinBotonUnblock);
     CrearSkinBoton(Estado2, SkinBotonBlock);
 
     // Le damos la apariencia de no estar apretado al boton.
-    //ui->Boton->setPixmap(SkinBotonDesbloqueado);
     ui->Boton->setStyleSheet(SkinBotonUnblock);
 
     // Conectamos el temporizador al apretar los botones
@@ -33,7 +30,6 @@ void TomiBotones::SetTiempoBloqueo(int milisegundos)
 void TomiBotones::BloquearBoton(bool bloqueo)
 {
     if (bloqueo){
-        //ui->Boton->setPixmap(SkinBotonBloqueado);
         ui->Boton->setStyleSheet(SkinBotonBlock);
         BotonBloqueado = true;
     } else
@@ -44,7 +40,6 @@ void TomiBotones::DesbloquearBoton()
 {
     disconnect(&TemporizadorBotones, &QTimer::timeout, this, &TomiBotones::DesbloquearBoton);
     qDebug() << "Boton desbloqueado";
-    //ui->Boton->setPixmap(SkinBotonDesbloqueado);
     ui->Boton->setStyleSheet(SkinBotonUnblock);
     BotonBloqueado = false;
     emit BottonLiberado();
