@@ -4,6 +4,7 @@
 #include "reglas.h"
 #include "../AtributosComunes/atributoscomunes.h"
 #include <QString>
+#include <QRandomGenerator>
 
 using namespace std;
 
@@ -17,17 +18,22 @@ public:
     void resetReglas(int cantidadMinimaPaisesPermitidos);
 
     // Getters
-    int* getPaisesPermitidos(int &max);
-    QString* getEstadoCivilPermitido(int &max);
-    QString* getTipoVisitaPermitida(int &max);
+    int* getPaisesPermitidos(int &max) const;
+    QString* getEstadoCivilPermitido(int &max) const;
+    //QString* getTipoVisitaPermitida(int &max);
     int getFechaMinPermitida();
     int getFechaMaxPermitida();
     int getDuracionEstanciaPermitida();
 
-    // Destructor
     ~ReglasNivel1();
 
+    QString *getTipoDeVisitaValida() const;
+    int getMaxVisitasPermitidas() const;
+
 private:
+    // Generador de numeros
+    QRandomGenerator Random;
+
     // # Conjunto de elementos de los cuales obtendremos las reglas #
     QString* paises;
     int maxPaises;

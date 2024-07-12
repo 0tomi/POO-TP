@@ -157,6 +157,7 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qpicture.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h \
@@ -165,6 +166,7 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qtextdocument.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h \
@@ -174,12 +176,14 @@ TP2_autogen/timestamp: \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/QLabel \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QMainWindow \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QStackedWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qlabel.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
@@ -575,6 +579,9 @@ TP2_autogen/timestamp: \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.ui \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.ui \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp \
@@ -591,6 +598,8 @@ TP2_autogen/timestamp: \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.cpp \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp \

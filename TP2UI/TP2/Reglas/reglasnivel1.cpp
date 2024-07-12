@@ -1,12 +1,16 @@
 #include "reglasnivel1.h"
-#include <stdlib.h>
+#include <ctime>
+#include <QDebug>
 
 ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
     // # Seteamos atributos principales
     this->paises = atributos->getPaises(this->maxPaises);
     this->tipoVisitas = atributos->getVisitas(this->maxTiposVisitas);
     this->estadosCiviles = atributos->getEstadosCiviles(this->maxEstadosCiviles);
-    srand(1);   // hay que cambiar esto para cuando este mas avanzado el juego a time null
+
+    // Inicializamos la semilla del generador
+    quint32 Semilla = static_cast<quint32>(time(NULL));
+    Random.seed(Semilla);
 
     // # Inicializamos las reglas
     setPaisesPermitidos(3);
@@ -16,9 +20,13 @@ ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
     setEstadoCivilValidos();
 }
 
+
+
 void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
 {
-    srand(2);
+    // Inicializamos la semilla del generador
+    quint32 Semilla = static_cast<quint32>(time(NULL));
+    Random.seed(Semilla);
 
     setPaisesPermitidos(3);
     setFechasValidas();
@@ -29,7 +37,7 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
 
 void ReglasNivel1::setEstadoCivilValidos(){
     // Generamos la cantidad de tipos de estados civiles validos
-    this->maxEstadosCivilPermitidos = rand()%maxEstadosCiviles + 1;
+    this->maxEstadosCivilPermitidos = Random.bounded(1,maxEstadosCiviles+1);
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
     if (this->maxEstadosCivilPermitidos == maxEstadosCiviles)
@@ -40,14 +48,20 @@ void ReglasNivel1::setEstadoCivilValidos(){
 
 void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
     this->estadoCivilValidos = new QString[CantidadECValidos];
+    int sorteo, cantidadEstadosValidos = 0;
 
-    for (int i = 0; i < CantidadECValidos; i++)
-        estadoCivilValidos[i] = estadosCiviles[i];
+    if (CantidadECValidos < 2){
+        sorteo = Random.bounded(maxEstadosCiviles);
+        estadoCivilValidos[0] = estadosCiviles[sorteo];
+    } else {
+        for (int i = 0; i < CantidadECValidos; i++)
+            estadoCivilValidos[i] = estadosCiviles[i];
+    }
 }
 
 void ReglasNivel1::setTipoDeVisitaValidas(){
     // Generamos la cantidad de tipos de visitas validas
-    this->maxVisitasPermitidas = rand()%maxTiposVisitas + 1;
+    this->maxVisitasPermitidas = Random.bounded(1,maxTiposVisitas+1);
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
     if (this->maxVisitasPermitidas == maxTiposVisitas)
@@ -57,23 +71,27 @@ void ReglasNivel1::setTipoDeVisitaValidas(){
 }
 
 void ReglasNivel1::SeleccionarVisitasValidas(int CantidadVisitasValidas){
-    this->tipoDeVisitaValida = new QString[CantidadVisitasValidas];
+    tipoDeVisitaValida = new QString[CantidadVisitasValidas];
 
-    for (int i = 0; i < CantidadVisitasValidas; i++)
-        tipoDeVisitaValida[i] = tipoVisitas[i];
+    if (CantidadVisitasValidas < 2){
+        int sorteo = Random.bounded(maxTiposVisitas);
+        tipoDeVisitaValida[0] = tipoVisitas[sorteo];   /// CAMBIOS QUE TENGO QUE HACER
+    } else {
+        for (int i = 0; i < CantidadVisitasValidas; i++)
+            tipoDeVisitaValida[i] = tipoVisitas[i];
+    }
 }
 
 void ReglasNivel1::setDuracionEstanciaValida(int max, int min){
     // Duracion de estancia de entre duracion minima X a duracion maxima Y
-    int intervalo = max - min;
-    duracionDeEstanciaValida = rand()%(intervalo+1) + min;
+    duracionDeEstanciaValida = Random.bounded(min, max);
 }
 
 void ReglasNivel1::setFechasValidas(){
     // Genera fechas de entre 1900 y 2000
     do{
-        fechaMax = rand()%100 + 1900;
-        fechaMin = rand()%100 + 1900;
+        fechaMax = Random.bounded(1900,2000);
+        fechaMin = Random.bounded(1900,2000);
 
         // Si se generan al reves las fechas las intercambio
         if (fechaMax < fechaMin){
@@ -90,7 +108,7 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
     // Generar cantidad de paises permitidos:
     int cantidadPaisesPermitidos;
     do{
-        cantidadPaisesPermitidos = rand()%this->maxPaises + 1;
+        cantidadPaisesPermitidos = Random.bounded(1,maxPaises+1);
     }while(cantidadPaisesPermitidos == maxPaises || cantidadPaisesPermitidos < cantidadMinimaPaisesPermitidos);
 
     // Preparar el array de paises y su tope
@@ -105,7 +123,7 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
     int i = 0;
     while (cantidadPaisesPermitidos){
         do{
-            paisesValidos[i] = rand()% this->maxPaises;
+            paisesValidos[i] = Random.bounded(maxPaises);
         }while(checkRepetidos(paisesValidos[i]));
 
         i++;
@@ -127,19 +145,14 @@ bool ReglasNivel1::checkRepetidos(int dato){
 
 // Getters
 
-int* ReglasNivel1::getPaisesPermitidos(int &max){
+int* ReglasNivel1::getPaisesPermitidos(int &max) const{
     max = this->maxPaisesPermitidos;
     return this->paisesValidos;
 }
 
-QString* ReglasNivel1::getEstadoCivilPermitido(int &max){
+QString* ReglasNivel1::getEstadoCivilPermitido(int &max) const{
     max = this->maxEstadosCivilPermitidos;
     return this->estadoCivilValidos;
-}
-
-QString* ReglasNivel1::getTipoVisitaPermitida(int &max){
-    max = this->maxEstadosCivilPermitidos;
-    return tipoDeVisitaValida;
 }
 
 int ReglasNivel1::getFechaMinPermitida(){
@@ -154,9 +167,20 @@ int ReglasNivel1::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
 }
 
+// Destructor
 ReglasNivel1::~ReglasNivel1()
 {
-    delete paisesValidos;
-    delete tipoDeVisitaValida;
-    delete estadoCivilValidos;
+    delete[] paisesValidos;
+    delete[] tipoDeVisitaValida;
+    delete[] estadoCivilValidos;
+}
+
+QString *ReglasNivel1::getTipoDeVisitaValida() const
+{
+    return tipoDeVisitaValida;
+}
+
+int ReglasNivel1::getMaxVisitasPermitidas() const
+{
+    return maxVisitasPermitidas;
 }

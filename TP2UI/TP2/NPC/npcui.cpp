@@ -27,7 +27,7 @@ void NPCUI::Sacar(int X, int Y)
 void NPCUI::PrepararAnimacionEntrada(int X, int Y)
 {
     animacionEntrada->setDuration(1000);
-    animacionEntrada->setStartValue(QPoint(-(width()),Y+50));
+    animacionEntrada->setStartValue(QPoint(-(width()) -50,Y+50));
     animacionEntrada->setEndValue(QPoint(X,Y));
     animacionEntrada->setEasingCurve(QEasingCurve::OutExpo);
 }
@@ -50,5 +50,4 @@ NPCUI::~NPCUI()
 {
     delete animacionEntrada;
     delete animacionSalida;
-    delete ui;
 }

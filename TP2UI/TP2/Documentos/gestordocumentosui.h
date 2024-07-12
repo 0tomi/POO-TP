@@ -3,6 +3,7 @@
 #include <QWidget>
 #include "uaderpass.h"
 #include "documentacion.h"
+#include "estanciaUI.h"
 #include <QTimer>
 
 class GestorDocumentosUI: public QWidget
@@ -49,11 +50,11 @@ private:
     void setUpDocumento(DocumentosUI *doc);
 
     // Setup de niveles
-    void setUpLevel1();
-    void setUpLevel2();
-    void setUpLevel3();
-    void setUpLevel4();
-    void setUpLevel5();
+    void setUpLevel1(int &Index);
+    void setUpLevel2(int &Index);
+    void setUpLevel3(int &Index);
+    void setUpLevel4(int &Index);
+    void setUpLevel5(int &Index);
 };
 
 #endif // GESTORDOCUMENTOSUI_H

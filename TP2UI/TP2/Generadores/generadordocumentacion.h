@@ -5,6 +5,7 @@
 #include "../Documentos/documentacion.h"
 #include "../Reglas/reglasnivel5.h"
 #include "../NPC/npc.h"
+#include "../Generadores/generarestancia.h"
 
 #include <QRandomGenerator>
 
@@ -16,16 +17,26 @@ public:
     void getDocumentos(NPC* info, bool validez);
     void actualizarReglas(Reglas** rules, int Nivel);
     void nextNivel(int Nivel);
+    ~GeneradorDocumentacion();
 
 private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
-
+    GenerarEstancia* generadorEstancia;
 
     // Datos del juego:
     AtributosComunes* datos;
-    Reglas* rules[5];
+    ReglasNivel1* reglasNivel1;
+    ReglasNivel2* reglasNivel2;
+    ReglasNivel3* reglasNivel3;
+    ReglasNivel4* reglasNivel4;
+    ReglasNivel5* reglasNivel5;
     QRandomGenerator NumeroRandom;
     int NivelActual;
+<<<<<<< HEAD
+=======
+    int DificultadJuego; // 1: Facil | 2: Normal | 3: Demonio
+
+>>>>>>> main
     // Datos del Documento a generar:
     NPC* datosDeNPC;
     Documentacion* Doc2Generate;
