@@ -11,10 +11,13 @@ class GestorNPCsUI: public QWidget
 public:
     GestorNPCsUI();
     void setUp(QWidget *parent, ColaNPC* cola);
+    void setUpNuevoNivel();
     // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
     void Centrar();
     void Entrar();
     void Salir();
+    void TerminoNivel();
+    bool MostrandoElNPC();
     int NPCsRestantes();
 
 public slots:
@@ -37,8 +40,14 @@ signals:
 private:
     ColaNPC* ColaNPCs;
     QWidget* Escenario;
-    NPC* Npcs;
+
+    NPCGenericoUI* NPCcomunUI;
+    NPC* NPCenEscena;
+
+    bool MostrandoNPC;
+
     int topeNPCs;
+    void RealizarConeccionesDeNPCs();
 };
 
 #endif // GESTORNPCSUI_H

@@ -52,6 +52,7 @@ void GameScreen::EmpezarJuego()
     EntrarNPC();
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::RealizarConecciones()
 {
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
@@ -67,18 +68,21 @@ void GameScreen::RealizarConecciones()
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::FinalDePartida()
 {
     // a desarrollar
     BloquearBotones(true);
-    SacarNPC();
+    if (GestorNPC.MostrandoElNPC()){
+        GestorNPC.SacarNPC();
+    }
+    GestorNPC.TerminoNivel();
 
     // Conectamos el temporizador de partida para terminar la partida.
     disconnect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
     tiempoPartida.stop();
 
     // Desconectamos las cosas que le dan progreso al juego
-    disconnect(npcUI, &NPCUI::animacionSalirTerminada, this, &GameScreen::EntrarNPC);
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
     qDebug() << "Termino el juego";
@@ -117,6 +121,7 @@ void GameScreen::Acepto()
     SelloDocumento(true);
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::Rechazo()
 {
     SelloDocumento(false);
@@ -160,6 +165,7 @@ void GameScreen::DesbloquearBotones()
     CentrarNPC();
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::SpawnearNPC()
 {
     // Esto quedara asi hasta implementar los NPCs especiales
@@ -179,6 +185,7 @@ void GameScreen::SpawnearNPC()
     npcUI->move(-(npcUI->width()),0);
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::EntrarNPC()
 {
     NPCenEscena = Cola->getNPC();
@@ -199,6 +206,7 @@ void GameScreen::EntrarNPC()
 
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::SacarNPC()
 {
     int SalidaEscena = ui->FondoNPC->width() + npcUI->width();
@@ -208,6 +216,7 @@ void GameScreen::SacarNPC()
     SacarDOC();
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::CentrarNPC()
 {
     int centerX = (ui->FondoNPC->width() - npcUI->width()) /2;
@@ -215,6 +224,7 @@ void GameScreen::CentrarNPC()
     npcUI->move(centerX,centerY);
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::changeEvent(QEvent *event)
 {
     QWidget::changeEvent(event);
@@ -224,6 +234,7 @@ void GameScreen::changeEvent(QEvent *event)
     }
 }
 
+// ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ## REEMPLAZAR ##
 void GameScreen::resizeEvent(QResizeEvent *event)
 {
     // En caso de cambiar la ventana, ajustamos el tamaño del NPC
