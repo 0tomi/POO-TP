@@ -53,6 +53,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NPC/gestornpcsui.h NPC/gestornpcsui.cpp
         Generadores/generarestancia.h Generadores/generarestancia.cpp
         Documentos/estanciaui.h Documentos/estanciaui.cpp Documentos/estanciaui.ui
+        Documentos/pasaporte.h
+        Generadores/generador_pasaporte.h
+        Generadores/generador_pasaporte.cpp
+
 
 
 

@@ -1,5 +1,5 @@
 #include "estanciaui.h"
-#include "ui_estanciaui.h"
+#include "ui_estanciaui"
 
 estanciaUI::estanciaUI(QWidget *parent)
     : DocumentosUI(parent)

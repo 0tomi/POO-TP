@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-3c013aa676c5f9d8010e.json",
+					"jsonFile" : "directory-.-Debug-5bc709c47832dbd236ce.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,11 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "TP2::@6890427a1f51a3e7e1df",
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/codemodel-v2-b3885bba70f150da5cd1.json
-					"jsonFile" : "target-TP2-Debug-205c3d095357e1fe8f34.json",
-========
-					"jsonFile" : "target-TP2-Debug-d99024a309a5d59ef215.json",
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/codemodel-v2-402e132b09d48adbf066.json
+					"jsonFile" : "target-TP2-Debug-eceea77619cf7fa3d402.json",
 					"name" : "TP2",
 					"projectIndex" : 0
 				},

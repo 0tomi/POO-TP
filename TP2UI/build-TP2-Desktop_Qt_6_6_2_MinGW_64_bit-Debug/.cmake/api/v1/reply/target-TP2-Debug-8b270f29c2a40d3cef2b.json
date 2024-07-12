@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 101,
+				"line" : 105,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 84,
+				"line" : 88,
 				"parent" : 0
 			},
 			{
@@ -393,7 +393,8 @@
 				64,
 				66,
 				68,
-				80
+				71,
+				82
 			]
 		}
 	],
@@ -545,7 +546,8 @@
 				64,
 				66,
 				68,
-				80
+				71,
+				82
 			]
 		},
 		{
@@ -582,14 +584,15 @@
 				65,
 				67,
 				70,
-				71,
 				72,
 				73,
 				74,
 				75,
 				76,
 				77,
-				78
+				78,
+				79,
+				80
 			]
 		},
 		{
@@ -606,15 +609,15 @@
 				55,
 				62,
 				69,
-				79
+				81
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				81,
-				82
+				83,
+				84
 			]
 		}
 	],
@@ -1003,6 +1006,17 @@
 			"sourceGroupIndex" : 2
 		},
 		{
+			"backtrace" : 4,
+			"path" : "Generadores/generador_pasaporte.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Generadores/generador_pasaporte.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "D:/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include/ui_mainwindow.h",
@@ -1053,17 +1067,13 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-<<<<<<<< HEAD:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-205c3d095357e1fe8f34.json
-			"path" : "D:/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp",
-========
-			"path" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include/Documentos/ui_estanciaui.h",
+			"path" : "D:/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/include/Documentos/ui_estanciaui.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp",
->>>>>>>> main:TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/.cmake/api/v1/reply.prev/target-TP2-Debug-d99024a309a5d59ef215.json
+			"path" : "D:/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{

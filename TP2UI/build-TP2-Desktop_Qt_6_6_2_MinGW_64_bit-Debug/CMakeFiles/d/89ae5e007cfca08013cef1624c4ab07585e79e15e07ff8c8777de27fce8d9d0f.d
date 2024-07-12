@@ -8,6 +8,7 @@ TP2_autogen/timestamp: \
   C:/Qt/6.6.2/mingw_64/include/QtCore/QSize \
   C:/Qt/6.6.2/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.6.2/mingw_64/include/QtCore/QString \
+  C:/Qt/6.6.2/mingw_64/include/QtCore/QTextStream \
   C:/Qt/6.6.2/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.6.2/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.6.2/mingw_64/include/QtCore/q20memory.h \
@@ -157,6 +158,7 @@ TP2_autogen/timestamp: \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qkeysequence.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qpaintdevice.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qpalette.h \
+  C:/Qt/6.6.2/mingw_64/include/QtGui/qpicture.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qpixelformat.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qpixmap.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qpointingdevice.h \
@@ -165,6 +167,7 @@ TP2_autogen/timestamp: \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qrgb.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qrgba64.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qscreen.h \
+  C:/Qt/6.6.2/mingw_64/include/QtGui/qtextdocument.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qtgui-config.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qtguiexports.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qtguiglobal.h \
@@ -174,12 +177,14 @@ TP2_autogen/timestamp: \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+  C:/Qt/6.6.2/mingw_64/include/QtWidgets/QLabel \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/QSpacerItem \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/QStackedWidget \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/QWidget \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
+  C:/Qt/6.6.2/mingw_64/include/QtWidgets/qlabel.h \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
@@ -575,6 +580,8 @@ TP2_autogen/timestamp: \
   D:/POO-TP/TP2UI/TP2/Documentos/documentosui.ui \
   D:/POO-TP/TP2UI/TP2/Documentos/estancia.cpp \
   D:/POO-TP/TP2UI/TP2/Documentos/estancia.h \
+  D:/POO-TP/TP2UI/TP2/Documentos/estanciaui.cpp \
+  D:/POO-TP/TP2UI/TP2/Documentos/estanciaui.h \
   D:/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp \
   D:/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h \
   D:/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp \
@@ -584,13 +591,16 @@ TP2_autogen/timestamp: \
   D:/POO-TP/TP2UI/TP2/Documentos/uaderpass.ui \
   D:/POO-TP/TP2UI/TP2/GameScreen/tomibotones.cpp \
   D:/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h \
-  D:/POO-TP/TP2UI/TP2/GameScreen/tomibotones.ui \
   D:/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp \
   D:/POO-TP/TP2UI/TP2/Generadores/colanpc.h \
+  D:/POO-TP/TP2UI/TP2/Generadores/generador_pasaporte.cpp \
+  D:/POO-TP/TP2UI/TP2/Generadores/generador_pasaporte.h \
   D:/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp \
   D:/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h \
   D:/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp \
   D:/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
+  D:/POO-TP/TP2UI/TP2/Generadores/generarestancia.cpp \
+  D:/POO-TP/TP2UI/TP2/Generadores/generarestancia.h \
   D:/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp \
   D:/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h \
   D:/POO-TP/TP2UI/TP2/NPC/npc.cpp \

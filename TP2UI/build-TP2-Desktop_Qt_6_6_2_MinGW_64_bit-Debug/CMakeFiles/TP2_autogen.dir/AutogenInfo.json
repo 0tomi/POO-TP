@@ -280,17 +280,13 @@
 			null
 		],
 		[
-<<<<<<< HEAD
-			"D:/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h",
-=======
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h",
+			"D:/POO-TP/TP2UI/TP2/Documentos/estanciaui.h",
 			"MU",
 			"SOYZ2DITOJ/moc_estanciaui.cpp",
 			null
 		],
 		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h",
->>>>>>> main
+			"D:/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h",
 			"MU",
 			"SOYZ2DITOJ/moc_gestordocumentosui.cpp",
 			null
@@ -320,6 +316,12 @@
 			null
 		],
 		[
+			"D:/POO-TP/TP2UI/TP2/Generadores/generador_pasaporte.h",
+			"MU",
+			"Q5K73KXH44/moc_generador_pasaporte.cpp",
+			null
+		],
+		[
 			"D:/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h",
 			"MU",
 			"Q5K73KXH44/moc_generadordocumentacion.cpp",
@@ -332,17 +334,13 @@
 			null
 		],
 		[
-<<<<<<< HEAD
-			"D:/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h",
-=======
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h",
+			"D:/POO-TP/TP2UI/TP2/Generadores/generarestancia.h",
 			"MU",
 			"Q5K73KXH44/moc_generarestancia.cpp",
 			null
 		],
 		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h",
->>>>>>> main
+			"D:/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h",
 			"MU",
 			"XJOF3KNGPY/moc_gestornpcsui.cpp",
 			null
@@ -506,18 +504,20 @@
 		[ "D:/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/Documentos/estancia.cpp", "MU", null ],
+		[ "D:/POO-TP/TP2UI/TP2/Documentos/estanciaui.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/GameScreen/tomibotones.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp", "MU", null ],
+		[ "D:/POO-TP/TP2UI/TP2/Generadores/generador_pasaporte.cpp", "MU", null ],
 		[
 			"D:/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp",
 			"MU",
 			null
 		],
-<<<<<<< HEAD
 		[ "D:/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp", "MU", null ],
+		[ "D:/POO-TP/TP2UI/TP2/Generadores/generarestancia.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/NPC/npc.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/NPC/npccomun.cpp", "MU", null ],
@@ -535,148 +535,6 @@
 		[ "D:/POO-TP/TP2UI/TP2/main.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/mainwindow.cpp", "MU", null ],
 		[ "D:/POO-TP/TP2UI/TP2/pantallainicio.cpp", "MU", null ]
-=======
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel4.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel5.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/main.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.cpp",
-			"MU",
-			null
-		]
->>>>>>> main
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

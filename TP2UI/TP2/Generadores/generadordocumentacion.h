@@ -6,7 +6,7 @@
 #include "../Reglas/reglasnivel5.h"
 #include "../NPC/npc.h"
 #include "../Generadores/generarestancia.h"
-
+#include "../Generadores/generador_pasaporte.h"
 #include <QRandomGenerator>
 
 using namespace std;
@@ -22,7 +22,7 @@ public:
 private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
     GenerarEstancia* generadorEstancia;
-
+    generar_pasaporte * generadorPasaporte;
     // Datos del juego:
     AtributosComunes* datos;
     ReglasNivel1* reglasNivel1;
@@ -32,16 +32,16 @@ private:
     ReglasNivel5* reglasNivel5;
     QRandomGenerator NumeroRandom;
     int NivelActual;
-<<<<<<< HEAD
-=======
+
+
     int DificultadJuego; // 1: Facil | 2: Normal | 3: Demonio
 
->>>>>>> main
+
     // Datos del Documento a generar:
     NPC* datosDeNPC;
     Documentacion* Doc2Generate;
-<<<<<<< HEAD
-=======
+
+
 
     // Seleccion de documentos que seran falsos
     bool DocsValidos[10];
@@ -58,7 +58,7 @@ private:
     void GenerarDocumentosNivel3(int &Index);
     void GenerarDocumentosNivel4(int &Index);
     void GenerarDocumentosNivel5(int &Index);
->>>>>>> main
+
 };
 
 #endif // GENERADORDOCUMENTACION_H

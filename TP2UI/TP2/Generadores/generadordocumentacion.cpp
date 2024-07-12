@@ -23,7 +23,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // News de generadores
 
     // Generador pasaportes
-
+    generadorPasaporte = new generar_pasaporte(reglasNivel1, datos);
     // Generador estancia
     int maxVisitas, maxVisitasValidas;
     QString* Visitas = datos->getVisitas(maxVisitas);
@@ -34,6 +34,9 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
                                             VisitasValidas,
                                             maxVisitasValidas,
                                             reglasNivel1->getDuracionEstanciaPermitida());
+
+
+
 
     // Siguientes generadores
 }
@@ -47,7 +50,7 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
 {
     // Index va a ser quien se encargue de decirle a NPC donde guardar los documentos (segun el tipo)
     int Index = 0;
-    NPC2Generate = npc;
+    datosDeNPC = npc;
 
     // Aca iria el sorteo de cuales documentos seran verdaderos y cuales falsos.
     if (Validez)
@@ -140,14 +143,17 @@ void GeneradorDocumentacion::SetDificultadNivel()
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    NPC2Generate->addDocumento(nullptr,Index);
+    Pasaporte * nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index],datosDeNPC->getGenero());
+    datosDeNPC->addDocumento(nuevoPasaporte,Index);
     Index++;
 
     // Generador de Estancias
     Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index], DificultadJuego);
     qDebug() <<"Indice:" <<Index;
-    NPC2Generate->addDocumento(nuevaEstancia, Index);
+    datosDeNPC->addDocumento(nuevaEstancia, Index);
     Index++;
+
+
 }
 
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
