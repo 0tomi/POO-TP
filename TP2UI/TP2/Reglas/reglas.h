@@ -5,6 +5,7 @@ class Reglas
 {
 public:
     Reglas();
+    virtual ~Reglas();
 };
 
 #endif // REGLAS_H

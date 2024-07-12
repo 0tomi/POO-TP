@@ -1,12 +1,16 @@
 #include "reglasnivel1.h"
-#include <stdlib.h>
+#include <ctime>
+#include <QDebug>
 
 ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
     // # Seteamos atributos principales
     this->paises = atributos->getPaises(this->maxPaises);
     this->tipoVisitas = atributos->getVisitas(this->maxTiposVisitas);
     this->estadosCiviles = atributos->getEstadosCiviles(this->maxEstadosCiviles);
-    srand(1);   // hay que cambiar esto para cuando este mas avanzado el juego a time null
+
+    // Inicializamos la semilla del generador
+    quint32 Semilla = static_cast<quint32>(time(NULL));
+    Random.seed(Semilla);
 
     // # Inicializamos las reglas
     setPaisesPermitidos(3);
@@ -16,9 +20,13 @@ ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
     setEstadoCivilValidos();
 }
 
+
+
 void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
 {
-    srand(2);
+    // Inicializamos la semilla del generador
+    quint32 Semilla = static_cast<quint32>(time(NULL));
+    Random.seed(Semilla);
 
     setPaisesPermitidos(3);
     setFechasValidas();
@@ -29,7 +37,7 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
 
 void ReglasNivel1::setEstadoCivilValidos(){
     // Generamos la cantidad de tipos de estados civiles validos
-    this->maxEstadosCivilPermitidos = rand()%maxEstadosCiviles + 1;
+    this->maxEstadosCivilPermitidos = Random.bounded(maxEstadosCiviles+1);
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
     if (this->maxEstadosCivilPermitidos == maxEstadosCiviles)
@@ -40,14 +48,20 @@ void ReglasNivel1::setEstadoCivilValidos(){
 
 void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
     this->estadoCivilValidos = new QString[CantidadECValidos];
+    int sorteo, cantidadEstadosValidos = 0;
 
-    for (int i = 0; i < CantidadECValidos; i++)
-        estadoCivilValidos[i] = estadosCiviles[i];
+    if (CantidadECValidos == 1){
+        sorteo = Random.bounded(maxEstadosCiviles);
+        estadoCivilValidos[0] = estadosCiviles[sorteo];
+    } else {
+        for (int i = 0; i < CantidadECValidos; i++)
+            estadoCivilValidos[i] = estadosCiviles[i];
+    }
 }
 
 void ReglasNivel1::setTipoDeVisitaValidas(){
     // Generamos la cantidad de tipos de visitas validas
-    this->maxVisitasPermitidas = rand()%maxTiposVisitas + 1;
+    this->maxVisitasPermitidas = Random.bounded(maxTiposVisitas+1);
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
     if (this->maxVisitasPermitidas == maxTiposVisitas)
@@ -59,8 +73,16 @@ void ReglasNivel1::setTipoDeVisitaValidas(){
 void ReglasNivel1::SeleccionarVisitasValidas(int CantidadVisitasValidas){
     this->tipoDeVisitaValida = new QString[CantidadVisitasValidas];
 
+    if (CantidadVisitasValidas == 1){
+        int sorteo = Random.bounded(CantidadVisitasValidas);
+        tipoDeVisitaValida[0] = tipoVisitas[sorteo];
+    } else {
+        for (int i = 0; i < CantidadVisitasValidas; i++)
+            tipoDeVisitaValida[i] = tipoVisitas[i];
+    }
+
     for (int i = 0; i < CantidadVisitasValidas; i++)
-        tipoDeVisitaValida[i] = tipoVisitas[i];
+        qDebug() << tipoDeVisitaValida[i];
 }
 
 void ReglasNivel1::setDuracionEstanciaValida(int max, int min){
@@ -137,11 +159,6 @@ QString* ReglasNivel1::getEstadoCivilPermitido(int &max){
     return this->estadoCivilValidos;
 }
 
-QString* ReglasNivel1::getTipoVisitaPermitida(int &max){
-    max = this->maxEstadosCivilPermitidos;
-    return tipoDeVisitaValida;
-}
-
 int ReglasNivel1::getFechaMinPermitida(){
     return this->fechaMin;
 }
@@ -154,9 +171,20 @@ int ReglasNivel1::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
 }
 
+// Destructor
 ReglasNivel1::~ReglasNivel1()
 {
-    delete paisesValidos;
-    delete tipoDeVisitaValida;
-    delete estadoCivilValidos;
+    delete[] paisesValidos;
+    delete[] tipoDeVisitaValida;
+    delete[] estadoCivilValidos;
+}
+
+QString *ReglasNivel1::getTipoDeVisitaValida() const
+{
+    return tipoDeVisitaValida;
+}
+
+int ReglasNivel1::getMaxVisitasPermitidas() const
+{
+    return maxVisitasPermitidas;
 }

@@ -158,6 +158,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qpicture.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h \
@@ -166,6 +167,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qtextdocument.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h \
@@ -175,12 +177,14 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/QLabel \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QMainWindow \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QStackedWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qlabel.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
@@ -401,12 +405,15 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaUI.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h \

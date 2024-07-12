@@ -280,6 +280,12 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h",
+			"MU",
+			"SOYZ2DITOJ/moc_estanciaui.cpp",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h",
 			"MU",
 			"SOYZ2DITOJ/moc_gestordocumentosui.cpp",
@@ -319,6 +325,12 @@
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h",
 			"MU",
 			"Q5K73KXH44/moc_generadornpc.cpp",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h",
+			"MU",
+			"Q5K73KXH44/moc_generarestancia.cpp",
 			null
 		],
 		[
@@ -509,6 +521,11 @@
 			null
 		],
 		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.cpp",
 			"MU",
 			null
@@ -540,6 +557,11 @@
 		],
 		[
 			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.cpp",
 			"MU",
 			null
 		],

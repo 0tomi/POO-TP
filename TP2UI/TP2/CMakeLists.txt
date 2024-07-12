@@ -51,6 +51,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/gestordocumentosui.h Documentos/gestordocumentosui.cpp
         GameScreen/tomibotones.h GameScreen/tomibotones.cpp GameScreen/tomibotones.ui
         NPC/gestornpcsui.h NPC/gestornpcsui.cpp
+        Generadores/generarestancia.h Generadores/generarestancia.cpp
+        Documentos/estanciaui.h Documentos/estanciaui.cpp Documentos/estanciaui.ui
+
 
 
 

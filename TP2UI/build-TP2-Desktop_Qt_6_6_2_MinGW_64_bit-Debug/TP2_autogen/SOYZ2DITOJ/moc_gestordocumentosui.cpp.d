@@ -7,6 +7,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSize \
   B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF \
+  B:/QT/6.6.2/mingw_64/include/QtCore/QString \
   B:/QT/6.6.2/mingw_64/include/QtCore/QTimer \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h \
   B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h \
@@ -152,6 +153,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qpicture.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h \
@@ -160,6 +162,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h \
+  B:/QT/6.6.2/mingw_64/include/QtGui/qtextdocument.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h \
@@ -169,8 +172,11 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h \
   B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/QLabel \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h \
+  B:/QT/6.6.2/mingw_64/include/QtWidgets/qlabel.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
   B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
@@ -377,4 +383,6 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_6
   B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h \
+  C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaUI.h \
   C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
