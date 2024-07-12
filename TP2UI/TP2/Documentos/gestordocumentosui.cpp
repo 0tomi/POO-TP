@@ -50,8 +50,10 @@ void GestorDocumentosUI::setUpLevel1(int &Index)
     setUpDocumento(pase);
 
     // New al pasaporte, dni
-    pasaporte = new PasaporteUI(Escritorio);
-    Dni = new DNI(Escritorio);
+    pasaporteUI = new PasaporteUI(Escritorio);
+    dniUI = new DNI(Escritorio);
+    setUpDocumento(pasaporteUI);
+    setUpDocumento(dniUI);
     Index++;
 
     // New de estancia
@@ -116,7 +118,7 @@ void GestorDocumentosUI::deleteDocumentos()
 
 void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
 {
-    for (int i = 1; i < topePerLevel; i++)
+    for (int i = 0; i < topePerLevel; i++)
         if (info[i] != nullptr)
             documentos[i] = info[i];
 
@@ -125,13 +127,14 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
     else tienePase = false;
 
     if (documentos[0] != nullptr){
-        Pasaporte * identificacion;
-        if (identifacion->getPais() == "Aztana"){
-            documentosUI[0] = DNIUI;
-            DNIUI->setDocumentacionInfo(documentos[0], NPCui)
+        qDebug() << "Tiene pasaporte";
+        Pasaporte * identificacion = dynamic_cast<Pasaporte*>(documentos[0]);
+        if (identificacion->getnacionalidad() == "Aztana"){
+            documentosUI[0] = dniUI;
+            dniUI->setDNIInfo(identificacion, nullptr); /// nullptr = NPCinfo
         } else {
-            documentosUI[0] = PasaporteUI;
-            PasaporteUI->setDocumentacionInfo(documentos[0], NPCui)
+            documentosUI[0] = pasaporteUI;
+            pasaporteUI->setPasaporteInfo(identificacion, nullptr);
         }
     }
 

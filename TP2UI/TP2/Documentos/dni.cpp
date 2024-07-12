@@ -15,9 +15,12 @@ void DNI::setDNIInfo(Pasaporte * dni, NPCUI * npc){
     ui->nacionalidad->setText(dni->getnacionalidad());
     ui->estado_civil->setText(dni->getestado_civil());
 }
-void setDocumentacionInfo(Documentacion *documento){
+
+void DNI::setDocumentacionInfo(Documentacion *documento)
+{
 
 }
+
 DNI::~DNI()
 {
     delete ui;

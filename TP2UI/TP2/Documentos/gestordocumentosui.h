@@ -38,8 +38,8 @@ private:
     DocumentosUI* documentosUI[10];
     Documentacion* documentos[10];
     UADERpass* pase;
-    Pasaporteui * Pasaporte;
-    DNI * Dni;
+    PasaporteUI * pasaporteUI;
+    DNI * dniUI;
 
     bool tienePase;
     int DocumentosEnEscena[10];
