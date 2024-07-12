@@ -71,14 +71,12 @@ void ReglasNivel1::setTipoDeVisitaValidas(){
 }
 
 void ReglasNivel1::SeleccionarVisitasValidas(int CantidadVisitasValidas){
-    this->tipoDeVisitaValida = new QString[CantidadVisitasValidas];
-
     if (CantidadVisitasValidas < 2){
-        int sorteo = Random.bounded(CantidadVisitasValidas);
-        tipoDeVisitaValida[0] = tipoVisitas[sorteo];
+        int sorteo = Random.bounded(maxTiposVisitas);
+        tipoDeVisitaValida[0] = &tipoVisitas[sorteo];   /// CAMBIOS QUE TENGO QUE HACER
     } else {
         for (int i = 0; i < CantidadVisitasValidas; i++)
-            tipoDeVisitaValida[i] = tipoVisitas[i];
+            tipoDeVisitaValida[i] = &tipoVisitas[i];
     }
 }
 

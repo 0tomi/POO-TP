@@ -74,3 +74,12 @@
 2695	5362	7424645799021410	CMakeFiles/TP2.dir/Documentos/gestordocumentosui.cpp.obj	9ca4bc626bdfc070
 3745	5958	7424645804986826	CMakeFiles/TP2.dir/NPC/gestornpcsui.cpp.obj	c21ada71cb5beee0
 5959	6580	7424645811162435	TP2.exe	ce919c7d20d924de
+9	173	7424648681209865	TP2_autogen/timestamp	223e3632e40ccb1f
+9	173	7424648681209865	TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+9	173	7424648681209865	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/timestamp	223e3632e40ccb1f
+9	173	7424648681209865	C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/mocs_compilation.cpp	223e3632e40ccb1f
+180	2004	7424648699521557	CMakeFiles/TP2.dir/Reglas/reglasnivel1.cpp.obj	ed8147b6c18596fc
+185	2300	7424648702484251	CMakeFiles/TP2.dir/pantallainicio.cpp.obj	ad190eb170226ea2
+178	2559	7424648705066594	CMakeFiles/TP2.dir/mainwindow.cpp.obj	1b48638b8b644aa5
+182	2634	7424648705817274	CMakeFiles/TP2.dir/gamescreen.cpp.obj	ac1a2d3bd2f2402f
+2634	3205	7424648711492426	TP2.exe	ce919c7d20d924de

@@ -48,7 +48,7 @@ private:
     int fechaMin, fechaMax; // va a ser solo el anio
     int duracionDeEstanciaValida;
     int* paisesValidos;
-    QString* tipoDeVisitaValida;
+    QString* tipoDeVisitaValida[3];
     QString* estadoCivilValidos;
 
     // Tope de arrays:
