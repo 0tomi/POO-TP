@@ -14,6 +14,14 @@ GestorDocumentosUI::GestorDocumentosUI()
         documentosUI[i] = nullptr;
 }
 
+GestorDocumentosUI::~GestorDocumentosUI()
+{
+    for (int i = 0; i < 10; i++)
+        delete documentosUI[i];
+    delete Temporizador;
+    delete pase;
+}
+
 void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
 {
     this->Escritorio = objeto;
@@ -139,17 +147,18 @@ void GestorDocumentosUI::Centrar()
         CentrarDocumento(pase);
 
     for (int i = 0; i < topePerLevel; i++)
-        if (documentosUI[i] != nullptr)
+        if (documentos[i] != nullptr)
             CentrarDocumento(documentosUI[i]);
 }
 
 void GestorDocumentosUI::Entrar()
 {
+    for (int i = 0; i < this->topePerLevel; i++)
+        if (documentos[i] != nullptr)
+            EntrarDocumento(documentosUI[i]);
+
     if (tienePase)
         EntrarDocumento(pase);
-    for (int i = 0; i < this->topePerLevel; i++)
-        if (documentosUI[i] != nullptr)
-            EntrarDocumento(documentosUI[i]);
 }
 
 void GestorDocumentosUI::EntrarDocumento(DocumentosUI *doc)
@@ -165,7 +174,7 @@ void GestorDocumentosUI::Salir()
     if (tienePase)
         SalirDocumento(pase);
     for (int i = 0; i < this->topePerLevel; i++)
-        if (documentosUI[i] != nullptr)
+        if (documentos[i] != nullptr)
             SalirDocumento(documentosUI[i]);
 }
 
@@ -174,18 +183,8 @@ void GestorDocumentosUI::DetenerAnimaciones()
     if (tienePase)
         pase->PausarAnimacionCentrar();
     for (int i = 0; i < this->topePerLevel; i++)
-        if (documentosUI[i] != nullptr)
+        if (documentos[i] != nullptr)
             documentosUI[i]->PausarAnimacionCentrar();
-}
-
-GestorDocumentosUI::~GestorDocumentosUI()
-{
-    for (int i = 0; i < 10; i++)
-        delete documentosUI[i];
-    for (int i = 0; i < 10; i++)
-        delete documentos[i];
-    delete Temporizador;
-    delete pase;
 }
 
 void GestorDocumentosUI::SalirDocumento(DocumentosUI *doc)
@@ -199,13 +198,11 @@ void GestorDocumentosUI::CentrarDocumento(DocumentosUI *doc)
     int centerX = ((Escritorio->width()) - (doc->width())) /2;
     int centerY = (((Escritorio->height())) - (doc->height())) / 2;
 
-    qDebug() << "Se movio doc";
     doc->Centrar(centerX,centerY);
 }
 
 void GestorDocumentosUI::Termino()
 {
-    qDebug() << "Termino el cronometro";
     emit TerminoEntrada();
 }
 

@@ -94,8 +94,8 @@ void ReglasNivel1::setDuracionEstanciaValida(int max, int min){
 void ReglasNivel1::setFechasValidas(){
     // Genera fechas de entre 1900 y 2000
     do{
-        fechaMax = rand()%100 + 1900;
-        fechaMin = rand()%100 + 1900;
+        fechaMax = Random.bounded(1900,2000);
+        fechaMin = Random.bounded(1900,2000);
 
         // Si se generan al reves las fechas las intercambio
         if (fechaMax < fechaMin){
@@ -112,7 +112,7 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
     // Generar cantidad de paises permitidos:
     int cantidadPaisesPermitidos;
     do{
-        cantidadPaisesPermitidos = rand()%this->maxPaises + 1;
+        cantidadPaisesPermitidos = Random.bounded(maxPaises+1);
     }while(cantidadPaisesPermitidos == maxPaises || cantidadPaisesPermitidos < cantidadMinimaPaisesPermitidos);
 
     // Preparar el array de paises y su tope
@@ -127,7 +127,7 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
     int i = 0;
     while (cantidadPaisesPermitidos){
         do{
-            paisesValidos[i] = rand()% this->maxPaises;
+            paisesValidos[i] = Random.bounded(maxPaises);
         }while(checkRepetidos(paisesValidos[i]));
 
         i++;
@@ -149,12 +149,12 @@ bool ReglasNivel1::checkRepetidos(int dato){
 
 // Getters
 
-int* ReglasNivel1::getPaisesPermitidos(int &max){
+int* ReglasNivel1::getPaisesPermitidos(int &max) const{
     max = this->maxPaisesPermitidos;
     return this->paisesValidos;
 }
 
-QString* ReglasNivel1::getEstadoCivilPermitido(int &max){
+QString* ReglasNivel1::getEstadoCivilPermitido(int &max) const{
     max = this->maxEstadosCivilPermitidos;
     return this->estadoCivilValidos;
 }
