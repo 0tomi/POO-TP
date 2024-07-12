@@ -3,6 +3,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp
  uic:ui_uaderpass.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -380,14 +381,14 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -766,10 +767,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -1167,6 +1166,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h
  mmc:Q_OBJECT
@@ -1550,6 +1551,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.cpp
+ uic:ui_gamescreen.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -1929,11 +1932,396 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.cpp
- uic:ui_gamescreen.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.cpp
+ uic:ui_estanciaui.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
+ mmc:Q_OBJECT
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QObject
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QPropertyAnimation
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QRect
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QSize
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QString
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20type_traits.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q23utility.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qabstractanimation.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qalgorithms.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qanimationgroup.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qanystringview.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qarraydata.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qarraydataops.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qarraydatapointer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qassert.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qatomic.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qatomic_cxx11.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qbasicatomic.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qbindingstorage.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qbytearray.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qbytearrayalgorithms.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qbytearraylist.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qbytearrayview.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qchar.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcompare.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcompare_impl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcompilerdetection.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qconfig.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qconstructormacros.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcontainerfwd.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcontainerinfo.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcontainertools_impl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcontiguouscache.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qcoreevent.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qdarwinhelpers.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qdatastream.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qdebug.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qeasingcurve.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qexceptionhandling.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qflags.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qfloat16.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qforeach.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qfunctionaltools_impl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qfunctionpointer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qgenericatomic.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qglobal.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qglobalstatic.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qhash.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qhashfunctions.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qiodevice.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qiodevicebase.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qiterable.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qiterator.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qlatin1stringview.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qline.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qlist.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qlogging.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qmalloc.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qmap.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qmargins.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qmath.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qmetacontainer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qmetatype.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qminmax.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qnamespace.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qnativeinterface.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qnumeric.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qobject.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qobject_impl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qobjectdefs.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qobjectdefs_impl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qoverload.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qpair.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qpoint.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qpointer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qprocessordetection.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qpropertyanimation.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qrect.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qrefcount.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qscopedpointer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qscopeguard.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qsequentialanimationgroup.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qset.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qshareddata_impl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qsharedpointer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qsharedpointer_impl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qsize.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstring.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringalgorithms.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringbuilder.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringconverter_base.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringfwd.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringlist.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringliteral.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringmatcher.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringtokenizer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qstringview.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qswap.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qsysinfo.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qsystemdetection.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtaggedpointer.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtclasshelpermacros.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtconfiginclude.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtconfigmacros.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtcore-config.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtcoreexports.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtdeprecationmarkers.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtenvironmentvariables.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtextstream.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtmetamacros.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtnoop.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtpreprocessorsupport.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtresource.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qttranslation.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qttypetraits.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtversion.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtversionchecks.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtypeinfo.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qtypes.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qurl.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qutf8stringview.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qvariant.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qvariantanimation.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qvarlengtharray.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qversiontagging.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/qxptype_traits.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/QResizeEvent
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/QTransform
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qaction.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qbitmap.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qbrush.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qcolor.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qcursor.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qevent.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qeventpoint.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qfont.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qfontinfo.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qfontmetrics.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qicon.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qimage.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qinputdevice.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpicture.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpolygon.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qregion.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtextdocument.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtransform.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qvector2d.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qvectornd.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QLabel
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlabel.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsexports.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qwidget.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/syslimits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/array
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/atomic
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward/auto_ptr.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward/binders.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bit
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/algorithmfwd.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/align.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/alloc_traits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocated_ptr.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocator.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_base.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_lockfree_defines.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_string.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_string.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/char_traits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/charconv.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/concept_check.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cpp_type_traits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cxxabi_forced.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cxxabi_init_exception.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/enable_special_members.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_defines.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_ptr.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functexcept.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functional_hash.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hash_bytes.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable_policy.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ios_base.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/list.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_classes.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_classes.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/localefwd.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/memoryfwd.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/move.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/nested_exception.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/node_handle.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream_insert.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/postypes.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/predefined_ops.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ptr_traits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/range_access.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/refwrap.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr_atomic.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr_base.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/specfun.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_abs.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_function.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algo.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algobase.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_construct.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_function.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_heap.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator_base_funcs.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator_base_types.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_list.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_map.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multimap.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_numeric.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_pair.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_raw_storage_iter.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_relops.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tempbuf.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stream_iterator.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/streambuf.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/streambuf_iterator.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/string_view.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stringfwd.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uniform_int_dist.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_ptr.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uses_allocator.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cctype
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cerrno
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/climits
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/clocale
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdint
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdio
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdlib
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstring
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ctime
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cwchar
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/debug/assertions.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/debug/debug.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/exception
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/aligned_buffer.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/alloc_traits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/atomicity.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/concurrence.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/new_allocator.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/numeric_traits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/string_conversions.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/type_traits.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/initializer_list
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iosfwd
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iterator
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/map
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/memory
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/new
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/numeric
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/optional
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/execution_defs.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_algorithm_defs.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_memory_defs.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_numeric_defs.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdexcept
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdlib.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/streambuf
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string_view
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/system_error
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/bessel_function.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/beta_function.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/ell_integral.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/exp_integral.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/gamma.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/hypergeometric.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/legendre_function.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/modified_bessel_func.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/poly_hermite.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/poly_laguerre.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/riemann_zeta.tcc
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/special_function_util.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tuple
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/type_traits
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/typeinfo
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_map
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/variant
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdarg.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdbool.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stddef.h
+ mdp:B:/QT/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdint.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_mac.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_off_t.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_secapi.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_mingw_stat64.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/_timeval.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/assert.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/corecrt.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/corecrt_startup.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/corecrt_stdio_config.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/corecrt_wstdlib.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/crtdefs.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/ctype.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/errno.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/locale.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/process.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/pthread.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/pthread_compat.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/pthread_signal.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/pthread_time.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/pthread_unistd.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/sec_api/stdio_s.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/sec_api/string_s.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/sec_api/wchar_s.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/signal.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/stdio.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/string.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/swprintf.inl
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/sys/timeb.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/sys/types.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
+ mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel4.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel5.h
@@ -2097,6 +2485,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpicture.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h
@@ -2105,6 +2494,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtextdocument.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h
@@ -2114,9 +2504,12 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QLabel
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlabel.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h
@@ -2334,12 +2727,15 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
@@ -2353,9 +2749,9 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/main.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -2516,6 +2912,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpicture.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h
@@ -2524,6 +2921,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtextdocument.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h
@@ -2533,12 +2931,14 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QLabel
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QMainWindow
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QSpacerItem
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QStackedWidget
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlabel.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlayoutitem.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qmainwindow.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h
@@ -2759,12 +3159,15 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/GameScreen/tomibotones.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
@@ -2780,6 +3183,9 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp
+ uic:ui_npcgenericoui.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h
@@ -3127,16 +3533,14 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp
- uic:ui_npcgenericoui.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp
  uic:ui_documentosui.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.cpp
@@ -3146,8 +3550,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel4.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel5.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.cpp
  uic:./ui_mainwindow.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.cpp
@@ -3161,6 +3565,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QSequentialAnimationGroup
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QSize
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QSizeF
+ mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QString
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QTimer
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20memory.h
@@ -3306,6 +3711,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qkeysequence.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpaintdevice.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpalette.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpicture.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixelformat.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpixmap.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qpointingdevice.h
@@ -3314,6 +3720,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgb.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qrgba64.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qscreen.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtextdocument.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtgui-config.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiexports.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qtguiglobal.h
@@ -3323,8 +3730,11 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtGui/qwindowdefs_win.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QGraphicsOpacityEffect
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QLabel
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/QWidget
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qframe.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qgraphicseffect.h
+ mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qlabel.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:B:/QT/6.6.2/mingw_64/include/QtWidgets/qtwidgetsexports.h
@@ -3531,6 +3941,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.
  mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
+ mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/gestordocumentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h

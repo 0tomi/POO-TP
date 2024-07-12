@@ -1,13 +1,19 @@
 #include "generadordocumentacion.h"
 #include <ctime>
+#include <QDebug>
 
 GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas **newRules)
 {
     NivelActual = 0;
+    DificultadJuego = 1;
     SetDificultadNivel();
 
     // Asignamos las reglas correspondientes
-    *rules = *newRules;
+    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
+    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
+    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
+    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
+    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
 
     // Semilla para el generador
     quint32 Semilla = static_cast<quint32>(time(NULL));
@@ -16,6 +22,25 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // Pendiente a implementar
     // News de generadores
 
+    // Generador pasaportes
+
+    // Generador estancia
+    int maxVisitas, maxVisitasValidas;
+    QString* Visitas = datos->getVisitas(maxVisitas);
+    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
+    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
+    generadorEstancia = new GenerarEstancia(Visitas,
+                                            maxVisitas,
+                                            VisitasValidas,
+                                            maxVisitasValidas,
+                                            reglasNivel1->getDuracionEstanciaPermitida());
+
+    // Siguientes generadores
+}
+
+GeneradorDocumentacion::~GeneradorDocumentacion()
+{
+    delete generadorEstancia;
 }
 
 void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
@@ -50,7 +75,11 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
 
 void GeneradorDocumentacion::actualizarReglas(Reglas **newRules, int Nivel)
 {
-    *rules = *newRules;
+    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
+    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
+    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
+    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
+    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
     NivelActual = Nivel;
 }
 
@@ -115,7 +144,9 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
     Index++;
 
     // Generador de Estancias
-    NPC2Generate->addDocumento(nullptr,Index);
+    Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index], DificultadJuego);
+    qDebug() <<"Indice:" <<Index;
+    NPC2Generate->addDocumento(nuevaEstancia, Index);
     Index++;
 }
 

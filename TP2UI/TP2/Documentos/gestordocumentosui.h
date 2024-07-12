@@ -3,6 +3,7 @@
 #include <QWidget>
 #include "uaderpass.h"
 #include "documentacion.h"
+#include "estanciaUI.h"
 #include <QTimer>
 
 class GestorDocumentosUI: public QWidget

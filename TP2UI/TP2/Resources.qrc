@@ -43,5 +43,6 @@
         <file>Resources/MaterialPantallas/BotonDesaprobarNoApretado .png</file>
         <file>Resources/MaterialPantallas/BotonCentrarBloqueado.png</file>
         <file>Resources/MaterialPantallas/BotonCentrarDesbloqueado.png</file>
+        <file>Resources/Documentos/Estancia.png</file>
     </qresource>
 </RCC>

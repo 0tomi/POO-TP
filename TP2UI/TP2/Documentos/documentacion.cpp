@@ -4,3 +4,8 @@ Documentacion::Documentacion()
 {
 
 }
+
+Documentacion::~Documentacion()
+{
+
+}
