@@ -85,7 +85,7 @@ QString GenerarEstancia::GenerarVisita(bool validez)
     // ############## DEBUG ############# DEBUG ############ DEBUG ###############
     qDebug() << maxVisitasValidas;
     if (validez){
-        if (maxVisitasValidas == 1) // Evitamos bugs
+        if (maxVisitasValidas < 2) // Evitamos bugs
             Visita = tipoVisitasValidas[0];
         else {
             Sorteo = NumRandom.bounded(maxVisitasValidas);

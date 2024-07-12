@@ -6,7 +6,7 @@ estanciaUI::estanciaUI(QWidget *parent)
     , ui(new Ui::estanciaUI)
 {
     ui->setupUi(this);
-    setFixedSize(200, 200);
+    setFixedSize(250, 250);
 }
 
 void estanciaUI::setDocumentacionInfo(Documentacion *documento) {

@@ -3,6 +3,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.cpp
  uic:ui_uaderpass.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -380,15 +381,14 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/AtributosComunes/atributoscomunes.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -767,10 +767,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/uaderpass.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/pasaporte.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -1168,6 +1166,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadordocumentacion.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h
  mmc:Q_OBJECT
@@ -1551,6 +1551,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.cpp
+ uic:ui_gamescreen.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -1930,14 +1932,11 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.cpp
- uic:ui_gamescreen.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.cpp
  uic:ui_estanciaui.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel2.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -2323,6 +2322,7 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estanciaui.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel3.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel4.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel5.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
@@ -2749,9 +2749,9 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/gamescreen.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/main.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/QList
@@ -3183,6 +3183,9 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp
+ uic:ui_npcgenericoui.h
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mmc:Q_OBJECT
  mdp:B:/QT/6.6.2/mingw_64/include/QtCore/q20functional.h
@@ -3530,17 +3533,14 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mdp:B:/QT/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.h
  mdp:C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/build-TP2-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/TP2_autogen/moc_predefs.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npc.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenericoui.cpp
- uic:ui_npcgenericoui.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentacion.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/documentosui.cpp
  uic:ui_documentosui.h
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generarestancia.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/gestornpcsui.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Documentos/estancia.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel1.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/colanpc.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Generadores/generadornpc.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npccomun.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcgenerico.cpp
@@ -3550,8 +3550,8 @@ C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/NPC/npcui.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglas.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel4.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/Reglas/reglasnivel5.cpp
-C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/lectorarchivos.cpp
+C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/juego.cpp
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/mainwindow.cpp
  uic:./ui_mainwindow.h
 C:/Users/TomsS/Documents/C++/POO/POO-TP/TP2UI/TP2/pantallainicio.cpp
