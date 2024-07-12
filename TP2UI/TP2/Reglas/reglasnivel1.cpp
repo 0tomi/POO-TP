@@ -50,7 +50,7 @@ void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
     this->estadoCivilValidos = new QString[CantidadECValidos];
     int sorteo, cantidadEstadosValidos = 0;
 
-    if (CantidadECValidos == 1){
+    if (CantidadECValidos < 2){
         sorteo = Random.bounded(maxEstadosCiviles);
         estadoCivilValidos[0] = estadosCiviles[sorteo];
     } else {
@@ -73,16 +73,13 @@ void ReglasNivel1::setTipoDeVisitaValidas(){
 void ReglasNivel1::SeleccionarVisitasValidas(int CantidadVisitasValidas){
     this->tipoDeVisitaValida = new QString[CantidadVisitasValidas];
 
-    if (CantidadVisitasValidas == 1){
+    if (CantidadVisitasValidas < 2){
         int sorteo = Random.bounded(CantidadVisitasValidas);
         tipoDeVisitaValida[0] = tipoVisitas[sorteo];
     } else {
         for (int i = 0; i < CantidadVisitasValidas; i++)
             tipoDeVisitaValida[i] = tipoVisitas[i];
     }
-
-    for (int i = 0; i < CantidadVisitasValidas; i++)
-        qDebug() << tipoDeVisitaValida[i];
 }
 
 void ReglasNivel1::setDuracionEstanciaValida(int max, int min){
