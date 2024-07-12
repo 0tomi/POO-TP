@@ -39,7 +39,7 @@ public:
         sizePolicy.setHeightForWidth(NPCGenericoUI->sizePolicy().hasHeightForWidth());
         NPCGenericoUI->setSizePolicy(sizePolicy);
         NPCGenericoUI->setMinimumSize(QSize(100, 100));
-        NPCGenericoUI->setMaximumSize(QSize(500, 500));
+        NPCGenericoUI->setMaximumSize(QSize(300, 300));
         verticalLayout = new QVBoxLayout(NPCGenericoUI);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
