@@ -191,7 +191,7 @@ void GameScreen::EntrarNPC()
 
     npcUI->setNPC(NPCenEscena);
 
-    int centerX = ((ui->FondoNPC->width()) / 2) - (npcUI->width() / 2);
+    int centerX = (ui->FondoNPC->width() - npcUI->width()) / 2;
     int centerY = ((ui->FondoNPC->height())) - (npcUI->height());
 
     npcUI->Entrar(centerX, centerY);

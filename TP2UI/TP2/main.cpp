@@ -2,6 +2,7 @@
 #include "gamescreen.h"
 #include <QApplication>
 #include <QDebug>
+#include "Documentos/estanciaui.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,9 @@ int main(int argc, char *argv[])
     //GameScreen g;
     //g.show();
     //g.EmpezarJuego();
+
+    estanciaUI h;
+    h.show();
 
     return a.exec();
 }

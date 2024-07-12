@@ -13,94 +13,15 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="title">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>50</y>
-     <width>231</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Serif</family>
-     <pointsize>24</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Datos de Estancia</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="tipoVisitaTitle">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>150</y>
-     <width>91</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Serif</family>
-     <pointsize>18</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Proposito</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="duracionVisitaTitle">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>250</y>
-     <width>91</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Serif</family>
-     <pointsize>18</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Duracion</string>
-   </property>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>165</y>
-     <width>211</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="Line" name="line_2">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>265</y>
-     <width>211</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">#estanciaUI{
+border-image: url(:/Resources/Documentos/Estancia.png);}</string>
+  </property>
   <widget class="QLabel" name="tipoVisita">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>150</y>
+     <x>170</x>
+     <y>190</y>
      <width>131</width>
      <height>21</height>
     </rect>
@@ -122,8 +43,8 @@
   <widget class="QLabel" name="duracionVisita">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>245</y>
+     <x>200</x>
+     <y>270</y>
      <width>131</width>
      <height>21</height>
     </rect>

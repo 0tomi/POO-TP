@@ -2,27 +2,33 @@
 #define GENERARESTANCIA_H
 
 #include <QString>
+#include "../Documentos/estancia.h"
 #include <QRandomGenerator>
 
-#include "../Documentos/estancia.h"
-
 class GenerarEstancia {
-private:
-    QRandomGenerator* NumRandom;
-    bool valido;
-    QString* tipoVisitas;
-    int topeTipoVisitas;
-    QString* tipoVisitasValidas;
-    int topeVisitasValidas;
-    int duracMaximaEstancia;
 public:
-    GenerarEstancia();
+    GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax);
     ~GenerarEstancia();
-    GenerarEstancia(QString* _tiposVisitas, int _topeTiposVisits, QString* _tiposVisitsVal, int _topeVisitsVal, int _duracMax);
-    Estancia* getEstancia(bool valido); // Estancia a generar
 
-    // getters
-    QString* getTiposInvalidos(QString* tiposVisitas, QString* tiposVisitsVal, int &cantInvalidos);
+    // Getter
+    Estancia* getEstancia(bool valido, int Dificultad); // Estancia a generar
+private:
+    QRandomGenerator NumRandom;
+    bool ValidezCampos[2];
+
+    QString* tipoVisitas;
+    int maxTipoVisitas;
+
+    QString* tipoVisitasValidas;
+    int maxVisitasValidas;
+    int duracMaximaEstancia;
+
+    // Metodos auxiliares
+    bool ComprobarInValidez(QString dato);
+    void GenerarCamposValidos(int Probabilidad, bool Validez);
+
+    QString GenerarVisita(bool validez);
+    int GenerarDuracion(bool validez);
 };
 
 #endif // GENERARESTANCIA_H

@@ -50,5 +50,4 @@ NPCUI::~NPCUI()
 {
     delete animacionEntrada;
     delete animacionSalida;
-    delete ui;
 }
