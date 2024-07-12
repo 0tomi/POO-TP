@@ -17,8 +17,8 @@ public:
     void Entrar();
     void Salir();
     void TerminoNivel();
-    bool MostrandoElNPC();
-    int NPCsRestantes();
+    bool MostrandoElNPC() const;
+    int NPCsRestantes() const;
 
 public slots:
     void Rechazado();

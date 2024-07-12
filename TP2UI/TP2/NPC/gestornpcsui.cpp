@@ -82,14 +82,14 @@ void GestorNPCsUI::TerminoNivel()
     emit ColaTerminada();
 }
 
-bool GestorNPCsUI::MostrandoElNPC()
+bool GestorNPCsUI::MostrandoElNPC() const
 {
     return MostrandoNPC;
 }
 
-int GestorNPCsUI::NPCsRestantes()
+int GestorNPCsUI::NPCsRestantes() const
 {
-
+    return ColaNPCs->getSize();
 }
 
 void GestorNPCsUI::Rechazado()
