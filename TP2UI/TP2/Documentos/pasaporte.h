@@ -3,7 +3,7 @@
 #include "documentacion.h"
 
 #include <string>
-#include <QLabel>
+#include <QString>
 class Pasaporte : public Documentacion
 {
 private:

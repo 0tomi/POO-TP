@@ -1,25 +1,27 @@
 #ifndef PASAPORTEUI_H
 #define PASAPORTEUI_H
+
 #include "pasaporte.h"
 #include "../NPC/npcui.h"
 #include <QWidget>
 #include "documentosui.h"
 #include "../NPC/npcgenericoui.h"
+
 namespace Ui {
-class Pasaporteui;
+class PasaporteUI;
 }
 
-class Pasaporteui : public DocumentosUI
+class PasaporteUI : public DocumentosUI
 {
     Q_OBJECT
 
 public:
-    explicit Pasaporteui(QWidget *parent = nullptr);
-    ~Pasaporteui();
+    explicit PasaporteUI(QWidget *parent = nullptr);
+    ~PasaporteUI();
     void setDocumentacionInfo(Pasaporte * pasaporte, NPC * npc);
     void setDocumentacionInfo(Documentacion *documento) override;
 private:
-    Ui::Pasaporteui *ui;
+    Ui::PasaporteUI *ui;
     NPCGenericoUI * aux_npc;
 };
 

@@ -50,7 +50,7 @@ void GestorDocumentosUI::setUpLevel1(int &Index)
     setUpDocumento(pase);
 
     // New al pasaporte, dni
-    Pasaporte = new Pasaporteui(Escritorio);
+    pasaporte = new PasaporteUI(Escritorio);
     Dni = new DNI(Escritorio);
     Index++;
 
@@ -124,8 +124,6 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
         tienePase = true;
     else tienePase = false;
 
-    class Pasaporte* a;
-
     if (documentos[0] != nullptr){
         Pasaporte * identificacion;
         if (identifacion->getPais() == "Aztana"){
@@ -134,6 +132,7 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
         } else {
             documentosUI[0] = PasaporteUI;
             PasaporteUI->setDocumentacionInfo(documentos[0], NPCui)
+        }
     }
 
 

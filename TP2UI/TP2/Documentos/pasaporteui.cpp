@@ -1,15 +1,15 @@
 #include "pasaporteui.h"
 #include "ui_pasaporteui.h"
 
-Pasaporteui::Pasaporteui(QWidget *parent)
+PasaporteUI::PasaporteUI(QWidget *parent)
     : DocumentosUI(parent)
-    , ui(new Ui::Pasaporteui)
+    , ui(new Ui::PasaporteUI)
 {
     ui->setupUi(this);
     setFixedSize(300,300);
     this->aux_npc = new NPCGenericoUI;
 }
-void Pasaporteui::setDocumentacionInfo(Pasaporte * pasaporte, NPC * npc) {
+void PasaporteUI::setDocumentacionInfo(Pasaporte * pasaporte, NPC * npc) {
     ui->nombre->setText(pasaporte->getnombre());
     ui->fecha->setText(pasaporte->getfecha_nacimiento());
     ui->genero->setText(QString(pasaporte->getgenero()));
@@ -19,7 +19,7 @@ void Pasaporteui::setDocumentacionInfo(Pasaporte * pasaporte, NPC * npc) {
 void setDocumentacionInfo(Documentacion *documento){
 
 }
-Pasaporteui::~Pasaporteui()
+PasaporteUI::~PasaporteUI()
 {
     delete ui;
 }
