@@ -30,68 +30,81 @@ void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
 
 void GestorDocumentosUI::setUpNivel(int nivel)
 {
-    setUpLevel1();
+    int Index = 0;
+    setUpLevel1(Index);
     if (nivel >= 1)
-        setUpLevel2();
+        setUpLevel2(Index);
     if (nivel >= 2)
-        setUpLevel3();
+        setUpLevel3(Index);
     if (nivel >= 3)
-        setUpLevel4();
+        setUpLevel4(Index);
     if (nivel >= 4)
-        setUpLevel5();
+        setUpLevel5(Index);
 }
 
-void GestorDocumentosUI::setUpLevel1()
+void GestorDocumentosUI::setUpLevel1(int &Index)
 {
     this->topePerLevel = 2;
-    // aca tocara inicializar todos los documentos del respectivo level.
-
     // New del uader pass (pase diplomatico)
     pase = new UADERpass(Escritorio);
     setUpDocumento(pase);
 
     // New al pasaporte, dni
 
+    Index++;
+
     // New de estancia
-    documentosUI[1] = new estanciaUI(Escritorio);
-    setUpDocumento(documentosUI[1]);
+    documentosUI[Index] = new estanciaUI(Escritorio);
+    setUpDocumento(documentosUI[Index]);
+    Index++;
 }
 
-void GestorDocumentosUI::setUpLevel2()
+void GestorDocumentosUI::setUpLevel2(int &Index)
 {
     // News del pais de residencia
 
+    Index++;
     // News del proposito de viaje
 
+    Index++;
 }
 
-void GestorDocumentosUI::setUpLevel3()
+void GestorDocumentosUI::setUpLevel3(int &Index)
 {
     // News del documento para saber si la persona viaja sola o con otros integrantes
 
+    Index++;
+
     // Es probable que esto no sea un documento, sino que sea algo de dialogo
 
+    Index++;
 }
 
-void GestorDocumentosUI::setUpLevel4()
+void GestorDocumentosUI::setUpLevel4(int &Index)
 {
     // New paises de paso anteriores
 
+    Index++;
     // New Visas previas
 
+    Index++;
     // New Ocupacion
 
+    Index++;
     // New Bienes transportados
 
+    Index++;
     // vemos si meter todas estas cosas, porque es mucho, o capaz las distribuimos en otros niveles.
 }
 
-void GestorDocumentosUI::setUpLevel5()
+void GestorDocumentosUI::setUpLevel5(int &Index)
 {
     // new Verificacion de antecedentes
 
+    Index++;
     // new Busqueda elementos prohibidos
 
+    Index++;
 }
 
 void GestorDocumentosUI::deleteDocumentos()
@@ -131,14 +144,24 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
 
 void GestorDocumentosUI::nextNivel(int nivel)
 {
-    if (nivel == 1)
-        setUpLevel2();
-    if (nivel == 2)
-        setUpLevel3();
-    if (nivel == 3)
-        setUpLevel4();
-    if (nivel == 4)
-        setUpLevel5();
+    int Index;
+    switch(nivel){
+    case 1: Index = 2;
+        setUpLevel2(Index);
+        break;
+    case 2:
+        Index = 4;
+        setUpLevel2(Index);
+        break;
+    case 3:
+        Index = 6;  // ############################# CAMBIAR A FUTURO ######################
+        setUpLevel2(Index);
+        break;
+    case 4:
+        Index = 8;
+        setUpLevel2(Index);
+        break;
+    }
 }
 
 void GestorDocumentosUI::Centrar()

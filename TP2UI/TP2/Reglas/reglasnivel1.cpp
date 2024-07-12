@@ -87,8 +87,7 @@ void ReglasNivel1::SeleccionarVisitasValidas(int CantidadVisitasValidas){
 
 void ReglasNivel1::setDuracionEstanciaValida(int max, int min){
     // Duracion de estancia de entre duracion minima X a duracion maxima Y
-    int intervalo = max - min;
-    duracionDeEstanciaValida = rand()%(intervalo+1) + min;
+    duracionDeEstanciaValida = Random.bounded(min, max);
 }
 
 void ReglasNivel1::setFechasValidas(){
