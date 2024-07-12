@@ -7,7 +7,7 @@
 class Pasaporte : public Documentacion
 {
 private:
-    QWidget  * cara;
+
     QString nombre;
     QString fecha_nacimiento;
     char genero;
@@ -16,11 +16,11 @@ private:
 
 public:
     Pasaporte(QString nombre, QString fecha_nacimiento, char genero, QString nacionalidad, QString estado_civil);
-    QString getnombre();
-    QString getfecha_nacimiento();
-    char getgenero();
-    QString getnacionalidad();
-    QString getestado_civil();
-    QWidget * getcara();
+    QString getnombre() const;
+    QString getfecha_nacimiento() const;
+    char getgenero() const;
+    QString getnacionalidad() const;
+    QString getestado_civil() const;
+
 };
 #endif // PASAPORTE_H

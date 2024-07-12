@@ -23,7 +23,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // News de generadores
 
     // Generador pasaportes
-    generadorPasaporte = new generar_pasaporte(reglasNivel1, datos);
+    generadorPasaporte = new Generar_pasaporte(reglasNivel1, datos);
     // Generador estancia
     int maxVisitas, maxVisitasValidas;
     QString* Visitas = datos->getVisitas(maxVisitas);

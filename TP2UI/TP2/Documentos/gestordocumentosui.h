@@ -4,6 +4,8 @@
 #include "uaderpass.h"
 #include "documentacion.h"
 #include "estanciaUI.h"
+#include "pasaporteui.h"
+#include "dni.h"
 #include <QTimer>
 
 class GestorDocumentosUI: public QWidget
@@ -36,6 +38,8 @@ private:
     DocumentosUI* documentosUI[10];
     Documentacion* documentos[10];
     UADERpass* pase;
+    Pasaporteui * Pasaporte;
+    DNI * Dni;
 
     bool tienePase;
     int DocumentosEnEscena[10];

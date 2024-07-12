@@ -22,7 +22,7 @@ public:
 private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
     GenerarEstancia* generadorEstancia;
-    generar_pasaporte * generadorPasaporte;
+    Generar_pasaporte * generadorPasaporte;
     // Datos del juego:
     AtributosComunes* datos;
     ReglasNivel1* reglasNivel1;

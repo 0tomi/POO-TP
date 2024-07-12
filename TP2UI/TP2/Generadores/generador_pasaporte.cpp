@@ -2,18 +2,19 @@
 
 
 
-generar_pasaporte::generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * atributos) {
-    LectorArchivos archivo("mujeres.txt");
+Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * atributos) {
+    LectorArchivos archivo(":/Resources/ArchivosTexto/hombres.txt");
     this->nombre_mujeres = archivo.getArray();
     this->max_mujeres = archivo.getTopeArray();
-    archivo.LeerArchivoNuevo("hombres.txt");
+    archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/hombres.txt");
     this->nombre_hombres = archivo.getArray();
     this->max_hombres = archivo.getTopeArray();
-    archivo.LeerArchivoNuevo("x.txt");
+    archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/hombres.txt");
     this->nombre_x = archivo.getArray();
     this->max_x = archivo.getTopeArray();
     this->rules = rules;
     this->atributos = atributos;
+    this->nacionalidades = atributos->getPaises(this->max_nacionalidades);
 }
 // Función para obtener el número de días en un mes y año dados
 int obt_dias(int mes, int año) {
@@ -44,16 +45,18 @@ int obt_dias(int mes, int año) {
 
 // como generar documentos validos o no
 
-QString generar_pasaporte::generar_fecha(bool valido){
+QString Generar_pasaporte::generar_fecha(bool valido){
     int generar_anio, generar_mes, generar_dia, cant_dias;  // cant dias es porque no todos los meses tienen la misma cantidad de dias
     int fecha_min  = this->rules->getFechaMinPermitida();
     int fecha_max = this->rules->getFechaMaxPermitida();
     if (valido){ //genera una fecha valida
+
         int generar_anio =  1 + fecha_min + rand() %  (fecha_max - fecha_min - 1) ;
         int generar_mes = 1 + rand() % 12;
         cant_dias = obt_dias(generar_mes,generar_anio);
         generar_dia = 1 + rand() % cant_dias;
     } else{ // genera una fecha invalida
+
         generar_anio = (fecha_min - 10) + rand() % (fecha_min - (fecha_min - 10)) ;
         int generar_mes = 1 + rand() % 12;
         cant_dias = obt_dias(generar_mes,generar_anio);
@@ -63,7 +66,7 @@ QString generar_pasaporte::generar_fecha(bool valido){
     return fecha;
 }
 //me llega si es valido, reglas, genero
-QString generar_pasaporte::generar_nacionalidad(bool valido){
+QString Generar_pasaporte::generar_nacionalidad(bool valido){
     int tamanio; // supongo que getnacionalidades que devuelve un array de enteros por referencia "devuelve" el tamanio
     int * indices_paises = this->rules->getPaisesPermitidos(tamanio); // para conseguir las nacionalidades permitidas
     int indice_generar; //para usar rand y elegir alguno de los indices;
@@ -77,7 +80,7 @@ QString generar_pasaporte::generar_nacionalidad(bool valido){
     }
     return nacionalidad_generada;
 }
-QString generar_pasaporte::generar_estado_civil(char genero, bool valido){
+QString Generar_pasaporte::generar_estado_civil(char genero, bool valido){
     int tamanio; // cant de estados civiles
     int tamanio2; // cant de estados civiles validos
     int valorCentinela; // para guardar el valor del rand;
@@ -86,9 +89,12 @@ QString generar_pasaporte::generar_estado_civil(char genero, bool valido){
     QString estado_civil_generado;
     if(valido) { // generar estado civil valido;
         valorCentinela = rand() % tamanio2;
+
         estado_civil_generado = estados_civiles[valorCentinela];
+
     } else{ // genera estado civil invalido
         valorCentinela = tamanio2 + rand() % (tamanio - tamanio2);
+
         estado_civil_generado = estados_civiles[valorCentinela];
     }
     switch (genero){
@@ -104,7 +110,7 @@ QString generar_pasaporte::generar_estado_civil(char genero, bool valido){
     }
     return estado_civil_generado;
 }
-QString generar_pasaporte::generar_nombre(char genero){
+QString Generar_pasaporte::generar_nombre(char genero){
     QString nombre_generado; // string con el nombre que se va a pickear
     int valor_centinela; //para pickear indice
     switch (genero){
@@ -122,7 +128,7 @@ QString generar_pasaporte::generar_nombre(char genero){
     }
     return nombre_generado;
 }
-Pasaporte * generar_pasaporte::crear_pasaporte(bool valido, char genero){
+Pasaporte * Generar_pasaporte::crear_pasaporte(bool valido, char genero){
     bool fecha_valida = valido;
     bool nacionalidad_valida = valido;
     bool estado_civil_valido = valido;

@@ -8,22 +8,22 @@ Pasaporte::Pasaporte(QString nombre, QString fecha_nacimiento, char genero, QStr
     this->nacionalidad = nacionalidad;
 }
 
-QString Pasaporte::getestado_civil(){
+QString Pasaporte::getestado_civil() const{
     return this->estado_civil;
 }
 
-QString Pasaporte::getnombre(){
+QString Pasaporte::getnombre() const{
     return this->nombre;
 }
 
-char Pasaporte::getgenero(){
+char Pasaporte::getgenero() const{
     return this->genero;
 }
 
-QString Pasaporte::getfecha_nacimiento(){
+QString Pasaporte::getfecha_nacimiento() const{
     return this->fecha_nacimiento;
 }
 
-QString Pasaporte::getnacionalidad(){
+QString Pasaporte::getnacionalidad() const {
     return this->nacionalidad;
 }
