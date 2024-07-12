@@ -11,7 +11,7 @@ class GestorNPCsUI: public QWidget
 public:
     GestorNPCsUI();
     void setUp(QWidget *parent, ColaNPC* cola);
-    void addNpc(NPC* newNPC);
+    // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
     void Centrar();
     void Entrar();
     void Salir();
