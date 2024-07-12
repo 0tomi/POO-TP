@@ -1,9 +1,11 @@
 #include "generadordocumentacion.h"
 #include <ctime>
+#include <QDebug>
 
 GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas **newRules)
 {
     NivelActual = 0;
+    DificultadJuego = 1;
     SetDificultadNivel();
 
     // Asignamos las reglas correspondientes
@@ -25,7 +27,8 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // Generador estancia
     int maxVisitas, maxVisitasValidas;
     QString* Visitas = datos->getVisitas(maxVisitas);
-    QString* VisitasValidas = reglasNivel1->getTipoVisitaPermitida(maxVisitasValidas);
+    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
+    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
     generadorEstancia = new GenerarEstancia(Visitas,
                                             maxVisitas,
                                             VisitasValidas,
@@ -141,7 +144,8 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
     Index++;
 
     // Generador de Estancias
-    Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index]);
+    Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index], DificultadJuego);
+    qDebug() <<"Indice:" <<Index;
     NPC2Generate->addDocumento(nuevaEstancia, Index);
     Index++;
 }

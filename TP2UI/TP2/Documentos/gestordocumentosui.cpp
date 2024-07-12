@@ -42,10 +42,11 @@ void GestorDocumentosUI::setUpLevel1()
     pase = new UADERpass(Escritorio);
     setUpDocumento(pase);
 
-    // New al pasaporte, dni, y estancia
+    // New al pasaporte, dni
 
     // New de estancia
     documentosUI[1] = new estanciaUI(Escritorio);
+    setUpDocumento(documentosUI[1]);
 }
 
 void GestorDocumentosUI::setUpLevel2()
@@ -93,7 +94,10 @@ void GestorDocumentosUI::deleteDocumentos()
 
 void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
 {
-    *documentos = *info;
+    for (int i = 1; i < topePerLevel; i++)
+        if (info[i] != nullptr)
+            documentos[i] = info[i];
+
     if (Tipo == 2)
         tienePase = true;
     else tienePase = false;
@@ -135,7 +139,7 @@ void GestorDocumentosUI::Centrar()
         CentrarDocumento(pase);
 
     for (int i = 0; i < topePerLevel; i++)
-        if (documentos[i] != nullptr)
+        if (documentosUI[i] != nullptr)
             CentrarDocumento(documentosUI[i]);
 }
 
@@ -144,7 +148,7 @@ void GestorDocumentosUI::Entrar()
     if (tienePase)
         EntrarDocumento(pase);
     for (int i = 0; i < this->topePerLevel; i++)
-        if (documentos[i] != nullptr)
+        if (documentosUI[i] != nullptr)
             EntrarDocumento(documentosUI[i]);
 }
 
@@ -161,7 +165,7 @@ void GestorDocumentosUI::Salir()
     if (tienePase)
         SalirDocumento(pase);
     for (int i = 0; i < this->topePerLevel; i++)
-        if (documentos[i] != nullptr)
+        if (documentosUI[i] != nullptr)
             SalirDocumento(documentosUI[i]);
 }
 
@@ -170,7 +174,7 @@ void GestorDocumentosUI::DetenerAnimaciones()
     if (tienePase)
         pase->PausarAnimacionCentrar();
     for (int i = 0; i < this->topePerLevel; i++)
-        if (documentos[i] != nullptr)
+        if (documentosUI[i] != nullptr)
             documentosUI[i]->PausarAnimacionCentrar();
 }
 
@@ -195,6 +199,7 @@ void GestorDocumentosUI::CentrarDocumento(DocumentosUI *doc)
     int centerX = ((Escritorio->width()) - (doc->width())) /2;
     int centerY = (((Escritorio->height())) - (doc->height())) / 2;
 
+    qDebug() << "Se movio doc";
     doc->Centrar(centerX,centerY);
 }
 
