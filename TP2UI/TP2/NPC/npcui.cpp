@@ -16,12 +16,14 @@ void NPCUI::Entrar(int X, int Y)
     PrepararAnimacionEntrada(X,Y);
     animacionEntrada->start();
     this->show();
+    emit Entrando();
 }
 
 void NPCUI::Sacar(int X, int Y)
 {
     PrepararAnimacionSalida(X,Y);
     animacionSalida->start();
+    emit Saliendo();
 }
 
 void NPCUI::PrepararAnimacionEntrada(int X, int Y)

@@ -22,8 +22,6 @@ NPCGenericoUI::~NPCGenericoUI()
 
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
 {
-    qDebug() << "Nuevo NPC";
-
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
 
     // Obtenemos las partes del cuerpo del npc

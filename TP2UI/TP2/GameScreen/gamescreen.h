@@ -7,11 +7,12 @@
 #include <QTimer>
 #include <QSpacerItem>
 
-#include "NPC/npcgenericoui.h"
-#include "Documentos/uaderpass.h"
-#include "Documentos/gestordocumentosui.h"
-#include "juego.h"
-#include "GameScreen/tomibotones.h"
+#include "../NPC/npcgenericoui.h"
+#include "../Documentos/uaderpass.h"
+#include "../Gestores/gestornpcsui.h"
+#include "../juego.h"
+#include "tomibotones.h"
+
 
 namespace Ui {
 class GameScreen;
@@ -33,11 +34,10 @@ private slots:
 private:
     Ui::GameScreen *ui;
     Juego* juego;
-    ColaNPC* Cola;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
 
-    GestorDocumentosUI documentos;
+    GestorNPCsUI GestorNPC;
 
     TomiBotones* BotonAprobar;
     TomiBotones* BotonRechazar;
@@ -53,25 +53,8 @@ private:
     void Rechazo();
     void SelloDocumento(bool Boton);
     void BloquearBotones(bool Bloqueo);
-    void FuncionBotonCentral();
     // Otro metodo que voy  a poner simplemente porque no se como se hace.
     void DesbloquearBotones();
-
-    // Documentos
-    DocumentosUI* doc;
-
-    void CentrarDocumentos();
-    void EntrarDOC();
-    void SacarDOC();
-
-    // NPCs
-    NPCGenericoUI *npcUI;
-    NPC *NPCenEscena;
-
-    void SpawnearNPC();
-    void EntrarNPC();
-    void SacarNPC();
-    void CentrarNPC();
 
     // Reubicar NPCs en la escena
     void changeEvent(QEvent *event) override;

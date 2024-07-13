@@ -27,6 +27,8 @@ public:
 signals:
     void animacionSalirTerminada();
     void animacionEntrarTerminada();
+    void Saliendo();
+    void Entrando();
 
 protected:
     // Animaciones

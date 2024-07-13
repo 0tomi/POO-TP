@@ -145,7 +145,6 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 
     // Generador de Estancias
     Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index], DificultadJuego);
-    qDebug() <<"Indice:" <<Index;
     NPC2Generate->addDocumento(nuevaEstancia, Index);
     Index++;
 }

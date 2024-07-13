@@ -53,7 +53,8 @@ void DocumentosUI::Centrar(int X, int Y)
 
 void DocumentosUI::PausarAnimacionCentrar()
 {
-    animacionCentrar->pause();
+    if (animacionCentrar->state() == QAbstractAnimation::Running)
+        animacionCentrar->pause();
 }
 
 void DocumentosUI::PrepararAnimacionEntrada(int X, int Y)

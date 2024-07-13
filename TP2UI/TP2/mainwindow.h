@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include "pantallainicio.h"
-#include "gamescreen.h"
+#include "GameScreen/gamescreen.h"
 #include "juego.h"
 
 #include <QMainWindow>

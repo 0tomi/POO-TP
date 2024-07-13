@@ -38,7 +38,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         pantallainicio.h pantallainicio.cpp pantallainicio.ui
         Resources.qrc
-        gamescreen.h gamescreen.cpp gamescreen.ui
+        GameScreen/gamescreen.h GameScreen/gamescreen.cpp GameScreen/gamescreen.ui
         NPC/npcui.h NPC/npcui.cpp NPC/npcui.ui
         Documentos/uaderpass.h Documentos/uaderpass.cpp Documentos/uaderpass.ui
         Reglas/reglas.h Reglas/reglas.cpp
@@ -48,9 +48,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Reglas/reglasnivel5.h Reglas/reglasnivel5.cpp
         NPC/npcgenericoui.h NPC/npcgenericoui.cpp NPC/npcgenericoui.ui
         NPC/npccomun.h NPC/npccomun.cpp
-        Documentos/gestordocumentosui.h Documentos/gestordocumentosui.cpp
+        Gestores/gestordocumentosui.h Gestores/gestordocumentosui.cpp
         GameScreen/tomibotones.h GameScreen/tomibotones.cpp GameScreen/tomibotones.ui
-        NPC/gestornpcsui.h NPC/gestornpcsui.cpp
+        Gestores/gestornpcsui.h Gestores/gestornpcsui.cpp
         Generadores/generarestancia.h Generadores/generarestancia.cpp
         Documentos/estanciaui.h Documentos/estanciaui.cpp Documentos/estanciaui.ui
 
