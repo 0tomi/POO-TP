@@ -44,5 +44,9 @@
         <file>Resources/MaterialPantallas/BotonCentrarBloqueado.png</file>
         <file>Resources/MaterialPantallas/BotonCentrarDesbloqueado.png</file>
         <file>Resources/Documentos/Estancia.png</file>
+        <file>pixil-frame-0 (4).png</file>
+        <file>Resources/ArchivosTexto/x.txt</file>
+        <file>Resources/ArchivosTexto/mujeres.txt</file>
+        <file>Resources/ArchivosTexto/hombres.txt</file>
     </qresource>
 </RCC>
