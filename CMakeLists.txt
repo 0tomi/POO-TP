@@ -53,8 +53,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Gestores/gestornpcsui.h Gestores/gestornpcsui.cpp
         Generadores/generarestancia.h Generadores/generarestancia.cpp
         Documentos/estanciaui.h Documentos/estanciaui.cpp Documentos/estanciaui.ui
+        Documentos/pasaporte.h
+        Generadores/generador_pasaporte.h
+        Generadores/generador_pasaporte.cpp
+        Documentos/pasaporteui.h Documentos/pasaporteui.cpp Documentos/pasaporteui.ui
+        Documentos/dni.h Documentos/dni.cpp Documentos/dni.ui
         PantallaFinal/pantallafinalnivel.h PantallaFinal/pantallafinalnivel.cpp PantallaFinal/pantallafinalnivel.ui
-
+        
 
 
 
