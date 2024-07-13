@@ -3,6 +3,7 @@
 
 #include "pantallainicio.h"
 #include "GameScreen/gamescreen.h"
+#include "./PantallaFinal/pantallafinalnivel.h"
 #include "juego.h"
 
 #include <QMainWindow>
@@ -48,7 +49,7 @@ private:
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
     GameScreen *gameScreen;
-    //PantallaFinalNivel * pantallaFinalNivel;
+    PantallaFinalNivel *pantallaFinalNivel;
 
     // Transicion
     QWidget* pantallaTransicion;
