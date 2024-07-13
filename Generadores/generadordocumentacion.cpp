@@ -23,6 +23,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // News de generadores
 
     // Generador pasaportes
+    generadorPasaporte = new Generar_pasaporte(reglasNivel1, datos);
 
     // Generador estancia
     int maxVisitas, maxVisitasValidas;
@@ -140,7 +141,8 @@ void GeneradorDocumentacion::SetDificultadNivel()
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    NPC2Generate->addDocumento(nullptr,Index);
+    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], NPC2Generate->getGenero());
+    NPC2Generate->addDocumento(nuevoPasaporte, Index);
     Index++;
 
     // Generador de Estancias
