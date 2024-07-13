@@ -7,12 +7,12 @@
 #include <QTimer>
 #include <QSpacerItem>
 
-#include "NPC/npcgenericoui.h"
-#include "Documentos/uaderpass.h"
-#include "Gestores/gestordocumentosui.h"
-#include "juego.h"
-#include "GameScreen/tomibotones.h"
-#include "Gestores/gestornpcsui.h"
+#include "../NPC/npcgenericoui.h"
+#include "../Documentos/uaderpass.h"
+#include "../Gestores/gestornpcsui.h"
+#include "../juego.h"
+#include "tomibotones.h"
+
 
 namespace Ui {
 class GameScreen;
