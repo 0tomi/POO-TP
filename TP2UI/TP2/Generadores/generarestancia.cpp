@@ -73,8 +73,7 @@ int GenerarEstancia::GenerarDuracion(bool validez)
     if (validez)
         Duracion = NumRandom.bounded(3, duracMaximaEstancia+1);
     else Duracion = NumRandom.bounded(duracMaximaEstancia, duracMaximaEstancia*2);
-    // ############## DEBUG ############# DEBUG ############ DEBUG ###############
-    qDebug() << Duracion;
+
     return Duracion;
 }
 
@@ -82,8 +81,7 @@ QString GenerarEstancia::GenerarVisita(bool validez)
 {
     QString Visita;
     int Sorteo;
-    // ############## DEBUG ############# DEBUG ############ DEBUG ###############
-    qDebug() << maxVisitasValidas;
+
     if (validez){
         if (maxVisitasValidas < 2) // Evitamos bugs
             Visita = tipoVisitasValidas[0];

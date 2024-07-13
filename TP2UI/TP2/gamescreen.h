@@ -9,10 +9,10 @@
 
 #include "NPC/npcgenericoui.h"
 #include "Documentos/uaderpass.h"
-#include "Documentos/gestordocumentosui.h"
+#include "Gestores/gestordocumentosui.h"
 #include "juego.h"
 #include "GameScreen/tomibotones.h"
-#include "NPC/gestornpcsui.h"
+#include "Gestores/gestornpcsui.h"
 
 namespace Ui {
 class GameScreen;
@@ -37,7 +37,6 @@ private:
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
 
-    GestorDocumentosUI documentos;
     GestorNPCsUI GestorNPC;
 
     TomiBotones* BotonAprobar;
@@ -54,22 +53,8 @@ private:
     void Rechazo();
     void SelloDocumento(bool Boton);
     void BloquearBotones(bool Bloqueo);
-    void FuncionBotonCentral();
     // Otro metodo que voy  a poner simplemente porque no se como se hace.
     void DesbloquearBotones();
-
-    // Documentos
-    DocumentosUI* doc;
-
-    void CentrarDocumentos();
-    void SacarDOC();
-
-    // NPCs
-    NPCGenericoUI *npcUI;
-    NPC *NPCenEscena;
-
-    void EntrarNPC();
-    void SacarNPC();
 
     // Reubicar NPCs en la escena
     void changeEvent(QEvent *event) override;

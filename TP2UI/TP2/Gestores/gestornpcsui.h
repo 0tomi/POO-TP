@@ -2,9 +2,10 @@
 #define GESTORNPCSUI_H
 
 #include <QWidget>
-#include "npcgenericoui.h"
-#include "npccomun.h"
+#include "../NPC/npcgenericoui.h"
+#include "../NPC/npccomun.h"
 #include "../Generadores/colanpc.h"
+#include "gestordocumentosui.h"
 
 class GestorNPCsUI: public QWidget
 {
@@ -12,21 +13,27 @@ class GestorNPCsUI: public QWidget
 
 public:
     GestorNPCsUI();
-    void setUp(QWidget *parent, ColaNPC* cola);
-    void setUpNuevoNivel();
+    void setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola);
+    void setUpNuevoNivel(int Nivel);
     // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
     void Centrar();
-    NPC* Entrar();
+    void Entrar();
     void Salir();
     void TerminoNivel();
     bool MostrandoElNPC() const;
-    int NPCsRestantes() const;
-    bool getValidez() const;
-    int getTipo() const;
+    int NPCsRestantes();
+    bool getValidez();
+    int getTipo();
+
+    // Cosas de documentos (luego vemos como se arregla esto)
+    void DetenerAnimacionesDocumentos();
 
 public slots:
     void Rechazado();
     void emitirNPCTerminoSalir();
+    void emitColaTerminada();
+    void CentrarDocumentos();
+
 signals:
     void NPCCambiado();
     void ColaTerminada();
@@ -44,6 +51,7 @@ signals:
 private:
     ColaNPC* ColaNPCs;
     QWidget* Escenario;
+    GestorDocumentosUI GestorDocumentos;
 
     NPCGenericoUI* NPCcomunUI;
     NPC* NPCenEscena;
@@ -51,7 +59,9 @@ private:
     bool MostrandoNPC;
 
     int topeNPCs;
+    int NivelActual;
     void RealizarConeccionesDeNPCs();
+    void RealizarDesconeccionesNPC();
 };
 
 #endif // GESTORNPCSUI_H

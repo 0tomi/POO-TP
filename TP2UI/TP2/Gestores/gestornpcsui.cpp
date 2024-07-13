@@ -5,9 +5,10 @@ GestorNPCsUI::GestorNPCsUI(){
 
 }
 
-void GestorNPCsUI::setUp(QWidget *parent, ColaNPC *cola)
+void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola)
 {
-    Escenario = parent;
+    GestorDocumentos.setUp(1, EscenarioDocumentos);
+    Escenario = EscenarioNPCs;
     ColaNPCs = cola;
 
     // Spawneamos NPC
@@ -23,9 +24,10 @@ void GestorNPCsUI::setUp(QWidget *parent, ColaNPC *cola)
     MostrandoNPC = false;
 }
 
-void GestorNPCsUI::setUpNuevoNivel()
+void GestorNPCsUI::setUpNuevoNivel(int Nivel)
 {
     RealizarConeccionesDeNPCs();
+    GestorDocumentos.nextNivel(Nivel);
 }
 
 void GestorNPCsUI::Centrar()
@@ -34,20 +36,23 @@ void GestorNPCsUI::Centrar()
     int centerX = (Escenario->width() - NPCcomunUI->width()) /2;
     int centerY = (Escenario->height()) - (NPCcomunUI->height());
     NPCcomunUI->move(centerX,centerY);
+
+    GestorDocumentos.Centrar();
 }
 
-NPC* GestorNPCsUI::Entrar()
+void GestorNPCsUI::Entrar()
 {
+    NPCenEscena = ColaNPCs->getNPC();
+    GestorDocumentos.setDocumento(NPCenEscena);
+
     if (ColaNPCs->getSize() == 0){
-        TerminoNivel();
-        return nullptr;
-    } else if (ColaNPCs->getSize() == 1) {
-            emit UltimoNPC();
+        // Desconectamos la animacion de entrar
+        disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
+        emit UltimoNPC();
     }
 
-    NPCenEscena = ColaNPCs->getNPC();
-
     // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
+    qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
     qDebug() << NPCenEscena->getGenero();
     qDebug() << NPCenEscena->getTipo();
     qDebug() << NPCenEscena->getValidez();
@@ -59,9 +64,11 @@ NPC* GestorNPCsUI::Entrar()
     int centerX = (Escenario->width() - NPCcomunUI->width()) / 2;
     int centerY = Escenario->height() - NPCcomunUI->height();
 
+    // Hacemos que pasen los NPCs y sus documentos.
+    GestorDocumentos.Entrar();
     NPCcomunUI->Entrar(centerX, centerY);
+
     MostrandoNPC = true;
-    return NPCenEscena;
 }
 
 void GestorNPCsUI::Salir()
@@ -69,17 +76,24 @@ void GestorNPCsUI::Salir()
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     int SalidaEscena = Escenario->width() + NPCcomunUI->width();
     int centerY = (Escenario->height()) - (NPCcomunUI->height()) + 50;
+
+    GestorDocumentos.Salir();
     NPCcomunUI->Sacar(SalidaEscena, centerY);
+
+    if (ColaNPCs->getSize() == 0)
+        emit ColaTerminada();
+        //connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitColaTerminada);
     MostrandoNPC = false;
 }
 
 void GestorNPCsUI::TerminoNivel()
 {
-    disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
-    // ### Aca iria disconnect del NPC Especial
+    RealizarDesconeccionesNPC();
 
-    if (ColaNPCs->getSize() != 0)
+    if (ColaNPCs->getSize()){
+        Salir();
         ColaNPCs->vaciarCola();
+    }
     emit ColaTerminada();
 }
 
@@ -88,19 +102,25 @@ bool GestorNPCsUI::MostrandoElNPC() const
     return MostrandoNPC;
 }
 
-int GestorNPCsUI::NPCsRestantes() const
+int GestorNPCsUI::NPCsRestantes()
 {
-    return ColaNPCs->getSize();
+    int Restantes = ColaNPCs->getSize();
+    return Restantes;
 }
 
-bool GestorNPCsUI::getValidez() const
+bool GestorNPCsUI::getValidez()
 {
     return NPCenEscena->getValidez();
 }
 
-int GestorNPCsUI::getTipo() const
+int GestorNPCsUI::getTipo()
 {
     return NPCenEscena->getTipo();
+}
+
+void GestorNPCsUI::DetenerAnimacionesDocumentos()
+{
+    GestorDocumentos.DetenerAnimaciones();
 }
 
 void GestorNPCsUI::Rechazado()
@@ -114,6 +134,16 @@ void GestorNPCsUI::emitirNPCTerminoSalir()
     emit NPCTerminoSalir();
 }
 
+void GestorNPCsUI::emitColaTerminada()
+{
+    emit ColaTerminada();
+}
+
+void GestorNPCsUI::CentrarDocumentos()
+{
+    GestorDocumentos.Centrar();
+}
+
 void GestorNPCsUI::RealizarConeccionesDeNPCs()
 {
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
@@ -121,7 +151,18 @@ void GestorNPCsUI::RealizarConeccionesDeNPCs()
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);
-    //connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar); -> Luego hago esto
+    connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
+
+    // Aca irian las conecciones del NPC especial
+}
+
+void GestorNPCsUI::RealizarDesconeccionesNPC()
+{
+    // Desconectamos la animacion de centrar
+    disconnect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
+
+    disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitColaTerminada);
+    disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
 
     // Aca irian las conecciones del NPC especial
 }

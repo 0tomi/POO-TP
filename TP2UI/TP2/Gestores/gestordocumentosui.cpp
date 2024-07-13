@@ -22,7 +22,7 @@ GestorDocumentosUI::~GestorDocumentosUI()
     delete pase;
 }
 
-void GestorDocumentosUI::setUpDocumentos(int Level, QWidget *objeto)
+void GestorDocumentosUI::setUp(int Level, QWidget *objeto)
 {
     this->Escritorio = objeto;
     setUpNivel(Level);

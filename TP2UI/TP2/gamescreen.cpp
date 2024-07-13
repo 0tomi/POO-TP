@@ -13,10 +13,10 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ColaNPC* Cola = juego->getCola();
 
     temporizadorBotones.setSingleShot(true);
+    tiempoPartida.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
-    GestorNPC.setUp(ui->FondoNPC, Cola);
-    documentos.setUpDocumentos(1, ui->Escritorio);
+    GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
 
     SpawnearBotones();
     RealizarConeccionesPrincipales();
@@ -39,7 +39,7 @@ void GameScreen::RealizarConeccionesPrincipales()
     connect(BotonRechazar, &TomiBotones::BotonApretado, &GestorNPC, &GestorNPCsUI::Rechazado);
 
     // Conectamos boton de centrar para centrar el documento.
-    connect(BotonCentrar, &TomiBotones::BotonApretado, this, &GameScreen::FuncionBotonCentral);
+    connect(BotonCentrar, &TomiBotones::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
 }
 
 void GameScreen::EmpezarJuego()
@@ -50,7 +50,7 @@ void GameScreen::EmpezarJuego()
 
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
-    EntrarNPC();
+    GestorNPC.Entrar();
 }
 
 void GameScreen::RealizarConecciones()
@@ -60,20 +60,13 @@ void GameScreen::RealizarConecciones()
 
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
-
-    // Conectamos la cola al final de la partida
-    connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
-
-    // Conectamos los documentos con la salida de los npcs
-    connect(&GestorNPC, &GestorNPCsUI::NPCTerminoSalir, this, &GameScreen::EntrarNPC);
 }
 
 void GameScreen::FinalDePartida()
 {
     // a desarrollar
     BloquearBotones(true);
-    if (GestorNPC.MostrandoElNPC())
-        GestorNPC.Salir();
+
     GestorNPC.TerminoNivel();
 
     // Conectamos el temporizador de partida para terminar la partida.
@@ -126,8 +119,9 @@ void GameScreen::Rechazo()
 
 void GameScreen::SelloDocumento(bool Boton)
 {
-    documentos.DetenerAnimaciones();
-    SacarNPC();
+    GestorNPC.DetenerAnimacionesDocumentos();
+    GestorNPC.Salir();
+
     temporizadorBotones.start(2500);
     BloquearBotones(true);
 
@@ -135,6 +129,9 @@ void GameScreen::SelloDocumento(bool Boton)
         juego->SumarSocialCredits(GestorNPC.getTipo());
     else
         juego->RestarSocialCredits(GestorNPC.getTipo());
+
+    if (GestorNPC.NPCsRestantes() == 0)
+        FinalDePartida();
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
@@ -144,38 +141,17 @@ void GameScreen::BloquearBotones(bool Bloqueo)
     BotonRechazar->BloquearBoton(Bloqueo);
 }
 
-void GameScreen::FuncionBotonCentral()
-{
-    // Bloqueamos los botones para que no bugeen el juego
-    CentrarDocumentos();
-}
-
 void GameScreen::DesbloquearBotones()
 {
     BloquearBotones(false);
     GestorNPC.Centrar();
 }
 
-void GameScreen::EntrarNPC()
-{
-    NPC* NPCinfo = GestorNPC.Entrar();
-    documentos.setDocumento(NPCinfo);
-    documentos.Entrar();
-}
-
-void GameScreen::SacarNPC()
-{
-    GestorNPC.Salir();
-    SacarDOC();
-}
-
 void GameScreen::changeEvent(QEvent *event)
 {
     QWidget::changeEvent(event);
-    if (event->type() == QEvent::WindowStateChange){
+    if (event->type() == QEvent::WindowStateChange)
         GestorNPC.Centrar();
-        CentrarDocumentos();
-    }
 }
 
 void GameScreen::resizeEvent(QResizeEvent *event)
@@ -183,17 +159,6 @@ void GameScreen::resizeEvent(QResizeEvent *event)
     // En caso de cambiar la ventana, ajustamos el tamaño del NPC
     QWidget::resizeEvent(event);
     GestorNPC.Centrar();
-    CentrarDocumentos();
-}
-
-void GameScreen::SacarDOC()
-{
-    documentos.Salir();
-}
-
-void GameScreen::CentrarDocumentos()
-{
-    documentos.Centrar();
 }
 
 

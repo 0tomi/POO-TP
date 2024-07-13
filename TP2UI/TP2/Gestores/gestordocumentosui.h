@@ -1,11 +1,12 @@
 #ifndef GESTORDOCUMENTOSUI_H
 #define GESTORDOCUMENTOSUI_H
 #include <QWidget>
-#include "uaderpass.h"
-#include "documentacion.h"
-#include "estanciaUI.h"
-#include "../NPC/npccomun.h"
 #include <QTimer>
+
+#include "../Documentos/uaderpass.h"
+#include "../Documentos/documentacion.h"
+#include "../Documentos/estanciaUI.h"
+#include "../NPC/npccomun.h"
 
 class GestorDocumentosUI: public QWidget
 {
@@ -14,7 +15,7 @@ class GestorDocumentosUI: public QWidget
 public:
     GestorDocumentosUI();
 
-    void setUpDocumentos(int Level, QWidget *objeto);
+    void setUp(int Level, QWidget *objeto);
     void setUpNivel(int nivel);
     void deleteDocumentos();
 
