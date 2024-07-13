@@ -76,6 +76,7 @@ void GameScreen::FinalDePartida()
     // Desconectamos las cosas que le dan progreso al juego
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
+    emit NivelTerminado();
     qDebug() << "Termino el juego";
 }
 
