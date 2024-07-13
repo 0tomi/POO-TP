@@ -23,6 +23,7 @@ private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
     GenerarEstancia* generadorEstancia;
     Generar_pasaporte * generadorPasaporte;
+
     // Datos del juego:
     AtributosComunes* datos;
     ReglasNivel1* reglasNivel1;
@@ -38,7 +39,7 @@ private:
 
 
     // Datos del Documento a generar:
-    NPC* datosDeNPC;
+    NPC* NPC2Generate;
     Documentacion* Doc2Generate;
 
 

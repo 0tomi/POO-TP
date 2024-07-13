@@ -8,7 +8,7 @@ DNI::DNI(QWidget *parent)
     ui->setupUi(this);
     setFixedSize(300,300);
 }
-void DNI::setDNIInfo(Pasaporte * dni, NPCUI * npc){
+void DNI::setDNIInfo(Pasaporte * dni, NPC * npc){
     ui->nombre->setText(dni->getnombre());
     ui->fecha->setText(dni->getfecha_nacimiento());
     ui->genero->setText(QString(dni->getgenero()));

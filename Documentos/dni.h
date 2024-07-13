@@ -16,10 +16,11 @@ class DNI : public DocumentosUI
 public:
     explicit DNI(QWidget *parent = nullptr);
     ~DNI();
-    void setDNIInfo(Pasaporte * dni, NPCUI * npc);
+    void setDNIInfo(Pasaporte * dni, NPC * npc);
     void setDocumentacionInfo(Documentacion *documento) override;
 private:
     Ui::DNI *ui;
+    NPCUI* NPCenDocumento;
 };
 
 #endif // DNI_H
