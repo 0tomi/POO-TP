@@ -53,6 +53,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Gestores/gestornpcsui.h Gestores/gestornpcsui.cpp
         Generadores/generarestancia.h Generadores/generarestancia.cpp
         Documentos/estanciaui.h Documentos/estanciaui.cpp Documentos/estanciaui.ui
+        PantallaFinal/pantallafinalnivel.h PantallaFinal/pantallafinalnivel.cpp PantallaFinal/pantallafinalnivel.ui
 
 
 
