@@ -6,6 +6,8 @@
 #include "../Documentos/uaderpass.h"
 #include "../Documentos/documentacion.h"
 #include "../Documentos/estanciaUI.h"
+#include "../Documentos/pasaporteui.h"
+#include "../Documentos/dni.h"
 #include "../NPC/npccomun.h"
 
 class GestorDocumentosUI: public QWidget
@@ -38,6 +40,8 @@ private:
     DocumentosUI* documentosUI[10];
     Documentacion* documentos[10];
     UADERpass* pase;
+    DNI* dniUI;
+    PasaporteUI* pasaporteUI;
 
     bool tienePase;
     int DocumentosEnEscena[10];

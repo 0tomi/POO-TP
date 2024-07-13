@@ -50,7 +50,10 @@ void GestorDocumentosUI::setUpLevel1(int &Index)
     setUpDocumento(pase);
 
     // New al pasaporte, dni
-
+    pasaporteUI = new PasaporteUI(Escritorio);
+    dniUI = new DNI(Escritorio);
+    setUpDocumento(pasaporteUI);
+    setUpDocumento(dniUI);
     Index++;
 
     // New de estancia
@@ -118,7 +121,7 @@ void GestorDocumentosUI::setDocumento(NPC* npcInfo)
     Documentacion** info = npcInfo->getDocumentos();
     int Tipo = npcInfo->getTipo();
 
-    for (int i = 1; i < topePerLevel; i++)
+    for (int i = 0; i < topePerLevel; i++)
         if (info[i] != nullptr)
             documentos[i] = info[i];
 
@@ -133,19 +136,20 @@ void GestorDocumentosUI::setDocumento(NPC* npcInfo)
     if (!npcComunInfo)
         qDebug() << "El npc es de tipo especial"; // y aca iria el casteo al npc especial
 
-    /*  ### PARTE QUE SE ENCARGA DE SETEAR EL PASAPORTE O EL DNI SEGUN CORRESPONDA
 
+    // ### Seteamos el DNI o el Pasaporte segun corresponda
     if (documentos[0] != nullptr){
-        DNIgenerico *identificacion = documentos[0];
-        if (identifacion->getPais() == "Aztana"){
-            documentosUI[0] = DNIUI;
-            DNIUI->setDocumentacionInfo(documentos[0], NPCui)
+        Pasaporte *identificacion = dynamic_cast<Pasaporte*> (documentos[0]);
+        if (identificacion->getnacionalidad() == "Aztana"){
+            documentosUI[0] = dniUI;
+            dniUI->setDNIInfo(identificacion, npcInfo);
         } else {
-            documentosUI[0] = PasaporteUI;
-            PasaporteUI->setDocumentacionInfo(documentos[0], NPCui)
+            documentosUI[0] = pasaporteUI;
+            pasaporteUI->setPasaporteInfo(identificacion, npcInfo);
+        }
     }
-    */
 
+    // ### Seteamos el resto de documentos
     for (int i = 1; i < topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->setDocumentacionInfo(documentos[i]);
