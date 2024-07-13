@@ -28,6 +28,9 @@ public:
     void EmpezarJuego();
     void PrepararJuego(int Nivel);
 
+signals:
+    void NivelTerminado();
+
 private slots:
     void FinalDePartida();
 
