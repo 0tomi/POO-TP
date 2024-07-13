@@ -16,8 +16,8 @@ PantallaFinalNivel::~PantallaFinalNivel()
 }
 
 void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo) {
-    ui->credsSocObts->setText(QString("%1").arg(juegoInfo->getSocialCreditsEarnedInLevel()));
-    ui->multasObt->setText(QString("%1").arg(juegoInfo->getMultas()));
+    ui->cantCredsSocObt->setText(QString("%1").arg(juegoInfo->getSocialCreditsEarnedInLevel()));
+    ui->cantMultObt->setText(QString("%1").arg(juegoInfo->getMultas()));
 
     // conecc.signal de salirBtn:
     connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::on_salir_clicked);
@@ -26,11 +26,17 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo) {
 }
 
 void PantallaFinalNivel::on_salir_clicked() {
+    guardarPartida();
+    emit cerrarApp();
     emit salirClicked();
-    qDebug() << "SALIR btn presionado y señal emitia";
+    qDebug() << "SALIR btn presionado y señal emitida";
 }
 
 void PantallaFinalNivel::on_sigNivel_clicked() {
     emit sigNivelClicked();
     qDebug() << "SIG NIVEL btn presionado y señal emitida";
+}
+
+void PantallaFinalNivel::guardarPartida() {
+    qDebug() << "partida guardada";
 }

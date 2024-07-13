@@ -18,9 +18,11 @@ public:
     explicit PantallaFinalNivel(QWidget *parent = nullptr);
     ~PantallaFinalNivel();
     void setPantallaFinalUI(Juego* juegoInfo);
+    void guardarPartida();
 signals:
     void salirClicked();
     void sigNivelClicked();
+    void cerrarApp();
 private slots:
     void on_salir_clicked();
     void on_sigNivel_clicked();
