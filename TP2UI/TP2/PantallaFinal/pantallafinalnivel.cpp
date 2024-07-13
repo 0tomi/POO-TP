@@ -27,7 +27,7 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo) {
 
 void PantallaFinalNivel::on_salir_clicked() {
     emit salirClicked();
-    qDebug() << "SALIR btn presionado y señal emitida";
+    qDebug() << "SALIR btn presionado y señal emitia";
 }
 
 void PantallaFinalNivel::on_sigNivel_clicked() {
