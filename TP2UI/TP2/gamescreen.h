@@ -12,6 +12,7 @@
 #include "Documentos/gestordocumentosui.h"
 #include "juego.h"
 #include "GameScreen/tomibotones.h"
+#include "NPC/gestornpcsui.h"
 
 namespace Ui {
 class GameScreen;
@@ -33,11 +34,11 @@ private slots:
 private:
     Ui::GameScreen *ui;
     Juego* juego;
-    ColaNPC* Cola;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
 
     GestorDocumentosUI documentos;
+    GestorNPCsUI GestorNPC;
 
     TomiBotones* BotonAprobar;
     TomiBotones* BotonRechazar;
@@ -61,17 +62,14 @@ private:
     DocumentosUI* doc;
 
     void CentrarDocumentos();
-    void EntrarDOC();
     void SacarDOC();
 
     // NPCs
     NPCGenericoUI *npcUI;
     NPC *NPCenEscena;
 
-    void SpawnearNPC();
     void EntrarNPC();
     void SacarNPC();
-    void CentrarNPC();
 
     // Reubicar NPCs en la escena
     void changeEvent(QEvent *event) override;

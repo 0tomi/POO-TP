@@ -8,21 +8,25 @@
 
 class GestorNPCsUI: public QWidget
 {
+    Q_OBJECT
+
 public:
     GestorNPCsUI();
     void setUp(QWidget *parent, ColaNPC* cola);
     void setUpNuevoNivel();
     // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
     void Centrar();
-    void Entrar();
+    NPC* Entrar();
     void Salir();
     void TerminoNivel();
     bool MostrandoElNPC() const;
     int NPCsRestantes() const;
+    bool getValidez() const;
+    int getTipo() const;
 
 public slots:
     void Rechazado();
-
+    void emitirNPCTerminoSalir();
 signals:
     void NPCCambiado();
     void ColaTerminada();

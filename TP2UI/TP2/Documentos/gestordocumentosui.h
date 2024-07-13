@@ -4,6 +4,7 @@
 #include "uaderpass.h"
 #include "documentacion.h"
 #include "estanciaUI.h"
+#include "../NPC/npccomun.h"
 #include <QTimer>
 
 class GestorDocumentosUI: public QWidget
@@ -17,7 +18,7 @@ public:
     void setUpNivel(int nivel);
     void deleteDocumentos();
 
-    void setDocumento(Documentacion **info, int Tipo);
+    void setDocumento(NPC* infoNPC);
     void nextNivel(int nivel);
 
     void Centrar();

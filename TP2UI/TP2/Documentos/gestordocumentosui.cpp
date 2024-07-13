@@ -113,8 +113,11 @@ void GestorDocumentosUI::deleteDocumentos()
         delete documentos[i];
 }
 
-void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
+void GestorDocumentosUI::setDocumento(NPC* npcInfo)
 {
+    Documentacion** info = npcInfo->getDocumentos();
+    int Tipo = npcInfo->getTipo();
+
     for (int i = 1; i < topePerLevel; i++)
         if (info[i] != nullptr)
             documentos[i] = info[i];
@@ -122,6 +125,13 @@ void GestorDocumentosUI::setDocumento(Documentacion **info, int Tipo)
     if (Tipo == 2)
         tienePase = true;
     else tienePase = false;
+
+    NPCcomun* npcComunInfo;
+    // Aca iria la declaracion del npc especial.
+
+    npcComunInfo = dynamic_cast<NPCcomun*> (npcInfo);
+    if (!npcComunInfo)
+        qDebug() << "El npc es de tipo especial"; // y aca iria el casteo al npc especial
 
     /*  ### PARTE QUE SE ENCARGA DE SETEAR EL PASAPORTE O EL DNI SEGUN CORRESPONDA
 

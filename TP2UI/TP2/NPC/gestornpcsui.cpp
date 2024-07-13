@@ -36,11 +36,11 @@ void GestorNPCsUI::Centrar()
     NPCcomunUI->move(centerX,centerY);
 }
 
-void GestorNPCsUI::Entrar()
+NPC* GestorNPCsUI::Entrar()
 {
     if (ColaNPCs->getSize() == 0){
         TerminoNivel();
-        return;
+        return nullptr;
     } else if (ColaNPCs->getSize() == 1) {
             emit UltimoNPC();
     }
@@ -61,6 +61,7 @@ void GestorNPCsUI::Entrar()
 
     NPCcomunUI->Entrar(centerX, centerY);
     MostrandoNPC = true;
+    return NPCenEscena;
 }
 
 void GestorNPCsUI::Salir()
@@ -92,10 +93,25 @@ int GestorNPCsUI::NPCsRestantes() const
     return ColaNPCs->getSize();
 }
 
+bool GestorNPCsUI::getValidez() const
+{
+    return NPCenEscena->getValidez();
+}
+
+int GestorNPCsUI::getTipo() const
+{
+    return NPCenEscena->getTipo();
+}
+
 void GestorNPCsUI::Rechazado()
 {
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     NPCcomunUI->Rechazado();
+}
+
+void GestorNPCsUI::emitirNPCTerminoSalir()
+{
+    emit NPCTerminoSalir();
 }
 
 void GestorNPCsUI::RealizarConeccionesDeNPCs()
@@ -104,7 +120,8 @@ void GestorNPCsUI::RealizarConeccionesDeNPCs()
     connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
-    connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
+    connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);
+    //connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar); -> Luego hago esto
 
     // Aca irian las conecciones del NPC especial
 }
