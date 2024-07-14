@@ -9,6 +9,7 @@ GeneradorNPC::GeneradorNPC(){
     // # Deus ignoscat factis quae mox faciam. #
     Random = new QRandomGenerator(time(NULL));
 
+    // Lectura de las partes del cuerpo
     LectorArchivos lector(":/Resources/ArchivosTexto/URLCarasHombre.txt");
     LinksCarasHombre = lector.getArray();
     topeLinksCaras = lector.getTopeArray();
@@ -46,6 +47,11 @@ GeneradorNPC::GeneradorNPC(){
     lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLNariz.txt");
     LinksNariz = lector.getArray();
     topeLinksNariz = lector.getTopeArray();
+
+    // Lectura de dialogos
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/DialogosRevolucionario.txt");
+    DialogosRevolucionario = lector.getArray();
+    topeDialogosRev = lector.getTopeArray();
 }
 
 
@@ -209,6 +215,8 @@ void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
     if (info->getTipo() != 3)    // En esta etapa solo los revolucionarios tendran dialogos
         return;
 
+    int sorteo = Random->bounded(topeDialogosRev);
+    info->setDialogo(DialogosRevolucionario[sorteo]);
 }
 
 void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
