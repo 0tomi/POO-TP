@@ -33,7 +33,7 @@ private slots:
     void TransicionJuego();
     void PrepararJuego();
     void IniciarJuego();
-
+    void PrepararPantallaFinalNivel();
 
 private:
     Ui::MainWindow *ui;
@@ -48,8 +48,10 @@ private:
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
     GameScreen *gameScreen;
-    QWidget* pantallaTransicion;
+    //PantallaFinalNivel * pantallaFinalNivel;
 
+    // Transicion
+    QWidget* pantallaTransicion;
     QPropertyAnimation* iniciarTransicion;
     QPropertyAnimation* terminarTransicion;
     QGraphicsOpacityEffect* efecto;

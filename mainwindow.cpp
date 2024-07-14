@@ -17,12 +17,21 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Cuando se clickee jugar, abrimos el juego:
     connect(pantallaInicio, &PantallaInicio::ClickeoBotonEmpezar, this, &MainWindow::TransicionJuego);
+
+    // Cuando termine un nivel, hacemos que se muestre la pantalla de final de nivel
+    connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
     delete juego;
+}
+
+void MainWindow::PrepararPantallaFinalNivel()
+{
+    //  pantallaFinalNivel->setUp();
+    //  pantallas->setCurrentWidget(pantallaFinalNivel);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -97,11 +106,13 @@ void MainWindow::CrearPantallasJuego()
     // Creamos las pantallas del juego
     pantallaInicio = new PantallaInicio(this);
     gameScreen = new GameScreen(juego, this);
+    //pantallaFinalNivel = new PantallaFinalNivel(juego, this);
     CrearPantallaTransicion();
 
     // Añadimos las pantallas al stack
     pantallas->addWidget(pantallaInicio);
     pantallas->addWidget(gameScreen);
+    //pantallas->addWidget(pantallaFinalNivel);
 
     // Mostramos la pantalla de inicio
     pantallas->setCurrentWidget(pantallaInicio);

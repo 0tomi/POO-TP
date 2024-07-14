@@ -2,7 +2,7 @@
 #include <QLayout>
 
 GestorNPCsUI::GestorNPCsUI(){
-
+    EntrarNPCsYDocs.setSingleShot(true);
 }
 
 void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola)
@@ -61,12 +61,11 @@ void GestorNPCsUI::Entrar()
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     NPCcomunUI->setNPC(NPCenEscena);
 
-    int centerX = (Escenario->width() - NPCcomunUI->width()) / 2;
-    int centerY = Escenario->height() - NPCcomunUI->height();
-
     // Hacemos que pasen los NPCs y sus documentos.
-    GestorDocumentos.Entrar();
-    NPCcomunUI->Entrar(centerX, centerY);
+    EntrarNPCsYDocs.start(200);
+    connect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
+    //GestorDocumentos.Entrar();
+    //NPCcomunUI->Entrar(centerX, centerY);
 
     MostrandoNPC = true;
 }
@@ -142,6 +141,15 @@ void GestorNPCsUI::emitColaTerminada()
 void GestorNPCsUI::CentrarDocumentos()
 {
     GestorDocumentos.Centrar();
+}
+
+void GestorNPCsUI::EntrarEntidades()
+{
+    disconnect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
+    int centerX = (Escenario->width() - NPCcomunUI->width()) / 2;
+    int centerY = Escenario->height() - NPCcomunUI->height();
+    GestorDocumentos.Entrar();
+    NPCcomunUI->Entrar(centerX, centerY);
 }
 
 void GestorNPCsUI::RealizarConeccionesDeNPCs()

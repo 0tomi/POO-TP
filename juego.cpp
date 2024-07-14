@@ -29,7 +29,7 @@ void Juego::PrepararJuego(int Reset)
 
     NivelActual = 0;
     // Test
-    Cola->addNPC(2,1,3,0, 1);
+    Cola->addNPC(2,2,2,2, 3);
     // setUpNivel0();
 
     // Seteamos las estadisticas del jugador.
@@ -42,33 +42,33 @@ void Juego::PrepararJuego(int Reset)
     setDificultad(1);
 }
 
+void Juego::setDificultad(int dificultad)
+{
+    switch (dificultad){
+    // Modo facil
+    case 1: MaxMultas = 6;
+        BonificadorPerderCreditosDificultad = 0.5;
+        BonificadorGanarCreditosDificultad = 1.5;
+        break;
+    // Modo DEMONIO
+    case 3: MaxMultas = 2;
+        BonificadorPerderCreditosDificultad = 1.5;
+        BonificadorGanarCreditosDificultad = 0.5;
+        break;
+    // Modo Normal
+    default:MaxMultas = 4;
+        BonificadorPerderCreditosDificultad = 1;
+        BonificadorGanarCreditosDificultad = 1;
+        break;
+    }
+}
+
 void Juego::setNivel(int nivel)
 {
     if (nivel < 5){
         NivelActual = nivel;
         Cola->vaciarCola();
     }
-}
-
-void Juego::setDificultad(int dificultad)
-{
-    switch (dificultad){
-        // Modo facil
-        case 1: MaxMultas = 6;
-                BonificadorPerderCreditosDificultad = 0.5;
-                BonificadorGanarCreditosDificultad = 1.5;
-               break;
-        // Modo DEMONIO
-        case 3: MaxMultas = 2;
-            BonificadorPerderCreditosDificultad = 1.5;
-            BonificadorGanarCreditosDificultad = 0.5;
-            break;
-        // Modo Normal
-        default:MaxMultas = 4;
-            BonificadorPerderCreditosDificultad = 1;
-            BonificadorGanarCreditosDificultad = 1;
-            break;
-        }
 }
 
 void Juego::NextLevel()
@@ -116,6 +116,18 @@ ColaNPC *Juego::getCola()
 int Juego::getSocialCreditsEarnedInLevel() const
 {
     return SocialCreditsEarnedInLevel;
+}
+
+void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
+{
+    if (TipoNPC == 3 && DecisionJugador)
+        RestarSocialCredits(TipoNPC);
+    else
+        if (DecisionJugador == ValidezNPC)
+            SumarSocialCredits(TipoNPC);
+        else
+            RestarSocialCredits(TipoNPC);
+
 }
 
 void Juego::SumarSocialCredits(int Tipo)

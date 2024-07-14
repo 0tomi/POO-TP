@@ -48,5 +48,15 @@
         <file>Resources/ArchivosTexto/x.txt</file>
         <file>Resources/ArchivosTexto/mujeres.txt</file>
         <file>Resources/ArchivosTexto/hombres.txt</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo1.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo2.png</file>
+        <file>Resources/NPCs/Boca3.png</file>
+        <file>Resources/NPCs/CuerpoRefugiada1.png</file>
+        <file>Resources/NPCs/CuerpoRefugiada2.png</file>
+        <file>Resources/NPCs/CuerpoRefugiado1.png</file>
+        <file>Resources/NPCs/CuerpoRefugiado2.png</file>
+        <file>Resources/ArchivosTexto/URLCarasRefugiadoHombre.txt</file>
+        <file>Resources/ArchivosTexto/URLCarasRefugiadoMujer.txt</file>
+        <file>Resources/ArchivosTexto/URLCarasRevolucionario.txt</file>
     </qresource>
 </RCC>

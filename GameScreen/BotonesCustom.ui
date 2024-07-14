@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TomiBotones</class>
- <widget class="QWidget" name="TomiBotones">
+ <class>BotonesCustom</class>
+ <widget class="QWidget" name="BotonesCustom">
   <property name="geometry">
    <rect>
     <x>0</x>
