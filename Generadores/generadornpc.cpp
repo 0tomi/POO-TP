@@ -16,6 +16,17 @@ GeneradorNPC::GeneradorNPC(){
     lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasMujer.txt");
     LinksCarasMujer = lector.getArray();
 
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasRevolucionario.txt");
+    LinksCarasRevolucionario = lector.getArray();
+    topeLinksRevolucionario = lector.getTopeArray();
+
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasRefugiadoHombre.txt");
+    LinksCarasRefugiadoHombre = lector.getArray();
+
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasRefugiadoMujer.txt");
+    LinksCarasRefugiadoMujer = lector.getArray();
+    topeLinksRefugiado = lector.getTopeArray();
+
     lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLBarbas.txt");
     LinksBarbas = lector.getArray();
     topeLinksBarbas = lector.getTopeArray();
@@ -41,11 +52,9 @@ GeneradorNPC::GeneradorNPC(){
 // Esto necesita rework a futuro para distinguir entre caras de Mujeres y Hombres
 NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
     NPCcomun* NPCaCrear;
-
+    // 0: Aldeano, 1: Refugiado, 2: Diplomatico, 3: Revolucionario
     if (tipo > 3)
         tipo = Random->bounded(4);
-    if (tipo == 3)  // Porque los revolucionarios NO deben pasar
-        Validez = false;
 
     // Pickeamos un genero
     int valorCentinela2 = Random->bounded(11);
@@ -69,8 +78,16 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
 
     QString ojos = getOjosRandom();
 
+    // Decidir skin de revolucionario u otro tipo
+    if (tipo == 3)
+       NPCaCrear->setCaraURL(getCaraRevolucionarioRandom());
+    else
+        if (tipo == 1)
+            NPCaCrear->setCaraURL(getCaraRefugiadoRandom(generos[valorCentinela2]));
+        else
+            NPCaCrear->setCaraURL(getCaraRandom(generos[valorCentinela2]));
+
     // Resto del cuerpo
-    NPCaCrear->setCaraURL(getCaraRandom(generos[valorCentinela2]));
     NPCaCrear->setCejasURL(getCejasRandom());
     NPCaCrear->setOjosURL(ojos);
     NPCaCrear->setBocaURL(getBocaRandom());
@@ -114,6 +131,31 @@ QString GeneradorNPC::getCaraRandom(char genero)
 
     return LinkCara;
 
+}
+
+QString GeneradorNPC::getCaraRevolucionarioRandom()
+{
+    int sorteo = Random->bounded(topeLinksRevolucionario);
+    QString LinkCara = LinksCarasRevolucionario[sorteo];
+
+    return LinkCara;
+}
+
+QString GeneradorNPC::getCaraRefugiadoRandom(char Genero)
+{
+    int CaraGeneroX = Random->bounded(10);
+    int sorteo = Random->bounded(topeLinksRefugiado);
+    QString LinkCara;
+
+    // Chance 50/50 de que use de mujer o de hombre.
+    bool Cara2Usar = (CaraGeneroX < 5);
+
+    if (Genero == 'M' || (Genero == 'X' && Cara2Usar))
+        LinkCara = LinksCarasRefugiadoMujer[sorteo];
+    else
+        LinkCara = LinksCarasRefugiadoHombre[sorteo];
+
+    return LinkCara;
 }
 
 QString GeneradorNPC::getCejasRandom()

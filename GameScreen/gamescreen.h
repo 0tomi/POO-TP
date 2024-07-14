@@ -11,7 +11,7 @@
 #include "../Documentos/uaderpass.h"
 #include "../Gestores/gestornpcsui.h"
 #include "../juego.h"
-#include "tomibotones.h"
+#include "BotonesCustom.h"
 
 
 namespace Ui {
@@ -42,9 +42,9 @@ private:
 
     GestorNPCsUI GestorNPC;
 
-    TomiBotones* BotonAprobar;
-    TomiBotones* BotonRechazar;
-    TomiBotones* BotonCentrar;
+    BotonesCustom* BotonAprobar;
+    BotonesCustom* BotonRechazar;
+    BotonesCustom* BotonCentrar;
     QSpacerItem* EspaciadorBotones;
 
     void SpawnearBotones();

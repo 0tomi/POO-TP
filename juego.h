@@ -24,6 +24,7 @@ public:
 
     // Getters y setters de las estadisticas
     int getSocialCreditsEarnedInLevel() const;
+    void EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador);
     void SumarSocialCredits(int TipoNPC);
     void RestarSocialCredits(int TipoNPC);
 
