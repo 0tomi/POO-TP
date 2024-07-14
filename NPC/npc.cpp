@@ -4,6 +4,8 @@ NPC::NPC(char Gen, int Type, bool newValidez){
     this->Genero = Gen;
     this->Tipo = Type;
     this->Validez = newValidez;
+    if (Type != 3)
+        dialogo = "null";
 
     for (int i = 0; i < 10; i++)
         documentos[i] = nullptr;
@@ -44,6 +46,16 @@ void NPC::addDocumento(Documentacion *newDoc, int Index)
   */
 
     documentos[Index] = newDoc;
+}
+
+QString NPC::getDialogo() const
+{
+    return dialogo;
+}
+
+void NPC::setDialogo(const QString &newDialogo)
+{
+    dialogo = newDialogo;
 }
 
 NPC::~NPC()

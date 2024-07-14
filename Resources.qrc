@@ -58,5 +58,12 @@
         <file>Resources/ArchivosTexto/URLCarasRefugiadoHombre.txt</file>
         <file>Resources/ArchivosTexto/URLCarasRefugiadoMujer.txt</file>
         <file>Resources/ArchivosTexto/URLCarasRevolucionario.txt</file>
+        <file>Resources/NPCs/GloboDialogoNPC.png</file>
+        <file>Resources/NPCs/GloboDialogoNPC2.png</file>
+        <file>Resources/ArchivosTexto/DialogosRevolucionario.txt</file>
+        <file>Resources/Documentos/DNIAztana.png</file>
+        <file>Resources/Documentos/PasaportePlaceHolder.png</file>
+        <file>Resources/Documentos/SelloAprobado.png</file>
+        <file>Resources/Documentos/SelloRechazado.png</file>
     </qresource>
 </RCC>

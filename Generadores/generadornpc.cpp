@@ -103,6 +103,22 @@ NPC *GeneradorNPC::getSimilarNPC(NPC *ejemplo)
     return ejemplo;
 }
 
+void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
+{
+    switch (nivel){
+    case 1: GenerarDialogosNivel1(npc);
+        break;
+    case 2: GenerarDialogosNivel2(npc);
+        break;
+    case 3: GenerarDialogosNivel3(npc);
+        break;
+    case 4: GenerarDialogosNivel4(npc);
+        break;
+    default: GenerarDialogosNivel5(npc);
+        break;
+    }
+}
+
 
 GeneradorNPC::~GeneradorNPC()
 {
@@ -186,4 +202,11 @@ QString GeneradorNPC::getBarbaRandom()
 {
     int sorteo = Random->bounded(topeLinksBarbas);
     return LinksBarbas[sorteo];
+}
+
+void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
+{
+    if (info->getTipo() != 3)    // En esta etapa solo los revolucionarios tendran dialogos
+        return;
+
 }

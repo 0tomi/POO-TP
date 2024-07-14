@@ -2,6 +2,7 @@
 #define NPC_H
 
 #include "../Documentos/documentacion.h"
+#include <QString>
 
 class NPC
 {
@@ -16,11 +17,15 @@ public:
 
     virtual void addDocumento(Documentacion *newDoc, int Index);
 
+    QString getDialogo() const;
+    void setDialogo(const QString &newDialogo);
+
 protected:
     bool Validez;
     char Genero;
     int Tipo;
     Documentacion* documentos[10];
+    QString dialogo;
 };
 
 #endif // NPC_H
