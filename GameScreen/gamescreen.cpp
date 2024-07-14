@@ -110,12 +110,14 @@ void GameScreen::SpawnearBotones()
 
 void GameScreen::Acepto()
 {
+    GestorNPC.DocAprobado();
     juego->addNPCaceptado();
     SelloDocumento(true);
 }
 
 void GameScreen::Rechazo()
 {
+    GestorNPC.DocRechazado();
     juego->addNPCrechazado();
     SelloDocumento(false);
 }

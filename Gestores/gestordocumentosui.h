@@ -29,6 +29,9 @@ public:
     void Salir();
     void DetenerAnimaciones();
 
+    void Aprobado();
+    void Rechazar();
+
     ~GestorDocumentosUI();
 
 signals:

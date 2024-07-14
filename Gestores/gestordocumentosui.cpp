@@ -224,6 +224,18 @@ void GestorDocumentosUI::DetenerAnimaciones()
             documentosUI[i]->PausarAnimacionCentrar();
 }
 
+void GestorDocumentosUI::Aprobado()
+{
+    if (documentosUI[0] == pasaporteUI)
+        pasaporteUI->setAprobado();
+}
+
+void GestorDocumentosUI::Rechazar()
+{
+    if (documentosUI[0] == pasaporteUI)
+        pasaporteUI->setRechazado();
+}
+
 void GestorDocumentosUI::SalirDocumento(DocumentosUI *doc)
 {
     int centerX = ((Escritorio->width()) - (doc->width())) / 2;

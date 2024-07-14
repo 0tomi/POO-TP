@@ -122,6 +122,16 @@ void GestorNPCsUI::DetenerAnimacionesDocumentos()
     GestorDocumentos.DetenerAnimaciones();
 }
 
+void GestorNPCsUI::DocRechazado()
+{
+    GestorDocumentos.Rechazar();
+}
+
+void GestorNPCsUI::DocAprobado()
+{
+    GestorDocumentos.Aprobado();
+}
+
 void GestorNPCsUI::Rechazado()
 {
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.

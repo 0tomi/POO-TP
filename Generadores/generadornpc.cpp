@@ -210,3 +210,23 @@ void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
         return;
 
 }
+
+void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
+{
+
+}
+
+void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
+{
+
+}
+
+void GeneradorNPC::GenerarDialogosNivel4(NPC *info)
+{
+
+}
+
+void GeneradorNPC::GenerarDialogosNivel5(NPC *info)
+{
+
+}

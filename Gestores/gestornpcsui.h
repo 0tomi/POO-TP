@@ -20,14 +20,19 @@ public:
     void Centrar();
     void Entrar();
     void Salir();
+
     void TerminoNivel();
     bool MostrandoElNPC() const;
+
     int NPCsRestantes();
+
     bool getValidez();
     int getTipo();
 
     // Cosas de documentos (luego vemos como se arregla esto)
     void DetenerAnimacionesDocumentos();
+    void DocRechazado();
+    void DocAprobado();
 
 public slots:
     void Rechazado();

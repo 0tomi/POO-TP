@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QDebug>
+#include "Documentos/pasaporteui.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +9,9 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
+
+    PasaporteUI pas;
+    pas.show();
 
     //GameScreen g;
     //g.show();
