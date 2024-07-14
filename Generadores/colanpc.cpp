@@ -11,9 +11,38 @@ ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules){
     this->Random = new QRandomGenerator(time(NULL));
 }
 
+void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
+{
+    int totalNPCs = CantAldeano + CantRefugiados + CantDiplos + CantRevolucionarios;
+
+    // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
+    int arrayTipos[] = {CantAldeano, CantRefugiados, CantDiplos, CantRevolucionarios};
+
+    // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
+    int sorteo = Random->bounded(4);
+    int sorteoValidez = Random->bounded(20);
+    bool Validez = true;
+
+    while (totalNPCs){
+        if (CantidadInvalidos)
+            if (sorteoValidez > 13){
+                Validez = false;
+                CantidadInvalidos--;
+            }
+        if (arrayTipos[sorteo]){
+            addNPC(sorteo, Validez); // Sumamos a la cola el npc con el tipo sorteado.
+            arrayTipos[sorteo]--;
+            totalNPCs--;
+        }
+        sorteo = Random->bounded(4);
+        sorteoValidez = Random->bounded(20);
+        Validez = true;
+    }
+}
+
 void ColaNPC::addNPC(int Tipo, bool Validez){
     // Genero el NPC nuevo
-    NPC* newNPC = this->GenerarNPC->getNPCgenerico(Tipo, Validez);
+    NPC* newNPC = GenerarNPC->getNPCgenerico(Tipo, Validez);
     // Genero su documentacion
     GenerarDocumentacion->getDocumentos(newNPC, Validez);
     // Genero el nodo de la cola donde estara el npc
@@ -57,36 +86,6 @@ void ColaNPC::actualizarReglas(Reglas **newRules, int nivel)
 void ColaNPC::nextNivel(int Nivel)
 {
     GenerarDocumentacion->nextNivel(Nivel);
-}
-
-void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
-{
-    int totalNPCs = CantAldeano + CantRefugiados + CantDiplos + CantRevolucionarios;
-
-    // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
-    int arrayTipos[] = {CantAldeano, CantRefugiados, CantDiplos, CantRevolucionarios};
-
-    // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
-    int sorteo = Random->bounded(4);
-    int sorteoValidez = Random->bounded(20);
-    bool Validez = true;
-
-    while (totalNPCs){
-        if (CantidadInvalidos)
-            if (sorteoValidez > 13){
-                Validez = false;
-                CantidadInvalidos--;
-            }
-        if (!(arrayTipos[sorteo])){ // Si el contador es 0, activara el if, y sorteara otro tipo.
-            sorteo = Random->bounded(4);
-        } else {
-            addNPC(sorteo, Validez); // Sumamos a la cola el npc con el tipo sorteado.
-            arrayTipos[sorteo]--;
-            totalNPCs--;
-        }
-        sorteoValidez = Random->bounded(20);
-        Validez = true;
-    }
 }
 
 NPC* ColaNPC::getNPC(){

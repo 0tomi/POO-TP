@@ -1,9 +1,9 @@
-#include "tomibotones.h"
-#include "ui_tomibotones.h"
+#include "BotonesCustom.h"
+#include "ui_BotonesCustom.h"
 
-TomiBotones::TomiBotones(QString Estado1, QString Estado2, QWidget *parent)
+BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::TomiBotones)
+    , ui(new Ui::BotonesCustom)
 {
     // Sacamos el efecto azualdo del boton
     ui->setupUi(this);
@@ -20,54 +20,54 @@ TomiBotones::TomiBotones(QString Estado1, QString Estado2, QWidget *parent)
     TiempoBloqueo = 1000;
 }
 
-void TomiBotones::SetTiempoBloqueo(int milisegundos)
+void BotonesCustom::SetTiempoBloqueo(int milisegundos)
 {
     TiempoBloqueo = milisegundos;
 }
 
-void TomiBotones::BloquearBoton(bool bloqueo)
+void BotonesCustom::BloquearBoton(bool bloqueo)
 {
     if (bloqueo){
-        disconnect(&TemporizadorBotones, &QTimer::timeout, this, &TomiBotones::DesbloquearBoton);
+        disconnect(&TemporizadorBotones, &QTimer::timeout, this, &BotonesCustom::DesbloquearBoton);
         PausarBoton();
     } else
         DesbloquearBoton();
 }
 
-void TomiBotones::DesbloquearBoton()
+void BotonesCustom::DesbloquearBoton()
 {
-    disconnect(&TemporizadorBotones, &QTimer::timeout, this, &TomiBotones::DesbloquearBoton);
+    disconnect(&TemporizadorBotones, &QTimer::timeout, this, &BotonesCustom::DesbloquearBoton);
     ui->Boton->setStyleSheet(SkinBotonUnblock);
     BotonBloqueado = false;
     emit BottonLiberado();
 }
 
-TomiBotones::~TomiBotones()
+BotonesCustom::~BotonesCustom()
 {
     delete ui;
 }
 
-void TomiBotones::mousePressEvent(QMouseEvent *event)
+void BotonesCustom::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
     if (!BotonBloqueado)
         Accion();
 }
 
-void TomiBotones::CrearSkinBoton(QString Estado1, QString &Direccion)
+void BotonesCustom::CrearSkinBoton(QString Estado1, QString &Direccion)
 {
     Direccion = "border-image: url(" + Estado1 + ");";
 }
 
-void TomiBotones::PausarBoton()
+void BotonesCustom::PausarBoton()
 {
     ui->Boton->setStyleSheet(SkinBotonBlock);
     BotonBloqueado = true;
 }
 
-void TomiBotones::Accion()
+void BotonesCustom::Accion()
 {
-    connect(&TemporizadorBotones, &QTimer::timeout, this, &TomiBotones::DesbloquearBoton);
+    connect(&TemporizadorBotones, &QTimer::timeout, this, &BotonesCustom::DesbloquearBoton);
     TemporizadorBotones.start(TiempoBloqueo);
     emit BotonApretado();
     PausarBoton();

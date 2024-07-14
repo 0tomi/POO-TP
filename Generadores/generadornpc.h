@@ -24,6 +24,8 @@ private:
 
     // Metodos par armar las selecciones random
     QString getCaraRandom(char Genero);
+    QString getCaraRevolucionarioRandom();
+    QString getCaraRefugiadoRandom(char Genero);
     QString getCejasRandom();
     QString getOjosRandom();
     QString getBocaRandom();
@@ -34,6 +36,14 @@ private:
     QString* LinksCarasHombre;
     QString* LinksCarasMujer;
     int topeLinksCaras;
+
+    QString* LinksCarasRevolucionario;
+    int topeLinksRevolucionario;
+
+    QString* LinksCarasRefugiadoHombre;
+    QString* LinksCarasRefugiadoMujer;
+    int topeLinksRefugiado;
+
 
     QString* LinksCejas;
     int topeLinksCejas;

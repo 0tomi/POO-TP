@@ -34,12 +34,12 @@ GameScreen::~GameScreen()
 void GameScreen::RealizarConeccionesPrincipales()
 {
     // Conecto los botones para que segun lo que haga el usuario, se evalue una cosa u otra.
-    connect(BotonAprobar, &TomiBotones::BotonApretado, this, &GameScreen::Acepto);
-    connect(BotonRechazar, &TomiBotones::BotonApretado, this, &GameScreen::Rechazo);
-    connect(BotonRechazar, &TomiBotones::BotonApretado, &GestorNPC, &GestorNPCsUI::Rechazado);
+    connect(BotonAprobar, &BotonesCustom::BotonApretado, this, &GameScreen::Acepto);
+    connect(BotonRechazar, &BotonesCustom::BotonApretado, this, &GameScreen::Rechazo);
+    connect(BotonRechazar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::Rechazado);
 
     // Conectamos boton de centrar para centrar el documento.
-    connect(BotonCentrar, &TomiBotones::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
+    connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
 }
 
 void GameScreen::EmpezarJuego()
@@ -90,9 +90,9 @@ void GameScreen::SpawnearBotones()
     QString BotonCentrarBlock = ":/Resources/MaterialPantallas/BotonCentrarBloqueado.png";
     QString BotonCentrarDesblock = ":/Resources/MaterialPantallas/BotonCentrarDesbloqueado.png";
 
-    BotonAprobar = new TomiBotones(BotonAceptarDesbloqueado, BotonAceptarBloqueado, ui->ContenedorBotones);
-    BotonRechazar = new TomiBotones(BotonRechazarDesbloqueado, BotonRechazarBloqueado, ui->ContenedorBotones);
-    BotonCentrar = new TomiBotones(BotonCentrarDesblock, BotonCentrarBlock,ui->ContenedorBotones);
+    BotonAprobar = new BotonesCustom(BotonAceptarDesbloqueado, BotonAceptarBloqueado, ui->ContenedorBotones);
+    BotonRechazar = new BotonesCustom(BotonRechazarDesbloqueado, BotonRechazarBloqueado, ui->ContenedorBotones);
+    BotonCentrar = new BotonesCustom(BotonCentrarDesblock, BotonCentrarBlock,ui->ContenedorBotones);
     EspaciadorBotones = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     BotonAprobar->resize(200,125);
@@ -110,11 +110,13 @@ void GameScreen::SpawnearBotones()
 
 void GameScreen::Acepto()
 {
+    juego->addNPCaceptado();
     SelloDocumento(true);
 }
 
 void GameScreen::Rechazo()
 {
+    juego->addNPCrechazado();
     SelloDocumento(false);
 }
 
@@ -126,10 +128,7 @@ void GameScreen::SelloDocumento(bool Boton)
     temporizadorBotones.start(2500);
     BloquearBotones(true);
 
-    if (Boton == GestorNPC.getValidez())
-        juego->SumarSocialCredits(GestorNPC.getTipo());
-    else
-        juego->RestarSocialCredits(GestorNPC.getTipo());
+    juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
     if (GestorNPC.NPCsRestantes() == 0)
         FinalDePartida();

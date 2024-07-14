@@ -1,23 +1,23 @@
-#ifndef TOMIBOTONES_H
-#define TOMIBOTONES_H
+#ifndef BOTONESCUSTOM_H
+#define BOTONESCUSTOM_H
 
 #include <QWidget>
 #include <QTimer>
 #include <QString>
 
 namespace Ui {
-class TomiBotones;
+class BotonesCustom;
 }
 
-class TomiBotones : public QWidget
+class BotonesCustom : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit TomiBotones(QString Estado1, QString Estado2, QWidget *parent = nullptr);
+    explicit BotonesCustom(QString Estado1, QString Estado2, QWidget *parent = nullptr);
     void SetTiempoBloqueo(int milisegundos);
     void BloquearBoton(bool bloqueo);
-    ~TomiBotones();
+    ~BotonesCustom();
 
 signals:
     void BotonApretado();
@@ -27,7 +27,7 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
 
 private:
-    Ui::TomiBotones *ui;
+    Ui::BotonesCustom *ui;
     QTimer TemporizadorBotones;
     QString SkinBotonBlock;
     QString SkinBotonUnblock;
@@ -42,4 +42,4 @@ private:
     void Accion();
 };
 
-#endif // TOMIBOTONES_H
+#endif // BOTONESCUSTOM_H

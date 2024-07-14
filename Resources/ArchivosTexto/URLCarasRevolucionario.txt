@@ -1,0 +1,2 @@
+:/Resources/NPCs/RevolucionarioCuerpo1.png
+:/Resources/NPCs/RevolucionarioCuerpo2.png

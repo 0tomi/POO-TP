@@ -2,6 +2,7 @@
 #define GESTORNPCSUI_H
 
 #include <QWidget>
+#include <QTimer>
 #include "../NPC/npcgenericoui.h"
 #include "../NPC/npccomun.h"
 #include "../Generadores/colanpc.h"
@@ -48,6 +49,9 @@ signals:
     void NPCTerminoEntrar();
     void NPCTerminoSalir();
 
+private slots:
+    void EntrarEntidades();
+
 private:
     ColaNPC* ColaNPCs;
     QWidget* Escenario;
@@ -57,6 +61,7 @@ private:
     NPC* NPCenEscena;
 
     bool MostrandoNPC;
+    QTimer EntrarNPCsYDocs;
 
     int topeNPCs;
     int NivelActual;
