@@ -12,14 +12,16 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     TiempoVisualizacion.setSingleShot(true);
     SetearAnimacionEntrada();
     SetearAnimacionSalida();
+    Mostrandose = false;
 }
 
-void GlobosDialogoUI::setMensaje(const QString &newMensaje)
+void GlobosDialogoUI::setMensaje(const QString &newMensaje, const int X, const int Y)
 {
     mensaje = newMensaje;
     ui->Texto->setText(mensaje);
     emit MensajePreparado();
     connect(&TiempoVisualizacion, &QTimer::timeout, this, &GlobosDialogoUI::TerminarMensaje);
+    PrepararAnimacionEntrada(X, Y);
     MostrarMensaje();
 }
 
@@ -50,6 +52,18 @@ void GlobosDialogoUI::CorrerMensaje()
 GlobosDialogoUI::~GlobosDialogoUI()
 {
     delete ui;
+    delete animacionEntrada;
+    delete animacionSalida;
+    delete opacityEffect;
+}
+
+void GlobosDialogoUI::Centrar(int X, int Y)
+{
+    if (Mostrandose){
+        CalcularPosicionDelGlobo(X, Y);
+        move(X,Y);
+        raise();
+    }
 }
 
 void GlobosDialogoUI::DarFormatoPorqueQTesHorrible(QString &formato)
@@ -64,9 +78,17 @@ void GlobosDialogoUI::SetearAnimacionEntrada()
 {
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionEntrada->setDuration(500);
-    animacionEntrada->setStartValue(QPoint(-(width()) -50,0));
-    animacionEntrada->setEndValue(QPoint(0,0));
     animacionEntrada->setEasingCurve(QEasingCurve::OutExpo);
+    connect(animacionEntrada, &QPropertyAnimation::finished, this, &GlobosDialogoUI::setMostrandose);
+}
+
+void GlobosDialogoUI::PrepararAnimacionEntrada(int X, int Y)
+{
+    int PosOcultaY = Y;
+    CalcularPosicionDelGlobo(X,Y);
+
+    animacionEntrada->setStartValue(QPoint(X, PosOcultaY)); // Coloca el globo oculto por debajo de la pantalla
+    animacionEntrada->setEndValue(QPoint(X,Y));             // Sube el globo para que se vea en el medio de la pantalla
 }
 
 void GlobosDialogoUI::SetearAnimacionSalida()
@@ -89,10 +111,22 @@ void GlobosDialogoUI::EsconderDialogo()
     move(-(width()),0); // Lo movemos al costado para que no moleste.
 }
 
+void GlobosDialogoUI::CalcularPosicionDelGlobo(int &X, int &Y)
+{
+    X = (X - width()) / 2;    // Centro de la pantalla con respecto al eje horizontal
+    Y = Y-height();          // Altura en la cual se ve el widget por encima de la pantalla.
+}
+
+void GlobosDialogoUI::setMostrandose()
+{
+    Mostrandose = true;
+}
+
 void GlobosDialogoUI::TerminarMensaje()
 {
     raise();
     animacionSalida->start();
+    Mostrandose = false;
     // Aca estaria la animacion de que se va el globo.
     emit MensajeTerminado();
 }

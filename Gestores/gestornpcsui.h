@@ -37,6 +37,7 @@ public:
     void DocAprobado();
 
 public slots:
+    void Dialogo(const QString &dialogo);
     void Rechazado();
     void emitirNPCTerminoSalir();
     void emitColaTerminada();

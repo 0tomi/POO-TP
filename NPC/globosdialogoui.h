@@ -20,9 +20,10 @@ public:
     void ForzarSalir();
     void CorrerMensaje(); // A futuro, para acumular mensajes.
     ~GlobosDialogoUI();
+    void Centrar(int X, int Y);
 
 public slots:
-    void setMensaje(const QString &mensaje); // Recibe el mensaje y lo setea.
+    void setMensaje(const QString &mensaje, const int X, const int Y); // Recibe el mensaje y lo setea.
 
 signals:
     void Hablando(const QString &mensaje);
@@ -37,6 +38,7 @@ private:
     QTimer TiempoVisualizacion;
 
     void SetearAnimacionEntrada();
+    void PrepararAnimacionEntrada(int X, int Y);
     QPropertyAnimation * animacionEntrada;
 
     void SetearAnimacionSalida();
@@ -44,6 +46,9 @@ private:
     QGraphicsOpacityEffect * opacityEffect;
     void EsconderDialogo();
 
+    void CalcularPosicionDelGlobo(int &X, int &Y);
+    void setMostrandose();
+    bool Mostrandose;
 private slots:
     void TerminarMensaje();
 };

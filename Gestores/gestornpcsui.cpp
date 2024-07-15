@@ -42,8 +42,11 @@ void GestorNPCsUI::Centrar()
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     int centerX = (Escenario->width() - NPCcomunUI->width()) /2;
     int centerY = (Escenario->height()) - (NPCcomunUI->height());
+    // Centramos el NPC
     NPCcomunUI->move(centerX,centerY);
-    qDebug() << "Se centro el NPC" << centerX << centerY;
+    // Centramos los dialogos
+    Dialogos->Centrar(Escenario->width(), Escenario->height());
+    // Centramos los documentos
     GestorDocumentos.Centrar();
 }
 
@@ -136,6 +139,11 @@ void GestorNPCsUI::DocAprobado()
     GestorDocumentos.Aprobado();
 }
 
+void GestorNPCsUI::Dialogo(const QString &newDialogo)
+{
+    Dialogos->setMensaje(newDialogo, Escenario->width(), Escenario->height());
+}
+
 void GestorNPCsUI::Rechazado()
 {
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
@@ -177,7 +185,7 @@ void GestorNPCsUI::EntrarEntidades()
 void GestorNPCsUI::RealizarConeccionesDeNPCs()
 {
     // Conectamos cuando el npc habla con el globo de dialogo.
-    connect(NPCcomunUI, &NPCUI::QuiereHablar, Dialogos, &GlobosDialogoUI::setMensaje);
+    connect(NPCcomunUI, &NPCUI::QuiereHablar, this, &GestorNPCsUI::Dialogo);
 
     // Cuando aparezca o desaparezca el dialogo, el npc se centrara
     connect(Dialogos, &GlobosDialogoUI::Hablando, this, &GestorNPCsUI::CentrarNPC);
