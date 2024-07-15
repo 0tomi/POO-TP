@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QMouseEvent>
 #include <QTimer>
-#include <QGraphicsOpacityEffect>
 #include <QResizeEvent>
 #include <QPropertyAnimation>
 #include "../NPC/npc.h"

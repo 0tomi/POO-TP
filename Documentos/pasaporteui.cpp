@@ -8,6 +8,10 @@ PasaporteUI::PasaporteUI(QWidget *parent)
     ui->setupUi(this);
     setFixedSize(300,408);
     this->aux_npc = new NPCGenericoUI;
+
+    // Cambios en la animacion particular de este documento, para que se vea el sello.
+    animacionSalida->setDuration(1300);
+    animacionSalida->setEasingCurve(QEasingCurve::InQuad);
 }
 void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPC * npc) {
     setStandby();

@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QTimer>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
 
 namespace Ui {
 class GlobosDialogoUI;
@@ -33,6 +35,14 @@ private:
     void MensajeEmitido();
     QString mensaje;
     QTimer TiempoVisualizacion;
+
+    void SetearAnimacionEntrada();
+    QPropertyAnimation * animacionEntrada;
+
+    void SetearAnimacionSalida();
+    QPropertyAnimation * animacionSalida;
+    QGraphicsOpacityEffect * opacityEffect;
+    void EsconderDialogo();
 
 private slots:
     void TerminarMensaje();

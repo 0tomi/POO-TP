@@ -7,9 +7,11 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
 {
     ui->setupUi(this);
     raise();
-    setFixedSize(300,150);
+    setFixedSize(300,90);
     hide();
     TiempoVisualizacion.setSingleShot(true);
+    SetearAnimacionEntrada();
+    SetearAnimacionSalida();
 }
 
 void GlobosDialogoUI::setMensaje(const QString &newMensaje)
@@ -24,10 +26,11 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje)
 void GlobosDialogoUI::MostrarMensaje()
 {
     // en desarrollo
+    animacionEntrada->start();
     show();
     raise();
     emit Hablando(mensaje);
-    TiempoVisualizacion.start(6000);
+    TiempoVisualizacion.start(4000);
 }
 
 void GlobosDialogoUI::ForzarSalir()
@@ -57,10 +60,39 @@ void GlobosDialogoUI::DarFormatoPorqueQTesHorrible(QString &formato)
     ui->Texto->setText(updatedText);
 }
 
+void GlobosDialogoUI::SetearAnimacionEntrada()
+{
+    animacionEntrada = new QPropertyAnimation(this, "pos");
+    animacionEntrada->setDuration(500);
+    animacionEntrada->setStartValue(QPoint(-(width()) -50,0));
+    animacionEntrada->setEndValue(QPoint(0,0));
+    animacionEntrada->setEasingCurve(QEasingCurve::OutExpo);
+}
+
+void GlobosDialogoUI::SetearAnimacionSalida()
+{
+    opacityEffect = new QGraphicsOpacityEffect(this);
+    opacityEffect->setOpacity(1.0);
+    ui->Globo->setGraphicsEffect(opacityEffect);
+
+    animacionSalida = new QPropertyAnimation(opacityEffect, "opacity");
+    animacionSalida->setDuration(700);
+    animacionSalida->setStartValue(1.0);
+    animacionSalida->setEndValue(0.0); // Lo vuevle invisible
+    connect(animacionSalida, &QPropertyAnimation::finished, this, &GlobosDialogoUI::EsconderDialogo);
+}
+
+void GlobosDialogoUI::EsconderDialogo()
+{
+    hide(); // Escondemos el widget
+    opacityEffect->setOpacity(1.0); // Le devolvemos su opacidad
+    move(-(width()),0); // Lo movemos al costado para que no moleste.
+}
+
 void GlobosDialogoUI::TerminarMensaje()
 {
     raise();
-    hide();
+    animacionSalida->start();
     // Aca estaria la animacion de que se va el globo.
     emit MensajeTerminado();
 }

@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>150</height>
+    <height>117</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>300</width>
-    <height>150</height>
+    <height>117</height>
    </size>
   </property>
   <property name="font">
@@ -61,13 +61,13 @@ border-image: url(:/Resources/NPCs/GloboDialogoNPC.png);}</string>
        <number>23</number>
       </property>
       <property name="topMargin">
-       <number>45</number>
+       <number>15</number>
       </property>
       <property name="rightMargin">
        <number>23</number>
       </property>
       <property name="bottomMargin">
-       <number>45</number>
+       <number>15</number>
       </property>
       <item>
        <widget class="QLabel" name="Texto">
