@@ -146,21 +146,24 @@ void GameScreen::BloquearBotones(bool Bloqueo)
 void GameScreen::DesbloquearBotones()
 {
     BloquearBotones(false);
-    GestorNPC.Centrar();
+    if (GestorNPC.MostrandoElNPC())
+        GestorNPC.Centrar();
 }
 
 void GameScreen::changeEvent(QEvent *event)
 {
     QWidget::changeEvent(event);
     if (event->type() == QEvent::WindowStateChange)
-        GestorNPC.Centrar();
+        if (GestorNPC.MostrandoElNPC())
+            GestorNPC.Centrar();
 }
 
 void GameScreen::resizeEvent(QResizeEvent *event)
 {
     // En caso de cambiar la ventana, ajustamos el tamaño del NPC
     QWidget::resizeEvent(event);
-    GestorNPC.Centrar();
+    if (GestorNPC.MostrandoElNPC())
+        GestorNPC.Centrar();
 }
 
 

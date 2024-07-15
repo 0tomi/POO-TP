@@ -28,11 +28,12 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 
     while (totalNPCs){
         if (CantidadInvalidos)
-            if (sorteoValidez > 13){
+            if (sorteoValidez > 11){
                 Validez = false;
                 CantidadInvalidos--;
             }
         if (arrayTipos[sorteo]){
+            qDebug() << "Salio un tipo: " << sorteo;
             addNPC(sorteo, Validez); // Sumamos a la cola el npc con el tipo sorteado.
             arrayTipos[sorteo]--;
             totalNPCs--;

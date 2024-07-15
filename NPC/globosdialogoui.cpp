@@ -6,6 +6,7 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     , ui(new Ui::GlobosDialogoUI)
 {
     ui->setupUi(this);
+    raise();
     setFixedSize(300,150);
     hide();
     TiempoVisualizacion.setSingleShot(true);
@@ -58,6 +59,7 @@ void GlobosDialogoUI::DarFormatoPorqueQTesHorrible(QString &formato)
 
 void GlobosDialogoUI::TerminarMensaje()
 {
+    raise();
     hide();
     // Aca estaria la animacion de que se va el globo.
     emit MensajeTerminado();

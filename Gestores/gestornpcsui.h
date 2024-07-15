@@ -77,6 +77,7 @@ private:
     int NivelActual;
     void RealizarConeccionesDeNPCs();
     void RealizarDesconeccionesNPC();
+    void ActualizarEstadoNPC();
 };
 
 #endif // GESTORNPCSUI_H

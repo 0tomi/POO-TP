@@ -20,7 +20,7 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
     NPCcomunUI = new NPCGenericoUI(Escenario);
-    Escenario->layout()->addWidget(NPCcomunUI);
+    //Escenario->layout()->addWidget(NPCcomunUI);
 
     // ## A futuro iria aca el setup del NPC especial. ##
 
@@ -43,7 +43,7 @@ void GestorNPCsUI::Centrar()
     int centerX = (Escenario->width() - NPCcomunUI->width()) /2;
     int centerY = (Escenario->height()) - (NPCcomunUI->height());
     NPCcomunUI->move(centerX,centerY);
-
+    qDebug() << "Se centro el NPC" << centerX << centerY;
     GestorDocumentos.Centrar();
 }
 
@@ -71,10 +71,6 @@ void GestorNPCsUI::Entrar()
     // Hacemos que pasen los NPCs y sus documentos.
     EntrarNPCsYDocs.start(200);
     connect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
-    //GestorDocumentos.Entrar();
-    //NPCcomunUI->Entrar(centerX, centerY);
-
-    MostrandoNPC = true;
 }
 
 void GestorNPCsUI::Salir()
@@ -188,6 +184,7 @@ void GestorNPCsUI::RealizarConeccionesDeNPCs()
     connect(Dialogos, &GlobosDialogoUI::MensajeTerminado, this, &GestorNPCsUI::CentrarNPC);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
+    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::ActualizarEstadoNPC);
     connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
@@ -206,4 +203,9 @@ void GestorNPCsUI::RealizarDesconeccionesNPC()
     disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
 
     // Aca irian las conecciones del NPC especial
+}
+
+void GestorNPCsUI::ActualizarEstadoNPC()
+{
+    MostrandoNPC = true;
 }
