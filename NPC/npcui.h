@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QMouseEvent>
-#include <QSequentialAnimationGroup>
+#include <QTimer>
 #include <QGraphicsOpacityEffect>
 #include <QResizeEvent>
 #include <QPropertyAnimation>
@@ -29,6 +29,7 @@ signals:
     void animacionEntrarTerminada();
     void Saliendo();
     void Entrando();
+    void QuiereHablar(const QString &dialogo);
 
 protected:
     // Animaciones
@@ -40,6 +41,13 @@ protected:
 
     // Termino animacion
     void TerminoAnimacion();
+
+    // Dialogos
+    QTimer emitirDialogo;
+    NPC* NPCrepresentado;
+
+protected slots:
+    void Hablar();  // Toca reworkear para futuros niveles
 
 private:
     Ui::NPCUI *ui;

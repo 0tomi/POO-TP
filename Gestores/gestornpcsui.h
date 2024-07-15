@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "../NPC/npcgenericoui.h"
 #include "../NPC/npccomun.h"
+#include "../NPC/globosdialogoui.h"
 #include "../Generadores/colanpc.h"
 #include "gestordocumentosui.h"
 
@@ -14,6 +15,7 @@ class GestorNPCsUI: public QWidget
 
 public:
     GestorNPCsUI();
+    ~GestorNPCsUI();
     void setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola);
     void setUpNuevoNivel(int Nivel);
     // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
@@ -64,6 +66,8 @@ private:
 
     NPCGenericoUI* NPCcomunUI;
     NPC* NPCenEscena;
+
+    GlobosDialogoUI* Dialogos;
 
     bool MostrandoNPC;
     QTimer EntrarNPCsYDocs;

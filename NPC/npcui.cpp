@@ -9,6 +9,7 @@ NPCUI::NPCUI(QWidget *parent)
     animacionSalida = new QPropertyAnimation(this, "pos");
     connect(animacionSalida, &QPropertyAnimation::finished, this, &NPCUI::TerminoAnimacion);
     connect(animacionEntrada, &QPropertyAnimation::finished, this, &NPCUI::animacionEntrarTerminada);
+    emitirDialogo.setSingleShot(true);
 }
 
 void NPCUI::Entrar(int X, int Y)
@@ -17,12 +18,15 @@ void NPCUI::Entrar(int X, int Y)
     animacionEntrada->start();
     this->show();
     emit Entrando();
+    connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
+    emitirDialogo.start(1500);
 }
 
 void NPCUI::Sacar(int X, int Y)
 {
     PrepararAnimacionSalida(X,Y);
     animacionSalida->start();
+    disconnect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
     emit Saliendo();
 }
 
@@ -46,6 +50,13 @@ void NPCUI::TerminoAnimacion()
 {
     this->hide();
     emit this->animacionSalirTerminada();
+}
+
+void NPCUI::Hablar()
+{
+    // work in progress
+    QString dialogo = NPCrepresentado->getDialogo();
+    emit QuiereHablar(dialogo);
 }
 
 NPCUI::~NPCUI()

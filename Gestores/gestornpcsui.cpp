@@ -5,6 +5,12 @@ GestorNPCsUI::GestorNPCsUI(){
     EntrarNPCsYDocs.setSingleShot(true);
 }
 
+GestorNPCsUI::~GestorNPCsUI()
+{
+    delete NPCcomunUI;
+    delete Dialogos;
+}
+
 void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola)
 {
     GestorDocumentos.setUp(1, EscenarioDocumentos);
@@ -12,6 +18,7 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     ColaNPCs = cola;
 
     // Spawneamos NPC
+    Dialogos = new GlobosDialogoUI(Escenario);
     NPCcomunUI = new NPCGenericoUI(Escenario);
     Escenario->layout()->addWidget(NPCcomunUI);
 
@@ -77,6 +84,7 @@ void GestorNPCsUI::Salir()
     int centerY = (Escenario->height()) - (NPCcomunUI->height()) + 50;
 
     GestorDocumentos.Salir();
+    Dialogos->ForzarSalir();
     NPCcomunUI->Sacar(SalidaEscena, centerY);
 
     if (ColaNPCs->getSize() == 0)
@@ -164,6 +172,9 @@ void GestorNPCsUI::EntrarEntidades()
 
 void GestorNPCsUI::RealizarConeccionesDeNPCs()
 {
+    // Conectamos cuando el npc habla con el globo de dialogo.
+    connect(NPCcomunUI, &NPCUI::QuiereHablar, Dialogos, &GlobosDialogoUI::setMensaje);
+
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
 

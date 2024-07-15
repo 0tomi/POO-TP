@@ -62,6 +62,9 @@ private:
     int topeLinksBarbas;
 
     // Sistema de dialogos:
+    QString* DialogosRevolucionario;
+    int topeDialogosRev;
+
     void GenerarDialogosNivel1(NPC* info);
     void GenerarDialogosNivel2(NPC* info);
     void GenerarDialogosNivel3(NPC* info);
