@@ -1,4 +1,5 @@
 #include "npc.h"
+#include <QDebug>
 
 NPC::NPC(char Gen, int Type, bool newValidez){
     this->Genero = Gen;
@@ -53,7 +54,7 @@ QString NPC::getDialogo() const
     return dialogo;
 }
 
-void NPC::setDialogo(const QString &newDialogo)
+void NPC::setDialogo(const QString newDialogo)
 {
     dialogo = newDialogo;
 }

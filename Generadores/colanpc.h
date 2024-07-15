@@ -12,14 +12,17 @@ struct nodoNPC{
     nodoNPC* link = NULL;
 };
 
+// Rework pendiente: Hacer que no haya que actualizar el nivel explicitamente
+// con un metodo, sino directamente al añadir npcs a la cola.
+
 class ColaNPC{
 public:
     ColaNPC(AtributosComunes* atributos, Reglas** rules);
     void addNPC(int Tipo, bool Validez);
-    void addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
+    void addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
 
     // A futuro para cuando tengamos NPCs especiales
-    void addNPC(int CantAldeanos, int CantRefugiados, int CantDiplos, int CantRev, int CantEspeciales, int CantidadInvalidos);
+    void addNPC(int NivelActual, int CantAldeanos, int CantRefugiados, int CantDiplos, int CantRev, int CantEspeciales, int CantidadInvalidos);
     void addSpecialNPC(string nombreNPC);
 
     // Vaciar cola tiene que eliminar los NPCS restantes, junto con sus documentos y demas
@@ -38,6 +41,7 @@ private:
     nodoNPC* fondo;
     int size;
     int sizeOriginal;
+    int nivelActual;
     NPC* NPCaRetornar;
 
     QRandomGenerator *Random;

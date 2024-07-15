@@ -18,8 +18,10 @@ void NPCUI::Entrar(int X, int Y)
     animacionEntrada->start();
     this->show();
     emit Entrando();
-    connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
-    emitirDialogo.start(1500);
+    if (NPCrepresentado->getDialogo() != "null"){
+        connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
+        emitirDialogo.start(1500);
+    }
 }
 
 void NPCUI::Sacar(int X, int Y)

@@ -217,6 +217,7 @@ void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
 
     int sorteo = Random->bounded(topeDialogosRev);
     info->setDialogo(DialogosRevolucionario[sorteo]);
+    qDebug() << "Dialogo seleccionado: " << DialogosRevolucionario[sorteo];
 }
 
 void GeneradorNPC::GenerarDialogosNivel2(NPC *info)

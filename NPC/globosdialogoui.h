@@ -23,7 +23,7 @@ public slots:
     void setMensaje(const QString &mensaje); // Recibe el mensaje y lo setea.
 
 signals:
-    void Mensaje(const QString &mensaje);
+    void Hablando(const QString &mensaje);
     void MensajePreparado();
     void MensajeTerminado();
 

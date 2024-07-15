@@ -18,7 +18,7 @@ public:
     virtual void addDocumento(Documentacion *newDoc, int Index);
 
     QString getDialogo() const;
-    void setDialogo(const QString &newDialogo);
+    void setDialogo(const QString newDialogo);
 
 protected:
     bool Validez;

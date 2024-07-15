@@ -25,7 +25,7 @@ void GlobosDialogoUI::MostrarMensaje()
     // en desarrollo
     show();
     raise();
-    emit Mensaje(mensaje);
+    emit Hablando(mensaje);
     TiempoVisualizacion.start(6000);
 }
 

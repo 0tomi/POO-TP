@@ -41,6 +41,7 @@ public slots:
     void emitirNPCTerminoSalir();
     void emitColaTerminada();
     void CentrarDocumentos();
+    void CentrarNPC();
 
 signals:
     void NPCCambiado();
