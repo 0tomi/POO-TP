@@ -12,7 +12,6 @@ void DNI::setDNIInfo(Pasaporte * dni, NPC * npc){
     ui->nombre->setText(dni->getnombre());
     ui->fecha->setText(dni->getfecha_nacimiento());
     ui->genero->setText(QString(dni->getgenero()));
-    ui->nacionalidad->setText(dni->getnacionalidad());
     ui->estado_civil->setText(dni->getestado_civil());
 }
 

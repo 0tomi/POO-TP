@@ -6,10 +6,15 @@ PasaporteUI::PasaporteUI(QWidget *parent)
     , ui(new Ui::PasaporteUI)
 {
     ui->setupUi(this);
-    setFixedSize(300,300);
+    setFixedSize(300,408);
     this->aux_npc = new NPCGenericoUI;
+
+    // Cambios en la animacion particular de este documento, para que se vea el sello.
+    animacionSalida->setDuration(1300);
+    animacionSalida->setEasingCurve(QEasingCurve::InQuad);
 }
 void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPC * npc) {
+    setStandby();
     ui->nombre->setText(pasaporte->getnombre());
     ui->fecha->setText(pasaporte->getfecha_nacimiento());
     ui->genero->setText(QString(pasaporte->getgenero()));
@@ -20,6 +25,21 @@ void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPC * npc) {
 void PasaporteUI::setDocumentacionInfo(Documentacion *documento)
 {
 
+}
+
+void PasaporteUI::setStandby()
+{
+    ui->stackedWidget->setCurrentWidget(ui->stand);
+}
+
+void PasaporteUI::setAprobado()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Aprobado);
+}
+
+void PasaporteUI::setRechazado()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Rechazado);
 }
 
 PasaporteUI::~PasaporteUI()

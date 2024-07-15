@@ -27,10 +27,10 @@ void Juego::PrepararJuego(int Reset)
         Cola->actualizarReglas(rules, 0);
 
 
-    NivelActual = 0;
+    NivelActual = 1;
     // Test
-    Cola->addNPC(2,2,2,2, 3);
-    // setUpNivel0();
+    Cola->addNPC(NivelActual,2,2,2,2, 3);
+    // setUpNivel1();
 
     // Seteamos las estadisticas del jugador.
     SocialCreditsEarnedInLevel = 0;
@@ -79,13 +79,13 @@ void Juego::NextLevel()
     Cola->vaciarCola();
 
     switch (NivelActual){
-    case 1: setUpNivel1();
-        break;
     case 2: setUpNivel2();
         break;
     case 3: setUpNivel3();
         break;
     case 4: setUpNivel4();
+        break;
+    case 5: setUpNivel5();
         break;
     }
 }
@@ -208,32 +208,32 @@ int Juego::getMaxMultas() const
     return MaxMultas;
 }
 
-void Juego::setUpNivel0()
-{
-    // A desarrollar
-    Cola->addNPC(10,10,4,0,6);
-}
-
 void Juego::setUpNivel1()
 {
     // A desarrollar
-    Cola->addNPC(10,10,4,0,6);
+    Cola->addNPC(1, 10,10,4,0,6);
 }
 
 void Juego::setUpNivel2()
 {
     // A desarrollar
-    Cola->addNPC(10,10,4,0,6);
+    Cola->addNPC(2, 10,10,4,0,6);
 }
 
 void Juego::setUpNivel3()
 {
     // A desarrollar
-    Cola->addNPC(10,10,4,0,6);
+    Cola->addNPC(3, 10,10,4,0,6);
 }
 
 void Juego::setUpNivel4()
 {
     // A desarrollar
-    Cola->addNPC(10,10,4,0,6);
+    Cola->addNPC(4, 10,10,4,0,6);
+}
+
+void Juego::setUpNivel5()
+{
+    // A desarrollar
+    Cola->addNPC(5, 10,10,4,0,6);
 }

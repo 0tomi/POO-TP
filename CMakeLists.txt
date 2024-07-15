@@ -58,6 +58,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Generadores/generador_pasaporte.cpp
         Documentos/pasaporteui.h Documentos/pasaporteui.cpp Documentos/pasaporteui.ui
         Documentos/dni.h Documentos/dni.cpp Documentos/dni.ui
+        NPC/globosdialogoui.h NPC/globosdialogoui.cpp NPC/globosdialogoui.ui
 
 
 

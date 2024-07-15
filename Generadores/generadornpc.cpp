@@ -9,6 +9,7 @@ GeneradorNPC::GeneradorNPC(){
     // # Deus ignoscat factis quae mox faciam. #
     Random = new QRandomGenerator(time(NULL));
 
+    // Lectura de las partes del cuerpo
     LectorArchivos lector(":/Resources/ArchivosTexto/URLCarasHombre.txt");
     LinksCarasHombre = lector.getArray();
     topeLinksCaras = lector.getTopeArray();
@@ -46,6 +47,11 @@ GeneradorNPC::GeneradorNPC(){
     lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLNariz.txt");
     LinksNariz = lector.getArray();
     topeLinksNariz = lector.getTopeArray();
+
+    // Lectura de dialogos
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/DialogosRevolucionario.txt");
+    DialogosRevolucionario = lector.getArray();
+    topeDialogosRev = lector.getTopeArray();
 }
 
 
@@ -101,6 +107,22 @@ NPC *GeneradorNPC::getSimilarNPC(NPC *ejemplo)
 {
     // PLACEHOLDER hasta hacerla posteriormente.
     return ejemplo;
+}
+
+void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
+{
+    switch (nivel){
+    case 1: GenerarDialogosNivel1(npc);
+        break;
+    case 2: GenerarDialogosNivel2(npc);
+        break;
+    case 3: GenerarDialogosNivel3(npc);
+        break;
+    case 4: GenerarDialogosNivel4(npc);
+        break;
+    default: GenerarDialogosNivel5(npc);
+        break;
+    }
 }
 
 
@@ -186,4 +208,33 @@ QString GeneradorNPC::getBarbaRandom()
 {
     int sorteo = Random->bounded(topeLinksBarbas);
     return LinksBarbas[sorteo];
+}
+
+void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
+{
+    if (info->getTipo() != 3)    // En esta etapa solo los revolucionarios tendran dialogos
+        return;
+
+    int sorteo = Random->bounded(topeDialogosRev);
+    info->setDialogo(DialogosRevolucionario[sorteo]);
+}
+
+void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
+{
+
+}
+
+void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
+{
+
+}
+
+void GeneradorNPC::GenerarDialogosNivel4(NPC *info)
+{
+
+}
+
+void GeneradorNPC::GenerarDialogosNivel5(NPC *info)
+{
+
 }
