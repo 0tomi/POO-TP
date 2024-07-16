@@ -35,6 +35,17 @@ void GlobosDialogoUI::MostrarMensaje()
     TiempoVisualizacion.start(4000);
 }
 
+void GlobosDialogoUI::PausarMensaje()
+{
+    tiempoRestante = TiempoVisualizacion.remainingTime();
+    TiempoVisualizacion.stop();
+}
+
+void GlobosDialogoUI::ReanudarMensaje()
+{
+    TiempoVisualizacion.start(tiempoRestante);
+}
+
 void GlobosDialogoUI::ForzarSalir()
 {
     if (TiempoVisualizacion.isActive()){

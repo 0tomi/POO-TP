@@ -31,6 +31,9 @@ public:
     bool getValidez();
     int getTipo();
 
+    void Pausar();
+    void Reanudar();
+
     // Cosas de documentos (luego vemos como se arregla esto)
     void DetenerAnimacionesDocumentos();
     void DocRechazado();

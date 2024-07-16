@@ -124,6 +124,16 @@ int GestorNPCsUI::getTipo()
     return NPCenEscena->getTipo();
 }
 
+void GestorNPCsUI::Pausar()
+{
+    Dialogos->PausarMensaje();
+}
+
+void GestorNPCsUI::Reanudar()
+{
+    Dialogos->ReanudarMensaje();
+}
+
 void GestorNPCsUI::DetenerAnimacionesDocumentos()
 {
     GestorDocumentos.DetenerAnimaciones();

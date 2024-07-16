@@ -14,6 +14,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Mostrar en pantalla completa:
     this->showFullScreen();
+    pantallaPausa->setWindowedButton();
+
+    // Conectamos las señales del menu de pausa
+    connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
+    connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);
+    connect(pantallaPausa, &PantallaPausa::return2lastWidget, this, &MainWindow::VolverPantallaAnterior);
+    connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::closeEvent);
 
     // Cuando se clickee jugar, abrimos el juego:
     connect(pantallaInicio, &PantallaInicio::ClickeoBotonEmpezar, this, &MainWindow::TransicionJuego);
@@ -26,6 +33,12 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete juego;
+    delete pantallaInicio;
+    delete pantallaPausa;
+    delete pantallaTransicion;
+    delete gameScreen;
+    delete pantallas;
+    // aca iria el delete a las pantallas
 }
 
 void MainWindow::PrepararPantallaFinalNivel()
@@ -36,18 +49,21 @@ void MainWindow::PrepararPantallaFinalNivel()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if (event->key() == Qt::Key_Escape) {
+    if (event->key() == Qt::Key_F11) {
         if (this->isFullScreen()) {
-            this->showNormal();  // Cambia a modo ventana normal
-            this->resize(1280, 720);  // Establece la ventana en 720p
-
-            this->CalcularCentroDePantalla();
-            this->move(this->CentroPantallaX, this->CentroPantallaY);
+            PonerModoVentana();
+            pantallaPausa->setFullScreenButton();   // Hacemos que en el menu de pausa se muestre el boton de poner en pantalla completa
         } else {
             // Cambia a modo pantalla completa si no lo está
-            this->move(this->CentroPantallaX, this->CentroPantallaY);
+            pantallaPausa->setWindowedButton();   // Hacemos que en el menu de pausa se muestre el boton de poner en ventana
             this->showFullScreen();
         }
+    }
+    if (event->key() == Qt::Key_Escape){
+        if (pantallas->currentWidget() != pantallaPausa)
+            PonerPantallaPausa();
+        else
+            VolverPantallaAnterior();
     }
     QMainWindow::keyPressEvent(event);  // Llama al método base para manejar otros eventos de teclado
 }
@@ -61,7 +77,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
                                                                QMessageBox::Yes);
     if (resBtn == QMessageBox::Yes) {
         event->accept();  // Aceptar el evento y cerrar la ventana
-        QApplication::quit();  // Cerrar la aplicación
+        close();  // Cerrar la aplicación
     } else {
         event->ignore();  // Ignorar el evento y no cerrar la ventana
     }
@@ -106,12 +122,14 @@ void MainWindow::CrearPantallasJuego()
     // Creamos las pantallas del juego
     pantallaInicio = new PantallaInicio(this);
     gameScreen = new GameScreen(juego, this);
+    pantallaPausa = new PantallaPausa(this);
     //pantallaFinalNivel = new PantallaFinalNivel(juego, this);
     CrearPantallaTransicion();
 
     // Añadimos las pantallas al stack
     pantallas->addWidget(pantallaInicio);
     pantallas->addWidget(gameScreen);
+    pantallas->addWidget(pantallaPausa);
     //pantallas->addWidget(pantallaFinalNivel);
 
     // Mostramos la pantalla de inicio
@@ -147,6 +165,26 @@ void MainWindow::CrearPantallaTransicion()
     connect(iniciarTransicion, &QPropertyAnimation::finished, this, &MainWindow::PrepararJuego);
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
     connect(terminarTransicion, &QPropertyAnimation::finished, this, &MainWindow::IniciarJuego);
+}
+
+void MainWindow::PonerModoVentana()
+{
+    this->showNormal();  // Cambia a modo ventana normal
+    this->resize(1280, 720);  // Establece la ventana en 720p
+    this->CalcularCentroDePantalla();
+    this->move(this->CentroPantallaX, this->CentroPantallaY);
+    qDebug() << "se activo el modo ventana";
+}
+
+void MainWindow::PonerPantallaPausa()
+{
+    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
+    pantallas->setCurrentWidget(pantallaPausa);
+}
+
+void MainWindow::VolverPantallaAnterior()
+{
+    pantallas->setCurrentIndex(PantallaPrevia);
 }
 
 
