@@ -46,7 +46,7 @@ int obt_dias(int mes, int año) {
 // como generar documentos validos o no
 
 QString Generar_pasaporte::generar_fecha(bool valido){
-    int generar_anio, generar_mes, generar_dia, cant_dias;  // cant dias es porque no todos los meses tienen la misma cantidad de dias
+    int generar_anio = 0, generar_mes = 0, generar_dia, cant_dias;  // cant dias es porque no todos los meses tienen la misma cantidad de dias
     int fecha_min  = this->rules->getFechaMinPermitida();
     int fecha_max = this->rules->getFechaMaxPermitida();
     if (valido){ //genera una fecha valida
