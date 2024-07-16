@@ -1,2 +1,0 @@
-:/Resources/NPCs/CuerpoHombre1.png
-:/Resources/NPCs/CuerpoHombre2.png
