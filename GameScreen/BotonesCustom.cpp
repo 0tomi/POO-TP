@@ -1,11 +1,21 @@
 #include "BotonesCustom.h"
 #include "ui_BotonesCustom.h"
 
+BotonesCustom::BotonesCustom(QWidget *parent):
+    QWidget(parent)
+    , ui(new Ui::BotonesCustom)
+{
+    ui->setupUi(this);
+
+    // Conectamos el temporizador al apretar los botones
+    TemporizadorBotones.setSingleShot(true);
+    TiempoBloqueo = 1000;
+}
+
 BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::BotonesCustom)
 {
-    // Sacamos el efecto azualdo del boton
     ui->setupUi(this);
 
     // Colocamos la imagen que va a tener el boton segun el estado.
@@ -52,6 +62,16 @@ void BotonesCustom::mousePressEvent(QMouseEvent *event)
     QWidget::mouseMoveEvent(event);
     if (!BotonBloqueado)
         Accion();
+}
+
+void BotonesCustom::setSkinBotonUnblock(QString newSkinBotonUnblock)
+{
+    CrearSkinBoton(newSkinBotonUnblock, SkinBotonUnblock);
+}
+
+void BotonesCustom::setSkinBotonBlock(QString newSkinBotonBlock)
+{
+    CrearSkinBoton(newSkinBotonBlock, SkinBotonBlock);
 }
 
 void BotonesCustom::CrearSkinBoton(QString Estado1, QString &Direccion)

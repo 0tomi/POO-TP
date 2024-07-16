@@ -5,6 +5,12 @@ GestorNPCsUI::GestorNPCsUI(){
     EntrarNPCsYDocs.setSingleShot(true);
 }
 
+GestorNPCsUI::~GestorNPCsUI()
+{
+    delete NPCcomunUI;
+    delete Dialogos;
+}
+
 void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola)
 {
     GestorDocumentos.setUp(1, EscenarioDocumentos);
@@ -12,8 +18,9 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     ColaNPCs = cola;
 
     // Spawneamos NPC
+    Dialogos = new GlobosDialogoUI(Escenario);
     NPCcomunUI = new NPCGenericoUI(Escenario);
-    Escenario->layout()->addWidget(NPCcomunUI);
+    //Escenario->layout()->addWidget(NPCcomunUI);
 
     // ## A futuro iria aca el setup del NPC especial. ##
 
@@ -35,8 +42,11 @@ void GestorNPCsUI::Centrar()
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     int centerX = (Escenario->width() - NPCcomunUI->width()) /2;
     int centerY = (Escenario->height()) - (NPCcomunUI->height());
+    // Centramos el NPC
     NPCcomunUI->move(centerX,centerY);
-
+    // Centramos los dialogos
+    Dialogos->Centrar(Escenario->width(), Escenario->height());
+    // Centramos los documentos
     GestorDocumentos.Centrar();
 }
 
@@ -64,10 +74,6 @@ void GestorNPCsUI::Entrar()
     // Hacemos que pasen los NPCs y sus documentos.
     EntrarNPCsYDocs.start(200);
     connect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
-    //GestorDocumentos.Entrar();
-    //NPCcomunUI->Entrar(centerX, centerY);
-
-    MostrandoNPC = true;
 }
 
 void GestorNPCsUI::Salir()
@@ -77,6 +83,7 @@ void GestorNPCsUI::Salir()
     int centerY = (Escenario->height()) - (NPCcomunUI->height()) + 50;
 
     GestorDocumentos.Salir();
+    Dialogos->ForzarSalir();
     NPCcomunUI->Sacar(SalidaEscena, centerY);
 
     if (ColaNPCs->getSize() == 0)
@@ -117,9 +124,34 @@ int GestorNPCsUI::getTipo()
     return NPCenEscena->getTipo();
 }
 
+void GestorNPCsUI::Pausar()
+{
+    Dialogos->PausarMensaje();
+}
+
+void GestorNPCsUI::Reanudar()
+{
+    Dialogos->ReanudarMensaje();
+}
+
 void GestorNPCsUI::DetenerAnimacionesDocumentos()
 {
     GestorDocumentos.DetenerAnimaciones();
+}
+
+void GestorNPCsUI::DocRechazado()
+{
+    GestorDocumentos.Rechazar();
+}
+
+void GestorNPCsUI::DocAprobado()
+{
+    GestorDocumentos.Aprobado();
+}
+
+void GestorNPCsUI::Dialogo(const QString &newDialogo)
+{
+    Dialogos->setMensaje(newDialogo, Escenario->width(), Escenario->height());
 }
 
 void GestorNPCsUI::Rechazado()
@@ -143,6 +175,14 @@ void GestorNPCsUI::CentrarDocumentos()
     GestorDocumentos.Centrar();
 }
 
+void GestorNPCsUI::CentrarNPC()
+{
+    // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
+    int centerX = (Escenario->width() - NPCcomunUI->width()) /2;
+    int centerY = (Escenario->height()) - (NPCcomunUI->height());
+    NPCcomunUI->move(centerX,centerY);
+}
+
 void GestorNPCsUI::EntrarEntidades()
 {
     disconnect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
@@ -154,7 +194,15 @@ void GestorNPCsUI::EntrarEntidades()
 
 void GestorNPCsUI::RealizarConeccionesDeNPCs()
 {
+    // Conectamos cuando el npc habla con el globo de dialogo.
+    connect(NPCcomunUI, &NPCUI::QuiereHablar, this, &GestorNPCsUI::Dialogo);
+
+    // Cuando aparezca o desaparezca el dialogo, el npc se centrara
+    connect(Dialogos, &GlobosDialogoUI::Hablando, this, &GestorNPCsUI::CentrarNPC);
+    connect(Dialogos, &GlobosDialogoUI::MensajeTerminado, this, &GestorNPCsUI::CentrarNPC);
+
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
+    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::ActualizarEstadoNPC);
     connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
@@ -173,4 +221,9 @@ void GestorNPCsUI::RealizarDesconeccionesNPC()
     disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
 
     // Aca irian las conecciones del NPC especial
+}
+
+void GestorNPCsUI::ActualizarEstadoNPC()
+{
+    MostrandoNPC = true;
 }

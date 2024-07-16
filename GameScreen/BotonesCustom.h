@@ -14,10 +14,14 @@ class BotonesCustom : public QWidget
     Q_OBJECT
 
 public:
+    explicit BotonesCustom(QWidget *parent = nullptr);
     explicit BotonesCustom(QString Estado1, QString Estado2, QWidget *parent = nullptr);
     void SetTiempoBloqueo(int milisegundos);
     void BloquearBoton(bool bloqueo);
     ~BotonesCustom();
+
+    void setSkinBotonBlock(QString newSkinBotonBlock);
+    void setSkinBotonUnblock(QString newSkinBotonUnblock);
 
 signals:
     void BotonApretado();

@@ -11,8 +11,11 @@ ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules){
     this->Random = new QRandomGenerator(time(NULL));
 }
 
-void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
+void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
+    // Preparamos que nivel se usara.
+    nivelActual = NivelActual;
+
     int totalNPCs = CantAldeano + CantRefugiados + CantDiplos + CantRevolucionarios;
 
     // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
@@ -25,11 +28,12 @@ void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int Ca
 
     while (totalNPCs){
         if (CantidadInvalidos)
-            if (sorteoValidez > 13){
+            if (sorteoValidez > 11){
                 Validez = false;
                 CantidadInvalidos--;
             }
         if (arrayTipos[sorteo]){
+            qDebug() << "Salio un tipo: " << sorteo;
             addNPC(sorteo, Validez); // Sumamos a la cola el npc con el tipo sorteado.
             arrayTipos[sorteo]--;
             totalNPCs--;
@@ -42,9 +46,14 @@ void ColaNPC::addNPC(int CantAldeano, int CantRefugiados, int CantDiplos, int Ca
 
 void ColaNPC::addNPC(int Tipo, bool Validez){
     // Genero el NPC nuevo
-    NPC* newNPC = GenerarNPC->getNPCgenerico(Tipo, Validez);
+    NPC* newNPC = GenerarNPC->getNPCgenerico(Tipo, Validez); // A futuro actualizar para que reciba el nivel
+
     // Genero su documentacion
-    GenerarDocumentacion->getDocumentos(newNPC, Validez);
+    GenerarDocumentacion->getDocumentos(newNPC, Validez); // A futuro actualizar para que reciba el nivel
+
+    // Generamos el dialogo del npc
+    GenerarNPC->generarDialogos(newNPC, nivelActual);
+
     // Genero el nodo de la cola donde estara el npc
     nodoNPC* newNode = new nodoNPC;
     newNode->info = newNPC;

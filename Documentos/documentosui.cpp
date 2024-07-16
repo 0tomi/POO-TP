@@ -6,12 +6,20 @@
 DocumentosUI::DocumentosUI(QWidget *parent)
     : QWidget(parent)
 {
-    // Creamos las animaciones de entrada y salida
+    // Creamos las animaciones de entrada
     animacionEntrada = new QPropertyAnimation(this, "pos");
+    animacionEntrada->setDuration(1000);
+    animacionEntrada->setEasingCurve(QEasingCurve::OutExpo);
+
+    // Creamos las animaciones de salida
     animacionSalida = new QPropertyAnimation(this, "pos");
+    animacionSalida->setDuration(1000);
+    animacionSalida->setEasingCurve(QEasingCurve::InExpo);
 
     // Creamos animacion para centrar
     animacionCentrar = new QPropertyAnimation(this, "pos");
+    animacionCentrar->setDuration(1000);
+    animacionCentrar->setEasingCurve(QEasingCurve::OutQuad);
 
     // Hacemos que cuando termine la animacion de salida, el documento desaparezca.
     connect(animacionEntrada, &QPropertyAnimation::finished, this, &DocumentosUI::animacionEntrarTerminada);
@@ -43,10 +51,8 @@ void DocumentosUI::Centrar(int X, int Y)
     if (animacionCentrar->state() == QAbstractAnimation::Paused)
         animacionCentrar->stop();
 
-    animacionCentrar->setDuration(1000);
     animacionCentrar->setStartValue(pos());
     animacionCentrar->setEndValue(QPoint(X,Y));
-    animacionCentrar->setEasingCurve(QEasingCurve::OutExpo);
 
     animacionCentrar->start();
 }
@@ -62,18 +68,14 @@ void DocumentosUI::PrepararAnimacionEntrada(int X, int Y)
     if (animacionEntrada->state() == QAbstractAnimation::Paused)
         animacionEntrada->stop();
 
-    animacionEntrada->setDuration(1000);
     animacionEntrada->setStartValue(QPoint(X,-500));
     animacionEntrada->setEndValue(QPoint(X,Y));
-    animacionCentrar->setEasingCurve(QEasingCurve::OutExpo);
 }
 
 void DocumentosUI::PrepararAnimacionSalida(int X)
 {
-    animacionSalida->setDuration(1000);
     animacionSalida->setStartValue(this->pos());
     animacionSalida->setEndValue(QPoint(X,-500));
-    animacionCentrar->setEasingCurve(QEasingCurve::InExpo);
 }
 
 void DocumentosUI::mousePressEvent(QMouseEvent *event) {

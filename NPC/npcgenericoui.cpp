@@ -22,6 +22,7 @@ NPCGenericoUI::~NPCGenericoUI()
 
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
 {
+    NPCrepresentado = newNPCenEscena;   // Necesario para los dialogos
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
 
     // Obtenemos las partes del cuerpo del npc

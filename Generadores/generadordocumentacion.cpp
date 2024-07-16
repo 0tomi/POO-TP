@@ -4,7 +4,7 @@
 
 GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas **newRules)
 {
-    NivelActual = 0;
+    NivelActual = 1;
     DificultadJuego = 1;
     SetDificultadNivel();
 
@@ -60,16 +60,16 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
 
     GenerarDocumentosNivel1(Index);
 
-    if (NivelActual >= 1){
+    if (NivelActual >= 2){
         GenerarDocumentosNivel2(Index);
     }
-    if (NivelActual >= 2){
+    if (NivelActual >= 3){
         GenerarDocumentosNivel3(Index);
     }
-    if (NivelActual >= 3){
+    if (NivelActual >= 4){
         GenerarDocumentosNivel4(Index);
     }
-    if (NivelActual >= 4){
+    if (NivelActual >= 5){
         GenerarDocumentosNivel5(Index);
     }
 }
@@ -96,7 +96,7 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
     int ValorCentinela;
 
     // Si es el primer nivel hacemos que esto pueda variar para hacerla mas facil.
-    if (NivelActual == 0)
+    if (NivelActual == 1)
         MaxDocumentosInvalidos = NumeroRandom.bounded(1,3);
 
     // Lo repetimos hasta que nos genere la cantidad necesaria de documentos invalidos.
@@ -115,19 +115,19 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
 void GeneradorDocumentacion::SetDificultadNivel()
 {
     switch (NivelActual) {
-    case 0:
+    case 1:
         MaxDocumentos = 2;
         MaxDocumentosInvalidos = 1;
         break;
-    case 1:
+    case 2:
         MaxDocumentos = 4;
         MaxDocumentosInvalidos = 2;
         break;
-    case 2:
+    case 3:
         MaxDocumentos = 6;
         MaxDocumentosInvalidos = 3;
         break;
-    case 3:
+    case 4:
         MaxDocumentos = 8;
         MaxDocumentosInvalidos = 4;
         break;

@@ -5,6 +5,7 @@
 #include "GameScreen/gamescreen.h"
 #include "./PantallaFinal/pantallafinalnivel.h"
 #include "juego.h"
+#include "PantallaPausa/pantallapausa.h"
 
 #include <QMainWindow>
 #include <QStackedWidget>
@@ -45,9 +46,14 @@ private:
     // Pantallas del juego:
     void CrearPantallasJuego();
     void CrearPantallaTransicion();
+    void PonerModoVentana();
+    void PonerPantallaPausa();
+    void VolverPantallaAnterior();
 
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
+    PantallaPausa * pantallaPausa;
+    int PantallaPrevia;
     GameScreen *gameScreen;
     PantallaFinalNivel *pantallaFinalNivel;
 
@@ -56,7 +62,6 @@ private:
     QPropertyAnimation* iniciarTransicion;
     QPropertyAnimation* terminarTransicion;
     QGraphicsOpacityEffect* efecto;
-
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();

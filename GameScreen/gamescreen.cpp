@@ -53,6 +53,19 @@ void GameScreen::EmpezarJuego()
     GestorNPC.Entrar();
 }
 
+void GameScreen::PausarJuego()
+{
+    GestorNPC.Pausar();
+    tiempoRestante = tiempoPartida.remainingTime();
+    tiempoPartida.stop();
+}
+
+void GameScreen::ReanudarJuego()
+{
+    GestorNPC.Reanudar();
+    tiempoPartida.start(tiempoRestante);
+}
+
 void GameScreen::RealizarConecciones()
 {
     // Desbloquear botones despues de pasado un tiempo
@@ -110,12 +123,14 @@ void GameScreen::SpawnearBotones()
 
 void GameScreen::Acepto()
 {
+    GestorNPC.DocAprobado();
     juego->addNPCaceptado();
     SelloDocumento(true);
 }
 
 void GameScreen::Rechazo()
 {
+    GestorNPC.DocRechazado();
     juego->addNPCrechazado();
     SelloDocumento(false);
 }
@@ -144,21 +159,24 @@ void GameScreen::BloquearBotones(bool Bloqueo)
 void GameScreen::DesbloquearBotones()
 {
     BloquearBotones(false);
-    GestorNPC.Centrar();
+    if (GestorNPC.MostrandoElNPC())
+        GestorNPC.Centrar();
 }
 
 void GameScreen::changeEvent(QEvent *event)
 {
     QWidget::changeEvent(event);
     if (event->type() == QEvent::WindowStateChange)
-        GestorNPC.Centrar();
+        if (GestorNPC.MostrandoElNPC())
+            GestorNPC.Centrar();
 }
 
 void GameScreen::resizeEvent(QResizeEvent *event)
 {
     // En caso de cambiar la ventana, ajustamos el tamaño del NPC
     QWidget::resizeEvent(event);
-    GestorNPC.Centrar();
+    if (GestorNPC.MostrandoElNPC())
+        GestorNPC.Centrar();
 }
 
 

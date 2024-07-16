@@ -63,11 +63,11 @@ private:
     ColaNPC* Cola;
 
     // Niveles:
-    void setUpNivel0();
     void setUpNivel1();
     void setUpNivel2();
     void setUpNivel3();
     void setUpNivel4();
+    void setUpNivel5();
 
     // Atributos
     AtributosComunes* atributos;

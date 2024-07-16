@@ -12,7 +12,8 @@ class GeneradorNPC{
 public:
     GeneradorNPC();
     NPC* getNPCgenerico(int tipo , bool Validez);
-    NPC *getSimilarNPC(NPC* ejemplo);
+    NPC *getSimilarNPC(NPC* ejemplo); // A desarrollar a futuro
+    void generarDialogos(NPC* npc, int nivel); // A dedesarrollar a futuro
 
     ~GeneradorNPC();
 private:
@@ -59,6 +60,16 @@ private:
 
     QString* LinksBarbas;
     int topeLinksBarbas;
+
+    // Sistema de dialogos:
+    QString* DialogosRevolucionario;
+    int topeDialogosRev;
+
+    void GenerarDialogosNivel1(NPC* info);
+    void GenerarDialogosNivel2(NPC* info);
+    void GenerarDialogosNivel3(NPC* info);
+    void GenerarDialogosNivel4(NPC* info);
+    void GenerarDialogosNivel5(NPC* info);
 
     char generos[3] = {'M', 'H', 'X'};
 };
