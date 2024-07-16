@@ -16,8 +16,15 @@ PantallaFinalNivel::~PantallaFinalNivel()
 }
 
 void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo) {
-    ui->cantCredsSocObt->setText(QString("%1").arg(juegoInfo->getSocialCreditsEarnedInLevel()));
-    ui->cantMultObt->setText(QString("%1").arg(juegoInfo->getMultas()));
+    int cantNpcsAcept = juegoInfo->getCantidadNPCsAceptados();
+    int cantNpcsRech = juegoInfo->getCantidadNPCsRechazados();
+    int cantMultasObt = juegoInfo->getMultas();
+    int cantCredsSocsObt = juegoInfo->getSocialCreditsEarnedInLevel();
+
+    ui->cantAcept_label->setText(QString("%1").arg(cantNpcsAcept));
+    ui->cantRech_label->setText(QString("%1").arg(cantNpcsRech));
+    ui->cantMultasObt_label->setText(QString("%1").arg(cantMultasObt));
+    ui->credsSocsObt_label->setText(QString("%1").arg(cantCredsSocsObt));
 
     // conecc.signal de salirBtn:
     connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::on_salir_clicked);
@@ -25,9 +32,9 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo) {
     connect(ui->sigNivelBtn, &QPushButton::clicked, this, &PantallaFinalNivel::on_sigNivel_clicked);
 }
 
+// Signals
 void PantallaFinalNivel::on_salir_clicked() {
     guardarPartida();
-    emit cerrarApp();
     emit salirClicked();
     qDebug() << "SALIR btn presionado y señal emitida";
 }
@@ -37,6 +44,7 @@ void PantallaFinalNivel::on_sigNivel_clicked() {
     qDebug() << "SIG NIVEL btn presionado y señal emitida";
 }
 
+// metodos extra
 void PantallaFinalNivel::guardarPartida() {
     qDebug() << "partida guardada";
 }

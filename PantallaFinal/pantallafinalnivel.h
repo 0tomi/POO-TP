@@ -22,7 +22,6 @@ public:
 signals:
     void salirClicked();
     void sigNivelClicked();
-    void cerrarApp();
 private slots:
     void on_salir_clicked();
     void on_sigNivel_clicked();

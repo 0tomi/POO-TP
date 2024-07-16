@@ -43,8 +43,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::PrepararPantallaFinalNivel()
 {
-    //  pantallaFinalNivel->setUp();
-    //  pantallas->setCurrentWidget(pantallaFinalNivel);
+    pantallaFinalNivel->setPantallaFinalUI(juego);
+    pantallas->setCurrentWidget(pantallaFinalNivel);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -124,14 +124,14 @@ void MainWindow::CrearPantallasJuego()
     pantallaInicio = new PantallaInicio(this);
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
-    //pantallaFinalNivel = new PantallaFinalNivel(juego, this);
+    pantallaFinalNivel = new PantallaFinalNivel(this);
     CrearPantallaTransicion();
 
     // Añadimos las pantallas al stack
     pantallas->addWidget(pantallaInicio);
     pantallas->addWidget(gameScreen);
     pantallas->addWidget(pantallaPausa);
-    //pantallas->addWidget(pantallaFinalNivel);
+    pantallas->addWidget(pantallaFinalNivel);
 
     // Mostramos la pantalla de inicio
     pantallas->setCurrentWidget(pantallaInicio);
