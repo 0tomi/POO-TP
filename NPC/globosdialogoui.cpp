@@ -37,13 +37,16 @@ void GlobosDialogoUI::MostrarMensaje()
 
 void GlobosDialogoUI::PausarMensaje()
 {
-    tiempoRestante = TiempoVisualizacion.remainingTime();
-    TiempoVisualizacion.stop();
+    if (Mostrandose){
+        tiempoRestante = TiempoVisualizacion.remainingTime();
+        TiempoVisualizacion.stop();
+    }
 }
 
 void GlobosDialogoUI::ReanudarMensaje()
 {
-    TiempoVisualizacion.start(tiempoRestante);
+    if (Mostrandose)
+        TiempoVisualizacion.start(tiempoRestante);
 }
 
 void GlobosDialogoUI::ForzarSalir()
