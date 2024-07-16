@@ -28,6 +28,10 @@ public:
     void EmpezarJuego();
     void PrepararJuego(int Nivel);
 
+public slots:
+    void PausarJuego();
+    void ReanudarJuego();
+
 signals:
     void NivelTerminado();
 
@@ -39,6 +43,7 @@ private:
     Juego* juego;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
+    int tiempoRestante;
 
     GestorNPCsUI GestorNPC;
 

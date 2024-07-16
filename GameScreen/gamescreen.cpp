@@ -53,6 +53,19 @@ void GameScreen::EmpezarJuego()
     GestorNPC.Entrar();
 }
 
+void GameScreen::PausarJuego()
+{
+    GestorNPC.Pausar();
+    tiempoRestante = tiempoPartida.remainingTime();
+    tiempoPartida.stop();
+}
+
+void GameScreen::ReanudarJuego()
+{
+    GestorNPC.Reanudar();
+    tiempoPartida.start(tiempoRestante);
+}
+
 void GameScreen::RealizarConecciones()
 {
     // Desbloquear botones despues de pasado un tiempo

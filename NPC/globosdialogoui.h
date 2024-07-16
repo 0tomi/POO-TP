@@ -17,6 +17,8 @@ class GlobosDialogoUI : public QWidget
 public:
     explicit GlobosDialogoUI(QWidget *parent = nullptr);
     void MostrarMensaje();
+    void PausarMensaje();
+    void ReanudarMensaje();
     void ForzarSalir();
     void CorrerMensaje(); // A futuro, para acumular mensajes.
     ~GlobosDialogoUI();
@@ -36,6 +38,7 @@ private:
     void MensajeEmitido();
     QString mensaje;
     QTimer TiempoVisualizacion;
+    int tiempoRestante;
 
     void SetearAnimacionEntrada();
     void PrepararAnimacionEntrada(int X, int Y);
