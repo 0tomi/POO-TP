@@ -39,7 +39,7 @@ void Juego::PrepararJuego(int Reset)
     CantidadNPCsRechazados = 0;
     CantidadNPCsAceptados = 0;
 
-    setDificultad(1);
+    setDificultad(2);
 }
 
 void Juego::setDificultad(int dificultad)
@@ -120,13 +120,11 @@ int Juego::getSocialCreditsEarnedInLevel() const
 
 void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
 {
-    if (TipoNPC == 3 && DecisionJugador)
-        RestarSocialCredits(TipoNPC);
+    bool RechazarRefugiado = (TipoNPC == 3) && (!DecisionJugador);
+    if ((DecisionJugador == ValidezNPC) && RechazarRefugiado)
+        SumarSocialCredits(TipoNPC);
     else
-        if (DecisionJugador == ValidezNPC)
-            SumarSocialCredits(TipoNPC);
-        else
-            RestarSocialCredits(TipoNPC);
+        RestarSocialCredits(TipoNPC);
 
 }
 

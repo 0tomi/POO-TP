@@ -145,6 +145,8 @@ void GameScreen::SelloDocumento(bool Boton)
 
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
+    qDebug() << "Puntaje actual: " << juego->getSocialCreditsEarnedInLevel();
+
     if (GestorNPC.NPCsRestantes() == 0)
         FinalDePartida();
 }
