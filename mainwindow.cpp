@@ -77,10 +77,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
                                                                QMessageBox::Yes);
     if (resBtn == QMessageBox::Yes) {
         event->accept();  // Aceptar el evento y cerrar la ventana
-        close();  // Cerrar la aplicación
+        QApplication::quit();  // Cerrar la aplicación
     } else {
         event->ignore();  // Ignorar el evento y no cerrar la ventana
     }
+    delete event;
 }
 
 void MainWindow::TransicionJuego()
