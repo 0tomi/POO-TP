@@ -1,8 +1,6 @@
 #ifndef PASAPORTE_H
 #define PASAPORTE_H
 #include "documentacion.h"
-
-#include <string>
 #include <QString>
 class Pasaporte : public Documentacion
 {
