@@ -12,6 +12,7 @@
 #include "../Gestores/gestornpcsui.h"
 #include "../juego.h"
 #include "BotonesCustom.h"
+#include "pantallaperdiste.h"
 
 
 namespace Ui {
@@ -39,9 +40,11 @@ signals:
 
 private slots:
     void FinalDePartida();
+    void Decidir();
 
 private:
     Ui::GameScreen *ui;
+    PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;

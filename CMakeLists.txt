@@ -61,6 +61,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NPC/globosdialogoui.h NPC/globosdialogoui.cpp NPC/globosdialogoui.ui
         PantallaPausa/pantallapausa.h PantallaPausa/pantallapausa.cpp PantallaPausa/pantallapausa.ui
         PantallaStats/pantallafinalnivel.cpp PantallaStats/pantallafinalnivel.h PantallaStats/pantallafinalnivel.ui
+        GameScreen/pantallaperdiste.h GameScreen/pantallaperdiste.cpp GameScreen/pantallaperdiste.ui
 
 
 
