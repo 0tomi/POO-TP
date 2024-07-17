@@ -41,6 +41,7 @@ private:
 
     // Juego
     Juego* juego;
+    void restartJuego();
 
     // Pantallas del juego:
     void CrearPantallasJuego();

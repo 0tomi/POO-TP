@@ -74,13 +74,13 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
     NPCaCrear = new NPCcomun(this->generos[valorCentinela2], tipo, Validez);
 
     // si es hombre o X
-    if (valorCentinela2 > 0){
+    /*if (valorCentinela2 > 0){
         int TendraBarba = Random->bounded(10);
         if (TendraBarba < 5 && valorCentinela2 == 1)
             NPCaCrear->setBarbaURL(getBarbaRandom());
         if (TendraBarba < 3 && valorCentinela2 == 2)
             NPCaCrear->setBarbaURL(getBarbaRandom());
-    }
+    }*/
 
     QString ojos = getOjosRandom();
 

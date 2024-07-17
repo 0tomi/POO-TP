@@ -24,7 +24,7 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
 
     // ## A futuro iria aca el setup del NPC especial. ##
 
-    RealizarConeccionesDeNPCs();
+
     // Colocamos al NPC fuera del escenario para iniciar la cinematica.
     NPCcomunUI->hide();
     NPCcomunUI->move(-(NPCcomunUI->width()),0);
@@ -35,6 +35,11 @@ void GestorNPCsUI::setUpNuevoNivel(int Nivel)
 {
     RealizarConeccionesDeNPCs();
     GestorDocumentos.nextNivel(Nivel);
+}
+
+void GestorNPCsUI::EmpezarJuego()
+{
+    RealizarConeccionesDeNPCs();
 }
 
 void GestorNPCsUI::Centrar()
@@ -52,6 +57,7 @@ void GestorNPCsUI::Centrar()
 
 void GestorNPCsUI::Entrar()
 {
+    qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
     NPCenEscena = ColaNPCs->getNPC();
     GestorDocumentos.setDocumento(NPCenEscena);
 
@@ -62,7 +68,6 @@ void GestorNPCsUI::Entrar()
     }
 
     // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
-    qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
     qDebug() << NPCenEscena->getGenero();
     qDebug() << NPCenEscena->getTipo();
     qDebug() << NPCenEscena->getValidez();

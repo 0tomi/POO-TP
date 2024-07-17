@@ -27,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Cuando termine un nivel, hacemos que se muestre la pantalla de final de nivel
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
+
+    // Conectamos la señal de reiniciar el juego
+    connect(gameScreen, &GameScreen::JuegoFallado, this, &MainWindow::restartJuego);
 }
 
 MainWindow::~MainWindow()
@@ -160,6 +163,80 @@ void MainWindow::CrearPantallaTransicion()
     // Conectamos el final de la animacion de inicio, con la de la animacion de final.
     connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::MidTransicion);
     connect(terminarTransicion, &QAbstractAnimation::finished, this, &MainWindow::TerminarTransicion);
+}
+
+void MainWindow::PrepararPantallaFinalNivel()
+{
+    //  pantallaFinalNivel->setUp();
+    //  pantallas->setCurrentWidget(pantallaFinalNivel);
+}
+
+void MainWindow::restartJuego()
+{
+    qDebug() << "Restart del juego";
+    juego->ResetJuego();
+    TransicionJuego();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_F11) {
+        if (this->isFullScreen()) {
+            PonerModoVentana();
+            pantallaPausa->setFullScreenButton();   // Hacemos que en el menu de pausa se muestre el boton de poner en pantalla completa
+        } else {
+            // Cambia a modo pantalla completa si no lo está
+            pantallaPausa->setWindowedButton();   // Hacemos que en el menu de pausa se muestre el boton de poner en ventana
+            this->showFullScreen();
+        }
+    }
+    if (event->key() == Qt::Key_Escape){
+        if (pantallas->currentWidget() != pantallaPausa)
+            PrepararPantallaPausa();
+        else
+            PrepararSalirPantallaPausa();
+    }
+    QMainWindow::keyPressEvent(event);  // Llama al método base para manejar otros eventos de teclado
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    // Mostrar un mensaje de confirmación
+    QMessageBox::StandardButton resBtn = QMessageBox::question(this, "Cerrar Juego",
+                                                               "¿Estás seguro de que quieres cerrar el Juego?",
+                                                               QMessageBox::No | QMessageBox::Yes,
+                                                               QMessageBox::Yes);
+    if (resBtn == QMessageBox::Yes) {
+        event->accept();  // Aceptar el evento y cerrar la ventana
+        QApplication::quit();  // Cerrar la aplicación
+    } else {
+        event->ignore();  // Ignorar el evento y no cerrar la ventana
+    }
+}
+
+void MainWindow::TransicionJuego()
+{
+    ArrancarTransicion(1000);
+
+    // Conectamos el final de la primer animacion, con la preparacion del juego
+    connect(iniciarTransicion, &QPropertyAnimation::finished, this, &MainWindow::PrepararJuego);
+
+    // Conectamos el final de la animacion, para mostrar la ventana del juego.
+    connect(terminarTransicion, &QPropertyAnimation::finished, this, &MainWindow::IniciarJuego);
+}
+
+void MainWindow::PrepararJuego()
+{
+    // Desconectamos la animacion para poder usar despues la pantalla de transicion
+    disconnect(iniciarTransicion, &QPropertyAnimation::finished, this, &MainWindow::PrepararJuego);
+    pantallas->setCurrentWidget(gameScreen);    // Colocamos la pantalla de juego, aunque esto suceda a la mitad de animacion, por lo tanto no se ve.
+}
+
+void MainWindow::IniciarJuego()
+{
+    // Desconectamos la animacion para poder usar despues la pantalla de transicion
+    disconnect(terminarTransicion, &QPropertyAnimation::finished, this, &MainWindow::IniciarJuego);
+    gameScreen->EmpezarJuego(); // Aca dsps iria el nivel de juego que toca.
 }
 
 void MainWindow::PonerModoVentana()

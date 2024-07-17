@@ -13,6 +13,8 @@ ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules){
 
 void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
+    this->size = 0;
+    this->sizeOriginal = 0;
     // Preparamos que nivel se usara.
     nivelActual = NivelActual;
 
@@ -26,6 +28,7 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     int sorteoValidez = Random->bounded(20);
     bool Validez = true;
 
+    qDebug() << "Bucle de generar NPCs";
     while (totalNPCs){
         if (CantidadInvalidos)
             if (sorteoValidez > 11){
@@ -33,7 +36,6 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
                 CantidadInvalidos--;
             }
         if (arrayTipos[sorteo]){
-            qDebug() << "Salio un tipo: " << sorteo;
             addNPC(sorteo, Validez); // Sumamos a la cola el npc con el tipo sorteado.
             arrayTipos[sorteo]--;
             totalNPCs--;
@@ -87,14 +89,19 @@ void ColaNPC::vaciarCola()
     this->size = 0;
 }
 
-void ColaNPC::actualizarReglas(Reglas **newRules, int nivel)
+void ColaNPC::actualizarReglas(Reglas **newRules)
 {
-    GenerarDocumentacion->actualizarReglas(newRules, nivel);
+    GenerarDocumentacion->actualizarReglas(newRules);
 }
 
 void ColaNPC::nextNivel(int Nivel)
 {
     GenerarDocumentacion->nextNivel(Nivel);
+}
+
+void ColaNPC::setDificultad(int newDificultad)
+{
+    GenerarDocumentacion->setDificultad(newDificultad);
 }
 
 NPC* ColaNPC::getNPC(){
