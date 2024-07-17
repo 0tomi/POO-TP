@@ -81,11 +81,20 @@ void GestorNPCsUI::Entrar()
     connect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
 }
 
-void GestorNPCsUI::Salir()
+void GestorNPCsUI::Salir(bool boton)
 {
+    DetenerAnimacionesDocumentos();
+
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     int SalidaEscena = Escenario->width() + NPCcomunUI->width();
     int centerY = (Escenario->height()) - (NPCcomunUI->height()) + 50;
+
+    if (boton){
+        GestorDocumentos.Aprobado();
+    } else {
+        GestorDocumentos.Rechazar();
+        NPCcomunUI->Rechazado();
+    }
 
     GestorDocumentos.Salir();
     Dialogos->ForzarSalir();
@@ -102,7 +111,7 @@ void GestorNPCsUI::TerminoNivel()
     RealizarDesconeccionesNPC();
 
     if (ColaNPCs->getSize()){
-        Salir();
+        Salir(true);
         ColaNPCs->vaciarCola();
     }
     emit ColaTerminada();
@@ -142,16 +151,6 @@ void GestorNPCsUI::Reanudar()
 void GestorNPCsUI::DetenerAnimacionesDocumentos()
 {
     GestorDocumentos.DetenerAnimaciones();
-}
-
-void GestorNPCsUI::DocRechazado()
-{
-    GestorDocumentos.Rechazar();
-}
-
-void GestorNPCsUI::DocAprobado()
-{
-    GestorDocumentos.Aprobado();
 }
 
 void GestorNPCsUI::Dialogo(const QString &newDialogo)
@@ -208,7 +207,7 @@ void GestorNPCsUI::RealizarConeccionesDeNPCs()
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::ActualizarEstadoNPC);
-    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
+    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::CentrarNPC);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);

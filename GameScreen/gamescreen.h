@@ -28,6 +28,7 @@ public:
     void EmpezarJuego();
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
     void Restart();
+    void Centrar();
 
 public slots:
     void PausarJuego();
