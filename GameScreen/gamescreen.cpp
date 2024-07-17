@@ -67,6 +67,11 @@ void GameScreen::Restart()
     /// A futuro un reset donde cambiamos las reglas
 }
 
+void GameScreen::Centrar()
+{
+    GestorNPC.CentrarNPC();
+}
+
 void GameScreen::PausarJuego()
 {
     GestorNPC.Pausar();
@@ -141,22 +146,19 @@ void GameScreen::SpawnearBotones()
 
 void GameScreen::Acepto()
 {
-    GestorNPC.DocAprobado();
     juego->addNPCaceptado();
     SelloDocumento(true);
 }
 
 void GameScreen::Rechazo()
 {
-    GestorNPC.DocRechazado();
     juego->addNPCrechazado();
     SelloDocumento(false);
 }
 
 void GameScreen::SelloDocumento(bool Boton)
 {
-    GestorNPC.DetenerAnimacionesDocumentos();
-    GestorNPC.Salir();
+    GestorNPC.Salir(Boton);
 
     temporizadorBotones.start(2500);
     BloquearBotones(true);

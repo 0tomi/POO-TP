@@ -83,9 +83,9 @@ void DocumentosUI::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
         // Frenamos la animacion de centrar o entrar
         if (animacionCentrar->state() == QAbstractAnimation::Running)
-            animacionCentrar->pause();
+            animacionCentrar->stop();
         if (animacionEntrada->state() == QAbstractAnimation::Running)
-            animacionEntrada->pause();
+            animacionEntrada->stop();
         // Captamos la posicion del mouse
         m_dragStartPosition = event->pos();
         // Mostramos el widget por encima de los demas
