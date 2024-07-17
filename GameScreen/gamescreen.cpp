@@ -10,6 +10,10 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     juego = newJuego;
 
+    pantallaPerdiste = new PantallaPerdiste(this);
+    pantallaPerdiste->setFixedSize(1920,1080);
+    pantallaPerdiste->hide();
+
     // Seteamos el juego, y obtenemos la cola de NPCs.
     ColaNPC* Cola = juego->getCola();
 
@@ -30,6 +34,7 @@ GameScreen::~GameScreen()
     delete BotonAprobar;
     delete BotonRechazar;
     delete BotonCentrar;
+    delete pantallaPerdiste;
 }
 
 void GameScreen::RealizarConeccionesPrincipales()
@@ -41,6 +46,8 @@ void GameScreen::RealizarConeccionesPrincipales()
 
     // Conectamos boton de centrar para centrar el documento.
     connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
+
+    connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
 }
 
 void GameScreen::EmpezarJuego()
@@ -110,10 +117,17 @@ void GameScreen::FinalDePartida()
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
     if (juego->getTotalSocialCredits() < 0)
-        emit NivelTerminado(true);  // Si perdio emitimos que perdio
-    else emit NivelTerminado(false);
+       pantallaPerdiste->Iniciar(true);
+    else pantallaPerdiste->Iniciar(false);
 
     qDebug() << "Termino el juego";
+}
+
+void GameScreen::Decidir()
+{
+    if (juego->getTotalSocialCredits() < 0)
+        emit NivelTerminado(true);
+    else emit NivelTerminado(false);
 }
 
 void GameScreen::SpawnearBotones()
