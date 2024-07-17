@@ -30,7 +30,7 @@ void Juego::PrepararJuego(int Reset)
     NivelActual = 1;
 
     // Test
-    Cola->addNPC(NivelActual,2,2,2,2, 3);
+    Cola->addNPC(NivelActual,2,2,2,2, 1);
     // setUpNivel1();
 
     // Seteamos las estadisticas del jugador.

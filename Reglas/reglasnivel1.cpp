@@ -172,7 +172,8 @@ ReglasNivel1::~ReglasNivel1()
 {
     delete[] paisesValidos;
     delete[] tipoDeVisitaValida;
-    delete[] estadoCivilValidos;
+    if (estadoCivilValidos != estadosCiviles)
+        delete[] estadoCivilValidos;
 }
 
 QString *ReglasNivel1::getTipoDeVisitaValida() const
