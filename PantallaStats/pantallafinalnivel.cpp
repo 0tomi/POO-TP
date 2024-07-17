@@ -51,11 +51,11 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
         ui->cantMultasObt_label->setStyleSheet(COLOR_ROJO);
     }
     ui->credsSocsObtDia_label->setText(QString::number(cantCredsSocsObtDia));
-    if (cantCredsSocsObtDia < 1) {
+    if (cantCredsSocsObtDia < 0) {
         ui->credsSocsObtDia_label->setStyleSheet(COLOR_ROJO);
     }
     ui->credsSocsTot_label->setText(QString::number(cantCredsSocsTot));
-    if (cantCredsSocsObtDia < 1) {
+    if (cantCredsSocsObtDia < 0) {
         ui->credsSocsTot_label->setStyleSheet(COLOR_ROJO);
     }
 }

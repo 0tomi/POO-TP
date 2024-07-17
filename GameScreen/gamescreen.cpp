@@ -104,7 +104,7 @@ void GameScreen::FinalDePartida()
     // Desconectamos las cosas que le dan progreso al juego
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
-    if (juego->getTotalSocialCredits() < 1)
+    if (juego->getTotalSocialCredits() < 0)
         emit NivelTerminado(true);  // Si perdio emitimos que perdio
     else emit NivelTerminado(false);
 
