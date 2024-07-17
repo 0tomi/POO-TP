@@ -65,7 +65,7 @@
        <number>50</number>
       </property>
       <item>
-       <widget class="QStackedWidget" name="Titulos">
+       <widget class="QStackedWidget" name="stackedTitulos">
         <property name="maximumSize">
          <size>
           <width>1920</width>
@@ -74,6 +74,9 @@
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
         </property>
         <widget class="QWidget" name="Gano">
          <property name="sizePolicy">
@@ -105,7 +108,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="title">
+           <widget class="QLabel" name="titleGano">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -137,7 +140,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="title_2">
+           <widget class="QLabel" name="titlePerdio">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -438,7 +441,7 @@ background-color: rgb(170, 0, 0);</string>
           </widget>
          </item>
          <item>
-          <widget class="QStackedWidget" name="stackedWidget">
+          <widget class="QStackedWidget" name="stackedBotones">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -452,7 +455,7 @@ background-color: rgb(170, 0, 0);</string>
             </size>
            </property>
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="Continuar">
             <property name="minimumSize">
@@ -530,7 +533,7 @@ background-color: rgb(0, 85, 0);</string>
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="salirBtn_2">
+              <widget class="QPushButton" name="reintentarBtn">
                <property name="enabled">
                 <bool>true</bool>
                </property>

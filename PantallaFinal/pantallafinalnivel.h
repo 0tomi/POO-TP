@@ -17,7 +17,7 @@ class PantallaFinalNivel : public QWidget
 public:
     explicit PantallaFinalNivel(QWidget *parent = nullptr);
     ~PantallaFinalNivel();
-    void setPantallaFinalUI(Juego* juegoInfo);
+    void setPantallaFinalUI(Juego* juegoInfo, bool perdio);
     void guardarPartida();
 signals:
     void salirClicked();
