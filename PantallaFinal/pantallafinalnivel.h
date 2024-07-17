@@ -23,8 +23,8 @@ signals:
     void salirClicked();
     void sigNivelClicked();
 private slots:
-    void on_salir_clicked();
-    void on_sigNivel_clicked();
+    void onSalirClicked();
+    void onSigNivelClicked();
 private:
     Ui::PantallaFinalNivel *ui;
 };

@@ -29,19 +29,19 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo) {
     ui->credsSocsTot_label->setText(QString("%1").arg(cantCredsSocsTot));
 
     // conecc.signal de salirBtn:
-    connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::on_salir_clicked);
+    connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSalirClicked);
     // connec. signal de sigNivelBtn:
-    connect(ui->sigNivelBtn, &QPushButton::clicked, this, &PantallaFinalNivel::on_sigNivel_clicked);
+    connect(ui->sigNivelBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSigNivelClicked);
 }
 
 // Signals
-void PantallaFinalNivel::on_salir_clicked() {
+void PantallaFinalNivel::onSalirClicked() {
     guardarPartida();
     emit salirClicked();
     qDebug() << "SALIR btn presionado y señal emitida";
 }
 
-void PantallaFinalNivel::on_sigNivel_clicked() {
+void PantallaFinalNivel::onSigNivelClicked() {
     emit sigNivelClicked();
     qDebug() << "SIG NIVEL btn presionado y señal emitida";
 }
