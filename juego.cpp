@@ -18,26 +18,33 @@ Juego::Juego(){
 
 
     Cola = new ColaNPC(atributos, rules);
-
-    PrepararJuego(0);
 }
 
-void Juego::PrepararJuego(int Reset, int Dificultad)
+void Juego::PrepararJuego(bool Reset, int Nivel, int Dificultad)
 {
-    NivelActual = 1;
+    if (Reset)
+        ResetJuego();
+
+    NivelActual = Nivel;
 
     // Test
     setDificultad(Dificultad);
     Cola->setDificultad(Dificultad);
-    Cola->addNPC(NivelActual,1,1,0,1, 3);
-    // setUpNivel1();
 
-    // Seteamos las estadisticas del jugador.
-    SocialCreditsEarnedInLevel = 0;
-    TotalSocialCredits = 0;
-    Multas = 0;
-    CantidadNPCsRechazados = 0;
-    CantidadNPCsAceptados = 0;
+    // El else vendra cuando implementemos las partidas guardadas
+    if (Nivel < 2) {
+        /// Aca iria setNPClvl1, pero por test lo dejamos asi.
+        Cola->addNPC(NivelActual,1,1,0,1, 3);
+
+
+        // Seteamos las estadisticas del jugador.
+        SocialCreditsEarnedInLevel = 0;
+        TotalSocialCredits = 0;
+        Multas = 0;
+        CantidadNPCsRechazados = 0;
+        CantidadNPCsAceptados = 0;
+
+    }   /// Else para cargar partidas guardadas
 }
 
 void Juego::setDificultad(int dificultad)
@@ -74,7 +81,6 @@ void Juego::NextLevel()
     NivelActual++;
     this->SocialCreditsEarnedInLevel = 0;
     Cola->nextNivel(NivelActual);
-    Cola->vaciarCola();
 
     switch (NivelActual){
     case 2: setUpNivel2();
@@ -90,19 +96,17 @@ void Juego::NextLevel()
 
 void Juego::ResetJuego()
 {
-    SocialCreditsEarnedInLevel = 0;
-    TotalSocialCredits = 0;
-    Multas = 0;
-    CantidadNPCsRechazados = 0;
-    CantidadNPCsAceptados = 0;
+    // Creamos nuevas reglas
+    for (int i = 0; i < 5; i++)
+       delete rules[i];
 
-    NivelActual = 1;
+    rules[0] = new ReglasNivel1(atributos);
+    rules[1] = new ReglasNivel2(rules[0]);
+    rules[2] = new ReglasNivel3(rules[1]);
+    rules[3] = new ReglasNivel4(rules[2]);
+    rules[4] = new ReglasNivel5(rules[3]);
 
-    /// A futuro creamos nuevas reglas
-    //for (int i = 0; i < 5; i++)
-       //delete rules[i];
-
-    PrepararJuego(1);
+    Cola->actualizarReglas(rules);
 }
 
 Reglas* Juego::getReglas(int numero){

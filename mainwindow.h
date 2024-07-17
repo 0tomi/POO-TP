@@ -48,6 +48,9 @@ private:
     void CrearPantallaTransicion();
     void PonerModoVentana();
 
+    void VolverInicio();
+    void setInicio();
+
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
     int PantallaPrevia;
