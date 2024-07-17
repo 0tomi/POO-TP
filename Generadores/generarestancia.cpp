@@ -93,10 +93,6 @@ QString GenerarEstancia::GenerarVisita(bool validez)
     QString Visita;
     int Sorteo;
 
-    qDebug() << maxVisitasValidas;
-    for (int i = 0; i < maxVisitasValidas; i++)
-        qDebug() << tipoVisitasValidas[i];
-
     if (validez){
         if (maxVisitasValidas < 2) // Evitamos bugs
             Visita = tipoVisitasValidas[0];
