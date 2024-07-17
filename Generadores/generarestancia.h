@@ -24,8 +24,11 @@ private:
     int maxVisitasValidas;
     int duracMaximaEstancia;
 
+    int IndicesTiposVisitasInvalidas[5];
+    int maxVisitasInvalidas;
+    void ObtenerVisitasInvalidas();
+
     // Metodos auxiliares
-    bool ComprobarInValidez(QString dato);
     void GenerarCamposValidos(int Probabilidad, bool Validez);
 
     QString GenerarVisita(bool validez);

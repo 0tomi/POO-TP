@@ -134,12 +134,3 @@ QString GenerarEstancia::GenerarVisita(bool validez)
     return Visita;
 }
 
-bool GenerarEstancia::ComprobarInValidez(QString dato)
-{
-    for (int i = 0; i < maxVisitasValidas; i++)
-        if (dato == tipoVisitasValidas[i])
-            return false;
-    return true;
-}
-
-
