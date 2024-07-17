@@ -210,3 +210,8 @@ Pasaporte * Generar_pasaporte::crear_pasaporte(bool valido, char genero, int dif
     return this->Pasaporte_generado;
 
 }
+
+void Generar_pasaporte::restartReglas(ReglasNivel1 *rules)
+{
+    this->rules = rules;
+}

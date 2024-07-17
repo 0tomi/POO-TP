@@ -9,6 +9,7 @@ class GenerarEstancia {
 public:
     GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax);
     ~GenerarEstancia();
+    void resetReglas(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax);
 
     // Getter
     Estancia* getEstancia(bool valido, int Dificultad); // Estancia a generar

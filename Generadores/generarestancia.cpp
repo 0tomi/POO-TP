@@ -24,6 +24,17 @@ GenerarEstancia::~GenerarEstancia()
 
 }
 
+void GenerarEstancia::resetReglas(QString *TiposVisitas, int TopeVisits, QString *TiposVisitsVal, int TopeVisitsVal, int DuracMax)
+{
+    tipoVisitas = TiposVisitas;
+    maxTipoVisitas = TopeVisits;
+
+    tipoVisitasValidas = TiposVisitsVal;
+    maxVisitasValidas = TopeVisitsVal;
+
+    duracMaximaEstancia = DuracMax;
+}
+
 // getters:
 Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
     int Probabilidades;

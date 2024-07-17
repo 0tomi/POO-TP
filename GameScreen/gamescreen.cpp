@@ -90,6 +90,10 @@ void GameScreen::FinalDePartida()
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
     emit NivelTerminado();
+    if (juego->getTotalSocialCredits() < 1){
+        emit JuegoFallado();
+        qDebug() << "Reiniciar juego";
+    }
     qDebug() << "Termino el juego";
 }
 

@@ -24,10 +24,11 @@ void Juego::PrepararJuego(int Reset)
     if (!Reset)
         Cola = new ColaNPC(atributos, rules);
     else
-        Cola->actualizarReglas(rules, 0);
+        Cola->actualizarReglas(rules);
 
 
     NivelActual = 1;
+
     // Test
     Cola->addNPC(NivelActual,2,2,2,2, 3);
     // setUpNivel1();
@@ -39,7 +40,7 @@ void Juego::PrepararJuego(int Reset)
     CantidadNPCsRechazados = 0;
     CantidadNPCsAceptados = 0;
 
-    setDificultad(1);
+    setDificultad(2);   // Modo normal por default
 }
 
 void Juego::setDificultad(int dificultad)
@@ -120,14 +121,11 @@ int Juego::getSocialCreditsEarnedInLevel() const
 
 void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
 {
-    if (TipoNPC == 3 && DecisionJugador)
-        RestarSocialCredits(TipoNPC);
+    bool RechazarRefugiado = (TipoNPC == 3) && (!DecisionJugador);
+    if ((DecisionJugador == ValidezNPC) || RechazarRefugiado)
+        SumarSocialCredits(TipoNPC);
     else
-        if (DecisionJugador == ValidezNPC)
-            SumarSocialCredits(TipoNPC);
-        else
-            RestarSocialCredits(TipoNPC);
-
+        RestarSocialCredits(TipoNPC);
 }
 
 void Juego::SumarSocialCredits(int Tipo)
@@ -145,7 +143,7 @@ void Juego::SumarSocialCredits(int Tipo)
     };
 
     SocialCreditsEarnedInLevel += (SocialCredits * BonificadorGanarCreditosDificultad);
-    TotalSocialCredits += SocialCreditsEarnedInLevel;
+    TotalSocialCredits += (SocialCredits * BonificadorGanarCreditosDificultad);
 }
 
 void Juego::RestarSocialCredits(int Tipo)
@@ -165,7 +163,7 @@ void Juego::RestarSocialCredits(int Tipo)
     };
 
     SocialCreditsEarnedInLevel -= (SocialCredits * BonificadorPerderCreditosDificultad);
-    TotalSocialCredits -= SocialCreditsEarnedInLevel;
+    TotalSocialCredits -= (SocialCredits * BonificadorGanarCreditosDificultad);
 }
 
 int Juego::getTotalSocialCredits() const

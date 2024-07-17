@@ -41,26 +41,34 @@ private:
 
     // Juego
     Juego* juego;
+    void restartJuego();
 
     // Pantallas del juego:
     void CrearPantallasJuego();
     void CrearPantallaTransicion();
     void PonerModoVentana();
-    void PonerPantallaPausa();
-    void VolverPantallaAnterior();
 
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
-    PantallaPausa * pantallaPausa;
     int PantallaPrevia;
     GameScreen *gameScreen;
     //PantallaFinalNivel * pantallaFinalNivel;
+
+    // Pantalla de pausa
+    PantallaPausa * pantallaPausa;
+    void PrepararPantallaPausa();
+    void PrepararSalirPantallaPausa();
+    void PonerPantallaPausa();
+    void VolverPantallaAnterior();
 
     // Transicion
     QWidget* pantallaTransicion;
     QPropertyAnimation* iniciarTransicion;
     QPropertyAnimation* terminarTransicion;
     QGraphicsOpacityEffect* efecto;
+    void ArrancarTransicion(int Duracion);
+    void MidTransicion();
+    void TerminarTransicion();
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();
