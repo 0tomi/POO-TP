@@ -100,6 +100,11 @@ void GeneradorDocumentacion::nextNivel(int Nivel)
     SetDificultadNivel();
 }
 
+void GeneradorDocumentacion::setDificultad(int Dificultad)
+{
+    DificultadJuego = Dificultad;
+}
+
 void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
 {
     int CantDocumentosInvalidos = 0;
@@ -110,7 +115,8 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
         MaxDocumentosInvalidos = NumeroRandom.bounded(1,3);
 
     // Lo repetimos hasta que nos genere la cantidad necesaria de documentos invalidos.
-    while (CantDocumentosInvalidos <= MaxDocumentosInvalidos){
+    qDebug() << "Bucle de generar cantidad de docs invalidos";
+    while (CantDocumentosInvalidos < MaxDocumentosInvalidos){
         for (int i = 0; i < MaxDocumentos; i++){
             ValorCentinela = NumeroRandom.bounded(0,10);
             if (ValorCentinela < 4){

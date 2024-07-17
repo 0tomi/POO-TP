@@ -9,11 +9,6 @@ Juego::Juego(){
     LectorArchivos LA(":/Resources/ArchivosTexto/paises.txt");
     this->atributos->setAtributos(LA.getArray(), LA.getTopeArray());
 
-    PrepararJuego(0);
-}
-
-void Juego::PrepararJuego(int Reset)
-{
     // Seteamos las reglas del juego, pasando el array de paises.
     rules[0] = new ReglasNivel1(atributos);
     rules[1] = new ReglasNivel2(rules[0]);
@@ -21,16 +16,20 @@ void Juego::PrepararJuego(int Reset)
     rules[3] = new ReglasNivel4(rules[2]);
     rules[4] = new ReglasNivel5(rules[3]);
 
-    if (!Reset)
-        Cola = new ColaNPC(atributos, rules);
-    else
-        Cola->actualizarReglas(rules);
 
+    Cola = new ColaNPC(atributos, rules);
 
+    PrepararJuego(0);
+}
+
+void Juego::PrepararJuego(int Reset, int Dificultad)
+{
     NivelActual = 1;
 
     // Test
-    Cola->addNPC(NivelActual,1,1,0,1, 1);
+    setDificultad(Dificultad);
+    Cola->setDificultad(Dificultad);
+    Cola->addNPC(NivelActual,1,1,0,1, 3);
     // setUpNivel1();
 
     // Seteamos las estadisticas del jugador.
@@ -39,8 +38,6 @@ void Juego::PrepararJuego(int Reset)
     Multas = 0;
     CantidadNPCsRechazados = 0;
     CantidadNPCsAceptados = 0;
-
-    setDificultad(2);   // Modo normal por default
 }
 
 void Juego::setDificultad(int dificultad)
@@ -102,8 +99,8 @@ void Juego::ResetJuego()
     NivelActual = 1;
 
     /// A futuro creamos nuevas reglas
-    for (int i = 0; i < 5; i++)
-        delete rules[i];
+    //for (int i = 0; i < 5; i++)
+       //delete rules[i];
 
     PrepararJuego(1);
 }

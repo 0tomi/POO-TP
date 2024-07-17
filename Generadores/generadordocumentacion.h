@@ -17,6 +17,7 @@ public:
     void getDocumentos(NPC* info, bool validez);
     void actualizarReglas(Reglas** rules);
     void nextNivel(int Nivel);
+    void setDificultad(int Dificultad);
     ~GeneradorDocumentacion();
 
 private:

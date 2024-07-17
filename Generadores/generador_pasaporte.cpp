@@ -83,6 +83,7 @@ void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
         int cantidadCamposInvalidos = 0;
         int sorteo;
         // Hasta no generarse por lo menos 1 campo valido, no sale del while.
+        qDebug() << "Bucle de generar campos invalidos pasaporte";
         while (!cantidadCamposInvalidos)
             for (int i = 0; i < 3; ++i){
                 sorteo = this->rand.bounded(10);
