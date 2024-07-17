@@ -22,11 +22,17 @@ public:
 signals:
     void salirClicked();
     void sigNivelClicked();
+    void reintentarClicked();
+
 private slots:
     void onSalirClicked();
     void onSigNivelClicked();
+    void onReintentarClicked();
+
 private:
     Ui::PantallaFinalNivel *ui;
+    const QString COLOR_ROJO = "color: rgb(255, 0, 0);";
+    const QString COLOR_BLANCO = "color: rgb(255, 255, 255);";
 };
 
 #endif // PANTALLAFINALNIVEL_H

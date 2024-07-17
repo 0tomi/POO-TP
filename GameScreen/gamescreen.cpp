@@ -55,11 +55,16 @@ void GameScreen::EmpezarJuego()
     GestorNPC.Entrar();
 }
 
-void GameScreen::PrepararJuego(bool Reset, int Nivel, int Dificultad)
+void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
-    juego->PrepararJuego(Reset, Nivel, Dificultad);
-
+    juego->PrepararJuego(Nivel, Dificultad);
     // more stuff to do
+}
+
+void GameScreen::Restart()
+{
+    juego->setDefaultStats();
+    /// A futuro un reset donde cambiamos las reglas
 }
 
 void GameScreen::PausarJuego()
@@ -99,11 +104,10 @@ void GameScreen::FinalDePartida()
     // Desconectamos las cosas que le dan progreso al juego
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
-    emit NivelTerminado();
-    if (juego->getTotalSocialCredits() < 1){
-        emit JuegoFallado();
-        qDebug() << "Reiniciar juego";
-    }
+    if (juego->getTotalSocialCredits() < 1)
+        emit NivelTerminado(true);  // Si perdio emitimos que perdio
+    else emit NivelTerminado(false);
+
     qDebug() << "Termino el juego";
 }
 

@@ -12,7 +12,8 @@ public:
     void setNivel(int nivel);
     void setDificultad(int dificultad);
     void NextLevel();
-    void PrepararJuego(bool Reset = false, int Nivel = 1, int Dificultad = 2); // Modo normal por default
+    void PrepararJuego(int Nivel = 1, int Dificultad = 2); // Modo normal por default
+    void setDefaultStats();
 
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
@@ -42,7 +43,6 @@ public:
 
 private:
     int NivelActual;
-    void ResetJuego();
 
     // Partida guardada o a guardar
     string DireccionPartida;
@@ -64,6 +64,7 @@ private:
     ColaNPC* Cola;
 
     // Niveles:
+    void ResetJuego();
     void setUpNivel1();
     void setUpNivel2();
     void setUpNivel3();

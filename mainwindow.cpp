@@ -28,8 +28,10 @@ MainWindow::MainWindow(QWidget *parent)
     // Cuando termine un nivel, hacemos que se muestre la pantalla de final de nivel
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
 
-    // Conectamos la señal de reiniciar el juego
-    connect(gameScreen, &GameScreen::JuegoFallado, this, &MainWindow::VolverInicio);
+    // Conectamos la pantalla de estadisticas con lo demas
+    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::VolverInicio);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
 }
 
 MainWindow::~MainWindow()
@@ -39,15 +41,28 @@ MainWindow::~MainWindow()
     delete pantallaInicio;
     delete pantallaPausa;
     delete pantallaTransicion;
+    delete pantallaFinalNivel;
     delete gameScreen;
     delete pantallas;
     // aca iria el delete a las pantallas
 }
 
-void MainWindow::PrepararPantallaFinalNivel()
+void MainWindow::PrepararPantallaFinalNivel(bool Perdio)
 {
-    pantallaFinalNivel->setPantallaFinalUI(juego);
+    ArrancarTransicion(1000);
+    pantallaFinalNivel->setPantallaFinalUI(juego, Perdio);
+
+    // Si perdio, reseteamos las estadisticas para que pueda volver a jugar
+    if (Perdio)
+        gameScreen->Restart();
+
+    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::setPantallaStats);
+}
+
+void MainWindow::setPantallaStats()
+{
     pantallas->setCurrentWidget(pantallaFinalNivel);
+    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::setPantallaStats);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -166,12 +181,6 @@ void MainWindow::CrearPantallaTransicion()
     // Conectamos el final de la animacion de inicio, con la de la animacion de final.
     connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::MidTransicion);
     connect(terminarTransicion, &QAbstractAnimation::finished, this, &MainWindow::TerminarTransicion);
-}
-
-void MainWindow::restartJuego()
-{
-    qDebug() << "Restart del juego";
-    TransicionJuego();
 }
 
 void MainWindow::PonerModoVentana()

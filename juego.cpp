@@ -16,15 +16,11 @@ Juego::Juego(){
     rules[3] = new ReglasNivel4(rules[2]);
     rules[4] = new ReglasNivel5(rules[3]);
 
-
     Cola = new ColaNPC(atributos, rules);
 }
 
-void Juego::PrepararJuego(bool Reset, int Nivel, int Dificultad)
+void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
-    if (Reset)
-        ResetJuego();
-
     NivelActual = Nivel;
 
     // Test
@@ -36,15 +32,32 @@ void Juego::PrepararJuego(bool Reset, int Nivel, int Dificultad)
         /// Aca iria setNPClvl1, pero por test lo dejamos asi.
         Cola->addNPC(NivelActual,1,1,0,1, 3);
 
-
-        // Seteamos las estadisticas del jugador.
-        SocialCreditsEarnedInLevel = 0;
-        TotalSocialCredits = 0;
-        Multas = 0;
-        CantidadNPCsRechazados = 0;
-        CantidadNPCsAceptados = 0;
-
     }   /// Else para cargar partidas guardadas
+}
+
+void Juego::setDefaultStats()
+{
+    // Seteamos las estadisticas del jugador.
+    SocialCreditsEarnedInLevel = 0;
+    TotalSocialCredits = 0;
+    Multas = 0;
+    CantidadNPCsRechazados = 0;
+    CantidadNPCsAceptados = 0;
+}
+
+void Juego::ResetJuego()
+{
+    // Creamos nuevas reglas
+    for (int i = 0; i < 5; i++)
+        delete rules[i];
+
+    rules[0] = new ReglasNivel1(atributos);
+    rules[1] = new ReglasNivel2(rules[0]);
+    rules[2] = new ReglasNivel3(rules[1]);
+    rules[3] = new ReglasNivel4(rules[2]);
+    rules[4] = new ReglasNivel5(rules[3]);
+
+    Cola->actualizarReglas(rules);
 }
 
 void Juego::setDificultad(int dificultad)
@@ -94,21 +107,6 @@ void Juego::NextLevel()
     }
 }
 
-void Juego::ResetJuego()
-{
-    // Creamos nuevas reglas
-    for (int i = 0; i < 5; i++)
-       delete rules[i];
-
-    rules[0] = new ReglasNivel1(atributos);
-    rules[1] = new ReglasNivel2(rules[0]);
-    rules[2] = new ReglasNivel3(rules[1]);
-    rules[3] = new ReglasNivel4(rules[2]);
-    rules[4] = new ReglasNivel5(rules[3]);
-
-    Cola->actualizarReglas(rules);
-}
-
 Reglas* Juego::getReglas(int numero){
     return (numero < 5)? rules[numero]: NULL;
 }
@@ -125,11 +123,14 @@ int Juego::getSocialCreditsEarnedInLevel() const
 
 void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
 {
-    bool RechazarRefugiado = (TipoNPC == 3) && (!DecisionJugador);
-    if ((DecisionJugador == ValidezNPC) || RechazarRefugiado)
-        SumarSocialCredits(TipoNPC);
-    else
+    bool AprobarRefugiado = (TipoNPC == 3) && (DecisionJugador);
+    if (AprobarRefugiado)
         RestarSocialCredits(TipoNPC);
+    else
+        if ((DecisionJugador != ValidezNPC) && TipoNPC != 3)
+            RestarSocialCredits(TipoNPC);
+        else
+            SumarSocialCredits(TipoNPC);
 }
 
 void Juego::SumarSocialCredits(int Tipo)

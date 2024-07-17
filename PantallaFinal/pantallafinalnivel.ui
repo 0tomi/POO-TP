@@ -76,7 +76,7 @@
          <enum>Qt::LeftToRight</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="Gano">
          <property name="sizePolicy">
@@ -255,6 +255,9 @@
           <pointsize>25</pointsize>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>0</string>
@@ -455,7 +458,7 @@ background-color: rgb(170, 0, 0);</string>
             </size>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="Continuar">
             <property name="minimumSize">

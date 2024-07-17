@@ -8,6 +8,12 @@ PantallaFinalNivel::PantallaFinalNivel(QWidget *parent)
     , ui(new Ui::PantallaFinalNivel)
 {
     ui->setupUi(this);
+    // conecc.signal de salirBtn:
+    connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSalirClicked);
+    // connec. signal de sigNivelBtn:
+    connect(ui->sigNivelBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSigNivelClicked);
+    // Conectamos boton de reintentar
+    connect(ui->reintentarBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onReintentarClicked);
 }
 
 PantallaFinalNivel::~PantallaFinalNivel()
@@ -23,46 +29,50 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
     int cantCredsSocsObtDia = juegoInfo->getSocialCreditsEarnedInLevel();
     int cantCredsSocsTot = juegoInfo->getTotalSocialCredits();
 
-    // manejo del stacked widget dependiendo si perdio o gano:
+    // Seteamos las labels de color blanco
+    ui->cantMultasObt_label->setStyleSheet(COLOR_BLANCO);
+    ui->credsSocsObtDia_label->setStyleSheet(COLOR_BLANCO);
+    ui->credsSocsTot_label->setStyleSheet(COLOR_BLANCO);
+
+    // Coloco los botones y etiquetas dependiendo de si perdio o gano
     if (perdio) {
-        // ui->stackedTitulos->setCurrentIndex(1);
-        // ui->stackedBotones->setCurrentIndex(1);
+        ui->stackedTitulos->setCurrentIndex(1);
+        ui->stackedBotones->setCurrentIndex(1);
     } else {
-        // ui->stackedTitulos->setCurrentIndex(0);
-        // ui->stackedBotones->setCurrentIndex(0);
+        ui->stackedTitulos->setCurrentIndex(0);
+        ui->stackedBotones->setCurrentIndex(0);
     }
 
-    ui->cantPersAcept_label->setText(QString("%1").arg(cantNpcsAcept));
-    ui->cantPersRech_label->setText(QString("%1").arg(cantNpcsRech));
-    ui->cantMultasObt_label->setText(QString("%1").arg(cantMultasObt));
+    ui->cantPersAcept_label->setText(QString::number(cantNpcsAcept));
+    ui->cantPersRech_label->setText(QString::number(cantNpcsRech));
+    ui->cantMultasObt_label->setText(QString::number(cantMultasObt));
+
     if (cantMultasObt == maxMultas) {
-        ui->cantMultasObt_label->setStyleSheet("#cantMultasObt_label { color: red; }");
+        ui->cantMultasObt_label->setStyleSheet(COLOR_ROJO);
     }
-    ui->credsSocsObtDia_label->setText(QString("%1").arg(cantCredsSocsObtDia));
+    ui->credsSocsObtDia_label->setText(QString::number(cantCredsSocsObtDia));
     if (cantCredsSocsObtDia < 1) {
-        ui->credsSocsObtDia_label->setStyleSheet("#credsSocsObtDia_label { color: red; }");
+        ui->credsSocsObtDia_label->setStyleSheet(COLOR_ROJO);
     }
-    ui->credsSocsTot_label->setText(QString("%1").arg(cantCredsSocsTot));
+    ui->credsSocsTot_label->setText(QString::number(cantCredsSocsTot));
     if (cantCredsSocsObtDia < 1) {
-        ui->credsSocsTot_label->setStyleSheet("#credsSocsTot_label { color: red; }");
+        ui->credsSocsTot_label->setStyleSheet(COLOR_ROJO);
     }
-
-    // conecc.signal de salirBtn:
-    connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSalirClicked);
-    // connec. signal de sigNivelBtn:
-    connect(ui->sigNivelBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSigNivelClicked);
 }
 
 // Signals
 void PantallaFinalNivel::onSalirClicked() {
     guardarPartida();
     emit salirClicked();
-    qDebug() << "SALIR btn presionado y señal emitida";
 }
 
 void PantallaFinalNivel::onSigNivelClicked() {
     emit sigNivelClicked();
-    qDebug() << "SIG NIVEL btn presionado y señal emitida";
+}
+
+void PantallaFinalNivel::onReintentarClicked()
+{
+    emit reintentarClicked();
 }
 
 // metodos extra

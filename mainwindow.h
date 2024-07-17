@@ -35,14 +35,13 @@ private slots:
     void TransicionJuego();
     void PrepararJuego();
     void IniciarJuego();
-    void PrepararPantallaFinalNivel();
+    void PrepararPantallaFinalNivel(bool Perdio);
 
 private:
     Ui::MainWindow *ui;
 
     // Juego
     Juego* juego;
-    void restartJuego();
 
     // Pantallas del juego:
     void CrearPantallasJuego();
@@ -51,6 +50,7 @@ private:
 
     void VolverInicio();
     void setInicio();
+    void setPantallaStats();
 
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
