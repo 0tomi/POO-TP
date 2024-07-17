@@ -87,9 +87,9 @@ void ColaNPC::vaciarCola()
     this->size = 0;
 }
 
-void ColaNPC::actualizarReglas(Reglas **newRules, int nivel)
+void ColaNPC::actualizarReglas(Reglas **newRules)
 {
-    GenerarDocumentacion->actualizarReglas(newRules, nivel);
+    GenerarDocumentacion->actualizarReglas(newRules);
 }
 
 void ColaNPC::nextNivel(int Nivel)

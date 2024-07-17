@@ -90,6 +90,10 @@ void GameScreen::FinalDePartida()
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
     emit NivelTerminado();
+    if (juego->getTotalSocialCredits() < 1){
+        emit JuegoFallado();
+        qDebug() << "Reiniciar juego";
+    }
     qDebug() << "Termino el juego";
 }
 
@@ -144,8 +148,6 @@ void GameScreen::SelloDocumento(bool Boton)
     BloquearBotones(true);
 
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
-
-    qDebug() << "Puntaje actual: " << juego->getSocialCreditsEarnedInLevel();
 
     if (GestorNPC.NPCsRestantes() == 0)
         FinalDePartida();

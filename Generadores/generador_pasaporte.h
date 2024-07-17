@@ -31,5 +31,6 @@ private:
 public:
     Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * atributos); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
     Pasaporte * crear_pasaporte(bool valido, char genero);
+    void restartReglas(ReglasNivel1 * rules);
 };
 #endif // GENERADOR_PASAPORTE_H

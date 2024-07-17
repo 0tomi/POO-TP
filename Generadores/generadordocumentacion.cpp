@@ -9,11 +9,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     SetDificultadNivel();
 
     // Asignamos las reglas correspondientes
-    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
-    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
-    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
-    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
-    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
+    actualizarReglas(newRules);
 
     // Semilla para el generador
     quint32 Semilla = static_cast<quint32>(time(NULL));
@@ -74,14 +70,13 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     }
 }
 
-void GeneradorDocumentacion::actualizarReglas(Reglas **newRules, int Nivel)
+void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
 {
     reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
     reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
     reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
     reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
     reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
-    NivelActual = Nivel;
 }
 
 void GeneradorDocumentacion::nextNivel(int Nivel)

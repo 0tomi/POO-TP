@@ -27,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Cuando termine un nivel, hacemos que se muestre la pantalla de final de nivel
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
+
+    // Conectamos la señal de reiniciar el juego
+    connect(gameScreen, &GameScreen::JuegoFallado, this, &MainWindow::restartJuego);
 }
 
 MainWindow::~MainWindow()
@@ -45,6 +48,13 @@ void MainWindow::PrepararPantallaFinalNivel()
 {
     //  pantallaFinalNivel->setUp();
     //  pantallas->setCurrentWidget(pantallaFinalNivel);
+}
+
+void MainWindow::restartJuego()
+{
+    qDebug() << "Restart del juego";
+    juego->ResetJuego();
+    TransicionJuego();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
