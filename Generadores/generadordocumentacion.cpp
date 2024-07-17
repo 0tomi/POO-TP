@@ -74,20 +74,35 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     }
 }
 
-void GeneradorDocumentacion::actualizarReglas(Reglas **newRules, int Nivel)
+void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
 {
     reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
     reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
     reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
     reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
     reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
-    NivelActual = Nivel;
+
+    // Reset de reglas del generador de pasaporte
+    generadorPasaporte->restartReglas(reglasNivel1);
+
+    // Reset de reglas del generador de estancia
+    int maxVisitas, maxVisitasValidas;
+    QString* Visitas = datos->getVisitas(maxVisitas);
+    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
+    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
+    generadorEstancia->resetReglas(Visitas, maxVisitas, VisitasValidas, maxVisitasValidas,
+                                   reglasNivel1->getDuracionEstanciaPermitida());
 }
 
 void GeneradorDocumentacion::nextNivel(int Nivel)
 {
     NivelActual = Nivel;
     SetDificultadNivel();
+}
+
+void GeneradorDocumentacion::setDificultad(int Dificultad)
+{
+    DificultadJuego = Dificultad;
 }
 
 void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
@@ -100,7 +115,8 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
         MaxDocumentosInvalidos = NumeroRandom.bounded(1,3);
 
     // Lo repetimos hasta que nos genere la cantidad necesaria de documentos invalidos.
-    while (CantDocumentosInvalidos != MaxDocumentosInvalidos){
+    qDebug() << "Bucle de generar cantidad de docs invalidos";
+    while (CantDocumentosInvalidos < MaxDocumentosInvalidos){
         for (int i = 0; i < MaxDocumentos; i++){
             ValorCentinela = NumeroRandom.bounded(0,10);
             if (ValorCentinela < 4){
@@ -141,7 +157,7 @@ void GeneradorDocumentacion::SetDificultadNivel()
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], NPC2Generate->getGenero());
+    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], NPC2Generate->getGenero(), DificultadJuego);
     NPC2Generate->addDocumento(nuevoPasaporte, Index);
     Index++;
 

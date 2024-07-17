@@ -26,7 +26,7 @@ public:
     explicit GameScreen(Juego* newJuego, QWidget *parent = nullptr);
     ~GameScreen();
     void EmpezarJuego();
-    void PrepararJuego(int Nivel);
+    void PrepararJuego(bool Reset = false, int Nivel = 1, int Dificultad = 2);
 
 public slots:
     void PausarJuego();
@@ -34,6 +34,7 @@ public slots:
 
 signals:
     void NivelTerminado();
+    void JuegoFallado();
 
 private slots:
     void FinalDePartida();

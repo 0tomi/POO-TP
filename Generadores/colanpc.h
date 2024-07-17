@@ -27,8 +27,9 @@ public:
 
     // Vaciar cola tiene que eliminar los NPCS restantes, junto con sus documentos y demas
     void vaciarCola();
-    void actualizarReglas(Reglas** rules, int nivel);
+    void actualizarReglas(Reglas** rules);
     void nextNivel(int Nivel);
+    void setDificultad(int Dificultad);
 
     NPC* getNPC();
 
@@ -42,6 +43,7 @@ private:
     int size;
     int sizeOriginal;
     int nivelActual;
+
     NPC* NPCaRetornar;
 
     QRandomGenerator *Random;

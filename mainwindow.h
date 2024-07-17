@@ -42,11 +42,15 @@ private:
 
     // Juego
     Juego* juego;
+    void restartJuego();
 
     // Pantallas del juego:
     void CrearPantallasJuego();
     void CrearPantallaTransicion();
     void PonerModoVentana();
+
+    void VolverInicio();
+    void setInicio();
 
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
