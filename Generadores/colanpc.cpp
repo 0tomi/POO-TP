@@ -28,6 +28,7 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     int sorteoValidez = Random->bounded(20);
     bool Validez = true;
 
+    qDebug() << "Bucle de generar NPCs";
     while (totalNPCs){
         if (CantidadInvalidos)
             if (sorteoValidez > 11){
@@ -96,6 +97,11 @@ void ColaNPC::actualizarReglas(Reglas **newRules)
 void ColaNPC::nextNivel(int Nivel)
 {
     GenerarDocumentacion->nextNivel(Nivel);
+}
+
+void ColaNPC::setDificultad(int newDificultad)
+{
+    GenerarDocumentacion->setDificultad(newDificultad);
 }
 
 NPC* ColaNPC::getNPC(){

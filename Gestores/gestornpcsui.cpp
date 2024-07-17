@@ -24,7 +24,7 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
 
     // ## A futuro iria aca el setup del NPC especial. ##
 
-    RealizarConeccionesDeNPCs();
+
     // Colocamos al NPC fuera del escenario para iniciar la cinematica.
     NPCcomunUI->hide();
     NPCcomunUI->move(-(NPCcomunUI->width()),0);

@@ -171,7 +171,8 @@ int ReglasNivel1::getDuracionEstanciaPermitida(){
 ReglasNivel1::~ReglasNivel1()
 {
     delete[] paisesValidos;
-    delete[] tipoDeVisitaValida;
+    if (tipoDeVisitaValida != tipoVisitas)
+        delete[] tipoDeVisitaValida;
     if (estadoCivilValidos != estadosCiviles)
         delete[] estadoCivilValidos;
 }

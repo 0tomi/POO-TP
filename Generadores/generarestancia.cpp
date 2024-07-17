@@ -67,6 +67,7 @@ void GenerarEstancia::GenerarCamposValidos(int Probabilidad, bool Validez)
         int cantidadCamposInvalidos = 0;
         int sorteo;
         // Hasta no generarse por lo menos 1 campo valido, no sale del while.
+        qDebug() << "Bucle de campos invalidos estancia";
         while (!cantidadCamposInvalidos)
             for (int i = 0; i < 2; ++i){
                 sorteo = NumRandom.bounded(10);
@@ -94,13 +95,14 @@ QString GenerarEstancia::GenerarVisita(bool validez)
     int Sorteo;
 
     if (validez){
-        if (maxVisitasValidas < 2) // Evitamos bugs
+        if (maxVisitasValidas == 1) // Evitamos bugs
             Visita = tipoVisitasValidas[0];
         else {
             Sorteo = NumRandom.bounded(maxVisitasValidas);
             Visita = tipoVisitasValidas[Sorteo];
         }
     } else {
+        qDebug() << "Bucle de visita falsa";
         do{ // Repetimos hasta colocar un tipo de visita invalida.
             Sorteo = NumRandom.bounded(maxTipoVisitas);
             Visita = tipoVisitas[Sorteo];

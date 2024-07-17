@@ -13,6 +13,7 @@ public:
     void setDificultad(int dificultad);
     void NextLevel();
     void ResetJuego();
+    void PrepararJuego(int Reset, int Dificultad = 2); // Modo normal por default
 
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
@@ -42,7 +43,6 @@ public:
     int getMaxMultas() const;
 
 private:
-    void PrepararJuego(int Reset);
     int NivelActual;
 
     // Partida guardada o a guardar
