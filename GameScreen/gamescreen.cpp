@@ -19,9 +19,11 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
 
+    Spawnear_libro();
     SpawnearBotones();
     RealizarConeccionesPrincipales();
     BloquearBotones(true);
+
 }
 
 GameScreen::~GameScreen()
@@ -41,6 +43,29 @@ void GameScreen::RealizarConeccionesPrincipales()
 
     // Conectamos boton de centrar para centrar el documento.
     connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
+}
+
+void GameScreen::Spawnear_libro()
+{
+    // Crear un nuevo QPushButton
+    QPushButton* libroButton = new QPushButton(ui->libroreglas);
+
+    // Establecer la imagen de fondo del botón
+    QPixmap pixmap(":/Resources/estancia.png");
+    QIcon buttonIcon(pixmap);
+    libroButton->setIcon(buttonIcon);
+    libroButton->setIconSize(pixmap.rect().size());
+
+    // Ajustar el tamaño del botón al tamaño de la imagen
+    libroButton->setFixedSize(pixmap.rect().size());
+
+    // Agregar el botón al widget libroreglas
+    QVBoxLayout* layout = new QVBoxLayout(ui->libroreglas);
+    layout->addWidget(libroButton);
+    ui->libroreglas->setLayout(layout);
+
+    // Configurar el botón para que no tenga bordes ni relieve
+    libroButton->setStyleSheet("border: none;");
 }
 
 void GameScreen::EmpezarJuego()

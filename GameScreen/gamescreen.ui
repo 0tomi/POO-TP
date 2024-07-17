@@ -128,6 +128,16 @@
              <height>200</height>
             </size>
            </property>
+           <widget class="QWidget" name="libroReglas_grande" native="true">
+            <property name="geometry">
+             <rect>
+              <x>49</x>
+              <y>-91</y>
+              <width>391</width>
+              <height>271</height>
+             </rect>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
@@ -234,7 +244,7 @@
            <x>230</x>
            <y>180</y>
            <width>51</width>
-           <height>81</height>
+           <height>91</height>
           </rect>
          </property>
         </widget>

@@ -6,6 +6,8 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QSpacerItem>
+#include <QPushButton>
+#include <QPixmap>
 
 #include "../NPC/npcgenericoui.h"
 #include "../Documentos/uaderpass.h"
@@ -39,6 +41,7 @@ signals:
 private slots:
     void FinalDePartida();
 
+
 private:
     Ui::GameScreen *ui;
     Juego* juego;
@@ -56,6 +59,7 @@ private:
     void SpawnearBotones();
     void RealizarConecciones();
     void RealizarConeccionesPrincipales();
+    void Spawnear_libro();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();
