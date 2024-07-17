@@ -8,8 +8,9 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 {
     ui->setupUi(this);
 
+    juego = newJuego;
+
     // Seteamos el juego, y obtenemos la cola de NPCs.
-    juego = new Juego;
     ColaNPC* Cola = juego->getCola();
 
     temporizadorBotones.setSingleShot(true);
@@ -50,7 +51,20 @@ void GameScreen::EmpezarJuego()
 
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
+    GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
+}
+
+void GameScreen::PrepararJuego(int Nivel, int Dificultad)
+{
+    juego->PrepararJuego(Nivel, Dificultad);
+    // more stuff to do
+}
+
+void GameScreen::Restart()
+{
+    juego->setDefaultStats();
+    /// A futuro un reset donde cambiamos las reglas
 }
 
 void GameScreen::PausarJuego()
@@ -64,6 +78,7 @@ void GameScreen::ReanudarJuego()
 {
     GestorNPC.Reanudar();
     tiempoPartida.start(tiempoRestante);
+    GestorNPC.CentrarNPC();
 }
 
 void GameScreen::RealizarConecciones()
@@ -89,7 +104,10 @@ void GameScreen::FinalDePartida()
     // Desconectamos las cosas que le dan progreso al juego
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
-    emit NivelTerminado();
+    if (juego->getTotalSocialCredits() < 1)
+        emit NivelTerminado(true);  // Si perdio emitimos que perdio
+    else emit NivelTerminado(false);
+
     qDebug() << "Termino el juego";
 }
 

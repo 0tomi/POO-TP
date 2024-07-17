@@ -18,11 +18,15 @@ private:
     QString * nacionalidades;
     ReglasNivel1 * rules;
 
+    bool campos_validos[3]; // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil
+
     Pasaporte * Pasaporte_generado;
     int max_hombres; // tamanio del array de nombres de hombres
     int max_mujeres; // tamanio del array de nombres de mujeres
     int max_x;  // tamanio del array de nombres de x
     int max_nacionalidades; // cantidad total de nacionalidades
+
+    void generar_camposValidos(bool valido, int dificultad);
 
     QString generar_nombre(char genero);
     QString generar_estado_civil(char genero, bool valido);
@@ -30,6 +34,7 @@ private:
     QString generar_fecha(bool valido);
 public:
     Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * atributos); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
-    Pasaporte * crear_pasaporte(bool valido, char genero);
+    Pasaporte * crear_pasaporte(bool valido, char genero, int dificultad);
+    void restartReglas(ReglasNivel1 * rules);
 };
 #endif // GENERADOR_PASAPORTE_H

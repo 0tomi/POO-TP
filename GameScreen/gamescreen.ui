@@ -228,6 +228,16 @@
 	border-image: url(:/Resources/mesa2.png);
 }</string>
         </property>
+        <widget class="QWidget" name="libroreglas" native="true">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>180</y>
+           <width>51</width>
+           <height>81</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </item>
      </layout>

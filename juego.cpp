@@ -9,11 +9,6 @@ Juego::Juego(){
     LectorArchivos LA(":/Resources/ArchivosTexto/paises.txt");
     this->atributos->setAtributos(LA.getArray(), LA.getTopeArray());
 
-    PrepararJuego(0);
-}
-
-void Juego::PrepararJuego(int Reset)
-{
     // Seteamos las reglas del juego, pasando el array de paises.
     rules[0] = new ReglasNivel1(atributos);
     rules[1] = new ReglasNivel2(rules[0]);
@@ -21,25 +16,49 @@ void Juego::PrepararJuego(int Reset)
     rules[3] = new ReglasNivel4(rules[2]);
     rules[4] = new ReglasNivel5(rules[3]);
 
-    if (!Reset)
-        Cola = new ColaNPC(atributos, rules);
-    else
-        Cola->actualizarReglas(rules, 0);
+    Cola = new ColaNPC(atributos, rules);
+    setDefaultStats();
+}
 
+void Juego::PrepararJuego(int Nivel, int Dificultad)
+{
+    NivelActual = Nivel;
 
-    NivelActual = 1;
     // Test
-    Cola->addNPC(NivelActual,2,2,2,2, 3);
-    // setUpNivel1();
+    setDificultad(Dificultad);
+    Cola->setDificultad(Dificultad);
 
+    // El else vendra cuando implementemos las partidas guardadas
+    if (Nivel < 2) {
+        /// Aca iria setNPClvl1, pero por test lo dejamos asi.
+        Cola->addNPC(NivelActual,1,1,0,1, 3);
+
+    }   /// Else para cargar partidas guardadas
+}
+
+void Juego::setDefaultStats()
+{
     // Seteamos las estadisticas del jugador.
     SocialCreditsEarnedInLevel = 0;
     TotalSocialCredits = 0;
     Multas = 0;
     CantidadNPCsRechazados = 0;
     CantidadNPCsAceptados = 0;
+}
 
-    setDificultad(2);
+void Juego::ResetJuego()
+{
+    // Creamos nuevas reglas
+    for (int i = 0; i < 5; i++)
+        delete rules[i];
+
+    rules[0] = new ReglasNivel1(atributos);
+    rules[1] = new ReglasNivel2(rules[0]);
+    rules[2] = new ReglasNivel3(rules[1]);
+    rules[3] = new ReglasNivel4(rules[2]);
+    rules[4] = new ReglasNivel5(rules[3]);
+
+    Cola->actualizarReglas(rules);
 }
 
 void Juego::setDificultad(int dificultad)
@@ -76,7 +95,6 @@ void Juego::NextLevel()
     NivelActual++;
     this->SocialCreditsEarnedInLevel = 0;
     Cola->nextNivel(NivelActual);
-    Cola->vaciarCola();
 
     switch (NivelActual){
     case 2: setUpNivel2();
@@ -88,20 +106,6 @@ void Juego::NextLevel()
     case 5: setUpNivel5();
         break;
     }
-}
-
-void Juego::ResetJuego()
-{
-    SocialCreditsEarnedInLevel = 0;
-    TotalSocialCredits = 0;
-    Multas = 0;
-    CantidadNPCsRechazados = 0;
-    CantidadNPCsAceptados = 0;
-
-    for (int i = 0; i < 5; i++)
-        delete rules[i];
-
-    PrepararJuego(1);
 }
 
 Reglas* Juego::getReglas(int numero){
@@ -120,12 +124,14 @@ int Juego::getSocialCreditsEarnedInLevel() const
 
 void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
 {
-    bool RechazarRefugiado = (TipoNPC == 3) && (!DecisionJugador);
-    if ((DecisionJugador == ValidezNPC) && RechazarRefugiado)
-        SumarSocialCredits(TipoNPC);
-    else
+    bool AprobarRefugiado = (TipoNPC == 3) && (DecisionJugador);
+    if (AprobarRefugiado)
         RestarSocialCredits(TipoNPC);
-
+    else
+        if ((DecisionJugador != ValidezNPC) && TipoNPC != 3)
+            RestarSocialCredits(TipoNPC);
+        else
+            SumarSocialCredits(TipoNPC);
 }
 
 void Juego::SumarSocialCredits(int Tipo)
@@ -143,7 +149,7 @@ void Juego::SumarSocialCredits(int Tipo)
     };
 
     SocialCreditsEarnedInLevel += (SocialCredits * BonificadorGanarCreditosDificultad);
-    TotalSocialCredits += SocialCreditsEarnedInLevel;
+    TotalSocialCredits += (SocialCredits * BonificadorGanarCreditosDificultad);
 }
 
 void Juego::RestarSocialCredits(int Tipo)
@@ -163,7 +169,7 @@ void Juego::RestarSocialCredits(int Tipo)
     };
 
     SocialCreditsEarnedInLevel -= (SocialCredits * BonificadorPerderCreditosDificultad);
-    TotalSocialCredits -= SocialCreditsEarnedInLevel;
+    TotalSocialCredits -= (SocialCredits * BonificadorGanarCreditosDificultad);
 }
 
 int Juego::getTotalSocialCredits() const

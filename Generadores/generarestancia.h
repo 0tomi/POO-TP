@@ -9,6 +9,7 @@ class GenerarEstancia {
 public:
     GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax);
     ~GenerarEstancia();
+    void resetReglas(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax);
 
     // Getter
     Estancia* getEstancia(bool valido, int Dificultad); // Estancia a generar
@@ -23,8 +24,11 @@ private:
     int maxVisitasValidas;
     int duracMaximaEstancia;
 
+    int IndicesTiposVisitasInvalidas[5];
+    int maxVisitasInvalidas;
+    void ObtenerVisitasInvalidas();
+
     // Metodos auxiliares
-    bool ComprobarInValidez(QString dato);
     void GenerarCamposValidos(int Probabilidad, bool Validez);
 
     QString GenerarVisita(bool validez);
