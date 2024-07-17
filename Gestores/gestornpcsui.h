@@ -18,6 +18,9 @@ public:
     ~GestorNPCsUI();
     void setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola);
     void setUpNuevoNivel(int Nivel);
+
+    void EmpezarJuego();
+
     // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
     void Centrar();
     void Entrar();

@@ -44,6 +44,60 @@ MainWindow::~MainWindow()
     // aca iria el delete a las pantallas
 }
 
+void MainWindow::CrearPantallasJuego()
+{
+    // Iniciamos la logica del juego
+    juego = new Juego();
+
+    // Seteamos el widget donde se acomodaran las distintas pantallas del juego
+    pantallas = new QStackedWidget(this);
+    setCentralWidget(pantallas);
+
+    // Creamos las pantallas del juego
+    pantallaInicio = new PantallaInicio(this);
+    gameScreen = new GameScreen(juego, this);
+    pantallaPausa = new PantallaPausa(this);
+    //pantallaFinalNivel = new PantallaFinalNivel(juego, this);
+    CrearPantallaTransicion();
+
+    // Añadimos las pantallas al stack
+    pantallas->addWidget(pantallaInicio);
+    pantallas->addWidget(gameScreen);
+    pantallas->addWidget(pantallaPausa);
+    //pantallas->addWidget(pantallaFinalNivel);
+
+    // Mostramos la pantalla de inicio
+    pantallas->setCurrentWidget(pantallaInicio);
+}
+
+void MainWindow::CrearPantallaTransicion()
+{
+    // Armo pantalla para las transiciones
+    pantallaTransicion = new QWidget(this);
+    pantallaTransicion->setStyleSheet("background-color: black;");
+    pantallaTransicion->hide();
+    pantallaTransicion->setFixedSize(1920,1080);
+
+    // Damos opacidad 0 para que aparezca la pantalla y no se vea
+    this->efecto = new QGraphicsOpacityEffect(pantallaTransicion);
+    efecto->setOpacity(0);
+    pantallaTransicion->setGraphicsEffect(efecto);
+
+    // Animacion para que aparezca el fondo
+    this->iniciarTransicion = new QPropertyAnimation(efecto, "opacity");
+    iniciarTransicion->setStartValue(0.0); // opacidad inicial (completamente invisible)
+    iniciarTransicion->setEndValue(1.0); // opacidad final (completamente visible)
+
+    // Animacion para que desaparezca el fondo
+    this->terminarTransicion = new QPropertyAnimation(efecto, "opacity");
+    terminarTransicion->setStartValue(1.0); // opacidad inicial (completamente visible)
+    terminarTransicion->setEndValue(0.0); // opacidad final (completamente invisible)
+
+    // Conectamos el final de la animacion de inicio, con la de la animacion de final.
+    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::MidTransicion);
+    connect(terminarTransicion, &QAbstractAnimation::finished, this, &MainWindow::TerminarTransicion);
+}
+
 void MainWindow::PrepararPantallaFinalNivel()
 {
     //  pantallaFinalNivel->setUp();
@@ -116,60 +170,6 @@ void MainWindow::IniciarJuego()
     // Desconectamos la animacion para poder usar despues la pantalla de transicion
     disconnect(terminarTransicion, &QPropertyAnimation::finished, this, &MainWindow::IniciarJuego);
     gameScreen->EmpezarJuego(); // Aca dsps iria el nivel de juego que toca.
-}
-
-void MainWindow::CrearPantallasJuego()
-{
-    // Iniciamos la logica del juego
-    juego = new Juego();
-
-    // Seteamos el widget donde se acomodaran las distintas pantallas del juego
-    pantallas = new QStackedWidget(this);
-    setCentralWidget(pantallas);
-
-    // Creamos las pantallas del juego
-    pantallaInicio = new PantallaInicio(this);
-    gameScreen = new GameScreen(juego, this);
-    pantallaPausa = new PantallaPausa(this);
-    //pantallaFinalNivel = new PantallaFinalNivel(juego, this);
-    CrearPantallaTransicion();
-
-    // Añadimos las pantallas al stack
-    pantallas->addWidget(pantallaInicio);
-    pantallas->addWidget(gameScreen);
-    pantallas->addWidget(pantallaPausa);
-    //pantallas->addWidget(pantallaFinalNivel);
-
-    // Mostramos la pantalla de inicio
-    pantallas->setCurrentWidget(pantallaInicio);
-}
-
-void MainWindow::CrearPantallaTransicion()
-{
-    // Armo pantalla para las transiciones
-    pantallaTransicion = new QWidget(this);
-    pantallaTransicion->setStyleSheet("background-color: black;");
-    pantallaTransicion->hide();
-    pantallaTransicion->setFixedSize(1920,1080);
-
-    // Damos opacidad 0 para que aparezca la pantalla y no se vea
-    this->efecto = new QGraphicsOpacityEffect(pantallaTransicion);
-    efecto->setOpacity(0);
-    pantallaTransicion->setGraphicsEffect(efecto);
-
-    // Animacion para que aparezca el fondo
-    this->iniciarTransicion = new QPropertyAnimation(efecto, "opacity");
-    iniciarTransicion->setStartValue(0.0); // opacidad inicial (completamente invisible)
-    iniciarTransicion->setEndValue(1.0); // opacidad final (completamente visible)
-
-    // Animacion para que desaparezca el fondo
-    this->terminarTransicion = new QPropertyAnimation(efecto, "opacity");
-    terminarTransicion->setStartValue(1.0); // opacidad inicial (completamente visible)
-    terminarTransicion->setEndValue(0.0); // opacidad final (completamente invisible)
-
-    // Conectamos el final de la animacion de inicio, con la de la animacion de final.
-    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::MidTransicion);
-    connect(terminarTransicion, &QAbstractAnimation::finished, this, &MainWindow::TerminarTransicion);
 }
 
 void MainWindow::PonerModoVentana()

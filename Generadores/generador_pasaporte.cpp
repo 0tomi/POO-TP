@@ -175,18 +175,13 @@ Pasaporte * Generar_pasaporte::crear_pasaporte(bool valido, char genero, int dif
 
     generar_camposValidos(valido,Probabilidades);
 
-    qDebug() << "Generando fecha " << campos_validos[0];
     QString fecha_generada = generar_fecha(this->campos_validos[0]);
-    qDebug() << "Generando nacionalidad " << campos_validos[1];
     QString nacionalidad_generada = generar_nacionalidad(this->campos_validos[1]);
-    qDebug() << "Generando Estado Civiles " << campos_validos[2];
     QString estado_civil_generado = generar_estado_civil(genero, this->campos_validos[2]);
-    qDebug() << "Generando Nombres ";
     QString nombre_generado = generar_nombre( genero);
 
     this->Pasaporte_generado = new Pasaporte(nombre_generado,fecha_generada,genero,nacionalidad_generada,estado_civil_generado);
     return this->Pasaporte_generado;
-
 }
 
 void Generar_pasaporte::restartReglas(ReglasNivel1 *newrules)

@@ -30,7 +30,7 @@ void Juego::PrepararJuego(int Reset)
     NivelActual = 1;
 
     // Test
-    Cola->addNPC(NivelActual,2,2,2,2, 1);
+    Cola->addNPC(NivelActual,1,1,0,1, 1);
     // setUpNivel1();
 
     // Seteamos las estadisticas del jugador.
@@ -99,6 +99,9 @@ void Juego::ResetJuego()
     CantidadNPCsRechazados = 0;
     CantidadNPCsAceptados = 0;
 
+    NivelActual = 1;
+
+    /// A futuro creamos nuevas reglas
     for (int i = 0; i < 5; i++)
         delete rules[i];
 

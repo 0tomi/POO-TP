@@ -9,7 +9,11 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     SetDificultadNivel();
 
     // Asignamos las reglas correspondientes
-    actualizarReglas(newRules);
+    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
+    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
+    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
+    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
+    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
 
     // Semilla para el generador
     quint32 Semilla = static_cast<quint32>(time(NULL));
@@ -77,6 +81,17 @@ void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
     reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
     reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
     reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
+
+    // Reset de reglas del generador de pasaporte
+    generadorPasaporte->restartReglas(reglasNivel1);
+
+    // Reset de reglas del generador de estancia
+    int maxVisitas, maxVisitasValidas;
+    QString* Visitas = datos->getVisitas(maxVisitas);
+    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
+    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
+    generadorEstancia->resetReglas(Visitas, maxVisitas, VisitasValidas, maxVisitasValidas,
+                                   reglasNivel1->getDuracionEstanciaPermitida());
 }
 
 void GeneradorDocumentacion::nextNivel(int Nivel)
@@ -95,7 +110,7 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
         MaxDocumentosInvalidos = NumeroRandom.bounded(1,3);
 
     // Lo repetimos hasta que nos genere la cantidad necesaria de documentos invalidos.
-    while (CantDocumentosInvalidos != MaxDocumentosInvalidos){
+    while (CantDocumentosInvalidos <= MaxDocumentosInvalidos){
         for (int i = 0; i < MaxDocumentos; i++){
             ValorCentinela = NumeroRandom.bounded(0,10);
             if (ValorCentinela < 4){

@@ -8,8 +8,9 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 {
     ui->setupUi(this);
 
+    juego = newJuego;
+
     // Seteamos el juego, y obtenemos la cola de NPCs.
-    juego = new Juego;
     ColaNPC* Cola = juego->getCola();
 
     temporizadorBotones.setSingleShot(true);
@@ -50,6 +51,7 @@ void GameScreen::EmpezarJuego()
 
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
+    GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
 }
 
@@ -64,6 +66,7 @@ void GameScreen::ReanudarJuego()
 {
     GestorNPC.Reanudar();
     tiempoPartida.start(tiempoRestante);
+    GestorNPC.CentrarNPC();
 }
 
 void GameScreen::RealizarConecciones()
