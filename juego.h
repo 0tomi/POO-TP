@@ -12,8 +12,7 @@ public:
     void setNivel(int nivel);
     void setDificultad(int dificultad);
     void NextLevel();
-    void ResetJuego();
-    void PrepararJuego(int Reset, int Dificultad = 2); // Modo normal por default
+    void PrepararJuego(bool Reset = false, int Nivel = 1, int Dificultad = 2); // Modo normal por default
 
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
@@ -23,12 +22,11 @@ public:
     void SetPartida(string DireccionPartida);
     void GuardarPartida();
 
+    // Evaluar acciones del jugador
+    void EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador);
+
     // Getters y setters de las estadisticas
     int getSocialCreditsEarnedInLevel() const;
-    void EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador);
-    void SumarSocialCredits(int TipoNPC);
-    void RestarSocialCredits(int TipoNPC);
-
     int getTotalSocialCredits() const;
 
     int getMultas() const;
@@ -44,6 +42,7 @@ public:
 
 private:
     int NivelActual;
+    void ResetJuego();
 
     // Partida guardada o a guardar
     string DireccionPartida;
@@ -54,6 +53,8 @@ private:
     int Multas;
     int CantidadNPCsRechazados;
     int CantidadNPCsAceptados;
+    void SumarSocialCredits(int TipoNPC);
+    void RestarSocialCredits(int TipoNPC);
 
     // Caracteristicas del nivel
     int MaxMultas;

@@ -55,6 +55,13 @@ void GameScreen::EmpezarJuego()
     GestorNPC.Entrar();
 }
 
+void GameScreen::PrepararJuego(bool Reset, int Nivel, int Dificultad)
+{
+    juego->PrepararJuego(Reset, Nivel, Dificultad);
+
+    // more stuff to do
+}
+
 void GameScreen::PausarJuego()
 {
     GestorNPC.Pausar();
