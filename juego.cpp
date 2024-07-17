@@ -17,6 +17,7 @@ Juego::Juego(){
     rules[4] = new ReglasNivel5(rules[3]);
 
     Cola = new ColaNPC(atributos, rules);
+    setDefaultStats();
 }
 
 void Juego::PrepararJuego(int Nivel, int Dificultad)

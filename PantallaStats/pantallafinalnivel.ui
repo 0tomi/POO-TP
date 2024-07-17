@@ -430,7 +430,7 @@
 background-color: rgb(170, 0, 0);</string>
            </property>
            <property name="text">
-            <string>Salir</string>
+            <string>Volver al Menu</string>
            </property>
            <property name="iconSize">
             <size>
