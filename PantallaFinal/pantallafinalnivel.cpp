@@ -19,12 +19,14 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo) {
     int cantNpcsAcept = juegoInfo->getCantidadNPCsAceptados();
     int cantNpcsRech = juegoInfo->getCantidadNPCsRechazados();
     int cantMultasObt = juegoInfo->getMultas();
-    int cantCredsSocsObt = juegoInfo->getSocialCreditsEarnedInLevel();
+    int cantCredsSocsObtDia = juegoInfo->getSocialCreditsEarnedInLevel();
+    int cantCredsSocsTot = juegoInfo->getTotalSocialCredits();
 
-    ui->cantAcept_label->setText(QString("%1").arg(cantNpcsAcept));
-    ui->cantRech_label->setText(QString("%1").arg(cantNpcsRech));
+    ui->cantPersAcept_label->setText(QString("%1").arg(cantNpcsAcept));
+    ui->cantPersRech_label->setText(QString("%1").arg(cantNpcsRech));
     ui->cantMultasObt_label->setText(QString("%1").arg(cantMultasObt));
-    ui->credsSocsObt_label->setText(QString("%1").arg(cantCredsSocsObt));
+    ui->credsSocsObtDia_label->setText(QString("%1").arg(cantCredsSocsObtDia));
+    ui->credsSocsTot_label->setText(QString("%1").arg(cantCredsSocsTot));
 
     // conecc.signal de salirBtn:
     connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::on_salir_clicked);
