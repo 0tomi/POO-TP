@@ -14,6 +14,8 @@ GenerarEstancia::GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString*
 
     duracMaximaEstancia = DuracMax;
 
+    ObtenerVisitasInvalidas();
+
     // Inicializamos la semilla del random
     quint32 Semilla = static_cast<quint32>(time(NULL));
     NumRandom.seed(Semilla);
@@ -33,6 +35,7 @@ void GenerarEstancia::resetReglas(QString *TiposVisitas, int TopeVisits, QString
     maxVisitasValidas = TopeVisitsVal;
 
     duracMaximaEstancia = DuracMax;
+    ObtenerVisitasInvalidas();
 }
 
 // getters:
@@ -56,6 +59,27 @@ Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
 
     Estancia* estanciaAGenerar = new Estancia(Duracion, TipoVisita);
     return estanciaAGenerar;
+}
+
+void GenerarEstancia::ObtenerVisitasInvalidas()
+{
+    // Buscamos las visitas invalidas, para no tener que calcularlas despues
+    bool NoValido;
+    int Indice = 0;
+    maxVisitasInvalidas = 0;
+    // Buscamos 1x1 los tipos de visitas que hay
+    for (int i = 0; i < maxTipoVisitas; i++){
+        NoValido = true;
+        for (int j = 0; j < maxVisitasInvalidas; j++)
+            // Si el tipo de visita valida coincide con el que estamos viendo, lo damos como valido.
+            if (tipoVisitasValidas[j] == tipoVisitas[i])
+                NoValido = false;
+        // Si es no valido, lo sumamos a nuestra lista de indices.
+        if (NoValido){
+            IndicesTiposVisitasInvalidas[Indice] = i;
+            maxVisitasInvalidas++; Indice++;
+        }
+    }
 }
 
 void GenerarEstancia::GenerarCamposValidos(int Probabilidad, bool Validez)
@@ -103,10 +127,9 @@ QString GenerarEstancia::GenerarVisita(bool validez)
         }
     } else {
         qDebug() << "Bucle de visita falsa";
-        do{ // Repetimos hasta colocar un tipo de visita invalida.
-            Sorteo = NumRandom.bounded(maxTipoVisitas);
-            Visita = tipoVisitas[Sorteo];
-        }while(!ComprobarInValidez(Visita));
+        Sorteo = NumRandom.bounded(maxVisitasInvalidas);
+        // Colocamos uno de los indices de visitas invalidas.
+        Visita = tipoVisitas[ IndicesTiposVisitasInvalidas[Sorteo] ];
     }
     return Visita;
 }
