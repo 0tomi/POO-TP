@@ -13,13 +13,14 @@ PasaporteUI::PasaporteUI(QWidget *parent)
     animacionSalida->setDuration(1300);
     animacionSalida->setEasingCurve(QEasingCurve::InQuad);
 }
-void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPC * npc) {
+void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPCGenericoUI * npc) {
     setStandby();
     ui->nombre->setText(pasaporte->getnombre());
     ui->fecha->setText(pasaporte->getfecha_nacimiento());
     ui->genero->setText(QString(pasaporte->getgenero()));
     ui->nacionalidad->setText(pasaporte->getnacionalidad());
     ui->estado_civil->setText(pasaporte->getestado_civil());
+    this->aux_npc = npc;
 }
 
 void PasaporteUI::setDocumentacionInfo(Documentacion *documento)
