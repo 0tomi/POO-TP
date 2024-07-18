@@ -19,8 +19,9 @@ class NPCUI : public QWidget
 public:
     explicit NPCUI(QWidget *parent = nullptr);
     virtual void setNPC(NPC* newNPCenEscena) = 0;
-    virtual void Entrar(int X, int Y);
-    virtual void Sacar(int X, int Y);
+    virtual void Centrar();
+    virtual void Entrar();
+    virtual void Sacar();
     virtual ~NPCUI();
 
 signals:
@@ -32,10 +33,10 @@ signals:
 
 protected:
     // Animaciones
-    void PrepararAnimacionEntrada(int X, int Y);
+    void PrepararAnimacionEntrada();
     QPropertyAnimation *animacionEntrada;
 
-    void PrepararAnimacionSalida(int X, int Y);
+    void PrepararAnimacionSalida();
     QPropertyAnimation *animacionSalida;
 
     // Termino animacion
@@ -44,7 +45,7 @@ protected:
     // Dialogos
     QTimer emitirDialogo;
     NPC* NPCrepresentado;
-
+    QWidget * padre;
 protected slots:
     void Hablar();  // Toca reworkear para futuros niveles
 

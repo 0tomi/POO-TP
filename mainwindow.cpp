@@ -176,6 +176,8 @@ void MainWindow::setInicio()
 /// ################################## PANTALLA DE PAUSA #############################################
 void MainWindow::PrepararPantallaPausa()
 {
+    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
+
     ArrancarTransicion(500);
     if (pantallas->currentWidget() == gameScreen)
         gameScreen->PausarJuego();
@@ -188,17 +190,12 @@ void MainWindow::PrepararSalirPantallaPausa()
 {
     ArrancarTransicion(500);
     connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
-
-    if (pantallas->currentWidget() == gameScreen)
-        gameScreen->ReanudarJuego();
 }
 
 void MainWindow::PonerPantallaPausa()
 {
     // Desconectamos la pantalla para poder usarla en otras cosas luego
     disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::PonerPantallaPausa);
-
-    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
     pantallas->setCurrentWidget(pantallaPausa);
 }
 
@@ -207,6 +204,8 @@ void MainWindow::VolverPantallaAnterior()
     // Desconectamos la pantalla para poder usarla en otras cosas luego
     disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
     pantallas->setCurrentIndex(PantallaPrevia);
+    if (pantallas->currentWidget() == gameScreen)
+        gameScreen->ReanudarJuego();
 }
 
 void MainWindow::PonerModoVentana()

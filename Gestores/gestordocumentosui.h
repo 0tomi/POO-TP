@@ -51,10 +51,6 @@ private:
     int topePerNPC;
     int topePerLevel;
 
-    void EntrarDocumento(DocumentosUI *doc);
-    void SalirDocumento(DocumentosUI *doc);
-    void CentrarDocumento(DocumentosUI *doc);
-
     void Termino();
     void setUpDocumento(DocumentosUI *doc);
 

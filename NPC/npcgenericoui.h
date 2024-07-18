@@ -21,8 +21,8 @@ public:
     ~NPCGenericoUI();
     void setNPC(NPC* newNPCenEscena) override;
     void Rechazado();
-    void Entrar(int X, int Y) override;
-    void Sacar(int X, int Y) override;
+    void Entrar() override;
+    void Sacar() override;
 
 private:
     Ui::NPCGenericoUI *ui;

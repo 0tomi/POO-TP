@@ -174,38 +174,30 @@ void GestorDocumentosUI::nextNivel(int nivel)
 void GestorDocumentosUI::Centrar()
 {
     if (tienePase)
-        CentrarDocumento(pase);
+        pase->Centrar();
 
     for (int i = 0; i < topePerLevel; i++)
         if (documentos[i] != nullptr)
-            CentrarDocumento(documentosUI[i]);
+            documentosUI[i]->Centrar();
 }
 
 void GestorDocumentosUI::Entrar()
 {
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
-            EntrarDocumento(documentosUI[i]);
+            documentosUI[i]->Entrar();
 
     if (tienePase)
-        EntrarDocumento(pase);
-}
-
-void GestorDocumentosUI::EntrarDocumento(DocumentosUI *doc)
-{
-    int centerX = ((Escritorio->width()) - (doc->width())) /2;
-    int centerY = (((Escritorio->height())) - (doc->height())) / 2;
-    Temporizador->start(900);
-    doc->Entrar(centerX,centerY);
+        pase->Entrar();
 }
 
 void GestorDocumentosUI::Salir()
 {
     if (tienePase)
-        SalirDocumento(pase);
+        pase->Sacar();
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
-            SalirDocumento(documentosUI[i]);
+            documentosUI[i]->Sacar();
 }
 
 void GestorDocumentosUI::DetenerAnimaciones()
@@ -227,20 +219,6 @@ void GestorDocumentosUI::Rechazar()
 {
     if (documentosUI[0] == pasaporteUI)
         pasaporteUI->setRechazado();
-}
-
-void GestorDocumentosUI::SalirDocumento(DocumentosUI *doc)
-{
-    int centerX = ((Escritorio->width()) - (doc->width())) / 2;
-    doc->Sacar(centerX);
-}
-
-void GestorDocumentosUI::CentrarDocumento(DocumentosUI *doc)
-{
-    int centerX = ((Escritorio->width()) - (doc->width())) /2;
-    int centerY = (((Escritorio->height())) - (doc->height())) / 2;
-
-    doc->Centrar(centerX,centerY);
 }
 
 void GestorDocumentosUI::Termino()
