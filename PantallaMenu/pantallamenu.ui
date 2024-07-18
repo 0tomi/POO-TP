@@ -16,8 +16,17 @@
     <height>1080</height>
    </size>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::RightToLeft</enum>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -59,101 +68,104 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>50</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <property name="spacing">
-             <number>40</number>
+           <widget class="QPushButton" name="botonCargar">
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>50</height>
+             </size>
             </property>
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
             </property>
-            <property name="topMargin">
-             <number>20</number>
+            <property name="text">
+             <string>JUGAR</string>
             </property>
-            <property name="bottomMargin">
-             <number>20</number>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonSettings">
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>50</height>
+             </size>
             </property>
-            <item>
-             <widget class="QPushButton" name="botonSalir">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Sans Serif</family>
-                <pointsize>22</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>JUGAR</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="botonJugar">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Sans Serif</family>
-                <pointsize>18</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>CARGAR PARTIDA</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="botonCargar">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Sans Serif</family>
-                <pointsize>18</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>CONFIGURACIÓN</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="botonSettings">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Sans Serif</family>
-                <pointsize>18</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>SALIR</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>15</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>CARGAR PARTIDA</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonSalir">
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>15</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>OPCIONES</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonJugar">
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>15</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>SALIR</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -169,13 +181,13 @@ border-image: url(:/Resources/escritorio2.png);
            <number>30</number>
           </property>
           <property name="leftMargin">
-           <number>0</number>
+           <number>50</number>
           </property>
           <property name="topMargin">
            <number>35</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>50</number>
           </property>
           <property name="bottomMargin">
            <number>35</number>
@@ -194,10 +206,17 @@ border-image: url(:/Resources/escritorio2.png);
               <height>0</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>50</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
               <pointsize>18</pointsize>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
@@ -207,16 +226,17 @@ border-image: url(:/Resources/escritorio2.png);
           </item>
           <item>
            <widget class="QPushButton" name="botonNormal">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>50</height>
+             </size>
             </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
               <pointsize>18</pointsize>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
@@ -226,16 +246,17 @@ border-image: url(:/Resources/escritorio2.png);
           </item>
           <item>
            <widget class="QPushButton" name="botonDemonio">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>50</height>
+             </size>
             </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
               <pointsize>18</pointsize>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
@@ -251,6 +272,12 @@ border-image: url(:/Resources/escritorio2.png);
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
@@ -258,13 +285,98 @@ border-image: url(:/Resources/escritorio2.png);
              </font>
             </property>
             <property name="text">
-             <string>VOLVER</string>
+             <string>Volver</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="descrdificultad"/>
+        <widget class="QWidget" name="descrdificultad">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="spacing">
+           <number>30</number>
+          </property>
+          <property name="leftMargin">
+           <number>50</number>
+          </property>
+          <property name="topMargin">
+           <number>35</number>
+          </property>
+          <property name="rightMargin">
+           <number>50</number>
+          </property>
+          <property name="bottomMargin">
+           <number>35</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="descripcion">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>10</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <property name="indent">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonStart">
+            <property name="maximumSize">
+             <size>
+              <width>250</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>19</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>JUGAR</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonVolver2">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Volver</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </item>
      </layout>
