@@ -13,8 +13,4 @@ PantallaMenu::~PantallaMenu()
     delete ui;
 }
 
-void PantallaMenu::on_botonCargar_clicked()
-{
-
-}
 
