@@ -8,12 +8,14 @@
 #include <QSpacerItem>
 #include <QPushButton>
 #include <QPixmap>
+#include <QStackedWidget>
 
 #include "../NPC/npcgenericoui.h"
 #include "../Documentos/uaderpass.h"
 #include "../Gestores/gestornpcsui.h"
 #include "../juego.h"
 #include "BotonesCustom.h"
+#include "libroreglas.h"
 
 
 namespace Ui {
@@ -55,11 +57,15 @@ private:
     BotonesCustom* BotonRechazar;
     BotonesCustom* BotonCentrar;
     QSpacerItem* EspaciadorBotones;
+    //QPushButton *BotonLibro;
+    //LibroReglas * libroReglas;
 
     void SpawnearBotones();
     void RealizarConecciones();
     void RealizarConeccionesPrincipales();
-    void Spawnear_libro();
+
+    //libro reglas
+    //void Spawnear_libro();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

@@ -71,6 +71,97 @@
       <property name="spacing">
        <number>0</number>
       </property>
+      <item row="0" column="0" rowspan="2">
+       <widget class="QWidget" name="FondoNPC" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>3</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>300</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>600</width>
+          <height>600</height>
+         </size>
+        </property>
+        <property name="sizeIncrement">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#FondoNPC{
+	border-image: url(:/Resources/fondoAlturas.png);
+}</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QWidget" name="Mesa" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+          <horstretch>1</horstretch>
+          <verstretch>2</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>300</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>600</width>
+          <height>600</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#Mesa{
+	border-image: url(:/Resources/mesa2.png);
+}</string>
+        </property>
+        <widget class="QWidget" name="libroreglas" native="true">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>180</y>
+           <width>51</width>
+           <height>91</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QWidget" name="Nose" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1350</width>
+          <height>400</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#Nose{
+	border-image: url(:/Resources/fondo.png);
+}</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="1" rowspan="2">
        <widget class="QWidget" name="Escritorio" native="true">
         <property name="sizePolicy">
@@ -128,12 +219,12 @@
              <height>200</height>
             </size>
            </property>
-           <widget class="QWidget" name="libroReglas_grande" native="true">
+           <widget class="QWidget" name="LibroReglasGrande" native="true">
             <property name="geometry">
              <rect>
-              <x>49</x>
-              <y>-91</y>
-              <width>391</width>
+              <x>69</x>
+              <y>-71</y>
+              <width>341</width>
               <height>271</height>
              </rect>
             </property>
@@ -157,97 +248,6 @@
           </widget>
          </item>
         </layout>
-       </widget>
-      </item>
-      <item row="0" column="0" rowspan="2">
-       <widget class="QWidget" name="FondoNPC" native="true">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-          <horstretch>3</horstretch>
-          <verstretch>1</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>300</width>
-          <height>300</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>600</width>
-          <height>600</height>
-         </size>
-        </property>
-        <property name="sizeIncrement">
-         <size>
-          <width>50</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">#FondoNPC{
-	border-image: url(:/Resources/fondoAlturas.png);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QWidget" name="Nose" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>400</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>1350</width>
-          <height>400</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">#Nose{
-	border-image: url(:/Resources/fondo.png);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QWidget" name="Mesa" native="true">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-          <horstretch>1</horstretch>
-          <verstretch>2</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>300</width>
-          <height>300</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>600</width>
-          <height>600</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">#Mesa{
-	border-image: url(:/Resources/mesa2.png);
-}</string>
-        </property>
-        <widget class="QWidget" name="libroreglas" native="true">
-         <property name="geometry">
-          <rect>
-           <x>230</x>
-           <y>180</y>
-           <width>51</width>
-           <height>91</height>
-          </rect>
-         </property>
-        </widget>
        </widget>
       </item>
      </layout>

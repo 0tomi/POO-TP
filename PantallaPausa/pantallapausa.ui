@@ -122,7 +122,7 @@ border-image: url(:/Resources/escritorio2.png);}</string>
          </sizepolicy>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="ActivarPantallaCompleta">
          <layout class="QVBoxLayout" name="verticalLayout_2">
