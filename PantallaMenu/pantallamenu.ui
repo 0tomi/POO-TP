@@ -68,7 +68,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -187,10 +187,10 @@ border-image: url(:/Resources/escritorio2.png);
            <number>35</number>
           </property>
           <property name="rightMargin">
-           <number>50</number>
+           <number>30</number>
           </property>
           <property name="bottomMargin">
-           <number>35</number>
+           <number>30</number>
           </property>
           <item>
            <widget class="QPushButton" name="botonFacil">
@@ -306,7 +306,7 @@ border-image: url(:/Resources/escritorio2.png);
            <number>50</number>
           </property>
           <property name="bottomMargin">
-           <number>35</number>
+           <number>40</number>
           </property>
           <item>
            <widget class="QLabel" name="descripcion">
