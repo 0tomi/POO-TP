@@ -64,12 +64,7 @@ void GestorDocumentosUI::setUpLevel1(int &Index)
 
 void GestorDocumentosUI::setUpLevel2(int &Index)
 {
-    // News del pais de residencia
-
-    Index++;
-    // News del proposito de viaje
-
-    Index++;
+    // A futuro vemos que va aca
 }
 
 void GestorDocumentosUI::setUpLevel3(int &Index)
@@ -79,8 +74,6 @@ void GestorDocumentosUI::setUpLevel3(int &Index)
     Index++;
 
     // Es probable que esto no sea un documento, sino que sea algo de dialogo
-
-    Index++;
 }
 
 void GestorDocumentosUI::setUpLevel4(int &Index)

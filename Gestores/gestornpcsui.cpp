@@ -33,7 +33,6 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
 
 void GestorNPCsUI::setUpNuevoNivel(int Nivel)
 {
-    RealizarConeccionesDeNPCs();
     GestorDocumentos.nextNivel(Nivel);
 }
 

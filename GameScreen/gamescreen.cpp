@@ -66,6 +66,8 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
     juego->PrepararJuego(Nivel, Dificultad);
     // more stuff to do
+    if (Nivel > 1)
+        GestorNPC.setUpNuevoNivel(Nivel);
 }
 
 void GameScreen::Restart()
