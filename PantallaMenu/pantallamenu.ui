@@ -88,7 +88,7 @@ border-image: url(:/Resources/escritorio2.png);
            <number>10</number>
           </property>
           <item>
-           <widget class="QPushButton" name="botonCargar">
+           <widget class="QPushButton" name="botonJugar">
             <property name="maximumSize">
              <size>
               <width>250</width>
@@ -108,7 +108,7 @@ border-image: url(:/Resources/escritorio2.png);
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="botonSettings">
+           <widget class="QPushButton" name="botonCargar">
             <property name="maximumSize">
              <size>
               <width>250</width>
@@ -128,7 +128,7 @@ border-image: url(:/Resources/escritorio2.png);
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="botonSalir">
+           <widget class="QPushButton" name="botonSettings">
             <property name="maximumSize">
              <size>
               <width>250</width>
@@ -148,7 +148,7 @@ border-image: url(:/Resources/escritorio2.png);
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="botonJugar">
+           <widget class="QPushButton" name="botonSalir">
             <property name="maximumSize">
              <size>
               <width>250</width>
