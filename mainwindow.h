@@ -7,6 +7,7 @@
 #include "juego.h"
 #include "PantallaPausa/pantallapausa.h"
 
+
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QKeyEvent>

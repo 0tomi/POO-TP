@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
 
+
     // Conectamos las señales del menu de pausa
     connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
     connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);
@@ -139,6 +140,7 @@ void MainWindow::CrearPantallasJuego()
     setCentralWidget(pantallas);
 
     // Creamos las pantallas del juego
+
     pantallaInicio = new PantallaInicio(this);
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
@@ -146,6 +148,7 @@ void MainWindow::CrearPantallasJuego()
     CrearPantallaTransicion();
 
     // Añadimos las pantallas al stack
+
     pantallas->addWidget(pantallaInicio);
     pantallas->addWidget(gameScreen);
     pantallas->addWidget(pantallaPausa);
