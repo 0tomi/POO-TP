@@ -1,4 +1,4 @@
-#ifndef GESTORDOCUMENTOSUI_H
+5#ifndef GESTORDOCUMENTOSUI_H
 #define GESTORDOCUMENTOSUI_H
 #include <QWidget>
 #include <QTimer>
@@ -22,7 +22,6 @@ public:
     void deleteDocumentos();
 
     void setDocumento(NPC* infoNPC);
-    void nextNivel(int nivel);
 
     void Centrar();
     void Entrar();

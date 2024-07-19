@@ -21,14 +21,14 @@ public:
     void addNPC(int Tipo, bool Validez);
     void addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
 
-    // A futuro para cuando tengamos NPCs especiales
-    void addNPC(int NivelActual, int CantAldeanos, int CantRefugiados, int CantDiplos, int CantRev, int CantEspeciales, int CantidadInvalidos);
-    void addSpecialNPC(string nombreNPC);
+    /// A futuro para cuando tengamos NPCs especiales
+    //void addNPC(int NivelActual, int CantAldeanos, int CantRefugiados, int CantDiplos, int CantRev, int CantEspeciales, int CantidadInvalidos);
+    //void addSpecialNPC(string nombreNPC);
 
     // Vaciar cola tiene que eliminar los NPCS restantes, junto con sus documentos y demas
     void vaciarCola();
     void actualizarReglas(Reglas** rules);
-    void nextNivel(int Nivel);
+    void setNivel(int Nivel);
     void setDificultad(int Dificultad);
 
     NPC* getNPC();

@@ -58,8 +58,8 @@ private:
     QSpacerItem* EspaciadorBotones;
 
     void SpawnearBotones();
-    void RealizarConecciones();
-    void RealizarConeccionesPrincipales();
+    void RealizarConexiones();
+    void RealizarConexionesPrincipales();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

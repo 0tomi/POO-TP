@@ -9,9 +9,7 @@
 class Juego{
 public:
     Juego();
-    void setNivel(int nivel);
     void setDificultad(int dificultad);
-    void NextLevel();
     void PrepararJuego(int Nivel = 1, int Dificultad = 2); // Modo normal por default
     void setDefaultStats();
 
@@ -43,8 +41,11 @@ public:
 
     int getNivelActual() const;
 
+    int getDificultad() const;
+
 private:
     int NivelActual;
+    int Dificultad;
 
     // Partida guardada o a guardar
     string DireccionPartida;
