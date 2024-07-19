@@ -3,7 +3,7 @@
 
 #include "pantallainicio.h"
 #include "GameScreen/gamescreen.h"
-#include "./PantallaFinal/pantallafinalnivel.h"
+#include "./PantallaStats/pantallafinalnivel.h"
 #include "juego.h"
 #include "PantallaPausa/pantallapausa.h"
 

@@ -61,31 +61,43 @@ border-image: url(:/Resources/escritorio2.png);
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QStackedWidget" name="menu">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
-          <width>356</width>
-          <height>440</height>
+          <width>300</width>
+          <height>399</height>
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
-           <number>5</number>
+           <number>6</number>
           </property>
           <property name="leftMargin">
-           <number>20</number>
+           <number>27</number>
           </property>
           <property name="topMargin">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>50</number>
+           <number>27</number>
           </property>
           <property name="bottomMargin">
-           <number>10</number>
+           <number>0</number>
           </property>
           <item>
            <widget class="QPushButton" name="botonJugar">
@@ -98,12 +110,16 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>22</pointsize>
+              <pointsize>27</pointsize>
               <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
-             <string>JUGAR</string>
+             <string>Jugar</string>
             </property>
            </widget>
           </item>
@@ -118,12 +134,16 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>15</pointsize>
-              <bold>true</bold>
+              <pointsize>27</pointsize>
+              <bold>false</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
-             <string>CARGAR PARTIDA</string>
+             <string>Cargar Partida</string>
             </property>
            </widget>
           </item>
@@ -138,12 +158,16 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>15</pointsize>
-              <bold>true</bold>
+              <pointsize>27</pointsize>
+              <bold>false</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
-             <string>OPCIONES</string>
+             <string>Opciones</string>
             </property>
            </widget>
           </item>
@@ -158,12 +182,112 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>15</pointsize>
-              <bold>true</bold>
+              <pointsize>27</pointsize>
+              <bold>false</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
-             <string>SALIR</string>
+             <string>Salir </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="cargar">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="botonPartida1">
+            <property name="maximumSize">
+             <size>
+              <width>282</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Partida guardada 1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonPartida2">
+            <property name="maximumSize">
+             <size>
+              <width>282</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Partida guardada 2</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonPartida3">
+            <property name="maximumSize">
+             <size>
+              <width>282</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Partida guardada 3</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonVolver3">
+            <property name="maximumSize">
+             <size>
+              <width>282</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Volver</string>
             </property>
            </widget>
           </item>
@@ -181,16 +305,16 @@ border-image: url(:/Resources/escritorio2.png);
            <number>30</number>
           </property>
           <property name="leftMargin">
-           <number>50</number>
+           <number>30</number>
           </property>
           <property name="topMargin">
-           <number>35</number>
+           <number>30</number>
           </property>
           <property name="rightMargin">
            <number>30</number>
           </property>
           <property name="bottomMargin">
-           <number>30</number>
+           <number>20</number>
           </property>
           <item>
            <widget class="QPushButton" name="botonFacil">
@@ -215,12 +339,16 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>18</pointsize>
-              <bold>true</bold>
+              <pointsize>27</pointsize>
+              <bold>false</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
-             <string>FÁCIL</string>
+             <string>Fácil</string>
             </property>
            </widget>
           </item>
@@ -235,12 +363,16 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>18</pointsize>
-              <bold>true</bold>
+              <pointsize>27</pointsize>
+              <bold>false</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1534;</string>
+            </property>
             <property name="text">
-             <string>NORMAL</string>
+             <string>Normal</string>
             </property>
            </widget>
           </item>
@@ -255,34 +387,52 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>18</pointsize>
+              <pointsize>24</pointsize>
               <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #330000;</string>
+            </property>
             <property name="text">
-             <string>MODO DEMONIO </string>
+             <string>Modo Demonio</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="botonVolver1">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>176</horstretch>
+              <verstretch>20</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>20</height>
+             </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>100</width>
-              <height>20</height>
+              <width>271</width>
+              <height>50</height>
              </size>
             </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>15</pointsize>
+              <pointsize>25</pointsize>
+              <bold>false</bold>
              </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
             </property>
             <property name="text">
              <string>Volver</string>
@@ -292,18 +442,24 @@ border-image: url(:/Resources/escritorio2.png);
          </layout>
         </widget>
         <widget class="QWidget" name="descrdificultad">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::DefaultContextMenu</enum>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="spacing">
-           <number>30</number>
+           <number>15</number>
           </property>
           <property name="leftMargin">
-           <number>50</number>
-          </property>
-          <property name="topMargin">
-           <number>35</number>
+           <number>24</number>
           </property>
           <property name="rightMargin">
-           <number>50</number>
+           <number>24</number>
           </property>
           <property name="bottomMargin">
            <number>40</number>
@@ -320,6 +476,12 @@ border-image: url(:/Resources/escritorio2.png);
              <size>
               <width>10</width>
               <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>500</height>
              </size>
             </property>
             <property name="layoutDirection">
@@ -347,12 +509,16 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>19</pointsize>
+              <pointsize>27</pointsize>
               <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
-             <string>JUGAR</string>
+             <string>Comenzar</string>
             </property>
            </widget>
           </item>
@@ -360,15 +526,19 @@ border-image: url(:/Resources/escritorio2.png);
            <widget class="QPushButton" name="botonVolver2">
             <property name="maximumSize">
              <size>
-              <width>100</width>
-              <height>20</height>
+              <width>250</width>
+              <height>50</height>
              </size>
             </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>15</pointsize>
+              <pointsize>25</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532</string>
             </property>
             <property name="text">
              <string>Volver</string>
