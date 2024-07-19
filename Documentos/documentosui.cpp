@@ -35,10 +35,29 @@ void DocumentosUI::Entrar()
     this->animacionEntrada->start();
 }
 
+void DocumentosUI::PrepararAnimacionEntrada()
+{
+    if (animacionEntrada->state() == QAbstractAnimation::Paused)
+        animacionEntrada->stop();
+
+    int centerX = ((padre->width()) - (width())) /2;
+    int centerY = (((padre->height())) - (height())) / 2;
+
+    animacionEntrada->setStartValue(QPoint(centerX,-500));
+    animacionEntrada->setEndValue(QPoint(centerX,centerY));
+}
+
 void DocumentosUI::Sacar()
 {
     this->PrepararAnimacionSalida();
     this->animacionSalida->start();
+}
+
+void DocumentosUI::PrepararAnimacionSalida()
+{
+    int centerX = ((padre->width()) - (width())) / 2;
+    animacionSalida->setStartValue(this->pos());
+    animacionSalida->setEndValue(QPoint(centerX,-500));
 }
 
 DocumentosUI::~DocumentosUI()
@@ -66,25 +85,6 @@ void DocumentosUI::PausarAnimacionCentrar()
 {
     if (animacionCentrar->state() == QAbstractAnimation::Running)
         animacionCentrar->pause();
-}
-
-void DocumentosUI::PrepararAnimacionEntrada()
-{
-    if (animacionEntrada->state() == QAbstractAnimation::Paused)
-        animacionEntrada->stop();
-
-    int centerX = ((padre->width()) - (width())) /2;
-    int centerY = (((padre->height())) - (height())) / 2;
-
-    animacionEntrada->setStartValue(QPoint(centerX,-500));
-    animacionEntrada->setEndValue(QPoint(centerX,centerY));
-}
-
-void DocumentosUI::PrepararAnimacionSalida()
-{
-    int centerX = ((padre->width()) - (width())) / 2;
-    animacionSalida->setStartValue(this->pos());
-    animacionSalida->setEndValue(QPoint(centerX,-500));
 }
 
 void DocumentosUI::mousePressEvent(QMouseEvent *event) {
