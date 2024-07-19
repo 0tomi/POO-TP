@@ -19,6 +19,8 @@ public:
     void Iniciar(bool Perdio);
     ~PantallaPerdiste();
 
+    bool getMostrandoPantalla() const;
+
 signals:
     void MidAnimacion();
     void AnimacionTermino();
@@ -28,7 +30,9 @@ private slots:
     void FinalizoAnimacion();
 
 private:
+    bool MostrandoPantalla;
     Ui::PantallaPerdiste *ui;
+    QWidget * padre;
     QTimer TiempoVisualizacion;
     QPropertyAnimation * inicio;
     QPropertyAnimation * final;

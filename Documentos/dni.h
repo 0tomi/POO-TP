@@ -2,7 +2,7 @@
 #define DNI_H
 #include "../Documentos/documentosui.h"
 #include "../Documentos/pasaporte.h"
-#include "../NPC/npcui.h"
+#include "../NPC/npcgenericoui.h"
 #include <QWidget>
 
 namespace Ui {
@@ -20,7 +20,7 @@ public:
     void setDocumentacionInfo(Documentacion *documento) override;
 private:
     Ui::DNI *ui;
-    NPCUI* NPCenDocumento;
+    NPCGenericoUI * NPCenDoc;
 };
 
 #endif // DNI_H

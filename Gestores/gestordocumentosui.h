@@ -22,7 +22,6 @@ public:
     void deleteDocumentos();
 
     void setDocumento(NPC* infoNPC);
-    void nextNivel(int nivel);
 
     void Centrar();
     void Entrar();
@@ -51,19 +50,15 @@ private:
     int topePerNPC;
     int topePerLevel;
 
-    void EntrarDocumento(DocumentosUI *doc);
-    void SalirDocumento(DocumentosUI *doc);
-    void CentrarDocumento(DocumentosUI *doc);
-
     void Termino();
     void setUpDocumento(DocumentosUI *doc);
 
     // Setup de niveles
-    void setUpLevel1(int &Index);
-    void setUpLevel2(int &Index);
-    void setUpLevel3(int &Index);
-    void setUpLevel4(int &Index);
-    void setUpLevel5(int &Index);
+    void setUpLevel1();
+    void setUpLevel2();
+    void setUpLevel3();
+    void setUpLevel4();
+    void setUpLevel5();
 };
 
 #endif // GESTORDOCUMENTOSUI_H

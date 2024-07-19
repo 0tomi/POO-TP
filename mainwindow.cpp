@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
 
     // Conectamos la pantalla de estadisticas con lo demas
-    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::VolverInicio);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::TransicionJuego);
     connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
     connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
 }
@@ -107,12 +107,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 /// ################################## PANTALLA DE JUEGO #############################################
 
-void MainWindow::TransicionJuego()
+void MainWindow::TransicionJuego(int Nivel, int Dificultad)
 {
     ArrancarTransicion(1000);
 
     // A futuro cambiar por los inputos de los botones.
-    gameScreen->PrepararJuego();
+    gameScreen->PrepararJuego(Nivel, Dificultad);
 
     // Conectamos el final de la primer animacion, con la preparacion del juego
     connect(iniciarTransicion, &QPropertyAnimation::finished, this, &MainWindow::PrepararJuego);
@@ -176,6 +176,8 @@ void MainWindow::setInicio()
 /// ################################## PANTALLA DE PAUSA #############################################
 void MainWindow::PrepararPantallaPausa()
 {
+    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
+
     ArrancarTransicion(500);
     if (pantallas->currentWidget() == gameScreen)
         gameScreen->PausarJuego();
@@ -188,17 +190,12 @@ void MainWindow::PrepararSalirPantallaPausa()
 {
     ArrancarTransicion(500);
     connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
-
-    if (pantallas->currentWidget() == gameScreen)
-        gameScreen->ReanudarJuego();
 }
 
 void MainWindow::PonerPantallaPausa()
 {
     // Desconectamos la pantalla para poder usarla en otras cosas luego
     disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::PonerPantallaPausa);
-
-    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
     pantallas->setCurrentWidget(pantallaPausa);
 }
 
@@ -207,6 +204,8 @@ void MainWindow::VolverPantallaAnterior()
     // Desconectamos la pantalla para poder usarla en otras cosas luego
     disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
     pantallas->setCurrentIndex(PantallaPrevia);
+    if (pantallas->currentWidget() == gameScreen)
+        gameScreen->ReanudarJuego();
 }
 
 void MainWindow::PonerModoVentana()

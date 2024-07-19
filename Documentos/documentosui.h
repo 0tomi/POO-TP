@@ -19,10 +19,10 @@ class DocumentosUI : public QWidget
 public:
     explicit DocumentosUI(QWidget *parent = nullptr);
     virtual void setDocumentacionInfo(Documentacion *documento) = 0;
-    void Entrar(int X, int Y);
-    void Sacar(int X);
-    void Centrar(int X, int Y);
-    void PausarAnimacionCentrar();
+    virtual void Entrar();
+    virtual void Sacar();
+    virtual void Centrar();
+    virtual void PausarAnimacionCentrar();
     ~DocumentosUI();
 
 signals:
@@ -34,10 +34,10 @@ protected:
 
     // Animaciones
     QPropertyAnimation *animacionEntrada;
-    void PrepararAnimacionEntrada(int X, int Y);
+    void PrepararAnimacionEntrada();
 
     QPropertyAnimation *animacionSalida;
-    void PrepararAnimacionSalida(int X);
+    void PrepararAnimacionSalida();
 
     // Mover en caso de hacer click
     void mousePressEvent(QMouseEvent *event) override;
@@ -46,6 +46,7 @@ protected:
 
 private:
     Ui::DocumentosUI *ui;
+    QWidget * padre;
 };
 
 #endif // DOCUMENTOSUI_H

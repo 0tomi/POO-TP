@@ -16,7 +16,7 @@ public:
     GeneradorDocumentacion(AtributosComunes* datos, Reglas** rules); // en ultima instancia se le puede pasar la clase NPC pero no esta definida
     void getDocumentos(NPC* info, bool validez);
     void actualizarReglas(Reglas** rules);
-    void nextNivel(int Nivel);
+    void setNivel(int Nivel);
     void setDificultad(int Dificultad);
     ~GeneradorDocumentacion();
 

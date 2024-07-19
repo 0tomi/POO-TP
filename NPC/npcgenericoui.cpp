@@ -48,19 +48,19 @@ void NPCGenericoUI::Rechazado()
     ui->Ojos->setPixmap(ojosCerrados);
 }
 
-void NPCGenericoUI::Entrar(int X, int Y)
+void NPCGenericoUI::Entrar()
 {
     setearParpadear(false);
-    NPCUI::Entrar(X,Y);
+    NPCUI::Entrar();
 }
 
-void NPCGenericoUI::Sacar(int X, int Y)
+void NPCGenericoUI::Sacar()
 {
     // Desconectamos el parpadeo anterior para setear uno nuevo
     disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
     parpadeo.stop();
 
-    NPCUI::Sacar(X,Y);
+    NPCUI::Sacar();
 }
 
 void NPCGenericoUI::Parpadear()

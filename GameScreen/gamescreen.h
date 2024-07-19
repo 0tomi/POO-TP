@@ -28,6 +28,7 @@ public:
     ~GameScreen();
     void EmpezarJuego();
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
+    /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas
     void Restart();
     void Centrar();
 
@@ -58,8 +59,8 @@ private:
     QSpacerItem* EspaciadorBotones;
 
     void SpawnearBotones();
-    void RealizarConecciones();
-    void RealizarConeccionesPrincipales();
+    void RealizarConexiones();
+    void RealizarConexionesPrincipales();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();
