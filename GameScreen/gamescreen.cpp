@@ -223,9 +223,12 @@ void GameScreen::SelloDocumento(bool Boton)
 void GameScreen::changeEvent(QEvent *event)
 {
     QWidget::changeEvent(event);
-    if (event->type() == QEvent::WindowStateChange)
+    if (event->type() == QEvent::WindowStateChange){
         if (GestorNPC.MostrandoElNPC())
             GestorNPC.Centrar();
+        if (pantallaPerdiste->getMostrandoPantalla())
+            pantallaPerdiste->setFixedSize(width(), height());
+    }
 }
 
 void GameScreen::resizeEvent(QResizeEvent *event)
@@ -234,6 +237,8 @@ void GameScreen::resizeEvent(QResizeEvent *event)
     QWidget::resizeEvent(event);
     if (GestorNPC.MostrandoElNPC())
         GestorNPC.Centrar();
+    if (pantallaPerdiste->getMostrandoPantalla())
+        pantallaPerdiste->setFixedSize(width(), height());
 }
 
 

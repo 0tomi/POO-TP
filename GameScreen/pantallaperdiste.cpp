@@ -6,6 +6,9 @@ PantallaPerdiste::PantallaPerdiste(QWidget *parent)
     , ui(new Ui::PantallaPerdiste)
 {
     ui->setupUi(this);
+    padre = parent;
+    MostrandoPantalla = false;
+
     opacityEffect = new QGraphicsOpacityEffect(ui->stackedWidget);
     ui->stackedWidget->setGraphicsEffect(opacityEffect);
     TiempoVisualizacion.setSingleShot(true);
@@ -25,6 +28,8 @@ PantallaPerdiste::PantallaPerdiste(QWidget *parent)
 
 void PantallaPerdiste::Iniciar(bool Perdio)
 {
+    setFixedSize(padre->width(), padre->height());
+    MostrandoPantalla = true;
     opacityEffect->setOpacity(0.0);
     ui->stackedWidget->setGraphicsEffect(opacityEffect);
 
@@ -56,5 +61,11 @@ void PantallaPerdiste::ArrancarFinal()
 void PantallaPerdiste::FinalizoAnimacion()
 {
     hide();
+    MostrandoPantalla = false;
     emit AnimacionTermino();
+}
+
+bool PantallaPerdiste::getMostrandoPantalla() const
+{
+    return MostrandoPantalla;
 }

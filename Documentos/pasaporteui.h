@@ -25,7 +25,7 @@ public:
     void setRechazado();
 private:
     Ui::PasaporteUI *ui;
-    NPCGenericoUI * aux_npc;
+    NPCGenericoUI * NPCenDoc;
 };
 
 #endif // PASAPORTEUI_H

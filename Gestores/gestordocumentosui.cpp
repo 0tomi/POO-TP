@@ -13,6 +13,8 @@ GestorDocumentosUI::GestorDocumentosUI()
         documentos[i] = nullptr;
     for (int i = 0; i < 10; i++)
         documentosUI[i] = nullptr;
+
+    pase = nullptr;
 }
 
 GestorDocumentosUI::~GestorDocumentosUI()
@@ -33,91 +35,79 @@ void GestorDocumentosUI::setUp(int Level, QWidget *objeto)
 
 void GestorDocumentosUI::setUpNivel(int nivel)
 {
-    int Index = 0;
-    setUpLevel1(Index);
+    setUpLevel1();
     if (nivel >= 2)
-        setUpLevel2(Index);
+        setUpLevel2();
     if (nivel >= 3)
-        setUpLevel3(Index);
+        setUpLevel3();
     if (nivel >= 4)
-        setUpLevel4(Index);
+        setUpLevel4();
     if (nivel >= 5)
-        setUpLevel5(Index);
+        setUpLevel5();
 }
-void GestorDocumentosUI::nextNivel(int nivel)
+
+void GestorDocumentosUI::setUpLevel1()
 {
-    int Index;
-    switch(nivel){
-    case 2: Index = 2;
-        setUpLevel2(Index);
-        break;
-    case 3:
-        Index = 4;
-        setUpLevel2(Index);
-        break;
-    case 4:
-        Index = 6;  // ############################# CAMBIAR A FUTURO ######################
-        setUpLevel2(Index);
-        break;
-    case 5:
-        Index = 8;
-        setUpLevel2(Index);
-        break;
+    this->topePerLevel = 2;
+    int Index = 0;
+    if (pase == nullptr){
+        // New del uader pass (pase diplomatico)
+        pase = new UADERpass(Escritorio);
+        setUpDocumento(pase);
+
+        // New al pasaporte, dni
+        pasaporteUI = new PasaporteUI(Escritorio);
+        dniUI = new DNI(Escritorio);
+        setUpDocumento(pasaporteUI);
+        setUpDocumento(dniUI);
+        Index++;
+
+        // New de estancia
+        documentosUI[Index] = new estanciaUI(Escritorio);
+        setUpDocumento(documentosUI[Index]);
+        Index++;
     }
 }
 
-void GestorDocumentosUI::setUpLevel1(int &Index)
-{
-    this->topePerLevel = 2;
-    // New del uader pass (pase diplomatico)
-    pase = new UADERpass(Escritorio);
-    setUpDocumento(pase);
-
-    // New al pasaporte, dni
-    pasaporteUI = new PasaporteUI(Escritorio);
-    dniUI = new DNI(Escritorio);
-    setUpDocumento(pasaporteUI);
-    setUpDocumento(dniUI);
-    Index++;
-
-    // New de estancia
-    documentosUI[Index] = new estanciaUI(Escritorio);
-    setUpDocumento(documentosUI[Index]);
-    Index++;
-}
-
-void GestorDocumentosUI::setUpLevel2(int &Index)
+void GestorDocumentosUI::setUpLevel2()
 {
     // A futuro vemos que va aca
     this->topePerLevel = 3;
-    Index++;
+    int Index = 2;
+    if (documentosUI[Index] == nullptr){
+        // Aca iria el setup para el pais de residencia
+    }
 }
 
-void GestorDocumentosUI::setUpLevel3(int &Index)
+void GestorDocumentosUI::setUpLevel3()
 {
     this->topePerLevel = 4;
-    // News del documento para saber si la persona viaja sola o con otros integrantes
-
-    Index++;
-
-    // Es probable que esto no sea un documento, sino que sea algo de dialogo
+    int Index = 3;
+    if (documentosUI[Index] == nullptr){
+        // Aca iria el setup para la lista de acompaniantes
+    }
 }
 
-void GestorDocumentosUI::setUpLevel4(int &Index)
+void GestorDocumentosUI::setUpLevel4()
 {
-    this->topePerLevel = 4;
-    // Aca iria rework de la estancia
+    this->topePerLevel = 5;
+    int Index = 4;
+    if (documentosUI[Index] == nullptr){
+        // Aca iria el setup para el nuevo Doc Estancia
+    }
 }
 
-void GestorDocumentosUI::setUpLevel5(int &Index)
+void GestorDocumentosUI::setUpLevel5()
 {
-    this->topePerLevel = 6;
-    // new Verificacion de antecedentes
+    this->topePerLevel = 7;
+    int Index = 5;
+    if (documentosUI[Index] == nullptr){
+        // new Verificacion de antecedentes
 
-    Index++;
-    // new Busqueda elementos prohibidos
+        Index++;
+        // new Busqueda elementos prohibidos
 
-    Index++;
+    }
 }
 
 void GestorDocumentosUI::deleteDocumentos()

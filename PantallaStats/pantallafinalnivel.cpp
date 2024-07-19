@@ -76,7 +76,7 @@ void PantallaFinalNivel::onSigNivelClicked() {
 
 void PantallaFinalNivel::onReintentarClicked()
 {
-    emit reintentarClicked();
+    emit reintentarClicked(1, Dificultad);
 }
 
 // metodos extra

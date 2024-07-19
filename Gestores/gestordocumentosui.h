@@ -1,4 +1,4 @@
-5#ifndef GESTORDOCUMENTOSUI_H
+#ifndef GESTORDOCUMENTOSUI_H
 #define GESTORDOCUMENTOSUI_H
 #include <QWidget>
 #include <QTimer>
@@ -54,11 +54,11 @@ private:
     void setUpDocumento(DocumentosUI *doc);
 
     // Setup de niveles
-    void setUpLevel1(int &Index);
-    void setUpLevel2(int &Index);
-    void setUpLevel3(int &Index);
-    void setUpLevel4(int &Index);
-    void setUpLevel5(int &Index);
+    void setUpLevel1();
+    void setUpLevel2();
+    void setUpLevel3();
+    void setUpLevel4();
+    void setUpLevel5();
 };
 
 #endif // GESTORDOCUMENTOSUI_H

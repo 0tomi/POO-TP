@@ -22,7 +22,7 @@ public:
 signals:
     void salirClicked();
     void sigNivelClicked(int NextLevel, int Dificultad);
-    void reintentarClicked();
+    void reintentarClicked(int NextLevel, int Dificultad);
 
 private slots:
     void onSalirClicked();

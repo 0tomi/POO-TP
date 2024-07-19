@@ -28,11 +28,20 @@
      <height>410</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Bell MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/Resources/Documentos/PasaportePlaceHolder.png);</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="nombre">
@@ -40,12 +49,21 @@
     <rect>
      <x>34</x>
      <y>240</y>
-     <width>101</width>
+     <width>251</width>
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Bell MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Nombre</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="fecha">
@@ -57,8 +75,17 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Bell MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Fecha</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="nacionalidad">
@@ -70,8 +97,17 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Bell MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Pais</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="genero">
@@ -83,8 +119,17 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Bell MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Genero</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="estado_civil">
@@ -96,8 +141,17 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Bell MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Estado</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QStackedWidget" name="stackedWidget">
@@ -149,6 +203,16 @@
      </property>
     </widget>
    </widget>
+  </widget>
+  <widget class="QWidget" name="NPC" native="true">
+   <property name="geometry">
+    <rect>
+     <x>34</x>
+     <y>267</y>
+     <width>120</width>
+     <height>120</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>
