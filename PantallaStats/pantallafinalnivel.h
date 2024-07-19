@@ -21,7 +21,7 @@ public:
     void guardarPartida();
 signals:
     void salirClicked();
-    void sigNivelClicked();
+    void sigNivelClicked(int NextLevel, int Dificultad);
     void reintentarClicked();
 
 private slots:
@@ -33,6 +33,8 @@ private:
     Ui::PantallaFinalNivel *ui;
     const QString COLOR_ROJO = "color: rgb(255, 0, 0);";
     const QString COLOR_BLANCO = "color: rgb(255, 255, 255);";
+    int NivelActual;
+    int Dificultad;
 };
 
 #endif // PANTALLAFINALNIVEL_H

@@ -41,6 +41,8 @@ public:
 
     int getMaxMultas() const;
 
+    int getNivelActual() const;
+
 private:
     int NivelActual;
 

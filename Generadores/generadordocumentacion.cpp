@@ -2,6 +2,7 @@
 #include <ctime>
 #include <QDebug>
 
+/// #################################### CONSTRUCTOR ###################################################
 GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas **newRules)
 {
     NivelActual = 1;
@@ -44,6 +45,28 @@ GeneradorDocumentacion::~GeneradorDocumentacion()
     delete generadorEstancia;
 }
 
+/// #################################### ACTUALIZAR REGLAS ###################################################
+void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
+{
+    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
+    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
+    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
+    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
+    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
+
+    // Reset de reglas del generador de pasaporte
+    generadorPasaporte->restartReglas(reglasNivel1);
+
+    // Reset de reglas del generador de estancia
+    int maxVisitas, maxVisitasValidas;
+    QString* Visitas = datos->getVisitas(maxVisitas);
+    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
+    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
+    generadorEstancia->resetReglas(Visitas, maxVisitas, VisitasValidas, maxVisitasValidas,
+                                   reglasNivel1->getDuracionEstanciaPermitida());
+}
+
+/// #################################### GETTERS ###################################################
 void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
 {
     // Index va a ser quien se encargue de decirle a NPC donde guardar los documentos (segun el tipo)
@@ -74,37 +97,55 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     }
 }
 
-void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
+/// #################################### GENERADORES SEGUN NIVEL ############################################
+/// La estructura para añadir un documento nuevo al generador es la siguiente, una vez se haya seteado su
+/// new en el constructor, y su actualizacion de reglas en el actualizarReglas, van al respectivo nivel que
+/// se debe utilizar el generador y usan la siguiente sintaxis:
+///
+/// Documento * nuevoDocumento = generadorDocumento->getDocumento(parametros requeridos)
+/// NPC2Generate->addDocumento(nuevoDocumento, Index);
+///
+/// Y dejan el Index++ de abajo para tener los generadores coordinados. Obvivamente en Documento lo
+/// cambian por el documento respectivo que estan queriendo añadir.
+/// #########################################################################################################
+void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
-    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
-    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
-    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
-    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
-    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
+    // Generador de pasaportes - DNI
+    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], NPC2Generate->getGenero(), DificultadJuego);
+    NPC2Generate->addDocumento(nuevoPasaporte, Index);
+    Index++;
 
-    // Reset de reglas del generador de pasaporte
-    generadorPasaporte->restartReglas(reglasNivel1);
-
-    // Reset de reglas del generador de estancia
-    int maxVisitas, maxVisitasValidas;
-    QString* Visitas = datos->getVisitas(maxVisitas);
-    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
-    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
-    generadorEstancia->resetReglas(Visitas, maxVisitas, VisitasValidas, maxVisitasValidas,
-                                   reglasNivel1->getDuracionEstanciaPermitida());
+    // Generador de Estancias
+    Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index], DificultadJuego);
+    NPC2Generate->addDocumento(nuevaEstancia, Index);
+    Index++;
 }
 
-void GeneradorDocumentacion::nextNivel(int Nivel)
+void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
-    NivelActual = Nivel;
-    SetDificultadNivel();
+    // Generador de Residencia
+    Index++;
 }
 
-void GeneradorDocumentacion::setDificultad(int Dificultad)
+void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
-    DificultadJuego = Dificultad;
+    // Generador de Lista de Acompañantes
+    Index++;
 }
 
+void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
+{
+    // Nuevo documento de estancia
+    Index++;
+}
+
+void GeneradorDocumentacion::GenerarDocumentosNivel5(int &Index)
+{
+    // Xray y Antecedentes
+    Index++; //Y otro index++ por si hacemos los antecedentes.
+}
+
+/// #################################### DOCUMENTOS INVALIDOS ###################################################
 void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
 {
     int CantDocumentosInvalidos = 0;
@@ -128,6 +169,18 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
     }
 }
 
+/// #################################### SETTERS ###################################################
+void GeneradorDocumentacion::setNivel(int Nivel)
+{
+    NivelActual = Nivel;
+    SetDificultadNivel();
+}
+
+void GeneradorDocumentacion::setDificultad(int Dificultad)
+{
+    DificultadJuego = Dificultad;
+}
+
 void GeneradorDocumentacion::SetDificultadNivel()
 {
     switch (NivelActual) {
@@ -136,53 +189,20 @@ void GeneradorDocumentacion::SetDificultadNivel()
         MaxDocumentosInvalidos = 1;
         break;
     case 2:
-        MaxDocumentos = 4;
+        MaxDocumentos = 3;
         MaxDocumentosInvalidos = 2;
         break;
     case 3:
-        MaxDocumentos = 6;
-        MaxDocumentosInvalidos = 3;
+        MaxDocumentos = 4;
+        MaxDocumentosInvalidos = 2;
         break;
     case 4:
-        MaxDocumentos = 8;
-        MaxDocumentosInvalidos = 4;
+        MaxDocumentos = 4;
+        MaxDocumentosInvalidos = 3;
         break;
     default:
-        MaxDocumentos = 10;
+        MaxDocumentos = 6;
         MaxDocumentosInvalidos = 2;
         break;
     }
-}
-
-void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
-{
-    // Generador de pasaportes - DNI
-    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], NPC2Generate->getGenero(), DificultadJuego);
-    NPC2Generate->addDocumento(nuevoPasaporte, Index);
-    Index++;
-
-    // Generador de Estancias
-    Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index], DificultadJuego);
-    NPC2Generate->addDocumento(nuevaEstancia, Index);
-    Index++;
-}
-
-void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
-{
-
-}
-
-void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
-{
-
-}
-
-void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
-{
-
-}
-
-void GeneradorDocumentacion::GenerarDocumentosNivel5(int &Index)
-{
-
 }

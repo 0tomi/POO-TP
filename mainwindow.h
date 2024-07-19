@@ -32,7 +32,7 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 private slots:
-    void TransicionJuego();
+    void TransicionJuego(int Nivel = 1, int Dificultad = 2);
     void PrepararJuego();
     void IniciarJuego();
     void PrepararPantallaFinalNivel(bool Perdio);
