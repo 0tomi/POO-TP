@@ -57,6 +57,7 @@ void PantallaMenu::botonFacilclicked()
     ui->menu->setCurrentWidget(ui->descrdificultad);
     ui->descripciones->setCurrentIndex(0);
     dificultad=1;
+    modo="Facil";
     emit clickedFacil();
 }
 
@@ -66,6 +67,7 @@ void PantallaMenu::botonNormalclicked()
     ui->menu->setCurrentWidget(ui->descrdificultad);
     ui->descripciones->setCurrentWidget(ui->page2);
     dificultad=2;
+    modo="Normal";
     emit clickedNormal();
 }
 
@@ -75,6 +77,7 @@ void PantallaMenu::botonDemonioclicked()
     ui->menu->setCurrentWidget(ui->descrdificultad);
     ui->descripciones->setCurrentWidget(ui->page3);
     dificultad=3;
+    modo="Demonio";
     emit clickedDemonio();
 }
 
@@ -117,7 +120,7 @@ ui->menu->setCurrentWidget(ui->pprincipal);
 
 void PantallaMenu::botonStartclicked()
 {
-    emit clickedStart(dificultad);
-    qDebug() << "dificultad"<<dificultad;
+    emit clickedStart(dificultad, modo);
+    qDebug() << "dificultad"<<dificultad<<"modo "<<modo;
 }
 
