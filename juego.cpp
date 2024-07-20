@@ -2,6 +2,7 @@
 #include "juego.h"
 #include <QDebug>
 
+/// #################################### CONSTRUCTOR ###################################################
 Juego::Juego(){
     this->atributos = new AtributosComunes();
 
@@ -20,22 +21,56 @@ Juego::Juego(){
     setDefaultStats();
 }
 
+/// #################################### PREPRARAR JUEGO ###################################################
 void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
     NivelActual = Nivel;
 
-    // Test
+    // Colocamos la dificultad
     setDificultad(Dificultad);
     Cola->setDificultad(Dificultad);
 
-    // El else vendra cuando implementemos las partidas guardadas
-    if (Nivel < 2) {
-        /// Aca iria setNPClvl1, pero por test lo dejamos asi.
-        Cola->addNPC(NivelActual,1,1,0,1, 3);
+    // Reseteamos la cantidad ganada en el nivel
+    this->SocialCreditsEarnedInLevel = 0;
 
-    }   /// Else para cargar partidas guardadas
+    // El else vendra cuando implementemos las partidas guardadas
+    switch (Nivel) {
+    case 1: setUpNivel1();
+        break;
+    case 2: setUpNivel2();
+        break;
+    case 3: setUpNivel3();
+        break;
+    case 4: setUpNivel4();
+        break;
+    default: setUpNivel5();
+        break;
+        }
 }
 
+void Juego::setDificultad(int dificultad)
+{
+    this->Dificultad = dificultad;
+    switch (dificultad){
+    // Modo facil
+    case 1: MaxMultas = 6;
+        BonificadorPerderCreditosDificultad = 0.5;
+        BonificadorGanarCreditosDificultad = 1.5;
+        break;
+    // Modo DEMONIO
+    case 3: MaxMultas = 2;
+        BonificadorPerderCreditosDificultad = 1.5;
+        BonificadorGanarCreditosDificultad = 0.5;
+        break;
+    // Modo Normal
+    default:MaxMultas = 4;
+        BonificadorPerderCreditosDificultad = 1;
+        BonificadorGanarCreditosDificultad = 1;
+        break;
+    }
+}
+
+/// #################################### RESET JUEGO ###################################################
 void Juego::setDefaultStats()
 {
     // Seteamos las estadisticas del jugador.
@@ -61,67 +96,7 @@ void Juego::ResetJuego()
     Cola->actualizarReglas(rules);
 }
 
-void Juego::setDificultad(int dificultad)
-{
-    switch (dificultad){
-    // Modo facil
-    case 1: MaxMultas = 6;
-        BonificadorPerderCreditosDificultad = 0.5;
-        BonificadorGanarCreditosDificultad = 1.5;
-        break;
-    // Modo DEMONIO
-    case 3: MaxMultas = 2;
-        BonificadorPerderCreditosDificultad = 1.5;
-        BonificadorGanarCreditosDificultad = 0.5;
-        break;
-    // Modo Normal
-    default:MaxMultas = 4;
-        BonificadorPerderCreditosDificultad = 1;
-        BonificadorGanarCreditosDificultad = 1;
-        break;
-    }
-}
-
-void Juego::setNivel(int nivel)
-{
-    if (nivel < 5){
-        NivelActual = nivel;
-        Cola->vaciarCola();
-    }
-}
-
-void Juego::NextLevel()
-{
-    NivelActual++;
-    this->SocialCreditsEarnedInLevel = 0;
-    Cola->nextNivel(NivelActual);
-
-    switch (NivelActual){
-    case 2: setUpNivel2();
-        break;
-    case 3: setUpNivel3();
-        break;
-    case 4: setUpNivel4();
-        break;
-    case 5: setUpNivel5();
-        break;
-    }
-}
-
-Reglas* Juego::getReglas(int numero){
-    return (numero < 5)? rules[numero]: NULL;
-}
-
-ColaNPC *Juego::getCola()
-{
-    return this->Cola;
-}
-
-int Juego::getSocialCreditsEarnedInLevel() const
-{
-    return SocialCreditsEarnedInLevel;
-}
-
+/// #################################### TOMA DE DECISIONES ###################################################
 void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
 {
     bool AprobarRefugiado = (TipoNPC == 3) && (DecisionJugador);
@@ -172,6 +147,54 @@ void Juego::RestarSocialCredits(int Tipo)
     TotalSocialCredits -= (SocialCredits * BonificadorGanarCreditosDificultad);
 }
 
+/// #################################### SETUP DE NIVELES ###################################################
+/// A futuro estaria bueno hacer que la cantidad de NPCs que pueda salir sea random,
+/// pero por motivos de testeo lo vamos a dejar asi.
+void Juego::setUpNivel1()
+{
+    // A desarrollar
+    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+}
+
+void Juego::setUpNivel2()
+{
+    // A desarrollar
+    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+}
+
+void Juego::setUpNivel3()
+{
+    // A desarrollar
+    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+}
+
+void Juego::setUpNivel4()
+{
+    // A desarrollar
+    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+}
+
+void Juego::setUpNivel5()
+{
+    // A desarrollar
+    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+}
+
+/// #################################### GETTERS & SETTERS ###################################################
+Reglas* Juego::getReglas(int numero){
+    return (numero < 5)? rules[numero]: NULL;
+}
+
+ColaNPC *Juego::getCola()
+{
+    return this->Cola;
+}
+
+int Juego::getSocialCreditsEarnedInLevel() const
+{
+    return SocialCreditsEarnedInLevel;
+}
+
 int Juego::getTotalSocialCredits() const
 {
     return TotalSocialCredits;
@@ -212,32 +235,12 @@ int Juego::getMaxMultas() const
     return MaxMultas;
 }
 
-void Juego::setUpNivel1()
+int Juego::getNivelActual() const
 {
-    // A desarrollar
-    Cola->addNPC(1, 10,10,4,0,6);
+    return NivelActual;
 }
 
-void Juego::setUpNivel2()
+int Juego::getDificultad() const
 {
-    // A desarrollar
-    Cola->addNPC(2, 10,10,4,0,6);
-}
-
-void Juego::setUpNivel3()
-{
-    // A desarrollar
-    Cola->addNPC(3, 10,10,4,0,6);
-}
-
-void Juego::setUpNivel4()
-{
-    // A desarrollar
-    Cola->addNPC(4, 10,10,4,0,6);
-}
-
-void Juego::setUpNivel5()
-{
-    // A desarrollar
-    Cola->addNPC(5, 10,10,4,0,6);
+    return Dificultad;
 }

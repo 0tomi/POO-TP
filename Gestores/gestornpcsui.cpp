@@ -33,8 +33,7 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
 
 void GestorNPCsUI::setUpNuevoNivel(int Nivel)
 {
-    RealizarConeccionesDeNPCs();
-    GestorDocumentos.nextNivel(Nivel);
+    GestorDocumentos.setUpNivel(Nivel);
 }
 
 void GestorNPCsUI::EmpezarJuego()
@@ -81,15 +80,22 @@ void GestorNPCsUI::Entrar()
     connect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
 }
 
-void GestorNPCsUI::Salir()
+void GestorNPCsUI::Salir(bool boton)
 {
+    DetenerAnimacionesDocumentos();
+
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
-    int SalidaEscena = Escenario->width() + NPCcomunUI->width();
-    int centerY = (Escenario->height()) - (NPCcomunUI->height()) + 50;
+
+    if (boton){
+        GestorDocumentos.Aprobado();
+    } else {
+        GestorDocumentos.Rechazar();
+        NPCcomunUI->Rechazado();
+    }
 
     GestorDocumentos.Salir();
     Dialogos->ForzarSalir();
-    NPCcomunUI->Sacar(SalidaEscena, centerY);
+    NPCcomunUI->Sacar();
 
     if (ColaNPCs->getSize() == 0)
         emit ColaTerminada();
@@ -102,7 +108,7 @@ void GestorNPCsUI::TerminoNivel()
     RealizarDesconeccionesNPC();
 
     if (ColaNPCs->getSize()){
-        Salir();
+        Salir(true);
         ColaNPCs->vaciarCola();
     }
     emit ColaTerminada();
@@ -144,16 +150,6 @@ void GestorNPCsUI::DetenerAnimacionesDocumentos()
     GestorDocumentos.DetenerAnimaciones();
 }
 
-void GestorNPCsUI::DocRechazado()
-{
-    GestorDocumentos.Rechazar();
-}
-
-void GestorNPCsUI::DocAprobado()
-{
-    GestorDocumentos.Aprobado();
-}
-
 void GestorNPCsUI::Dialogo(const QString &newDialogo)
 {
     Dialogos->setMensaje(newDialogo, Escenario->width(), Escenario->height());
@@ -183,18 +179,14 @@ void GestorNPCsUI::CentrarDocumentos()
 void GestorNPCsUI::CentrarNPC()
 {
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
-    int centerX = (Escenario->width() - NPCcomunUI->width()) /2;
-    int centerY = (Escenario->height()) - (NPCcomunUI->height());
-    NPCcomunUI->move(centerX,centerY);
+    NPCcomunUI->Centrar();
 }
 
 void GestorNPCsUI::EntrarEntidades()
 {
     disconnect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
-    int centerX = (Escenario->width() - NPCcomunUI->width()) / 2;
-    int centerY = Escenario->height() - NPCcomunUI->height();
     GestorDocumentos.Entrar();
-    NPCcomunUI->Entrar(centerX, centerY);
+    NPCcomunUI->Entrar();
 }
 
 void GestorNPCsUI::RealizarConeccionesDeNPCs()
@@ -208,7 +200,7 @@ void GestorNPCsUI::RealizarConeccionesDeNPCs()
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::ActualizarEstadoNPC);
-    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
+    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::CentrarNPC);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);

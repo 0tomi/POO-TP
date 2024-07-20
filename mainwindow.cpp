@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
 
     // Conectamos la pantalla de estadisticas con lo demas
-    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::VolverInicio);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::TransicionJuego);
     connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
     connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
 }
@@ -47,6 +47,8 @@ MainWindow::~MainWindow()
     delete pantallas;
     // aca iria el delete a las pantallas
 }
+
+/// ################################## PANTALLA DE ESTADISTICAS #############################################
 
 void MainWindow::PrepararPantallaFinalNivel(bool Perdio)
 {
@@ -65,6 +67,8 @@ void MainWindow::setPantallaStats()
     pantallas->setCurrentWidget(pantallaFinalNivel);
     connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::setPantallaStats);
 }
+
+/// ################################## EVENTOS DE LA MAINWINDOW #############################################
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
@@ -102,12 +106,14 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 
-void MainWindow::TransicionJuego()
+/// ################################## PANTALLA DE JUEGO #############################################
+
+void MainWindow::TransicionJuego(int Nivel, int Dificultad)
 {
     ArrancarTransicion(1000);
 
     // A futuro cambiar por los inputos de los botones.
-    gameScreen->PrepararJuego();
+    gameScreen->PrepararJuego(Nivel, Dificultad);
 
     // Conectamos el final de la primer animacion, con la preparacion del juego
     connect(iniciarTransicion, &QPropertyAnimation::finished, this, &MainWindow::PrepararJuego);
@@ -158,6 +164,63 @@ void MainWindow::CrearPantallasJuego()
     setInicio();
 }
 
+/// ################################## PANTALLA DE INICIO #############################################
+void MainWindow::VolverInicio()
+{
+    ArrancarTransicion(1000);
+    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::setInicio);
+}
+
+void MainWindow::setInicio()
+{
+    pantallas->setCurrentWidget(pantallaInicio);
+}
+
+/// ################################## PANTALLA DE PAUSA #############################################
+void MainWindow::PrepararPantallaPausa()
+{
+    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
+
+    ArrancarTransicion(500);
+    if (pantallas->currentWidget() == gameScreen)
+        gameScreen->PausarJuego();
+
+    // Cuando este a mitad de animacion colocamos la pantalla de pausa
+    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::PonerPantallaPausa);
+}
+
+void MainWindow::PrepararSalirPantallaPausa()
+{
+    ArrancarTransicion(500);
+    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
+}
+
+void MainWindow::PonerPantallaPausa()
+{
+    // Desconectamos la pantalla para poder usarla en otras cosas luego
+    disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::PonerPantallaPausa);
+    pantallas->setCurrentWidget(pantallaPausa);
+}
+
+void MainWindow::VolverPantallaAnterior()
+{
+    // Desconectamos la pantalla para poder usarla en otras cosas luego
+    disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
+    pantallas->setCurrentIndex(PantallaPrevia);
+    if (pantallas->currentWidget() == gameScreen)
+        gameScreen->ReanudarJuego();
+}
+
+void MainWindow::PonerModoVentana()
+{
+    this->showNormal();  // Cambia a modo ventana normal
+    this->resize(1280, 720);  // Establece la ventana en 720p
+    this->CalcularCentroDePantalla();
+    this->move(this->CentroPantallaX, this->CentroPantallaY);
+}
+
+/// ################################## PANTALLA DE TRANSICION #############################################
+
 void MainWindow::CrearPantallaTransicion()
 {
     // Armo pantalla para las transiciones
@@ -184,60 +247,6 @@ void MainWindow::CrearPantallaTransicion()
     // Conectamos el final de la animacion de inicio, con la de la animacion de final.
     connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::MidTransicion);
     connect(terminarTransicion, &QAbstractAnimation::finished, this, &MainWindow::TerminarTransicion);
-}
-
-void MainWindow::PonerModoVentana()
-{
-    this->showNormal();  // Cambia a modo ventana normal
-    this->resize(1280, 720);  // Establece la ventana en 720p
-    this->CalcularCentroDePantalla();
-    this->move(this->CentroPantallaX, this->CentroPantallaY);
-}
-
-void MainWindow::VolverInicio()
-{
-    ArrancarTransicion(1000);
-    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::setInicio);
-}
-
-void MainWindow::setInicio()
-{
-    pantallas->setCurrentWidget(pantallaInicio);
-}
-
-void MainWindow::PrepararPantallaPausa()
-{
-    ArrancarTransicion(500);
-    if (pantallas->currentWidget() == gameScreen)
-        gameScreen->PausarJuego();
-
-    // Cuando este a mitad de animacion colocamos la pantalla de pausa
-    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::PonerPantallaPausa);
-}
-
-void MainWindow::PrepararSalirPantallaPausa()
-{
-    ArrancarTransicion(500);
-    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
-
-    if (pantallas->currentWidget() == gameScreen)
-        gameScreen->ReanudarJuego();
-}
-
-void MainWindow::PonerPantallaPausa()
-{
-    // Desconectamos la pantalla para poder usarla en otras cosas luego
-    disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::PonerPantallaPausa);
-
-    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
-    pantallas->setCurrentWidget(pantallaPausa);
-}
-
-void MainWindow::VolverPantallaAnterior()
-{
-    // Desconectamos la pantalla para poder usarla en otras cosas luego
-    disconnect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::VolverPantallaAnterior);
-    pantallas->setCurrentIndex(PantallaPrevia);
 }
 
 void MainWindow::ArrancarTransicion(int Duracion)

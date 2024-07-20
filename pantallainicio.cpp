@@ -11,7 +11,7 @@ PantallaInicio::PantallaInicio(QWidget *parent)
 
 void PantallaInicio::empezarJuego()
 {
-    emit ClickeoBotonEmpezar();
+    emit ClickeoBotonEmpezar(1, 2);
 }
 
 PantallaInicio::~PantallaInicio()

@@ -12,6 +12,7 @@
 #include "../Gestores/gestornpcsui.h"
 #include "../juego.h"
 #include "BotonesCustom.h"
+#include "pantallaperdiste.h"
 
 
 namespace Ui {
@@ -27,7 +28,9 @@ public:
     ~GameScreen();
     void EmpezarJuego();
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
+    /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas
     void Restart();
+    void Centrar();
 
 public slots:
     void PausarJuego();
@@ -38,9 +41,11 @@ signals:
 
 private slots:
     void FinalDePartida();
+    void Decidir();
 
 private:
     Ui::GameScreen *ui;
+    PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
@@ -54,8 +59,8 @@ private:
     QSpacerItem* EspaciadorBotones;
 
     void SpawnearBotones();
-    void RealizarConecciones();
-    void RealizarConeccionesPrincipales();
+    void RealizarConexiones();
+    void RealizarConexionesPrincipales();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

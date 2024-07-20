@@ -1,6 +1,7 @@
 #include "gestordocumentosui.h"
 #include <QDebug>
 
+/// #################################### CONSTRUCTOR ###################################################
 GestorDocumentosUI::GestorDocumentosUI()
 {
     Temporizador = new QTimer();
@@ -12,6 +13,8 @@ GestorDocumentosUI::GestorDocumentosUI()
         documentos[i] = nullptr;
     for (int i = 0; i < 10; i++)
         documentosUI[i] = nullptr;
+
+    pase = nullptr;
 }
 
 GestorDocumentosUI::~GestorDocumentosUI()
@@ -22,6 +25,8 @@ GestorDocumentosUI::~GestorDocumentosUI()
     delete pase;
 }
 
+/// #################################### SETTERS ###################################################
+
 void GestorDocumentosUI::setUp(int Level, QWidget *objeto)
 {
     this->Escritorio = objeto;
@@ -30,84 +35,79 @@ void GestorDocumentosUI::setUp(int Level, QWidget *objeto)
 
 void GestorDocumentosUI::setUpNivel(int nivel)
 {
-    int Index = 0;
-    setUpLevel1(Index);
-    if (nivel >= 1)
-        setUpLevel2(Index);
+    setUpLevel1();
     if (nivel >= 2)
-        setUpLevel3(Index);
+        setUpLevel2();
     if (nivel >= 3)
-        setUpLevel4(Index);
+        setUpLevel3();
     if (nivel >= 4)
-        setUpLevel5(Index);
+        setUpLevel4();
+    if (nivel >= 5)
+        setUpLevel5();
 }
 
-void GestorDocumentosUI::setUpLevel1(int &Index)
+void GestorDocumentosUI::setUpLevel1()
 {
     this->topePerLevel = 2;
-    // New del uader pass (pase diplomatico)
-    pase = new UADERpass(Escritorio);
-    setUpDocumento(pase);
+    int Index = 0;
+    if (pase == nullptr){
+        // New del uader pass (pase diplomatico)
+        pase = new UADERpass(Escritorio);
+        setUpDocumento(pase);
 
-    // New al pasaporte, dni
-    pasaporteUI = new PasaporteUI(Escritorio);
-    dniUI = new DNI(Escritorio);
-    setUpDocumento(pasaporteUI);
-    setUpDocumento(dniUI);
-    Index++;
+        // New al pasaporte, dni
+        pasaporteUI = new PasaporteUI(Escritorio);
+        dniUI = new DNI(Escritorio);
+        setUpDocumento(pasaporteUI);
+        setUpDocumento(dniUI);
+        Index++;
 
-    // New de estancia
-    documentosUI[Index] = new estanciaUI(Escritorio);
-    setUpDocumento(documentosUI[Index]);
-    Index++;
+        // New de estancia
+        documentosUI[Index] = new estanciaUI(Escritorio);
+        setUpDocumento(documentosUI[Index]);
+        Index++;
+    }
 }
 
-void GestorDocumentosUI::setUpLevel2(int &Index)
+void GestorDocumentosUI::setUpLevel2()
 {
-    // News del pais de residencia
-
-    Index++;
-    // News del proposito de viaje
-
-    Index++;
+    // A futuro vemos que va aca
+    this->topePerLevel = 3;
+    int Index = 2;
+    if (documentosUI[Index] == nullptr){
+        // Aca iria el setup para el pais de residencia
+    }
 }
 
-void GestorDocumentosUI::setUpLevel3(int &Index)
+void GestorDocumentosUI::setUpLevel3()
 {
-    // News del documento para saber si la persona viaja sola o con otros integrantes
-
-    Index++;
-
-    // Es probable que esto no sea un documento, sino que sea algo de dialogo
-
-    Index++;
+    this->topePerLevel = 4;
+    int Index = 3;
+    if (documentosUI[Index] == nullptr){
+        // Aca iria el setup para la lista de acompaniantes
+    }
 }
 
-void GestorDocumentosUI::setUpLevel4(int &Index)
+void GestorDocumentosUI::setUpLevel4()
 {
-    // New paises de paso anteriores
-
-    Index++;
-    // New Visas previas
-
-    Index++;
-    // New Ocupacion
-
-    Index++;
-    // New Bienes transportados
-
-    Index++;
-    // vemos si meter todas estas cosas, porque es mucho, o capaz las distribuimos en otros niveles.
+    this->topePerLevel = 5;
+    int Index = 4;
+    if (documentosUI[Index] == nullptr){
+        // Aca iria el setup para el nuevo Doc Estancia
+    }
 }
 
-void GestorDocumentosUI::setUpLevel5(int &Index)
+void GestorDocumentosUI::setUpLevel5()
 {
-    // new Verificacion de antecedentes
+    this->topePerLevel = 7;
+    int Index = 5;
+    if (documentosUI[Index] == nullptr){
+        // new Verificacion de antecedentes
 
-    Index++;
-    // new Busqueda elementos prohibidos
+        Index++;
+        // new Busqueda elementos prohibidos
 
-    Index++;
+    }
 }
 
 void GestorDocumentosUI::deleteDocumentos()
@@ -156,63 +156,33 @@ void GestorDocumentosUI::setDocumento(NPC* npcInfo)
     // en desarrollo
 }
 
-void GestorDocumentosUI::nextNivel(int nivel)
-{
-    int Index;
-    switch(nivel){
-    case 1: Index = 2;
-        setUpLevel2(Index);
-        break;
-    case 2:
-        Index = 4;
-        setUpLevel2(Index);
-        break;
-    case 3:
-        Index = 6;  // ############################# CAMBIAR A FUTURO ######################
-        setUpLevel2(Index);
-        break;
-    case 4:
-        Index = 8;
-        setUpLevel2(Index);
-        break;
-    }
-}
-
 void GestorDocumentosUI::Centrar()
 {
     if (tienePase)
-        CentrarDocumento(pase);
+        pase->Centrar();
 
     for (int i = 0; i < topePerLevel; i++)
         if (documentos[i] != nullptr)
-            CentrarDocumento(documentosUI[i]);
+            documentosUI[i]->Centrar();
 }
 
 void GestorDocumentosUI::Entrar()
 {
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
-            EntrarDocumento(documentosUI[i]);
+            documentosUI[i]->Entrar();
 
     if (tienePase)
-        EntrarDocumento(pase);
-}
-
-void GestorDocumentosUI::EntrarDocumento(DocumentosUI *doc)
-{
-    int centerX = ((Escritorio->width()) - (doc->width())) /2;
-    int centerY = (((Escritorio->height())) - (doc->height())) / 2;
-    Temporizador->start(900);
-    doc->Entrar(centerX,centerY);
+        pase->Entrar();
 }
 
 void GestorDocumentosUI::Salir()
 {
     if (tienePase)
-        SalirDocumento(pase);
+        pase->Sacar();
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
-            SalirDocumento(documentosUI[i]);
+            documentosUI[i]->Sacar();
 }
 
 void GestorDocumentosUI::DetenerAnimaciones()
@@ -234,20 +204,6 @@ void GestorDocumentosUI::Rechazar()
 {
     if (documentosUI[0] == pasaporteUI)
         pasaporteUI->setRechazado();
-}
-
-void GestorDocumentosUI::SalirDocumento(DocumentosUI *doc)
-{
-    int centerX = ((Escritorio->width()) - (doc->width())) / 2;
-    doc->Sacar(centerX);
-}
-
-void GestorDocumentosUI::CentrarDocumento(DocumentosUI *doc)
-{
-    int centerX = ((Escritorio->width()) - (doc->width())) /2;
-    int centerY = (((Escritorio->height())) - (doc->height())) / 2;
-
-    doc->Centrar(centerX,centerY);
 }
 
 void GestorDocumentosUI::Termino()

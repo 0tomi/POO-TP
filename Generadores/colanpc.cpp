@@ -2,6 +2,7 @@
 #include <ctime>
 #include <QDebug>
 
+/// #################################### CONSTRUCTOR ###################################################
 ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules){
     this->frente = this->fondo = NULL;
     this->size = 0;
@@ -11,12 +12,22 @@ ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules){
     this->Random = new QRandomGenerator(time(NULL));
 }
 
+ColaNPC::~ColaNPC()
+{
+    this->vaciarCola();
+    delete NPCaRetornar;
+    delete Random;
+    delete GenerarNPC;
+    delete GenerarDocumentacion;
+}
+/// #################################### Añadir NPCs a cola ###################################################
 void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
     this->size = 0;
     this->sizeOriginal = 0;
     // Preparamos que nivel se usara.
     nivelActual = NivelActual;
+    setNivel(nivelActual);
 
     int totalNPCs = CantAldeano + CantRefugiados + CantDiplos + CantRevolucionarios;
 
@@ -71,7 +82,7 @@ void ColaNPC::addNPC(int Tipo, bool Validez){
     size++;
     sizeOriginal++;
 }
-
+/// #################################### Vaciar cola ###################################################
 void ColaNPC::vaciarCola()
 {
     nodoNPC* aux = this->frente;
@@ -89,21 +100,23 @@ void ColaNPC::vaciarCola()
     this->size = 0;
 }
 
-void ColaNPC::actualizarReglas(Reglas **newRules)
-{
-    GenerarDocumentacion->actualizarReglas(newRules);
-}
-
-void ColaNPC::nextNivel(int Nivel)
-{
-    GenerarDocumentacion->nextNivel(Nivel);
-}
-
+/// #################################### Setters ###################################################
 void ColaNPC::setDificultad(int newDificultad)
 {
     GenerarDocumentacion->setDificultad(newDificultad);
 }
 
+void ColaNPC::setNivel(int Nivel)
+{
+    GenerarDocumentacion->setNivel(Nivel);
+}
+
+void ColaNPC::actualizarReglas(Reglas **newRules)
+{
+    GenerarDocumentacion->actualizarReglas(newRules);
+}
+
+/// #################################### GETTERS ###################################################
 NPC* ColaNPC::getNPC(){
     // Si la cola esta vacia
     if (this->size == 0)
@@ -128,11 +141,4 @@ int ColaNPC::getSize() const
     return size;
 }
 
-ColaNPC::~ColaNPC()
-{
-    this->vaciarCola();
-    delete NPCaRetornar;
-    delete Random;
-    delete GenerarNPC;
-    delete GenerarDocumentacion;
-}
+

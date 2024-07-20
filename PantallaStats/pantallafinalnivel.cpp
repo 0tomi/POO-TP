@@ -29,6 +29,9 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
     int cantCredsSocsObtDia = juegoInfo->getSocialCreditsEarnedInLevel();
     int cantCredsSocsTot = juegoInfo->getTotalSocialCredits();
 
+    NivelActual = juegoInfo->getNivelActual();
+    Dificultad =  juegoInfo->getDificultad();
+
     // Seteamos las labels de color blanco
     ui->cantMultasObt_label->setStyleSheet(COLOR_BLANCO);
     ui->credsSocsObtDia_label->setStyleSheet(COLOR_BLANCO);
@@ -51,11 +54,11 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
         ui->cantMultasObt_label->setStyleSheet(COLOR_ROJO);
     }
     ui->credsSocsObtDia_label->setText(QString::number(cantCredsSocsObtDia));
-    if (cantCredsSocsObtDia < 1) {
+    if (cantCredsSocsObtDia < 0) {
         ui->credsSocsObtDia_label->setStyleSheet(COLOR_ROJO);
     }
     ui->credsSocsTot_label->setText(QString::number(cantCredsSocsTot));
-    if (cantCredsSocsObtDia < 1) {
+    if (cantCredsSocsObtDia < 0) {
         ui->credsSocsTot_label->setStyleSheet(COLOR_ROJO);
     }
 }
@@ -67,12 +70,13 @@ void PantallaFinalNivel::onSalirClicked() {
 }
 
 void PantallaFinalNivel::onSigNivelClicked() {
-    emit sigNivelClicked();
+    NivelActual++;
+    emit sigNivelClicked(NivelActual, Dificultad);
 }
 
 void PantallaFinalNivel::onReintentarClicked()
 {
-    emit reintentarClicked();
+    emit reintentarClicked(1, Dificultad);
 }
 
 // metodos extra
