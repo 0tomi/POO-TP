@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LibroReglas</class>
- <widget class="QWidget" name="LibroReglas">
+ <class>libroreglas</class>
+ <widget class="QWidget" name="libroreglas">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>843</width>
-    <height>559</height>
+    <width>696</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,197 +30,138 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QStackedWidget" name="PaginasLibro">
-     <property name="currentIndex">
-      <number>0</number>
+    <widget class="QStackedWidget" name="LibroReglas">
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Resources/Documentos/abierto2 (1).png);</string>
      </property>
-     <widget class="QWidget" name="Pagina_indice0">
-      <widget class="QLabel" name="Imagen_inicio">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="PagInicial">
+      <widget class="QPushButton" name="BotonPasaporteyEstancia">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>391</width>
-         <height>451</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="reglasnivel1">
-       <property name="geometry">
-        <rect>
-         <x>660</x>
+         <x>472</x>
          <y>50</y>
-         <width>83</width>
+         <width>171</width>
          <height>29</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>Pasaporte y Estancia</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="BotonSiguiente">
        <property name="geometry">
         <rect>
-         <x>660</x>
-         <y>90</y>
-         <width>83</width>
+         <x>502</x>
+         <y>480</y>
+         <width>141</width>
          <height>29</height>
         </rect>
        </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="geometry">
-        <rect>
-         <x>660</x>
-         <y>130</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="geometry">
-        <rect>
-         <x>660</x>
-         <y>170</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="geometry">
-        <rect>
-         <x>660</x>
-         <y>210</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="geometry">
-        <rect>
-         <x>660</x>
-         <y>250</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="geometry">
-        <rect>
-         <x>660</x>
-         <y>290</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_8">
-       <property name="geometry">
-        <rect>
-         <x>660</x>
-         <y>330</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="boton_siguiente">
-       <property name="geometry">
-        <rect>
-         <x>720</x>
-         <y>510</y>
-         <width>83</width>
-         <height>29</height>
-        </rect>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string>Siguiente</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Boton_anterior">
+      <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>510</y>
-         <width>83</width>
+         <x>50</x>
+         <y>60</y>
+         <width>211</width>
+         <height>321</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/Documentos/Estancia.png);</string>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="PagIndice1">
+      <widget class="QLabel" name="TituloPasaporte">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>221</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>               Reglas Pasaporte</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="TituloEstancia">
+       <property name="geometry">
+        <rect>
+         <x>422</x>
+         <y>30</y>
+         <width>201</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>            Reglas Estancia</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="PaisesPermitidos">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>80</y>
+         <width>281</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BotonAnterior">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>480</y>
+         <width>131</width>
          <height>29</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string>Anterior</string>
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="Pagina_indice1">
-      <widget class="QLabel" name="Reglas_paises">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>80</y>
-         <width>371</width>
-         <height>461</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Titulo_paises">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>10</y>
-         <width>391</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>                 NORMATIVAS DE ESTANCIA Y PAISES</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Reglas_estancia">
-       <property name="geometry">
-        <rect>
-         <x>402</x>
-         <y>79</y>
-         <width>421</width>
-         <height>461</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="Pagina_indice2"/>
     </widget>
    </item>
   </layout>

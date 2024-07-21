@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
-    LibroReglas s;
+    libroreglas s;
     s.show();
     //GameScreen g;
     //g.show();

@@ -1,94 +1,57 @@
 #include "libroreglas.h"
 #include "ui_libroreglas.h"
-
-
-LibroReglas::LibroReglas(QWidget *parent)
-    : DocumentosUI(parent)
-    , ui(new Ui::LibroReglas)
+#include <QDebug>
+libroreglas::libroreglas(QWidget *parent)//, ReglasNivel1 * rules)
+    : QWidget(parent)
+    , ui(new Ui::libroreglas)
 {
     ui->setupUi(this);
+    ui->LibroReglas->setCurrentIndex(0);
+    //this->ruleslvl1 = rules;
+    this->atributos = new AtributosComunes;
+    this->archi = new LectorArchivos(":/Resources/ArchivosTexto/paises.txt");
+    this->atributos->setAtributos(archi->getArray(), archi->getTopeArray());
+    this->ruleslvl1 = new ReglasNivel1(this->atributos);
+    setBotones();
+    setDatosPag1();
 
+}
+/*void setDocumentacionInfo(Documentacion *documento){
+    qDebug() << "hola";
+}*/
 
-    // hacer residencia
+void libroreglas::setBotones(){
+    connect(ui->BotonAnterior, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
+    connect(ui->BotonSiguiente, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
 }
 
-LibroReglas::~LibroReglas()
+void libroreglas::IrPagSiguiente(){
+    int currentIndex = ui->LibroReglas->currentIndex();
+    if (currentIndex < ui->LibroReglas->count() - 1) {
+        ui->LibroReglas->setCurrentIndex(currentIndex + 1);
+    }
+}
+
+void libroreglas::IrPagAnterior(){
+    int currentIndex = ui->LibroReglas->currentIndex();
+    if (currentIndex > 0) {
+        ui->LibroReglas->setCurrentIndex(currentIndex - 1);
+    }
+}
+
+void libroreglas::setDatosPag1(){
+    int maxPaises, maxIndices;
+    QString * Paises = this->atributos->getPaises(maxPaises);
+    int * IndicesValidos = this->ruleslvl1->getPaisesPermitidos(maxIndices);
+    QString Texto = "Paises Validos:\n";
+    for(int i = 0; i < maxIndices; i++){
+        Texto += Paises[IndicesValidos[i]] + "\n";
+    }
+    ui->PaisesPermitidos->setText(Texto);
+    delete[] Paises;
+}
+libroreglas::~libroreglas()
 {
     delete ui;
 }
 
-void LibroReglas::setBotones() {
-    // Conectar los botones a las funciones correspondientes
-    connect(ui->boton_siguiente, &QPushButton::clicked, this, &LibroReglas::mostrarPaginaSiguiente);
-    connect(ui->Boton_anterior, &QPushButton::clicked, this, &LibroReglas::mostrarPaginaAnterior);
-    connect(ui->reglasnivel1,&QPushButton::clicked,this, &LibroReglas::IrAPagina1);
-
-    // Actualizar la visibilidad de los botones al iniciar
-    int index = ui->PaginasLibro->currentIndex();
-    ui->Boton_anterior->setVisible(index != 0);
-    ui->boton_siguiente->setVisible(index != ui->PaginasLibro->count() - 1);
-}
-
-void LibroReglas::mostrarPaginaSiguiente() {
-    int currentIndex = ui->PaginasLibro->currentIndex();
-    if (currentIndex < ui->PaginasLibro->count() - 1) {
-        ui->PaginasLibro->setCurrentIndex(currentIndex + 1);
-    }
-
-    // Actualizar la visibilidad de los botones después de cambiar la página
-    ui->Boton_anterior->setVisible(true);
-    ui->boton_siguiente->setVisible(currentIndex + 1 != ui->PaginasLibro->count() - 1);
-}
-
-
-void LibroReglas::mostrarPaginaAnterior() {
-    int currentIndex = ui->PaginasLibro->currentIndex();
-    if (currentIndex > 0) {
-        ui->PaginasLibro->setCurrentIndex(currentIndex - 1);
-    }
-
-    // Actualizar la visibilidad de los botones después de cambiar la página
-    ui->boton_siguiente->setVisible(true);
-    ui->Boton_anterior->setVisible(currentIndex - 1 != 0);
-}
-void LibroReglas::setDocumentacionInfo(Documentacion *documento){
-
-}
-void LibroReglas::setUpPagina1(){
-    int max, max_validos;
-    QString * paises = this->atributos->getPaises(max);
-    QString Texto_aniadir = " ";
-    int * IndicesValidos = this->rules->getPaisesPermitidos(max_validos);
-    for (int i = 0; i < max_validos; ++i) {
-        Texto_aniadir += paises[IndicesValidos[i]] + "\n";
-    }
-
-    ui->Reglas_paises->setText(Texto_aniadir);
-    QString * VisitasValidas = this->rules->getTipoDeVisitaValida();
-    max_validos = rules->getMaxVisitasPermitidas();
-    Texto_aniadir = " ";
-    for (int i = 0; i < max_validos; ++i) {
-        Texto_aniadir += VisitasValidas[i] + "\n";
-    }
-    ui->Reglas_estancia->setText(Texto_aniadir);
-
-    delete[] paises;
-    delete[] IndicesValidos;
-    delete[] VisitasValidas;
-    //para spawnear el npc vas al widfget img npc, traer la biblioteca npcgenerico,guardar puntero npcgenerico y en el constructor hacer new ncpcgenerico y hacer comoi padre
-    // img npc y dsp 2 problemas, tamanio y show, en el momento que spawnee, tendria q hacer static cast y usar metodo setnpcinfo en setdocumentacion info y mandar eel puntero
-    // dsp de setnpc uso metodo show
-}
-
-void LibroReglas::MoverIndice(int index){
-    switch (index){
-    case 1:
-        ui->PaginasLibro->setCurrentIndex(index);
-        setUpPagina1();
-        break;
-    }
-}
-
-void LibroReglas::IrAPagina1(){
-    MoverIndice(1);
-}

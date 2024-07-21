@@ -2,38 +2,34 @@
 #define LIBROREGLAS_H
 
 #include <QWidget>
-#include <QStackedWidget>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include "../Documentos/documentosui.h"
-#include "../AtributosComunes/atributoscomunes.h"
-#include "../Reglas/reglas.h"
 #include "../Reglas/reglasnivel1.h"
+#include "../AtributosComunes/atributoscomunes.h"
+#include "../Documentos/documentosui.h"
+#include "../lectorarchivos.h"
+#include <QString>
+
 namespace Ui {
-class LibroReglas;
+class libroreglas;
 }
 
-class LibroReglas : public DocumentosUI
+class libroreglas : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit LibroReglas(QWidget *parent = nullptr);
-    ~LibroReglas();
-    void setDocumentacionInfo(Documentacion *documento) override;
+    explicit libroreglas(QWidget *parent = nullptr); //ReglasNivel1 * rules = nullptr);
+    ~libroreglas();
+
 private:
-    Ui::LibroReglas *ui;
+    Ui::libroreglas *ui;
+    ReglasNivel1 * ruleslvl1;
     AtributosComunes * atributos;
-    ReglasNivel1 * rules;
-
+    LectorArchivos * archi;
+    //void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();
-    void mostrarPaginaAnterior();
-    void mostrarPaginaSiguiente();
-    void MoverIndice(int index);
-    void setUpPagina1();
-private slots:
-    void IrAPagina1();
-
+    void IrPagAnterior();
+    void IrPagSiguiente();
+    void setDatosPag1();
 };
 
 #endif // LIBROREGLAS_H

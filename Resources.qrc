@@ -64,5 +64,7 @@
         <file>Resources/Documentos/PasaportePlaceHolder.png</file>
         <file>Resources/Documentos/SelloAprobado.png</file>
         <file>Resources/Documentos/SelloRechazado.png</file>
+        <file>Resources/Documentos/pixil-frame-0 (5).png</file>
+        <file>Resources/Documentos/abierto2 (1).png</file>
     </qresource>
 </RCC>
