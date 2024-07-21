@@ -35,15 +35,11 @@ private:
     QRandomGenerator NumeroRandom;
     int NivelActual;
 
-
     int DificultadJuego; // 1: Facil | 2: Normal | 3: Demonio
-
 
     // Datos del Documento a generar:
     NPC* NPC2Generate;
     Documentacion* Doc2Generate;
-
-
 
     // Seleccion de documentos que seran falsos
     bool DocsValidos[10];
