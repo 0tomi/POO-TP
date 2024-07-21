@@ -51,7 +51,9 @@ void LibroReglas::mostrarPaginaAnterior() {
     ui->boton_siguiente->setVisible(true);
     ui->Boton_anterior->setVisible(currentIndex - 1 != 0);
 }
+void LibroReglas::setDocumentacionInfo(Documentacion *documento){
 
+}
 void LibroReglas::setUpPagina1(){
     int max, max_validos;
     QString * paises = this->atributos->getPaises(max);

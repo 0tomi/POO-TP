@@ -18,7 +18,7 @@ class PasaporteUI : public DocumentosUI
 public:
     explicit PasaporteUI(QWidget *parent = nullptr);
     ~PasaporteUI();
-    void setPasaporteInfo(Pasaporte * pasaporte, NPCGenericoUI * npc);
+    void setPasaporteInfo(Pasaporte * pasaporte, NPC * npc);
     void setDocumentacionInfo(Documentacion *documento) override;
     void setStandby();
     void setAprobado();

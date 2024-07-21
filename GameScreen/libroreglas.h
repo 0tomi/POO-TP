@@ -20,7 +20,7 @@ class LibroReglas : public DocumentosUI
 public:
     explicit LibroReglas(QWidget *parent = nullptr);
     ~LibroReglas();
-
+    void setDocumentacionInfo(Documentacion *documento) override;
 private:
     Ui::LibroReglas *ui;
     AtributosComunes * atributos;

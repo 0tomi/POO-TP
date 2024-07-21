@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QDebug>
+#include "./GameScreen/libroreglas.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,7 +9,8 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
-
+    LibroReglas s;
+    s.show();
     //GameScreen g;
     //g.show();
     //g.EmpezarJuego();
