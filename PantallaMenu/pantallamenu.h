@@ -1,6 +1,6 @@
 #ifndef PANTALLAMENU_H
 #define PANTALLAMENU_H
-#include<string>
+#include<QString>
 #include <QWidget>
 
 namespace Ui {
@@ -12,19 +12,18 @@ class PantallaMenu : public QWidget
     Q_OBJECT
 
 public:
-    int dificultad=0;
-    std::string modo;
+
     explicit PantallaMenu(QWidget *parent = nullptr);
     ~PantallaMenu();
 signals:
     void clickedJugar();
     void clickedCargar();
     void clickedSettings();
-    void clickedSalir();
+    void clickedSalir(QCloseEvent *event);
     void clickedFacil();
     void clickedNormal();
     void clickedDemonio();
-    void clickedStart(int dificultad, std::string modo);
+    void clickedStart(int dificultad, QString modo);
     void clickedPartida1();
     void clickedPartida2();
     void clickedPartida3();
@@ -46,7 +45,8 @@ private slots:
     void botonStartclicked();
 
 private:
-
+    int dificultad=0;
+    QString modo;
     Ui::PantallaMenu *ui;
 };
 

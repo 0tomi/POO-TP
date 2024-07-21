@@ -16,7 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
 
-
+    //señales  de menu principlal
+    connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::closeEvent);//nomeanda
     // Conectamos las señales del menu de pausa
     connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
     connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);

@@ -48,7 +48,8 @@ void PantallaMenu::botonSettingsclicked()
 
 void PantallaMenu::botonSalirclicked()
 {
-    emit clickedSalir();
+    emit clickedSalir(new QCloseEvent);
+    qDebug() << "Quiere salir";
 }
 
 
