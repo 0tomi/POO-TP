@@ -23,7 +23,7 @@ signals:
     void clickedFacil();
     void clickedNormal();
     void clickedDemonio();
-    void clickedStart(int dificultad, QString modo);
+    void clickedStart(int nivel, int dificultad);
     void clickedPartida1();
     void clickedPartida2();
     void clickedPartida3();
@@ -46,7 +46,6 @@ private slots:
 
 private:
     int dificultad=0;
-    QString modo;
     Ui::PantallaMenu *ui;
 };
 
