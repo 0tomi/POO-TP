@@ -60,7 +60,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/dni.h Documentos/dni.cpp Documentos/dni.ui
         NPC/globosdialogoui.h NPC/globosdialogoui.cpp NPC/globosdialogoui.ui
         PantallaPausa/pantallapausa.h PantallaPausa/pantallapausa.cpp PantallaPausa/pantallapausa.ui
-        GameScreen/libroreglas.h GameScreen/libroreglas.cpp GameScreen/libroreglas.ui
+        PantallaStats/pantallafinalnivel.cpp PantallaStats/pantallafinalnivel.h PantallaStats/pantallafinalnivel.ui
+        GameScreen/pantallaperdiste.h GameScreen/pantallaperdiste.cpp GameScreen/pantallaperdiste.ui
+
+
+
 
 
 

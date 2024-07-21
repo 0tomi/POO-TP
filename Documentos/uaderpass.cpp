@@ -15,6 +15,12 @@ void UADERpass::setDocumentacionInfo(Documentacion *documento)
     qDebug() << "xD";
 }
 
+void UADERpass::Entrar()
+{
+    DocumentosUI::Entrar();
+    raise();
+}
+
 UADERpass::~UADERpass()
 {
     delete ui;

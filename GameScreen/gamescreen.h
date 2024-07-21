@@ -6,16 +6,13 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QSpacerItem>
-#include <QPushButton>
-#include <QPixmap>
-#include <QStackedWidget>
 
 #include "../NPC/npcgenericoui.h"
 #include "../Documentos/uaderpass.h"
 #include "../Gestores/gestornpcsui.h"
 #include "../juego.h"
 #include "BotonesCustom.h"
-#include "libroreglas.h"
+#include "pantallaperdiste.h"
 
 
 namespace Ui {
@@ -30,22 +27,25 @@ public:
     explicit GameScreen(Juego* newJuego, QWidget *parent = nullptr);
     ~GameScreen();
     void EmpezarJuego();
-    void PrepararJuego(bool Reset = false, int Nivel = 1, int Dificultad = 2);
+    void PrepararJuego(int Nivel = 1, int Dificultad = 2);
+    /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas
+    void Restart();
+    void Centrar();
 
 public slots:
     void PausarJuego();
     void ReanudarJuego();
 
 signals:
-    void NivelTerminado();
-    void JuegoFallado();
+    void NivelTerminado(bool Perdio);
 
 private slots:
     void FinalDePartida();
-
+    void Decidir();
 
 private:
     Ui::GameScreen *ui;
+    PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
@@ -57,15 +57,10 @@ private:
     BotonesCustom* BotonRechazar;
     BotonesCustom* BotonCentrar;
     QSpacerItem* EspaciadorBotones;
-    //QPushButton *BotonLibro;
-    //LibroReglas * libroReglas;
 
     void SpawnearBotones();
-    void RealizarConecciones();
-    void RealizarConeccionesPrincipales();
-
-    //libro reglas
-    //void Spawnear_libro();
+    void RealizarConexiones();
+    void RealizarConexionesPrincipales();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

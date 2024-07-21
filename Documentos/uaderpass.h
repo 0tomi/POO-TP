@@ -15,6 +15,7 @@ class UADERpass : public DocumentosUI
 public:
     explicit UADERpass(QWidget *parent = nullptr);
     void setDocumentacionInfo(Documentacion *documento) override;
+    void Entrar() override;
     ~UADERpass();
 
 private:

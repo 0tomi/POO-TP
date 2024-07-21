@@ -24,7 +24,7 @@ public:
     // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
     void Centrar();
     void Entrar();
-    void Salir();
+    void Salir(bool Boton);
 
     void TerminoNivel();
     bool MostrandoElNPC() const;
@@ -39,9 +39,6 @@ public:
 
     // Cosas de documentos (luego vemos como se arregla esto)
     void DetenerAnimacionesDocumentos();
-    void DocRechazado();
-    void DocAprobado();
-
 public slots:
     void Dialogo(const QString &dialogo);
     void Rechazado();

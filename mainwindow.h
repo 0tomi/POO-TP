@@ -3,6 +3,7 @@
 
 #include "pantallainicio.h"
 #include "GameScreen/gamescreen.h"
+#include "PantallaStats/pantallafinalnivel.h"
 #include "juego.h"
 #include "PantallaPausa/pantallapausa.h"
 
@@ -31,17 +32,16 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 private slots:
-    void TransicionJuego();
+    void TransicionJuego(int Nivel = 1, int Dificultad = 2);
     void PrepararJuego();
     void IniciarJuego();
-    void PrepararPantallaFinalNivel();
+    void PrepararPantallaFinalNivel(bool Perdio);
 
 private:
     Ui::MainWindow *ui;
 
     // Juego
     Juego* juego;
-    void restartJuego();
 
     // Pantallas del juego:
     void CrearPantallasJuego();
@@ -50,12 +50,13 @@ private:
 
     void VolverInicio();
     void setInicio();
+    void setPantallaStats();
 
     QStackedWidget *pantallas;
     PantallaInicio *pantallaInicio;
     int PantallaPrevia;
     GameScreen *gameScreen;
-    //PantallaFinalNivel * pantallaFinalNivel;
+    PantallaFinalNivel *pantallaFinalNivel;
 
     // Pantalla de pausa
     PantallaPausa * pantallaPausa;

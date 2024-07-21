@@ -3,7 +3,9 @@
 
 NPCUI::NPCUI(QWidget *parent)
     : QWidget(parent)
-{   
+{
+    padre = parent;
+
     // Preparamos animaciones de entrada del NPC
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionEntrada->setDuration(1000);
@@ -19,9 +21,16 @@ NPCUI::NPCUI(QWidget *parent)
     emitirDialogo.setSingleShot(true);
 }
 
-void NPCUI::Entrar(int X, int Y)
+void NPCUI::Centrar()
 {
-    PrepararAnimacionEntrada(X,Y);
+    int centerX = (padre->width() - width()) /2;
+    int centerY = (padre->height() - height());
+    move(centerX,centerY);
+}
+
+void NPCUI::Entrar()
+{
+    PrepararAnimacionEntrada();
     animacionEntrada->start();
     this->show();
     emit Entrando();
@@ -31,24 +40,31 @@ void NPCUI::Entrar(int X, int Y)
     }
 }
 
-void NPCUI::Sacar(int X, int Y)
+void NPCUI::PrepararAnimacionEntrada()
 {
-    PrepararAnimacionSalida(X,Y);
+    int centerX = (padre->width() - width()) / 2;
+    int centerY = padre->height() - height();
+
+    animacionEntrada->setStartValue(QPoint(-(width()) -50,centerY+50));
+    animacionEntrada->setEndValue(QPoint(centerX,centerY));
+}
+
+
+void NPCUI::Sacar()
+{
+    PrepararAnimacionSalida();
     animacionSalida->start();
     disconnect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
     emit Saliendo();
 }
 
-void NPCUI::PrepararAnimacionEntrada(int X, int Y)
+void NPCUI::PrepararAnimacionSalida()
 {
-    animacionEntrada->setStartValue(QPoint(-(width()) -50,Y+50));
-    animacionEntrada->setEndValue(QPoint(X,Y));
-}
+    int SalidaEscena = padre->width() + width();
+    int centerY = (padre->height()) - (height()) + 50;
 
-void NPCUI::PrepararAnimacionSalida(int X, int Y)
-{
     animacionSalida->setStartValue(pos());
-    animacionSalida->setEndValue(QPoint(X,Y)); // SUMAR LA RESOLUCION DEL WIDGET + EL NPC 
+    animacionSalida->setEndValue(QPoint(SalidaEscena,centerY)); // SUMAR LA RESOLUCION DEL WIDGET + EL NPC
 }
 
 void NPCUI::TerminoAnimacion()

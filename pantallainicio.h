@@ -17,7 +17,7 @@ public:
     ~PantallaInicio();
 
 signals:
-    void ClickeoBotonEmpezar();
+    void ClickeoBotonEmpezar(int Nivel, int Dificultad);
 
 private slots:
      void empezarJuego();
