@@ -3,6 +3,7 @@
 
 #include <QString>
 #include "../Documentos/estancia.h"
+#include "locuracaracteres.h"
 #include <QRandomGenerator>
 
 class GenerarEstancia {
@@ -15,6 +16,8 @@ public:
     Estancia* getEstancia(bool valido, int Dificultad); // Estancia a generar
 private:
     QRandomGenerator NumRandom;
+    LocuraCaracteres * locura;
+    int dificultad;
     bool ValidezCampos[2];
 
     QString* tipoVisitas;

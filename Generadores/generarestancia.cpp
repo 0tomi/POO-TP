@@ -1,8 +1,8 @@
 #include "generarestancia.h"
-
-#include <stdlib.h>
 #include <ctime>
 #include <QDebug>
+
+/// ########################## Constructor ###############################
 
 GenerarEstancia::GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax)
 {
@@ -19,13 +19,15 @@ GenerarEstancia::GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString*
     // Inicializamos la semilla del random
     quint32 Semilla = static_cast<quint32>(time(NULL));
     NumRandom.seed(Semilla);
+    locura = new LocuraCaracteres(&NumRandom);
 }
 
 GenerarEstancia::~GenerarEstancia()
 {
-
+    delete locura;
 }
 
+/// ########################## Reset reglas ###############################
 void GenerarEstancia::resetReglas(QString *TiposVisitas, int TopeVisits, QString *TiposVisitsVal, int TopeVisitsVal, int DuracMax)
 {
     tipoVisitas = TiposVisitas;
@@ -38,9 +40,10 @@ void GenerarEstancia::resetReglas(QString *TiposVisitas, int TopeVisits, QString
     ObtenerVisitasInvalidas();
 }
 
-// getters:
+/// ########################## Getters ###############################
 Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
     int Probabilidades;
+    dificultad = Dificultad;
     switch (Dificultad){
         // Modo facil
     case 1: Probabilidades = 7;
@@ -61,6 +64,7 @@ Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
     return estanciaAGenerar;
 }
 
+/// ########################## Obtener visitas invalidas ###############################
 void GenerarEstancia::ObtenerVisitasInvalidas()
 {
     // Buscamos las visitas invalidas, para no tener que calcularlas despues
@@ -81,7 +85,7 @@ void GenerarEstancia::ObtenerVisitasInvalidas()
         }
     }
 }
-
+/// ########################## Generadores ###############################
 void GenerarEstancia::GenerarCamposValidos(int Probabilidad, bool Validez)
 {
     if (Validez){
@@ -126,10 +130,11 @@ QString GenerarEstancia::GenerarVisita(bool validez)
             Visita = tipoVisitasValidas[Sorteo];
         }
     } else {
-        qDebug() << "Bucle de visita falsa";
-        Sorteo = NumRandom.bounded(maxVisitasInvalidas);
+        ///Sorteo = NumRandom.bounded(maxVisitasInvalidas);
         // Colocamos uno de los indices de visitas invalidas.
-        Visita = tipoVisitas[ IndicesTiposVisitasInvalidas[Sorteo] ];
+        ///Visita = tipoVisitas[ IndicesTiposVisitasInvalidas[Sorteo] ];
+        Sorteo = NumRandom.bounded(maxTipoVisitas);
+        Visita = locura->CambiarCadena(tipoVisitas[Sorteo], dificultad);
     }
     return Visita;
 }
