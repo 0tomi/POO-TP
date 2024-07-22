@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QDebug>
+#include "PantallaMenu/pantallamenu.h"
 
 
 int main(int argc, char *argv[])
@@ -9,10 +10,6 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
-
-    //GameScreen g;
-    //g.show();
-    //g.EmpezarJuego();
 
 
     return a.exec();

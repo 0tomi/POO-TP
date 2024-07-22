@@ -12,33 +12,25 @@ MainWindow::MainWindow(QWidget *parent)
 
     CrearPantallasJuego();
 
+    ConeccionesPantallaPausa();
+    ConeccionesPantallaTransicion();
+    ConeccionesPantallaMenu();
+
     // Mostrar en pantalla completa:
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
 
-    // Conectamos las señales del menu de pausa
-    connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
-    connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);
-    connect(pantallaPausa, &PantallaPausa::return2lastWidget, this, &MainWindow::PrepararSalirPantallaPausa);
-    connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::closeEvent);
-
-    // Cuando se clickee jugar, abrimos el juego:
-    connect(pantallaInicio, &PantallaInicio::ClickeoBotonEmpezar, this, &MainWindow::TransicionJuego);
-
     // Cuando termine un nivel, hacemos que se muestre la pantalla de final de nivel
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
 
-    // Conectamos la pantalla de estadisticas con lo demas
-    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::TransicionJuego);
-    connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
-    connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
     delete juego;
-    delete pantallaInicio;
+    delete pantallaMenu;
     delete pantallaPausa;
     delete pantallaTransicion;
     delete pantallaFinalNivel;
@@ -47,6 +39,32 @@ MainWindow::~MainWindow()
     // aca iria el delete a las pantallas
 }
 
+/// ################################### CONEXIONES DE PANTALLAS #######################################
+void MainWindow::ConeccionesPantallaPausa()
+{
+    // Conectamos las señales del menu de pausa
+    connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
+    connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);
+    connect(pantallaPausa, &PantallaPausa::return2lastWidget, this, &MainWindow::PrepararSalirPantallaPausa);
+    connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::close);
+}
+
+
+void MainWindow::ConeccionesPantallaTransicion()
+{
+    // Conectamos la pantalla de estadisticas con lo demas
+    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::TransicionJuego);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
+}
+
+void MainWindow::ConeccionesPantallaMenu()
+{
+    // Cuando se clickee jugar, abrimos el juego:
+    connect(pantallaMenu, &PantallaMenu::clickedStart, this, &MainWindow::TransicionJuego);
+    connect(pantallaMenu, &PantallaMenu::clickedSettings, this, &MainWindow::PrepararPantallaPausa);
+    connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::close);
+}
 /// ################################## PANTALLA DE ESTADISTICAS #############################################
 
 void MainWindow::PrepararPantallaFinalNivel(bool Perdio)
@@ -145,14 +163,16 @@ void MainWindow::CrearPantallasJuego()
     setCentralWidget(pantallas);
 
     // Creamos las pantallas del juego
-    pantallaInicio = new PantallaInicio(this);
+
+    pantallaMenu = new PantallaMenu(this);
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
     pantallaFinalNivel = new PantallaFinalNivel(this);
     CrearPantallaTransicion();
 
     // Añadimos las pantallas al stack
-    pantallas->addWidget(pantallaInicio);
+
+    pantallas->addWidget(pantallaMenu);
     pantallas->addWidget(gameScreen);
     pantallas->addWidget(pantallaPausa);
     pantallas->addWidget(pantallaFinalNivel);
@@ -170,7 +190,7 @@ void MainWindow::VolverInicio()
 
 void MainWindow::setInicio()
 {
-    pantallas->setCurrentWidget(pantallaInicio);
+    pantallas->setCurrentWidget(pantallaMenu);
 }
 
 /// ################################## PANTALLA DE PAUSA #############################################

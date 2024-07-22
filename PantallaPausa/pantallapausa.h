@@ -22,7 +22,7 @@ public slots:
 signals:
     void setFullScreen();
     void setWindowedScreen();
-    void quit(QCloseEvent * event);
+    void quit();
     void return2lastWidget();
 
 private:

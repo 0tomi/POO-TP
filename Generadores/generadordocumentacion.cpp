@@ -56,12 +56,7 @@ void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
     generadorPasaporte->restartReglas(reglasNivel1);
 
     // Reset de reglas del generador de estancia
-    int maxVisitas, maxVisitasValidas;
-    QString* Visitas = datos->getVisitas(maxVisitas);
-    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
-    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
-    generadorEstancia->resetReglas(Visitas, maxVisitas, VisitasValidas, maxVisitasValidas,
-                                   reglasNivel1->getDuracionEstanciaPermitida());
+    generadorEstancia->resetReglas(reglasNivel1);
 }
 
 /// #################################### GETTERS ###################################################

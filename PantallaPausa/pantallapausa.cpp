@@ -1,6 +1,5 @@
 #include "pantallapausa.h"
 #include "ui_pantallapausa.h"
-#include <QCloseEvent>
 
 PantallaPausa::PantallaPausa(QWidget *parent)
     : QWidget(parent)
@@ -45,7 +44,7 @@ void PantallaPausa::buttonWindowedClicked()
 
 void PantallaPausa::buttonQuitClicked()
 {
-    emit quit(new QCloseEvent());
+    emit quit();
 }
 
 void PantallaPausa::buttonReturnClicked()
