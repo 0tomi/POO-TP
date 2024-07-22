@@ -4,39 +4,39 @@
 
 /// ########################## Constructor ###############################
 
-GenerarEstancia::GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax)
+GenerarEstancia::GenerarEstancia(ReglasNivel1 * rules, LocuraCaracteres *  randomizador)
 {
-    tipoVisitas = TiposVisitas;
-    maxTipoVisitas = TopeVisits;
+    tipoVisitas = rules->getTipoVisitas();
+    maxTipoVisitas = rules->getMaxTiposVisitas();
 
-    tipoVisitasValidas = TiposVisitsVal;
-    maxVisitasValidas = TopeVisitsVal;
+    tipoVisitasValidas = rules->getTipoDeVisitaValida();
+    maxVisitasValidas = rules->getMaxVisitasPermitidas();
 
-    duracMaximaEstancia = DuracMax;
+    duracMaximaEstancia = rules->getDuracionEstanciaPermitida();
 
     ObtenerVisitasInvalidas();
 
     // Inicializamos la semilla del random
     quint32 Semilla = static_cast<quint32>(time(NULL));
     NumRandom.seed(Semilla);
-    locura = new LocuraCaracteres(&NumRandom);
+    locura = randomizador;
 }
 
 GenerarEstancia::~GenerarEstancia()
 {
-    delete locura;
+
 }
 
 /// ########################## Reset reglas ###############################
-void GenerarEstancia::resetReglas(QString *TiposVisitas, int TopeVisits, QString *TiposVisitsVal, int TopeVisitsVal, int DuracMax)
+void GenerarEstancia::resetReglas(ReglasNivel1 * rules)
 {
-    tipoVisitas = TiposVisitas;
-    maxTipoVisitas = TopeVisits;
+    tipoVisitas = rules->getTipoVisitas();
+    maxTipoVisitas = rules->getMaxTiposVisitas();
 
-    tipoVisitasValidas = TiposVisitsVal;
-    maxVisitasValidas = TopeVisitsVal;
+    tipoVisitasValidas = rules->getTipoDeVisitaValida();
+    maxVisitasValidas = rules->getMaxVisitasPermitidas();
 
-    duracMaximaEstancia = DuracMax;
+    duracMaximaEstancia = rules->getDuracionEstanciaPermitida();
     ObtenerVisitasInvalidas();
 }
 
@@ -130,11 +130,17 @@ QString GenerarEstancia::GenerarVisita(bool validez)
             Visita = tipoVisitasValidas[Sorteo];
         }
     } else {
-        ///Sorteo = NumRandom.bounded(maxVisitasInvalidas);
-        // Colocamos uno de los indices de visitas invalidas.
-        ///Visita = tipoVisitas[ IndicesTiposVisitasInvalidas[Sorteo] ];
-        Sorteo = NumRandom.bounded(maxTipoVisitas);
-        Visita = locura->CambiarCadena(dificultad, tipoVisitas[Sorteo]);
+        // 50 50 que se generara
+        Sorteo = NumRandom.bounded(10);
+        if (Sorteo < 5){
+            Sorteo = NumRandom.bounded(maxVisitasInvalidas);
+            // Colocamos uno de los indices de visitas invalidas.
+            Visita = tipoVisitas[ IndicesTiposVisitasInvalidas[Sorteo] ];
+        } else {
+            // Ponemos cualquier texto, pero con letras cambiadas
+            Sorteo = NumRandom.bounded(maxTipoVisitas);
+            Visita = locura->CambiarCadena(dificultad, tipoVisitas[Sorteo]);
+        }
     }
     return Visita;
 }

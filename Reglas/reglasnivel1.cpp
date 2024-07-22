@@ -186,3 +186,33 @@ int ReglasNivel1::getMaxVisitasPermitidas() const
 {
     return maxVisitasPermitidas;
 }
+
+QString *ReglasNivel1::getPaises() const
+{
+    return paises;
+}
+
+int ReglasNivel1::getMaxPaises() const
+{
+    return maxPaises;
+}
+
+QString *ReglasNivel1::getTipoVisitas() const
+{
+    return tipoVisitas;
+}
+
+int ReglasNivel1::getMaxTiposVisitas() const
+{
+    return maxTiposVisitas;
+}
+
+QString *ReglasNivel1::getEstadosCiviles() const
+{
+    return estadosCiviles;
+}
+
+int ReglasNivel1::getMaxEstadosCiviles() const
+{
+    return maxEstadosCiviles;
+}

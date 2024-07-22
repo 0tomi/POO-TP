@@ -5,8 +5,9 @@
 #include "../Documentos/documentacion.h"
 #include "../Reglas/reglasnivel5.h"
 #include "../NPC/npc.h"
-#include "../Generadores/generarestancia.h"
-#include "../Generadores/generador_pasaporte.h"
+#include "generarestancia.h"
+#include "generador_pasaporte.h"
+#include "locuracaracteres.h"
 #include <QRandomGenerator>
 
 using namespace std;
@@ -24,6 +25,7 @@ private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
     GenerarEstancia* generadorEstancia;
     Generar_pasaporte * generadorPasaporte;
+    LocuraCaracteres * randomizadorCaracteres;
 
     // Datos del juego:
     AtributosComunes* datos;

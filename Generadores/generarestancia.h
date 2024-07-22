@@ -3,20 +3,23 @@
 
 #include <QString>
 #include "../Documentos/estancia.h"
+#include "../Reglas/reglasnivel1.h"
 #include "locuracaracteres.h"
 #include <QRandomGenerator>
 
 class GenerarEstancia {
 public:
-    GenerarEstancia(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax);
+    // Constructor
+    GenerarEstancia(ReglasNivel1 * rules, LocuraCaracteres *  randomizador);
     ~GenerarEstancia();
-    void resetReglas(QString* TiposVisitas, int TopeVisits, QString* TiposVisitsVal, int TopeVisitsVal, int DuracMax);
+    void resetReglas(ReglasNivel1 * rules);
 
     // Getter
     Estancia* getEstancia(bool valido, int Dificultad); // Estancia a generar
 private:
     QRandomGenerator NumRandom;
     LocuraCaracteres * locura;
+
     int dificultad;
     bool ValidezCampos[2];
 
