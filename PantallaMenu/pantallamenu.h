@@ -19,7 +19,7 @@ signals:
     void clickedJugar();
     void clickedCargar();
     void clickedSettings();
-    void clickedSalir(QCloseEvent *event);
+    void clickedSalir();
     void clickedFacil();
     void clickedNormal();
     void clickedDemonio();

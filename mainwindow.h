@@ -6,7 +6,6 @@
 #include "PantallaStats/pantallafinalnivel.h"
 #include "juego.h"
 #include "PantallaPausa/pantallapausa.h"
-#include "PantallaMenu/pantallamenu.h"
 
 #include <QMainWindow>
 #include <QStackedWidget>
@@ -58,8 +57,6 @@ private:
     int PantallaPrevia;
     GameScreen *gameScreen;
     PantallaFinalNivel *pantallaFinalNivel;
-    //pantalla menu principal
-    PantallaMenu *pantallaMenu;
     // Pantalla de pausa
     PantallaPausa * pantallaPausa;
     void PrepararPantallaPausa();

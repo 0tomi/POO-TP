@@ -16,8 +16,6 @@ MainWindow::MainWindow(QWidget *parent)
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
 
-    //señales  de menu principlal
-    connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::closeEvent);
     // Conectamos las señales del menu de pausa
     connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
     connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);
@@ -25,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::closeEvent);
 
     // Cuando se clickee jugar, abrimos el juego:
-   // connect(pantallaInicio, &PantallaInicio::ClickeoBotonEmpezar, this, &MainWindow::TransicionJuego);
-    connect(pantallaMenu, &PantallaMenu::clickedStart, this, &MainWindow::TransicionJuego);
+    connect(pantallaInicio, &PantallaInicio::ClickeoBotonEmpezar, this, &MainWindow::TransicionJuego);
+
 
     // Cuando termine un nivel, hacemos que se muestre la pantalla de final de nivel
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
