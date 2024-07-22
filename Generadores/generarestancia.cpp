@@ -134,7 +134,7 @@ QString GenerarEstancia::GenerarVisita(bool validez)
         // Colocamos uno de los indices de visitas invalidas.
         ///Visita = tipoVisitas[ IndicesTiposVisitasInvalidas[Sorteo] ];
         Sorteo = NumRandom.bounded(maxTipoVisitas);
-        Visita = locura->CambiarCadena(tipoVisitas[Sorteo], dificultad);
+        Visita = locura->CambiarCadena(dificultad, tipoVisitas[Sorteo]);
     }
     return Visita;
 }

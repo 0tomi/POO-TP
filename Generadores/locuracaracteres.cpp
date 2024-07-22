@@ -59,9 +59,15 @@ QChar LocuraCaracteres::CambiarNumero(QChar numeroOriginal)
 
 QChar LocuraCaracteres::CambiarLetra(QChar letraOriginal)
 {
-    // 26 = cantidad de letras de la A a la Z
-    int caracterRandom = random->bounded(26);
-    QChar nuevoCaracter('A' + caracterRandom);
+    QChar nuevoCaracter;
+    QChar auxiliar = letraOriginal;
+    auxiliar.toUpper();
+
+    do{  // Repetimos hasta obtener un caracter diferente
+        // 26 = cantidad de letras de la A a la Z
+        int caracterRandom = random->bounded(26);
+        nuevoCaracter = QChar('A' + caracterRandom);
+    }while(nuevoCaracter == auxiliar);
 
     // Si la letra original era minuscula, devolvemos una minuscula, sino una mayus.
     return (letraOriginal.isLower()) ? nuevoCaracter.toLower() : nuevoCaracter;
