@@ -10,6 +10,12 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
     <width>1920</width>
@@ -59,7 +65,7 @@ border-image: url(:/Resources/escritorio2.png);
 </string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
+      <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QStackedWidget" name="menu">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -69,42 +75,54 @@ border-image: url(:/Resources/escritorio2.png);
         </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>300</width>
+          <height>400</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>300</width>
-          <height>399</height>
+          <width>800</width>
+          <height>800</height>
          </size>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
-           <number>6</number>
+           <number>32</number>
           </property>
           <property name="leftMargin">
            <number>27</number>
           </property>
           <property name="topMargin">
-           <number>0</number>
+           <number>49</number>
           </property>
           <property name="rightMargin">
            <number>27</number>
           </property>
           <property name="bottomMargin">
-           <number>0</number>
+           <number>49</number>
           </property>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonJugar">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>50</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>75</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>250</width>
-              <height>50</height>
+              <width>400</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -123,12 +141,24 @@ background-color: #1e1532;</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonCargar">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>50</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>75</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>250</width>
-              <height>50</height>
+              <width>400</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -147,12 +177,24 @@ background-color: #1e1532;</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonSettings">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>50</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>75</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>250</width>
-              <height>50</height>
+              <width>400</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -171,12 +213,24 @@ background-color: #1e1532;</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonSalir">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>50</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>75</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>250</width>
-              <height>50</height>
+              <width>400</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -188,7 +242,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
-background-color: #1e1532;</string>
+background-color: rgb(131, 0, 0);</string>
             </property>
             <property name="text">
              <string>Salir </string>
@@ -198,13 +252,37 @@ background-color: #1e1532;</string>
          </layout>
         </widget>
         <widget class="QWidget" name="cargar">
+         <property name="layoutDirection">
+          <enum>Qt::RightToLeft</enum>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>34</number>
+          </property>
+          <property name="topMargin">
+           <number>66</number>
+          </property>
+          <property name="bottomMargin">
+           <number>78</number>
+          </property>
           <item>
            <widget class="QPushButton" name="botonPartida1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>282</width>
-              <height>50</height>
+              <width>800</width>
+              <height>125</height>
              </size>
             </property>
             <property name="font">
@@ -212,6 +290,9 @@ background-color: #1e1532;</string>
               <family>MS Sans Serif</family>
               <pointsize>22</pointsize>
              </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -224,10 +305,22 @@ background-color: #1e1532;</string>
           </item>
           <item>
            <widget class="QPushButton" name="botonPartida2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>282</width>
-              <height>50</height>
+              <width>800</width>
+              <height>125</height>
              </size>
             </property>
             <property name="font">
@@ -235,6 +328,9 @@ background-color: #1e1532;</string>
               <family>MS Sans Serif</family>
               <pointsize>22</pointsize>
              </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -247,10 +343,22 @@ background-color: #1e1532;</string>
           </item>
           <item>
            <widget class="QPushButton" name="botonPartida3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>282</width>
-              <height>50</height>
+              <width>800</width>
+              <height>125</height>
              </size>
             </property>
             <property name="font">
@@ -258,6 +366,9 @@ background-color: #1e1532;</string>
               <family>MS Sans Serif</family>
               <pointsize>22</pointsize>
              </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -270,10 +381,22 @@ background-color: #1e1532;</string>
           </item>
           <item>
            <widget class="QPushButton" name="botonVolver3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>282</width>
-              <height>50</height>
+              <width>800</width>
+              <height>125</height>
              </size>
             </property>
             <property name="font">
@@ -282,9 +405,12 @@ background-color: #1e1532;</string>
               <pointsize>22</pointsize>
              </font>
             </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: white;
-background-color: #1e1532;</string>
+background-color: rgb(108, 0, 0);</string>
             </property>
             <property name="text">
              <string>Volver</string>
@@ -308,15 +434,15 @@ background-color: #1e1532;</string>
            <number>30</number>
           </property>
           <property name="topMargin">
-           <number>30</number>
+           <number>108</number>
           </property>
           <property name="rightMargin">
            <number>30</number>
           </property>
           <property name="bottomMargin">
-           <number>20</number>
+           <number>90</number>
           </property>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonFacil">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -326,14 +452,14 @@ background-color: #1e1532;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>0</width>
-              <height>0</height>
+              <width>300</width>
+              <height>75</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>300</width>
-              <height>50</height>
+              <width>500</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -352,12 +478,18 @@ background-color: #1e1532;</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonNormal">
-            <property name="maximumSize">
+            <property name="minimumSize">
              <size>
               <width>300</width>
-              <height>50</height>
+              <height>75</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -376,12 +508,18 @@ background-color: #1e1534;</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonDemonio">
-            <property name="maximumSize">
+            <property name="minimumSize">
              <size>
               <width>300</width>
-              <height>50</height>
+              <height>75</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -392,7 +530,7 @@ background-color: #1e1534;</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: white;
+             <string notr="true">color: rgb(255, 0, 0);
 background-color: #330000;</string>
             </property>
             <property name="text">
@@ -400,7 +538,7 @@ background-color: #330000;</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
            <widget class="QPushButton" name="botonVolver1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -410,14 +548,14 @@ background-color: #330000;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>200</width>
-              <height>20</height>
+              <width>300</width>
+              <height>75</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>271</width>
-              <height>50</height>
+              <width>500</width>
+              <height>100</height>
              </size>
             </property>
             <property name="font">
@@ -432,7 +570,7 @@ background-color: #330000;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
-background-color: #1e1532;</string>
+background-color: rgb(130, 0, 0);</string>
             </property>
             <property name="text">
              <string>Volver</string>
@@ -453,26 +591,68 @@ background-color: #1e1532;</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="spacing">
-           <number>15</number>
+           <number>1</number>
           </property>
           <property name="leftMargin">
-           <number>24</number>
+           <number>10</number>
           </property>
-          <property name="rightMargin">
-           <number>24</number>
+          <property name="topMargin">
+           <number>80</number>
           </property>
           <property name="bottomMargin">
-           <number>40</number>
+           <number>70</number>
           </property>
-          <item>
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
            <widget class="QStackedWidget" name="descripciones">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>800</width>
+              <height>800</height>
+             </size>
+            </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page1">
+             <property name="maximumSize">
+              <size>
+               <width>800</width>
+               <height>800</height>
+              </size>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_7">
+              <property name="spacing">
+               <number>23</number>
+              </property>
+              <property name="leftMargin">
+               <number>20</number>
+              </property>
+              <property name="rightMargin">
+               <number>20</number>
+              </property>
+              <property name="bottomMargin">
+               <number>14</number>
+              </property>
               <item>
                <widget class="QLabel" name="descriFacil">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>200</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <family>MS Sans Serif</family>
@@ -482,7 +662,7 @@ background-color: #1e1532;</string>
                  <string notr="true">background-color: #3c2b61</string>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Dificultad: &lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; text-decoration: underline; color:#ffffff;&quot;&gt;Fácil.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;Se recibirán menos penalizaciones y será más fácil detectar documentos falsificados.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Dificultad: &lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; text-decoration: underline; color:#00ff00;&quot;&gt;Fácil.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;Detectar documentos falsificados será más &lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#00ff00;&quot;&gt;sencillo&lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;, tendrás &lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#55ff00;&quot;&gt;bonificaciones&lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt; y &lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#00ff00;&quot;&gt;menos penalizaciones&lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffff00;&quot;&gt;Una experiencia para quienes no quieran agobiarse.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="textFormat">
                  <enum>Qt::RichText</enum>
@@ -495,6 +675,12 @@ background-color: #1e1532;</string>
              </layout>
             </widget>
             <widget class="QWidget" name="page2">
+             <property name="maximumSize">
+              <size>
+               <width>800</width>
+               <height>800</height>
+              </size>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
                <widget class="QLabel" name="descriNormal">
@@ -507,7 +693,7 @@ background-color: #1e1532;</string>
                  <string notr="true">background-color: #3c2b61</string>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Dificultad: &lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; text-decoration: underline; color:#ffffff;&quot;&gt;Normal&lt;/span&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;No hrabrá bonificaciones especiales y la detección de documentos falsificados requerirá un esfuerzo medio.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Dificultad: &lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; text-decoration: underline; color:#0055ff;&quot;&gt;Normal&lt;/span&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#0055ff;&quot;&gt;No habrá&lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt; bonificaciones especiales y la detección de documentos falsificados &lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#0055ff;&quot;&gt;requerirá un esfuerzo moderado&lt;/span&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ffff00;&quot;&gt;El modo pedido por los profes.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -517,6 +703,12 @@ background-color: #1e1532;</string>
              </layout>
             </widget>
             <widget class="QWidget" name="page3">
+             <property name="maximumSize">
+              <size>
+               <width>800</width>
+               <height>800</height>
+              </size>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <item>
                <widget class="QLabel" name="descriDemonio">
@@ -535,9 +727,12 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Dificultad:&lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; text-decoration: underline; color:#ffffff;&quot;&gt;Modo Demonio.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Las penalizaciones serán severas, se ganarán menos puntos y la detección de documentos falsificados requerirá un esfuerzo elevado.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Sans Serif'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;Dificultad:&lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:22pt; font-weight:700; text-decoration: underline; color:#ff0000;&quot;&gt;Modo Demonio.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Solo para personas con una &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;locura insana.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Las penalizaciones serán &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;severas&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt; y ganarás &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;menos créditos sociales&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;Detectar documentos falsificados será &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;mucho más complicado&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;. El numero de &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt;multas&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt; requeridas para ser despedido&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ff0000;&quot;&gt; disminuyen a 2&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#aa0000;&quot;&gt;Te deseo suerte, si es que te animas a jugar en este modo.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="scaledContents">
                  <bool>false</bool>
@@ -551,51 +746,96 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </widget>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="botonStart">
-            <property name="maximumSize">
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+           <widget class="QWidget" name="Botones" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
              <size>
-              <width>250</width>
-              <height>50</height>
+              <width>200</width>
+              <height>150</height>
              </size>
             </property>
-            <property name="font">
-             <font>
-              <family>MS Sans Serif</family>
-              <pointsize>27</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: white;
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <widget class="QPushButton" name="botonStart">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>500</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>500</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Sans Serif</family>
+                 <pointsize>27</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: white;
 background-color: #1e1532;</string>
-            </property>
-            <property name="text">
-             <string>Comenzar</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="botonVolver2">
-            <property name="maximumSize">
-             <size>
-              <width>250</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>MS Sans Serif</family>
-              <pointsize>25</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: white;
-background-color: #1e1532</string>
-            </property>
-            <property name="text">
-             <string>Volver</string>
-            </property>
+               </property>
+               <property name="text">
+                <string>Comenzar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="botonVolver2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>250</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>500</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Sans Serif</family>
+                 <pointsize>25</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: white;
+background-color: rgb(130, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>Volver</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>

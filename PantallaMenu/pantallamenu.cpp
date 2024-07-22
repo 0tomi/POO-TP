@@ -20,6 +20,7 @@ PantallaMenu::PantallaMenu(QWidget *parent)
     connect(ui->botonVolver2, &QPushButton::clicked, this, &PantallaMenu::botonVolver2clicked);
     connect(ui->botonVolver1, &QPushButton::clicked, this, &PantallaMenu::botonVolver1clicked);
     connect(ui->botonStart, &QPushButton::clicked, this, &PantallaMenu::botonStartclicked);
+
     ui->menu->setCurrentIndex(0);
 
 }
