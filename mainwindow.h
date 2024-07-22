@@ -4,6 +4,7 @@
 #include "pantallainicio.h"
 #include "GameScreen/gamescreen.h"
 #include "PantallaStats/pantallafinalnivel.h"
+#include "PantallaMenu/pantallamenu.h"
 #include "juego.h"
 #include "PantallaPausa/pantallapausa.h"
 
@@ -53,16 +54,21 @@ private:
     void setPantallaStats();
 
     QStackedWidget *pantallas;
-    PantallaInicio *pantallaInicio;
     int PantallaPrevia;
     GameScreen *gameScreen;
     PantallaFinalNivel *pantallaFinalNivel;
+
+    // Pantalla de menu
+    PantallaMenu * pantallaMenu;
+    void ConeccionesPantallaMenu();
+
     // Pantalla de pausa
     PantallaPausa * pantallaPausa;
     void PrepararPantallaPausa();
     void PrepararSalirPantallaPausa();
     void PonerPantallaPausa();
     void VolverPantallaAnterior();
+    void ConeccionesPantallaPausa();
 
     // Transicion
     QWidget* pantallaTransicion;
@@ -72,6 +78,7 @@ private:
     void ArrancarTransicion(int Duracion);
     void MidTransicion();
     void TerminarTransicion();
+    void ConeccionesPantallaTransicion();
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();

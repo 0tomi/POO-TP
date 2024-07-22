@@ -8,13 +8,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-   //MainWindow w;
-    //w.show();
-   PantallaMenu test;
-    test.show();
-    //GameScreen g;
-    //g.show();
-    //g.EmpezarJuego();
+    MainWindow w;
+    w.show();
 
 
     return a.exec();
