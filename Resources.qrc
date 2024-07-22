@@ -64,5 +64,6 @@
         <file>Resources/Documentos/PasaportePlaceHolder.png</file>
         <file>Resources/Documentos/SelloAprobado.png</file>
         <file>Resources/Documentos/SelloRechazado.png</file>
+        <file>Resources/mesaRework.png</file>
     </qresource>
 </RCC>

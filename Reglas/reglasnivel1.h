@@ -13,6 +13,7 @@ public:
     // constructores:
     ReglasNivel1(AtributosComunes *atributos);
     ReglasNivel1(AtributosComunes *atributos, int cantidadMinimaPaisesPermitidos);
+    ~ReglasNivel1();
 
     // metodos:
     void resetReglas(int cantidadMinimaPaisesPermitidos);
@@ -25,10 +26,18 @@ public:
     int getFechaMaxPermitida();
     int getDuracionEstanciaPermitida();
 
-    ~ReglasNivel1();
-
     QString *getTipoDeVisitaValida() const;
     int getMaxVisitasPermitidas() const;
+
+    // Getters comunes
+    QString *getPaises() const;
+    int getMaxPaises() const;
+
+    QString *getTipoVisitas() const;
+    int getMaxTiposVisitas() const;
+
+    QString *getEstadosCiviles() const;
+    int getMaxEstadosCiviles() const;
 
 private:
     // Generador de numeros
