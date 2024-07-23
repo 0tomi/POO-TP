@@ -63,6 +63,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         PantallaStats/pantallafinalnivel.cpp PantallaStats/pantallafinalnivel.h PantallaStats/pantallafinalnivel.ui
         GameScreen/pantallaperdiste.h GameScreen/pantallaperdiste.cpp GameScreen/pantallaperdiste.ui
         GameScreen/libroreglas.h GameScreen/libroreglas.cpp GameScreen/libroreglas.ui
+        Generadores/generadorpaisresidencia.h Generadores/generadorpaisresidencia.cpp
+        Documentos/paisderesidencia.h Documentos/paisderesidencia.cpp
 
 
 

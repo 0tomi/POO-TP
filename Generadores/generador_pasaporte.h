@@ -10,6 +10,8 @@ class Generar_pasaporte
 {
 private:
     QRandomGenerator rand;
+    bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
+protected:
     AtributosComunes * atributos;
     QString * nombre_mujeres;
     QString * nombre_hombres;
@@ -18,7 +20,7 @@ private:
     QString * apellidos;
     ReglasNivel1 * rules;
 
-    bool campos_validos[3]; // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil
+
 
     Pasaporte * Pasaporte_generado;
     int max_hombres; // tamanio del array de nombres de hombres
