@@ -43,6 +43,7 @@ private:
 };
 
 // Definición del método template
+// Definimos el metodo aca por temas del compilador, para que no se le mame la burra al c++ como diria el profe
 template <typename T>
 void PantallaTransicion::ArrancarTransicion(int Duracion, T* objeto, void (T::*metodo)()) {
     // Configuramos el metodo que se ejecutará

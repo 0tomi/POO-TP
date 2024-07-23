@@ -59,4 +59,3 @@ bool PantallaTransicion::Mostrando() const
 {
     return mostrando;
 }
-

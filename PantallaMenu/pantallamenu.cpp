@@ -26,10 +26,10 @@ PantallaMenu::PantallaMenu(QWidget *parent)
     connect(ui->botonVolver1, &QPushButton::clicked, this, &PantallaMenu::botonVolver1clicked);
     connect(ui->botonStart, &QPushButton::clicked, this, &PantallaMenu::botonStartclicked);
 
-    ui->menu->setCurrentIndex(0);
     indiceMainMenu = 0;
     indicePrevio = 0;
     ui->BotonesSalir->setCurrentIndex(0);
+    ui->menu->setCurrentIndex(0);
 }
 
 PantallaMenu::~PantallaMenu()
