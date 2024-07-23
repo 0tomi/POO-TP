@@ -64,6 +64,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         GameScreen/pantallaperdiste.h GameScreen/pantallaperdiste.cpp GameScreen/pantallaperdiste.ui
         PantallaMenu/pantallamenu.cpp PantallaMenu/pantallamenu.h PantallaMenu/pantallamenu.ui
         Generadores/locuracaracteres.h Generadores/locuracaracteres.cpp
+        PantallaTransicion/pantallatransicion.h PantallaTransicion/pantallatransicion.cpp PantallaTransicion/pantallatransicion.ui
 
 
 

@@ -2,7 +2,7 @@
 #include "./ui_mainwindow.h"
 #include <QMessageBox>
 
-
+/// ############################### CONSTRUCTOR #######################################
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -37,6 +37,34 @@ MainWindow::~MainWindow()
     delete gameScreen;
     delete pantallas;
     // aca iria el delete a las pantallas
+}
+
+/// ############################### PANTALLAS DE LA APLICACION #######################################
+void MainWindow::CrearPantallasJuego()
+{
+    // Iniciamos la logica del juego
+    juego = new Juego();
+
+    // Seteamos el widget donde se acomodaran las distintas pantallas del juego
+    pantallas = new QStackedWidget(this);
+    setCentralWidget(pantallas);
+
+    // Creamos las pantallas del juego
+
+    pantallaMenu = new PantallaMenu(this);
+    gameScreen = new GameScreen(juego, this);
+    pantallaPausa = new PantallaPausa(this);
+    pantallaFinalNivel = new PantallaFinalNivel(this);
+    CrearPantallaTransicion();
+
+    // Añadimos las pantallas al stack
+    pantallas->addWidget(pantallaMenu);
+    pantallas->addWidget(gameScreen);
+    pantallas->addWidget(pantallaPausa);
+    pantallas->addWidget(pantallaFinalNivel);
+
+    // Mostramos la pantalla de inicio
+    setInicio();
 }
 
 /// ################################### CONEXIONES DE PANTALLAS #######################################
@@ -151,34 +179,6 @@ void MainWindow::IniciarJuego()
     // Desconectamos la animacion para poder usar despues la pantalla de transicion
     disconnect(terminarTransicion, &QPropertyAnimation::finished, this, &MainWindow::IniciarJuego);
     gameScreen->EmpezarJuego(); // Aca dsps iria el nivel de juego que toca.
-}
-
-void MainWindow::CrearPantallasJuego()
-{
-    // Iniciamos la logica del juego
-    juego = new Juego();
-
-    // Seteamos el widget donde se acomodaran las distintas pantallas del juego
-    pantallas = new QStackedWidget(this);
-    setCentralWidget(pantallas);
-
-    // Creamos las pantallas del juego
-
-    pantallaMenu = new PantallaMenu(this);
-    gameScreen = new GameScreen(juego, this);
-    pantallaPausa = new PantallaPausa(this);
-    pantallaFinalNivel = new PantallaFinalNivel(this);
-    CrearPantallaTransicion();
-
-    // Añadimos las pantallas al stack
-
-    pantallas->addWidget(pantallaMenu);
-    pantallas->addWidget(gameScreen);
-    pantallas->addWidget(pantallaPausa);
-    pantallas->addWidget(pantallaFinalNivel);
-
-    // Mostramos la pantalla de inicio
-    setInicio();
 }
 
 /// ################################## PANTALLA DE INICIO #############################################
