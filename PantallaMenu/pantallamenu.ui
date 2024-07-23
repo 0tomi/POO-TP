@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -64,11 +64,11 @@ border-image: url(:/Resources/escritorio2.png);
 }
 </string>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+     <layout class="QVBoxLayout" name="verticalLayout_10">
+      <item alignment="Qt::AlignHCenter">
        <widget class="QStackedWidget" name="menu">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -81,12 +81,12 @@ border-image: url(:/Resources/escritorio2.png);
         </property>
         <property name="maximumSize">
          <size>
-          <width>800</width>
+          <width>1200</width>
           <height>800</height>
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -220,42 +220,6 @@ background-color: #1e1532;</string>
             </property>
            </widget>
           </item>
-          <item alignment="Qt::AlignHCenter">
-           <widget class="QPushButton" name="botonSalir">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>50</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>300</width>
-              <height>75</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>400</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>MS Sans Serif</family>
-              <pointsize>27</pointsize>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: white;
-background-color: rgb(131, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string>Salir </string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="cargar">
@@ -386,44 +350,6 @@ background-color: #1e1532;</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="botonVolver3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>800</width>
-              <height>125</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>MS Sans Serif</family>
-              <pointsize>22</pointsize>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: white;
-background-color: rgb(108, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string>Volver</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="dificultad">
@@ -435,13 +361,13 @@ background-color: rgb(108, 0, 0);</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="spacing">
-           <number>30</number>
+           <number>6</number>
           </property>
           <property name="leftMargin">
            <number>30</number>
           </property>
           <property name="topMargin">
-           <number>108</number>
+           <number>91</number>
           </property>
           <property name="rightMargin">
            <number>30</number>
@@ -545,45 +471,6 @@ background-color: #330000;</string>
             </property>
            </widget>
           </item>
-          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QPushButton" name="botonVolver1">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>176</horstretch>
-              <verstretch>20</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>300</width>
-              <height>75</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>500</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>MS Sans Serif</family>
-              <pointsize>25</pointsize>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: white;
-background-color: rgb(130, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string>Volver</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="descrdificultad">
@@ -598,7 +485,7 @@ background-color: rgb(130, 0, 0);</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="spacing">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="leftMargin">
            <number>10</number>
@@ -753,96 +640,151 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </widget>
            </widget>
           </item>
-          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QWidget" name="Botones" native="true">
+          <item>
+           <widget class="QPushButton" name="botonStart">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>200</width>
-              <height>150</height>
+              <width>500</width>
+              <height>50</height>
              </size>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_9">
-             <item>
-              <widget class="QPushButton" name="botonStart">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MS Sans Serif</family>
-                 <pointsize>27</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: white;
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>27</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
 background-color: #1e1532;</string>
-               </property>
-               <property name="text">
-                <string>Comenzar</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="botonVolver2">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>250</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>500</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>MS Sans Serif</family>
-                 <pointsize>25</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: white;
+            </property>
+            <property name="text">
+             <string>Comenzar</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item alignment="Qt::AlignHCenter">
+       <widget class="QStackedWidget" name="BotonesSalir">
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>150</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>600</width>
+          <height>300</height>
+         </size>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="Salir">
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <property name="bottomMargin">
+           <number>145</number>
+          </property>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="botonSalir">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>50</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>75</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>400</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>27</pointsize>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: rgb(131, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string>Salir </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="Volver">
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <property name="bottomMargin">
+           <number>145</number>
+          </property>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="botonVolver1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>176</horstretch>
+              <verstretch>20</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>75</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>25</pointsize>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
 background-color: rgb(130, 0, 0);</string>
-               </property>
-               <property name="text">
-                <string>Volver</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            </property>
+            <property name="text">
+             <string>Volver</string>
+            </property>
            </widget>
           </item>
          </layout>

@@ -2,6 +2,7 @@
 #define PANTALLAMENU_H
 #include<QString>
 #include <QWidget>
+#include "../PantallaTransicion/pantallatransicion.h"
 
 namespace Ui {
 class PantallaMenu;
@@ -30,23 +31,36 @@ signals:
 
 private slots:
     void botonJugarClicked();
+    void switchSelectorDificultad();
+
     void botonSettingsclicked();
     void botonSalirclicked();
+
     void botonFacilclicked();
+    void switchFacil();
     void botonNormalclicked();
+    void switchNormal();
     void botonDemonioclicked();
+    void switchDemonio();
+
     void botonCargarclicked();
+    void switchCargar();
+
     void botonPartida1clicked();
     void botonPartida2clicked();
     void botonPartida3clicked();
-    void botonVolver3clicked();
-    void botonVolver2clicked();
+
     void botonVolver1clicked();
+    void switchMenu();
+
     void botonStartclicked();
 
 private:
     int dificultad=0;
     Ui::PantallaMenu *ui;
+    PantallaTransicion * transicion;
+    int indicePrevio;
+    int indiceMainMenu;
 };
 
 #endif // PANTALLAMENU_H
