@@ -36,7 +36,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Generadores/colanpc.h Generadores/colanpc.cpp
         juego.h juego.cpp
 
-        pantallainicio.h pantallainicio.cpp pantallainicio.ui
+
         Resources.qrc
         GameScreen/gamescreen.h GameScreen/gamescreen.cpp GameScreen/gamescreen.ui
         NPC/npcui.h NPC/npcui.cpp NPC/npcui.ui
