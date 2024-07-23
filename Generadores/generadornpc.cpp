@@ -52,6 +52,9 @@ GeneradorNPC::GeneradorNPC(){
     lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/DialogosRevolucionario.txt");
     DialogosRevolucionario = lector.getArray();
     topeDialogosRev = lector.getTopeArray();
+
+    // Lectura de dialogos para nivel 2
+
 }
 
 
@@ -108,23 +111,6 @@ NPC *GeneradorNPC::getSimilarNPC(NPC *ejemplo)
     // PLACEHOLDER hasta hacerla posteriormente.
     return ejemplo;
 }
-
-void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
-{
-    switch (nivel){
-    case 1: GenerarDialogosNivel1(npc);
-        break;
-    case 2: GenerarDialogosNivel2(npc);
-        break;
-    case 3: GenerarDialogosNivel3(npc);
-        break;
-    case 4: GenerarDialogosNivel4(npc);
-        break;
-    default: GenerarDialogosNivel5(npc);
-        break;
-    }
-}
-
 
 GeneradorNPC::~GeneradorNPC()
 {
@@ -210,6 +196,22 @@ QString GeneradorNPC::getBarbaRandom()
     return LinksBarbas[sorteo];
 }
 
+void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
+{
+    switch (nivel){
+    case 1: GenerarDialogosNivel1(npc);
+        break;
+    case 2: GenerarDialogosNivel2(npc);
+        break;
+    case 3: GenerarDialogosNivel3(npc);
+        break;
+    case 4: GenerarDialogosNivel4(npc);
+        break;
+    default: GenerarDialogosNivel5(npc);
+        break;
+    }
+}
+
 void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
 {
     if (info->getTipo() != 3)    // En esta etapa solo los revolucionarios tendran dialogos
@@ -222,6 +224,9 @@ void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
 void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
 {
     GenerarDialogosNivel1(info);
+
+    // Dialogos segun estancia
+
 }
 
 void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
