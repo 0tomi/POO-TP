@@ -96,6 +96,9 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
 
     connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
+
+    // Libro de Reglas
+    connect(ui->AparecerLibro, &QPushButton::clicked, this, &GameScreen::MostrarReglas);
 }
 
 void GameScreen::RealizarConexiones()
@@ -241,5 +244,9 @@ void GameScreen::resizeEvent(QResizeEvent *event)
         pantallaPerdiste->setFixedSize(width(), height());
 }
 
+/// ############################################ LIBRO DE REGLAS ####################################################
+void GameScreen::MostrarReglas(){
+    this->LibroDeReglas.show();
+}
 
 

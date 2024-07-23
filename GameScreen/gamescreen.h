@@ -13,6 +13,7 @@
 #include "../juego.h"
 #include "BotonesCustom.h"
 #include "pantallaperdiste.h"
+#include "../GameScreen/libroreglas.h"
 
 
 namespace Ui {
@@ -62,6 +63,9 @@ private:
     void RealizarConexiones();
     void RealizarConexionesPrincipales();
 
+    //Libro de reglas
+    libroreglas LibroDeReglas;
+    void MostrarReglas();
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();
     void Rechazo();

@@ -17,7 +17,7 @@ class libroreglas : public QWidget
     Q_OBJECT
 
 public:
-    explicit libroreglas(QWidget *parent = nullptr); //ReglasNivel1 * rules = nullptr);
+    explicit libroreglas(QWidget *parent = nullptr);
     ~libroreglas();
 
 private:
@@ -30,6 +30,13 @@ private:
     void IrPagAnterior();
     void IrPagSiguiente();
     void setDatosPag1();
+
+    //para setear los campos
+    void setPaises();
+    void setFechas();
+    void setEstadoCivil();
+    void setDuracionEstancia();
+    void setTipoDeVisita();
 };
 
 #endif // LIBROREGLAS_H
