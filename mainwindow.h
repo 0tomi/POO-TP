@@ -6,6 +6,7 @@
 #include "PantallaMenu/pantallamenu.h"
 #include "juego.h"
 #include "PantallaPausa/pantallapausa.h"
+#include "PantallaTransicion/pantallatransicion.h"
 
 #include <QMainWindow>
 #include <QStackedWidget>
@@ -70,14 +71,7 @@ private:
     void ConeccionesPantallaPausa();
 
     // Transicion
-    QWidget* pantallaTransicion;
-    QPropertyAnimation* iniciarTransicion;
-    QPropertyAnimation* terminarTransicion;
-    QGraphicsOpacityEffect* efecto;
-    void ArrancarTransicion(int Duracion);
-    void MidTransicion();
-    void TerminarTransicion();
-    void ConeccionesPantallaTransicion();
+    PantallaTransicion * transicion;
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();
