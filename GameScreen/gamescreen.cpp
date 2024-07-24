@@ -24,9 +24,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
-
-    // Agregamos el icono del documento
-    SpawnearIconosDocumentos();
+    GestorNPC.setUpDocsIcono(ui->MesaAzul);
 
     SpawnearBotones();
     RealizarConexionesPrincipales();
@@ -70,6 +68,16 @@ void GameScreen::SpawnearBotones()
     ui->ContenedorBotones->layout()->addItem(EspaciadorBotones);
     ui->ContenedorBotones->layout()->addWidget(BotonAprobar);
     ui->ContenedorBotones->layout()->addWidget(BotonRechazar);
+
+    DocsIconUI * setup  =  GestorNPC.getDocsIcono();
+    // Bloqueamos los botones al estar el documento cerrado o abierto.
+    connect(setup, &DocsIconUI::Abierto, [this]() {
+        this->DesbloquearBotones();
+    });
+
+    connect(setup, &DocsIconUI::Cerrado, [this]() {
+        this->BloquearBotones(true);
+    });
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
@@ -93,7 +101,6 @@ void GameScreen::RealizarConexionesPrincipales()
     // Conecto los botones para que segun lo que haga el usuario, se evalue una cosa u otra.
     connect(BotonAprobar, &BotonesCustom::BotonApretado, this, &GameScreen::Acepto);
     connect(BotonRechazar, &BotonesCustom::BotonApretado, this, &GameScreen::Rechazo);
-    connect(BotonRechazar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::Rechazado);
 
     // Conectamos boton de centrar para centrar el documento.
     connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
@@ -125,17 +132,12 @@ void GameScreen::EmpezarJuego()
 {
     RealizarConexiones();
     // En caso de cortar la animacion de entrada antes de terminar, hay un temporizador que habilita los botones posados 0.8 segundos
-    temporizadorBotones.start(800);
+    //temporizadorBotones.start(800);
 
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
     GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
-
-    ///////////////////////// REWORKEAR /////////////////////////////////////////
-    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
-    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
-    iconosDocs->Entrar();
 }
 
 /// #################################### REINICIAR ###################################################
@@ -197,16 +199,6 @@ void GameScreen::Decidir()
     else emit NivelTerminado(false);
 }
 
-/// #################################### Iconos de Documentos ###################################################
-
-void GameScreen::SpawnearIconosDocumentos()
-{
-    iconosDocs = new DocsIconUI(ui->MesaAzul);
-    QHBoxLayout * layout = new QHBoxLayout(ui->MesaAzul);
-    layout->addWidget(iconosDocs);
-    ui->MesaAzul->setLayout(layout);
-}
-
 /// #################################### DECISIONES DEL JUGADOR ###################################################
 
 void GameScreen::Acepto()
@@ -224,13 +216,9 @@ void GameScreen::Rechazo()
 void GameScreen::SelloDocumento(bool Boton)
 {
     GestorNPC.Salir(Boton);
-    ///////////////////////// REWORKEAR /////////////////////////////////////////
-    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
-    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
-    iconosDocs->Sacar();
 
-    temporizadorBotones.start(2500);
-    BloquearBotones(true);
+    //temporizadorBotones.start(2500);
+    //BloquearBotones(true);
 
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 

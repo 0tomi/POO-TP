@@ -43,7 +43,7 @@ void DocumentosUI::PrepararAnimacionEntrada()
     int centerX = ((padre->width()) - (width())) /2;
     int centerY = (((padre->height())) - (height())) / 2;
 
-    animacionEntrada->setStartValue(QPoint(centerX,-500));
+    animacionEntrada->setStartValue(QPoint(-width(),centerY));
     animacionEntrada->setEndValue(QPoint(centerX,centerY));
 }
 
@@ -55,9 +55,9 @@ void DocumentosUI::Sacar()
 
 void DocumentosUI::PrepararAnimacionSalida()
 {
-    int centerX = ((padre->width()) - (width())) / 2;
+    int centerY = ((padre->height()) - (height())) / 2;
     animacionSalida->setStartValue(this->pos());
-    animacionSalida->setEndValue(QPoint(centerX,-500));
+    animacionSalida->setEndValue(QPoint(-width(),centerY));
 }
 
 DocumentosUI::~DocumentosUI()

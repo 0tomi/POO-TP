@@ -8,6 +8,7 @@
 #include "../NPC/globosdialogoui.h"
 #include "../Generadores/colanpc.h"
 #include "gestordocumentosui.h"
+#include "../Documentos/docsiconui.h"
 
 class GestorNPCsUI: public QWidget
 {
@@ -17,6 +18,8 @@ public:
     GestorNPCsUI();
     ~GestorNPCsUI();
     void setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola);
+    void setUpDocsIcono(QWidget * escena);
+    DocsIconUI * getDocsIcono();
     void setUpNuevoNivel(int Nivel);
 
     void EmpezarJuego();
@@ -41,7 +44,6 @@ public:
     void DetenerAnimacionesDocumentos();
 public slots:
     void Dialogo(const QString &dialogo);
-    void Rechazado();
     void emitirNPCTerminoSalir();
     void emitColaTerminada();
     void CentrarDocumentos();
@@ -69,6 +71,7 @@ private:
     QWidget* Escenario;
     GestorDocumentosUI GestorDocumentos;
 
+    // NPCs
     NPCGenericoUI* NPCcomunUI;
     NPC* NPCenEscena;
 
@@ -77,10 +80,13 @@ private:
     bool MostrandoNPC;
     QTimer EntrarNPCsYDocs;
 
+    // Iconos de Docs
+    DocsIconUI * docsIconUI;
+
     int topeNPCs;
     int NivelActual;
-    void RealizarConeccionesDeNPCs();
-    void RealizarDesconeccionesNPC();
+    void RealizarConexionesDeNPCs();
+    void RealizarDesconexionesNPC();
     void ActualizarEstadoNPC();
 };
 

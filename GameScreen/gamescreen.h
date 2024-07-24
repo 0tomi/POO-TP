@@ -15,7 +15,6 @@
 #include "pantallaperdiste.h"
 #include "../Documentos/docsiconui.h"
 
-
 namespace Ui {
 class GameScreen;
 }
@@ -36,6 +35,8 @@ public:
 public slots:
     void PausarJuego();
     void ReanudarJuego();
+    void BloquearBotones(bool Bloqueo);
+    void DesbloquearBotones();
 
 signals:
     void NivelTerminado(bool Perdio);
@@ -59,10 +60,6 @@ private:
     BotonesCustom* BotonCentrar;
     QSpacerItem* EspaciadorBotones;
 
-    // Icono de los documentos
-    void SpawnearIconosDocumentos();
-    DocsIconUI * iconosDocs;
-
     // Botones
     void SpawnearBotones();
     void RealizarConexiones();
@@ -72,9 +69,6 @@ private:
     void Acepto();
     void Rechazo();
     void SelloDocumento(bool Boton);
-    void BloquearBotones(bool Bloqueo);
-    // Otro metodo que voy  a poner simplemente porque no se como se hace.
-    void DesbloquearBotones();
 
     // Reubicar NPCs en la escena
     void changeEvent(QEvent *event) override;
