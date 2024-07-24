@@ -21,6 +21,7 @@ public:
     virtual void Sacar();
 
     bool getLibroAbierto() const;
+    void BloquearDocumento();
 
 signals:
     void Abierto();
@@ -47,6 +48,7 @@ protected:
 private:
     Ui::DocsIconUI *ui;
     void CerrarDocumento();
+    bool BlockDocumento;
 };
 
 #endif // DOCSICONUI_H

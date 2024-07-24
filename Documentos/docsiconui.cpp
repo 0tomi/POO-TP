@@ -24,6 +24,7 @@ DocsIconUI::DocsIconUI(QWidget *parent)
     connect(animacionEntrada, &QPropertyAnimation::finished, this, &DocsIconUI::animacionEntrarTerminada);
     connect(animacionSalida, &QPropertyAnimation::finished, this, &DocsIconUI::hide);
     hide();
+    BlockDocumento = false;
 }
 
 
@@ -34,11 +35,18 @@ DocsIconUI::~DocsIconUI()
     delete animacionSalida;
 }
 
+void DocsIconUI::BloquearDocumento()
+{
+    CerrarDocumento();
+    BlockDocumento = true;
+}
+
 void DocsIconUI::Entrar()
 {
     this->PrepararAnimacionEntrada();
     this->animacionEntrada->start();
     this->show();
+    BlockDocumento = false;
 }
 
 void DocsIconUI::Sacar()
@@ -51,12 +59,14 @@ void DocsIconUI::Sacar()
 void DocsIconUI::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton){
-        if (LibroAbierto){
-            CerrarDocumento();
-        } else {
-            setCurrentIndex(1);
-            LibroAbierto = true;
-            emitAbierto();
+        if (!BlockDocumento){
+            if (LibroAbierto){
+                CerrarDocumento();
+            } else {
+                setCurrentIndex(1);
+                LibroAbierto = true;
+                emitAbierto();
+            }
         }
     }
 }
