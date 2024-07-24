@@ -35,6 +35,7 @@ MainWindow::~MainWindow()
     delete pantallaTransicion;
     delete pantallaFinalNivel;
     delete gameScreen;
+    delete transicion;
     delete pantallas;
     // aca iria el delete a las pantallas
 }
@@ -55,6 +56,7 @@ void MainWindow::CrearPantallasJuego()
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
     pantallaFinalNivel = new PantallaFinalNivel(this);
+    transicion = new PantallaTransicion(this);
     CrearPantallaTransicion();
 
     // Añadimos las pantallas al stack
@@ -77,7 +79,6 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::close);
 }
 
-
 void MainWindow::ConeccionesPantallaTransicion()
 {
     // Conectamos la pantalla de estadisticas con lo demas
@@ -97,20 +98,17 @@ void MainWindow::ConeccionesPantallaMenu()
 
 void MainWindow::PrepararPantallaFinalNivel(bool Perdio)
 {
-    ArrancarTransicion(1000);
+    transicion->ArrancarTransicion(1000, this, &MainWindow::setPantallaStats);
     pantallaFinalNivel->setPantallaFinalUI(juego, Perdio);
 
     // Si perdio, reseteamos las estadisticas para que pueda volver a jugar
     if (Perdio)
         gameScreen->Restart();
-
-    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::setPantallaStats);
 }
 
 void MainWindow::setPantallaStats()
 {
     pantallas->setCurrentWidget(pantallaFinalNivel);
-    connect(iniciarTransicion, &QAbstractAnimation::finished, this, &MainWindow::setPantallaStats);
 }
 
 /// ################################## EVENTOS DE LA MAINWINDOW #############################################
@@ -155,29 +153,24 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::TransicionJuego(int Nivel, int Dificultad)
 {
-    ArrancarTransicion(1000);
+    transicion->ArrancarTransicion(1000, this, &MainWindow::PrepararJuego);
 
     // A futuro cambiar por los inputos de los botones.
     gameScreen->PrepararJuego(Nivel, Dificultad);
 
-    // Conectamos el final de la primer animacion, con la preparacion del juego
-    connect(iniciarTransicion, &QPropertyAnimation::finished, this, &MainWindow::PrepararJuego);
-
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
-    connect(terminarTransicion, &QPropertyAnimation::finished, this, &MainWindow::IniciarJuego);
+    connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
 }
 
 void MainWindow::PrepararJuego()
 {
-    // Desconectamos la animacion para poder usar despues la pantalla de transicion
-    disconnect(iniciarTransicion, &QPropertyAnimation::finished, this, &MainWindow::PrepararJuego);
     pantallas->setCurrentWidget(gameScreen);    // Colocamos la pantalla de juego, aunque esto suceda a la mitad de animacion, por lo tanto no se ve.
 }
 
 void MainWindow::IniciarJuego()
 {
     // Desconectamos la animacion para poder usar despues la pantalla de transicion
-    disconnect(terminarTransicion, &QPropertyAnimation::finished, this, &MainWindow::IniciarJuego);
+    disconnect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
     gameScreen->EmpezarJuego(); // Aca dsps iria el nivel de juego que toca.
 }
 
