@@ -54,15 +54,15 @@ GeneradorNPC::GeneradorNPC(){
     topeDialogosRev = lector.getTopeArray();
 
     // Lectura de dialogos para nivel 2
-    lector.LeerArchivoNuevo("/Resources/ArchivosTexto/DialogosEstudiante");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/DialogosEstudiante.txt");
     DialogosEstudiante=lector.getArray();
     topeDialogosEstudiante=lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("/Resources/ArchivosTexto/DialogosTurista");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/DialogosTurista.txt");
     DialogosTurista=lector.getArray();
     topeDialogosTurista=lector.getTopeArray();
 
-    lector.LeerArchivoNuevo("/Resources/ArchivosTexto/DialogosTrabajador");
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/DialogosTrabajador.txt");
     DialogosTrabajador=lector.getArray();
     topeDialogosTrabajador=lector.getTopeArray();
 
