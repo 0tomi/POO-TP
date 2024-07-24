@@ -40,8 +40,8 @@ protected:
     void PrepararAnimacionSalida();
 
     // Mover en caso de hacer click
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
+    virtual void mousePressEvent(QMouseEvent *event) override;
+    virtual void mouseMoveEvent(QMouseEvent *event) override;
     QPoint m_dragStartPosition;
 
 private:

@@ -65,5 +65,7 @@
         <file>Resources/Documentos/SelloAprobado.png</file>
         <file>Resources/Documentos/SelloRechazado.png</file>
         <file>Resources/mesaRework.png</file>
+        <file>Resources/Documentos/DocumentosClosedIcon.png</file>
+        <file>Resources/Documentos/DocumentosOpenIcon.png</file>
     </qresource>
 </RCC>

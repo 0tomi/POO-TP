@@ -65,6 +65,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         PantallaMenu/pantallamenu.cpp PantallaMenu/pantallamenu.h PantallaMenu/pantallamenu.ui
         Generadores/locuracaracteres.h Generadores/locuracaracteres.cpp
         PantallaTransicion/pantallatransicion.h PantallaTransicion/pantallatransicion.cpp PantallaTransicion/pantallatransicion.ui
+        Documentos/docsiconui.h Documentos/docsiconui.cpp Documentos/docsiconui.ui
+
 
 
 

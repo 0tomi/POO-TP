@@ -13,6 +13,7 @@
 #include "../juego.h"
 #include "BotonesCustom.h"
 #include "pantallaperdiste.h"
+#include "../Documentos/docsiconui.h"
 
 
 namespace Ui {
@@ -58,6 +59,11 @@ private:
     BotonesCustom* BotonCentrar;
     QSpacerItem* EspaciadorBotones;
 
+    // Icono de los documentos
+    void SpawnearIconosDocumentos();
+    DocsIconUI * iconosDocs;
+
+    // Botones
     void SpawnearBotones();
     void RealizarConexiones();
     void RealizarConexionesPrincipales();

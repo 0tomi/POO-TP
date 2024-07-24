@@ -25,6 +25,9 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
 
+    // Agregamos el icono del documento
+    SpawnearIconosDocumentos();
+
     SpawnearBotones();
     RealizarConexionesPrincipales();
     BloquearBotones(true);
@@ -128,6 +131,11 @@ void GameScreen::EmpezarJuego()
 
     GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
+
+    ///////////////////////// REWORKEAR /////////////////////////////////////////
+    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
+    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
+    iconosDocs->Entrar();
 }
 
 /// #################################### REINICIAR ###################################################
@@ -189,6 +197,16 @@ void GameScreen::Decidir()
     else emit NivelTerminado(false);
 }
 
+/// #################################### Iconos de Documentos ###################################################
+
+void GameScreen::SpawnearIconosDocumentos()
+{
+    iconosDocs = new DocsIconUI(ui->MesaAzul);
+    QHBoxLayout * layout = new QHBoxLayout(ui->MesaAzul);
+    layout->addWidget(iconosDocs);
+    ui->MesaAzul->setLayout(layout);
+}
+
 /// #################################### DECISIONES DEL JUGADOR ###################################################
 
 void GameScreen::Acepto()
@@ -206,6 +224,10 @@ void GameScreen::Rechazo()
 void GameScreen::SelloDocumento(bool Boton)
 {
     GestorNPC.Salir(Boton);
+    ///////////////////////// REWORKEAR /////////////////////////////////////////
+    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
+    /// ///////////////////////// REWORKEAR /////////////////////////////////////////
+    iconosDocs->Sacar();
 
     temporizadorBotones.start(2500);
     BloquearBotones(true);

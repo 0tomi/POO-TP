@@ -345,6 +345,9 @@
           </widget>
          </item>
         </layout>
+        <zorder>Entrada</zorder>
+        <zorder>Objetos</zorder>
+        <zorder>MesaAzul</zorder>
        </widget>
       </item>
      </layout>
