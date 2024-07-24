@@ -22,15 +22,27 @@
     <height>121</height>
    </size>
   </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>StackedWidget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="Cerrado">
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/Resources/Documentos/DocumentosClosedIcon.png);</string>
    </property>
   </widget>
   <widget class="QWidget" name="Abierto">
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/Resources/Documentos/DocumentosOpenIcon.png);</string>
    </property>

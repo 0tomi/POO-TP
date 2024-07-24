@@ -3,6 +3,7 @@
 
 #include <QStackedWidget>
 #include <QMouseEvent>
+#include <QCursor>
 #include <QPropertyAnimation>
 
 namespace Ui {
@@ -27,14 +28,18 @@ signals:
     void Abierto();
     void Cerrado();
     void animacionEntrarTerminada();
+    void animacionSalirTerminada();
 
 public slots:
     void emitAbierto();
     void emitCerrado();
-    void emitAnimacion();
+    void emitAnimacionEntrarTerminada();
+    void emitAnimacionSalirTerminada();
 
 protected:
+    // Metodos sobreescritos de QT
     void mousePressEvent(QMouseEvent *event) override;
+
     bool LibroAbierto;
     QWidget * padre;
 

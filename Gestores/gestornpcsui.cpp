@@ -136,24 +136,32 @@ void GestorNPCsUI::Salir(bool boton)
 
     if (boton){
         GestorDocumentos.Aprobado();
+        Rechazado = false;
     } else {
         GestorDocumentos.Rechazar();
-        NPCcomunUI->Rechazado();
+        Rechazado = true;
     }
 
-    docsIconUI->Sacar();
     docsIconUI->BloquearDocumento();
+    connect(docsIconUI, &DocsIconUI::animacionSalirTerminada, this, &GestorNPCsUI::SalirEntidades);
+}
+void GestorNPCsUI::DetenerAnimacionesDocumentos()
+{
+    GestorDocumentos.DetenerAnimaciones();
+}
+
+void GestorNPCsUI::SalirEntidades()
+{
+    if (Rechazado)
+        NPCcomunUI->Rechazado();
+
     Dialogos->ForzarSalir();
     NPCcomunUI->Sacar();
 
     if (ColaNPCs->getSize() == 0)
         emit ColaTerminada();
-        //connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitColaTerminada);
+
     MostrandoNPC = false;
-}
-void GestorNPCsUI::DetenerAnimacionesDocumentos()
-{
-    GestorDocumentos.DetenerAnimaciones();
 }
 
 /// #################################### Terminar nivel ###################################################

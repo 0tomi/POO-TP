@@ -42,6 +42,7 @@ public:
 
     // Cosas de documentos (luego vemos como se arregla esto)
     void DetenerAnimacionesDocumentos();
+
 public slots:
     void Dialogo(const QString &dialogo);
     void emitirNPCTerminoSalir();
@@ -65,6 +66,7 @@ signals:
 
 private slots:
     void EntrarEntidades();
+    void SalirEntidades();
 
 private:
     ColaNPC* ColaNPCs;
@@ -74,6 +76,7 @@ private:
     // NPCs
     NPCGenericoUI* NPCcomunUI;
     NPC* NPCenEscena;
+    bool Rechazado;
 
     GlobosDialogoUI* Dialogos;
 

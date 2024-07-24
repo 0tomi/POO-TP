@@ -188,8 +188,6 @@ void GameScreen::FinalDePartida()
     if (juego->getTotalSocialCredits() < 0)
        pantallaPerdiste->Iniciar(true);
     else pantallaPerdiste->Iniciar(false);
-
-    qDebug() << "Termino el juego";
 }
 
 void GameScreen::Decidir()

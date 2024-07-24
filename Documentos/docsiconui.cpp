@@ -21,8 +21,8 @@ DocsIconUI::DocsIconUI(QWidget *parent)
     animacionSalida->setEasingCurve(QEasingCurve::InExpo);
 
     // Hacemos que cuando termine la animacion de salida, el documento desaparezca.
-    connect(animacionEntrada, &QPropertyAnimation::finished, this, &DocsIconUI::animacionEntrarTerminada);
-    connect(animacionSalida, &QPropertyAnimation::finished, this, &DocsIconUI::hide);
+    connect(animacionEntrada, &QPropertyAnimation::finished, this, &DocsIconUI::emitAnimacionEntrarTerminada);
+    connect(animacionSalida, &QPropertyAnimation::finished, this, &DocsIconUI::emitAnimacionSalirTerminada);
     hide();
     BlockDocumento = false;
 }
@@ -59,7 +59,9 @@ void DocsIconUI::Sacar()
 void DocsIconUI::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton){
-        if (!BlockDocumento){
+        if (BlockDocumento){
+            Sacar();
+        } else {
             if (LibroAbierto){
                 CerrarDocumento();
             } else {
@@ -112,7 +114,13 @@ void DocsIconUI::emitCerrado()
     emit Cerrado();
 }
 
-void DocsIconUI::emitAnimacion()
+void DocsIconUI::emitAnimacionSalirTerminada()
+{
+    hide();
+    emit animacionSalirTerminada();
+}
+
+void DocsIconUI::emitAnimacionEntrarTerminada()
 {
     emit animacionEntrarTerminada();
 }

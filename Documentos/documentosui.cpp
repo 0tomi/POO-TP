@@ -15,7 +15,7 @@ DocumentosUI::DocumentosUI(QWidget *parent)
 
     // Creamos las animaciones de salida
     animacionSalida = new QPropertyAnimation(this, "pos");
-    animacionSalida->setDuration(1000);
+    animacionSalida->setDuration(500);
     animacionSalida->setEasingCurve(QEasingCurve::InExpo);
 
     // Creamos animacion para centrar
