@@ -153,6 +153,7 @@ void Juego::RestarSocialCredits(int Tipo)
 void Juego::setUpNivel1()
 {
     // A desarrollar
+    ResetJuego();
     Cola->addNPC(NivelActual, 2, 2, 2, 2, 6);
 }
 

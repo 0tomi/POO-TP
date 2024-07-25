@@ -13,7 +13,7 @@ PasaporteUI::PasaporteUI(QWidget *parent)
     NPCenDoc->show();
 
     // Cambios en la animacion particular de este documento, para que se vea el sello.
-    animacionSalida->setDuration(1300);
+    animacionSalida->setDuration(700);
     animacionSalida->setEasingCurve(QEasingCurve::InQuad);
 }
 void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPC * npc) {

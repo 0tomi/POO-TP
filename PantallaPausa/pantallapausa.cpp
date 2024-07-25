@@ -8,9 +8,24 @@ PantallaPausa::PantallaPausa(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->returnButton, &QPushButton::clicked, this, &PantallaPausa::buttonReturnClicked);
-    connect(ui->quitButton, &QPushButton::clicked, this, &PantallaPausa::buttonQuitClicked);
     connect(ui->fullscreenButton, &QPushButton::clicked, this, &PantallaPausa::buttonFullScreenClicked);
     connect(ui->windowedButton, &QPushButton::clicked, this, &PantallaPausa::buttonWindowedClicked);
+
+    connect(ui->quitButton, &QPushButton::clicked, this, &PantallaPausa::ConfirmarSalir);
+    connect(ui->quitButtonConfirmed, &QPushButton::clicked, this, &PantallaPausa::buttonQuitClicked);
+    connect(ui->noReturnButton, &QPushButton::clicked, this, &PantallaPausa::setInicio);
+}
+
+void PantallaPausa::setInicio()
+{
+    ui->Menus->setCurrentIndex(0);
+}
+
+void PantallaPausa::BlockVolverMenu(bool estado)
+{
+    if (estado)
+        ui->quitButton->hide();
+    else ui->quitButton->show();
 }
 
 PantallaPausa::~PantallaPausa()
@@ -51,4 +66,10 @@ void PantallaPausa::buttonReturnClicked()
 {
     emit return2lastWidget();
 }
+
+void PantallaPausa::ConfirmarSalir()
+{
+    ui->Menus->setCurrentIndex(1);
+}
+
 
