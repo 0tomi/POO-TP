@@ -1,17 +1,15 @@
 #include "libroreglas.h"
 #include "ui_libroreglas.h"
 #include <QDebug>
-libroreglas::libroreglas(QWidget *parent)//, ReglasNivel1 * rules)
+libroreglas::libroreglas(ReglasNivel1 * rules, AtributosComunes * atributos,QWidget *parent)
     : DocumentosUI(parent)
     , ui(new Ui::libroreglas)
 {
     ui->setupUi(this);
     ui->LibroReglas->setCurrentIndex(0);
-    //this->ruleslvl1 = rules;
-    this->atributos = new AtributosComunes;
-    this->archi = new LectorArchivos(":/Resources/ArchivosTexto/paises.txt");
-    this->atributos->setAtributos(archi->getArray(), archi->getTopeArray());
-    this->ruleslvl1 = new ReglasNivel1(this->atributos);
+    ui->BotonesSigAnt->setCurrentIndex(1);
+    this->ruleslvl1 = rules;
+    this->atributos = atributos;
     setBotones();
     setDatosPag1();
     hide();
@@ -22,16 +20,21 @@ void setDocumentacionInfo(Documentacion *documento){
 }
 
 void libroreglas::setBotones(){
-    connect(ui->BotonAnterior, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
-    connect(ui->BotonSiguiente, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
+    connect(ui->Anterior, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
+    connect(ui->Anterior_2, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
+    connect(ui->Siguiente, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
+    connect(ui->Siguiente_2, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
     connect(ui->BotonPasaporteyEstancia, &QPushButton::clicked,this, &libroreglas::IrPagSiguiente);
+    connect(ui->BotonCerrarPag0, &QPushButton::clicked, this, &libroreglas::cerrarLibro);
 }
 
 void libroreglas::IrPagSiguiente(){
+
     int currentIndex = ui->LibroReglas->currentIndex();
     if (currentIndex < ui->LibroReglas->count() - 1) {
         ui->LibroReglas->setCurrentIndex(currentIndex + 1);
     }
+    ui->BotonesSigAnt->setCurrentIndex(2);
 }
 
 void libroreglas::IrPagAnterior(){
@@ -39,7 +42,9 @@ void libroreglas::IrPagAnterior(){
     if (currentIndex > 0) {
         ui->LibroReglas->setCurrentIndex(currentIndex - 1);
     }
+    ui->BotonesSigAnt->setCurrentIndex(1);
 }
+
 
 void libroreglas::setDatosPag1(){
     setPaises();
@@ -47,6 +52,11 @@ void libroreglas::setDatosPag1(){
     setEstadoCivil();
     setDuracionEstancia();
     setTipoDeVisita();
+}
+
+void libroreglas::cerrarLibro()
+{
+    DocumentosUI::Sacar();
 }
 
 void libroreglas::setPaises(){
@@ -58,7 +68,6 @@ void libroreglas::setPaises(){
         Texto += Paises[IndicesValidos[i]] + "\n";
     }
     ui->PaisesPermitidos->setText(Texto);
-    delete[] Paises;
 }
 void libroreglas::setFechas(){
     QString Texto = "Solo se permitirá la entrada a personas:\n";
@@ -76,7 +85,7 @@ void libroreglas::setEstadoCivil(){
     for (int i = 0; i < max; ++i) {
         Texto += EstadosCivilesValidos[i] + "o/a/x" + "\n";
     }
-    delete[] EstadosCivilesValidos;
+
     ui->EstadoCivilPermitido->setText(Texto);
 }
 void libroreglas::setDuracionEstancia(){
@@ -92,7 +101,7 @@ void libroreglas::setTipoDeVisita(){
     for (int i = 0; i < Max ; ++i) {
         Texto += tipoVisita[i] + "\n";
     }
-    //delete[] tipoVisita;
+
     ui->TipoDeVisitaValido->setText(Texto);
 }
 libroreglas::~libroreglas()

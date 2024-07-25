@@ -17,7 +17,7 @@ class libroreglas : public DocumentosUI
     Q_OBJECT
 
 public:
-    explicit libroreglas(QWidget *parent = nullptr);
+    explicit libroreglas(ReglasNivel1 * rules, AtributosComunes * atributos, QWidget *parent = nullptr);
     ~libroreglas();
 
 private:
@@ -30,6 +30,7 @@ private:
     void IrPagAnterior();
     void IrPagSiguiente();
     void setDatosPag1();
+    void cerrarLibro();
 
     //para setear los campos
     void setPaises();
