@@ -225,7 +225,7 @@
         </property>
         <property name="styleSheet">
          <string notr="true">#Mesa{
-	border-image: url(:/Resources/mesa2.png);
+	border-image: url(:/Resources/mesaRework.png);
 }</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">

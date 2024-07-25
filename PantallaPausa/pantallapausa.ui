@@ -49,10 +49,10 @@ border-image: url(:/Resources/escritorio2.png);}</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <property name="leftMargin">
-       <number>300</number>
+       <number>200</number>
       </property>
       <property name="rightMargin">
-       <number>300</number>
+       <number>200</number>
       </property>
       <item>
        <spacer name="verticalSpacer_2">
@@ -69,11 +69,30 @@ border-image: url(:/Resources/escritorio2.png);}</string>
       </item>
       <item>
        <widget class="QLabel" name="label">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777213</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>MS Sans Serif</family>
+          <pointsize>27</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:700;&quot;&gt;MENU DE PAUSA LOCURA (WORK IN PROGRESS)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>MENU DE PAUSA (WORK IN PROGRESS)</string>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -95,6 +114,17 @@ border-image: url(:/Resources/escritorio2.png);}</string>
       </item>
       <item>
        <widget class="QPushButton" name="returnButton">
+        <property name="font">
+         <font>
+          <family>MS Sans Serif</family>
+          <pointsize>22</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: white;
+background-color: #1e1532;</string>
+        </property>
         <property name="text">
          <string>Volver</string>
         </property>
@@ -126,8 +156,25 @@ border-image: url(:/Resources/escritorio2.png);}</string>
         </property>
         <widget class="QWidget" name="ActivarPantallaCompleta">
          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QPushButton" name="fullscreenButton">
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
              <string>Activar pantalla completa</string>
             </property>
@@ -137,8 +184,25 @@ border-image: url(:/Resources/escritorio2.png);}</string>
         </widget>
         <widget class="QWidget" name="ActivarModoVentana">
          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QPushButton" name="windowedButton">
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
             <property name="text">
              <string>Activar modo ventana</string>
             </property>
@@ -163,6 +227,17 @@ border-image: url(:/Resources/escritorio2.png);}</string>
       </item>
       <item>
        <widget class="QPushButton" name="quitButton">
+        <property name="font">
+         <font>
+          <family>MS Sans Serif</family>
+          <pointsize>22</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: white;
+background-color: rgb(95, 0, 0);</string>
+        </property>
         <property name="text">
          <string>Salir</string>
         </property>

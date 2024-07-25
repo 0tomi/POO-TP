@@ -36,7 +36,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Generadores/colanpc.h Generadores/colanpc.cpp
         juego.h juego.cpp
 
-        pantallainicio.h pantallainicio.cpp pantallainicio.ui
+
         Resources.qrc
         GameScreen/gamescreen.h GameScreen/gamescreen.cpp GameScreen/gamescreen.ui
         NPC/npcui.h NPC/npcui.cpp NPC/npcui.ui
@@ -62,9 +62,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         PantallaPausa/pantallapausa.h PantallaPausa/pantallapausa.cpp PantallaPausa/pantallapausa.ui
         PantallaStats/pantallafinalnivel.cpp PantallaStats/pantallafinalnivel.h PantallaStats/pantallafinalnivel.ui
         GameScreen/pantallaperdiste.h GameScreen/pantallaperdiste.cpp GameScreen/pantallaperdiste.ui
-        GameScreen/libroreglas.h GameScreen/libroreglas.cpp GameScreen/libroreglas.ui
-        Generadores/generadorpaisresidencia.h Generadores/generadorpaisresidencia.cpp
-        Documentos/paisderesidencia.h Documentos/paisderesidencia.cpp
+        PantallaMenu/pantallamenu.cpp PantallaMenu/pantallamenu.h PantallaMenu/pantallamenu.ui
+        Generadores/locuracaracteres.h Generadores/locuracaracteres.cpp
 
 
 

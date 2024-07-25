@@ -20,6 +20,9 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     quint32 Semilla = static_cast<quint32>(time(NULL));
     NumeroRandom.seed(Semilla);
 
+    // Seteamos el randomizador de caracteres
+    randomizadorCaracteres = new LocuraCaracteres(&NumeroRandom);
+
     // Pendiente a implementar
     // News de generadores
 
@@ -27,15 +30,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     generadorPasaporte = new Generar_pasaporte(reglasNivel1, datos);
 
     // Generador estancia
-    int maxVisitas, maxVisitasValidas;
-    QString* Visitas = datos->getVisitas(maxVisitas);
-    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
-    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
-    generadorEstancia = new GenerarEstancia(Visitas,
-                                            maxVisitas,
-                                            VisitasValidas,
-                                            maxVisitasValidas,
-                                            reglasNivel1->getDuracionEstanciaPermitida());
+    generadorEstancia = new GenerarEstancia(reglasNivel1, randomizadorCaracteres);
 
     // Siguientes generadores
 }
@@ -43,6 +38,9 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
 GeneradorDocumentacion::~GeneradorDocumentacion()
 {
     delete generadorEstancia;
+    delete generadorPasaporte;
+    delete randomizadorCaracteres;
+    // delete de los siguientes generadores
 }
 
 /// #################################### ACTUALIZAR REGLAS ###################################################
@@ -58,12 +56,7 @@ void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
     generadorPasaporte->restartReglas(reglasNivel1);
 
     // Reset de reglas del generador de estancia
-    int maxVisitas, maxVisitasValidas;
-    QString* Visitas = datos->getVisitas(maxVisitas);
-    QString* VisitasValidas = reglasNivel1->getTipoDeVisitaValida();
-    maxVisitasValidas = reglasNivel1->getMaxVisitasPermitidas();
-    generadorEstancia->resetReglas(Visitas, maxVisitas, VisitasValidas, maxVisitasValidas,
-                                   reglasNivel1->getDuracionEstanciaPermitida());
+    generadorEstancia->resetReglas(reglasNivel1);
 }
 
 /// #################################### GETTERS ###################################################
