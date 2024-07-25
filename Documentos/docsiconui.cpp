@@ -20,6 +20,8 @@ DocsIconUI::DocsIconUI(QWidget *parent)
     animacionSalida->setDuration(1000);
     animacionSalida->setEasingCurve(QEasingCurve::InExpo);
 
+    // Crear animacion de vibracion
+
     // Hacemos que cuando termine la animacion de salida, el documento desaparezca.
     connect(animacionEntrada, &QPropertyAnimation::finished, this, &DocsIconUI::emitAnimacionEntrarTerminada);
     connect(animacionSalida, &QPropertyAnimation::finished, this, &DocsIconUI::emitAnimacionSalirTerminada);

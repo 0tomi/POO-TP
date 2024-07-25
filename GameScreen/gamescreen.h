@@ -37,12 +37,12 @@ public slots:
     void ReanudarJuego();
     void BloquearBotones(bool Bloqueo);
     void DesbloquearBotones();
+    void FinalDePartida();
 
 signals:
     void NivelTerminado(bool Perdio);
 
 private slots:
-    void FinalDePartida();
     void Decidir();
 
 private:
@@ -52,6 +52,8 @@ private:
     QTimer tiempoPartida;
     QTimer temporizadorBotones;
     int tiempoRestante;
+
+    bool Pausado;
 
     GestorNPCsUI GestorNPC;
 

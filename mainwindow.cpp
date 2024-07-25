@@ -19,10 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
 
-    // Cuando termine un nivel, hacemos que se muestre la pantalla de final de nivel
+    // Conectamos el final de la partida con el nivel terminado
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -73,7 +71,7 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
     connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);
     connect(pantallaPausa, &PantallaPausa::return2lastWidget, this, &MainWindow::PrepararSalirPantallaPausa);
-    connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::close);
+    connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::VolverInicio);
 }
 
 void MainWindow::ConeccionesPantallaMenu()
@@ -166,12 +164,17 @@ void MainWindow::IniciarJuego()
 /// ################################## PANTALLA DE INICIO #############################################
 void MainWindow::VolverInicio()
 {
+    if (PantallaPrevia == 1){
+        // Hacemos que termine el nivel pero no que muestre la pantalla de final de nivel.
+        gameScreen->FinalDePartida();
+    }
     transicion->ArrancarTransicion(1000, this, &MainWindow::setInicio);
 }
 
 void MainWindow::setInicio()
 {
     pantallas->setCurrentWidget(pantallaMenu);
+    pantallaMenu->setInicio();
 }
 
 /// ################################## PANTALLA DE PAUSA #############################################
@@ -192,7 +195,12 @@ void MainWindow::PrepararSalirPantallaPausa()
 
 void MainWindow::PonerPantallaPausa()
 {
+    if (PantallaPrevia == 0)
+        pantallaPausa->BlockVolverMenu(true);
+    else pantallaPausa->BlockVolverMenu(false);
+
     pantallas->setCurrentWidget(pantallaPausa);
+    pantallaPausa->setInicio();
 }
 
 void MainWindow::VolverPantallaAnterior()

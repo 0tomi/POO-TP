@@ -13,6 +13,8 @@ class PantallaPausa : public QWidget
 
 public:
     explicit PantallaPausa(QWidget *parent = nullptr);
+    void setInicio();
+    void BlockVolverMenu(bool estado);
     ~PantallaPausa();
 
 public slots:
@@ -33,6 +35,7 @@ private slots:
     void buttonWindowedClicked();
     void buttonQuitClicked();
     void buttonReturnClicked();
+    void ConfirmarSalir();
 };
 
 #endif // PANTALLAPAUSA_H

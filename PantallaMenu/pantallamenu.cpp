@@ -32,6 +32,11 @@ PantallaMenu::PantallaMenu(QWidget *parent)
     ui->menu->setCurrentIndex(0);
 }
 
+void PantallaMenu::setInicio()
+{
+    switchMenu();
+}
+
 PantallaMenu::~PantallaMenu()
 {
     delete ui;

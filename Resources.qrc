@@ -67,5 +67,15 @@
         <file>Resources/mesaRework.png</file>
         <file>Resources/Documentos/DocumentosClosedIcon.png</file>
         <file>Resources/Documentos/DocumentosOpenIcon.png</file>
+        <file>Resources/Pasillo/FondoTiempo1.png</file>
+        <file>Resources/Pasillo/FondoTiempo2.png</file>
+        <file>Resources/Pasillo/FondoTiempo3.png</file>
+        <file>Resources/Pasillo/FondoTiempo4.png</file>
+        <file>Resources/Pasillo/FondoTiempo5.png</file>
+        <file>Resources/Pasillo/FondoTiempo6.png</file>
+        <file>Resources/Pasillo/FondoTiempo7.png</file>
+        <file>Resources/Pasillo/FondoTiempo8.png</file>
+        <file>Resources/Pasillo/FondoTiempo9.png</file>
+        <file>Resources/Pasillo/FondoTiempo10.png</file>
     </qresource>
 </RCC>

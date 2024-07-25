@@ -155,6 +155,7 @@ void GameScreen::PausarJuego()
     GestorNPC.Pausar();
     tiempoRestante = tiempoPartida.remainingTime();
     tiempoPartida.stop();
+    Pausado = true;
 }
 
 void GameScreen::ReanudarJuego()
@@ -162,6 +163,8 @@ void GameScreen::ReanudarJuego()
     GestorNPC.Reanudar();
     tiempoPartida.start(tiempoRestante);
     GestorNPC.CentrarNPC();
+
+    Pausado = false;
 }
 
 void GameScreen::Centrar()
@@ -174,20 +177,19 @@ void GameScreen::Centrar()
 void GameScreen::FinalDePartida()
 {
     // a desarrollar
-    BloquearBotones(true);
-
     GestorNPC.TerminoNivel();
 
-    // Conectamos el temporizador de partida para terminar la partida.
-    disconnect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
     tiempoPartida.stop();
 
     // Desconectamos las cosas que le dan progreso al juego
     disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
-    if (juego->getTotalSocialCredits() < 0)
-       pantallaPerdiste->Iniciar(true);
-    else pantallaPerdiste->Iniciar(false);
+    if (!Pausado){
+        qDebug() << "Se detuvo forzosamente el juego";
+        if (juego->getTotalSocialCredits() < 0)
+           pantallaPerdiste->Iniciar(true);
+        else pantallaPerdiste->Iniciar(false);
+    }
 }
 
 void GameScreen::Decidir()

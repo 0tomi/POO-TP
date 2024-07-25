@@ -169,8 +169,12 @@ void GestorNPCsUI::TerminoNivel()
 {
     RealizarDesconexionesNPC();
 
+    // Si hay NPCs presentes, retiramos los documentos y el NPC.
     if (ColaNPCs->getSize()){
-        Salir(true);
+        SalirEntidades();
+        GestorDocumentos.Salir();
+        docsIconUI->Sacar();
+
         ColaNPCs->vaciarCola();
     }
     emit ColaTerminada();
