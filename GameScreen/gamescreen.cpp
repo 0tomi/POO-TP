@@ -25,6 +25,10 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
     GestorNPC.setUpDocsIcono(ui->MesaAzul);
 
+    // Agregamos el libro de reglas
+    // ACA ES DONDE SE DEBERIA PASAR POR CONSTRUCTOR EL PUNTERO DE JUEGO
+    libroReglasUI = new libroreglas(ui->Escritorio);
+
     SpawnearBotones();
     RealizarConexionesPrincipales();
     BloquearBotones(true);
@@ -106,6 +110,11 @@ void GameScreen::RealizarConexionesPrincipales()
 
     connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
 
+    // ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR
+    // Conectamos momentaneaemente el boton de reglas para que spawnee
+    connect(ui->aparecerReglas, &QPushButton::clicked, libroReglasUI, &libroreglas::Entrar);
+
+    // Conectamos nuestro cronometro rustico
     connect(&TiempoDia, &QTimer::timeout, this, &GameScreen::ActualizarTiempo);
 }
 

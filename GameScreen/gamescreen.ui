@@ -407,6 +407,24 @@
                 <height>150</height>
                </size>
               </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <widget class="QPushButton" name="aparecerReglas">
+                 <property name="minimumSize">
+                  <size>
+                   <width>44</width>
+                   <height>70</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">image: url(:/Resources/Documentos/NormativasIcono.png);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>

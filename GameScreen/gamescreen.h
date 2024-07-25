@@ -14,6 +14,7 @@
 #include "BotonesCustom.h"
 #include "pantallaperdiste.h"
 #include "../Documentos/docsiconui.h"
+#include "libroreglas.h"
 
 namespace Ui {
 class GameScreen;
@@ -55,6 +56,7 @@ private:
     bool Pausado;
 
     GestorNPCsUI GestorNPC;
+    libroreglas * libroReglasUI;
 
     BotonesCustom* BotonAprobar;
     BotonesCustom* BotonRechazar;
