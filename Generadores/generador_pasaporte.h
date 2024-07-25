@@ -11,6 +11,7 @@ class Generar_pasaporte
 private:
     QRandomGenerator rand;
     bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
+    const int cantcampos = 3;
 protected:
     AtributosComunes * atributos;
     QString * nombre_mujeres;
@@ -29,7 +30,7 @@ protected:
     int max_nacionalidades; // cantidad total de nacionalidades
     int max_apellidos; // cantidad total de apellidos
 
-    void generar_camposValidos(bool valido, int dificultad);
+    void generar_camposValidos(bool valido, int dificultad, const int cantcampos);
 
     QString generar_nombre(char genero);
     QString generar_estado_civil(char genero, bool valido);

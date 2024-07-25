@@ -9,8 +9,9 @@ class generadorPaisResidencia : public Generar_pasaporte
 {
 private:
     QRandomGenerator rand;
-    bool camposValidos[4];
+    bool camposValidos[3];
     PaisDeResidencia * PaisResidenciaGenerado;
+    const int cantcampos = 3;
 
 
     QString GenerarPaisDeResidencia(bool valido);

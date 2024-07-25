@@ -11,9 +11,11 @@ class PaisDeResidencia
     QString PaisdeResidencia;
 public:
     PaisDeResidencia(QString nombre, QString fecha, char genero, QString nacionalidad,QString PaisdeResidencia);
-    void getNombre();
-    void getFecha();
-    void
+    QString getNombre() const;
+    QString getFecha() const;
+    char getGenero() const;
+    QString getNacionalidad() const;
+    QString getPaisdeResidencia() const;
 };
 
 #endif // PAISDERESIDENCIA_H

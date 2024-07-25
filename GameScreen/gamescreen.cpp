@@ -11,7 +11,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ui->setupUi(this);
 
     juego = newJuego;
-
+    this->LibroDeReglas = new libroreglas(this->Rules, this);
     pantallaPerdiste = new PantallaPerdiste(this);
     pantallaPerdiste->setFixedSize(1920,1080);
     pantallaPerdiste->hide();
@@ -246,7 +246,7 @@ void GameScreen::resizeEvent(QResizeEvent *event)
 
 /// ############################################ LIBRO DE REGLAS ####################################################
 void GameScreen::MostrarReglas(){
-    this->LibroDeReglas.show();
+    this->LibroDeReglas->Entrar();
 }
 
 

@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "pantallainicio.h"
+//#include "/GameScreen/pantallaperdiste.h"
 #include "GameScreen/gamescreen.h"
 #include "PantallaStats/pantallafinalnivel.h"
 #include "PantallaMenu/pantallamenu.h"

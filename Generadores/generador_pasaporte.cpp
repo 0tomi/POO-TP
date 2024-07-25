@@ -79,9 +79,9 @@ QString Generar_pasaporte::generar_fecha(bool valido){
     return fecha;
 }
 
-void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
+void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad, const int cantcampos){
     if (valido){
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < cantcampos; ++i)
             this->campos_validos[i] = true;
     } else {
         int cantidadCamposInvalidos = 0;
@@ -89,7 +89,7 @@ void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
         // Hasta no generarse por lo menos 1 campo valido, no sale del while.
         qDebug() << "Bucle de generar campos invalidos pasaporte";
         while (!cantidadCamposInvalidos)
-            for (int i = 0; i < 3; ++i){
+            for (int i = 0; i < cantcampos; ++i){
                 sorteo = this->rand.bounded(10);
                 if (sorteo < Probabilidad){
                    this->campos_validos[i] = false;
@@ -179,7 +179,7 @@ Pasaporte * Generar_pasaporte::crear_pasaporte(bool valido, char genero, int dif
         break;
     }
 
-    generar_camposValidos(valido,Probabilidades);
+    generar_camposValidos(valido,Probabilidades, this->cantcampos);
 
     QString fecha_generada = generar_fecha(this->campos_validos[0]);
     QString nacionalidad_generada = generar_nacionalidad(this->campos_validos[1]);

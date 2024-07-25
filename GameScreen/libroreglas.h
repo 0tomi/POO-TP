@@ -12,20 +12,19 @@ namespace Ui {
 class libroreglas;
 }
 
-class libroreglas : public QWidget
+class libroreglas : public DocumentosUI
 {
     Q_OBJECT
 
 public:
-    explicit libroreglas(QWidget *parent = nullptr);
+    explicit libroreglas(ReglasNivel1 * rules ,QWidget *parent = nullptr);
     ~libroreglas();
 
 private:
     Ui::libroreglas *ui;
     ReglasNivel1 * ruleslvl1;
-    AtributosComunes * atributos;
-    LectorArchivos * archi;
-    //void setDocumentacionInfo(Documentacion *documento) override;
+    AtributosComunes atributos;
+    void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();
     void IrPagAnterior();
     void IrPagSiguiente();
@@ -37,6 +36,9 @@ private:
     void setEstadoCivil();
     void setDuracionEstancia();
     void setTipoDeVisita();
+
+    //Actualizar Reglas
+    void ActualizarReglas(ReglasNivel1 * reglas);
 };
 
 #endif // LIBROREGLAS_H

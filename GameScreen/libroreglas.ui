@@ -35,7 +35,7 @@
       <string notr="true">border-image: url(:/Resources/Documentos/abierto2 (1).png);</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="PagInicial">
       <widget class="QPushButton" name="BotonPasaporteyEstancia">
@@ -72,20 +72,24 @@ color: rgb(0, 0, 0);</string>
         <string>Siguiente</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="EtiquetaInfo">
        <property name="geometry">
         <rect>
-         <x>50</x>
-         <y>60</y>
-         <width>211</width>
-         <height>321</height>
+         <x>40</x>
+         <y>100</y>
+         <width>241</width>
+         <height>281</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/Estancia.png);</string>
+        <string notr="true">color: rgb(0, 0, 0);
+border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>
@@ -155,6 +159,7 @@ border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+border-color: rgb(0, 0, 0);
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
@@ -209,7 +214,10 @@ color: rgb(0, 0, 0);</string>
 border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QLabel" name="TipoDeVisitaValido">
@@ -227,6 +235,9 @@ border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
        </property>
        <property name="text">
         <string>TextLabel</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>

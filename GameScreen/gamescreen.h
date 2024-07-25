@@ -64,7 +64,8 @@ private:
     void RealizarConexionesPrincipales();
 
     //Libro de reglas
-    libroreglas LibroDeReglas;
+    libroreglas *LibroDeReglas;
+    ReglasNivel1 * Rules;
     void MostrarReglas();
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

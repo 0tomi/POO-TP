@@ -12,5 +12,11 @@ int main(int argc, char *argv[])
     w.show();
 
 
+    //GameScreen g;
+    //g.show();
+    //g.EmpezarJuego();
+
+
+
     return a.exec();
 }
