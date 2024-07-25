@@ -50,7 +50,6 @@ private:
     PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
     QTimer tiempoPartida;
-    QTimer temporizadorBotones;
     int tiempoRestante;
 
     bool Pausado;
@@ -61,6 +60,11 @@ private:
     BotonesCustom* BotonRechazar;
     BotonesCustom* BotonCentrar;
     QSpacerItem* EspaciadorBotones;
+
+    // Controlar tiempo en partida
+    QTimer TiempoDia;
+    void ActualizarTiempo();
+    int TiempoActual;
 
     // Botones
     void SpawnearBotones();

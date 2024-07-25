@@ -19,7 +19,6 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     // Seteamos el juego, y obtenemos la cola de NPCs.
     ColaNPC* Cola = juego->getCola();
 
-    temporizadorBotones.setSingleShot(true);
     tiempoPartida.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
@@ -106,13 +105,12 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
 
     connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
+
+    connect(&TiempoDia, &QTimer::timeout, this, &GameScreen::ActualizarTiempo);
 }
 
 void GameScreen::RealizarConexiones()
 {
-    // Desbloquear botones despues de pasado un tiempo
-    connect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
-
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
 }
@@ -135,6 +133,11 @@ void GameScreen::EmpezarJuego()
     //temporizadorBotones.start(800);
 
     tiempoPartida.start(8*60*1000); // 8 Minutos
+
+    // Seteamos el pasaje de tiempo en el juego
+    TiempoDia.start(52 * 1000); // Cada 52 segundos el tiempo cambia
+    TiempoActual = 0;
+    ActualizarTiempo();
 
     GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
@@ -180,9 +183,8 @@ void GameScreen::FinalDePartida()
     GestorNPC.TerminoNivel();
 
     tiempoPartida.stop();
+    TiempoDia.stop();
 
-    // Desconectamos las cosas que le dan progreso al juego
-    disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
     if (!Pausado){
         qDebug() << "Se detuvo forzosamente el juego";
@@ -197,6 +199,14 @@ void GameScreen::Decidir()
     if (juego->getTotalSocialCredits() < 0)
         emit NivelTerminado(true);
     else emit NivelTerminado(false);
+}
+
+void GameScreen::ActualizarTiempo()
+{
+    ui->Pasillo->setCurrentIndex(TiempoActual);
+    TiempoActual++;
+    if (TiempoActual > 9)
+        TiempoActual = 0;
 }
 
 /// #################################### DECISIONES DEL JUGADOR ###################################################
