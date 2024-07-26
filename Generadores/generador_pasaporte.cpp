@@ -63,15 +63,16 @@ QString Generar_pasaporte::generar_fecha(bool valido){
     int fecha_min  = this->rules->getFechaMinPermitida();
     int fecha_max = this->rules->getFechaMaxPermitida();
     if (valido){ //genera una fecha valida
-
-        generar_anio =    this->rand.bounded(fecha_min ,fecha_max) ;
+        generar_anio = this->rand.bounded(fecha_min ,fecha_max + 1) ;
         generar_mes = 1 + this->rand.bounded(12);
         cant_dias = obt_dias(generar_mes,generar_anio);
         generar_dia = 1 + this->rand.bounded(cant_dias);
     } else{ // genera una fecha invalida
-
-        // REWORKEAR
-        generar_anio = this->rand.bounded(fecha_min) ;
+        if (this->rand.bounded(2) == 0) {
+            generar_anio = fecha_min - 1 - this->rand.bounded(10); // genera un anio menor que fechamin, hasta 10 años menos
+        } else {
+            generar_anio = fecha_max + 1 + this->rand.bounded(10); // genera un anio mayor a fechamax, hasta 10 años mas
+        }
         generar_mes = 1 + this->rand.bounded(12);
         cant_dias = obt_dias(generar_mes,generar_anio);
         generar_dia = 1 + this->rand.bounded(cant_dias);

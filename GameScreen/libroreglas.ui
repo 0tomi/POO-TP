@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>696</width>
-    <height>536</height>
+    <height>629</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
 	border-image: url(:/Resources/Documentos/abierto2 (1).png);
 }</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,12,2">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -35,14 +35,34 @@
     <number>0</number>
    </property>
    <item>
+    <widget class="QWidget" name="CloseButton" native="true">
+     <widget class="QPushButton" name="BotonCerrar">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>83</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cerrar</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
     <widget class="QStackedWidget" name="LibroReglas">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">#LibroReglas{
 border-image: url(:/Resources/Documentos/abierto2 (1).png);
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="PagInicial">
       <widget class="QPushButton" name="BotonPasaporteyEstancia">
@@ -62,24 +82,7 @@ color: rgb(0, 0, 0);</string>
         <string>Pasaporte y Estancia</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="BotonSiguiente">
-       <property name="geometry">
-        <rect>
-         <x>502</x>
-         <y>480</y>
-         <width>141</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>Siguiente</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="ImagenInicio">
        <property name="geometry">
         <rect>
          <x>50</x>
@@ -107,7 +110,7 @@ color: rgb(0, 0, 0);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+        <string notr="true">
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
@@ -127,7 +130,7 @@ color: rgb(0, 0, 0);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+        <string notr="true">
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
@@ -145,40 +148,23 @@ color: rgb(0, 0, 0);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 0);
-border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
+</string>
        </property>
        <property name="text">
         <string/>
        </property>
       </widget>
-      <widget class="QPushButton" name="BotonAnterior">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>480</y>
-         <width>131</width>
-         <height>29</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string>Anterior</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="EdadPermitida">
        <property name="geometry">
         <rect>
-         <x>22</x>
-         <y>229</y>
-         <width>291</width>
+         <x>30</x>
+         <y>220</y>
+         <width>281</width>
          <height>111</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+        <string notr="true">
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
@@ -195,7 +181,7 @@ color: rgb(0, 0, 0);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+        <string notr="true">
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
@@ -213,7 +199,7 @@ color: rgb(0, 0, 0);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 0);
-border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
+</string>
        </property>
        <property name="text">
         <string>TextLabel</string>
@@ -230,10 +216,83 @@ border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 0);
-border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);</string>
+</string>
        </property>
        <property name="text">
         <string>TextLabel</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="StackedBotones">
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#StackedBotones{
+	
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>2</number>
+     </property>
+     <widget class="QWidget" name="BotonesSigAnt">
+      <widget class="QPushButton" name="Siguiente">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>20</y>
+         <width>83</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Siguiente</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Anterior">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>83</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Anterior</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="SoloAnterior">
+      <widget class="QPushButton" name="Anterior_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>83</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Anterior</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="SoloSiguiente">
+      <widget class="QPushButton" name="Siguiente_2">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>20</y>
+         <width>83</width>
+         <height>29</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Siguiente</string>
        </property>
       </widget>
      </widget>

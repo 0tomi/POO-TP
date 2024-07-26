@@ -7,7 +7,7 @@ libroreglas::libroreglas(ReglasNivel1 * rules, AtributosComunes * atributos,QWid
 {
     ui->setupUi(this);
     ui->LibroReglas->setCurrentIndex(0);
-    ui->BotonesSigAnt->setCurrentIndex(1);
+    ui->StackedBotones->setCurrentIndex(2);
     this->ruleslvl1 = rules;
     this->atributos = atributos;
     setBotones();
@@ -25,24 +25,55 @@ void libroreglas::setBotones(){
     connect(ui->Siguiente, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
     connect(ui->Siguiente_2, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
     connect(ui->BotonPasaporteyEstancia, &QPushButton::clicked,this, &libroreglas::IrPagSiguiente);
-    connect(ui->BotonCerrarPag0, &QPushButton::clicked, this, &libroreglas::cerrarLibro);
+    connect(ui->BotonCerrar, &QPushButton::clicked, this, &libroreglas::cerrarLibro);
 }
 
 void libroreglas::IrPagSiguiente(){
 
     int currentIndex = ui->LibroReglas->currentIndex();
-    if (currentIndex < ui->LibroReglas->count() - 1) {
-        ui->LibroReglas->setCurrentIndex(currentIndex + 1);
+    int pageCount = ui->LibroReglas->count();
+
+    // Avanzar al siguiente índice
+    if (currentIndex < pageCount - 1) {
+        currentIndex++;
+        ui->LibroReglas->setCurrentIndex(currentIndex);
     }
-    ui->BotonesSigAnt->setCurrentIndex(2);
+
+    // Mostrar el widget adecuado basado en el índice actual
+    if (currentIndex == pageCount - 1) {
+        // Si estamos en la última página, solo mostrar el botón "Anterior_2"
+        ui->StackedBotones->setCurrentIndex(1);
+    } else if (currentIndex == 0) {
+        // Si estamos en la primera página, solo mostrar el botón "Siguiente_2"
+        ui->StackedBotones->setCurrentIndex(2);
+    } else {
+        // Si hay páginas anteriores y siguientes, mostrar ambos botones
+        ui->StackedBotones->setCurrentIndex(0);
+    }
+
 }
 
 void libroreglas::IrPagAnterior(){
     int currentIndex = ui->LibroReglas->currentIndex();
+
+    // Avanzar al siguiente índice
     if (currentIndex > 0) {
-        ui->LibroReglas->setCurrentIndex(currentIndex - 1);
+        currentIndex--;
+        ui->LibroReglas->setCurrentIndex(currentIndex);
     }
-    ui->BotonesSigAnt->setCurrentIndex(1);
+
+    // Mostrar el widget adecuado basado en el índice actual
+    if (currentIndex == 0) {
+        // Si estamos en la primera página, solo mostrar el boton siguiente
+         ui->StackedBotones->setCurrentIndex(2);
+    } else if (currentIndex == ui->LibroReglas->count() - 1) {
+        // Si estamos en la última página, solo mostrar el boton anterior
+         ui->StackedBotones->setCurrentIndex(1);
+    } else {
+        // Si hay paginas anteriores y siguientes, mostrar ambos botones
+         ui->StackedBotones->setCurrentIndex(0);
+    }
+
 }
 
 
@@ -95,7 +126,7 @@ void libroreglas::setDuracionEstancia(){
     ui->DuracionPermitida->setText(Texto);
 }
 void libroreglas::setTipoDeVisita(){
-    QString Texto = "Solo se permitirá la entrada a los siguientes tipos de visita:\n";
+    QString Texto = "Solo se permitirá la entrada a los siguientes\n tipos de visita:\n";
     QString * tipoVisita = this->ruleslvl1->getTipoDeVisitaValida();
     int Max = this->ruleslvl1->getMaxVisitasPermitidas();
     for (int i = 0; i < Max ; ++i) {
