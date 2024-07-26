@@ -65,14 +65,14 @@ private:
     QString* DialogosRevolucionario;
     int topeDialogosRev;
 
-    QString* DialogosEstudiante;
+    /*QString* DialogosEstudiante;
     int topeDialogosEstudiante;
 
     QString* DialogosTrabajador;
     int topeDialogosTrabajador;
 
     QString* DialogosTurista;
-    int topeDialogosTurista;
+    int topeDialogosTurista;*/
 
     void GenerarDialogosNivel1(NPC* info);
     void GenerarDialogosNivel2(NPC* info);
