@@ -77,7 +77,8 @@ void NPCUI::Hablar()
 {
     // work in progress
     QString dialogo = NPCrepresentado->getDialogo();
-    emit QuiereHablar(dialogo);
+    if (dialogo != "null")
+        emit QuiereHablar(dialogo);
 }
 
 NPCUI::~NPCUI()
