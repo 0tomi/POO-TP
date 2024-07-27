@@ -68,6 +68,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/docsiconui.h Documentos/docsiconui.cpp Documentos/docsiconui.ui
         Documentos/listaacompaniantes.cpp Documentos/listaacompaniantes.h
         Generadores/generadorlistaacompaniantes.cpp Generadores/generadorlistaacompaniantes.h
+        Documentos/listaacompaniantesui.h Documentos/listaacompaniantesui.cpp Documentos/listaacompaniantesui.ui
 
 
 

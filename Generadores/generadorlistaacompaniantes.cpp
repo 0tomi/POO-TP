@@ -73,7 +73,6 @@ ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes() {
 
     for (int i = 0; i < topeNombres; i++) {
         char generoRandom = getGeneroRandom();
-        qDebug() << "Genero: " << generoRandom;
         switch (generoRandom) {
             case 'H':
                 nombresAcomps[i] = generarNombre('H');
