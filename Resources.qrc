@@ -79,5 +79,6 @@
         <file>Resources/Pasillo/FondoTiempo10.png</file>
         <file>Resources/Documentos/Listaacomp.png</file>
         <file>Resources/Documentos/Residencia.png</file>
+        <file>Resources/ArchivosTexto/apellidos.txt</file>
     </qresource>
 </RCC>
