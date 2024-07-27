@@ -112,7 +112,7 @@ void GameScreen::RealizarConexionesPrincipales()
 
     // ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR ########## REWORKEAR
     // Conectamos momentaneaemente el boton de reglas para que spawnee
-    connect(ui->aparecerReglas, &QPushButton::clicked, libroReglasUI, &libroreglas::Entrar);
+    connect(ui->aparecerReglas, &QPushButton::clicked, this, &GameScreen::CerrarOAbrirLibro);
 
     // Conectamos nuestro cronometro rustico
     connect(&TiempoDia, &QTimer::timeout, this, &GameScreen::ActualizarTiempo);
@@ -268,6 +268,15 @@ void GameScreen::resizeEvent(QResizeEvent *event)
         GestorNPC.Centrar();
     if (pantallaPerdiste->getMostrandoPantalla())
         pantallaPerdiste->setFixedSize(width(), height());
+}
+
+void GameScreen::CerrarOAbrirLibro()
+{
+    if (libroReglasUI->isVisible()) {
+        libroReglasUI->cerrarLibro();
+    } else {
+        libroReglasUI->Entrar();
+    }
 }
 
 

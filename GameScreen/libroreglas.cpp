@@ -90,6 +90,11 @@ void libroreglas::cerrarLibro()
     DocumentosUI::Sacar();
 }
 
+void libroreglas::abrirLibro()
+{
+    DocumentosUI::Entrar();
+}
+
 void libroreglas::setPaises(){
     int maxPaises, maxIndices;
     QString * Paises = this->atributos->getPaises(maxPaises);

@@ -81,6 +81,9 @@ private:
     // Reubicar NPCs en la escena
     void changeEvent(QEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+
+    // Libro Reglas
+    void CerrarOAbrirLibro();
 };
 
 #endif // GAMESCREEN_H
