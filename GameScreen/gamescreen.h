@@ -13,7 +13,7 @@
 #include "../juego.h"
 #include "BotonesCustom.h"
 #include "pantallaperdiste.h"
-
+#include "../Documentos/docsiconui.h"
 
 namespace Ui {
 class GameScreen;
@@ -35,12 +35,14 @@ public:
 public slots:
     void PausarJuego();
     void ReanudarJuego();
+    void BloquearBotones(bool Bloqueo);
+    void DesbloquearBotones();
+    void FinalDePartida();
 
 signals:
     void NivelTerminado(bool Perdio);
 
 private slots:
-    void FinalDePartida();
     void Decidir();
 
 private:
@@ -48,8 +50,9 @@ private:
     PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
     QTimer tiempoPartida;
-    QTimer temporizadorBotones;
     int tiempoRestante;
+
+    bool Pausado;
 
     GestorNPCsUI GestorNPC;
 
@@ -58,17 +61,19 @@ private:
     BotonesCustom* BotonCentrar;
     QSpacerItem* EspaciadorBotones;
 
+    // Controlar tiempo en partida
+    QTimer TiempoDia;
+    void ActualizarTiempo();
+    int TiempoActual;
+
+    // Botones
     void SpawnearBotones();
-    void RealizarConexiones();
     void RealizarConexionesPrincipales();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();
     void Rechazo();
     void SelloDocumento(bool Boton);
-    void BloquearBotones(bool Bloqueo);
-    // Otro metodo que voy  a poner simplemente porque no se como se hace.
-    void DesbloquearBotones();
 
     // Reubicar NPCs en la escena
     void changeEvent(QEvent *event) override;

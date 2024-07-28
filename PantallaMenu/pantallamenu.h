@@ -13,9 +13,10 @@ class PantallaMenu : public QWidget
     Q_OBJECT
 
 public:
-
     explicit PantallaMenu(QWidget *parent = nullptr);
+    void setInicio();
     ~PantallaMenu();
+
 signals:
     void clickedJugar();
     void clickedCargar();

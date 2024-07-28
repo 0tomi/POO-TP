@@ -11,6 +11,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ui->setupUi(this);
 
     juego = newJuego;
+    Pausado = false;
 
     pantallaPerdiste = new PantallaPerdiste(this);
     pantallaPerdiste->setFixedSize(1920,1080);
@@ -19,11 +20,11 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     // Seteamos el juego, y obtenemos la cola de NPCs.
     ColaNPC* Cola = juego->getCola();
 
-    temporizadorBotones.setSingleShot(true);
     tiempoPartida.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
+    GestorNPC.setUpDocsIcono(ui->MesaAzul);
 
     SpawnearBotones();
     RealizarConexionesPrincipales();
@@ -67,6 +68,16 @@ void GameScreen::SpawnearBotones()
     ui->ContenedorBotones->layout()->addItem(EspaciadorBotones);
     ui->ContenedorBotones->layout()->addWidget(BotonAprobar);
     ui->ContenedorBotones->layout()->addWidget(BotonRechazar);
+
+    DocsIconUI * setup  =  GestorNPC.getDocsIcono();
+    // Bloqueamos los botones al estar el documento cerrado o abierto.
+    connect(setup, &DocsIconUI::Abierto, [this]() {
+        this->DesbloquearBotones();
+    });
+
+    connect(setup, &DocsIconUI::Cerrado, [this]() {
+        this->BloquearBotones(true);
+    });
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
@@ -90,21 +101,19 @@ void GameScreen::RealizarConexionesPrincipales()
     // Conecto los botones para que segun lo que haga el usuario, se evalue una cosa u otra.
     connect(BotonAprobar, &BotonesCustom::BotonApretado, this, &GameScreen::Acepto);
     connect(BotonRechazar, &BotonesCustom::BotonApretado, this, &GameScreen::Rechazo);
-    connect(BotonRechazar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::Rechazado);
 
     // Conectamos boton de centrar para centrar el documento.
     connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
 
     connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
-}
 
-void GameScreen::RealizarConexiones()
-{
-    // Desbloquear botones despues de pasado un tiempo
-    connect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
+    connect(&TiempoDia, &QTimer::timeout, this, &GameScreen::ActualizarTiempo);
 
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
+
+    // Conectamos el quedarse sin npcs con el final de la partida
+    connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
@@ -120,11 +129,12 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::EmpezarJuego()
 {
-    RealizarConexiones();
-    // En caso de cortar la animacion de entrada antes de terminar, hay un temporizador que habilita los botones posados 0.8 segundos
-    temporizadorBotones.start(800);
-
     tiempoPartida.start(8*60*1000); // 8 Minutos
+
+    // Seteamos el pasaje de tiempo en el juego
+    TiempoDia.start(52 * 1000); // Cada 52 segundos el tiempo cambia
+    TiempoActual = 0;
+    ActualizarTiempo();
 
     GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
@@ -145,6 +155,7 @@ void GameScreen::PausarJuego()
     GestorNPC.Pausar();
     tiempoRestante = tiempoPartida.remainingTime();
     tiempoPartida.stop();
+    Pausado = true;
 }
 
 void GameScreen::ReanudarJuego()
@@ -152,6 +163,8 @@ void GameScreen::ReanudarJuego()
     GestorNPC.Reanudar();
     tiempoPartida.start(tiempoRestante);
     GestorNPC.CentrarNPC();
+
+    Pausado = false;
 }
 
 void GameScreen::Centrar()
@@ -163,23 +176,21 @@ void GameScreen::Centrar()
 
 void GameScreen::FinalDePartida()
 {
+    //qDebug() << "trigger";
     // a desarrollar
-    BloquearBotones(true);
-
     GestorNPC.TerminoNivel();
 
-    // Conectamos el temporizador de partida para terminar la partida.
-    disconnect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
-    tiempoPartida.stop();
+    if (tiempoPartida.isActive())
+        tiempoPartida.stop();
+    TiempoDia.stop();
 
-    // Desconectamos las cosas que le dan progreso al juego
-    disconnect(&temporizadorBotones, &QTimer::timeout, this, &GameScreen::DesbloquearBotones);
 
-    if (juego->getTotalSocialCredits() < 0)
-       pantallaPerdiste->Iniciar(true);
-    else pantallaPerdiste->Iniciar(false);
-
-    qDebug() << "Termino el juego";
+    if (!Pausado){
+        if (juego->getTotalSocialCredits() < 0)
+           pantallaPerdiste->Iniciar(true);
+        else pantallaPerdiste->Iniciar(false);
+    } else
+        qDebug() << "Se detuvo forzosamente el juego";
 }
 
 void GameScreen::Decidir()
@@ -187,6 +198,14 @@ void GameScreen::Decidir()
     if (juego->getTotalSocialCredits() < 0)
         emit NivelTerminado(true);
     else emit NivelTerminado(false);
+}
+
+void GameScreen::ActualizarTiempo()
+{
+    ui->Pasillo->setCurrentIndex(TiempoActual);
+    TiempoActual++;
+    if (TiempoActual > 9)
+        TiempoActual = 0;
 }
 
 /// #################################### DECISIONES DEL JUGADOR ###################################################
@@ -207,15 +226,12 @@ void GameScreen::SelloDocumento(bool Boton)
 {
     GestorNPC.Salir(Boton);
 
-    temporizadorBotones.start(2500);
-    BloquearBotones(true);
+    //temporizadorBotones.start(2500);
+    //BloquearBotones(true);
 
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
     qDebug() << "Puntaje actual: " << juego->getSocialCreditsEarnedInLevel();
-
-    if (GestorNPC.NPCsRestantes() == 0)
-        FinalDePartida();
 }
 
 /// #################################### EVENTOS DE VENTANA ###################################################
