@@ -154,7 +154,7 @@ void Juego::setUpNivel1()
 {
     // A desarrollar
     ResetJuego();
-    Cola->addNPC(NivelActual, 2, 2, 2, 2, 6);
+    Cola->addNPC(NivelActual, 1, 1, 0, 1, 1);
 }
 
 void Juego::setUpNivel2()

@@ -3,7 +3,7 @@
 
 /// #################################### CONSTRUCTOR ###################################################
 GestorNPCsUI::GestorNPCsUI(){
-    EntrarNPCsYDocs.setSingleShot(true);
+
 }
 
 GestorNPCsUI::~GestorNPCsUI()
@@ -21,7 +21,6 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
     NPCcomunUI = new NPCGenericoUI(Escenario);
-    //Escenario->layout()->addWidget(NPCcomunUI);
 
     // ## A futuro iria aca el setup del NPC especial. ##
 
@@ -46,6 +45,8 @@ void GestorNPCsUI::setUpDocsIcono(QWidget *escena)
     connect(NPCcomunUI, &NPCGenericoUI::animacionEntrarTerminada, docsIconUI, &DocsIconUI::Entrar);
     connect(docsIconUI, &DocsIconUI::Abierto, &GestorDocumentos, &GestorDocumentosUI::Entrar);
     connect(docsIconUI, &DocsIconUI::Cerrado, &GestorDocumentos, &GestorDocumentosUI::Salir);
+
+    RealizarConexionesDeNPCs();
 }
 
 DocsIconUI * GestorNPCsUI::getDocsIcono()
@@ -61,19 +62,51 @@ void GestorNPCsUI::setUpNuevoNivel(int Nivel)
 /// #################################### Empezar ###################################################
 void GestorNPCsUI::EmpezarJuego()
 {
-    RealizarConexionesDeNPCs();
+    // Cuando sale un npc entra otro.
+    connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
+    NPCConectado = true;
+}
+
+/// #################################### Conexiones ###################################################
+void GestorNPCsUI::RealizarConexionesDeNPCs()
+{
+    // Conectamos cuando el npc habla con el globo de dialogo.
+    connect(NPCcomunUI, &NPCUI::QuiereHablar, this, &GestorNPCsUI::Dialogo);
+
+    // Cuando aparezca o desaparezca el dialogo, el npc se centrara
+    connect(Dialogos, &GlobosDialogoUI::Hablando, this, &GestorNPCsUI::CentrarNPC);
+    connect(Dialogos, &GlobosDialogoUI::MensajeTerminado, this, &GestorNPCsUI::CentrarNPC);
+
+    // Hago que al terminar la animacion de que un NPC se va, entre otro.
+    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::ActualizarEstadoNPC);
+
+    // Avisamos que termina de salir un NPC
+    connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);
+
+    // Cuando entregamos el documento, sale el npc.
+    connect(docsIconUI, &DocsIconUI::animacionSalirTerminada, this, &GestorNPCsUI::SalirEntidades);
+
+    // Aca irian las conecciones del NPC especial
+}
+
+void GestorNPCsUI::DesconectarNPCs()
+{
+    if (NPCConectado)
+        disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
+    NPCConectado = false;
 }
 
 /// #################################### Entrar entidades ###################################################
 void GestorNPCsUI::Entrar()
 {
     qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
+
     NPCenEscena = ColaNPCs->getNPC();
     GestorDocumentos.setDocumento(NPCenEscena);
 
     if (ColaNPCs->getSize() == 0){
         // Desconectamos la animacion de entrar
-        disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
+        DesconectarNPCs();
         emit UltimoNPC();
     }
 
@@ -86,20 +119,14 @@ void GestorNPCsUI::Entrar()
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     NPCcomunUI->setNPC(NPCenEscena);
 
-    // Hacemos que pasen los NPCs y sus documentos.
-    EntrarNPCsYDocs.start(200);
-    connect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
-}
-
-void GestorNPCsUI::EntrarEntidades()
-{
-    disconnect(&EntrarNPCsYDocs, &QTimer::timeout, this, &GestorNPCsUI::EntrarEntidades);
+    // Hacemos que pasen los NPC.
     NPCcomunUI->Entrar();
 }
 
 void GestorNPCsUI::ActualizarEstadoNPC()
 {
     MostrandoNPC = true;
+    Centrar();
 }
 
 /// #################################### Centrar ###################################################
@@ -143,8 +170,8 @@ void GestorNPCsUI::Salir(bool boton)
     }
 
     docsIconUI->BloquearDocumento();
-    connect(docsIconUI, &DocsIconUI::animacionSalirTerminada, this, &GestorNPCsUI::SalirEntidades);
 }
+
 void GestorNPCsUI::DetenerAnimacionesDocumentos()
 {
     GestorDocumentos.DetenerAnimaciones();
@@ -158,26 +185,24 @@ void GestorNPCsUI::SalirEntidades()
     Dialogos->ForzarSalir();
     NPCcomunUI->Sacar();
 
+    MostrandoNPC = false;
+
     if (ColaNPCs->getSize() == 0)
         emit ColaTerminada();
-
-    MostrandoNPC = false;
 }
 
 /// #################################### Terminar nivel ###################################################
 void GestorNPCsUI::TerminoNivel()
 {
-    RealizarDesconexionesNPC();
-
+    DesconectarNPCs();
     // Si hay NPCs presentes, retiramos los documentos y el NPC.
-    if (ColaNPCs->getSize()){
+    if (MostrandoNPC || ColaNPCs->getSize()){
         SalirEntidades();
         GestorDocumentos.Salir();
         docsIconUI->Sacar();
 
         ColaNPCs->vaciarCola();
     }
-    emit ColaTerminada();
 }
 
 /// #################################### Dialogos ###################################################
@@ -204,39 +229,6 @@ void GestorNPCsUI::emitColaTerminada()
 {
     emit ColaTerminada();
 }
-
-/// #################################### Conexiones ###################################################
-void GestorNPCsUI::RealizarConexionesDeNPCs()
-{
-    // Conectamos cuando el npc habla con el globo de dialogo.
-    connect(NPCcomunUI, &NPCUI::QuiereHablar, this, &GestorNPCsUI::Dialogo);
-
-    // Cuando aparezca o desaparezca el dialogo, el npc se centrara
-    connect(Dialogos, &GlobosDialogoUI::Hablando, this, &GestorNPCsUI::CentrarNPC);
-    connect(Dialogos, &GlobosDialogoUI::MensajeTerminado, this, &GestorNPCsUI::CentrarNPC);
-
-    // Hago que al terminar la animacion de que un NPC se va, entre otro.
-    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::ActualizarEstadoNPC);
-    connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::CentrarNPC);
-
-    // Hago que al terminar la animacion de que un NPC se va, entre otro.
-    connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);
-    connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
-
-    // Aca irian las conecciones del NPC especial
-}
-
-void GestorNPCsUI::RealizarDesconexionesNPC()
-{
-    // Desconectamos la animacion de centrar
-    disconnect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::Centrar);
-
-    disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitColaTerminada);
-    disconnect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
-
-    // Aca irian las conecciones del NPC especial
-}
-
 
 /// #################################### Getters ###################################################
 bool GestorNPCsUI::MostrandoElNPC() const
