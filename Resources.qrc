@@ -79,5 +79,9 @@
         <file>Resources/Pasillo/FondoTiempo10.png</file>
         <file>Resources/Documentos/Listaacomp.png</file>
         <file>Resources/Documentos/Residencia.png</file>
+        <file>Resources/Documentos/abierto2 (1).png</file>
+        <file>Resources/Documentos/LibroRaglasAbierto.png</file>
+        <file>Resources/Documentos/pixil-frame-0 (5).png</file>
+        <file>Resources/ArchivosTexto/apellidos.txt</file>
     </qresource>
 </RCC>
