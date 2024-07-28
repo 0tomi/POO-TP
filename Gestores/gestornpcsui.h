@@ -65,7 +65,6 @@ signals:
     void NPCTerminoSalir();
 
 private slots:
-    void EntrarEntidades();
     void SalirEntidades();
 
 private:
@@ -81,7 +80,6 @@ private:
     GlobosDialogoUI* Dialogos;
 
     bool MostrandoNPC;
-    QTimer EntrarNPCsYDocs;
 
     // Iconos de Docs
     DocsIconUI * docsIconUI;
@@ -89,7 +87,8 @@ private:
     int topeNPCs;
     int NivelActual;
     void RealizarConexionesDeNPCs();
-    void RealizarDesconexionesNPC();
+    void DesconectarNPCs();
+    bool NPCConectado;
     void ActualizarEstadoNPC();
 };
 
