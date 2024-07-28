@@ -85,5 +85,9 @@
         <file>Resources/ArchivosTexto/apellidos.txt</file>
         <file>Resources/Documentos/NormativasIcono.png</file>
         <file>Resources/Dialogos/DialogosRefugiadoPolitico.txt</file>
+        <file>Resources/LibroReglas/bandaRevolucionario_2.png</file>
+        <file>Resources/LibroReglas/GorroRegufiado_1_1.png</file>
+        <file>Resources/th (1).jpeg</file>
+        <file>Resources/th.jpeg</file>
     </qresource>
 </RCC>

@@ -6,6 +6,7 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
     , ui(new Ui::libroreglas)
 {
     ui->setupUi(this);
+    setFixedSize(678,560);
 
     setUpLevel(1);
 
@@ -21,6 +22,23 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
     setDatosPag1();
     hide();
 }
+
+void libroreglas::setUpLevel(int level)
+{
+    switch (level){
+    case 1: CantidadPaginas = 3;
+        break;
+    case 2: CantidadPaginas = 3;
+        break;
+    case 3: CantidadPaginas = 3;
+        break;
+    case 4: CantidadPaginas = 3;
+        break;
+    default: CantidadPaginas = 3;
+        break;
+    }
+}
+
 void setDocumentacionInfo(Documentacion *documento){
 
 }
@@ -112,22 +130,6 @@ void libroreglas::setTipoDeVisita(ReglasNivel1 * datos){
 libroreglas::~libroreglas()
 {
     delete ui;
-}
-
-void libroreglas::setUpLevel(int level)
-{
-    switch (level){
-    case 1: CantidadPaginas = 2;
-        break;
-    case 2: CantidadPaginas = 2;
-        break;
-    case 3: CantidadPaginas = 2;
-        break;
-    case 4: CantidadPaginas = 2;
-        break;
-    default: CantidadPaginas = 2;
-        break;
-    }
 }
 
 void libroreglas::setDocumentacionInfo(Documentacion *documento)

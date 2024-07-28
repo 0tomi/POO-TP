@@ -56,7 +56,7 @@ private:
     bool Pausado;
 
     GestorNPCsUI GestorNPC;
-    libroreglas * libroReglasUI;
+    void SetearConexionesDocumentos();
 
     BotonesCustom* BotonAprobar;
     BotonesCustom* BotonRechazar;
@@ -81,8 +81,12 @@ private:
     void changeEvent(QEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
 
-    // Libro Reglas
-    void CerrarOAbrirLibro();
+    // Aparecer libro de reglas
+    void setUpLibroReglas();
+    libroreglas * libroReglasUI;
+    QTimer bloquearBotonReglas;
+    bool MostrandoReglas;
+    void MostrarReglas();
 };
 
 #endif // GAMESCREEN_H

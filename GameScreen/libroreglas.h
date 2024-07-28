@@ -4,7 +4,6 @@
 #include <QWidget>
 #include "../juego.h"
 #include "../Documentos/documentosui.h"
-#include "../lectorarchivos.h"
 #include <QString>
 
 namespace Ui {
