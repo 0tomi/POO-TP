@@ -64,6 +64,8 @@ private:
     // Sistema de dialogos:
     QString* DialogosRevolucionario;
     int topeDialogosRev;
+    QString * DialogosRefugiado;
+    int topeDialogosRef;
 
     void GenerarDialogosNivel1(NPC* info);
     void GenerarDialogosNivel2(NPC* info);
