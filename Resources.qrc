@@ -84,5 +84,6 @@
         <file>Resources/Documentos/pixil-frame-0 (5).png</file>
         <file>Resources/ArchivosTexto/apellidos.txt</file>
         <file>Resources/Documentos/NormativasIcono.png</file>
+        <file>Resources/Dialogos/DialogosRefugiadoPolitico.txt</file>
     </qresource>
 </RCC>

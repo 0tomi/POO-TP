@@ -64,6 +64,8 @@ private:
     // Sistema de dialogos:
     QString* DialogosRevolucionario;
     int topeDialogosRev;
+    QString * DialogosRefugiado;
+    int topeDialogosRef;
 
     /*QString* DialogosEstudiante;
     int topeDialogosEstudiante;
