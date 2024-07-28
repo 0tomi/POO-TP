@@ -2,8 +2,7 @@
 #define LIBROREGLAS_H
 
 #include <QWidget>
-#include "../Reglas/reglasnivel1.h"
-#include "../AtributosComunes/atributoscomunes.h"
+#include "../juego.h"
 #include "../Documentos/documentosui.h"
 #include "../lectorarchivos.h"
 #include <QString>
@@ -17,19 +16,14 @@ class libroreglas : public DocumentosUI
     Q_OBJECT
 
 public:
-    explicit libroreglas(ReglasNivel1 * rules, AtributosComunes * atributos, QWidget *parent = nullptr);
+    explicit libroreglas(Juego * datos, QWidget *parent = nullptr);
     ~libroreglas();
     void setUpLevel(int level);
 
-    void cerrarLibro();
-    void abrirLibro();
-
-
 private:
     Ui::libroreglas *ui;
-    ReglasNivel1 * ruleslvl1;
-    AtributosComunes * atributos;
-    LectorArchivos * archi;
+    Reglas * reglas[5];
+
     void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();
     void IrPagAnterior();
@@ -40,11 +34,11 @@ private:
     int PaginaActual;
 
     //para setear los campos
-    void setPaises();
-    void setFechas();
-    void setEstadoCivil();
-    void setDuracionEstancia();
-    void setTipoDeVisita();
+    void setPaises(ReglasNivel1 * datos);
+    void setFechas(ReglasNivel1 * datos);
+    void setEstadoCivil(ReglasNivel1 * datos);
+    void setDuracionEstancia(ReglasNivel1 * datos);
+    void setTipoDeVisita(ReglasNivel1 * datos);
 };
 
 #endif // LIBROREGLAS_H

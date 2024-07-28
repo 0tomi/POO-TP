@@ -1,23 +1,25 @@
 #include "libroreglas.h"
 #include "ui_libroreglas.h"
 #include <QDebug>
-libroreglas::libroreglas(ReglasNivel1 * rules, AtributosComunes * atributos,QWidget *parent)
+libroreglas::libroreglas(Juego * datos, QWidget *parent)
     : DocumentosUI(parent)
     , ui(new Ui::libroreglas)
 {
     ui->setupUi(this);
-    ui->LibroReglas->setCurrentIndex(0);
-    ui->StackedBotones->setCurrentIndex(2);
 
-    this->ruleslvl1 = rules;
-    this->atributos = atributos;
+    setUpLevel(1);
+
+    // Mostramos el indice y hacemos que el boton de anterior se oculte.
+    PaginaActual = 0;   // Indice
+    ui->Anterior->hide();
+
+    ui->LibroReglas->setCurrentIndex(PaginaActual);
+    for (int i = 0; i < 5; i++)
+        reglas[i] = datos->getReglas(i);
 
     setBotones();
     setDatosPag1();
     hide();
-
-    setUpLevel(1);
-    PaginaActual = 0;
 }
 void setDocumentacionInfo(Documentacion *documento){
 
@@ -25,102 +27,65 @@ void setDocumentacionInfo(Documentacion *documento){
 
 void libroreglas::setBotones(){
     connect(ui->Anterior, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
-    connect(ui->Anterior_2, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
     connect(ui->Siguiente, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
-    connect(ui->Siguiente_2, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
     connect(ui->BotonPasaporteyEstancia, &QPushButton::clicked,this, &libroreglas::IrPagSiguiente);
-    connect(ui->BotonCerrar, &QPushButton::clicked, this, &libroreglas::cerrarLibro);
 }
 
 void libroreglas::IrPagSiguiente(){
+    PaginaActual++;
+    ui->Anterior->show();
 
-    int currentIndex = ui->LibroReglas->currentIndex();
-    int pageCount = ui->LibroReglas->count();
+    if (PaginaActual == CantidadPaginas-1)
+        ui->Siguiente->hide();
 
-    // Avanzar al siguiente índice
-    if (currentIndex < pageCount - 1) {
-        currentIndex++;
-        ui->LibroReglas->setCurrentIndex(currentIndex);
-    }
-
-    // Mostrar el widget adecuado basado en el índice actual
-    if (currentIndex == pageCount - 1) {
-        // Si estamos en la última página, solo mostrar el botón "Anterior_2"
-        ui->StackedBotones->setCurrentIndex(1);
-    } else if (currentIndex == 0) {
-        // Si estamos en la primera página, solo mostrar el botón "Siguiente_2"
-        ui->StackedBotones->setCurrentIndex(2);
-    } else {
-        // Si hay páginas anteriores y siguientes, mostrar ambos botones
-        ui->StackedBotones->setCurrentIndex(0);
-    }
-
+    ui->LibroReglas->setCurrentIndex(PaginaActual);
 }
 
 void libroreglas::IrPagAnterior(){
-    int currentIndex = ui->LibroReglas->currentIndex();
+    PaginaActual--;
+    ui->Siguiente->show();
 
-    // Avanzar al siguiente índice
-    if (currentIndex > 0) {
-        currentIndex--;
-        ui->LibroReglas->setCurrentIndex(currentIndex);
-    }
+    if (PaginaActual == 0)
+        ui->Anterior->hide();
 
-    // Mostrar el widget adecuado basado en el índice actual
-    if (currentIndex == 0) {
-        // Si estamos en la primera página, solo mostrar el boton siguiente
-         ui->StackedBotones->setCurrentIndex(2);
-    } else if (currentIndex == ui->LibroReglas->count() - 1) {
-        // Si estamos en la última página, solo mostrar el boton anterior
-         ui->StackedBotones->setCurrentIndex(1);
-    } else {
-        // Si hay paginas anteriores y siguientes, mostrar ambos botones
-         ui->StackedBotones->setCurrentIndex(0);
-    }
-
+    ui->LibroReglas->setCurrentIndex(PaginaActual);
 }
-
 
 void libroreglas::setDatosPag1(){
-    setPaises();
-    setFechas();
-    setEstadoCivil();
-    setDuracionEstancia();
-    setTipoDeVisita();
+    // Reglas 1 esta en la posicion 0
+    ReglasNivel1 * rules = dynamic_cast<ReglasNivel1*>(reglas[0]);
+
+    setPaises(rules);
+    setFechas(rules);
+    setEstadoCivil(rules);
+    setDuracionEstancia(rules);
+    setTipoDeVisita(rules);
 }
 
-void libroreglas::cerrarLibro()
-{
-    DocumentosUI::Sacar();
-}
+void libroreglas::setPaises(ReglasNivel1 * datos){
+    int maxIndices;
 
-void libroreglas::abrirLibro()
-{
-    DocumentosUI::Entrar();
-}
+    QString * Paises = datos->getPaises();
+    int * IndicesValidos = datos->getPaisesPermitidos(maxIndices);
 
-void libroreglas::setPaises(){
-    int maxPaises, maxIndices;
-    QString * Paises = this->atributos->getPaises(maxPaises);
-    int * IndicesValidos = this->ruleslvl1->getPaisesPermitidos(maxIndices);
     QString Texto = "Paises Validos:\n";
     for(int i = 0; i < maxIndices; i++){
         Texto += Paises[IndicesValidos[i]] + "\n";
     }
     ui->PaisesPermitidos->setText(Texto);
 }
-void libroreglas::setFechas(){
+void libroreglas::setFechas(ReglasNivel1 * datos){
     QString Texto = "Solo se permitirá la entrada a personas:\n";
-    int fechaMin = this->ruleslvl1->getFechaMinPermitida();
-    int fechaMax = this->ruleslvl1->getFechaMaxPermitida();
+    int fechaMin = datos->getFechaMinPermitida();
+    int fechaMax = datos->getFechaMaxPermitida();
     Texto += "Mayores de:" + QString::number(fechaMin) + " (inclusivo)\n";
     Texto += "Menores de:" + QString::number(fechaMax) + " (inclusivo)\n";
     ui->EdadPermitida->setText(Texto);
 }
 
-void libroreglas::setEstadoCivil(){
+void libroreglas::setEstadoCivil(ReglasNivel1 * datos){
     int max;
-    QString * EstadosCivilesValidos = this->ruleslvl1->getEstadoCivilPermitido(max);
+    QString * EstadosCivilesValidos = datos->getEstadoCivilPermitido(max);
     QString Texto = "Solo Podran ingresar los siguientes estados civiles:\n";
     for (int i = 0; i < max; ++i) {
         Texto += EstadosCivilesValidos[i] + "o/a/x" + "\n";
@@ -128,16 +93,16 @@ void libroreglas::setEstadoCivil(){
 
     ui->EstadoCivilPermitido->setText(Texto);
 }
-void libroreglas::setDuracionEstancia(){
+void libroreglas::setDuracionEstancia(ReglasNivel1 * datos){
     QString Texto = "La duracion maxima de estancia es de:\n";
-    int duracionMaxima = this->ruleslvl1->getDuracionEstanciaPermitida();
+    int duracionMaxima = datos->getDuracionEstanciaPermitida();
     Texto += QString::number(duracionMaxima) + " Meses";
     ui->DuracionPermitida->setText(Texto);
 }
-void libroreglas::setTipoDeVisita(){
+void libroreglas::setTipoDeVisita(ReglasNivel1 * datos){
     QString Texto = "Solo se permitirá la entrada a los siguientes\n tipos de visita:\n";
-    QString * tipoVisita = this->ruleslvl1->getTipoDeVisitaValida();
-    int Max = this->ruleslvl1->getMaxVisitasPermitidas();
+    QString * tipoVisita = datos->getTipoDeVisitaValida();
+    int Max = datos->getMaxVisitasPermitidas();
     for (int i = 0; i < Max ; ++i) {
         Texto += tipoVisita[i] + "\n";
     }

@@ -60,7 +60,7 @@ color: rgb(0, 0, 0);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/Documentos/DocumentosClosedIcon.png);</string>
+        <string notr="true">border-image: url(:/Resources/Documentos/NormativasIcono.png);</string>
        </property>
        <property name="text">
         <string>TextLabel</string>
@@ -196,6 +196,12 @@ color: rgb(0, 0, 0);</string>
    <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>24</number>
+      </property>
+      <property name="rightMargin">
+       <number>23</number>
+      </property>
       <item>
        <widget class="QPushButton" name="Anterior">
         <property name="text">

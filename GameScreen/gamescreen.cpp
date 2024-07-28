@@ -28,7 +28,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     // Agregamos el libro de reglas
     // ACA ES DONDE SE DEBERIA PASAR POR CONSTRUCTOR EL PUNTERO DE JUEGO
-    libroReglasUI = new libroreglas(static_cast<ReglasNivel1*>(this->juego->getReglas(0)),this->juego->getAtributos(),ui->Escritorio);
+    libroReglasUI = new libroreglas(juego, ui->Escritorio);
 
     SpawnearBotones();
     RealizarConexionesPrincipales();
@@ -269,7 +269,7 @@ void GameScreen::resizeEvent(QResizeEvent *event)
 void GameScreen::CerrarOAbrirLibro()
 {
     if (libroReglasUI->isVisible()) {
-        libroReglasUI->cerrarLibro();
+        libroReglasUI->Sacar();
     } else {
         libroReglasUI->Entrar();
     }
