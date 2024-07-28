@@ -107,12 +107,12 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
 
     connect(&TiempoDia, &QTimer::timeout, this, &GameScreen::ActualizarTiempo);
-}
 
-void GameScreen::RealizarConexiones()
-{
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
+
+    // Conectamos el quedarse sin npcs con el final de la partida
+    connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
@@ -128,7 +128,6 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::EmpezarJuego()
 {
-    RealizarConexiones();
     // En caso de cortar la animacion de entrada antes de terminar, hay un temporizador que habilita los botones posados 0.8 segundos
     //temporizadorBotones.start(800);
 
@@ -182,16 +181,17 @@ void GameScreen::FinalDePartida()
     // a desarrollar
     GestorNPC.TerminoNivel();
 
-    tiempoPartida.stop();
+    if (tiempoPartida.isActive())
+        tiempoPartida.stop();
     TiempoDia.stop();
 
 
     if (!Pausado){
-        qDebug() << "Se detuvo forzosamente el juego";
         if (juego->getTotalSocialCredits() < 0)
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
-    }
+    } else
+        qDebug() << "Se detuvo forzosamente el juego";
 }
 
 void GameScreen::Decidir()
