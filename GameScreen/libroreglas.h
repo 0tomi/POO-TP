@@ -27,6 +27,7 @@ private:
     void setBotones();
     void IrPagAnterior();
     void IrPagSiguiente();
+    void SaltarPagina(int pagina);
     void setDatosPag1();
 
     int CantidadPaginas;

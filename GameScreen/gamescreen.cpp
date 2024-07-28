@@ -197,9 +197,11 @@ void GameScreen::Centrar()
 
 void GameScreen::FinalDePartida()
 {
-    //qDebug() << "trigger";
     // a desarrollar
     GestorNPC.TerminoNivel();
+
+    if (MostrandoReglas)
+        MostrarReglas();
 
     if (tiempoPartida.isActive())
         tiempoPartida.stop();

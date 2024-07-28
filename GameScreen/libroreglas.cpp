@@ -46,7 +46,16 @@ void setDocumentacionInfo(Documentacion *documento){
 void libroreglas::setBotones(){
     connect(ui->Anterior, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
     connect(ui->Siguiente, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
-    connect(ui->BotonPasaporteyEstancia, &QPushButton::clicked,this, &libroreglas::IrPagSiguiente);
+
+    // Botones del indice
+    connect(ui->BotonPasaporteyEstancia, &QPushButton::clicked, [this]() {
+        SaltarPagina(1);
+    });
+
+    // Ir a tipos de NPCs
+    connect(ui->BotonTipos, &QPushButton::clicked, [this]() {
+        SaltarPagina(2);
+    });
 }
 
 void libroreglas::IrPagSiguiente(){
@@ -57,6 +66,20 @@ void libroreglas::IrPagSiguiente(){
         ui->Siguiente->hide();
 
     ui->LibroReglas->setCurrentIndex(PaginaActual);
+}
+
+void libroreglas::SaltarPagina(int pagina)
+{
+    if (pagina != 0)
+        ui->Anterior->show();
+    else
+        ui->Anterior->hide();
+
+    if (pagina == CantidadPaginas-1)
+        ui->Siguiente->hide();
+
+    ui->LibroReglas->setCurrentIndex(pagina);
+    PaginaActual = pagina;
 }
 
 void libroreglas::IrPagAnterior(){

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>696</width>
-    <height>629</height>
+    <width>708</width>
+    <height>681</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,7 @@ border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="PagInicial">
          <property name="minimumSize">
@@ -100,7 +100,7 @@ border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
 color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
-           <string>Pasaporte y Estancia</string>
+           <string>- Pasaporte y Estancia</string>
           </property>
          </widget>
          <widget class="QLabel" name="ImagenInicio">
@@ -117,6 +117,33 @@ color: rgb(0, 0, 0);</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="BotonTipos">
+          <property name="geometry">
+           <rect>
+            <x>410</x>
+            <y>100</y>
+            <width>221</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>- Tipos de personas</string>
           </property>
          </widget>
         </widget>
@@ -711,6 +738,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </property>
          <item>
           <widget class="QPushButton" name="Anterior">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Anterior</string>
            </property>
@@ -731,6 +761,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item>
           <widget class="QPushButton" name="Siguiente">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Siguiente</string>
            </property>
