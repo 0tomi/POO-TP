@@ -19,8 +19,12 @@ class libroreglas : public DocumentosUI
 public:
     explicit libroreglas(ReglasNivel1 * rules, AtributosComunes * atributos, QWidget *parent = nullptr);
     ~libroreglas();
+    void setUpLevel(int level);
+
     void cerrarLibro();
     void abrirLibro();
+
+
 private:
     Ui::libroreglas *ui;
     ReglasNivel1 * ruleslvl1;
@@ -32,6 +36,8 @@ private:
     void IrPagSiguiente();
     void setDatosPag1();
 
+    int CantidadPaginas;
+    int PaginaActual;
 
     //para setear los campos
     void setPaises();

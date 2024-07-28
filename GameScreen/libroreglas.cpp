@@ -8,12 +8,16 @@ libroreglas::libroreglas(ReglasNivel1 * rules, AtributosComunes * atributos,QWid
     ui->setupUi(this);
     ui->LibroReglas->setCurrentIndex(0);
     ui->StackedBotones->setCurrentIndex(2);
+
     this->ruleslvl1 = rules;
     this->atributos = atributos;
+
     setBotones();
     setDatosPag1();
     hide();
 
+    setUpLevel(1);
+    PaginaActual = 0;
 }
 void setDocumentacionInfo(Documentacion *documento){
 
@@ -143,6 +147,22 @@ void libroreglas::setTipoDeVisita(){
 libroreglas::~libroreglas()
 {
     delete ui;
+}
+
+void libroreglas::setUpLevel(int level)
+{
+    switch (level){
+    case 1: CantidadPaginas = 2;
+        break;
+    case 2: CantidadPaginas = 2;
+        break;
+    case 3: CantidadPaginas = 2;
+        break;
+    case 4: CantidadPaginas = 2;
+        break;
+    default: CantidadPaginas = 2;
+        break;
+    }
 }
 
 void libroreglas::setDocumentacionInfo(Documentacion *documento)
