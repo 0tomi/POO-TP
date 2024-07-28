@@ -56,7 +56,10 @@ private:
     QStackedWidget *pantallas;
     int PantallaPrevia;
     GameScreen *gameScreen;
+
+    // Pantalla de estadisticas
     PantallaFinalNivel *pantallaFinalNivel;
+    void ConeccionesPantallaEstadisticas();
 
     // Pantalla de menu
     PantallaMenu * pantallaMenu;

@@ -14,13 +14,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     ConeccionesPantallaPausa();
     ConeccionesPantallaMenu();
+    ConeccionesPantallaEstadisticas();
 
     // Mostrar en pantalla completa:
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
-
-    // Conectamos el final de la partida con el nivel terminado
-    connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
 }
 
 MainWindow::~MainWindow()
@@ -80,6 +78,16 @@ void MainWindow::ConeccionesPantallaMenu()
     connect(pantallaMenu, &PantallaMenu::clickedStart, this, &MainWindow::TransicionJuego);
     connect(pantallaMenu, &PantallaMenu::clickedSettings, this, &MainWindow::PrepararPantallaPausa);
     connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::close);
+}
+
+void MainWindow::ConeccionesPantallaEstadisticas()
+{
+    connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::TransicionJuego);
+    connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
+
+    // Conectamos el final de la partida con el nivel terminado
+    connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
 }
 /// ################################## PANTALLA DE ESTADISTICAS #############################################
 

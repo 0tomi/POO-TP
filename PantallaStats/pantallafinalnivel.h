@@ -35,6 +35,7 @@ private:
     const QString COLOR_BLANCO = "color: rgb(255, 255, 255);";
     int NivelActual;
     int Dificultad;
+    bool Perdio;
 };
 
 #endif // PANTALLAFINALNIVEL_H

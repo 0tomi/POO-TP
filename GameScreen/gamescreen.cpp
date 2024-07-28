@@ -11,6 +11,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ui->setupUi(this);
 
     juego = newJuego;
+    Pausado = false;
 
     pantallaPerdiste = new PantallaPerdiste(this);
     pantallaPerdiste->setFixedSize(1920,1080);
@@ -137,9 +138,6 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::EmpezarJuego()
 {
-    // En caso de cortar la animacion de entrada antes de terminar, hay un temporizador que habilita los botones posados 0.8 segundos
-    //temporizadorBotones.start(800);
-
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego
@@ -187,6 +185,7 @@ void GameScreen::Centrar()
 
 void GameScreen::FinalDePartida()
 {
+    //qDebug() << "trigger";
     // a desarrollar
     GestorNPC.TerminoNivel();
 
@@ -242,9 +241,6 @@ void GameScreen::SelloDocumento(bool Boton)
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
     qDebug() << "Puntaje actual: " << juego->getSocialCreditsEarnedInLevel();
-
-    if (GestorNPC.NPCsRestantes() == 0)
-        FinalDePartida();
 }
 
 /// #################################### EVENTOS DE VENTANA ###################################################

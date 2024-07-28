@@ -22,6 +22,7 @@ PantallaFinalNivel::~PantallaFinalNivel()
 }
 
 void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
+    this->Perdio = perdio;
     int cantNpcsAcept = juegoInfo->getCantidadNPCsAceptados();
     int cantNpcsRech = juegoInfo->getCantidadNPCsRechazados();
     int cantMultasObt = juegoInfo->getMultas();
@@ -65,7 +66,8 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
 
 // Signals
 void PantallaFinalNivel::onSalirClicked() {
-    guardarPartida();
+    if (!Perdio)
+        guardarPartida();
     emit salirClicked();
 }
 
