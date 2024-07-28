@@ -70,7 +70,6 @@ private:
 
     // Botones
     void SpawnearBotones();
-    void RealizarConexiones();
     void RealizarConexionesPrincipales();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
