@@ -16,6 +16,10 @@ Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * at
     this->nombre_x = archivo.getArray();
     this->max_x = archivo.getTopeArray();
 
+    archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/apellidos.txt");
+    this->apellidos = archivo.getArray();
+    this->max_apellidos = archivo.getTopeArray();
+
     this->rules = rules;
     this->atributos = atributos;
     this->nacionalidades = atributos->getPaises(this->max_nacionalidades);
@@ -59,14 +63,16 @@ QString Generar_pasaporte::generar_fecha(bool valido){
     int fecha_min  = this->rules->getFechaMinPermitida();
     int fecha_max = this->rules->getFechaMaxPermitida();
     if (valido){ //genera una fecha valida
-
-        generar_anio =   fecha_min + this->rand.bounded(fecha_max - fecha_min) ;
+        generar_anio = this->rand.bounded(fecha_min ,fecha_max + 1) ;
         generar_mes = 1 + this->rand.bounded(12);
         cant_dias = obt_dias(generar_mes,generar_anio);
         generar_dia = 1 + this->rand.bounded(cant_dias);
     } else{ // genera una fecha invalida
-
-        generar_anio = (fecha_min - 10) + this->rand.bounded(10) ;
+        if (this->rand.bounded(2) == 0) {
+            generar_anio = fecha_min - 1 - this->rand.bounded(10); // genera un anio menor que fechamin, hasta 10 años menos
+        } else {
+            generar_anio = fecha_max + 1 + this->rand.bounded(10); // genera un anio mayor a fechamax, hasta 10 años mas
+        }
         generar_mes = 1 + this->rand.bounded(12);
         cant_dias = obt_dias(generar_mes,generar_anio);
         generar_dia = 1 + this->rand.bounded(cant_dias);
@@ -104,7 +110,7 @@ QString Generar_pasaporte::generar_nacionalidad(bool valido){
         indice_generar = this->rand.bounded(tamanio);
         nacionalidad_generada = nacionalidades[indices_paises[indice_generar]];
     } else{
-        indice_generar = tamanio +this->rand.bounded(this->max_nacionalidades - tamanio);
+        indice_generar = this->rand.bounded(this->max_nacionalidades - tamanio);
         nacionalidad_generada = this->nacionalidades[indice_generar];
     }
     return nacionalidad_generada;
@@ -157,6 +163,7 @@ QString Generar_pasaporte::generar_nombre(char genero){
         valor_centinela = this->rand.bounded(this->max_x);
         nombre_generado = this->nombre_x[valor_centinela];
     }
+    nombre_generado += " " + this->apellidos[this->rand.bounded(this->max_apellidos)];
     return nombre_generado;
 }
 

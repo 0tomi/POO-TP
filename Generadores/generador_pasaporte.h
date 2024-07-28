@@ -1,7 +1,6 @@
 #ifndef GENERADOR_PASAPORTE_H
 #define GENERADOR_PASAPORTE_H
 #include "../Documentos/pasaporte.h"
-#include <stdlib.h>
 #include "../AtributosComunes/atributoscomunes.h"
 #include "../Reglas/ReglasNivel1.h"
 #include "../lectorarchivos.h"
@@ -11,20 +10,24 @@ class Generar_pasaporte
 {
 private:
     QRandomGenerator rand;
+    bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
+protected:
     AtributosComunes * atributos;
     QString * nombre_mujeres;
     QString * nombre_hombres;
     QString * nombre_x;
     QString * nacionalidades;
+    QString * apellidos;
     ReglasNivel1 * rules;
 
-    bool campos_validos[3]; // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil
+
 
     Pasaporte * Pasaporte_generado;
     int max_hombres; // tamanio del array de nombres de hombres
     int max_mujeres; // tamanio del array de nombres de mujeres
     int max_x;  // tamanio del array de nombres de x
     int max_nacionalidades; // cantidad total de nacionalidades
+    int max_apellidos; // cantidad total de apellidos
 
     void generar_camposValidos(bool valido, int dificultad);
 

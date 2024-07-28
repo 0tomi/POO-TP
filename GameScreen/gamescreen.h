@@ -14,6 +14,7 @@
 #include "BotonesCustom.h"
 #include "pantallaperdiste.h"
 #include "../Documentos/docsiconui.h"
+#include "libroreglas.h"
 
 namespace Ui {
 class GameScreen;
@@ -55,6 +56,7 @@ private:
     bool Pausado;
 
     GestorNPCsUI GestorNPC;
+    void SetearConexionesDocumentos();
 
     BotonesCustom* BotonAprobar;
     BotonesCustom* BotonRechazar;
@@ -78,6 +80,13 @@ private:
     // Reubicar NPCs en la escena
     void changeEvent(QEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+
+    // Aparecer libro de reglas
+    void setUpLibroReglas();
+    libroreglas * libroReglasUI;
+    QTimer bloquearBotonReglas;
+    bool MostrandoReglas;
+    void MostrarReglas();
 };
 
 #endif // GAMESCREEN_H
