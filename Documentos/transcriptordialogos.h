@@ -21,6 +21,7 @@ public slots:
     void CaptarMensaje(QString dialogo);
 private:
     Ui::TranscriptorDialogos *ui;
+    QString DialogoRecibido;
 };
 
 #endif // TRANSCRIPTORDIALOGOS_H

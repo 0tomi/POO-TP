@@ -2,8 +2,10 @@
 #include "ui_transcriptordialogos.h"
 
 TranscriptorDialogos::TranscriptorDialogos(QWidget *parent)
-    : QWidget(parent)
+    : DocumentosUI(parent)
     , ui(new Ui::TranscriptorDialogos)
+    , DialogoRecibido("")
+
 {
     ui->setupUi(this);
 }
@@ -15,6 +17,11 @@ TranscriptorDialogos::~TranscriptorDialogos()
 
 void TranscriptorDialogos::Entrar()
 {
-
+    ui->dialogo->setText(this->DialogoRecibido);
     DocumentosUI::Entrar();
+}
+
+void TranscriptorDialogos::CaptarMensaje(QString dialogo)
+{
+    DialogoRecibido=dialogo;
 }

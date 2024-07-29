@@ -29,8 +29,23 @@
    <item>
     <widget class="QWidget" name="fondo" native="true">
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/Resources/transcriptor.png);</string>
+      <string notr="true">#fondo{
+border-image: url(:/Resources/transcriptor.png);
+}</string>
      </property>
+     <widget class="QLabel" name="dialogo">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>180</y>
+        <width>281</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
     </widget>
    </item>
   </layout>
