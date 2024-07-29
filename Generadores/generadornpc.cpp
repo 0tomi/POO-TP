@@ -53,6 +53,9 @@ GeneradorNPC::GeneradorNPC(){
     DialogosRevolucionario = lector.getArray();
     topeDialogosRev = lector.getTopeArray();
 
+    lector.LeerArchivoNuevo(":/Resources/Dialogos/DialogosRefugiadoPolitico.txt");
+    DialogosRefugiado = lector.getArray();
+    topeDialogosRef = lector.getTopeArray();
     // Lectura de dialogos para nivel 2
    /* lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/DialogosEstudiante.txt");
     DialogosEstudiante=lector.getArray();
@@ -226,11 +229,15 @@ void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
 
 void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
 {
-    if (info->getTipo() != 3)    // En esta etapa solo los revolucionarios tendran dialogos
-        return;
-
-    int sorteo = Random->bounded(topeDialogosRev);
-    info->setDialogo(DialogosRevolucionario[sorteo]);
+    // En esta etapa solo los revolucionarios y los refugiados tendran dialogos
+    if (info->getTipo() == 3){
+        int sorteo = Random->bounded(topeDialogosRev);
+        info->setDialogo(DialogosRevolucionario[sorteo]);
+    } else
+        if (info->getTipo() == 1) {
+        int sorteo = Random->bounded(topeDialogosRef);
+        info->setDialogo(DialogosRefugiado[sorteo]);
+    }
 }
 
 void GeneradorNPC::GenerarDialogosNivel2(NPC *info)

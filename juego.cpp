@@ -181,6 +181,11 @@ void Juego::setUpNivel5()
     Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
 }
 
+AtributosComunes *Juego::getAtributos() const
+{
+    return atributos;
+}
+
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
     return (numero < 5)? rules[numero]: NULL;

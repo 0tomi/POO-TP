@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>libroreglas</class>
+ <widget class="QWidget" name="libroreglas">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>708</width>
+    <height>681</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="Imagen" native="true">
+     <property name="styleSheet">
+      <string notr="true">#Imagen{
+border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="leftMargin">
+       <number>15</number>
+      </property>
+      <property name="topMargin">
+       <number>22</number>
+      </property>
+      <property name="rightMargin">
+       <number>15</number>
+      </property>
+      <property name="bottomMargin">
+       <number>48</number>
+      </property>
+      <item>
+       <widget class="QStackedWidget" name="LibroReglas">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="PagInicial">
+         <property name="minimumSize">
+          <size>
+           <width>678</width>
+           <height>560</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>678</width>
+           <height>560</height>
+          </size>
+         </property>
+         <widget class="QPushButton" name="BotonPasaporteyEstancia">
+          <property name="geometry">
+           <rect>
+            <x>410</x>
+            <y>60</y>
+            <width>221</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>- Pasaporte y Estancia</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ImagenInicio">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>80</y>
+            <width>211</width>
+            <height>321</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/Resources/Documentos/NormativasIcono.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="BotonTipos">
+          <property name="geometry">
+           <rect>
+            <x>410</x>
+            <y>100</y>
+            <width>221</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/Resources/Documentos/pixil-frame-0 (5).png);
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>- Tipos de personas</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="PagIndice1">
+         <widget class="QLabel" name="TituloPasaporte">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>30</y>
+            <width>281</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string> Reglas Pasaporte</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="TituloEstancia">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>30</y>
+            <width>201</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Reglas Estancia</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="PaisesPermitidos">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>80</y>
+            <width>281</width>
+            <height>141</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="EdadPermitida">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>220</y>
+            <width>281</width>
+            <height>111</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="EstadoCivilPermitido">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>340</y>
+            <width>281</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DuracionPermitida">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>80</y>
+            <width>291</width>
+            <height>151</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="TipoDeVisitaValido">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>240</y>
+            <width>301</width>
+            <height>151</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="PagAparienciasNPCS">
+         <widget class="QLabel" name="TituloPasaporte_2">
+          <property name="geometry">
+           <rect>
+            <x>22</x>
+            <y>10</y>
+            <width>281</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+            <underline>true</underline>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 127);</string>
+          </property>
+          <property name="text">
+           <string>Tipos de personas</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="AldeanoTitle">
+          <property name="geometry">
+           <rect>
+            <x>21</x>
+            <y>40</y>
+            <width>281</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(170, 85, 127);</string>
+          </property>
+          <property name="text">
+           <string>Aldeano</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="RefTitle">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>160</y>
+            <width>281</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(170, 85, 127);</string>
+          </property>
+          <property name="text">
+           <string>Refugiado politico</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DiploTitle">
+          <property name="geometry">
+           <rect>
+            <x>366</x>
+            <y>30</y>
+            <width>281</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(170, 85, 127);</string>
+          </property>
+          <property name="text">
+           <string>Diplomaticos</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="RevTitle">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>270</y>
+            <width>281</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(170, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>Revolucionarios</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="AldeanoDesc">
+          <property name="geometry">
+           <rect>
+            <x>15</x>
+            <y>70</y>
+            <width>291</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Serif'; font-size:14pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Personas comunes y corrientes que intentan entrar a nuestro pais, si su documentos estan en regla, dejalos pasar.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="RefDesc">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>170</y>
+            <width>281</width>
+            <height>191</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>10</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Serif'; font-size:10pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Vienen desesperados a nuestro pais, en busca de nuevas oportunidades. Debes ser gentil con ellos, si su documentos estan en regla, debes dejarlos pasar. Normalmente te diran algo acerca de que estan siendo perseguidos, y suelen llevar gorro.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ImagenRef">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>300</y>
+            <width>281</width>
+            <height>181</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/Resources/LibroReglas/GorroRegufiado_1_1.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DiploDesc">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>50</y>
+            <width>181</width>
+            <height>211</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Serif'; font-size:14pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Estos normalmente vienen con un certificado de la Uader que les reconoce su diplomatura y la entrada al pais. Dejar pasar a un diplomatico con documentacion falsa resultara &lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#aa0000;&quot;&gt;en una multa.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ImagenDiplo">
+          <property name="geometry">
+           <rect>
+            <x>530</x>
+            <y>60</y>
+            <width>121</width>
+            <height>151</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/Resources/DocumentoUaderiano.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DiploDesc_2">
+          <property name="geometry">
+           <rect>
+            <x>554</x>
+            <y>190</y>
+            <width>81</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Serif'; font-size:14pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#aaaa7f;&quot;&gt;Diploma&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DiploDesc_3">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>270</y>
+            <width>181</width>
+            <height>241</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Serif'; font-size:14pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#aa0000;&quot;&gt;No &lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#000000;&quot;&gt;queremos a estas personas en el pais. Esta totalmente prohibida su entrada por mas que poseean documentos en regla. Suelen venir con alguna prenda que los indentifica, como la de la figura.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ImagenRev">
+          <property name="geometry">
+           <rect>
+            <x>564</x>
+            <y>310</y>
+            <width>71</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/Resources/LibroReglas/bandaRevolucionario_2.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DiploDesc_4">
+          <property name="geometry">
+           <rect>
+            <x>550</x>
+            <y>420</y>
+            <width>111</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Serif'; font-size:14pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; color:#aaaa7f;&quot;&gt;Simbolos revolucionarios&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <zorder>TituloPasaporte_2</zorder>
+         <zorder>AldeanoTitle</zorder>
+         <zorder>DiploTitle</zorder>
+         <zorder>RevTitle</zorder>
+         <zorder>AldeanoDesc</zorder>
+         <zorder>RefDesc</zorder>
+         <zorder>ImagenRef</zorder>
+         <zorder>DiploDesc</zorder>
+         <zorder>ImagenDiplo</zorder>
+         <zorder>RefTitle</zorder>
+         <zorder>DiploDesc_2</zorder>
+         <zorder>DiploDesc_3</zorder>
+         <zorder>ImagenRev</zorder>
+         <zorder>DiploDesc_4</zorder>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="leftMargin">
+          <number>24</number>
+         </property>
+         <property name="rightMargin">
+          <number>23</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="Anterior">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Anterior</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="Siguiente">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Siguiente</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
