@@ -3,14 +3,18 @@
 
 generador_paisresidencia::generador_paisresidencia(ReglasNivel1 * rules) : Generar_pasaporte(rules) {
     this->rules = rules;
-    this->rand = new QRandomGenerator;
     quint32 Semilla = static_cast<quint32>(time(NULL));
-    this->rand->seed(Semilla);
-    this->locura = new LocuraCaracteres(this->rand);
+    this->rand.seed(Semilla);
+    this->locura = new LocuraCaracteres(&this->rand);
+
 }
 
 PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)
 {
+    for (int i = 0; i < 3; ++i){
+        this->camposValidos[i] = true;
+        this->camposLocura[i] = true;
+    }
     this->Pasaporte2Copy = Pasaporte2copy;
     this->dificultad = dificultad;
     int Probabilidades;
@@ -51,20 +55,20 @@ QString generador_paisresidencia::generar_nombre(char genero)
             do{
                 switch (genero){
                 case 'H':
-                    valor_centinela = this->rand->bounded(this->max_hombres);
+                    valor_centinela = this->rand.bounded(this->max_hombres);
                     nombre_generado = this->nombre_hombres[valor_centinela];
                     break;
                 case 'M':
-                    valor_centinela = this->rand->bounded(this->max_mujeres);
+                    valor_centinela = this->rand.bounded(this->max_mujeres);
                     nombre_generado = this->nombre_mujeres[valor_centinela];
                     break;
                 case 'X':
-                    valor_centinela = this->rand->bounded(this->max_x);
+                    valor_centinela = this->rand.bounded(this->max_x);
                     nombre_generado = this->nombre_x[valor_centinela];
                 }
             }while(nombre_generado != this->Pasaporte2Copy->getnombre());
         }
-        nombre_generado += " " + this->apellidos[this->rand->bounded(this->max_apellidos)];
+        nombre_generado += " " + this->apellidos[this->rand.bounded(this->max_apellidos)];
     }
     return nombre_generado;
 }
@@ -79,7 +83,7 @@ QString generador_paisresidencia::generar_paisresidencia(bool valido)
             QString nacionalidad_pasaporte = this->Pasaporte2Copy->getnacionalidad();
             nacionalidad_generada = this->locura->CambiarCadena(this->dificultad,nacionalidad_pasaporte);
         } else{
-            indice_generar = this->rand->bounded(this->max_nacionalidades - tamanio);
+            indice_generar = this->rand.bounded(this->max_nacionalidades - tamanio);
             nacionalidad_generada = this->nacionalidades[indice_generar];
         }
     }
@@ -98,14 +102,14 @@ QString generador_paisresidencia::generar_fecha(bool valido)
             QString fecha_pasaporte = this->Pasaporte2Copy->getfecha_nacimiento();
             fecha = this->locura->CambiarCadena(this->dificultad, fecha_pasaporte);
         }else{
-            if (this->rand->bounded(2) == 0) {
-                generar_anio = fecha_min - 1 - this->rand->bounded(10); // genera un anio menor que fechamin, hasta 10 años menos
+            if (this->rand.bounded(2) == 0) {
+                generar_anio = fecha_min - 1 - this->rand.bounded(10); // genera un anio menor que fechamin, hasta 10 años menos
             } else {
-                generar_anio = fecha_max + 1 + this->rand->bounded(10); // genera un anio mayor a fechamax, hasta 10 años mas
+                generar_anio = fecha_max + 1 + this->rand.bounded(10); // genera un anio mayor a fechamax, hasta 10 años mas
             }
-            generar_mes = 1 + this->rand->bounded(12);
+            generar_mes = 1 + this->rand.bounded(12);
             cant_dias = obt_dias(generar_mes,generar_anio);
-            generar_dia = 1 + this->rand->bounded(cant_dias);
+            generar_dia = 1 + this->rand.bounded(cant_dias);
             fecha = QString::number(generar_dia) + "/" +  QString::number(generar_mes) + "/" +  QString::number(generar_anio);
         }
     }
@@ -118,10 +122,10 @@ void generador_paisresidencia::CamposLocura(int Probabilidades)
     int cantidadCamposInvalidos = 0;
     int sorteo;
     // Hasta no generarse por lo menos 1 campo valido, no sale del while.
-    qDebug() << "Bucle de generar campos invalidos pasaporte";
+    qDebug() << "Bucle de generar campos invalidos Pais de residencia";
     while (!cantidadCamposInvalidos){
         for (int i = 0; i < 3; ++i){
-            sorteo = this->rand->bounded(10);
+            sorteo = this->rand.bounded(10);
             if (sorteo < Probabilidades){
                 this->camposLocura[i] = false;
                 cantidadCamposInvalidos++;

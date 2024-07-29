@@ -16,7 +16,7 @@ private:
     bool camposLocura[3]; // 1 nombre , 2 fecha, 3 pais de residencia
     //campos locura es para ver si se usa locura caracteres o no, si es false no se usa locura si es true si
 
-    QRandomGenerator * rand;
+    QRandomGenerator  rand;
     PaisResidencia * PaisResidenciaCreado;
     LocuraCaracteres * locura;
 

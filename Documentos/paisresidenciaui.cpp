@@ -17,7 +17,7 @@ paisresidenciaui::~paisresidenciaui()
 void paisresidenciaui::setDocumentacionInfo(Documentacion *documento)
 {
     this->PaisResidenciaUI = dynamic_cast<PaisResidencia*>(documento);
-    ui->PaisDeResidencia->setText(this->PaisResidenciaUI->getPaisResidencia());
+    ui->PaisResidencia->setText(this->PaisResidenciaUI->getPaisResidencia());
     ui->Nombre->setText(this->PaisResidenciaUI->getNombre());
     ui->FechaNacimiento->setText(this->PaisResidenciaUI->getFecha());
 }
