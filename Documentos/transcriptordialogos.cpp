@@ -7,6 +7,7 @@ TranscriptorDialogos::TranscriptorDialogos(QWidget *parent)
     , DialogoRecibido("")
 
 {
+
     ui->setupUi(this);
 }
 
@@ -24,16 +25,19 @@ void TranscriptorDialogos::Entrar()
 void TranscriptorDialogos::Sacar()
 {
     this->DialogoRecibido="";
+    ui->dialogo->clear();
+    DocumentosUI::Sacar();
 }
 
 void TranscriptorDialogos::CaptarMensaje(QString dialogo)
 {
-    ui->dialogo->setText(this->DialogoRecibido);
+    this->DialogoRecibido=dialogo;
+
 }
 
 void TranscriptorDialogos::LimpiarDialogo()
 {
-     this->DialogoRecibido="";
+    this->DialogoRecibido="";
 }
 void TranscriptorDialogos::setDocumentacionInfo(Documentacion *documento)
 {
