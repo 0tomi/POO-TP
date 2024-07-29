@@ -1,5 +1,5 @@
 #include "generador_pasaporte.h"
-#include "../Reglas/reglasnivel1.h"
+#include "../Reglas/ReglasNivel1.h"
 #include "../Documentos/paisresidencia.h"
 #include "locuracaracteres.h"
 #ifndef GENERADOR_PAISRESIDENCIA_H
