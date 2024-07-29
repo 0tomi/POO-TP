@@ -28,6 +28,7 @@ private:
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
     GenerarEstancia* generadorEstancia;
     Generar_pasaporte * generadorPasaporte;
+    GeneradorListaAcompaniantes * generadorListaAcomp;
     LocuraCaracteres * randomizadorCaracteres;
 
     // Datos del juego:
