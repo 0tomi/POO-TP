@@ -34,7 +34,7 @@ void NPCUI::Entrar()
     animacionEntrada->start();
     this->show();
     emit Entrando();
-    if (NPCrepresentado->getDialogo() != "null"){
+    if (NPCrepresentado->getDialogo() != ""){
         connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
         emitirDialogo.start(1500);
     }

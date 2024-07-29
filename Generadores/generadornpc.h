@@ -67,20 +67,23 @@ private:
     QString * DialogosRefugiado;
     int topeDialogosRef;
 
-    /*QString* DialogosEstudiante;
+    QString* DialogosEstudiante;
     int topeDialogosEstudiante;
 
     QString* DialogosTrabajador;
     int topeDialogosTrabajador;
 
     QString* DialogosTurista;
-    int topeDialogosTurista;*/
+    int topeDialogosTurista;
 
     void GenerarDialogosNivel1(NPC* info);
     void GenerarDialogosNivel2(NPC* info);
     void GenerarDialogosNivel3(NPC* info);
     void GenerarDialogosNivel4(NPC* info);
     void GenerarDialogosNivel5(NPC* info);
+
+    void SortearDialogo(NPC* info, QString * dialogos, int &tope);
+    QString *obtenerTipoEstancia(int tipo, int &tope);
 
     char generos[3] = {'M', 'H', 'X'};
 };
