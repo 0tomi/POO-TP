@@ -18,6 +18,7 @@ public:
     QString getMensajeSinAcomp();
     QString* getNombresAcomps();
     int getTopeNombresAcomps();
+    bool getValidez() const;
 };
 
 #endif // LISTAACOMPANIANTES_H

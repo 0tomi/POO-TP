@@ -1,5 +1,10 @@
 #include "listaacompaniantes.h"
 
+bool ListaAcompaniantes::getValidez() const
+{
+    return validez;
+}
+
 ListaAcompaniantes::ListaAcompaniantes() {
     nombresAcomps = nullptr;
     topeNombresAcomps = 0;

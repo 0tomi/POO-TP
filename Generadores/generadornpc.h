@@ -36,45 +36,38 @@ private:
     // ArrayS con direcciones donde se encuentran las caras de los npcs
     QString* LinksCarasHombre;
     QString* LinksCarasMujer;
-    int topeLinksCaras;
-
     QString* LinksCarasRevolucionario;
-    int topeLinksRevolucionario;
-
     QString* LinksCarasRefugiadoHombre;
     QString* LinksCarasRefugiadoMujer;
-    int topeLinksRefugiado;
-
-
     QString* LinksCejas;
-    int topeLinksCejas;
-
     QString* LinksOjos;
-    int topeLinksOjos;
-
     QString* LinksBocas;
-    int topeLinksBocas;
-
     QString* LinksNariz;
-    int topeLinksNariz;
-
     QString* LinksBarbas;
+
+    int topeLinksCaras;
+    int topeLinksRevolucionario;
+    int topeLinksRefugiado;
+    int topeLinksCejas;
+    int topeLinksOjos;
+    int topeLinksBocas;
+    int topeLinksNariz;
     int topeLinksBarbas;
 
     // Sistema de dialogos:
     QString* DialogosRevolucionario;
-    int topeDialogosRev;
     QString * DialogosRefugiado;
-    int topeDialogosRef;
-
     QString* DialogosEstudiante;
-    int topeDialogosEstudiante;
-
     QString* DialogosTrabajador;
-    int topeDialogosTrabajador;
-
     QString* DialogosTurista;
+    QString * dialogosAcomps;
+
+    int topeDialogosRev;
+    int topeDialogosRef;
+    int topeDialogosEstudiante;
+    int topeDialogosTrabajador;
     int topeDialogosTurista;
+    int topeDialogosAcomp;
 
     void GenerarDialogosNivel1(NPC* info);
     void GenerarDialogosNivel2(NPC* info);

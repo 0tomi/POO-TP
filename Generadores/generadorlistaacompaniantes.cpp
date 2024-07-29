@@ -18,10 +18,6 @@ GeneradorListaAcompaniantes::GeneradorListaAcompaniantes(QRandomGenerator * gene
     archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/apellidos.txt");
     this->apellidos = archivo.getArray();
     this->maxApellidos = archivo.getTopeArray();
-    
-    archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/dialogosAcompaniantes");
-    this->dialogosAcomps = archivo.getArray();
-    this->maxDialogos = archivo.getTopeArray();
 
     numRandom = generador;
 }
@@ -64,16 +60,7 @@ QString GeneradorListaAcompaniantes::generarNombre(char genero) {
 ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes(bool validez) {
     int indexRandom = numRandom->bounded(4); // cant acompañantes
     QString msjSinAcomp; // para almacenar mensaje si es que no tiene acompañante
-    QString dialogo;
-    
-    if (validez) { // si el documento es valido.. genero dialogos validos
-        dialogo = generarDialogosAcomps(validez, indexRandom);
-        npc->setDialogo(dialogo);
-    } else { // genero dialogos invalidos
-        dialogo = generarDialogosAcomps(validez, indexRandom);
-        npc->setDialogo(dialogo);
-    }
-    
+
     if (indexRandom == 0) {
         msjSinAcomp = "Viaja sin acompañante";
         return new ListaAcompaniantes(msjSinAcomp, validez);

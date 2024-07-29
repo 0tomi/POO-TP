@@ -70,7 +70,10 @@ GeneradorNPC::GeneradorNPC(){
     DialogosTrabajador=lector.getArray();
     topeDialogosTrabajador=lector.getTopeArray();
 
-
+    // Lectura de dialogos de nivel 3
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/dialogosAcompaniantes");
+    this->dialogosAcomps = lector.getArray();
+    this->topeDialogosAcomp = lector.getTopeArray();
 }
 
 
@@ -277,7 +280,15 @@ void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
 
 void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
 {
-    GenerarDialogosNivel1(info);
+    QString dialogo;
+
+    if (validez) { // si el documento es valido.. genero dialogos validos
+        dialogo = generarDialogosAcomps(validez, indexRandom);
+        npc->setDialogo(dialogo);
+    } else { // genero dialogos invalidos
+        dialogo = generarDialogosAcomps(validez, indexRandom);
+        npc->setDialogo(dialogo);
+    }
 }
 
 void GeneradorNPC::GenerarDialogosNivel4(NPC *info)

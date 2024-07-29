@@ -3,6 +3,7 @@
 
 #include "../Documentos/documentacion.h"
 #include "../Documentos/estancia.h"
+#include "../Documentos/listaacompaniantes.h"
 #include <QString>
 
 class NPC
@@ -23,6 +24,7 @@ public:
 
     // Getters de documentos
     virtual Estancia *getEstancia();
+    virtual ListaAcompaniantes * getListaAcompaniantes();
 
 protected:
     bool Validez;

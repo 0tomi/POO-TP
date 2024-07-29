@@ -3,7 +3,6 @@
 
 #include "../Documentos/listaacompaniantes.h"
 #include "../lectorarchivos.h"
-#include "../NPC/npc.h"
 
 #include <QRandomGenerator>
 #include <QString>
@@ -11,8 +10,6 @@
 class GeneradorListaAcompaniantes {
 private:
     QRandomGenerator * numRandom;
-
-    NPC * npc;
 
     // arrays con nombres:
     QString * nombresMujeres;
