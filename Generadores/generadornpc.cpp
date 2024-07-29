@@ -71,7 +71,7 @@ GeneradorNPC::GeneradorNPC(){
     topeDialogosTrabajador=lector.getTopeArray();
 
     // Lectura de dialogos de nivel 3
-    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/dialogosAcompaniantes.txt");
+    lector.LeerArchivoNuevo(":/Resources/Dialogos/dialogosAcompaniantes.txt");
     this->dialogosAcomps = lector.getArray();
     this->topeDialogosAcomp = lector.getTopeArray();
 }

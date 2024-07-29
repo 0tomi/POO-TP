@@ -2,8 +2,10 @@
 #define LISTAACOMPANIANTES_H
 
 #include <QString>
+#include "documentacion.h"
 
-class ListaAcompaniantes {
+class ListaAcompaniantes: public Documentacion
+{
 private:
     QString mensajeSinAcomp;
     QString* nombresAcomps;

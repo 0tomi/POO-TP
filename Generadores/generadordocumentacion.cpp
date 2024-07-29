@@ -31,6 +31,9 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // Generador estancia
     generadorEstancia = new GenerarEstancia(reglasNivel1, randomizadorCaracteres);
 
+    // Generador Lista Acomp
+    generadorListaAcomp = new GeneradorListaAcompaniantes(&NumeroRandom);
+
     // Siguientes generadores
 
 }
@@ -123,6 +126,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
     // Generador de Lista de Acompañantes
+    ListaAcompaniantes * nuevaLista = generadorListaAcomp->getListaAcompaniantes(DocsValidos[Index]);
     Index++;
 }
 

@@ -84,6 +84,7 @@ void GestorDocumentosUI::setUpLevel3()
     this->topePerLevel = 4;
     int Index = 3;
     if (documentosUI[Index] == nullptr){
+        documentosUI[Index] = new ListaAcompaniantesUI(Escritorio);
         // Aca iria el setup para la lista de acompaniantes
     }
 }

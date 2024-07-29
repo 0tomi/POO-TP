@@ -1,14 +1,17 @@
 #ifndef GENERADORDOCUMENTACION_H
 #define GENERADORDOCUMENTACION_H
 
+#include <QRandomGenerator>
+
 #include "../AtributosComunes/atributoscomunes.h"
 #include "../Documentos/documentacion.h"
 #include "../Reglas/reglasnivel5.h"
 #include "../NPC/npc.h"
 #include "generarestancia.h"
 #include "generador_pasaporte.h"
+#include "generadorlistaacompaniantes.h"
 #include "locuracaracteres.h"
-#include <QRandomGenerator>
+
 
 using namespace std;
 
