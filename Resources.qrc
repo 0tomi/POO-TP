@@ -89,5 +89,8 @@
         <file>Resources/LibroReglas/GorroRegufiado_1_1.png</file>
         <file>Resources/th (1).jpeg</file>
         <file>Resources/th.jpeg</file>
+        <file>Resources/Dialogos/DialogosEstudiante.txt</file>
+        <file>Resources/Dialogos/DialogosTrabajador.txt</file>
+        <file>Resources/Dialogos/DialogosTurista.txt</file>
     </qresource>
 </RCC>
