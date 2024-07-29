@@ -18,8 +18,8 @@
   </property>
   <property name="font">
    <font>
-    <pointsize>14</pointsize>
-    <bold>true</bold>
+    <pointsize>11</pointsize>
+    <bold>false</bold>
    </font>
   </property>
   <property name="windowTitle">
@@ -80,7 +80,7 @@ border-image: url(:/Resources/NPCs/GloboDialogoNPC.png);}</string>
         <property name="font">
          <font>
           <family>Arial Rounded MT Bold</family>
-          <pointsize>18</pointsize>
+          <pointsize>14</pointsize>
           <bold>false</bold>
          </font>
         </property>

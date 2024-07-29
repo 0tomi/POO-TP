@@ -113,8 +113,11 @@ border-image: url(:/Resources/escritorio2.png);
           </property>
           <item>
            <widget class="QLabel" name="TituloJuego">
+            <property name="styleSheet">
+             <string notr="true">image: url(:/Resources/th.jpeg);</string>
+            </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt; font-weight:700; color:#0055ff;&quot;&gt;[TITULO DEL JUEGO]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -767,7 +770,7 @@ background-color: #1e1532;</string>
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="Salir">
          <layout class="QVBoxLayout" name="verticalLayout_10">
