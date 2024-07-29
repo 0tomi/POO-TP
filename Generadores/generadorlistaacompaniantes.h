@@ -9,7 +9,7 @@
 
 class GeneradorListaAcompaniantes {
 private:
-    QRandomGenerator numRandom;
+    QRandomGenerator * numRandom;
 
     // arrays con nombres:
     QString * nombresMujeres;
@@ -26,7 +26,7 @@ private:
     QString generarNombre(char genero);
     char getGeneroRandom();
 public:
-    GeneradorListaAcompaniantes();
+    GeneradorListaAcompaniantes(QRandomGenerator * generador);
     ~GeneradorListaAcompaniantes();
 
     ListaAcompaniantes * getListaAcompaniantes();

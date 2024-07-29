@@ -24,8 +24,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     randomizadorCaracteres = new LocuraCaracteres(&NumeroRandom);
 
     // Pendiente a implementar
-    // News de generadores
-
+    // News de generadores NIVEL 1
     // Generador pasaportes
     generadorPasaporte = new Generar_pasaporte(reglasNivel1, datos);
 
@@ -33,6 +32,7 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     generadorEstancia = new GenerarEstancia(reglasNivel1, randomizadorCaracteres);
 
     // Siguientes generadores
+
 }
 
 GeneradorDocumentacion::~GeneradorDocumentacion()
