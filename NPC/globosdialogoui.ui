@@ -80,7 +80,7 @@ border-image: url(:/Resources/NPCs/GloboDialogoNPC.png);}</string>
         <property name="font">
          <font>
           <family>Arial Rounded MT Bold</family>
-          <pointsize>14</pointsize>
+          <pointsize>11</pointsize>
           <bold>false</bold>
          </font>
         </property>
