@@ -42,11 +42,14 @@ border-image: url(:/Resources/Documentos/Residencia.png);
      <widget class="QLabel" name="PaisResidencia">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>39</y>
+        <x>220</x>
+        <y>40</y>
         <width>141</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;</string>
       </property>
       <property name="text">
        <string/>
@@ -61,6 +64,9 @@ border-image: url(:/Resources/Documentos/Residencia.png);
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -73,6 +79,9 @@ border-image: url(:/Resources/Documentos/Residencia.png);
         <width>171</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;</string>
       </property>
       <property name="text">
        <string/>

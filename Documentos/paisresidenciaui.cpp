@@ -6,7 +6,7 @@ paisresidenciaui::paisresidenciaui(QWidget *parent)
     , ui(new Ui::paisresidenciaui)
 {
     ui->setupUi(this);
-    setFixedSize(250,250);
+    //setFixedSize(250,250);
 }
 
 paisresidenciaui::~paisresidenciaui()
