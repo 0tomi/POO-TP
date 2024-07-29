@@ -23,10 +23,6 @@ private:
     int maxX;
     int maxApellidos;
 
-    // dialogos:
-    QString * dialogosAcomps;
-    int maxDialogos;
-
     QString generarNombre(char genero);
     char getGeneroRandom();
     int generarRandomExcluido(int excluded);
@@ -35,8 +31,6 @@ public:
     ~GeneradorListaAcompaniantes();
 
     ListaAcompaniantes * getListaAcompaniantes(bool validez);
-
-    QString generarDialogosAcomps(bool validez, int cantAcomp);
 };
 
 #endif // GENERADORLISTAACOMPANIANTES_H

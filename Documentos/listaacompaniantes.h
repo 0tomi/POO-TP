@@ -8,6 +8,7 @@ private:
     QString mensajeSinAcomp;
     QString* nombresAcomps;
     int topeNombresAcomps;
+    int CantAcompaniantes;
     bool validez;
 public:
     ListaAcompaniantes();
@@ -19,6 +20,7 @@ public:
     QString* getNombresAcomps();
     int getTopeNombresAcomps();
     bool getValidez() const;
+    int getCantAcompaniantes() const;
 };
 
 #endif // LISTAACOMPANIANTES_H

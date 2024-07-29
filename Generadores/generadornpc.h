@@ -76,6 +76,7 @@ private:
     void GenerarDialogosNivel5(NPC* info);
 
     void SortearDialogo(NPC* info, QString * dialogos, int &tope);
+    QString generarDialogosAcomps(int CantidadAcompaniantes);
     QString *obtenerTipoEstancia(int tipo, int &tope);
 
     char generos[3] = {'M', 'H', 'X'};

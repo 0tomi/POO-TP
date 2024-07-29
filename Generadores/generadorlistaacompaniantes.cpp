@@ -85,36 +85,7 @@ ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes(bool vali
         }
     }
     
-    return new ListaAcompaniantes(nombresAcomps, topeNombres);
-}
-
-QString GeneradorListaAcompaniantes::generarDialogosAcomps(bool validez, int cantAcomp) {
-    int numRandomExcluded = 0;
-    QString dialogo;
-    
-    if (validez) { // genero dialogos validos
-        switch(cantAcomp) {
-            case 0:
-                dialogo = dialogosAcomps[0];
-                numRandomExcluded = generarRandomExcluido(cantAcomp);
-                break;
-            case 1:
-                dialogo = dialogosAcomps[1];
-                numRandomExcluded = generarRandomExcluido(cantAcomp);
-                break;
-            case 2:
-                dialogo = dialogosAcomps[2];
-                numRandomExcluded = generarRandomExcluido(cantAcomp);
-                break;
-            case 3:
-                dialogo = dialogosAcomps[3];
-                numRandomExcluded = generarRandomExcluido(cantAcomp);
-                break;
-        }
-    } else { // genero dialogos invalidos
-        dialogo = dialogosAcomps[numRandomExcluded];
-    }
-    return dialogo;
+    return new ListaAcompaniantes(nombresAcomps, topeNombres, validez);
 }
 
 int GeneradorListaAcompaniantes::generarRandomExcluido(int excluded) {
