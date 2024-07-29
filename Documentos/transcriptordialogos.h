@@ -17,6 +17,7 @@ public:
     ~TranscriptorDialogos();
     void setDocumentacionInfo(Documentacion *documento) override;
     virtual void Entrar()override;
+    virtual void Sacar()override;
 public slots:
     void CaptarMensaje(QString dialogo);
     void LimpiarDialogo();

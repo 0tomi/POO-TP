@@ -21,9 +21,19 @@ void TranscriptorDialogos::Entrar()
     DocumentosUI::Entrar();
 }
 
+void TranscriptorDialogos::Sacar()
+{
+    this->DialogoRecibido="";
+}
+
 void TranscriptorDialogos::CaptarMensaje(QString dialogo)
 {
-    DialogoRecibido=dialogo;
+    ui->dialogo->setText(this->DialogoRecibido);
+}
+
+void TranscriptorDialogos::LimpiarDialogo()
+{
+     this->DialogoRecibido="";
 }
 void TranscriptorDialogos::setDocumentacionInfo(Documentacion *documento)
 {
