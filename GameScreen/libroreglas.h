@@ -18,6 +18,7 @@ public:
     explicit libroreglas(Juego * datos, QWidget *parent = nullptr);
     ~libroreglas();
     void setUpLevel(int level);
+    virtual void Entrar() override;
 
 private:
     Ui::libroreglas *ui;
