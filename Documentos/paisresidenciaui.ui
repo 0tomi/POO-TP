@@ -44,12 +44,13 @@ border-image: url(:/Resources/Documentos/Residencia.png);
        <rect>
         <x>220</x>
         <y>40</y>
-        <width>141</width>
+        <width>161</width>
         <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;</string>
+       <string notr="true">
+font: 900 18pt &quot;Segoe UI Black&quot;;</string>
       </property>
       <property name="text">
        <string/>
@@ -60,12 +61,12 @@ border-image: url(:/Resources/Documentos/Residencia.png);
        <rect>
         <x>130</x>
         <y>119</y>
-        <width>161</width>
+        <width>251</width>
         <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;</string>
+       <string notr="true">font: 900 18pt &quot;Segoe UI Black&quot;;</string>
       </property>
       <property name="text">
        <string/>
@@ -76,12 +77,13 @@ border-image: url(:/Resources/Documentos/Residencia.png);
        <rect>
         <x>160</x>
         <y>210</y>
-        <width>171</width>
+        <width>211</width>
         <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 900 10pt &quot;Segoe UI Black&quot;;</string>
+       <string notr="true">
+font: 900 18pt &quot;Segoe UI Black&quot;;</string>
       </property>
       <property name="text">
        <string/>
