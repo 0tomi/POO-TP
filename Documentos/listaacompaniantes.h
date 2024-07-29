@@ -8,10 +8,11 @@ private:
     QString mensajeSinAcomp;
     QString* nombresAcomps;
     int topeNombresAcomps;
+    bool validez;
 public:
     ListaAcompaniantes();
-    ListaAcompaniantes(QString mensajeSinAcomp);
-    ListaAcompaniantes(QString* nombresAcomps, int topeNombresAcomps);
+    ListaAcompaniantes(QString mensajeSinAcomp, bool validez);
+    ListaAcompaniantes(QString* nombresAcomps, int topeNombresAcomps, bool validez);
 
     // getters:
     QString getMensajeSinAcomp();

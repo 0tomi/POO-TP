@@ -1,5 +1,7 @@
 #include "generadorlistaacompaniantes.h"
 
+#include <QDebug>
+
 GeneradorListaAcompaniantes::GeneradorListaAcompaniantes(QRandomGenerator * generador) {
     LectorArchivos archivo(":/Resources/ArchivosTexto/mujeres.txt");
     this->nombresMujeres = archivo.getArray();
@@ -16,6 +18,10 @@ GeneradorListaAcompaniantes::GeneradorListaAcompaniantes(QRandomGenerator * gene
     archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/apellidos.txt");
     this->apellidos = archivo.getArray();
     this->maxApellidos = archivo.getTopeArray();
+    
+    archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/dialogosAcompaniantes");
+    this->dialogosAcomps = archivo.getArray();
+    this->maxDialogos = archivo.getTopeArray();
 
     numRandom = generador;
 }
@@ -55,13 +61,22 @@ QString GeneradorListaAcompaniantes::generarNombre(char genero) {
 
 
 // <-------- METODOS PUBLICOS --------->
-ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes() {
+ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes(bool validez) {
     int indexRandom = numRandom->bounded(4); // cant acompañantes
     QString msjSinAcomp; // para almacenar mensaje si es que no tiene acompañante
-
+    QString dialogo;
+    
+    if (validez) { // si el documento es valido.. genero dialogos validos
+        dialogo = generarDialogosAcomps(validez, indexRandom);
+        npc->setDialogo(dialogo);
+    } else { // genero dialogos invalidos
+        dialogo = generarDialogosAcomps(validez, indexRandom);
+        npc->setDialogo(dialogo);
+    }
+    
     if (indexRandom == 0) {
         msjSinAcomp = "Viaja sin acompañante";
-        return new ListaAcompaniantes(msjSinAcomp);
+        return new ListaAcompaniantes(msjSinAcomp, validez);
     }
 
     // tiene acompañantes...
@@ -82,5 +97,43 @@ ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes() {
                 break;
         }
     }
+    
     return new ListaAcompaniantes(nombresAcomps, topeNombres);
+}
+
+QString GeneradorListaAcompaniantes::generarDialogosAcomps(bool validez, int cantAcomp) {
+    int numRandomExcluded = 0;
+    QString dialogo;
+    
+    if (validez) { // genero dialogos validos
+        switch(cantAcomp) {
+            case 0:
+                dialogo = dialogosAcomps[0];
+                numRandomExcluded = generarRandomExcluido(cantAcomp);
+                break;
+            case 1:
+                dialogo = dialogosAcomps[1];
+                numRandomExcluded = generarRandomExcluido(cantAcomp);
+                break;
+            case 2:
+                dialogo = dialogosAcomps[2];
+                numRandomExcluded = generarRandomExcluido(cantAcomp);
+                break;
+            case 3:
+                dialogo = dialogosAcomps[3];
+                numRandomExcluded = generarRandomExcluido(cantAcomp);
+                break;
+        }
+    } else { // genero dialogos invalidos
+        dialogo = dialogosAcomps[numRandomExcluded];
+    }
+    return dialogo;
+}
+
+int GeneradorListaAcompaniantes::generarRandomExcluido(int excluded) {
+    int res;
+    do { // genera un numero random, si este numero es igual al excluido repite el proceso.
+        res = numRandom->bounded(4);
+    } while (res == excluded);
+    return res;
 }

@@ -5,15 +5,17 @@ ListaAcompaniantes::ListaAcompaniantes() {
     topeNombresAcomps = 0;
 }
 
-ListaAcompaniantes::ListaAcompaniantes(QString _mensajeSinAcomp) {
+ListaAcompaniantes::ListaAcompaniantes(QString _mensajeSinAcomp, bool _validez) {
     mensajeSinAcomp = _mensajeSinAcomp;
+    validez = _validez;
     nombresAcomps = nullptr;
     topeNombresAcomps = 0;
 }
 
-ListaAcompaniantes::ListaAcompaniantes(QString* _nombresAcomps, int _topeNombresAcomps) {
+ListaAcompaniantes::ListaAcompaniantes(QString* _nombresAcomps, int _topeNombresAcomps, bool _validez) {
     nombresAcomps = _nombresAcomps;
     topeNombresAcomps = _topeNombresAcomps;
+    validez = _validez;
 }
 
 // getters:
