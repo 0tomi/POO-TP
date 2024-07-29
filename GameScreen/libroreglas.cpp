@@ -39,6 +39,12 @@ void libroreglas::setUpLevel(int level)
     }
 }
 
+void libroreglas::Entrar()
+{
+    raise();
+    DocumentosUI::Entrar();
+}
+
 void setDocumentacionInfo(Documentacion *documento){
 
 }
