@@ -16,4 +16,5 @@ TranscriptorDialogos::~TranscriptorDialogos()
 void TranscriptorDialogos::Entrar()
 {
 
+    DocumentosUI::Entrar();
 }
