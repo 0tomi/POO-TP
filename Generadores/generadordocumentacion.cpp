@@ -24,15 +24,18 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     randomizadorCaracteres = new LocuraCaracteres(&NumeroRandom);
 
     // Pendiente a implementar
-    // News de generadores
-
+    // News de generadores NIVEL 1
     // Generador pasaportes
     generadorPasaporte = new Generar_pasaporte(reglasNivel1, datos);
 
     // Generador estancia
     generadorEstancia = new GenerarEstancia(reglasNivel1, randomizadorCaracteres);
 
+    // Generador Lista Acomp
+    generadorListaAcomp = new GeneradorListaAcompaniantes(&NumeroRandom);
+
     // Siguientes generadores
+
 }
 
 GeneradorDocumentacion::~GeneradorDocumentacion()
@@ -123,6 +126,8 @@ void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
     // Generador de Lista de Acompañantes
+    ListaAcompaniantes * nuevaLista = generadorListaAcomp->getListaAcompaniantes(DocsValidos[Index]);
+    NPC2Generate->addDocumento(nuevaLista, Index);
     Index++;
 }
 
@@ -149,7 +154,6 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
         MaxDocumentosInvalidos = NumeroRandom.bounded(1,3);
 
     // Lo repetimos hasta que nos genere la cantidad necesaria de documentos invalidos.
-    qDebug() << "Bucle de generar cantidad de docs invalidos";
     while (CantDocumentosInvalidos < MaxDocumentosInvalidos){
         for (int i = 0; i < MaxDocumentos; i++){
             ValorCentinela = NumeroRandom.bounded(0,10);

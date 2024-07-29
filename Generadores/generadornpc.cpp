@@ -59,18 +59,25 @@ GeneradorNPC::GeneradorNPC(){
 
     // Lectura de dialogos para nivel 2
     lector.LeerArchivoNuevo(":/Resources/Dialogos/DialogosEstudiante.txt");
-    DialogosEstudiante=lector.getArray();
+    QString * DialogosEstudiante = lector.getArray();
     topeDialogosEstudiante=lector.getTopeArray();
 
     lector.LeerArchivoNuevo(":/Resources/Dialogos/DialogosTurista.txt");
-    DialogosTurista=lector.getArray();
+    QString * DialogosTurista = lector.getArray();
     topeDialogosTurista=lector.getTopeArray();
 
     lector.LeerArchivoNuevo(":/Resources/Dialogos/DialogosTrabajador.txt");
-    DialogosTrabajador=lector.getArray();
+    QString *  DialogosTrabajador = lector.getArray();
     topeDialogosTrabajador=lector.getTopeArray();
 
+    DialogosEstancia[0] = DialogosTurista;
+    DialogosEstancia[1] = DialogosTrabajador;
+    DialogosEstancia[2] = DialogosEstudiante;
 
+    // Lectura de dialogos de nivel 3
+    lector.LeerArchivoNuevo(":/Resources/Dialogos/dialogosAcompaniantes.txt");
+    this->dialogosAcomps = lector.getArray();
+    this->topeDialogosAcomp = lector.getTopeArray();
 }
 
 
@@ -139,6 +146,124 @@ GeneradorNPC::~GeneradorNPC()
     delete LinksOjos;
 }
 
+// ######## Generadores de dialogos #############
+void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
+{
+    GenerarDialogosNivel1(npc);
+    if (nivel >= 2)
+        GenerarDialogosNivel2(npc);
+    if (nivel >= 3)
+        GenerarDialogosNivel3(npc);
+    if (nivel >= 4)
+        GenerarDialogosNivel4(npc);
+    if (nivel >= 5)
+        GenerarDialogosNivel5(npc);
+}
+
+void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
+{
+    // En esta etapa solo los revolucionarios y los refugiados tendran dialogos
+    if (info->getTipo() == 3)
+        SortearDialogo(info, DialogosRevolucionario, topeDialogosRev);
+    else
+        if (info->getTipo() == 1)
+            SortearDialogo(info, DialogosRefugiado, topeDialogosRef);
+}
+
+void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
+{
+    Estancia * infoEstancia = info->getEstancia();
+
+    if (!infoEstancia){
+        qDebug() << "Puntero Estancia NULO";
+        return;
+    }
+
+    QString TipoEstancia = infoEstancia->getTipoEstancia();
+    int tipoEst = 0, topeEstancia = 1;
+
+    // Decidimos que tipo es el NPC
+    if (TipoEstancia == "Turismo"){
+        tipoEst = 0;
+        topeEstancia = topeDialogosTurista;
+    } else if (TipoEstancia == "Trabajo") {
+        tipoEst = 1;
+        topeEstancia = topeDialogosTrabajador;
+
+    }   else if (TipoEstancia == "Estudios") {
+        tipoEst = 2;
+        topeEstancia = topeDialogosEstudiante;
+    }
+
+    if (info->getValidez()){
+        SortearDialogo(info, DialogosEstancia[tipoEst], topeEstancia);
+    } else {
+        // Obtenemos un dialogo de otro tipo de estancia
+        int tipoDiferente = Random->bounded(3);
+        while (tipoDiferente == tipoEst)
+            tipoDiferente = Random->bounded(3);
+
+        switch(tipoDiferente){
+        case 0: topeEstancia = topeDialogosTurista;
+            break;
+        case 1: topeEstancia = topeDialogosTrabajador;
+            break;
+        default: topeEstancia = topeDialogosEstudiante;
+            break;
+        }
+
+        SortearDialogo(info, DialogosEstancia[tipoDiferente], topeEstancia);
+    }
+}
+
+void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
+{
+    ListaAcompaniantes * infoLista = info->getListaAcompaniantes();
+    if (!infoLista){
+        qDebug() << "Puntero Acompaniantes NULO";
+        return;
+    }
+
+    QString dialogo;
+    bool validez = infoLista->getValidez();
+    int CantidadAcompaniantes = infoLista->getCantAcompaniantes();
+
+    if (validez) { // si el documento es valido.. genero dialogos validos
+        dialogo = dialogosAcomps[CantidadAcompaniantes];
+        info->setDialogo(dialogo);
+    } else { // genero dialogos invalidos
+        dialogo = generarDialogosAcomps(CantidadAcompaniantes);
+        info->setDialogo(dialogo);
+    }
+}
+
+QString GeneradorNPC::generarDialogosAcomps(int CantidadRealAcomp)
+{
+    int sorteo = Random->bounded(topeDialogosAcomp);
+    while(sorteo == CantidadRealAcomp)
+        sorteo = Random->bounded(topeDialogosAcomp);
+
+    return dialogosAcomps[sorteo];
+}
+
+void GeneradorNPC::GenerarDialogosNivel4(NPC *info)
+{
+    GenerarDialogosNivel1(info);
+}
+
+void GeneradorNPC::GenerarDialogosNivel5(NPC *info)
+{
+    GenerarDialogosNivel1(info);
+}
+
+void GeneradorNPC::SortearDialogo(NPC *info, QString * dialogos, int &tope)
+{
+    int sorteo = Random->bounded(tope);
+    QString dialogo = dialogos[sorteo] + "\n";
+    info->setDialogo(dialogo);
+}
+
+/// ################# GETTERS ##########################
 QString GeneradorNPC::getCaraRandom(char genero)
 {
     int CaraGeneroX = Random->bounded(10);
@@ -212,103 +337,3 @@ QString GeneradorNPC::getBarbaRandom()
     return LinksBarbas[sorteo];
 }
 
-void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
-{
-    switch (nivel){
-    case 1: GenerarDialogosNivel1(npc);
-        break;
-    case 2: GenerarDialogosNivel2(npc);
-        break;
-    case 3: GenerarDialogosNivel3(npc);
-        break;
-    case 4: GenerarDialogosNivel4(npc);
-        break;
-    default: GenerarDialogosNivel5(npc);
-        break;
-    }
-}
-
-void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
-{
-    // En esta etapa solo los revolucionarios y los refugiados tendran dialogos
-    if (info->getTipo() == 3)
-        SortearDialogo(info, DialogosRevolucionario, topeDialogosRev);
-    else
-        if (info->getTipo() == 1)
-            SortearDialogo(info, DialogosRefugiado, topeDialogosRef);
-}
-
-void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
-{
-    GenerarDialogosNivel1(info);
-    Estancia * infoEstancia = info->getEstancia();
-
-    QString TipoEstancia = infoEstancia->getTipoEstancia();
-    QString * DialogosSegunTipo = nullptr; int TopeDialogos, tipoEst = 1;
-
-    // Decidimos que tipo es el NPC
-    if (TipoEstancia == "Turismo"){
-        tipoEst = 1;
-        DialogosSegunTipo = obtenerTipoEstancia(tipoEst, TopeDialogos);
-
-    } else if (TipoEstancia == "Trabajo") {
-        tipoEst = 2;
-        DialogosSegunTipo = obtenerTipoEstancia(tipoEst, TopeDialogos);
-
-    }   else if (TipoEstancia == "Estudios") {
-       tipoEst = 3;
-       DialogosSegunTipo = obtenerTipoEstancia(tipoEst, TopeDialogos);
-    }
-
-    if (info->getValidez()){
-        SortearDialogo(info, DialogosSegunTipo, TopeDialogos);
-    } else {
-        // Obtenemos un dialogo de otro tipo de estancia
-        int DialogoDiferente = Random->bounded(4) + 1;
-        while (DialogoDiferente == tipoEst)
-            DialogoDiferente = Random->bounded(4) + 1;
-
-        DialogosSegunTipo = obtenerTipoEstancia(DialogoDiferente, TopeDialogos);
-        SortearDialogo(info, DialogosSegunTipo, TopeDialogos);
-    }
-    // Dialogos segun estancia
-
-}
-
-void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
-{
-    GenerarDialogosNivel1(info);
-}
-
-void GeneradorNPC::GenerarDialogosNivel4(NPC *info)
-{
-    GenerarDialogosNivel1(info);
-}
-
-void GeneradorNPC::GenerarDialogosNivel5(NPC *info)
-{
-    GenerarDialogosNivel1(info);
-}
-
-void GeneradorNPC::SortearDialogo(NPC *info, QString * dialogos, int &tope)
-{
-    int sorteo = Random->bounded(tope);
-    QString dialogo = dialogos[sorteo] + "\n";
-    info->setDialogo(dialogo);
-}
-
-QString *GeneradorNPC::obtenerTipoEstancia(int tipo, int &tope)
-{
-    if (tipo == 1){
-        tope = topeDialogosTurista;
-        return DialogosTurista;
-    } else if (tipo == 2) {
-        tope = topeDialogosTrabajador;
-        return DialogosTrabajador;
-    } else if (tipo == 3) {
-        tope = topeDialogosEstudiante;
-        return DialogosEstudiante;
-    }
-
-    return nullptr;
-}

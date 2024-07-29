@@ -6,8 +6,11 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     , ui(new Ui::GlobosDialogoUI)
 {
     ui->setupUi(this);
-    raise();
-    setFixedSize(300,90);
+    tamanioNormalGloboX = 300; tamanioNormalGloboY = 90;
+    tamanioAumentadoGloboX = tamanioNormalGloboX + 15;
+    tamanioAumentadoGloboY = tamanioNormalGloboY + 40;
+
+    setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
     hide();
     TiempoVisualizacion.setSingleShot(true);
     SetearAnimacionEntrada();
@@ -19,6 +22,12 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje, const int X, const i
 {
     mensaje = newMensaje;
     ui->Texto->setText(mensaje);
+
+    if (mensaje.length() > 60)
+        setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY);
+    else
+        setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
+
     emit MensajePreparado();
     connect(&TiempoVisualizacion, &QTimer::timeout, this, &GlobosDialogoUI::TerminarMensaje);
     PrepararAnimacionEntrada(X, Y);
@@ -78,14 +87,6 @@ void GlobosDialogoUI::Centrar(int X, int Y)
         move(X,Y);
         raise();
     }
-}
-
-void GlobosDialogoUI::DarFormatoPorqueQTesHorrible(QString &formato)
-{
-    QString textoActual = ui->Texto->text();
-    // Mantiene las etiquetas HTML y solo actualiza el contenido del texto
-    QString updatedText = textoActual.section(':', 0, 0) + ": <i>" + formato + "</i>";
-    ui->Texto->setText(updatedText);
 }
 
 void GlobosDialogoUI::SetearAnimacionEntrada()

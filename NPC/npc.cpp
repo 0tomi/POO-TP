@@ -36,8 +36,8 @@ void NPC::addDocumento(Documentacion *newDoc, int Index)
     Codigos internos de documentacion: (El pase diplomatico no esta incluido, todavia)
     0: Pasaporte / Dni
     1: Estancia
-    2: <a desarrollar>
-    3: <a desarrollar>
+    2: Pais de residencia   [EN DESARROLLO]
+    3: Lista de acompaniantes
     4: <a desarrollar>
     5: <a desarrollar>
     6: <a desarrollar>
@@ -61,6 +61,11 @@ void NPC::setDialogo(const QString newDialogo)
 Estancia *NPC::getEstancia()
 {
     return dynamic_cast<Estancia*>(documentos[1]);
+}
+
+ListaAcompaniantes * NPC::getListaAcompaniantes()
+{
+    return dynamic_cast<ListaAcompaniantes*>(documentos[3]);
 }
 
 NPC::~NPC()

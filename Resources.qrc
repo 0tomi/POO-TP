@@ -92,5 +92,6 @@
         <file>Resources/Dialogos/DialogosEstudiante.txt</file>
         <file>Resources/Dialogos/DialogosTrabajador.txt</file>
         <file>Resources/Dialogos/DialogosTurista.txt</file>
+        <file>Resources/Dialogos/dialogosAcompaniantes.txt</file>
     </qresource>
 </RCC>

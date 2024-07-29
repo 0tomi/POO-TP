@@ -7,6 +7,7 @@
 #include "../Documentos/documentacion.h"
 #include "../Documentos/estanciaUI.h"
 #include "../Documentos/pasaporteui.h"
+#include "../Documentos/listaacompaniantesui.h"
 #include "../Documentos/dni.h"
 #include "../NPC/npccomun.h"
 

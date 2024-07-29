@@ -36,45 +36,36 @@ private:
     // ArrayS con direcciones donde se encuentran las caras de los npcs
     QString* LinksCarasHombre;
     QString* LinksCarasMujer;
-    int topeLinksCaras;
-
     QString* LinksCarasRevolucionario;
-    int topeLinksRevolucionario;
-
     QString* LinksCarasRefugiadoHombre;
     QString* LinksCarasRefugiadoMujer;
-    int topeLinksRefugiado;
-
-
     QString* LinksCejas;
-    int topeLinksCejas;
-
     QString* LinksOjos;
-    int topeLinksOjos;
-
     QString* LinksBocas;
-    int topeLinksBocas;
-
     QString* LinksNariz;
-    int topeLinksNariz;
-
     QString* LinksBarbas;
+
+    int topeLinksCaras;
+    int topeLinksRevolucionario;
+    int topeLinksRefugiado;
+    int topeLinksCejas;
+    int topeLinksOjos;
+    int topeLinksBocas;
+    int topeLinksNariz;
     int topeLinksBarbas;
 
     // Sistema de dialogos:
     QString* DialogosRevolucionario;
-    int topeDialogosRev;
     QString * DialogosRefugiado;
+    QString * DialogosEstancia[3];
+    QString * dialogosAcomps;
+
+    int topeDialogosRev;
     int topeDialogosRef;
-
-    QString* DialogosEstudiante;
     int topeDialogosEstudiante;
-
-    QString* DialogosTrabajador;
     int topeDialogosTrabajador;
-
-    QString* DialogosTurista;
     int topeDialogosTurista;
+    int topeDialogosAcomp;
 
     void GenerarDialogosNivel1(NPC* info);
     void GenerarDialogosNivel2(NPC* info);
@@ -83,7 +74,7 @@ private:
     void GenerarDialogosNivel5(NPC* info);
 
     void SortearDialogo(NPC* info, QString * dialogos, int &tope);
-    QString *obtenerTipoEstancia(int tipo, int &tope);
+    QString generarDialogosAcomps(int CantidadAcompaniantes);
 
     char generos[3] = {'M', 'H', 'X'};
 };

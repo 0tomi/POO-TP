@@ -33,7 +33,6 @@ signals:
     void MensajeTerminado();
 
 private:
-    void DarFormatoPorqueQTesHorrible(QString &formato);
     Ui::GlobosDialogoUI *ui;
     void MensajeEmitido();
     QString mensaje;
@@ -52,6 +51,9 @@ private:
     void CalcularPosicionDelGlobo(int &X, int &Y);
     void setMostrandose();
     bool Mostrandose;
+
+    int tamanioNormalGloboX, tamanioNormalGloboY;
+    int tamanioAumentadoGloboX, tamanioAumentadoGloboY;
 private slots:
     void TerminarMensaje();
 };
