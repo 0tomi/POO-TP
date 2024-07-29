@@ -93,5 +93,6 @@
         <file>Resources/Dialogos/DialogosTrabajador.txt</file>
         <file>Resources/Dialogos/DialogosTurista.txt</file>
         <file>Resources/Dialogos/dialogosAcompaniantes.txt</file>
+        <file>Resources/transcriptor.png</file>
     </qresource>
 </RCC>

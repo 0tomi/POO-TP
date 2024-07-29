@@ -70,6 +70,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Generadores/generadorlistaacompaniantes.cpp Generadores/generadorlistaacompaniantes.h
         Documentos/listaacompaniantesui.h Documentos/listaacompaniantesui.cpp Documentos/listaacompaniantesui.ui
         GameScreen/libroreglas.cpp GameScreen/libroreglas.h GameScreen/libroreglas.ui
+        Documentos/transcriptordialogos.h Documentos/transcriptordialogos.cpp Documentos/transcriptordialogos.ui
+
 
 
 
