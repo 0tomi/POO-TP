@@ -57,9 +57,7 @@ private:
     // Sistema de dialogos:
     QString* DialogosRevolucionario;
     QString * DialogosRefugiado;
-    QString* DialogosEstudiante;
-    QString* DialogosTrabajador;
-    QString* DialogosTurista;
+    QString * DialogosEstancia[3];
     QString * dialogosAcomps;
 
     int topeDialogosRev;
@@ -77,7 +75,6 @@ private:
 
     void SortearDialogo(NPC* info, QString * dialogos, int &tope);
     QString generarDialogosAcomps(int CantidadAcompaniantes);
-    QString *obtenerTipoEstancia(int tipo, int &tope);
 
     char generos[3] = {'M', 'H', 'X'};
 };

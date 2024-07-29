@@ -85,7 +85,7 @@ void GestorDocumentosUI::setUpLevel3()
     int Index = 3;
     if (documentosUI[Index] == nullptr){
         documentosUI[Index] = new ListaAcompaniantesUI(Escritorio);
-        // Aca iria el setup para la lista de acompaniantes
+        setUpDocumento(documentosUI[Index]);
     }
 }
 
@@ -94,7 +94,10 @@ void GestorDocumentosUI::setUpLevel4()
     this->topePerLevel = 5;
     int Index = 4;
     if (documentosUI[Index] == nullptr){
-        // Aca iria el setup para el nuevo Doc Estancia
+
+        // ######### Aca iria el NEW para el nuevo Doc Estancia ######
+
+        setUpDocumento(documentosUI[Index]);
     }
 }
 

@@ -127,6 +127,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
     // Generador de Lista de Acompañantes
     ListaAcompaniantes * nuevaLista = generadorListaAcomp->getListaAcompaniantes(DocsValidos[Index]);
+    NPC2Generate->addDocumento(nuevaLista, Index);
     Index++;
 }
 
@@ -153,7 +154,6 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
         MaxDocumentosInvalidos = NumeroRandom.bounded(1,3);
 
     // Lo repetimos hasta que nos genere la cantidad necesaria de documentos invalidos.
-    qDebug() << "Bucle de generar cantidad de docs invalidos";
     while (CantDocumentosInvalidos < MaxDocumentosInvalidos){
         for (int i = 0; i < MaxDocumentos; i++){
             ValorCentinela = NumeroRandom.bounded(0,10);

@@ -12,6 +12,7 @@ private:
     int topeNombresAcomps;
     int CantAcompaniantes;
     bool validez;
+
 public:
     ListaAcompaniantes();
     ListaAcompaniantes(QString mensajeSinAcomp, bool validez);

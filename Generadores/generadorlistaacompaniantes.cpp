@@ -84,7 +84,6 @@ ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes(bool vali
                 break;
         }
     }
-    
     return new ListaAcompaniantes(nombresAcomps, topeNombres, validez);
 }
 
