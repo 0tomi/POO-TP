@@ -25,3 +25,7 @@ void TranscriptorDialogos::CaptarMensaje(QString dialogo)
 {
     DialogoRecibido=dialogo;
 }
+void TranscriptorDialogos::setDocumentacionInfo(Documentacion *documento)
+{
+
+}

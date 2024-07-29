@@ -15,10 +15,11 @@ class TranscriptorDialogos : public DocumentosUI
 public:
     explicit TranscriptorDialogos(QWidget *parent = nullptr);
     ~TranscriptorDialogos();
-    void setDocumentacion();
+    void setDocumentacionInfo(Documentacion *documento) override;
     virtual void Entrar()override;
 public slots:
     void CaptarMensaje(QString dialogo);
+    void LimpiarDialogo();
 private:
     Ui::TranscriptorDialogos *ui;
     QString DialogoRecibido;
