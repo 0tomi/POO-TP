@@ -2,6 +2,7 @@
 #define NPC_H
 
 #include "../Documentos/documentacion.h"
+#include "../Documentos/estancia.h"
 #include <QString>
 
 class NPC
@@ -19,6 +20,9 @@ public:
 
     QString getDialogo() const;
     void setDialogo(const QString newDialogo);
+
+    // Getters de documentos
+    virtual Estancia *getEstancia();
 
 protected:
     bool Validez;

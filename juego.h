@@ -16,6 +16,7 @@ public:
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
     ColaNPC *getCola();
+    AtributosComunes *getAtributos() const;
 
     // A futuro para cuando tengamos la funcion de guardar partida
     void SetPartida(string DireccionPartida);

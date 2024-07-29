@@ -3,7 +3,6 @@
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
-
 GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GameScreen)
@@ -12,6 +11,8 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     juego = newJuego;
     Pausado = false;
+
+    setUpLibroReglas();
 
     pantallaPerdiste = new PantallaPerdiste(this);
     pantallaPerdiste->setFixedSize(1920,1080);
@@ -26,7 +27,12 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
     GestorNPC.setUpDocsIcono(ui->MesaAzul);
 
+    // Agregamos el libro de reglas
+    // ACA ES DONDE SE DEBERIA PASAR POR CONSTRUCTOR EL PUNTERO DE JUEGO
+    libroReglasUI = new libroreglas(juego, ui->Escritorio);
+
     SpawnearBotones();
+    SetearConexionesDocumentos();
     RealizarConexionesPrincipales();
     BloquearBotones(true);
 }
@@ -40,8 +46,15 @@ GameScreen::~GameScreen()
     delete pantallaPerdiste;
 }
 
+void GameScreen::setUpLibroReglas()
+{
+    MostrandoReglas = false;
+    bloquearBotonReglas.setSingleShot(true);
+    connect(&bloquearBotonReglas, &QTimer::timeout, [this]() {
+        ui->aparecerReglas->setEnabled(true);
+    });
+}
 /// #################################### BOTONES ###################################################
-
 void GameScreen::SpawnearBotones()
 {
     // Añadimos los botones a la escena
@@ -68,7 +81,10 @@ void GameScreen::SpawnearBotones()
     ui->ContenedorBotones->layout()->addItem(EspaciadorBotones);
     ui->ContenedorBotones->layout()->addWidget(BotonAprobar);
     ui->ContenedorBotones->layout()->addWidget(BotonRechazar);
+}
 
+void GameScreen::SetearConexionesDocumentos()
+{
     DocsIconUI * setup  =  GestorNPC.getDocsIcono();
     // Bloqueamos los botones al estar el documento cerrado o abierto.
     connect(setup, &DocsIconUI::Abierto, [this]() {
@@ -107,6 +123,7 @@ void GameScreen::RealizarConexionesPrincipales()
 
     connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
 
+    // Conectamos nuestro cronometro rustico
     connect(&TiempoDia, &QTimer::timeout, this, &GameScreen::ActualizarTiempo);
 
     // Conectamos el temporizador de partida para terminar la partida.
@@ -114,6 +131,9 @@ void GameScreen::RealizarConexionesPrincipales()
 
     // Conectamos el quedarse sin npcs con el final de la partida
     connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
+
+    // Conectmaos el boton de reglas
+    connect(ui->aparecerReglas, &QPushButton::clicked, this, &GameScreen::MostrarReglas);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
@@ -122,6 +142,7 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
     qDebug() << "Nivel actual: " << Nivel;
     juego->PrepararJuego(Nivel, Dificultad);
+    libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
     if (Nivel > 1)
         GestorNPC.setUpNuevoNivel(Nivel);
@@ -176,9 +197,11 @@ void GameScreen::Centrar()
 
 void GameScreen::FinalDePartida()
 {
-    //qDebug() << "trigger";
     // a desarrollar
     GestorNPC.TerminoNivel();
+
+    if (MostrandoReglas)
+        MostrarReglas();
 
     if (tiempoPartida.isActive())
         tiempoPartida.stop();
@@ -226,12 +249,24 @@ void GameScreen::SelloDocumento(bool Boton)
 {
     GestorNPC.Salir(Boton);
 
-    //temporizadorBotones.start(2500);
-    //BloquearBotones(true);
-
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
     qDebug() << "Puntaje actual: " << juego->getSocialCreditsEarnedInLevel();
+}
+
+/// #################################### Libro de Reglas ###################################################
+void GameScreen::MostrarReglas()
+{
+    ui->aparecerReglas->setEnabled(false);
+    bloquearBotonReglas.start(500);
+
+    if (MostrandoReglas){
+        libroReglasUI->Sacar();
+        MostrandoReglas = false;
+    } else {
+        libroReglasUI->Entrar();
+        MostrandoReglas = true;
+    }
 }
 
 /// #################################### EVENTOS DE VENTANA ###################################################

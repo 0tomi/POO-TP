@@ -6,7 +6,7 @@ NPC::NPC(char Gen, int Type, bool newValidez){
     this->Tipo = Type;
     this->Validez = newValidez;
     if (Type != 3)
-        dialogo = "null";
+        dialogo = "";
 
     for (int i = 0; i < 10; i++)
         documentos[i] = nullptr;
@@ -34,16 +34,15 @@ void NPC::addDocumento(Documentacion *newDoc, int Index)
 {
   /*
     Codigos internos de documentacion: (El pase diplomatico no esta incluido, todavia)
-    0: Pasaporte
-    1: Dni
-    2: Estancia
+    0: Pasaporte / Dni
+    1: Estancia
+    2: <a desarrollar>
     3: <a desarrollar>
     4: <a desarrollar>
     5: <a desarrollar>
     6: <a desarrollar>
     7: <a desarrollar>
     8: <a desarrollar>
-    9: <a desarrollar>
   */
 
     documentos[Index] = newDoc;
@@ -56,7 +55,12 @@ QString NPC::getDialogo() const
 
 void NPC::setDialogo(const QString newDialogo)
 {
-    dialogo = newDialogo;
+    dialogo += newDialogo;
+}
+
+Estancia *NPC::getEstancia()
+{
+    return dynamic_cast<Estancia*>(documentos[1]);
 }
 
 NPC::~NPC()
