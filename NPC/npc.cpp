@@ -68,6 +68,12 @@ ListaAcompaniantes * NPC::getListaAcompaniantes()
     return dynamic_cast<ListaAcompaniantes*>(documentos[3]);
 }
 
+Pasaporte *NPC::getPasaporte()
+{
+    return dynamic_cast<Pasaporte*>(documentos[0]);
+}
+
+
 NPC::~NPC()
 {
     for (int i = 0; i < 10; i++)

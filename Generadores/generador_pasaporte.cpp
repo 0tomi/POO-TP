@@ -3,7 +3,7 @@
 #include <ctime>
 
 
-Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * atributos) {
+Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules) {
     LectorArchivos archivo(":/Resources/ArchivosTexto/mujeres.txt");
     this->nombre_mujeres = archivo.getArray();
     this->max_mujeres = archivo.getTopeArray();
@@ -21,8 +21,9 @@ Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * at
     this->max_apellidos = archivo.getTopeArray();
 
     this->rules = rules;
-    this->atributos = atributos;
-    this->nacionalidades = atributos->getPaises(this->max_nacionalidades);
+
+    this->nacionalidades = this->rules->getPaises();
+    this->max_nacionalidades = rules->getMaxPaises();
 
     quint32 Semilla = static_cast<quint32>(time(NULL));
     this->rand.seed(Semilla);
@@ -31,7 +32,7 @@ Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * at
 
 
 // Función para obtener el número de días en un mes y año dados
-int obt_dias(int mes, int año) {
+int Generar_pasaporte::obt_dias(int mes, int año) {
     switch (mes) {
     case 1:  // Enero
     case 3:  // Marzo
@@ -116,10 +117,10 @@ QString Generar_pasaporte::generar_nacionalidad(bool valido){
     return nacionalidad_generada;
 }
 QString Generar_pasaporte::generar_estado_civil(char genero, bool valido){
-    int tamanio_total; // cant de estados civiles
+    int tamanio_total = this->rules->getMaxEstadosCiviles(); // cant de estados civiles
     int tamanio_validos; // cant de estados civiles validos
     int valorCentinela; // para guardar el valor del rand;
-    QString * estados_civiles = this->atributos->getEstadosCiviles(tamanio_total); // para conseguir estados civiles
+    QString * estados_civiles = this->rules->getEstadosCiviles(); // para conseguir estados civiles
     QString * estados_civiles_validos = this->rules->getEstadoCivilPermitido(tamanio_validos);
     QString estado_civil_generado;
     if(valido) { // generar estado civil valido;
