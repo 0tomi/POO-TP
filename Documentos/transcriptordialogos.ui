@@ -65,7 +65,7 @@ border-image: url(:/Resources/transcriptor.png);
        <widget class="QLabel" name="dialogo">
         <property name="maximumSize">
          <size>
-          <width>375</width>
+          <width>370</width>
           <height>200</height>
          </size>
         </property>
@@ -85,7 +85,7 @@ color:black;</string>
          <string/>
         </property>
         <property name="wordWrap">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
         <property name="indent">
          <number>0</number>
