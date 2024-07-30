@@ -9,10 +9,9 @@
 class Generar_pasaporte
 {
 private:
-    QRandomGenerator rand;
     bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
+    QRandomGenerator rand;
 protected:
-    AtributosComunes * atributos;
     QString * nombre_mujeres;
     QString * nombre_hombres;
     QString * nombre_x;
@@ -28,15 +27,15 @@ protected:
     int max_x;  // tamanio del array de nombres de x
     int max_nacionalidades; // cantidad total de nacionalidades
     int max_apellidos; // cantidad total de apellidos
-
+    int obt_dias(int mes, int año);
     void generar_camposValidos(bool valido, int dificultad);
 
-    QString generar_nombre(char genero);
+    virtual QString generar_nombre(char genero);
     QString generar_estado_civil(char genero, bool valido);
     QString generar_nacionalidad(bool valido);
-    QString generar_fecha(bool valido);
+    virtual QString generar_fecha(bool valido);
 public:
-    Generar_pasaporte(ReglasNivel1 * rules, AtributosComunes * atributos); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
+    Generar_pasaporte(ReglasNivel1 * rules); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
     Pasaporte * crear_pasaporte(bool valido, char genero, int dificultad);
     void restartReglas(ReglasNivel1 * rules);
 };

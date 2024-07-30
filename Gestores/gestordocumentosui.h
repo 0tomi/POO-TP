@@ -10,6 +10,7 @@
 #include "../Documentos/listaacompaniantesui.h"
 #include "../Documentos/dni.h"
 #include "../NPC/npccomun.h"
+#include "../Documentos/paisresidenciaui.h"
 
 class GestorDocumentosUI: public QWidget
 {

@@ -71,7 +71,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/listaacompaniantesui.h Documentos/listaacompaniantesui.cpp Documentos/listaacompaniantesui.ui
         GameScreen/libroreglas.cpp GameScreen/libroreglas.h GameScreen/libroreglas.ui
         Documentos/transcriptordialogos.h Documentos/transcriptordialogos.cpp Documentos/transcriptordialogos.ui
-
+        Generadores/generador_paisresidencia.h Generadores/generador_paisresidencia.cpp
+        Documentos/paisresidencia.h Documentos/paisresidencia.cpp
+        Documentos/paisresidenciaui.h Documentos/paisresidenciaui.cpp Documentos/paisresidenciaui.ui
 
 
 
