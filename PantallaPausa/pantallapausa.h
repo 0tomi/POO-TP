@@ -26,6 +26,7 @@ signals:
     void setWindowedScreen();
     void quit();
     void return2lastWidget();
+    void clickedTutorial();
 
 private:
     Ui::PantallaPausa *ui;
@@ -36,6 +37,7 @@ private slots:
     void buttonQuitClicked();
     void buttonReturnClicked();
     void ConfirmarSalir();
+    void tutorialButton();
 };
 
 #endif // PANTALLAPAUSA_H

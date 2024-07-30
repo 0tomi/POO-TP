@@ -29,6 +29,7 @@ signals:
     void clickedPartida1();
     void clickedPartida2();
     void clickedPartida3();
+    void clickedTutorial();
 
 private slots:
     void botonJugarClicked();
@@ -55,6 +56,8 @@ private slots:
     void switchMenu();
 
     void botonStartclicked();
+
+    void tutorialButton();
 
 private:
     int dificultad=0;

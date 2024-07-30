@@ -14,6 +14,7 @@ PantallaPausa::PantallaPausa(QWidget *parent)
     connect(ui->quitButton, &QPushButton::clicked, this, &PantallaPausa::ConfirmarSalir);
     connect(ui->quitButtonConfirmed, &QPushButton::clicked, this, &PantallaPausa::buttonQuitClicked);
     connect(ui->noReturnButton, &QPushButton::clicked, this, &PantallaPausa::setInicio);
+    connect(ui->tutorialButton, &QPushButton::clicked, this, &PantallaPausa::clickedTutorial);
 }
 
 void PantallaPausa::setInicio()
@@ -72,4 +73,10 @@ void PantallaPausa::ConfirmarSalir()
     ui->Menus->setCurrentIndex(1);
 }
 
+
+
+void PantallaPausa::tutorialButton()
+{
+    emit clickedTutorial();
+}
 

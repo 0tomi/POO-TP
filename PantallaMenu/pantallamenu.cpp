@@ -11,6 +11,8 @@ PantallaMenu::PantallaMenu(QWidget *parent)
 
     connect(ui->botonJugar, &QPushButton::clicked, this, &PantallaMenu::botonJugarClicked);
 
+    connect(ui->tutorialButton, &QPushButton::clicked, this, &PantallaMenu::clickedTutorial);
+
     connect(ui->botonFacil, &QPushButton::clicked, this, &PantallaMenu::botonFacilclicked);
     connect(ui->botonNormal, &QPushButton::clicked, this, &PantallaMenu::botonNormalclicked);
     connect(ui->botonDemonio, &QPushButton::clicked, this, &PantallaMenu::botonDemonioclicked);
@@ -166,5 +168,11 @@ void PantallaMenu::switchMenu()
 {
     ui->menu->setCurrentIndex(0);
     ui->BotonesSalir->setCurrentIndex(0);
+}
+
+
+void PantallaMenu::tutorialButton()
+{
+    emit clickedTutorial();
 }
 
