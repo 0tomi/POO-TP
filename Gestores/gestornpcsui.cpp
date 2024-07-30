@@ -10,10 +10,12 @@ GestorNPCsUI::~GestorNPCsUI()
 {
     delete NPCcomunUI;
     delete Dialogos;
+    delete transcriptorDialogos;
 }
 /// #################################### SetUps ###################################################
 void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola)
 {
+    // Spawneamos los documentos
     GestorDocumentos.setUp(1, EscenarioDocumentos);
     Escenario = EscenarioNPCs;
     ColaNPCs = cola;
@@ -21,6 +23,11 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
     NPCcomunUI = new NPCGenericoUI(Escenario);
+
+    // Spawneamos el transcriptor
+    transcriptorDialogos = new TranscriptorDialogos(EscenarioDocumentos);
+    connect(Dialogos, &GlobosDialogoUI::Hablando, transcriptorDialogos, &TranscriptorDialogos::CaptarMensaje);
+    connect(NPCcomunUI, &NPCGenericoUI::animacionSalirTerminada, transcriptorDialogos, &TranscriptorDialogos::LimpiarDialogo);
 
     // ## A futuro iria aca el setup del NPC especial. ##
 
@@ -47,6 +54,11 @@ void GestorNPCsUI::setUpDocsIcono(QWidget *escena)
     connect(docsIconUI, &DocsIconUI::Cerrado, &GestorDocumentos, &GestorDocumentosUI::Salir);
 
     RealizarConexionesDeNPCs();
+}
+
+void GestorNPCsUI::setUpTranscriptor(QPushButton *boton)
+{
+    connect(boton, &QPushButton::clicked, transcriptorDialogos, &TranscriptorDialogos::MostrarOcultar);
 }
 
 DocsIconUI * GestorNPCsUI::getDocsIcono()
@@ -195,6 +207,9 @@ void GestorNPCsUI::SalirEntidades()
 void GestorNPCsUI::TerminoNivel()
 {
     DesconectarNPCs();
+    if (transcriptorDialogos->getMostrando())
+        transcriptorDialogos->Sacar();
+
     // Si hay NPCs presentes, retiramos los documentos y el NPC.
     if (MostrandoNPC || ColaNPCs->getSize()){
         SalirEntidades();
