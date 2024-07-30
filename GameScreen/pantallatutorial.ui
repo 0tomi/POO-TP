@@ -302,7 +302,7 @@
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, &lt;span style=&quot; color:#ff0000;&quot;&gt;asi que ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, &lt;span style=&quot; color:#ff0000;&quot;&gt;asi que ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tu jornada &lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;también terminará&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; si dejas pasar a todas las personas en la cola.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

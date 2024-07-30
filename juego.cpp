@@ -154,31 +154,32 @@ void Juego::setUpNivel1()
 {
     // A desarrollar
     ResetJuego();
-    Cola->addNPC(NivelActual, 1, 1, 0, 1, 1);
+    // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
+    Cola->addNPC(NivelActual, 5, 3, 4, 2, 4);
 }
 
 void Juego::setUpNivel2()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+    Cola->addNPC(NivelActual, 7, 4, 2, 5, 5);
 }
 
 void Juego::setUpNivel3()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+    Cola->addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 void Juego::setUpNivel4()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+    Cola->addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 void Juego::setUpNivel5()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 2, 2, 2, 2, 2);
+    Cola->addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 AtributosComunes *Juego::getAtributos() const
