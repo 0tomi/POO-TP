@@ -26,6 +26,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
     GestorNPC.setUpDocsIcono(ui->MesaAzul);
+    GestorNPC.setUpTranscriptor(ui->transcBoton);
 
     // Agregamos el libro de reglas
     // ACA ES DONDE SE DEBERIA PASAR POR CONSTRUCTOR EL PUNTERO DE JUEGO

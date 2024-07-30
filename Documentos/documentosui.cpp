@@ -25,7 +25,10 @@ DocumentosUI::DocumentosUI(QWidget *parent)
 
     // Hacemos que cuando termine la animacion de salida, el documento desaparezca.
     connect(animacionEntrada, &QPropertyAnimation::finished, this, &DocumentosUI::animacionEntrarTerminada);
-    connect(animacionSalida, &QPropertyAnimation::finished, this, &DocumentosUI::hide);
+    connect(animacionSalida, &QPropertyAnimation::finished,[this](){
+        emit animacionSalirTerminada();
+        hide();
+            });
 }
 
 void DocumentosUI::Entrar()

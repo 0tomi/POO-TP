@@ -27,6 +27,7 @@ public:
 
 signals:
     void animacionEntrarTerminada();
+    void animacionSalirTerminada();
 
 protected:
     // Centrar documento
@@ -34,19 +35,19 @@ protected:
 
     // Animaciones
     QPropertyAnimation *animacionEntrada;
-    void PrepararAnimacionEntrada();
+    virtual void PrepararAnimacionEntrada();
 
     QPropertyAnimation *animacionSalida;
-    void PrepararAnimacionSalida();
+    virtual void PrepararAnimacionSalida();
 
     // Mover en caso de hacer click
     virtual void mousePressEvent(QMouseEvent *event) override;
     virtual void mouseMoveEvent(QMouseEvent *event) override;
     QPoint m_dragStartPosition;
 
+    QWidget * padre;
 private:
     Ui::DocumentosUI *ui;
-    QWidget * padre;
 };
 
 #endif // DOCUMENTOSUI_H
