@@ -28,8 +28,18 @@ PantallaMenu::PantallaMenu(QWidget *parent)
     connect(ui->botonVolver1, &QPushButton::clicked, this, &PantallaMenu::botonVolver1clicked);
     connect(ui->botonStart, &QPushButton::clicked, this, &PantallaMenu::botonStartclicked);
 
+    connect(ui->botonCheat, &QPushButton::clicked, [this]() {
+        transicion->ArrancarTransicion(500, this, &PantallaMenu::switchCheatClicked);
+    });
+
+    connect(ui->SeleccionarDificultad, &QSpinBox::valueChanged, this, &PantallaMenu::actualizarDificultad);
+    connect(ui->SeleccionarNivel, &QSpinBox::valueChanged, this, &PantallaMenu::actualizarNivel);
+
+    connect(ui->cheatPlayClicked, &QPushButton::clicked, this, &PantallaMenu::botonStartclicked);
+
     indiceMainMenu = 0;
     indicePrevio = 0;
+
     ui->BotonesSalir->setCurrentIndex(0);
     ui->menu->setCurrentIndex(0);
 }
@@ -42,6 +52,21 @@ void PantallaMenu::setInicio()
 PantallaMenu::~PantallaMenu()
 {
     delete ui;
+}
+
+void PantallaMenu::actualizarNivel(int newNivel)
+{
+    nivel = newNivel;
+}
+
+void PantallaMenu::actualizarDificultad(int newDif)
+{
+    dificultad = newDif;
+}
+
+void PantallaMenu::switchCheatClicked()
+{
+    ui->menu->setCurrentWidget(ui->CheatPage);
 }
 
 /// ############################ Jugar ###############################
@@ -61,6 +86,7 @@ void PantallaMenu::switchSelectorDificultad()
 void PantallaMenu::botonFacilclicked()
 {
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchFacil);
+    nivel = 1;
 }
 
 void PantallaMenu::switchFacil()
@@ -75,6 +101,7 @@ void PantallaMenu::switchFacil()
 void PantallaMenu::botonNormalclicked()
 {
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchNormal);
+    nivel = 1;
 }
 
 void PantallaMenu::switchNormal()
@@ -89,6 +116,7 @@ void PantallaMenu::switchNormal()
 void PantallaMenu::botonDemonioclicked()
 {
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchDemonio);
+    nivel = 1;
 }
 
 void PantallaMenu::switchDemonio()
@@ -102,7 +130,7 @@ void PantallaMenu::switchDemonio()
 /// ############################ Empezar a jugar ###############################
 void PantallaMenu::botonStartclicked()
 {
-    emit clickedStart(1,dificultad);
+    emit clickedStart(nivel,dificultad);
     qDebug() << "dificultad"<<dificultad;
 }
 /// ############################ Cargar partida ###############################
@@ -158,6 +186,9 @@ void PantallaMenu::botonVolver1clicked()
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchMenu);
         break;
     case 3: // Descripcion de dificultad
+        transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
+        break;
+    case 4: // Cheat mode
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
         break;
     }

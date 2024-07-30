@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
-    <height>1080</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -82,7 +82,7 @@ border-image: url(:/Resources/escritorio2.png);
         <property name="minimumSize">
          <size>
           <width>300</width>
-          <height>400</height>
+          <height>300</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -92,7 +92,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -148,6 +148,9 @@ border-image: url(:/Resources/escritorio2.png);
               <bold>true</bold>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: white;
 background-color: #1e1532;</string>
@@ -184,6 +187,9 @@ background-color: #1e1532;</string>
               <bold>false</bold>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: white;
 background-color: #1e1532;</string>
@@ -219,6 +225,9 @@ background-color: #1e1532;</string>
               <pointsize>27</pointsize>
               <bold>false</bold>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -271,6 +280,9 @@ background-color: #1e1532;</string>
               <pointsize>22</pointsize>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>ForbiddenCursor</cursorShape>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
             </property>
@@ -308,6 +320,9 @@ background-color: #1e1532;</string>
               <family>MS Sans Serif</family>
               <pointsize>22</pointsize>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>ForbiddenCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -347,6 +362,9 @@ background-color: #1e1532;</string>
               <pointsize>22</pointsize>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>ForbiddenCursor</cursorShape>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
             </property>
@@ -363,10 +381,22 @@ background-color: #1e1532;</string>
         </widget>
         <widget class="QWidget" name="dificultad">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>546</width>
+           <height>575</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>1920</width>
+           <height>600</height>
+          </size>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="spacing">
@@ -384,7 +414,7 @@ background-color: #1e1532;</string>
           <property name="bottomMargin">
            <number>90</number>
           </property>
-          <item alignment="Qt::AlignHCenter">
+          <item alignment="Qt::AlignVCenter">
            <widget class="QPushButton" name="botonFacil">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -394,14 +424,14 @@ background-color: #1e1532;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>100</width>
               <height>75</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>100</height>
+              <height>150</height>
              </size>
             </property>
             <property name="font">
@@ -410,6 +440,9 @@ background-color: #1e1532;</string>
               <pointsize>27</pointsize>
               <bold>false</bold>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -420,18 +453,18 @@ background-color: #1e1532;</string>
             </property>
            </widget>
           </item>
-          <item alignment="Qt::AlignHCenter">
+          <item>
            <widget class="QPushButton" name="botonNormal">
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>100</width>
               <height>75</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>100</height>
+              <height>150</height>
              </size>
             </property>
             <property name="font">
@@ -440,6 +473,9 @@ background-color: #1e1532;</string>
               <pointsize>27</pointsize>
               <bold>false</bold>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -450,18 +486,18 @@ background-color: #1e1534;</string>
             </property>
            </widget>
           </item>
-          <item alignment="Qt::AlignHCenter">
+          <item>
            <widget class="QPushButton" name="botonDemonio">
             <property name="minimumSize">
              <size>
-              <width>300</width>
-              <height>75</height>
+              <width>100</width>
+              <height>50</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>100</height>
+              <height>150</height>
              </size>
             </property>
             <property name="font">
@@ -471,12 +507,48 @@ background-color: #1e1534;</string>
               <bold>true</bold>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 0, 0);
 background-color: #330000;</string>
             </property>
             <property name="text">
              <string>Modo Demonio</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="botonCheat">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>75</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>27</pointsize>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: rgb(170, 85, 0);</string>
+            </property>
+            <property name="text">
+             <string>Cheat mode (Only in debug)</string>
             </property>
            </widget>
           </item>
@@ -532,7 +604,7 @@ background-color: #330000;</string>
              </size>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page1">
              <property name="sizePolicy">
@@ -565,7 +637,7 @@ background-color: #330000;</string>
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
-                  <height>400</height>
+                  <height>350</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -717,6 +789,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <pointsize>27</pointsize>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(159, 146, 52);
 color: black;</string>
@@ -753,6 +828,9 @@ color: black;</string>
               <bold>true</bold>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
             </property>
@@ -767,6 +845,154 @@ background-color: #1e1532;</string>
           </item>
          </layout>
         </widget>
+        <widget class="QWidget" name="CheatPage">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>208</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>1920</width>
+           <height>700</height>
+          </size>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="descriNormal_2">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1200</width>
+              <height>1000</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #3c2b61</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:26pt; color:#ffff00;&quot;&gt;Selecciona la dificultad y el nivel en el cual queres arrancar. Proximamente se permitira manipulacion de estadisticas.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QWidget" name="ContenedorDif" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="font">
+                <font>
+                 <family>MS Sans Serif</family>
+                 <pointsize>15</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Seleccion de dificultad</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="SeleccionarDificultad">
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>3</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="font">
+                <font>
+                 <family>MS Sans Serif</family>
+                 <pointsize>15</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;1: Facil&lt;/p&gt;&lt;p&gt;2: Normal&lt;/p&gt;&lt;p&gt;3: Modo diablo&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QWidget" name="ContenedorNivel" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="font">
+                <font>
+                 <family>MS Sans Serif</family>
+                 <pointsize>19</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Seleccion de nivel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="SeleccionarNivel">
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>10</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="font">
+                <font>
+                 <family>MS Sans Serif</family>
+                 <pointsize>19</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Empezar juego</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="cheatPlayClicked">
+               <property name="text">
+                <string>Chitero</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </item>
       <item alignment="Qt::AlignHCenter">
@@ -775,7 +1001,7 @@ background-color: #1e1532;</string>
          <bool>true</bool>
         </property>
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -783,7 +1009,7 @@ background-color: #1e1532;</string>
         <property name="minimumSize">
          <size>
           <width>320</width>
-          <height>150</height>
+          <height>66</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -799,7 +1025,7 @@ background-color: #1e1532;</string>
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="Salir">
          <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -814,7 +1040,7 @@ background-color: #1e1532;</string>
             <property name="minimumSize">
              <size>
               <width>300</width>
-              <height>78</height>
+              <height>50</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -829,6 +1055,9 @@ background-color: #1e1532;</string>
               <pointsize>27</pointsize>
               <bold>false</bold>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>ClosedHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -857,7 +1086,7 @@ background-color: rgb(131, 0, 0);</string>
             <property name="minimumSize">
              <size>
               <width>300</width>
-              <height>75</height>
+              <height>50</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -872,6 +1101,9 @@ background-color: rgb(131, 0, 0);</string>
               <pointsize>25</pointsize>
               <bold>false</bold>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>

@@ -6,7 +6,7 @@ ListaAcompaniantesUI::ListaAcompaniantesUI(QWidget *parent)
     , ui(new Ui::ListaAcompaniantesUI)
 {
     ui->setupUi(this);
-    setFixedSize(565,600);
+    setFixedSize(360,392);
 }
 
 void ListaAcompaniantesUI::setDocumentacionInfo(Documentacion *documento)

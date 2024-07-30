@@ -32,6 +32,11 @@ signals:
     void clickedTutorial();
 
 private slots:
+    void actualizarNivel(int);
+    void actualizarDificultad(int);
+
+    void switchCheatClicked();
+
     void botonJugarClicked();
     void switchSelectorDificultad();
 
@@ -60,7 +65,8 @@ private slots:
     void tutorialButton();
 
 private:
-    int dificultad=0;
+    int dificultad = 1;
+    int nivel = 1;
     Ui::PantallaMenu *ui;
     PantallaTransicion * transicion;
     int indicePrevio;

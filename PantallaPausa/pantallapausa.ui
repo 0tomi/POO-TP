@@ -141,6 +141,9 @@ border-image: url(:/Resources/escritorio2.png);
               <bold>true</bold>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: white;
 background-color: #1e1532;</string>
@@ -190,6 +193,9 @@ background-color: #1e1532;</string>
                   <pointsize>22</pointsize>
                   <bold>true</bold>
                  </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">color: white;
@@ -245,20 +251,8 @@ background-color: #1e1532;</string>
             </property>
            </spacer>
           </item>
-          <item alignment="Qt::AlignHCenter">
+          <item>
            <widget class="QPushButton" name="tutorialButton">
-            <property name="minimumSize">
-             <size>
-              <width>400</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>400</width>
-              <height>40</height>
-             </size>
-            </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
@@ -266,12 +260,15 @@ background-color: #1e1532;</string>
               <bold>true</bold>
              </font>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(159, 146, 52);
-color: black;</string>
+             <string notr="true">color: white;
+background-color: rgb(170, 85, 0);</string>
             </property>
             <property name="text">
-             <string>Ver tutorial</string>
+             <string>Ver Tutorial</string>
             </property>
            </widget>
           </item>
@@ -296,6 +293,9 @@ color: black;</string>
               <pointsize>22</pointsize>
               <bold>true</bold>
              </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
@@ -385,6 +385,9 @@ background-color: rgb(95, 0, 0);</string>
            <bold>true</bold>
           </font>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">color: white;
 background-color: rgb(170, 0, 0);</string>
@@ -402,6 +405,9 @@ background-color: rgb(170, 0, 0);</string>
            <pointsize>22</pointsize>
            <bold>true</bold>
           </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="styleSheet">
           <string notr="true">color: white;

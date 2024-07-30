@@ -195,7 +195,12 @@ void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
         topeEstancia = topeDialogosEstudiante;
     }
 
-    if (info->getValidez()){
+    // Sorteamos si habra un dialogo falso o no.
+    int Sorteo = Random->bounded(10);
+    if (info->getValidez())
+        Sorteo = 9;
+
+    if (Sorteo > 4){
         SortearDialogo(info, DialogosEstancia[tipoEst], topeEstancia);
     } else {
         // Obtenemos un dialogo de otro tipo de estancia

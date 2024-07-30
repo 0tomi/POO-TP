@@ -6,7 +6,7 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
     , ui(new Ui::libroreglas)
 {
     ui->setupUi(this);
-    setFixedSize(678,560);
+    setFixedSize(708,688);
 
     setUpLevel(1);
 
@@ -25,17 +25,25 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
 
 void libroreglas::setUpLevel(int level)
 {
-    switch (level){
-    case 1: CantidadPaginas = 3;
-        break;
-    case 2: CantidadPaginas = 3;
-        break;
-    case 3: CantidadPaginas = 3;
-        break;
-    case 4: CantidadPaginas = 3;
-        break;
-    default: CantidadPaginas = 3;
-        break;
+    CantidadPaginas = 3;
+    ui->Nivel2Boton1->hide();
+    ui->Nivel2Boton2->hide();
+    ui->Nivel3Boton1->hide();
+
+    if (level >= 2){
+        CantidadPaginas = 4;
+        ui->Nivel2Boton1->show();
+        ui->Nivel2Boton2->show();
+    }
+    if (level >= 3){
+        CantidadPaginas = 5;
+        ui->Nivel3Boton1->show();
+    }
+    if (level >= 4){
+
+    }
+    if (level >= 5){
+
     }
 }
 
@@ -61,6 +69,20 @@ void libroreglas::setBotones(){
     // Ir a tipos de NPCs
     connect(ui->BotonTipos, &QPushButton::clicked, [this]() {
         SaltarPagina(2);
+    });
+
+    // Ir a requisitos de nivel 2
+    connect(ui->Nivel2Boton1, &QPushButton::clicked, [this]() {
+        SaltarPagina(3);
+    });
+
+    connect(ui->Nivel2Boton2, &QPushButton::clicked, [this]() {
+        SaltarPagina(3);
+    });
+
+    // Ir a requisitos de nivel 3
+    connect(ui->Nivel3Boton1, &QPushButton::clicked, [this]() {
+        SaltarPagina(4);
     });
 }
 
