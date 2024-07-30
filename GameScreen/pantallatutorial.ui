@@ -302,7 +302,7 @@
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, &lt;span style=&quot; color:#550000;&quot;&gt;asi que ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, &lt;span style=&quot; color:#ff0000;&quot;&gt;asi que ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -389,6 +389,19 @@
          <property name="rightMargin">
           <number>23</number>
          </property>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <widget class="QPushButton" name="Anterior_2">
            <property name="font">
@@ -478,6 +491,19 @@ color: rgb(0, 0, 0);</string>
             <string>Siguiente</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>

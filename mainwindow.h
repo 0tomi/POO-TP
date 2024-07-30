@@ -7,6 +7,7 @@
 #include "juego.h"
 #include "PantallaPausa/pantallapausa.h"
 #include "PantallaTransicion/pantallatransicion.h"
+#include "GameScreen/pantallatutorial.h"
 
 #include <QMainWindow>
 #include <QStackedWidget>
@@ -75,6 +76,14 @@ private:
 
     // Transicion
     PantallaTransicion * transicion;
+
+    // Tutorial
+    PantallaTutorial * pantallaTutorial;
+    int PantallaPreviaTutorial;
+    void PrepararTutorial();
+    void PrepararSalirTutorial();
+    void SetTutorial();
+    void SalirTutorial();
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();
