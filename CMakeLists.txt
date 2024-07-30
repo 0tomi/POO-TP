@@ -74,6 +74,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Generadores/generador_paisresidencia.h Generadores/generador_paisresidencia.cpp
         Documentos/paisresidencia.h Documentos/paisresidencia.cpp
         Documentos/paisresidenciaui.h Documentos/paisresidenciaui.cpp Documentos/paisresidenciaui.ui
+        GameScreen/pantallatutorial.h GameScreen/pantallatutorial.cpp GameScreen/pantallatutorial.ui
 
 
 
