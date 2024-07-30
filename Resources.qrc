@@ -94,5 +94,11 @@
         <file>Resources/Dialogos/DialogosTurista.txt</file>
         <file>Resources/Dialogos/dialogosAcompaniantes.txt</file>
         <file>Resources/transcriptor.png</file>
+        <file>Resources/Tutorial/ImagenTutorial1.png</file>
+        <file>Resources/Tutorial/ImagenTutorial2.png</file>
+        <file>Resources/Tutorial/ImagenTutorial3.png</file>
+        <file>Resources/Tutorial/ImagenTutorial4.png</file>
+        <file>Resources/Tutorial/ImagenTutorial5.png</file>
+        <file>Resources/FondoLocuraWorking.png</file>
     </qresource>
 </RCC>

@@ -51,12 +51,16 @@ void MainWindow::CrearPantallasJuego()
     pantallaPausa = new PantallaPausa(this);
     pantallaFinalNivel = new PantallaFinalNivel(this);
     transicion = new PantallaTransicion(this);
+    // Tutorial
+    pantallaTutorial = new PantallaTutorial(this);
+    connect(pantallaTutorial, &PantallaTutorial::TerminarTutorial, this, &MainWindow::PrepararSalirTutorial);
 
     // Añadimos las pantallas al stack
     pantallas->addWidget(pantallaMenu);
     pantallas->addWidget(gameScreen);
     pantallas->addWidget(pantallaPausa);
     pantallas->addWidget(pantallaFinalNivel);
+    pantallas->addWidget(pantallaTutorial);
 
     // Mostramos la pantalla de inicio
     setInicio();
@@ -70,6 +74,7 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::setWindowedScreen, this, &MainWindow::PonerModoVentana);
     connect(pantallaPausa, &PantallaPausa::return2lastWidget, this, &MainWindow::PrepararSalirPantallaPausa);
     connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::VolverInicio);
+    connect(pantallaPausa, &PantallaPausa::clickedTutorial, this, &MainWindow::PrepararTutorial);
 }
 
 void MainWindow::ConeccionesPantallaMenu()
@@ -78,6 +83,7 @@ void MainWindow::ConeccionesPantallaMenu()
     connect(pantallaMenu, &PantallaMenu::clickedStart, this, &MainWindow::TransicionJuego);
     connect(pantallaMenu, &PantallaMenu::clickedSettings, this, &MainWindow::PrepararPantallaPausa);
     connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::close);
+    connect(pantallaMenu, &PantallaMenu::clickedTutorial, this, &MainWindow::PrepararTutorial);
 }
 
 void MainWindow::ConeccionesPantallaEstadisticas()
@@ -231,4 +237,26 @@ void MainWindow::CalcularCentroDePantalla()
     QRect screenGeometry = QGuiApplication::primaryScreen()->geometry();
     this->CentroPantallaX = (screenGeometry.width() - this->width()) / 2;
     this->CentroPantallaY = (screenGeometry.height() - this->height()) / 2;
+}
+
+/// ####################### PANTALLA TUTORIAL ########################
+void MainWindow::PrepararTutorial()
+{
+    PantallaPreviaTutorial = pantallas->currentIndex();
+    transicion->ArrancarTransicion(1000, this, &MainWindow::SetTutorial);
+}
+
+void MainWindow::PrepararSalirTutorial()
+{
+    transicion->ArrancarTransicion(1000, this, &MainWindow::SalirTutorial);
+}
+
+void MainWindow::SetTutorial()
+{
+    pantallas->setCurrentWidget(pantallaTutorial);
+}
+
+void MainWindow::SalirTutorial()
+{
+    pantallas->setCurrentIndex(PantallaPreviaTutorial);
 }

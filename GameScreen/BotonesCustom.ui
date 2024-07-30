@@ -28,6 +28,9 @@
     <height>150</height>
    </size>
   </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -46,6 +49,9 @@
    </property>
    <item>
     <widget class="QLabel" name="Boton">
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/Resources/MaterialPantallas/BotonAprobarSinApretar.png);</string>
      </property>
