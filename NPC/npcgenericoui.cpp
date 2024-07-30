@@ -32,6 +32,8 @@ void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
     cejas.load(NPCenEscena->getCejasURL());
     nariz.load(NPCenEscena->getNarizURL());
 
+    //QPixmap cuerpoRescalado = cuerpo.scaled(padre->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
     // Colocamos la textura de cada parte donde debe.
     ui->Cuerpo->setPixmap(cuerpo);
     ui->Boca->setPixmap(boca);

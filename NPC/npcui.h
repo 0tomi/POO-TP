@@ -46,6 +46,7 @@ protected:
     QTimer emitirDialogo;
     NPC* NPCrepresentado;
     QWidget * padre;
+
 protected slots:
     void Hablar();  // Toca reworkear para futuros niveles
 
