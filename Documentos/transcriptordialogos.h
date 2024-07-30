@@ -16,14 +16,24 @@ public:
     explicit TranscriptorDialogos(QWidget *parent = nullptr);
     ~TranscriptorDialogos();
     void setDocumentacionInfo(Documentacion *documento) override;
-    virtual void Entrar()override;
-    virtual void Sacar()override;
+    virtual void Entrar() override;
+    virtual void Sacar() override;
+
+    bool getMostrando() const;
+
 public slots:
     void CaptarMensaje(QString dialogo);
     void LimpiarDialogo();
+    void MostrarOcultar();
+
+protected:
+    void PrepararAnimacionEntrada() override;
+    void PrepararAnimacionSalida() override;
+
 private:
     Ui::TranscriptorDialogos *ui;
     QString DialogoRecibido;
+    bool Mostrando;
 };
 
 #endif // TRANSCRIPTORDIALOGOS_H

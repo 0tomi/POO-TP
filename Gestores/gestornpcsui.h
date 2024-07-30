@@ -3,12 +3,15 @@
 
 #include <QWidget>
 #include <QTimer>
+#include <QPushButton>
+
 #include "../NPC/npcgenericoui.h"
 #include "../NPC/npccomun.h"
 #include "../NPC/globosdialogoui.h"
 #include "../Generadores/colanpc.h"
 #include "gestordocumentosui.h"
 #include "../Documentos/docsiconui.h"
+#include "../Documentos/transcriptordialogos.h"
 
 class GestorNPCsUI: public QWidget
 {
@@ -19,6 +22,8 @@ public:
     ~GestorNPCsUI();
     void setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola);
     void setUpDocsIcono(QWidget * escena);
+    void setUpTranscriptor(QPushButton * boton);
+
     DocsIconUI * getDocsIcono();
     void setUpNuevoNivel(int Nivel);
 
@@ -83,6 +88,7 @@ private:
 
     // Iconos de Docs
     DocsIconUI * docsIconUI;
+    TranscriptorDialogos * transcriptorDialogos;
 
     int topeNPCs;
     int NivelActual;
