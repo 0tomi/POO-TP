@@ -92,7 +92,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -698,6 +698,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="tutorialButton">
+            <property name="minimumSize">
+             <size>
+              <width>500</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>27</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(159, 146, 52);
+color: black;</string>
+            </property>
+            <property name="text">
+             <string>Ver tutorial</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="botonStart">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
@@ -708,13 +737,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <property name="minimumSize">
              <size>
               <width>500</width>
-              <height>50</height>
+              <height>45</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>50</height>
+              <height>45</height>
              </size>
             </property>
             <property name="font">
