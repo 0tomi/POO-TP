@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>822</width>
-    <height>700</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -26,8 +26,23 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QWidget" name="Imagen" native="true">
+     <property name="styleSheet">
+      <string notr="true">#Imagen{border-image: url(:/Resources/FondoLocuraWorking.png);}</string>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="leftMargin">
        <number>15</number>
@@ -43,8 +58,326 @@
       </property>
       <item>
        <widget class="QStackedWidget" name="PagTutorial">
-        <widget class="QWidget" name="page"/>
-        <widget class="QWidget" name="page_2"/>
+        <widget class="QWidget" name="page">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QWidget" name="Imagen_2" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>600</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image: url(:/Resources/Tutorial/ImagenTutorial1.png);</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+           <widget class="QLabel" name="Texto">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1021</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Bienvenido al tutorial de Astana!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tu objetivo es&lt;/span&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;detectar documentacion falsificada&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;, y en base a eso evaluar si &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;dejar pasar o no a una persona a nuestro maravilloso país.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Aquí se te enseñaran las bases para poder empezar a jugar.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Empezaremos dando un paseo por la interfaz del juego.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_2">
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QWidget" name="Imagen_3" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>600</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image: url(:/Resources/Tutorial/ImagenTutorial2.png);</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="Texto_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1045</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>15</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esta es la mesa de entrada.&lt;/p&gt;&lt;p&gt;1: &lt;span style=&quot; color:#ffff00;&quot;&gt;Libro con documentacion del NPC.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Debes hacer click en el para ver los documentos.&lt;/p&gt;&lt;p&gt;2: &lt;span style=&quot; color:#ffff00;&quot;&gt;Transcriptor de dialogos.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Transcribe los dialogos de la persona, te será util para contrastar &lt;/p&gt;&lt;p&gt;la veracidad de sus palabras.&lt;/p&gt;&lt;p&gt;3: &lt;span style=&quot; color:#aa0000;&quot;&gt;Libro de normativas: &lt;/span&gt;Libro actualizado con informacion escencial para saber cuales son los parametros &lt;/p&gt;&lt;p&gt;de entrada permitidos. Revisalo al principio y tenlo presente para dejar entrar o no, a alguien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_3">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QWidget" name="Imagen_4" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>600</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image: url(:/Resources/Tutorial/ImagenTutorial3.png);</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="Texto_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1036</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Una vez abras la documentacion, podras utilizar los botones del &lt;span style=&quot; color:#0055ff;&quot;&gt;Escritorio.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffff00;&quot;&gt;1: Boton de centrar documentos:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Por si los pierdes, puedes usarlos para recuperarlos, mágicamente apareceran&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;en el centro de la mesa.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00aa00;&quot;&gt;2: Boton de aprobar: &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Boton para permitir la entrada de la persona al país.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;3: Boton de Rechazar: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;¿Hace falta que lo explique?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_4">
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QWidget" name="Imagen_5" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>600</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image: url(:/Resources/Tutorial/ImagenTutorial4.png);</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="Texto_4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1019</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, &lt;span style=&quot; color:#550000;&quot;&gt;asi que ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_5">
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QWidget" name="Imagen_6" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>600</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image: url(:/Resources/Tutorial/ImagenTutorial5.png);</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="Texto_5">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1000</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffff00;&quot;&gt;Felicidades! Has terminado el tutorial. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;De aquí en adelante estás capacitado, &lt;span style=&quot; color:#aa0000;&quot;&gt;lamentablemente&lt;/span&gt;, para &lt;/p&gt;&lt;p&gt;controlar la frontera de &lt;span style=&quot; color:#aa00ff;&quot;&gt;Astana&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Te deseamos &lt;span style=&quot; color:#ffff00;&quot;&gt;éxitos&lt;/span&gt; en tu nuevo trabajo.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </item>
       <item>
@@ -58,8 +391,18 @@
          </property>
          <item>
           <widget class="QPushButton" name="Anterior_2">
+           <property name="font">
+            <font>
+             <family>MS Sans Serif</family>
+             <pointsize>18</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(107, 107, 107);</string>
            </property>
            <property name="text">
             <string>Anterior</string>
@@ -84,8 +427,19 @@
          </item>
          <item>
           <widget class="QPushButton" name="TerminarTutorial">
+           <property name="font">
+            <font>
+             <family>MS Sans Serif</family>
+             <pointsize>22</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 0);
+color: rgb(0, 0, 0);</string>
+           </property>
            <property name="text">
-            <string>Terminar</string>
+            <string>Terminar Tutorial</string>
            </property>
           </widget>
          </item>
@@ -107,8 +461,18 @@
          </item>
          <item>
           <widget class="QPushButton" name="Siguiente_2">
+           <property name="font">
+            <font>
+             <family>MS Sans Serif</family>
+             <pointsize>18</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(107, 107, 107);</string>
            </property>
            <property name="text">
             <string>Siguiente</string>
