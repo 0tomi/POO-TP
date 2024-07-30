@@ -11,6 +11,7 @@
 #include "generador_pasaporte.h"
 #include "generadorlistaacompaniantes.h"
 #include "locuracaracteres.h"
+#include "generador_paisresidencia.h"
 
 
 using namespace std;
@@ -30,6 +31,7 @@ private:
     Generar_pasaporte * generadorPasaporte;
     GeneradorListaAcompaniantes * generadorListaAcomp;
     LocuraCaracteres * randomizadorCaracteres;
+    generador_paisresidencia * generadorPaisResidencia;
 
     // Datos del juego:
     AtributosComunes* datos;

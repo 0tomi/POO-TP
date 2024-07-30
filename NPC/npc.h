@@ -4,6 +4,7 @@
 #include "../Documentos/documentacion.h"
 #include "../Documentos/estancia.h"
 #include "../Documentos/listaacompaniantes.h"
+#include "../Documentos/pasaporte.h"
 #include <QString>
 
 class NPC
@@ -25,6 +26,7 @@ public:
     // Getters de documentos
     virtual Estancia *getEstancia();
     virtual ListaAcompaniantes * getListaAcompaniantes();
+    virtual Pasaporte *getPasaporte();
 
 protected:
     bool Validez;

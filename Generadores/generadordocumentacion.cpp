@@ -26,13 +26,16 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     // Pendiente a implementar
     // News de generadores NIVEL 1
     // Generador pasaportes
-    generadorPasaporte = new Generar_pasaporte(reglasNivel1, datos);
+    generadorPasaporte = new Generar_pasaporte(reglasNivel1);
 
     // Generador estancia
     generadorEstancia = new GenerarEstancia(reglasNivel1, randomizadorCaracteres);
 
     // Generador Lista Acomp
     generadorListaAcomp = new GeneradorListaAcompaniantes(&NumeroRandom);
+
+    // Generador Pais Residencia
+    generadorPaisResidencia = new generador_paisresidencia(reglasNivel1);
 
     // Siguientes generadores
 
@@ -43,6 +46,7 @@ GeneradorDocumentacion::~GeneradorDocumentacion()
     delete generadorEstancia;
     delete generadorPasaporte;
     delete randomizadorCaracteres;
+    delete generadorPaisResidencia;
     // delete de los siguientes generadores
 }
 
@@ -120,6 +124,8 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
     // Generador de Residencia
+    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia->CrearPaisResidencia(NPC2Generate->getPasaporte(),DocsValidos[Index], DificultadJuego);
+    NPC2Generate->addDocumento(nuevoPaisResidencia,Index);
     Index++;
 }
 

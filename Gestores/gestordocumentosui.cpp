@@ -76,6 +76,8 @@ void GestorDocumentosUI::setUpLevel2()
     int Index = 2;
     if (documentosUI[Index] == nullptr){
         // Aca iria el setup para el pais de residencia
+        documentosUI[Index] = new paisresidenciaui(Escritorio);
+        setUpDocumento(documentosUI[Index]);
     }
 }
 
