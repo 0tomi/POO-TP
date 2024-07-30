@@ -6,10 +6,17 @@ PantallaTutorial::PantallaTutorial(QWidget *parent)
     , ui(new Ui::PantallaTutorial)
 {
     ui->setupUi(this);
-    ui->PagTutorial->setCurrentIndex(0);
+    ui->PagTutorial->setCurrentIndex(PaginaActual);
     CantidadPaginas = ui->PagTutorial->count();
-    setBotones();
-    actualizarBotones();
+    this->PaginaActual = 0;
+
+    if (CantidadPaginas > 0) {
+        setBotones();
+        actualizarBotones();
+    } else {
+        ui->Anterior_2->setEnabled(false);
+        ui->Siguiente_2->setEnabled(false);
+    }
 }
 
 PantallaTutorial::~PantallaTutorial()
