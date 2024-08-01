@@ -4,9 +4,12 @@
 /// ############################ CONSTRUCTOR ###############################
 PantallaMenu::PantallaMenu(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::PantallaMenu)
+    , ui(new Ui::PantallaMenu), GTALocura(this)
 {
     ui->setupUi(this);
+    GTALocura.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionGTA.wav"));
+    GTALocura.setVolume(1.0);
+
     transicion = new PantallaTransicion(this);
 
     connect(ui->botonJugar, &QPushButton::clicked, this, &PantallaMenu::botonJugarClicked);
@@ -40,6 +43,8 @@ PantallaMenu::PantallaMenu(QWidget *parent)
     indiceMainMenu = 0;
     indicePrevio = 0;
 
+    ui->botonCheat->hide();
+
     ui->BotonesSalir->setCurrentIndex(0);
     ui->menu->setCurrentIndex(0);
 }
@@ -52,6 +57,46 @@ void PantallaMenu::setInicio()
 PantallaMenu::~PantallaMenu()
 {
     delete ui;
+}
+
+void PantallaMenu::keyPressEvent(QKeyEvent *event)
+{
+    if (!CheatsActivados){
+        bool TeclaIncorrecta = true;
+        if (SecuenciaMagica == 0 && event->key() == Qt::Key_H)
+            ActualizarCont(SecuenciaMagica, TeclaIncorrecta);
+        if (SecuenciaMagica == 1 && event->key() == Qt::Key_E)
+            ActualizarCont(SecuenciaMagica, TeclaIncorrecta);
+        if (SecuenciaMagica == 2 && event->key() == Qt::Key_S)
+           ActualizarCont(SecuenciaMagica, TeclaIncorrecta);
+        if (SecuenciaMagica == 3 && event->key() == Qt::Key_O)
+            ActualizarCont(SecuenciaMagica, TeclaIncorrecta);
+        if (SecuenciaMagica == 4 && event->key() == Qt::Key_Y)
+            ActualizarCont(SecuenciaMagica, TeclaIncorrecta);
+        if (SecuenciaMagica == 5 && event->key() == Qt::Key_A)
+            ActualizarCont(SecuenciaMagica, TeclaIncorrecta);
+        if (SecuenciaMagica == 6 && event->key() == Qt::Key_M)
+            ActualizarCont(SecuenciaMagica, TeclaIncorrecta);
+
+        if (TeclaIncorrecta)
+            SecuenciaMagica = 0;
+        else if (SecuenciaMagica == 7)
+            DesbloquearCheats();
+    }
+    QWidget::keyPressEvent(event);
+}
+
+void PantallaMenu::ActualizarCont(int &Contador, bool &Bool)
+{
+    Contador++;
+    Bool = false;
+}
+
+void PantallaMenu::DesbloquearCheats()
+{
+    GTALocura.play();
+    CheatsActivados = true;
+    ui->botonCheat->show();
 }
 
 void PantallaMenu::actualizarNivel(int newNivel)

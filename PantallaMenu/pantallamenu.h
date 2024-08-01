@@ -2,6 +2,7 @@
 #define PANTALLAMENU_H
 #include<QString>
 #include <QWidget>
+#include <QSoundEffect>
 #include "../PantallaTransicion/pantallatransicion.h"
 
 namespace Ui {
@@ -30,6 +31,13 @@ signals:
     void clickedPartida2();
     void clickedPartida3();
     void clickedTutorial();
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
+    void ActualizarCont(int &, bool &);
+    void DesbloquearCheats();
+    int SecuenciaMagica = 0;
+    bool CheatsActivados = false;
 
 private slots:
     void actualizarNivel(int);
@@ -65,6 +73,7 @@ private slots:
     void tutorialButton();
 
 private:
+    QSoundEffect GTALocura;
     int dificultad = 1;
     int nivel = 1;
     Ui::PantallaMenu *ui;

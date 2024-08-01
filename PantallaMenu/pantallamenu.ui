@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1659</width>
+    <height>996</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -92,7 +92,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -395,7 +395,7 @@ background-color: #1e1532;</string>
          <property name="maximumSize">
           <size>
            <width>1920</width>
-           <height>600</height>
+           <height>800</height>
           </size>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -414,14 +414,8 @@ background-color: #1e1532;</string>
           <property name="bottomMargin">
            <number>90</number>
           </property>
-          <item alignment="Qt::AlignVCenter">
+          <item>
            <widget class="QPushButton" name="botonFacil">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -446,10 +440,10 @@ background-color: #1e1532;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
-background-color: #1e1532;</string>
+background-color: #1e1534;</string>
             </property>
             <property name="text">
-             <string>Fácil</string>
+             <string>Modo facil</string>
             </property>
            </widget>
           </item>
@@ -482,7 +476,7 @@ background-color: #1e1532;</string>
 background-color: #1e1534;</string>
             </property>
             <property name="text">
-             <string>Normal</string>
+             <string>Modo normal</string>
             </property>
            </widget>
           </item>
@@ -548,7 +542,7 @@ background-color: #330000;</string>
 background-color: rgb(170, 85, 0);</string>
             </property>
             <property name="text">
-             <string>Cheat mode (Only in debug)</string>
+             <string>Test mode (Cheat)</string>
             </property>
            </widget>
           </item>
@@ -769,7 +763,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </widget>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
            <widget class="QPushButton" name="tutorialButton">
             <property name="minimumSize">
              <size>
@@ -801,7 +795,7 @@ color: black;</string>
             </property>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonStart">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
@@ -984,7 +978,7 @@ background-color: #1e1532;</string>
              <item>
               <widget class="QPushButton" name="cheatPlayClicked">
                <property name="text">
-                <string>Chitero</string>
+                <string>Empezar test</string>
                </property>
               </widget>
              </item>
@@ -1073,14 +1067,14 @@ background-color: rgb(131, 0, 0);</string>
         <widget class="QWidget" name="Volver">
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <property name="bottomMargin">
-           <number>145</number>
+           <number>9</number>
           </property>
           <item>
            <widget class="QPushButton" name="botonVolver1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>176</horstretch>
-              <verstretch>20</verstretch>
+              <horstretch>50</horstretch>
+              <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
@@ -1091,26 +1085,23 @@ background-color: rgb(131, 0, 0);</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>500</width>
+              <width>400</width>
               <height>100</height>
              </size>
             </property>
             <property name="font">
              <font>
               <family>MS Sans Serif</family>
-              <pointsize>25</pointsize>
+              <pointsize>27</pointsize>
               <bold>false</bold>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
+             <cursorShape>ClosedHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
-background-color: rgb(130, 0, 0);</string>
+background-color: rgb(131, 0, 0);</string>
             </property>
             <property name="text">
              <string>Volver</string>

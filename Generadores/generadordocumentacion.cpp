@@ -157,7 +157,7 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
 
     // Si es el primer nivel hacemos que esto pueda variar para hacerla mas facil.
     if (NivelActual == 1)
-        MaxDocumentosInvalidos = NumeroRandom.bounded(1,3);
+        MaxDocumentosInvalidos = NumeroRandom.bounded(2) + 1;
 
     // Lo repetimos hasta que nos genere la cantidad necesaria de documentos invalidos.
     while (CantDocumentosInvalidos < MaxDocumentosInvalidos){
@@ -201,11 +201,11 @@ void GeneradorDocumentacion::SetDificultadNivel()
         break;
     case 4:
         MaxDocumentos = 4;
-        MaxDocumentosInvalidos = 3;
+        MaxDocumentosInvalidos = 2;
         break;
     default:
         MaxDocumentos = 6;
-        MaxDocumentosInvalidos = 2;
+        MaxDocumentosInvalidos = 3;
         break;
     }
 }
