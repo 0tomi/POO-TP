@@ -21,6 +21,7 @@ public:
 private:
     Ui::DNI *ui;
     NPCGenericoUI * NPCenDoc;
+    QGraphicsOpacityEffect * filtro;
 };
 
 #endif // DNI_H

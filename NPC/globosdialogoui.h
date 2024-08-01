@@ -22,10 +22,10 @@ public:
     void ForzarSalir();
     void CorrerMensaje(); // A futuro, para acumular mensajes.
     ~GlobosDialogoUI();
-    void Centrar(int X, int Y);
+    void Centrar();
 
 public slots:
-    void setMensaje(const QString &mensaje, const int X, const int Y); // Recibe el mensaje y lo setea.
+    void setMensaje(const QString &newMensaje); // Recibe el mensaje y lo setea.
 
 signals:
     void Hablando(const QString &mensaje);
@@ -33,14 +33,16 @@ signals:
     void MensajeTerminado();
 
 private:
+    QWidget * padre;
     Ui::GlobosDialogoUI *ui;
+
     void MensajeEmitido();
     QString mensaje;
     QTimer TiempoVisualizacion;
     int tiempoRestante;
 
     void SetearAnimacionEntrada();
-    void PrepararAnimacionEntrada(int X, int Y);
+    void PrepararAnimacionEntrada();
     QPropertyAnimation * animacionEntrada;
 
     void SetearAnimacionSalida();

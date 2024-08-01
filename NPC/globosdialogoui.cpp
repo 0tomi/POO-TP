@@ -5,6 +5,7 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GlobosDialogoUI)
 {
+    padre = parent;
     ui->setupUi(this);
     tamanioNormalGloboX = 300; tamanioNormalGloboY = 90;
     tamanioAumentadoGloboX = tamanioNormalGloboX + 15;
@@ -18,19 +19,22 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     Mostrandose = false;
 }
 
-void GlobosDialogoUI::setMensaje(const QString &newMensaje, const int X, const int Y)
+void GlobosDialogoUI::setMensaje(const QString &newMensaje)
 {
     mensaje = newMensaje;
     ui->Texto->setText(mensaje);
 
     if (mensaje.length() > 45)
-        setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY);
+        setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY+15);
     else
-        setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
+        if (mensaje.length() > 35)
+            setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY);
+        else
+            setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
 
     emit MensajePreparado();
     connect(&TiempoVisualizacion, &QTimer::timeout, this, &GlobosDialogoUI::TerminarMensaje);
-    PrepararAnimacionEntrada(X, Y);
+    PrepararAnimacionEntrada();
     MostrarMensaje();
 }
 
@@ -80,10 +84,11 @@ GlobosDialogoUI::~GlobosDialogoUI()
     delete opacityEffect;
 }
 
-void GlobosDialogoUI::Centrar(int X, int Y)
+void GlobosDialogoUI::Centrar()
 {
     if (Mostrandose){
-        CalcularPosicionDelGlobo(X, Y);
+        int X = padre->width(); int Y = padre->height();
+        CalcularPosicionDelGlobo(X,Y);
         move(X,Y);
         raise();
     }
@@ -97,8 +102,9 @@ void GlobosDialogoUI::SetearAnimacionEntrada()
     connect(animacionEntrada, &QPropertyAnimation::finished, this, &GlobosDialogoUI::setMostrandose);
 }
 
-void GlobosDialogoUI::PrepararAnimacionEntrada(int X, int Y)
+void GlobosDialogoUI::PrepararAnimacionEntrada()
 {
+    int X = padre->width(); int Y = padre->height();
     int PosOcultaY = Y;
     CalcularPosicionDelGlobo(X,Y);
 

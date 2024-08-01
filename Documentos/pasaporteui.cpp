@@ -12,10 +12,16 @@ PasaporteUI::PasaporteUI(QWidget *parent)
     NPCenDoc->setFixedSize(120,120);
     NPCenDoc->show();
 
+    filtro = new QGraphicsOpacityEffect(ui->filtro);
+    filtro->setOpacity(0.5);
+    ui->filtro->setGraphicsEffect(filtro);
+    ui->filtro->raise();
+
     // Cambios en la animacion particular de este documento, para que se vea el sello.
     animacionSalida->setDuration(700);
     animacionSalida->setEasingCurve(QEasingCurve::InQuad);
 }
+
 void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPC * npc) {
     setStandby();
     NPCenDoc->setNPC(npc);
@@ -49,5 +55,6 @@ void PasaporteUI::setRechazado()
 
 PasaporteUI::~PasaporteUI()
 {
+    delete filtro;
     delete ui;
 }

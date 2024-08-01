@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QPixmap>
 #include <QRandomGenerator>
+#include <QLabel>
 
 namespace Ui {
 class NPCGenericoUI;
@@ -24,9 +25,20 @@ public:
     void Entrar() override;
     void Sacar() override;
 
+protected:
+    void ReescalarNPC();
+    void ReescalarLabel(QLabel * Label, QPixmap &ImagenLabel, double factorW, double factorH);
+    void reposicionarLabels(double factorW, double factorH);
+    void reposLabel(QPoint pos, QLabel * label, double factorW, double factorH, int margen);
+
+    QPoint ojosPos;
+    QPoint bocaPos;
+    QPoint cejasPos;
+    QPoint narizPos;
+
 private:
     Ui::NPCGenericoUI *ui;
-    NPCcomun *NPCenEscena;
+    NPCcomun *NPCenEscena;    
 
     // Facciones NPC
     QPixmap ojos, cuerpo, boca, nariz, cejas;

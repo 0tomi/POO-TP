@@ -2,10 +2,11 @@
 #define PASAPORTE_H
 #include "documentacion.h"
 #include <QString>
+
 class Pasaporte : public Documentacion
 {
 private:
-
+    // Campos del DNI
     QString nombre;
     QString fecha_nacimiento;
     char genero;

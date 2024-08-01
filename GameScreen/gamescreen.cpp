@@ -184,14 +184,8 @@ void GameScreen::ReanudarJuego()
 {
     GestorNPC.Reanudar();
     tiempoPartida.start(tiempoRestante);
-    GestorNPC.CentrarNPC();
 
     Pausado = false;
-}
-
-void GameScreen::Centrar()
-{
-    GestorNPC.CentrarNPC();
 }
 
 /// #################################### FINAL DE PARTIDA ###################################################

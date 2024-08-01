@@ -11,6 +11,11 @@ DNI::DNI(QWidget *parent)
     this->NPCenDoc = new NPCGenericoUI(ui->NPC);
     NPCenDoc->setFixedSize(100,100);
     NPCenDoc->show();
+
+    filtro = new QGraphicsOpacityEffect(ui->filtro);
+    filtro->setOpacity(0.5);
+    ui->filtro->setGraphicsEffect(filtro);
+    ui->filtro->raise();
 }
 void DNI::setDNIInfo(Pasaporte * dni, NPC * npc){
     NPCenDoc->setNPC(npc);
