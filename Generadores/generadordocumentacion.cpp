@@ -111,7 +111,7 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], NPC2Generate->getGenero(), DificultadJuego);
+    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate), DificultadJuego);
     NPC2Generate->addDocumento(nuevoPasaporte, Index);
     Index++;
 

@@ -22,20 +22,21 @@ PasaporteUI::PasaporteUI(QWidget *parent)
     animacionSalida->setEasingCurve(QEasingCurve::InQuad);
 }
 
-void PasaporteUI::setPasaporteInfo(Pasaporte * pasaporte, NPC * npc) {
+void PasaporteUI::setDocumentacionInfo(Documentacion *documento)
+{
+    Pasaporte * pasaporte = dynamic_cast<Pasaporte*>(documento);
+
+    if (!pasaporte)
+        qDebug() << "Pasaporte NULO";
+
     setStandby();
-    NPCenDoc->setNPC(npc);
+    NPCenDoc->setSkinNPC(pasaporte->getSkinNPC());
 
     ui->nombre->setText(pasaporte->getnombre());
     ui->fecha->setText(pasaporte->getfecha_nacimiento());
     ui->genero->setText(QString(pasaporte->getgenero()));
     ui->nacionalidad->setText(pasaporte->getnacionalidad());
     ui->estado_civil->setText(pasaporte->getestado_civil());
-}
-
-void PasaporteUI::setDocumentacionInfo(Documentacion *documento)
-{
-
 }
 
 void PasaporteUI::setStandby()

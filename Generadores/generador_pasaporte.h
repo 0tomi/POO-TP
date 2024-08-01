@@ -4,6 +4,7 @@
 #include "../AtributosComunes/atributoscomunes.h"
 #include "../Reglas/ReglasNivel1.h"
 #include "../lectorarchivos.h"
+#include "../NPC/npccomun.h"
 
 
 class Generar_pasaporte
@@ -36,7 +37,7 @@ protected:
     virtual QString generar_fecha(bool valido);
 public:
     Generar_pasaporte(ReglasNivel1 * rules); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
-    Pasaporte * crear_pasaporte(bool valido, char genero, int dificultad);
+    Pasaporte * crear_pasaporte(bool Validez, NPCcomun * InfoNPC, int dificultad);
     void restartReglas(ReglasNivel1 * rules);
 };
 #endif // GENERADOR_PASAPORTE_H

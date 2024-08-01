@@ -41,7 +41,7 @@ GeneradorNPC::GeneradorNPC(QRandomGenerator * generador): generadorSkin(generado
 
 
 // Esto necesita rework a futuro para distinguir entre caras de Mujeres y Hombres
-NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
+NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez, int nivel){
     NPCcomun* NPCaCrear;
     // 0: Aldeano, 1: Refugiado, 2: Diplomatico, 3: Revolucionario
     if (tipo > 3)
@@ -60,6 +60,14 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez){
 
     // Generamos su skin y la seteamos.
     NPCaCrear->setSkin(generadorSkin.getSkin(tipo, this->generos[valorCentinela2]));
+    NPCaCrear->setSkinDocs(generadorSkin.getSkin(tipo, this->generos[valorCentinela2]));
+
+    // Si el NPC es fake, añadimos la posibilidad de contener una imagen falsa.
+    if (!Validez){
+        int falsificarImagen = Random->bounded(10);
+        if (falsificarImagen < 8)
+            NPCaCrear->setSkin(generadorSkin.getSimilarSkin(NPCaCrear->getSkin(), NPCaCrear->getGenero(), nivel));
+    }
 
     return NPCaCrear;
 }

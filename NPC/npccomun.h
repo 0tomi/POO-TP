@@ -12,8 +12,12 @@ public:
     Skin getSkin() const;
     void setSkin(const Skin &newSkin);
 
+    Skin getSkinDocs() const;
+    void setSkinDocs(const Skin &newSkinDocs);
+
 private:
     Skin skin;
+    Skin skinDocs;
 };
 
 #endif // NPCCOMUN_H

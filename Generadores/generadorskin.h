@@ -11,7 +11,7 @@ public:
     GeneradorSkin(QRandomGenerator * generador);
     ~GeneradorSkin();
     Skin getSkin(int TipoNPC, char Genero);
-    Skin getSimilarSkin(char Genero);
+    Skin getSimilarSkin(Skin skinActual, char Genero, int nivel);
 private:
     LectorArchivos lector;
     QRandomGenerator * qrand;

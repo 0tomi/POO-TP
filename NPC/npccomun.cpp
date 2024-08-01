@@ -14,4 +14,16 @@ void NPCcomun::setSkin(const Skin &newSkin)
     skin = newSkin;
 }
 
+Skin NPCcomun::getSkinDocs() const
+{
+    return skinDocs;
+}
+
+void NPCcomun::setSkinDocs(const Skin &newSkinDocs)
+{
+    skinDocs = newSkinDocs;
+}
+
+
+
 

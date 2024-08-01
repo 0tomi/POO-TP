@@ -12,7 +12,7 @@ using namespace std;
 class GeneradorNPC{
 public:
     GeneradorNPC(QRandomGenerator * generador);
-    NPC* getNPCgenerico(int tipo , bool Validez);
+    NPC* getNPCgenerico(int tipo , bool Validez, int nivel);
     void generarDialogos(NPC* npc, int nivel); // A dedesarrollar a futuro
 
     ~GeneradorNPC();

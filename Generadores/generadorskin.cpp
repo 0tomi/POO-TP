@@ -80,10 +80,23 @@ Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
 }
 
 // En desarrollo
-Skin GeneradorSkin::getSimilarSkin(char Genero)
+Skin GeneradorSkin::getSimilarSkin(Skin SkinActual, char Genero, int nivel)
 {
-    Skin placeholder;
-    return placeholder;
+    /* int Facciones;       En proceso pa dsps
+    switch(nivel){
+    case 1: Facciones = 3;
+        break;
+    case 2: Facciones = 3;
+        break;
+    case 3: Facciones = 2;
+        break;
+    case 4: Facciones = 2;
+        break;
+    default: Facciones = 1;
+        break;
+    } */
+
+    return getSkin(qrand->bounded(4), Genero);
 }
 
 QString GeneradorSkin::pickCuerpo(QString * listaSkins[], int topeSkins, char Genero)

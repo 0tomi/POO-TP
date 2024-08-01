@@ -10,25 +10,25 @@ DNI::DNI(QWidget *parent)
 
     this->NPCenDoc = new NPCGenericoUI(ui->NPC);
     NPCenDoc->setFixedSize(100,100);
-    NPCenDoc->show();
 
     filtro = new QGraphicsOpacityEffect(ui->filtro);
     filtro->setOpacity(0.5);
     ui->filtro->setGraphicsEffect(filtro);
     ui->filtro->raise();
 }
-void DNI::setDNIInfo(Pasaporte * dni, NPC * npc){
-    NPCenDoc->setNPC(npc);
+
+void DNI::setDocumentacionInfo(Documentacion *documento)
+{
+    Pasaporte * dni = dynamic_cast<Pasaporte*>(documento);
+    NPCenDoc->setSkinNPC(dni->SkinNPC);
+
+    if (!dni)
+        qDebug() << "DNI NULO";
 
     ui->nombre->setText(dni->getnombre());
     ui->fecha->setText(dni->getfecha_nacimiento());
     ui->genero->setText(QString(dni->getgenero()));
     ui->estado_civil->setText(dni->getestado_civil());
-}
-
-void DNI::setDocumentacionInfo(Documentacion *documento)
-{
-
 }
 
 DNI::~DNI()

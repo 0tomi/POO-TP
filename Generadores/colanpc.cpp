@@ -55,7 +55,7 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 
 void ColaNPC::addNPC(int Tipo, bool Validez){
     // Genero el NPC nuevo
-    NPC* newNPC = GenerarNPC.getNPCgenerico(Tipo, Validez); // A futuro actualizar para que reciba el nivel
+    NPC* newNPC = GenerarNPC.getNPCgenerico(Tipo, Validez, nivelActual); // A futuro actualizar para que reciba el nivel
 
     // Genero su documentacion
     GenerarDocumentacion.getDocumentos(newNPC, Validez); // A futuro actualizar para que reciba el nivel
