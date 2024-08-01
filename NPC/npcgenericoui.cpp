@@ -31,11 +31,11 @@ void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
 
     // Obtenemos las partes del cuerpo del npc
-    ojos.load(NPCenEscena->getOjosURL());
-    cuerpo.load(NPCenEscena->getCaraURL());
-    boca.load(NPCenEscena->getBocaURL());
-    cejas.load(NPCenEscena->getCejasURL());
-    nariz.load(NPCenEscena->getNarizURL());
+    ojos.load(NPCenEscena->getSkin().getOjosURL());
+    cuerpo.load(NPCenEscena->getSkin().getCaraURL());
+    boca.load(NPCenEscena->getSkin().getBocaURL());
+    cejas.load(NPCenEscena->getSkin().getCejasURL());
+    nariz.load(NPCenEscena->getSkin().getNarizURL());
 
     //QPixmap cuerpoRescalado = cuerpo.scaled(padre->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 

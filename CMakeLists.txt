@@ -77,6 +77,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/paisresidencia.h Documentos/paisresidencia.cpp
         Documentos/paisresidenciaui.h Documentos/paisresidenciaui.cpp Documentos/paisresidenciaui.ui
         GameScreen/pantallatutorial.h GameScreen/pantallatutorial.cpp GameScreen/pantallatutorial.ui
+        Generadores/generadorskin.h Generadores/generadorskin.cpp
+        NPC/skin.h NPC/skin.cpp
 
 
 
