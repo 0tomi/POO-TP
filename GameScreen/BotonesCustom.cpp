@@ -14,9 +14,12 @@ BotonesCustom::BotonesCustom(QWidget *parent):
 
 BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::BotonesCustom)
+    , ui(new Ui::BotonesCustom), sonido2(this)
 {
     ui->setupUi(this);
+
+    sonido2.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
+    sonido2.setVolume(1.0);
 
     // Colocamos la imagen que va a tener el boton segun el estado.
     CrearSkinBoton(Estado1, SkinBotonUnblock);
@@ -79,6 +82,11 @@ void BotonesCustom::CrearSkinBoton(QString Estado1, QString &Direccion)
     Direccion = "border-image: url(" + Estado1 + ");";
 }
 
+bool BotonesCustom::getBotonBloqueado() const
+{
+    return BotonBloqueado;
+}
+
 void BotonesCustom::PausarBoton()
 {
     ui->Boton->setStyleSheet(SkinBotonBlock);
@@ -87,6 +95,7 @@ void BotonesCustom::PausarBoton()
 
 void BotonesCustom::Accion()
 {
+    sonido2.play();
     connect(&TemporizadorBotones, &QTimer::timeout, this, &BotonesCustom::DesbloquearBoton);
     TemporizadorBotones.start(TiempoBloqueo);
     emit BotonApretado();

@@ -99,6 +99,7 @@ void GameScreen::SetearConexionesDocumentos()
 
 void GameScreen::BloquearBotones(bool Bloqueo)
 {
+    this->BotonesBloqueados = Bloqueo;
     BotonCentrar->BloquearBoton(Bloqueo);
     BotonAprobar->BloquearBoton(Bloqueo);
     BotonRechazar->BloquearBoton(Bloqueo);
@@ -107,8 +108,6 @@ void GameScreen::BloquearBotones(bool Bloqueo)
 void GameScreen::DesbloquearBotones()
 {
     BloquearBotones(false);
-    if (GestorNPC.MostrandoElNPC())
-        GestorNPC.Centrar();
 }
 
 /// #################################### CONEXIONES ###################################################
@@ -209,6 +208,22 @@ void GameScreen::FinalDePartida()
         else pantallaPerdiste->Iniciar(false);
     } else
         qDebug() << "Se detuvo forzosamente el juego";
+}
+
+void GameScreen::keyPressEvent(QKeyEvent *event)
+{
+    if (!BotonesBloqueados){
+        if (event->key() == Qt::Key_A){
+                BotonAprobar->Accion();
+        } else
+            if (event->key() == Qt::Key_D) {
+                    BotonRechazar->Accion();
+        } else
+            if (event->key() == Qt::Key_C)
+                    BotonCentrar->Accion();
+    }
+
+    QWidget::keyPressEvent(event);
 }
 
 void GameScreen::Decidir()

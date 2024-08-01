@@ -35,12 +35,13 @@ public:
 public slots:
     void PausarJuego();
     void ReanudarJuego();
-    void BloquearBotones(bool Bloqueo);
-    void DesbloquearBotones();
     void FinalDePartida();
 
 signals:
     void NivelTerminado(bool Perdio);
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
 
 private slots:
     void Decidir();
@@ -70,6 +71,9 @@ private:
     // Botones
     void SpawnearBotones();
     void RealizarConexionesPrincipales();
+    void BloquearBotones(bool Bloqueo);
+    void DesbloquearBotones();
+    bool BotonesBloqueados = false;
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

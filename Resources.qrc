@@ -100,5 +100,8 @@
         <file>Resources/Tutorial/ImagenTutorial4.png</file>
         <file>Resources/Tutorial/ImagenTutorial5.png</file>
         <file>Resources/FondoLocuraWorking.png</file>
+        <file>Resources/MaterialPantallas/SonidoBoton.mp3</file>
+        <file>Resources/Sonidos/NotificacionGTA.wav</file>
+        <file>Resources/Sonidos/SonidoBoton.wav</file>
     </qresource>
 </RCC>

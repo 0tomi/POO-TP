@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTimer>
 #include <QString>
+#include <QSoundEffect>
 
 namespace Ui {
 class BotonesCustom;
@@ -20,8 +21,12 @@ public:
     void BloquearBoton(bool bloqueo);
     ~BotonesCustom();
 
+    void Accion();
+
     void setSkinBotonBlock(QString newSkinBotonBlock);
     void setSkinBotonUnblock(QString newSkinBotonUnblock);
+
+    bool getBotonBloqueado() const;
 
 signals:
     void BotonApretado();
@@ -36,6 +41,8 @@ private:
     QString SkinBotonBlock;
     QString SkinBotonUnblock;
 
+    QSoundEffect sonido2;
+
     void CrearSkinBoton(QString Estado1, QString &Direccion);
     bool BotonBloqueado;
 
@@ -43,7 +50,6 @@ private:
     void DesbloquearBoton();
 
     int TiempoBloqueo;
-    void Accion();
 };
 
 #endif // BOTONESCUSTOM_H

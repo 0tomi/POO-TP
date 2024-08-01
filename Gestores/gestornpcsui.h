@@ -49,8 +49,6 @@ public:
     void DetenerAnimacionesDocumentos();
 
 public slots:
-    void emitirNPCTerminoSalir();
-    void emitColaTerminada();
     void CentrarDocumentos();
 
 signals:
@@ -69,6 +67,8 @@ signals:
 
 private slots:
     void SalirEntidades();
+    void emitirNPCTerminoSalir();
+    void emitColaTerminada();
 
 private:
     ColaNPC* ColaNPCs;
