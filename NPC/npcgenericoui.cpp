@@ -7,10 +7,10 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     , ui(new Ui::NPCGenericoUI)
 {
     ui->setupUi(this);
-    //setFixedSize(300,300);
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
     parpadeando = false;
+    connect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
 
     ojosCerrados.load(":/Resources/NPCs/OjosCerrados.png");
     bocaCerrada.load(":/Resources/NPCs/BocaTriste.png");
@@ -24,6 +24,7 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
 NPCGenericoUI::~NPCGenericoUI()
 {
     delete ui;
+    delete tiempoParpadeo;
 }
 
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
@@ -79,7 +80,6 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
 
 void NPCGenericoUI::Rechazado()
 {
-    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
     parpadeo.stop();
     ui->Boca->setPixmap(bocaCerrada);
     ui->Ojos->setPixmap(ojosCerrados);
@@ -94,9 +94,7 @@ void NPCGenericoUI::Entrar()
 void NPCGenericoUI::Sacar()
 {
     // Desconectamos el parpadeo anterior para setear uno nuevo
-    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
     parpadeo.stop();
-
     NPCUI::Sacar();
 }
 
@@ -165,7 +163,6 @@ void NPCGenericoUI::setearParpadear(bool estado)
     // Armamos denuevo parpadeo (Todo esto es para evitar bugs)
     parpadeo.start(1000);
     parpadeando = estado;
-    connect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
 }
 
 

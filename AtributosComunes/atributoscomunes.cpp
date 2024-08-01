@@ -24,6 +24,6 @@ QString* AtributosComunes::getEstadosCiviles(int &max){
 
 AtributosComunes::~AtributosComunes()
 {
-    delete paises;
+
 }
 

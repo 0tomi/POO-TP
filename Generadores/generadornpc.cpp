@@ -64,8 +64,8 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez, int nivel){
 
     // Si el NPC es fake, añadimos la posibilidad de contener una imagen falsa.
     if (!Validez){
-        int falsificarImagen = Random->bounded(10);
-        if (falsificarImagen < 8)
+        int falsificarImagen = Random->bounded(20);
+        if (falsificarImagen < 1)
             NPCaCrear->setSkin(generadorSkin.getSimilarSkin(NPCaCrear->getSkin(), NPCaCrear->getGenero(), nivel));
     }
 
