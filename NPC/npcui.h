@@ -32,6 +32,9 @@ signals:
     void QuiereHablar(const QString &dialogo);
 
 protected:
+    // Metodos del padre
+    void moveEvent(QMoveEvent * event) override;
+
     // Animaciones
     void PrepararAnimacionEntrada();
     QPropertyAnimation *animacionEntrada;
@@ -41,6 +44,8 @@ protected:
 
     // Termino animacion
     void TerminoAnimacion();
+
+    bool Mostrandose;
 
     // Dialogos
     QTimer emitirDialogo;

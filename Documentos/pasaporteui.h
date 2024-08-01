@@ -6,6 +6,7 @@
 #include <QWidget>
 #include "documentosui.h"
 #include "../NPC/npcgenericoui.h"
+#include <QGraphicsOpacityEffect>
 
 namespace Ui {
 class PasaporteUI;
@@ -26,6 +27,7 @@ public:
 private:
     Ui::PasaporteUI *ui;
     NPCGenericoUI * NPCenDoc;
+    QGraphicsOpacityEffect * filtro;
 };
 
 #endif // PASAPORTEUI_H

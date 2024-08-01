@@ -23,6 +23,7 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
     NPCcomunUI = new NPCGenericoUI(Escenario);
+    Escenario->layout()->addWidget(NPCcomunUI);
 
     // Spawneamos el transcriptor
     transcriptorDialogos = new TranscriptorDialogos(EscenarioDocumentos);
@@ -83,11 +84,7 @@ void GestorNPCsUI::EmpezarJuego()
 void GestorNPCsUI::RealizarConexionesDeNPCs()
 {
     // Conectamos cuando el npc habla con el globo de dialogo.
-    connect(NPCcomunUI, &NPCUI::QuiereHablar, this, &GestorNPCsUI::Dialogo);
-
-    // Cuando aparezca o desaparezca el dialogo, el npc se centrara
-    connect(Dialogos, &GlobosDialogoUI::Hablando, this, &GestorNPCsUI::CentrarNPC);
-    connect(Dialogos, &GlobosDialogoUI::MensajeTerminado, this, &GestorNPCsUI::CentrarNPC);
+    connect(NPCcomunUI, &NPCUI::QuiereHablar, Dialogos, &GlobosDialogoUI::setMensaje);
 
     // Hago que al terminar la animacion de que un NPC se va, entre otro.
     connect(NPCcomunUI, &NPCUI::animacionEntrarTerminada, this, &GestorNPCsUI::ActualizarEstadoNPC);
@@ -138,7 +135,6 @@ void GestorNPCsUI::Entrar()
 void GestorNPCsUI::ActualizarEstadoNPC()
 {
     MostrandoNPC = true;
-    Centrar();
 }
 
 /// #################################### Centrar ###################################################
@@ -147,21 +143,9 @@ void GestorNPCsUI::CentrarDocumentos()
     GestorDocumentos.Centrar();
 }
 
-void GestorNPCsUI::CentrarNPC()
-{
-    // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
-    NPCcomunUI->Centrar();
-}
-
 void GestorNPCsUI::Centrar()
 {
-    // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
-    int centerX = (Escenario->width() - NPCcomunUI->width()) /2;
-    int centerY = (Escenario->height()) - (NPCcomunUI->height());
-    // Centramos el NPC
-    NPCcomunUI->move(centerX,centerY);
-    // Centramos los dialogos
-    Dialogos->Centrar(Escenario->width(), Escenario->height());
+    Dialogos->Centrar();
     // Centramos los documentos
     GestorDocumentos.Centrar();
 }
@@ -221,11 +205,6 @@ void GestorNPCsUI::TerminoNivel()
 }
 
 /// #################################### Dialogos ###################################################
-void GestorNPCsUI::Dialogo(const QString &newDialogo)
-{
-    Dialogos->setMensaje(newDialogo, Escenario->width(), Escenario->height());
-}
-
 void GestorNPCsUI::Pausar()
 {
     Dialogos->PausarMensaje();

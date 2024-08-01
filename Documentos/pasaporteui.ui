@@ -69,7 +69,7 @@
   <widget class="QLabel" name="fecha">
    <property name="geometry">
     <rect>
-     <x>206</x>
+     <x>205</x>
      <y>262</y>
      <width>101</width>
      <height>20</height>
@@ -91,9 +91,9 @@
   <widget class="QLabel" name="nacionalidad">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>193</x>
      <y>360</y>
-     <width>71</width>
+     <width>90</width>
      <height>20</height>
     </rect>
    </property>
@@ -113,7 +113,7 @@
   <widget class="QLabel" name="genero">
    <property name="geometry">
     <rect>
-     <x>206</x>
+     <x>205</x>
      <y>289</y>
      <width>81</width>
      <height>20</height>
@@ -135,7 +135,7 @@
   <widget class="QLabel" name="estado_civil">
    <property name="geometry">
     <rect>
-     <x>209</x>
+     <x>205</x>
      <y>320</y>
      <width>63</width>
      <height>16</height>
@@ -213,6 +213,45 @@
      <height>120</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>120</width>
+     <height>120</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>120</width>
+     <height>120</height>
+    </size>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="filtro">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(102, 88, 71);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

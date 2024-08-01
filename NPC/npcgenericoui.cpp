@@ -7,12 +7,17 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     , ui(new Ui::NPCGenericoUI)
 {
     ui->setupUi(this);
-    setFixedSize(300,300);
+    //setFixedSize(300,300);
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
 
     ojosCerrados.load(":/Resources/NPCs/OjosCerrados.png");
     bocaCerrada.load(":/Resources/NPCs/BocaTriste.png");
+
+    ojosPos = ui->Ojos->pos();
+    bocaPos = ui->Boca->pos();
+    cejasPos = ui->Cejas->pos();
+    narizPos = ui->Nariz->pos();
 }
 
 NPCGenericoUI::~NPCGenericoUI()
@@ -40,6 +45,11 @@ void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
     ui->Ojos->setPixmap(ojos);
     ui->Cejas->setPixmap(cejas);
     ui->Nariz->setPixmap(nariz);
+
+    // Por ahora solo lo hago en el documento
+    int X = width();
+    if (X < 150)
+        ReescalarNPC();
 }
 
 void NPCGenericoUI::Rechazado()
@@ -63,6 +73,53 @@ void NPCGenericoUI::Sacar()
     parpadeo.stop();
 
     NPCUI::Sacar();
+}
+
+
+void NPCGenericoUI::ReescalarNPC()
+{
+    QSize nuevoSize = size();
+    QSize escalaOriginal = cuerpo.size();
+
+    QPixmap cuerpoEscalado = cuerpo.scaled(nuevoSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    double escalaFactorW = static_cast<double>(cuerpoEscalado.width()) / escalaOriginal.width();
+    double escalaFactorH = static_cast<double>(cuerpoEscalado.height()) / escalaOriginal.height();
+
+    ui->Cuerpo->setPixmap(cuerpoEscalado);
+    ui->Cuerpo->resize(cuerpoEscalado.size());
+
+    ReescalarLabel(ui->Boca, boca, escalaFactorW, escalaFactorH);
+    ReescalarLabel(ui->Cejas, cejas, escalaFactorW, escalaFactorH);
+    ReescalarLabel(ui->Nariz, nariz, escalaFactorW, escalaFactorH);
+    if (parpadeando)
+        ReescalarLabel(ui->Ojos, ojosCerrados, escalaFactorW, escalaFactorH);
+    else
+        ReescalarLabel(ui->Ojos, ojos, escalaFactorW, escalaFactorH);
+
+    reposicionarLabels(escalaFactorW, escalaFactorH);
+    qDebug() << nuevoSize;
+}
+
+void NPCGenericoUI::ReescalarLabel(QLabel *Label, QPixmap &ImagenLabel, double factorW, double factorH)
+{
+    QSize nuevoTamanio(ImagenLabel.size().width() * factorW, ImagenLabel.size().height() * factorH);
+    QPixmap imagenEscalada = ImagenLabel.scaled(nuevoTamanio, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    Label->setPixmap(imagenEscalada);
+    Label->resize(imagenEscalada.size());
+}
+
+void NPCGenericoUI::reposicionarLabels(double factorW, double factorH)
+{
+    reposLabel(ojosPos, ui->Ojos, factorW, factorH, 3);
+    reposLabel(bocaPos, ui->Boca, factorW, factorH, 5);
+    reposLabel(narizPos, ui->Nariz, factorW, factorH, 5);
+    reposLabel(cejasPos, ui->Cejas, factorW, factorH, 5);
+}
+
+void NPCGenericoUI::reposLabel(QPoint pos, QLabel *label, double factorW, double factorH, int margen)
+{
+    QPoint nuevaPos(pos.x() * factorW, pos.y() * factorH - margen);
+    label->move(nuevaPos);
 }
 
 void NPCGenericoUI::Parpadear()

@@ -49,11 +49,9 @@ public:
     void DetenerAnimacionesDocumentos();
 
 public slots:
-    void Dialogo(const QString &dialogo);
     void emitirNPCTerminoSalir();
     void emitColaTerminada();
     void CentrarDocumentos();
-    void CentrarNPC();
 
 signals:
     void NPCCambiado();

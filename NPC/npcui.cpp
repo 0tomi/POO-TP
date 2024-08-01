@@ -17,8 +17,13 @@ NPCUI::NPCUI(QWidget *parent)
     animacionSalida->setEasingCurve(QEasingCurve::InQuad);  // La animacion se acelera conforme sale
 
     connect(animacionSalida, &QPropertyAnimation::finished, this, &NPCUI::TerminoAnimacion);
-    connect(animacionEntrada, &QPropertyAnimation::finished, this, &NPCUI::animacionEntrarTerminada);
+    connect(animacionEntrada, &QPropertyAnimation::finished, [this](){
+        emit animacionEntrarTerminada();
+        Mostrandose = true;
+    });
     emitirDialogo.setSingleShot(true);
+
+    Mostrandose = false;
 }
 
 void NPCUI::Centrar()
@@ -53,6 +58,7 @@ void NPCUI::PrepararAnimacionEntrada()
 void NPCUI::Sacar()
 {
     PrepararAnimacionSalida();
+    Mostrandose = false;
     animacionSalida->start();
     disconnect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
     emit Saliendo();
@@ -85,4 +91,12 @@ NPCUI::~NPCUI()
 {
     delete animacionEntrada;
     delete animacionSalida;
+}
+
+void NPCUI::moveEvent(QMoveEvent *event)
+{
+    if (Mostrandose)
+        this->Centrar();
+    else
+        QWidget::moveEvent(event);
 }

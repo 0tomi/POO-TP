@@ -31,7 +31,6 @@ public:
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
     /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas
     void Restart();
-    void Centrar();
 
 public slots:
     void PausarJuego();
