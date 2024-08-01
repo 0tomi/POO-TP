@@ -6,7 +6,6 @@ using namespace std;
 class AtributosComunes{
 public:
     AtributosComunes();
-    void setAtributos(QString* paises, int maxPaises);
 
     QString* getPaises(int &maxPaises);
     QString* getVisitas(int &maxVisitas);

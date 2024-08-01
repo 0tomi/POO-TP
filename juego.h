@@ -16,7 +16,7 @@ public:
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
     ColaNPC *getCola();
-    AtributosComunes *getAtributos() const;
+    AtributosComunes *getAtributos();
 
     // A futuro para cuando tengamos la funcion de guardar partida
     void SetPartida(string DireccionPartida);
@@ -65,7 +65,7 @@ private:
     float BonificadorGanarCreditosDificultad;
     float BonificadorPerderCreditosDificultad;
 
-    ColaNPC* Cola;
+    ColaNPC * Cola;
 
     // Niveles:
     void ResetJuego();
@@ -76,7 +76,7 @@ private:
     void setUpNivel5();
 
     // Atributos
-    AtributosComunes* atributos;
+    AtributosComunes atributos;
 
     // Reglas
     Reglas* rules[5];

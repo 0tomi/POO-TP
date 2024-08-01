@@ -46,10 +46,10 @@ private:
 
     NPC* NPCaRetornar;
 
-    QRandomGenerator *Random;
+    QRandomGenerator Random;
 
-    GeneradorNPC* GenerarNPC;
-    GeneradorDocumentacion* GenerarDocumentacion;
+    GeneradorNPC GenerarNPC;
+    GeneradorDocumentacion GenerarDocumentacion;
 };
 
 #endif // COLANPC_H

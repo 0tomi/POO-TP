@@ -12,6 +12,16 @@ QString Pasaporte::getestado_civil() const{
     return this->estado_civil;
 }
 
+Skin Pasaporte::getSkinNPC() const
+{
+    return SkinNPC;
+}
+
+void Pasaporte::setSkinNPC(const Skin &newSkinNPC)
+{
+    SkinNPC = newSkinNPC;
+}
+
 QString Pasaporte::getnombre() const{
     return this->nombre;
 }

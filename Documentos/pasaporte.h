@@ -1,6 +1,7 @@
 #ifndef PASAPORTE_H
 #define PASAPORTE_H
 #include "documentacion.h"
+#include "../NPC/skin.h"
 #include <QString>
 
 class Pasaporte : public Documentacion
@@ -20,6 +21,8 @@ public:
     char getgenero() const;
     QString getnacionalidad() const;
     QString getestado_civil() const;
-
+    Skin SkinNPC;
+    Skin getSkinNPC() const;
+    void setSkinNPC(const Skin &newSkinNPC);
 };
 #endif // PASAPORTE_H

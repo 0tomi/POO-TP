@@ -7,9 +7,10 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     , ui(new Ui::NPCGenericoUI)
 {
     ui->setupUi(this);
-    //setFixedSize(300,300);
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
+    parpadeando = false;
+    connect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
 
     ojosCerrados.load(":/Resources/NPCs/OjosCerrados.png");
     bocaCerrada.load(":/Resources/NPCs/BocaTriste.png");
@@ -23,6 +24,7 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
 NPCGenericoUI::~NPCGenericoUI()
 {
     delete ui;
+    delete tiempoParpadeo;
 }
 
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
@@ -31,13 +33,11 @@ void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
 
     // Obtenemos las partes del cuerpo del npc
-    ojos.load(NPCenEscena->getOjosURL());
-    cuerpo.load(NPCenEscena->getCaraURL());
-    boca.load(NPCenEscena->getBocaURL());
-    cejas.load(NPCenEscena->getCejasURL());
-    nariz.load(NPCenEscena->getNarizURL());
-
-    //QPixmap cuerpoRescalado = cuerpo.scaled(padre->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    ojos.load(NPCenEscena->getSkin().getOjosURL());
+    cuerpo.load(NPCenEscena->getSkin().getCaraURL());
+    boca.load(NPCenEscena->getSkin().getBocaURL());
+    cejas.load(NPCenEscena->getSkin().getCejasURL());
+    nariz.load(NPCenEscena->getSkin().getNarizURL());
 
     // Colocamos la textura de cada parte donde debe.
     ui->Cuerpo->setPixmap(cuerpo);
@@ -52,9 +52,34 @@ void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
         ReescalarNPC();
 }
 
+void NPCGenericoUI::setSkinNPC(Skin skinNPC)
+{
+    // Obtenemos las partes del cuerpo del npc
+    ojos.load(skinNPC.getOjosURL());
+    cuerpo.load(skinNPC.getCaraURL());
+    boca.load(skinNPC.getBocaURL());
+    cejas.load(skinNPC.getCejasURL());
+    nariz.load(skinNPC.getNarizURL());
+
+    // Colocamos la textura de cada parte donde debe.
+    ui->Cuerpo->setPixmap(cuerpo);
+    ui->Boca->setPixmap(boca);
+    ui->Ojos->setPixmap(ojos);
+    ui->Cejas->setPixmap(cejas);
+    ui->Nariz->setPixmap(nariz);
+
+    // Por ahora solo lo hago en el documento
+    int X = width();
+    if (X < 150)
+        ReescalarNPC();
+
+    // Mostramos el NPC
+    show();
+    qDebug() << skinNPC.getOjosURL();
+}
+
 void NPCGenericoUI::Rechazado()
 {
-    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
     parpadeo.stop();
     ui->Boca->setPixmap(bocaCerrada);
     ui->Ojos->setPixmap(ojosCerrados);
@@ -69,9 +94,7 @@ void NPCGenericoUI::Entrar()
 void NPCGenericoUI::Sacar()
 {
     // Desconectamos el parpadeo anterior para setear uno nuevo
-    disconnect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
     parpadeo.stop();
-
     NPCUI::Sacar();
 }
 
@@ -140,7 +163,6 @@ void NPCGenericoUI::setearParpadear(bool estado)
     // Armamos denuevo parpadeo (Todo esto es para evitar bugs)
     parpadeo.start(1000);
     parpadeando = estado;
-    connect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
 }
 
 

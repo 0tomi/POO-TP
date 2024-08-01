@@ -168,7 +168,7 @@ QString Generar_pasaporte::generar_nombre(char genero){
     return nombre_generado;
 }
 
-Pasaporte * Generar_pasaporte::crear_pasaporte(bool valido, char genero, int dificultad){
+Pasaporte * Generar_pasaporte::crear_pasaporte(bool Validez, NPCcomun * InfoNPC, int dificultad){
     int Probabilidades;
     switch (dificultad){
         // Modo facil
@@ -182,14 +182,17 @@ Pasaporte * Generar_pasaporte::crear_pasaporte(bool valido, char genero, int dif
         break;
     }
 
-    generar_camposValidos(valido,Probabilidades);
+    generar_camposValidos(Validez, Probabilidades);
 
     QString fecha_generada = generar_fecha(this->campos_validos[0]);
     QString nacionalidad_generada = generar_nacionalidad(this->campos_validos[1]);
-    QString estado_civil_generado = generar_estado_civil(genero, this->campos_validos[2]);
-    QString nombre_generado = generar_nombre( genero);
+    QString estado_civil_generado = generar_estado_civil(InfoNPC->getGenero(), this->campos_validos[2]);
+    QString nombre_generado = generar_nombre(InfoNPC->getGenero());
 
-    this->Pasaporte_generado = new Pasaporte(nombre_generado,fecha_generada,genero,nacionalidad_generada,estado_civil_generado);
+    this->Pasaporte_generado = new Pasaporte(nombre_generado,fecha_generada,InfoNPC->getGenero(),nacionalidad_generada,estado_civil_generado);
+    // Seteamos la Skin
+    Pasaporte_generado->setSkinNPC(InfoNPC->getSkinDocs());
+
     return this->Pasaporte_generado;
 }
 

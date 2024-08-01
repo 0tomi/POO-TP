@@ -142,21 +142,17 @@ void GestorDocumentosUI::setDocumento(NPC* npcInfo)
     if (!npcComunInfo)
         qDebug() << "El npc es de tipo especial"; // y aca iria el casteo al npc especial
 
-
     // ### Seteamos el DNI o el Pasaporte segun corresponda
     if (documentos[0] != nullptr){
         Pasaporte *identificacion = dynamic_cast<Pasaporte*> (documentos[0]);
-        if (identificacion->getnacionalidad() == "Aztana"){
+        if (identificacion->getnacionalidad() == "Aztana")
             documentosUI[0] = dniUI;
-            dniUI->setDNIInfo(identificacion, npcInfo);
-        } else {
+        else
             documentosUI[0] = pasaporteUI;
-            pasaporteUI->setPasaporteInfo(identificacion, npcInfo);
-        }
     }
 
     // ### Seteamos el resto de documentos
-    for (int i = 1; i < topePerLevel; i++)
+    for (int i = 0; i < topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->setDocumentacionInfo(documentos[i]);
     // en desarrollo

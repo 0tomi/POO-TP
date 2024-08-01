@@ -1,13 +1,10 @@
 #include "atributoscomunes.h"
+#include "../lectorarchivos.h"
 
 AtributosComunes::AtributosComunes(){
-    this->paises = NULL;
-    this->maxPaises = 0;
-}
-
-void AtributosComunes::setAtributos(QString* pais, int maxPais){
-    this->paises = pais;
-    this->maxPaises = maxPais;
+    LectorArchivos lector(":/Resources/ArchivosTexto/paises.txt");
+    this->paises = lector.getArray();
+    this->maxPaises = lector.getTopeArray();
 }
 
 QString* AtributosComunes::getPaises(int &max){
@@ -27,6 +24,6 @@ QString* AtributosComunes::getEstadosCiviles(int &max){
 
 AtributosComunes::~AtributosComunes()
 {
-    delete paises;
+
 }
 

@@ -3,22 +3,18 @@
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
-ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules){
+ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules):
+    Random(time(NULL)), GenerarNPC(&Random), GenerarDocumentacion(datos ,rules)
+{
     this->frente = this->fondo = NULL;
     this->size = 0;
     this->sizeOriginal = 0;
-    this->GenerarDocumentacion = new GeneradorDocumentacion(datos ,rules);
-    this->GenerarNPC = new GeneradorNPC;
-    this->Random = new QRandomGenerator(time(NULL));
 }
 
 ColaNPC::~ColaNPC()
 {
     this->vaciarCola();
     delete NPCaRetornar;
-    delete Random;
-    delete GenerarNPC;
-    delete GenerarDocumentacion;
 }
 /// #################################### Añadir NPCs a cola ###################################################
 void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
@@ -35,8 +31,8 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     int arrayTipos[] = {CantAldeano, CantRefugiados, CantDiplos, CantRevolucionarios};
 
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
-    int sorteo = Random->bounded(4);
-    int sorteoValidez = Random->bounded(20);
+    int sorteo = Random.bounded(4);
+    int sorteoValidez = Random.bounded(20);
     bool Validez = true;
 
     qDebug() << "Bucle de generar NPCs";
@@ -51,21 +47,21 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
             arrayTipos[sorteo]--;
             totalNPCs--;
         }
-        sorteo = Random->bounded(4);
-        sorteoValidez = Random->bounded(20);
+        sorteo = Random.bounded(4);
+        sorteoValidez = Random.bounded(20);
         Validez = true;
     }
 }
 
 void ColaNPC::addNPC(int Tipo, bool Validez){
     // Genero el NPC nuevo
-    NPC* newNPC = GenerarNPC->getNPCgenerico(Tipo, Validez); // A futuro actualizar para que reciba el nivel
+    NPC* newNPC = GenerarNPC.getNPCgenerico(Tipo, Validez, nivelActual); // A futuro actualizar para que reciba el nivel
 
     // Genero su documentacion
-    GenerarDocumentacion->getDocumentos(newNPC, Validez); // A futuro actualizar para que reciba el nivel
+    GenerarDocumentacion.getDocumentos(newNPC, Validez); // A futuro actualizar para que reciba el nivel
 
     // Generamos el dialogo del npc
-    GenerarNPC->generarDialogos(newNPC, nivelActual);
+    GenerarNPC.generarDialogos(newNPC, nivelActual);
 
     // Genero el nodo de la cola donde estara el npc
     nodoNPC* newNode = new nodoNPC;
@@ -103,17 +99,17 @@ void ColaNPC::vaciarCola()
 /// #################################### Setters ###################################################
 void ColaNPC::setDificultad(int newDificultad)
 {
-    GenerarDocumentacion->setDificultad(newDificultad);
+    GenerarDocumentacion.setDificultad(newDificultad);
 }
 
 void ColaNPC::setNivel(int Nivel)
 {
-    GenerarDocumentacion->setNivel(Nivel);
+    GenerarDocumentacion.setNivel(Nivel);
 }
 
 void ColaNPC::actualizarReglas(Reglas **newRules)
 {
-    GenerarDocumentacion->actualizarReglas(newRules);
+    GenerarDocumentacion.actualizarReglas(newRules);
 }
 
 /// #################################### GETTERS ###################################################

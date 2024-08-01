@@ -1,23 +1,17 @@
-#include "lectorArchivos.h"
 #include "juego.h"
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
-Juego::Juego(){
-    this->atributos = new AtributosComunes();
-
-    // Leemos los paises y los guardamos en el array de paises
-    LectorArchivos LA(":/Resources/ArchivosTexto/paises.txt");
-    this->atributos->setAtributos(LA.getArray(), LA.getTopeArray());
-
-    // Seteamos las reglas del juego, pasando el array de paises.
-    rules[0] = new ReglasNivel1(atributos);
+Juego::Juego():
+    atributos()
+{
+    rules[0] = new ReglasNivel1(&atributos);
     rules[1] = new ReglasNivel2(rules[0]);
     rules[2] = new ReglasNivel3(rules[1]);
     rules[3] = new ReglasNivel4(rules[2]);
     rules[4] = new ReglasNivel5(rules[3]);
 
-    Cola = new ColaNPC(atributos, rules);
+    Cola = new ColaNPC(&atributos, rules);
     setDefaultStats();
 }
 
@@ -87,7 +81,7 @@ void Juego::ResetJuego()
     for (int i = 0; i < 5; i++)
         delete rules[i];
 
-    rules[0] = new ReglasNivel1(atributos);
+    rules[0] = new ReglasNivel1(&atributos);
     rules[1] = new ReglasNivel2(rules[0]);
     rules[2] = new ReglasNivel3(rules[1]);
     rules[3] = new ReglasNivel4(rules[2]);
@@ -182,9 +176,9 @@ void Juego::setUpNivel5()
     Cola->addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
-AtributosComunes *Juego::getAtributos() const
+AtributosComunes *Juego::getAtributos()
 {
-    return atributos;
+    return &atributos;
 }
 
 /// #################################### GETTERS & SETTERS ###################################################
@@ -194,7 +188,7 @@ Reglas* Juego::getReglas(int numero){
 
 ColaNPC *Juego::getCola()
 {
-    return this->Cola;
+    return Cola;
 }
 
 int Juego::getSocialCreditsEarnedInLevel() const

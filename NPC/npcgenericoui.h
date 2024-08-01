@@ -21,6 +21,7 @@ public:
     explicit NPCGenericoUI(QWidget *parent = nullptr);
     ~NPCGenericoUI();
     void setNPC(NPC* newNPCenEscena) override;
+    void setSkinNPC(Skin skinNPC);
     void Rechazado();
     void Entrar() override;
     void Sacar() override;
