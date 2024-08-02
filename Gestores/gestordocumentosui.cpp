@@ -124,6 +124,7 @@ void GestorDocumentosUI::deleteDocumentos()
 
 void GestorDocumentosUI::setDocumento(NPC* npcInfo)
 {
+    qDebug() << "Index" << topePerLevel;
     Documentacion** info = npcInfo->getDocumentos();
     int Tipo = npcInfo->getTipo();
 

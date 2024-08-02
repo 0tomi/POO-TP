@@ -60,13 +60,14 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez, int nivel){
 
     // Generamos su skin y la seteamos.
     NPCaCrear->setSkin(generadorSkin.getSkin(tipo, this->generos[valorCentinela2]));
-    NPCaCrear->setSkinDocs(generadorSkin.getSkin(tipo, this->generos[valorCentinela2]));
+    NPCaCrear->setSkinDocs(NPCaCrear->getSkin());
 
     // Si el NPC es fake, añadimos la posibilidad de contener una imagen falsa.
     if (!Validez){
+        qDebug() << "se activo";
         int falsificarImagen = Random->bounded(20);
         if (falsificarImagen < 1)
-            NPCaCrear->setSkin(generadorSkin.getSimilarSkin(NPCaCrear->getSkin(), NPCaCrear->getGenero(), nivel));
+            NPCaCrear->setSkinDocs(generadorSkin.getSimilarSkin(NPCaCrear->getSkin(), NPCaCrear->getGenero(), nivel));
     }
 
     return NPCaCrear;

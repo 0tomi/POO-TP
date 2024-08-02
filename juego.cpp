@@ -23,10 +23,8 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
     // Colocamos la dificultad
     setDificultad(Dificultad);
     Cola->setDificultad(Dificultad);
-
     // Reseteamos la cantidad ganada en el nivel
     this->SocialCreditsEarnedInLevel = 0;
-
     // El else vendra cuando implementemos las partidas guardadas
     switch (Nivel) {
     case 1: setUpNivel1();
@@ -146,8 +144,6 @@ void Juego::RestarSocialCredits(int Tipo)
 /// pero por motivos de testeo lo vamos a dejar asi.
 void Juego::setUpNivel1()
 {
-    // A desarrollar
-    ResetJuego();
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
     Cola->addNPC(NivelActual, 5, 3, 4, 2, 4);
 }
@@ -183,7 +179,7 @@ AtributosComunes *Juego::getAtributos()
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
-    return (numero < 5)? rules[numero]: NULL;
+    return (numero < 5)? rules[numero]: nullptr;
 }
 
 ColaNPC *Juego::getCola()

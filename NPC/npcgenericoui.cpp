@@ -75,7 +75,6 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
 
     // Mostramos el NPC
     show();
-    qDebug() << skinNPC.getOjosURL();
 }
 
 void NPCGenericoUI::Rechazado()

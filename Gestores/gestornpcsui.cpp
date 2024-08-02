@@ -193,6 +193,7 @@ void GestorNPCsUI::TerminoNivel()
     DesconectarNPCs();
     if (transcriptorDialogos->getMostrando())
         transcriptorDialogos->Sacar();
+    transcriptorDialogos->hide();
 
     // Si hay NPCs presentes, retiramos los documentos y el NPC.
     if (MostrandoNPC || ColaNPCs->getSize()){

@@ -13,7 +13,7 @@ ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
     Random.seed(Semilla);
 
     // # Inicializamos las reglas
-    setPaisesPermitidos(3);
+    setPaisesPermitidos(6);
     setFechasValidas();
     setDuracionEstanciaValida(9,3);
     setTipoDeVisitaValidas();
@@ -129,6 +129,24 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
         i++;
         cantidadPaisesPermitidos--;
     }
+
+    // Crear array de paises no permitidos
+    maxPaisesInvalidos = maxPaises - maxPaisesPermitidos;
+    paisesInvalidos = new int[maxPaisesInvalidos];
+    int Contador = 0;
+    for (int i = 0; i < maxPaises; i++){
+        if(!checkIfValido(i)){
+            paisesInvalidos[Contador] = i;
+            Contador++;
+        }
+    }
+
+    qDebug() << "Paises validos:";
+    for (int i = 0; i < maxPaisesPermitidos; i++)
+        qDebug() << paises[paisesValidos[i]];
+    qDebug() << "Paises invalidos:";
+    for (int i = 0; i < maxPaisesInvalidos; i++)
+    qDebug() << paises[paisesInvalidos[i]];
 }
 
 bool ReglasNivel1::checkRepetidos(int dato){
@@ -143,6 +161,15 @@ bool ReglasNivel1::checkRepetidos(int dato){
     return false;
 }
 
+bool ReglasNivel1::checkIfValido(int indice)
+{
+    for (int i = 0; i < maxPaisesPermitidos; i++){
+        if (indice == paisesValidos[i])
+            return true;
+    }
+    return false;
+}
+
 // Getters
 
 int* ReglasNivel1::getPaisesPermitidos(int &max) const{
@@ -153,6 +180,12 @@ int* ReglasNivel1::getPaisesPermitidos(int &max) const{
 QString* ReglasNivel1::getEstadoCivilPermitido(int &max) const{
     max = this->maxEstadosCivilPermitidos;
     return this->estadoCivilValidos;
+}
+
+int *ReglasNivel1::getPaisesInvalidos(int &max) const
+{
+    max = maxPaisesInvalidos;
+    return paisesInvalidos;
 }
 
 int ReglasNivel1::getFechaMinPermitida(){

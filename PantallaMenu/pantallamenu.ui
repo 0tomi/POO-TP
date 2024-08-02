@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1659</width>
-    <height>996</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
-    <height>600</height>
+    <width>600</width>
+    <height>300</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -74,7 +74,7 @@ border-image: url(:/Resources/escritorio2.png);
       <item alignment="Qt::AlignHCenter">
        <widget class="QStackedWidget" name="menu">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -87,14 +87,20 @@ border-image: url(:/Resources/escritorio2.png);
         </property>
         <property name="maximumSize">
          <size>
-          <width>1200</width>
+          <width>1920</width>
           <height>800</height>
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="pprincipal">
+         <property name="maximumSize">
+          <size>
+           <width>1800</width>
+           <height>1080</height>
+          </size>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
            <number>32</number>
@@ -113,6 +119,12 @@ border-image: url(:/Resources/escritorio2.png);
           </property>
           <item>
            <widget class="QLabel" name="TituloJuego">
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">image: url(:/Resources/th.jpeg);</string>
             </property>
@@ -137,7 +149,7 @@ border-image: url(:/Resources/escritorio2.png);
             </property>
             <property name="maximumSize">
              <size>
-              <width>400</width>
+              <width>1800</width>
               <height>100</height>
              </size>
             </property>
@@ -176,7 +188,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>400</width>
+              <width>1800</width>
               <height>100</height>
              </size>
             </property>
@@ -215,7 +227,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>400</width>
+              <width>1800</width>
               <height>100</height>
              </size>
             </property>
@@ -241,6 +253,12 @@ background-color: #1e1532;</string>
          </layout>
         </widget>
         <widget class="QWidget" name="cargar">
+         <property name="maximumSize">
+          <size>
+           <width>1800</width>
+           <height>1080</height>
+          </size>
+         </property>
          <property name="layoutDirection">
           <enum>Qt::RightToLeft</enum>
          </property>
@@ -270,7 +288,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>800</width>
+              <width>1800</width>
               <height>125</height>
              </size>
             </property>
@@ -311,7 +329,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>800</width>
+              <width>1800</width>
               <height>125</height>
              </size>
             </property>
@@ -352,7 +370,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>800</width>
+              <width>1800</width>
               <height>125</height>
              </size>
             </property>
@@ -424,7 +442,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>500</width>
+              <width>1800</width>
               <height>150</height>
              </size>
             </property>
@@ -457,7 +475,7 @@ background-color: #1e1534;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>500</width>
+              <width>1800</width>
               <height>150</height>
              </size>
             </property>
@@ -490,7 +508,7 @@ background-color: #1e1534;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>500</width>
+              <width>1800</width>
               <height>150</height>
              </size>
             </property>
@@ -523,7 +541,7 @@ background-color: #330000;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>500</width>
+              <width>1800</width>
               <height>150</height>
              </size>
             </property>
@@ -550,17 +568,29 @@ background-color: rgb(170, 85, 0);</string>
         </widget>
         <widget class="QWidget" name="descrdificultad">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>400</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>1200</width>
+           <height>800</height>
+          </size>
          </property>
          <property name="contextMenuPolicy">
           <enum>Qt::DefaultContextMenu</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="spacing">
-           <number>0</number>
+           <number>10</number>
           </property>
           <property name="leftMargin">
            <number>10</number>
@@ -580,7 +610,7 @@ background-color: rgb(170, 85, 0);</string>
              <bool>true</bool>
             </property>
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -598,7 +628,7 @@ background-color: rgb(170, 85, 0);</string>
              </size>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="page1">
              <property name="sizePolicy">
@@ -662,6 +692,12 @@ background-color: rgb(170, 85, 0);</string>
              </layout>
             </widget>
             <widget class="QWidget" name="page2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
                <width>300</width>
@@ -708,6 +744,12 @@ background-color: rgb(170, 85, 0);</string>
              </layout>
             </widget>
             <widget class="QWidget" name="page3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
                <width>300</width>
@@ -723,10 +765,22 @@ background-color: rgb(170, 85, 0);</string>
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <widget class="QLabel" name="descriDemonio">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
                   <height>400</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>1800</width>
+                  <height>818</height>
                  </size>
                 </property>
                 <property name="font">
@@ -763,18 +817,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </widget>
            </widget>
           </item>
-          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+          <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="tutorialButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>500</width>
-              <height>45</height>
+              <height>50</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>500</width>
-              <height>45</height>
+              <width>1800</width>
+              <height>120</height>
              </size>
             </property>
             <property name="font">
@@ -798,7 +858,7 @@ color: black;</string>
           <item alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="botonStart">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -806,13 +866,13 @@ color: black;</string>
             <property name="minimumSize">
              <size>
               <width>500</width>
-              <height>45</height>
+              <height>50</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>500</width>
-              <height>45</height>
+              <width>1800</width>
+              <height>120</height>
              </size>
             </property>
             <property name="font">
@@ -854,7 +914,7 @@ background-color: #1e1532;</string>
          </property>
          <property name="maximumSize">
           <size>
-           <width>1920</width>
+           <width>1800</width>
            <height>700</height>
           </size>
          </property>
@@ -869,7 +929,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="maximumSize">
              <size>
-              <width>1200</width>
+              <width>1800</width>
               <height>1000</height>
              </size>
             </property>
@@ -892,9 +952,21 @@ background-color: #1e1532;</string>
           </item>
           <item row="1" column="0">
            <widget class="QWidget" name="ContenedorDif" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_12">
              <item>
               <widget class="QLabel" name="label_2">
+               <property name="maximumSize">
+                <size>
+                 <width>1800</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>MS Sans Serif</family>
@@ -909,6 +981,12 @@ background-color: #1e1532;</string>
              </item>
              <item>
               <widget class="QSpinBox" name="SeleccionarDificultad">
+               <property name="maximumSize">
+                <size>
+                 <width>1800</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="minimum">
                 <number>1</number>
                </property>
@@ -919,6 +997,12 @@ background-color: #1e1532;</string>
              </item>
              <item>
               <widget class="QLabel" name="label_3">
+               <property name="maximumSize">
+                <size>
+                 <width>1800</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>MS Sans Serif</family>
@@ -936,9 +1020,21 @@ background-color: #1e1532;</string>
           </item>
           <item row="1" column="1">
            <widget class="QWidget" name="ContenedorNivel" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <item>
               <widget class="QLabel" name="label">
+               <property name="maximumSize">
+                <size>
+                 <width>1800</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>MS Sans Serif</family>
@@ -953,6 +1049,12 @@ background-color: #1e1532;</string>
              </item>
              <item>
               <widget class="QSpinBox" name="SeleccionarNivel">
+               <property name="maximumSize">
+                <size>
+                 <width>1800</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="minimum">
                 <number>1</number>
                </property>
@@ -963,6 +1065,12 @@ background-color: #1e1532;</string>
              </item>
              <item>
               <widget class="QLabel" name="label_4">
+               <property name="maximumSize">
+                <size>
+                 <width>1800</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>MS Sans Serif</family>
@@ -977,6 +1085,12 @@ background-color: #1e1532;</string>
              </item>
              <item>
               <widget class="QPushButton" name="cheatPlayClicked">
+               <property name="maximumSize">
+                <size>
+                 <width>1800</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="text">
                 <string>Empezar test</string>
                </property>

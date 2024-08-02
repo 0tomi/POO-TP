@@ -140,12 +140,10 @@ void GameScreen::RealizarConexionesPrincipales()
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
-    qDebug() << "Nivel actual: " << Nivel;
     juego->PrepararJuego(Nivel, Dificultad);
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
-    if (Nivel > 1)
-        GestorNPC.setUpNuevoNivel(Nivel);
+    GestorNPC.setUpNuevoNivel(Nivel);
 }
 
 void GameScreen::EmpezarJuego()

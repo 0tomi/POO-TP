@@ -124,6 +124,7 @@ void PantallaMenu::switchSelectorDificultad()
 {    
     ui->menu->setCurrentWidget(ui->dificultad);
     ui->BotonesSalir->setCurrentIndex(1);
+    nivel = 1;
     emit clickedJugar();
 }
 
@@ -176,7 +177,7 @@ void PantallaMenu::switchDemonio()
 void PantallaMenu::botonStartclicked()
 {
     emit clickedStart(nivel,dificultad);
-    qDebug() << "dificultad"<<dificultad;
+    qDebug()<< "nivel" << nivel << "dificultad"<<dificultad;
 }
 /// ############################ Cargar partida ###############################
 void PantallaMenu::botonCargarclicked()

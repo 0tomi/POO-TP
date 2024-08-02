@@ -21,6 +21,7 @@ public:
     // Getters
     int* getPaisesPermitidos(int &max) const;
     QString* getEstadoCivilPermitido(int &max) const;
+    int *getPaisesInvalidos(int &max) const;
     //QString* getTipoVisitaPermitida(int &max);
     int getFechaMinPermitida();
     int getFechaMaxPermitida();
@@ -57,11 +58,13 @@ private:
     int fechaMin, fechaMax; // va a ser solo el anio
     int duracionDeEstanciaValida;
     int* paisesValidos;
+    int* paisesInvalidos;
     QString* tipoDeVisitaValida;
     QString* estadoCivilValidos;
 
     // Tope de arrays:
     int maxPaisesPermitidos;
+    int maxPaisesInvalidos;
     int maxEstadosCivilPermitidos;
     int maxVisitasPermitidas;
 
@@ -77,6 +80,7 @@ private:
 
     void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
     bool checkRepetidos(int dato);
+    bool checkIfValido(int indice);
 };
 
 

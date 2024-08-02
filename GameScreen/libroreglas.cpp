@@ -15,6 +15,8 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
     ui->Anterior->hide();
 
     ui->LibroReglas->setCurrentIndex(PaginaActual);
+
+    // Setup de reglas
     for (int i = 0; i < 5; i++)
         reglas[i] = datos->getReglas(i);
 
@@ -135,11 +137,11 @@ void libroreglas::setPaises(ReglasNivel1 * datos){
     int maxIndices;
 
     QString * Paises = datos->getPaises();
-    int * IndicesValidos = datos->getPaisesPermitidos(maxIndices);
+    int * IndicesInv = datos->getPaisesInvalidos(maxIndices);
 
-    QString Texto = "Paises Validos:\n";
+    QString Texto = "Paises no permitidos:\n";
     for(int i = 0; i < maxIndices; i++){
-        Texto += Paises[IndicesValidos[i]] + "\n";
+        Texto += Paises[IndicesInv[i]] + "\n";
     }
     ui->PaisesPermitidos->setText(Texto);
 }
