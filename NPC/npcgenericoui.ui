@@ -62,7 +62,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">image: url(:/Resources/NPCs/Cuerpo1.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -71,7 +71,7 @@
      <widget class="QLabel" name="Cejas">
       <property name="geometry">
        <rect>
-        <x>104</x>
+        <x>105</x>
         <y>62</y>
         <width>90</width>
         <height>20</height>
@@ -90,7 +90,7 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">image: url(:/Resources/NPCs/Cejas1.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -118,7 +118,7 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">image: url(:/Resources/NPCs/Ojos1.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -127,7 +127,7 @@
      <widget class="QLabel" name="Nariz">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>109</x>
         <y>100</y>
         <width>71</width>
         <height>30</height>
@@ -146,7 +146,7 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">image: url(:/Resources/NPCs/Nariz1.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -174,7 +174,39 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">image: url(:/Resources/NPCs/Boca2.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Pelo">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>300</width>
+        <height>300</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/Resources/NPCs/PeloH1.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Gorro">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>300</width>
+        <height>300</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/Resources/NPCs/Gorro4.png);</string>
       </property>
       <property name="text">
        <string/>
@@ -185,6 +217,8 @@
      <zorder>Nariz</zorder>
      <zorder>Boca</zorder>
      <zorder>Cejas</zorder>
+     <zorder>Pelo</zorder>
+     <zorder>Gorro</zorder>
     </widget>
    </item>
   </layout>

@@ -103,5 +103,28 @@
         <file>Resources/MaterialPantallas/SonidoBoton.mp3</file>
         <file>Resources/Sonidos/NotificacionGTA.wav</file>
         <file>Resources/Sonidos/SonidoBoton.wav</file>
+        <file>Resources/NPCs/Cuerpo1.png</file>
+        <file>Resources/NPCs/Cuerpo2.png</file>
+        <file>Resources/NPCs/PeloH1.png</file>
+        <file>Resources/NPCs/PeloH2.png</file>
+        <file>Resources/NPCs/PeloM1.png</file>
+        <file>Resources/NPCs/PeloM2.png</file>
+        <file>Resources/ArchivosTexto/URLCaras.txt</file>
+        <file>Resources/ArchivosTexto/URLPeloH.txt</file>
+        <file>Resources/ArchivosTexto/URLPeloM.txt</file>
+        <file>Resources/NPCs/Gorro1.png</file>
+        <file>Resources/NPCs/Gorro2.png</file>
+        <file>Resources/NPCs/Gorro3.png</file>
+        <file>Resources/NPCs/Gorro4.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo3.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo4.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo5.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo6.png</file>
+        <file>Resources/NPCs/Nada.png</file>
+        <file>Resources/NPCs/CuerpoRefugiado3.png</file>
+        <file>Resources/NPCs/CuerpoRefugiado4.png</file>
+        <file>Resources/NPCs/CuerpoRefugiado5.png</file>
+        <file>Resources/NPCs/CuerpoRefugiado6.png</file>
+        <file>Resources/ArchivosTexto/URLCarasRefugiado.txt</file>
     </qresource>
 </RCC>

@@ -1,0 +1,2 @@
+:/Resources/NPCs/PeloH1.png
+:/Resources/NPCs/PeloH2.png

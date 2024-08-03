@@ -23,8 +23,14 @@ public:
     QString getBocaURL() const;
     void setBoca(const QString &newBoca);
 
+    QString getPelo() const;
+    void setPelo(const QString &newPelo);
+
+    QString getGorro() const;
+    void setGorro(const QString &newGorro);
+
 private:
-    QString cara, cejas, ojos, nariz, boca;
+    QString gorro, pelo, cara, cejas, ojos, nariz, boca;
 };
 
 #endif // SKIN_H

@@ -35,14 +35,18 @@ protected:
     QPoint ojosPos;
     QPoint bocaPos;
     QPoint cejasPos;
-    QPoint narizPos;
+    QPoint narizPos, peloPos, gorroPos;
 
 private:
     Ui::NPCGenericoUI *ui;
-    NPCcomun *NPCenEscena;    
+    NPCcomun *NPCenEscena;
+
+    // Funcion para eliminar la hoja CSS de la ui, para que no se superponga con los pixmaps
+    // (porque sino cada vez que se quiera hacer una modificacion hay que estar colocando las imagenes)
+    void LimpiarHojaCSS();
 
     // Facciones NPC
-    QPixmap ojos, cuerpo, boca, nariz, cejas;
+    QPixmap gorro, pelo, ojos, cuerpo, boca, nariz, cejas;
 
     // Parpadeo
     QRandomGenerator* tiempoParpadeo;
@@ -56,6 +60,7 @@ private:
 
     QPixmap ojosCerrados;
     QPixmap bocaCerrada;
+    QPixmap nada;
 };
 
 #endif // NPCGENERICOUI_H

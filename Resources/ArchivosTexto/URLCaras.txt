@@ -1,0 +1,2 @@
+:/Resources/NPCs/Cuerpo1.png
+:/Resources/NPCs/Cuerpo2.png

@@ -1,33 +1,31 @@
 #include "generadorskin.h"
 
-GeneradorSkin::GeneradorSkin(QRandomGenerator *generador): lector(":/Resources/ArchivosTexto/URLCarasHombre.txt")
+GeneradorSkin::GeneradorSkin(QRandomGenerator *generador): lector(":/Resources/ArchivosTexto/URLCaras.txt")
 {
     // Colocamos el generador
     qrand = generador;
 
     // Lectura de las partes del cuerpo
-    QString * LinksCarasHombre = lector.getArray();
+    LinksCaras = lector.getArray();
     topeLinksCaras = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasMujer.txt");
-    QString * LinksCarasMujer = lector.getArray();
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLPeloH.txt");
+    QString * LinksPeloHombre = lector.getArray();
 
-    LinksCaras[0] = LinksCarasHombre;
-    LinksCaras[1] = LinksCarasMujer;
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLPeloM.txt");
+    QString * LinksPeloM = lector.getArray();
+    topeLinksPelo = lector.getTopeArray();
+
+    LinksPelo[0] = LinksPeloHombre;
+    LinksPelo[1] = LinksPeloM;
 
     lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasRevolucionario.txt");
     LinksCarasRevolucionario = lector.getArray();
     topeLinksRevolucionario = lector.getTopeArray();
 
-    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasRefugiadoHombre.txt");
-    QString * LinksCarasRefugiadoHombre = lector.getArray();
-
-    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasRefugiadoMujer.txt");
-    QString * LinksCarasRefugiadoMujer = lector.getArray();
+    lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLCarasRefugiado.txt");
+    LinksCarasRefugiado = lector.getArray();
     topeLinksRefugiado = lector.getTopeArray();
-
-    LinksCarasRefugiado[0] = LinksCarasRefugiadoHombre;
-    LinksCarasRefugiado[1] = LinksCarasRefugiadoMujer;
 
     lector.LeerArchivoNuevo(":/Resources/ArchivosTexto/URLBarbas.txt");
     LinksBarbas = lector.getArray();
@@ -59,18 +57,24 @@ Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
 {
     Skin newSkin;
 
+    int sorteo = qrand->bounded(15);
+
     switch(TipoNPC){
     case 1: // Refugiado
-        newSkin.setCara(pickCuerpo(LinksCarasRefugiado, topeLinksRefugiado, Genero));
+        newSkin.setCara(pickSkin(LinksCarasRefugiado, topeLinksCaras));
         break;
     case 3: // Revolucionario
         newSkin.setCara(pickSkin(LinksCarasRevolucionario, topeLinksRevolucionario));
         break;
     default:
-        newSkin.setCara(pickCuerpo(LinksCaras, topeLinksCaras, Genero));
+        newSkin.setCara(pickSkin(LinksCaras, topeLinksCaras));
         break;
     }
 
+    if (sorteo < 3 || TipoNPC == 1)
+        newSkin.setGorro(pickSkin(LinksGorro, topeLinksGorro));
+
+    newSkin.setPelo(pickSkinConGenero(LinksPelo, topeLinksPelo, Genero));
     newSkin.setCejas(pickSkin(LinksCejas, topeLinksCejas));
     newSkin.setOjos(pickSkin(LinksOjos, topeLinksOjos));
     newSkin.setNariz(pickSkin(LinksNariz, topeLinksNariz));
@@ -99,7 +103,7 @@ Skin GeneradorSkin::getSimilarSkin(Skin SkinActual, char Genero, int nivel)
     return getSkin(qrand->bounded(4), Genero);
 }
 
-QString GeneradorSkin::pickCuerpo(QString * listaSkins[], int topeSkins, char Genero)
+QString GeneradorSkin::pickSkinConGenero(QString * listaSkins[], int topeSkins, char Genero)
 {
     int CaraGeneroX = qrand->bounded(10);
     int sorteo = qrand->bounded(topeSkins);
