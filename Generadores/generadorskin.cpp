@@ -1,4 +1,5 @@
 #include "generadorskin.h"
+#include <QDebug>
 
 GeneradorSkin::GeneradorSkin(QRandomGenerator *generador): lector(":/Resources/ArchivosTexto/URLCaras.txt")
 {
@@ -71,7 +72,7 @@ Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
         break;
     }
 
-    if (sorteo < 3 || TipoNPC == 1)
+    if (sorteo < 2 || TipoNPC == 1)
         newSkin.setGorro(pickSkin(LinksGorro, topeLinksGorro));
 
     newSkin.setPelo(pickSkinConGenero(LinksPelo, topeLinksPelo, Genero));

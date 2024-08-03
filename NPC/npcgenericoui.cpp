@@ -64,7 +64,7 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
     pelo.load(skinNPC.getPelo());
 
     // Colocamos la textura de cada parte donde debe.
-    ui->Gorro->setPixmap(nada);
+    ui->Gorro->hide();
     ui->Cuerpo->setPixmap(cuerpo);
     ui->Boca->setPixmap(boca);
     ui->Ojos->setPixmap(ojos);
@@ -72,10 +72,12 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
     ui->Nariz->setPixmap(nariz);
     ui->Pelo->setPixmap(pelo);
 
+    qDebug() << skinNPC.getGorro();
     // Gorro
     if (skinNPC.getGorro() != ""){
         gorro.load(skinNPC.getGorro());
         ui->Gorro->setPixmap(gorro);
+        ui->Gorro->show();
     }
 
     // Por ahora solo lo hago en el documento
@@ -96,7 +98,7 @@ void NPCGenericoUI::Rechazado()
 
 void NPCGenericoUI::Entrar()
 {
-    quejarse.start(20 * 1000);
+    quejarse.start(35 * 1000);
     setearParpadear(false);
     NPCUI::Entrar();
 }
@@ -133,7 +135,6 @@ void NPCGenericoUI::ReescalarNPC()
         ReescalarLabel(ui->Ojos, ojos, escalaFactorW, escalaFactorH);
 
     reposicionarLabels(escalaFactorW, escalaFactorH);
-    qDebug() << nuevoSize;
 }
 
 void NPCGenericoUI::ReescalarLabel(QLabel *Label, QPixmap &ImagenLabel, double factorW, double factorH)
@@ -163,7 +164,7 @@ void NPCGenericoUI::reposLabel(QPoint pos, QLabel *label, double factorW, double
 void NPCGenericoUI::emitQuejarse()
 {
     emit QuiereHablar("¿Cuánto más te vas a demorar?");
-    quejarse.start(tiempoParpadeo->bounded(7000,15000));
+    quejarse.start(tiempoParpadeo->bounded(15000,45000));
 }
 
 void NPCGenericoUI::Parpadear()
