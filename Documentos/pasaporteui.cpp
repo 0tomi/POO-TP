@@ -24,19 +24,19 @@ PasaporteUI::PasaporteUI(QWidget *parent)
 
 void PasaporteUI::setDocumentacionInfo(Documentacion *documento)
 {
-    Pasaporte * pasaporte = dynamic_cast<Pasaporte*>(documento);
+    Pasaporte * info = dynamic_cast<Pasaporte*>(documento);
 
-    if (!pasaporte)
+    if (!info)
         qDebug() << "Pasaporte NULO";
 
     setStandby();
-    NPCenDoc->setSkinNPC(pasaporte->getSkinNPC());
+    NPCenDoc->setSkinNPC(info->getSkinNPC());
 
-    ui->nombre->setText(pasaporte->getnombre());
-    ui->fecha->setText(pasaporte->getfecha_nacimiento());
-    ui->genero->setText(QString(pasaporte->getgenero()));
-    ui->nacionalidad->setText(pasaporte->getnacionalidad());
-    ui->estado_civil->setText(pasaporte->getestado_civil());
+    ui->nombre->setText(info->getnombre());
+    ui->fecha->setText(info->getfecha_nacimiento());
+    ui->genero->setText(QString(info->getgenero()));
+    ui->nacionalidad->setText(info->getnacionalidad());
+    ui->estado_civil->setText(info->getestado_civil());
 }
 
 void PasaporteUI::setStandby()

@@ -61,7 +61,7 @@ Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
 
     switch(TipoNPC){
     case 1: // Refugiado
-        newSkin.setCara(pickSkin(LinksCarasRefugiado, topeLinksCaras));
+        newSkin.setCara(pickSkin(LinksCarasRefugiado, topeLinksRefugiado));
         break;
     case 3: // Revolucionario
         newSkin.setCara(pickSkin(LinksCarasRevolucionario, topeLinksRevolucionario));

@@ -126,5 +126,22 @@
         <file>Resources/NPCs/CuerpoRefugiado5.png</file>
         <file>Resources/NPCs/CuerpoRefugiado6.png</file>
         <file>Resources/ArchivosTexto/URLCarasRefugiado.txt</file>
+        <file>Resources/NPCs/Nariz2.png</file>
+        <file>Resources/NPCs/Nariz3.png</file>
+        <file>Resources/NPCs/Cejas2.png</file>
+        <file>Resources/NPCs/Cejas3.png</file>
+        <file>Resources/NPCs/Cejas4.png</file>
+        <file>Resources/NPCs/Cejas5.png</file>
+        <file>Resources/NPCs/Cejas6.png</file>
+        <file>Resources/NPCs/Cejas7.png</file>
+        <file>Resources/NPCs/Cuerpo3.png</file>
+        <file>Resources/NPCs/Cuerpo4.png</file>
+        <file>Resources/NPCs/Cuerpo5.png</file>
+        <file>Resources/NPCs/Cuerpo6.png</file>
+        <file>Resources/NPCs/Cuerpo7.png</file>
+        <file>Resources/NPCs/Cuerpo8.png</file>
+        <file>Resources/NPCs/Cuerpo9.png</file>
+        <file>Resources/NPCs/Cuerpo10.png</file>
+        <file>Resources/NPCs/Cuerpo11.png</file>
     </qresource>
 </RCC>

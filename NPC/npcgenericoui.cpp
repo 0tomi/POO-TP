@@ -64,6 +64,7 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
     pelo.load(skinNPC.getPelo());
 
     // Colocamos la textura de cada parte donde debe.
+    ui->Gorro->setPixmap(nada);
     ui->Cuerpo->setPixmap(cuerpo);
     ui->Boca->setPixmap(boca);
     ui->Ojos->setPixmap(ojos);
@@ -75,8 +76,6 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
     if (skinNPC.getGorro() != ""){
         gorro.load(skinNPC.getGorro());
         ui->Gorro->setPixmap(gorro);
-    } else {
-        ui->Gorro->setPixmap(nada);
     }
 
     // Por ahora solo lo hago en el documento
