@@ -9,8 +9,10 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     ui->setupUi(this);
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
+    quejarse.setSingleShot(true);
     parpadeando = false;
     connect(&parpadeo, &QTimer::timeout, this, &NPCGenericoUI::Parpadear);
+    connect(&quejarse, &QTimer::timeout, this, &NPCGenericoUI::emitQuejarse);
 
     ojosCerrados.load(":/Resources/NPCs/OjosCerrados.png");
     bocaCerrada.load(":/Resources/NPCs/BocaTriste.png");
@@ -86,6 +88,7 @@ void NPCGenericoUI::Rechazado()
 
 void NPCGenericoUI::Entrar()
 {
+    quejarse.start(20 * 1000);
     setearParpadear(false);
     NPCUI::Entrar();
 }
@@ -93,6 +96,7 @@ void NPCGenericoUI::Entrar()
 void NPCGenericoUI::Sacar()
 {
     // Desconectamos el parpadeo anterior para setear uno nuevo
+    quejarse.stop();
     parpadeo.stop();
     NPCUI::Sacar();
 }
@@ -142,6 +146,12 @@ void NPCGenericoUI::reposLabel(QPoint pos, QLabel *label, double factorW, double
 {
     QPoint nuevaPos(pos.x() * factorW, pos.y() * factorH - margen);
     label->move(nuevaPos);
+}
+
+void NPCGenericoUI::emitQuejarse()
+{
+    emit QuiereHablar("¿Cuánto más te vas a demorar?");
+    quejarse.start(tiempoParpadeo->bounded(7000,15000));
 }
 
 void NPCGenericoUI::Parpadear()

@@ -47,7 +47,9 @@ private:
     // Parpadeo
     QRandomGenerator* tiempoParpadeo;
     QTimer parpadeo;
+    QTimer quejarse;
 
+    void emitQuejarse();
     void Parpadear();
     void setearParpadear(bool estado);
     bool parpadeando;

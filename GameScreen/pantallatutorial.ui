@@ -109,8 +109,11 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #221b15;</string>
+            </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Bienvenido al tutorial de Astana!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tu objetivo es&lt;/span&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;detectar documentacion falsificada&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;, y en base a eso evaluar si &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;dejar pasar o no a una persona a nuestro maravilloso país.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Aquí se te enseñaran las bases para poder empezar a jugar.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Empezaremos dando un paseo por la interfaz del juego.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Bienvenido al tutorial de &lt;/span&gt;&lt;span style=&quot; color:#8d00d4;&quot;&gt;Astana&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tu objetivo es &lt;/span&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;detectar documentacion falsificada&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;, y en base a eso evaluar si &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;dejar pasar o no a una persona a nuestro maravilloso país.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Aquí se te enseñaran las bases para poder empezar a jugar.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Empezaremos dando un paseo por la interfaz del juego.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -171,7 +174,8 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
+             <string notr="true">color: rgb(255, 255, 255);
+background-color: #221b15;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esta es la mesa de entrada.&lt;/p&gt;&lt;p&gt;1: &lt;span style=&quot; color:#ffff00;&quot;&gt;Libro con documentacion del NPC.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Debes hacer click en el para ver los documentos.&lt;/p&gt;&lt;p&gt;2: &lt;span style=&quot; color:#ffff00;&quot;&gt;Transcriptor de dialogos.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Transcribe los dialogos de la persona, te será util para contrastar &lt;/p&gt;&lt;p&gt;la veracidad de sus palabras.&lt;/p&gt;&lt;p&gt;3: &lt;span style=&quot; color:#aa0000;&quot;&gt;Libro de normativas: &lt;/span&gt;Libro actualizado con informacion escencial para saber cuales son los parametros &lt;/p&gt;&lt;p&gt;de entrada permitidos. Revisalo al principio y tenlo presente para dejar entrar o no, a alguien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -235,7 +239,8 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
+             <string notr="true">color: rgb(255, 255, 255);
+background-color: #221b15;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Una vez abras la documentacion, podras utilizar los botones del &lt;span style=&quot; color:#0055ff;&quot;&gt;Escritorio.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffff00;&quot;&gt;1: Boton de centrar documentos:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Por si los pierdes, puedes usarlos para recuperarlos, mágicamente apareceran&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;en el centro de la mesa.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00aa00;&quot;&gt;2: Boton de aprobar: &lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Boton para permitir la entrada de la persona al país.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;3: Boton de Rechazar: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;¿Hace falta que lo explique?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -299,7 +304,8 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
+             <string notr="true">color: rgb(255, 255, 255);
+background-color: #221b15;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, &lt;span style=&quot; color:#ff0000;&quot;&gt;asi que ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tu jornada &lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;también terminará&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; si dejas pasar a todas las personas en la cola.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -363,7 +369,8 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
+             <string notr="true">color: rgb(255, 255, 255);
+background-color: #221b15;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffff00;&quot;&gt;Felicidades! Has terminado el tutorial. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;De aquí en adelante estás capacitado, &lt;span style=&quot; color:#aa0000;&quot;&gt;lamentablemente&lt;/span&gt;, para &lt;/p&gt;&lt;p&gt;controlar la frontera de &lt;span style=&quot; color:#aa00ff;&quot;&gt;Astana&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Te deseamos &lt;span style=&quot; color:#ffff00;&quot;&gt;éxitos&lt;/span&gt; en tu nuevo trabajo.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -446,6 +453,9 @@
              <pointsize>22</pointsize>
              <bold>true</bold>
             </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="styleSheet">
             <string notr="true">background-color: rgb(255, 255, 0);

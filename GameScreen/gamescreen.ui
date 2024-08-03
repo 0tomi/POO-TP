@@ -536,7 +536,8 @@ border: none;</string>
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">border-image: url(:/Resources/Documentos/NormativasIcono.png);</string>
+                  <string notr="true">background-color: transparent;
+border: none;</string>
                  </property>
                  <property name="text">
                   <string/>

@@ -109,9 +109,9 @@ QString GeneradorSkin::pickCuerpo(QString * listaSkins[], int topeSkins, char Ge
     bool Cara2Usar = (CaraGeneroX < 5);
 
     if (Genero == 'M' || (Genero == 'X' && Cara2Usar))
-        LinkCara = listaSkins[0][sorteo];
-    else
         LinkCara = listaSkins[1][sorteo];
+    else
+        LinkCara = listaSkins[0][sorteo];
 
     return LinkCara;
 }
