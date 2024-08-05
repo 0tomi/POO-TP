@@ -4,7 +4,7 @@ Skin::Skin() {}
 
 Skin::~Skin()
 {
-    cara = boca = cejas = ojos = nariz = "";
+    pelo = cara = boca = cejas = ojos = nariz = "";
 }
 
 QString Skin::getCaraURL() const
@@ -55,4 +55,24 @@ QString Skin::getBocaURL() const
 void Skin::setBoca(const QString &newBoca)
 {
     boca = newBoca;
+}
+
+QString Skin::getPelo() const
+{
+    return pelo;
+}
+
+void Skin::setPelo(const QString &newPelo)
+{
+    pelo = newPelo;
+}
+
+QString Skin::getGorro() const
+{
+    return gorro;
+}
+
+void Skin::setGorro(const QString &newGorro)
+{
+    gorro = newGorro;
 }

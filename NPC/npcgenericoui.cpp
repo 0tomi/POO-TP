@@ -16,11 +16,16 @@ NPCGenericoUI::NPCGenericoUI(QWidget *parent)
 
     ojosCerrados.load(":/Resources/NPCs/OjosCerrados.png");
     bocaCerrada.load(":/Resources/NPCs/BocaTriste.png");
+    // Usamos esto en vez del metodo clear, porque este se bugea.
+    nada.load(":/Resources/NPCs/Nada.png");
+
+    LimpiarHojaCSS();
 
     ojosPos = ui->Ojos->pos();
     bocaPos = ui->Boca->pos();
     cejasPos = ui->Cejas->pos();
     narizPos = ui->Nariz->pos();
+    peloPos = ui->Pelo->pos();
 }
 
 NPCGenericoUI::~NPCGenericoUI()
@@ -29,29 +34,23 @@ NPCGenericoUI::~NPCGenericoUI()
     delete tiempoParpadeo;
 }
 
+void NPCGenericoUI::LimpiarHojaCSS()
+{
+    ui->Boca->setStyleSheet("");
+    ui->Pelo->setStyleSheet("");
+    ui->Cuerpo->setStyleSheet("");
+    ui->Ojos->setStyleSheet("");
+    ui->Cejas->setStyleSheet("");
+    ui->Nariz->setStyleSheet("");
+    ui->Gorro->setStyleSheet("");
+}
+
 void NPCGenericoUI::setNPC(NPC *newNPCenEscena)
 {
     NPCrepresentado = newNPCenEscena;   // Necesario para los dialogos
     NPCenEscena = dynamic_cast<NPCcomun*>(newNPCenEscena);
 
-    // Obtenemos las partes del cuerpo del npc
-    ojos.load(NPCenEscena->getSkin().getOjosURL());
-    cuerpo.load(NPCenEscena->getSkin().getCaraURL());
-    boca.load(NPCenEscena->getSkin().getBocaURL());
-    cejas.load(NPCenEscena->getSkin().getCejasURL());
-    nariz.load(NPCenEscena->getSkin().getNarizURL());
-
-    // Colocamos la textura de cada parte donde debe.
-    ui->Cuerpo->setPixmap(cuerpo);
-    ui->Boca->setPixmap(boca);
-    ui->Ojos->setPixmap(ojos);
-    ui->Cejas->setPixmap(cejas);
-    ui->Nariz->setPixmap(nariz);
-
-    // Por ahora solo lo hago en el documento
-    int X = width();
-    if (X < 150)
-        ReescalarNPC();
+    setSkinNPC(NPCenEscena->getSkin());
 }
 
 void NPCGenericoUI::setSkinNPC(Skin skinNPC)
@@ -62,13 +61,24 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
     boca.load(skinNPC.getBocaURL());
     cejas.load(skinNPC.getCejasURL());
     nariz.load(skinNPC.getNarizURL());
+    pelo.load(skinNPC.getPelo());
 
     // Colocamos la textura de cada parte donde debe.
+    ui->Gorro->hide();
     ui->Cuerpo->setPixmap(cuerpo);
     ui->Boca->setPixmap(boca);
     ui->Ojos->setPixmap(ojos);
     ui->Cejas->setPixmap(cejas);
     ui->Nariz->setPixmap(nariz);
+    ui->Pelo->setPixmap(pelo);
+
+    qDebug() << skinNPC.getGorro();
+    // Gorro
+    if (skinNPC.getGorro() != ""){
+        gorro.load(skinNPC.getGorro());
+        ui->Gorro->setPixmap(gorro);
+        ui->Gorro->show();
+    }
 
     // Por ahora solo lo hago en el documento
     int X = width();
@@ -88,7 +98,7 @@ void NPCGenericoUI::Rechazado()
 
 void NPCGenericoUI::Entrar()
 {
-    quejarse.start(20 * 1000);
+    quejarse.start(35 * 1000);
     setearParpadear(false);
     NPCUI::Entrar();
 }
@@ -117,13 +127,14 @@ void NPCGenericoUI::ReescalarNPC()
     ReescalarLabel(ui->Boca, boca, escalaFactorW, escalaFactorH);
     ReescalarLabel(ui->Cejas, cejas, escalaFactorW, escalaFactorH);
     ReescalarLabel(ui->Nariz, nariz, escalaFactorW, escalaFactorH);
+    ReescalarLabel(ui->Pelo, pelo, escalaFactorW, escalaFactorH);
+    ReescalarLabel(ui->Gorro, gorro, escalaFactorW, escalaFactorH);
     if (parpadeando)
         ReescalarLabel(ui->Ojos, ojosCerrados, escalaFactorW, escalaFactorH);
     else
         ReescalarLabel(ui->Ojos, ojos, escalaFactorW, escalaFactorH);
 
     reposicionarLabels(escalaFactorW, escalaFactorH);
-    qDebug() << nuevoSize;
 }
 
 void NPCGenericoUI::ReescalarLabel(QLabel *Label, QPixmap &ImagenLabel, double factorW, double factorH)
@@ -140,6 +151,8 @@ void NPCGenericoUI::reposicionarLabels(double factorW, double factorH)
     reposLabel(bocaPos, ui->Boca, factorW, factorH, 5);
     reposLabel(narizPos, ui->Nariz, factorW, factorH, 5);
     reposLabel(cejasPos, ui->Cejas, factorW, factorH, 5);
+    reposLabel(peloPos, ui->Pelo, factorW, factorH, 0);
+    reposLabel(peloPos, ui->Gorro, factorW, factorH, 0);
 }
 
 void NPCGenericoUI::reposLabel(QPoint pos, QLabel *label, double factorW, double factorH, int margen)
@@ -151,7 +164,7 @@ void NPCGenericoUI::reposLabel(QPoint pos, QLabel *label, double factorW, double
 void NPCGenericoUI::emitQuejarse()
 {
     emit QuiereHablar("¿Cuánto más te vas a demorar?");
-    quejarse.start(tiempoParpadeo->bounded(7000,15000));
+    quejarse.start(tiempoParpadeo->bounded(15000,45000));
 }
 
 void NPCGenericoUI::Parpadear()

@@ -15,19 +15,25 @@ public:
 private:
     LectorArchivos lector;
     QRandomGenerator * qrand;
-    QString pickCuerpo(QString * listaSkins[], int topeSkins, char Genero);
+    QString pickSkinConGenero(QString * listaSkins[], int topeSkins, char Genero);
     QString pickSkin(QString * listaSkins, int topeSkins);
 
     // ArrayS con direcciones donde se encuentran las caras de los npcs
-    QString* LinksCaras[2];     // Hombre y Mujer
+    QString LinksGorro[4] = {
+        ":/Resources/NPCs/Gorro1.png", ":/Resources/NPCs/Gorro2.png", ":/Resources/NPCs/Gorro3.png", ":/Resources/NPCs/Gorro4.png"
+    };
+    QString * LinksPelo[2];
+    QString* LinksCaras;     // Hombre y Mujer
     QString* LinksCarasRevolucionario;
-    QString* LinksCarasRefugiado[2]; // Hombre y Mujer
+    QString* LinksCarasRefugiado; // Hombre y Mujer
     QString* LinksCejas;
     QString* LinksOjos;
     QString* LinksBocas;
     QString* LinksNariz;
     QString* LinksBarbas;
 
+    int topeLinksGorro = 4;
+    int topeLinksPelo;
     int topeLinksCaras;
     int topeLinksRevolucionario;
     int topeLinksRefugiado;

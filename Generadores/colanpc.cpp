@@ -16,6 +16,7 @@ ColaNPC::~ColaNPC()
     this->vaciarCola();
     delete NPCaRetornar;
 }
+
 /// #################################### Añadir NPCs a cola ###################################################
 void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
@@ -37,15 +38,17 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 
     qDebug() << "Bucle de generar NPCs";
     while (totalNPCs){
+        // Si hay NPCs invalidos a colocar, sorteamos y decidimos si se generaran en la iteracion.
         if (CantidadInvalidos)
             if (sorteoValidez > 11){
                 Validez = false;
                 CantidadInvalidos--;
             }
+        // Genera el tipo de NPC, basado en si el contador llego a 0; si llega a 0 no genera mas npcs de ese tipo.
         if (arrayTipos[sorteo]){
             addNPC(sorteo, Validez); // Sumamos a la cola el npc con el tipo sorteado.
             arrayTipos[sorteo]--;
-            totalNPCs--;
+            totalNPCs--;            // Restamos el contador de tipos de npc, y el total.
         }
         sorteo = Random.bounded(4);
         sorteoValidez = Random.bounded(20);

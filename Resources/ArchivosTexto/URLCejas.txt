@@ -1,1 +1,7 @@
 :/Resources/NPCs/Cejas1.png
+:/Resources/NPCs/Cejas2.png
+:/Resources/NPCs/Cejas3.png
+:/Resources/NPCs/Cejas4.png
+:/Resources/NPCs/Cejas5.png
+:/Resources/NPCs/Cejas6.png
+:/Resources/NPCs/Cejas7.png

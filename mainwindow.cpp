@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/Resources/th.jpeg"));
     setWindowTitle("Trabajo practico de POO");
 
     CrearPantallasJuego();

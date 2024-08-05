@@ -20,10 +20,11 @@ DNI::DNI(QWidget *parent)
 void DNI::setDocumentacionInfo(Documentacion *documento)
 {
     Pasaporte * dni = dynamic_cast<Pasaporte*>(documento);
-    NPCenDoc->setSkinNPC(dni->SkinNPC);
 
     if (!dni)
         qDebug() << "DNI NULO";
+
+    NPCenDoc->setSkinNPC(dni->getSkinNPC());
 
     ui->nombre->setText(dni->getnombre());
     ui->fecha->setText(dni->getfecha_nacimiento());

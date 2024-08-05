@@ -140,13 +140,6 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
             Contador++;
         }
     }
-
-    qDebug() << "Paises validos:";
-    for (int i = 0; i < maxPaisesPermitidos; i++)
-        qDebug() << paises[paisesValidos[i]];
-    qDebug() << "Paises invalidos:";
-    for (int i = 0; i < maxPaisesInvalidos; i++)
-    qDebug() << paises[paisesInvalidos[i]];
 }
 
 bool ReglasNivel1::checkRepetidos(int dato){

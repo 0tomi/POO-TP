@@ -1,0 +1,6 @@
+:/Resources/NPCs/CuerpoRefugiado1.png
+:/Resources/NPCs/CuerpoRefugiado2.png
+:/Resources/NPCs/CuerpoRefugiado3.png
+:/Resources/NPCs/CuerpoRefugiado4.png
+:/Resources/NPCs/CuerpoRefugiado5.png
+:/Resources/NPCs/CuerpoRefugiado6.png
