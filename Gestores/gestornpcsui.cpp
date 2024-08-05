@@ -13,10 +13,8 @@ GestorNPCsUI::~GestorNPCsUI()
     delete transcriptorDialogos;
 }
 /// #################################### SetUps ###################################################
-void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola)
+void GestorNPCsUI::setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs, ColaNPC* cola)
 {
-    // Spawneamos los documentos
-    GestorDocumentos.setUp(1, EscenarioDocumentos);
     Escenario = EscenarioNPCs;
     ColaNPCs = cola;
 
@@ -26,7 +24,7 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     Escenario->layout()->addWidget(NPCcomunUI);
 
     // Spawneamos el transcriptor
-    transcriptorDialogos = new TranscriptorDialogos(EscenarioDocumentos);
+    transcriptorDialogos = new TranscriptorDialogos(EscenarioTranscriptor);
     connect(Dialogos, &GlobosDialogoUI::Hablando, transcriptorDialogos, &TranscriptorDialogos::CaptarMensaje);
     connect(NPCcomunUI, &NPCGenericoUI::animacionSalirTerminada, transcriptorDialogos, &TranscriptorDialogos::LimpiarDialogo);
 
@@ -37,22 +35,6 @@ void GestorNPCsUI::setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, C
     NPCcomunUI->hide();
     NPCcomunUI->move(-(NPCcomunUI->width()),0);
     MostrandoNPC = false;
-}
-
-void GestorNPCsUI::setUpDocsIcono(QWidget *escena)
-{
-    // Spawneamos el documento
-    docsIconUI = new DocsIconUI(escena);
-
-    // Establecemos un layout para que el documento se centre y tenga resize.
-    QHBoxLayout * layout = new QHBoxLayout(escena);
-    layout->addWidget(docsIconUI);
-    escena->setLayout(layout);
-
-    // Hacemos que los documentos entren en escena solo cuando se clickea el documento.
-    connect(NPCcomunUI, &NPCGenericoUI::animacionEntrarTerminada, docsIconUI, &DocsIconUI::Entrar);
-    connect(docsIconUI, &DocsIconUI::Abierto, &GestorDocumentos, &GestorDocumentosUI::Entrar);
-    connect(docsIconUI, &DocsIconUI::Cerrado, &GestorDocumentos, &GestorDocumentosUI::Salir);
 
     RealizarConexionesDeNPCs();
 }
@@ -60,16 +42,6 @@ void GestorNPCsUI::setUpDocsIcono(QWidget *escena)
 void GestorNPCsUI::setUpTranscriptor(QPushButton *boton)
 {
     connect(boton, &QPushButton::clicked, transcriptorDialogos, &TranscriptorDialogos::MostrarOcultar);
-}
-
-DocsIconUI * GestorNPCsUI::getDocsIcono()
-{
-    return docsIconUI;
-}
-
-void GestorNPCsUI::setUpNuevoNivel(int Nivel)
-{
-    GestorDocumentos.setUpNivel(Nivel);
 }
 
 /// #################################### Empezar ###################################################
@@ -92,9 +64,6 @@ void GestorNPCsUI::RealizarConexionesDeNPCs()
     // Avisamos que termina de salir un NPC
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);
 
-    // Cuando entregamos el documento, sale el npc.
-    connect(docsIconUI, &DocsIconUI::animacionSalirTerminada, this, &GestorNPCsUI::SalirEntidades);
-
     // Aca irian las conecciones del NPC especial
 }
 
@@ -111,7 +80,7 @@ void GestorNPCsUI::Entrar()
     qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
 
     NPCenEscena = ColaNPCs->getNPC();
-    GestorDocumentos.setDocumento(NPCenEscena);
+    emit setDocsInfo(NPCenEscena);
 
     if (ColaNPCs->getSize() == 0){
         // Desconectamos la animacion de entrar
@@ -135,42 +104,18 @@ void GestorNPCsUI::Entrar()
 void GestorNPCsUI::ActualizarEstadoNPC()
 {
     MostrandoNPC = true;
-}
-
-/// #################################### Centrar ###################################################
-void GestorNPCsUI::CentrarDocumentos()
-{
-    GestorDocumentos.Centrar();
-}
-
-void GestorNPCsUI::Centrar()
-{
-    Dialogos->Centrar();
-    // Centramos los documentos
-    GestorDocumentos.Centrar();
+    emit NPCTerminoEntrar();
 }
 
 /// #################################### Salir entidades ###################################################
 void GestorNPCsUI::Salir(bool boton)
 {
-    DetenerAnimacionesDocumentos();
-
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
-
     if (boton){
-        GestorDocumentos.Aprobado();
         Rechazado = false;
     } else {
-        GestorDocumentos.Rechazar();
         Rechazado = true;
     }
-
-    docsIconUI->BloquearDocumento();
-}
-
-void GestorNPCsUI::DetenerAnimacionesDocumentos()
-{
-    GestorDocumentos.DetenerAnimaciones();
 }
 
 void GestorNPCsUI::SalirEntidades()
@@ -198,8 +143,6 @@ void GestorNPCsUI::TerminoNivel()
     // Si hay NPCs presentes, retiramos los documentos y el NPC.
     if (MostrandoNPC || ColaNPCs->getSize()){
         SalirEntidades();
-        GestorDocumentos.Salir();
-        docsIconUI->Sacar();
 
         ColaNPCs->vaciarCola();
     }
@@ -245,4 +188,9 @@ bool GestorNPCsUI::getValidez()
 int GestorNPCsUI::getTipo()
 {
     return NPCenEscena->getTipo();
+}
+
+void GestorNPCsUI::Centrar()
+{
+    Dialogos->Centrar();
 }

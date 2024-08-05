@@ -25,6 +25,11 @@ GestorDocumentosUI::~GestorDocumentosUI()
     delete pase;
 }
 
+bool GestorDocumentosUI::getMostrando() const
+{
+    return Mostrando;
+}
+
 /// #################################### SETTERS ###################################################
 
 void GestorDocumentosUI::setUp(int Level, QWidget *objeto)
@@ -176,6 +181,7 @@ void GestorDocumentosUI::Entrar()
 
     if (tienePase)
         pase->Entrar();
+    Mostrando = true;
 }
 
 void GestorDocumentosUI::Salir()
@@ -185,6 +191,7 @@ void GestorDocumentosUI::Salir()
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->Sacar();
+    Mostrando = false;
 }
 
 void GestorDocumentosUI::DetenerAnimaciones()
@@ -198,12 +205,14 @@ void GestorDocumentosUI::DetenerAnimaciones()
 
 void GestorDocumentosUI::Aprobado()
 {
+    DetenerAnimaciones();
     if (documentosUI[0] == pasaporteUI)
         pasaporteUI->setAprobado();
 }
 
 void GestorDocumentosUI::Rechazar()
 {
+    DetenerAnimaciones();
     if (documentosUI[0] == pasaporteUI)
         pasaporteUI->setRechazado();
 }

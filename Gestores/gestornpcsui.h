@@ -9,8 +9,6 @@
 #include "../NPC/npccomun.h"
 #include "../NPC/globosdialogoui.h"
 #include "../Generadores/colanpc.h"
-#include "gestordocumentosui.h"
-#include "../Documentos/docsiconui.h"
 #include "../Documentos/transcriptordialogos.h"
 
 class GestorNPCsUI: public QWidget
@@ -20,17 +18,12 @@ class GestorNPCsUI: public QWidget
 public:
     GestorNPCsUI();
     ~GestorNPCsUI();
-    void setUp(QWidget* EscenarioDocumentos, QWidget *EscenarioNPCs, ColaNPC* cola);
-    void setUpDocsIcono(QWidget * escena);
-    void setUpTranscriptor(QPushButton * boton);
-
-    DocsIconUI * getDocsIcono();
-    void setUpNuevoNivel(int Nivel);
+    void setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs, ColaNPC* cola);
+    void setUpTranscriptor(QPushButton *boton);
 
     void EmpezarJuego();
-
-    // void addNpc(NPC* newNPC); A incluir a futuro si es necesario
     void Centrar();
+
     void Entrar();
     void Salir(bool Boton);
 
@@ -45,13 +38,11 @@ public:
     void Pausar();
     void Reanudar();
 
-    // Cosas de documentos (luego vemos como se arregla esto)
-    void DetenerAnimacionesDocumentos();
-
 public slots:
-    void CentrarDocumentos();
+    void SalirEntidades();
 
 signals:
+    void setDocsInfo(NPC * info);
     void NPCCambiado();
     void ColaTerminada();
     void UltimoNPC();
@@ -66,14 +57,13 @@ signals:
     void NPCTerminoSalir();
 
 private slots:
-    void SalirEntidades();
     void emitirNPCTerminoSalir();
     void emitColaTerminada();
 
 private:
     ColaNPC* ColaNPCs;
     QWidget* Escenario;
-    GestorDocumentosUI GestorDocumentos;
+    TranscriptorDialogos * transcriptorDialogos;
 
     // NPCs
     NPCGenericoUI* NPCcomunUI;
@@ -83,10 +73,6 @@ private:
     GlobosDialogoUI* Dialogos;
 
     bool MostrandoNPC;
-
-    // Iconos de Docs
-    DocsIconUI * docsIconUI;
-    TranscriptorDialogos * transcriptorDialogos;
 
     int topeNPCs;
     int NivelActual;
