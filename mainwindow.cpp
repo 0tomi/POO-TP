@@ -210,7 +210,7 @@ void MainWindow::PrepararSalirPantallaPausa()
 
 void MainWindow::PonerPantallaPausa()
 {
-    if (PantallaPrevia == 0)
+    if (PantallaPrevia == 0 || PantallaPrevia == 3 || PantallaPrevia == 4)
         pantallaPausa->BlockVolverMenu(true);
     else pantallaPausa->BlockVolverMenu(false);
 

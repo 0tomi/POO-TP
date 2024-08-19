@@ -65,7 +65,7 @@ private:
     float BonificadorGanarCreditosDificultad;
     float BonificadorPerderCreditosDificultad;
 
-    ColaNPC * Cola;
+    ColaNPC Cola;
 
     // Niveles:
     void ResetJuego();
@@ -79,7 +79,12 @@ private:
     AtributosComunes atributos;
 
     // Reglas
-    Reglas* rules[5];
+    ReglasNivel1 reglasLVL1;
+    ReglasNivel2 reglasLVL2;
+    ReglasNivel3 reglasLVL3;
+    ReglasNivel4 reglasLVL4;
+    ReglasNivel5 reglasLVL5;
+    Reglas * reglas[5] = {&reglasLVL1, &reglasLVL2, &reglasLVL3, &reglasLVL4, &reglasLVL5};
 };
 
 #endif // JUEGO_H

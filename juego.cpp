@@ -3,15 +3,12 @@
 
 /// #################################### CONSTRUCTOR ###################################################
 Juego::Juego():
-    atributos()
+    atributos(), reglasLVL1(&atributos)
+    , reglasLVL2(&reglasLVL1), reglasLVL3(&reglasLVL2)
+    , reglasLVL4(&reglasLVL3), reglasLVL5(&reglasLVL4)
+    , Cola()
 {
-    rules[0] = new ReglasNivel1(&atributos);
-    rules[1] = new ReglasNivel2(rules[0]);
-    rules[2] = new ReglasNivel3(rules[1]);
-    rules[3] = new ReglasNivel4(rules[2]);
-    rules[4] = new ReglasNivel5(rules[3]);
-
-    Cola = new ColaNPC(&atributos, rules);
+    Cola.setUpGenerador(reglas);
     setDefaultStats();
 }
 
@@ -22,7 +19,7 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
 
     // Colocamos la dificultad
     setDificultad(Dificultad);
-    Cola->setDificultad(Dificultad);
+    Cola.setDificultad(Dificultad);
     // Reseteamos la cantidad ganada en el nivel
     this->SocialCreditsEarnedInLevel = 0;
     // El else vendra cuando implementemos las partidas guardadas
@@ -75,17 +72,18 @@ void Juego::setDefaultStats()
 
 void Juego::ResetJuego()
 {
+    // Necesita rework a futuro esto
     // Creamos nuevas reglas
     for (int i = 0; i < 5; i++)
-        delete rules[i];
+        delete reglas[i];
 
-    rules[0] = new ReglasNivel1(&atributos);
-    rules[1] = new ReglasNivel2(rules[0]);
-    rules[2] = new ReglasNivel3(rules[1]);
-    rules[3] = new ReglasNivel4(rules[2]);
-    rules[4] = new ReglasNivel5(rules[3]);
+    reglas[0] = new ReglasNivel1(&atributos);
+    reglas[1] = new ReglasNivel2(reglas[0]);
+    reglas[2] = new ReglasNivel3(reglas[1]);
+    reglas[3] = new ReglasNivel4(reglas[2]);
+    reglas[4] = new ReglasNivel5(reglas[3]);
 
-    Cola->actualizarReglas(rules);
+    Cola.actualizarReglas(reglas);
 }
 
 /// #################################### TOMA DE DECISIONES ###################################################
@@ -145,31 +143,31 @@ void Juego::RestarSocialCredits(int Tipo)
 void Juego::setUpNivel1()
 {
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
-    Cola->addNPC(NivelActual, 5, 3, 4, 2, 4);
+    Cola.addNPC(NivelActual, 5, 3, 4, 2, 4);
 }
 
 void Juego::setUpNivel2()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 7, 4, 2, 5, 5);
+    Cola.addNPC(NivelActual, 7, 4, 2, 5, 5);
 }
 
 void Juego::setUpNivel3()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 8, 2, 3, 8, 6);
+    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 void Juego::setUpNivel4()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 8, 2, 3, 8, 6);
+    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 void Juego::setUpNivel5()
 {
     // A desarrollar
-    Cola->addNPC(NivelActual, 8, 2, 3, 8, 6);
+    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 AtributosComunes *Juego::getAtributos()
@@ -179,12 +177,12 @@ AtributosComunes *Juego::getAtributos()
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
-    return (numero < 5)? rules[numero]: nullptr;
+    return (numero < 5)? reglas[numero]: nullptr;
 }
 
 ColaNPC *Juego::getCola()
 {
-    return Cola;
+    return &Cola;
 }
 
 int Juego::getSocialCreditsEarnedInLevel() const

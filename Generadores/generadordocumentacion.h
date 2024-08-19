@@ -18,7 +18,8 @@ using namespace std;
 
 class GeneradorDocumentacion{
 public:
-    GeneradorDocumentacion(AtributosComunes* datos, Reglas** rules); // en ultima instancia se le puede pasar la clase NPC pero no esta definida
+    GeneradorDocumentacion(); // en ultima instancia se le puede pasar la clase NPC pero no esta definida
+    void setUp(Reglas** rules);
     void getDocumentos(NPC* info, bool validez);
     void actualizarReglas(Reglas** rules);
     void setNivel(int Nivel);

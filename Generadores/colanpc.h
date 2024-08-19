@@ -17,7 +17,8 @@ struct nodoNPC{
 
 class ColaNPC{
 public:
-    ColaNPC(AtributosComunes* atributos, Reglas** rules);
+    ColaNPC();
+    void setUpGenerador(Reglas ** rules);
     void addNPC(int Tipo, bool Validez);
     void addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
 
