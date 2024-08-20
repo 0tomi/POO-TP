@@ -81,6 +81,8 @@ private:
     void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
     bool checkRepetidos(int dato);
     bool checkIfValido(int indice);
+
+    void SumarAstana();
 };
 
 

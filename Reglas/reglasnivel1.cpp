@@ -18,6 +18,9 @@ ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
     setDuracionEstanciaValida(9,3);
     setTipoDeVisitaValidas();
     setEstadoCivilValidos();
+
+    // Sumamos Astana (el pais del juego) al array de paises.
+    SumarAstana();
 }
 
 
@@ -161,6 +164,16 @@ bool ReglasNivel1::checkIfValido(int indice)
             return true;
     }
     return false;
+}
+
+void ReglasNivel1::SumarAstana()
+{
+    QString * aux = new QString[this->maxPaises+1];
+    aux[0] = "Astana";
+    for (int i = 1; i < this->maxPaises; i++)
+        aux[i] = this->paises[i-1];
+    delete[] this->paises;
+    this->paises = aux;
 }
 
 // Getters
