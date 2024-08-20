@@ -3,12 +3,17 @@
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
-ColaNPC::ColaNPC(AtributosComunes* datos, Reglas** rules):
-    Random(time(NULL)), GenerarNPC(&Random), GenerarDocumentacion(datos ,rules)
+ColaNPC::ColaNPC():
+    Random(time(NULL)), GenerarNPC(&Random), GenerarDocumentacion()
 {
     this->frente = this->fondo = NULL;
     this->size = 0;
     this->sizeOriginal = 0;
+}
+
+void ColaNPC::setUpGenerador(Reglas **rules)
+{
+    GenerarDocumentacion.setUp(rules);
 }
 
 ColaNPC::~ColaNPC()

@@ -25,15 +25,15 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
-    GestorNPC.setUpDocsIcono(ui->MesaAzul);
     GestorNPC.setUpTranscriptor(ui->transcBoton);
+    GestorDocs.setUp(1, ui->Escritorio);
+    setUpIconoDocsUI();
 
     // Agregamos el libro de reglas
     // ACA ES DONDE SE DEBERIA PASAR POR CONSTRUCTOR EL PUNTERO DE JUEGO
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
 
     SpawnearBotones();
-    SetearConexionesDocumentos();
     RealizarConexionesPrincipales();
     BloquearBotones(true);
 }
@@ -84,19 +84,6 @@ void GameScreen::SpawnearBotones()
     ui->ContenedorBotones->layout()->addWidget(BotonRechazar);
 }
 
-void GameScreen::SetearConexionesDocumentos()
-{
-    DocsIconUI * setup  =  GestorNPC.getDocsIcono();
-    // Bloqueamos los botones al estar el documento cerrado o abierto.
-    connect(setup, &DocsIconUI::Abierto, [this]() {
-        this->DesbloquearBotones();
-    });
-
-    connect(setup, &DocsIconUI::Cerrado, [this]() {
-        this->BloquearBotones(true);
-    });
-}
-
 void GameScreen::BloquearBotones(bool Bloqueo)
 {
     this->BotonesBloqueados = Bloqueo;
@@ -110,6 +97,39 @@ void GameScreen::DesbloquearBotones()
     BloquearBotones(false);
 }
 
+/// Icono documentos
+void GameScreen::setUpIconoDocsUI()
+{
+    IconoDocs = new DocsIconUI(ui->MesaAzul);
+
+    // Establecemos un layout para que el documento se centre y tenga resize.
+    QHBoxLayout * layout = new QHBoxLayout(ui->MesaAzul);
+    layout->addWidget(IconoDocs);
+    ui->MesaAzul->setLayout(layout);
+
+    // Hacemos que los documentos entren en escena solo cuando se clickea el documento.
+    connect(&GestorNPC, &GestorNPCsUI::NPCTerminoEntrar, IconoDocs, &DocsIconUI::Entrar);
+    connect(IconoDocs, &DocsIconUI::Abierto, &GestorDocs, &GestorDocumentosUI::Entrar);
+    connect(IconoDocs, &DocsIconUI::Cerrado, &GestorDocs, &GestorDocumentosUI::Salir);
+
+    // Cuando entregamos el documento, sale el npc.
+    connect(IconoDocs, &DocsIconUI::animacionSalirTerminada, &GestorNPC, &GestorNPCsUI::SalirEntidades);
+
+    SetearConexionesDocumentos();
+}
+
+void GameScreen::SetearConexionesDocumentos()
+{
+    // Bloqueamos los botones al estar el documento cerrado o abierto.
+    connect(IconoDocs, &DocsIconUI::Abierto, [this]() {
+        this->DesbloquearBotones();
+    });
+
+    connect(IconoDocs, &DocsIconUI::Cerrado, [this]() {
+        this->BloquearBotones(true);
+    });
+}
+
 /// #################################### CONEXIONES ###################################################
 
 void GameScreen::RealizarConexionesPrincipales()
@@ -119,7 +139,7 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(BotonRechazar, &BotonesCustom::BotonApretado, this, &GameScreen::Rechazo);
 
     // Conectamos boton de centrar para centrar el documento.
-    connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorNPC, &GestorNPCsUI::CentrarDocumentos);
+    connect(BotonCentrar, &BotonesCustom::BotonApretado, &GestorDocs, &GestorDocumentosUI::Centrar);
 
     connect(pantallaPerdiste, &PantallaPerdiste::AnimacionTermino, this, &GameScreen::Decidir);
 
@@ -134,6 +154,9 @@ void GameScreen::RealizarConexionesPrincipales()
 
     // Conectmaos el boton de reglas
     connect(ui->aparecerReglas, &QPushButton::clicked, this, &GameScreen::MostrarReglas);
+
+    // Conectamos el gestor de NPCs al gestor de Documentos
+    connect(&GestorNPC, &GestorNPCsUI::setDocsInfo, &GestorDocs, &GestorDocumentosUI::setDocumento);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
@@ -143,7 +166,7 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     juego->PrepararJuego(Nivel, Dificultad);
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
-    GestorNPC.setUpNuevoNivel(Nivel);
+    GestorDocs.setUpNivel(Nivel);
 }
 
 void GameScreen::EmpezarJuego()
@@ -189,7 +212,14 @@ void GameScreen::ReanudarJuego()
 
 void GameScreen::FinalDePartida()
 {
-    // a desarrollar
+    // Indicamos que termino el nivel
+    // Si queda un NPC en escena, lo hacemos salir junto a sus documentos.
+    if (GestorNPC.MostrandoElNPC()){
+        if (GestorDocs.getMostrando())
+            GestorDocs.Salir();
+        IconoDocs->Sacar();
+    }
+
     GestorNPC.TerminoNivel();
 
     if (MostrandoReglas)
@@ -244,18 +274,21 @@ void GameScreen::ActualizarTiempo()
 void GameScreen::Acepto()
 {
     juego->addNPCaceptado();
+    GestorDocs.Aprobado();
     SelloDocumento(true);
 }
 
 void GameScreen::Rechazo()
 {
     juego->addNPCrechazado();
+    GestorDocs.Rechazar();
     SelloDocumento(false);
 }
 
 void GameScreen::SelloDocumento(bool Boton)
 {
     GestorNPC.Salir(Boton);
+    IconoDocs->BloquearDocumento();
 
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 

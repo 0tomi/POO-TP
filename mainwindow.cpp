@@ -20,6 +20,13 @@ MainWindow::MainWindow(QWidget *parent)
     // Mostrar en pantalla completa:
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
+
+    // Hacemos que al cambiar de pantalla, la pantalla que se muestre sea el nuevo foco.
+    pantallaMenu->setFocus();
+    connect(pantallas, &QStackedWidget::currentChanged, [this](){
+        QWidget * pantallaActual = pantallas->currentWidget();
+        pantallaActual->setFocus(); // polimorfismo locura
+    });
 }
 
 MainWindow::~MainWindow()
@@ -117,6 +124,7 @@ void MainWindow::setPantallaStats()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
+
     if (event->key() == Qt::Key_F11) {
         if (this->isFullScreen()) {
             PonerModoVentana();
@@ -210,7 +218,7 @@ void MainWindow::PrepararSalirPantallaPausa()
 
 void MainWindow::PonerPantallaPausa()
 {
-    if (PantallaPrevia == 0)
+    if (PantallaPrevia == 0 || PantallaPrevia == 3 || PantallaPrevia == 4)
         pantallaPausa->BlockVolverMenu(true);
     else pantallaPausa->BlockVolverMenu(false);
 

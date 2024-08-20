@@ -23,8 +23,6 @@ public:
     void setUpNivel(int nivel);
     void deleteDocumentos();
 
-    void setDocumento(NPC* infoNPC);
-
     void Centrar();
     void Entrar();
     void Salir();
@@ -34,6 +32,11 @@ public:
     void Rechazar();
 
     ~GestorDocumentosUI();
+
+    bool getMostrando() const;
+
+public slots:
+    void setDocumento(NPC* infoNPC);
 
 signals:
     void TerminoEntrada();
@@ -48,6 +51,7 @@ private:
     PasaporteUI* pasaporteUI;
 
     bool tienePase;
+    bool Mostrando = false;
     int DocumentosEnEscena[10];
     int topePerNPC;
     int topePerLevel;

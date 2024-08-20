@@ -15,6 +15,9 @@
 #include "pantallaperdiste.h"
 #include "../Documentos/docsiconui.h"
 #include "libroreglas.h"
+#include "../Gestores/gestordocumentosui.h"
+#include "../Documentos/transcriptordialogos.h"
+#include "../Documentos/docsiconui.h"
 
 namespace Ui {
 class GameScreen;
@@ -55,7 +58,14 @@ private:
 
     bool Pausado;
 
+    // Documentos que deja el NPC
+    DocsIconUI * IconoDocs;
+    void setUpIconoDocsUI();
+
+    // Gestores
     GestorNPCsUI GestorNPC;
+    GestorDocumentosUI GestorDocs;
+
     void SetearConexionesDocumentos();
 
     BotonesCustom* BotonAprobar;

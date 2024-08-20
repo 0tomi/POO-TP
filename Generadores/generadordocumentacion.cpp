@@ -3,25 +3,24 @@
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
-GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas **newRules)
+GeneradorDocumentacion::GeneradorDocumentacion(): NumeroRandom(static_cast<quint32>(time(NULL)))
 {
     NivelActual = 1;
     DificultadJuego = 1;
     SetDificultadNivel();
 
-    // Asignamos las reglas correspondientes
-    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
-    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
-    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
-    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
-    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
-
-    // Semilla para el generador
-    quint32 Semilla = static_cast<quint32>(time(NULL));
-    NumeroRandom.seed(Semilla);
-
     // Seteamos el randomizador de caracteres
     randomizadorCaracteres = new LocuraCaracteres(&NumeroRandom);
+}
+
+void GeneradorDocumentacion::setUp(Reglas ** rules)
+{
+    // Asignamos las reglas correspondientes
+    reglasNivel1 = dynamic_cast<ReglasNivel1*>(rules[0]);
+    reglasNivel2 = dynamic_cast<ReglasNivel2*>(rules[1]);
+    reglasNivel3 = dynamic_cast<ReglasNivel3*>(rules[2]);
+    reglasNivel4 = dynamic_cast<ReglasNivel4*>(rules[3]);
+    reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
 
     // Pendiente a implementar
     // News de generadores NIVEL 1
@@ -38,7 +37,6 @@ GeneradorDocumentacion::GeneradorDocumentacion(AtributosComunes *datos, Reglas *
     generadorPaisResidencia = new generador_paisresidencia(reglasNivel1);
 
     // Siguientes generadores
-
 }
 
 GeneradorDocumentacion::~GeneradorDocumentacion()

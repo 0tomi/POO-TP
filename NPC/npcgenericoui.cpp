@@ -98,7 +98,7 @@ void NPCGenericoUI::Rechazado()
 
 void NPCGenericoUI::Entrar()
 {
-    quejarse.start(35 * 1000);
+    quejarse.start(60 * 1000);
     setearParpadear(false);
     NPCUI::Entrar();
 }
@@ -164,7 +164,7 @@ void NPCGenericoUI::reposLabel(QPoint pos, QLabel *label, double factorW, double
 void NPCGenericoUI::emitQuejarse()
 {
     emit QuiereHablar("¿Cuánto más te vas a demorar?");
-    quejarse.start(tiempoParpadeo->bounded(15000,45000));
+    quejarse.start(tiempoParpadeo->bounded(15000,75000));
 }
 
 void NPCGenericoUI::Parpadear()
