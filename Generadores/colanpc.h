@@ -4,7 +4,6 @@
 #include "generadordocumentacion.h"
 #include "generadornpc.h" // a futuro para que tengan las cosas de los npcs
 #include "../Reglas/reglasnivel5.h"
-#include "../AtributosComunes/atributoscomunes.h"
 #include <QRandomGenerator>
 
 struct nodoNPC{

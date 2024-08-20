@@ -402,7 +402,7 @@
              </spacer>
             </item>
             <item>
-             <widget class="QWidget" name="TranscriptorBoton" native="true">
+             <widget class="QWidget" name="ContenedorTranscriptor" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -477,7 +477,7 @@ border: none;</string>
              </spacer>
             </item>
             <item>
-             <widget class="QWidget" name="libroreglas" native="true">
+             <widget class="QWidget" name="ContenedorReglas" native="true">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
                 <horstretch>0</horstretch>
@@ -513,7 +513,7 @@ border: none;</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QPushButton" name="aparecerReglas">
+                <widget class="QPushButton" name="reglasBoton">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                    <horstretch>0</horstretch>
