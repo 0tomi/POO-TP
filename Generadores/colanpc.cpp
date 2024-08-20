@@ -19,7 +19,7 @@ void ColaNPC::setUpGenerador(Reglas **rules)
 ColaNPC::~ColaNPC()
 {
     this->vaciarCola();
-    delete NPCaRetornar;
+    //delete NPCaRetornar;
 }
 
 /// #################################### Añadir NPCs a cola ###################################################

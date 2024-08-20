@@ -16,6 +16,9 @@
     <height>410</height>
    </size>
   </property>
+  <property name="cursor">
+   <cursorShape>OpenHandCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>

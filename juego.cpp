@@ -3,7 +3,7 @@
 
 /// #################################### CONSTRUCTOR ###################################################
 Juego::Juego():
-    atributos(), reglasLVL1(&atributos)
+    reglasLVL1()
     , reglasLVL2(&reglasLVL1), reglasLVL3(&reglasLVL2)
     , reglasLVL4(&reglasLVL3), reglasLVL5(&reglasLVL4)
     , Cola()
@@ -77,7 +77,7 @@ void Juego::ResetJuego()
     for (int i = 0; i < 5; i++)
         delete reglas[i];
 
-    reglas[0] = new ReglasNivel1(&atributos);
+    reglas[0] = new ReglasNivel1();
     reglas[1] = new ReglasNivel2(reglas[0]);
     reglas[2] = new ReglasNivel3(reglas[1]);
     reglas[3] = new ReglasNivel4(reglas[2]);
@@ -168,11 +168,6 @@ void Juego::setUpNivel5()
 {
     // A desarrollar
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
-}
-
-AtributosComunes *Juego::getAtributos()
-{
-    return &atributos;
 }
 
 /// #################################### GETTERS & SETTERS ###################################################

@@ -3,7 +3,6 @@
 
 #include <QRandomGenerator>
 
-#include "../AtributosComunes/atributoscomunes.h"
 #include "../Documentos/documentacion.h"
 #include "../Reglas/reglasnivel5.h"
 #include "../NPC/npc.h"
@@ -35,7 +34,6 @@ private:
     generador_paisresidencia * generadorPaisResidencia;
 
     // Datos del juego:
-    AtributosComunes* datos;
     ReglasNivel1* reglasNivel1;
     ReglasNivel2* reglasNivel2;
     ReglasNivel3* reglasNivel3;

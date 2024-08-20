@@ -23,6 +23,9 @@ public:
 
     bool getLibroAbierto() const;
     void BloquearDocumento();
+    void accionar();
+
+    bool Mostrando() const;
 
 signals:
     void Abierto();
@@ -53,7 +56,9 @@ protected:
 private:
     Ui::DocsIconUI *ui;
     void CerrarDocumento();
+    void AbrirDocumento();
     bool BlockDocumento;
+    bool mostrando;
 };
 
 #endif // DOCSICONUI_H

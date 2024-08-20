@@ -6,8 +6,7 @@
 
 GenerarEstancia::GenerarEstancia(ReglasNivel1 * rules, LocuraCaracteres *  randomizador)
 {
-    tipoVisitas = rules->getTipoVisitas();
-    maxTipoVisitas = rules->getMaxTiposVisitas();
+    this->tipoVisitas = rules->getTipoVisitas(this->maxTipoVisitas);
 
     tipoVisitasValidas = rules->getTipoDeVisitaValida();
     maxVisitasValidas = rules->getMaxVisitasPermitidas();
@@ -30,8 +29,7 @@ GenerarEstancia::~GenerarEstancia()
 /// ########################## Reset reglas ###############################
 void GenerarEstancia::resetReglas(ReglasNivel1 * rules)
 {
-    tipoVisitas = rules->getTipoVisitas();
-    maxTipoVisitas = rules->getMaxTiposVisitas();
+    this->tipoVisitas = rules->getTipoVisitas(this->maxTipoVisitas);
 
     tipoVisitasValidas = rules->getTipoDeVisitaValida();
     maxVisitasValidas = rules->getMaxVisitasPermitidas();

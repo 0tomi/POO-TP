@@ -135,8 +135,8 @@ void libroreglas::setDatosPag1(){
 
 void libroreglas::setPaises(ReglasNivel1 * datos){
     int maxIndices;
-
-    QString * Paises = datos->getPaises();
+    int maxPaises;
+    QString * Paises = datos->getPaises(maxPaises);
     int * IndicesInv = datos->getPaisesInvalidos(maxIndices);
 
     QString Texto = "Paises no permitidos:\n";

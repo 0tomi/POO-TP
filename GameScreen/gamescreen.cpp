@@ -52,7 +52,7 @@ void GameScreen::setUpLibroReglas()
     MostrandoReglas = false;
     bloquearBotonReglas.setSingleShot(true);
     connect(&bloquearBotonReglas, &QTimer::timeout, [this]() {
-        ui->aparecerReglas->setEnabled(true);
+        ui->reglasBoton->setEnabled(true);
     });
 }
 /// #################################### BOTONES ###################################################
@@ -153,7 +153,7 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 
     // Conectmaos el boton de reglas
-    connect(ui->aparecerReglas, &QPushButton::clicked, this, &GameScreen::MostrarReglas);
+    connect(ui->reglasBoton, &QPushButton::clicked, this, &GameScreen::MostrarReglas);
 
     // Conectamos el gestor de NPCs al gestor de Documentos
     connect(&GestorNPC, &GestorNPCsUI::setDocsInfo, &GestorDocs, &GestorDocumentosUI::setDocumento);
@@ -238,22 +238,6 @@ void GameScreen::FinalDePartida()
         qDebug() << "Se detuvo forzosamente el juego";
 }
 
-void GameScreen::keyPressEvent(QKeyEvent *event)
-{
-    if (!BotonesBloqueados){
-        if (event->key() == Qt::Key_A){
-                BotonAprobar->Accion();
-        } else
-            if (event->key() == Qt::Key_D) {
-                    BotonRechazar->Accion();
-        } else
-            if (event->key() == Qt::Key_C)
-                    BotonCentrar->Accion();
-    }
-
-    QWidget::keyPressEvent(event);
-}
-
 void GameScreen::Decidir()
 {
     if (juego->getTotalSocialCredits() < 0)
@@ -298,7 +282,7 @@ void GameScreen::SelloDocumento(bool Boton)
 /// #################################### Libro de Reglas ###################################################
 void GameScreen::MostrarReglas()
 {
-    ui->aparecerReglas->setEnabled(false);
+    ui->reglasBoton->setEnabled(false);
     bloquearBotonReglas.start(500);
 
     if (MostrandoReglas){
@@ -311,6 +295,35 @@ void GameScreen::MostrarReglas()
 }
 
 /// #################################### EVENTOS DE VENTANA ###################################################
+
+void GameScreen::keyPressEvent(QKeyEvent *event)
+{
+    if (!BotonesBloqueados){
+        if (event->key() == Qt::Key_A){
+            BotonAprobar->Accion();
+        } else
+            if (event->key() == Qt::Key_D) {
+                BotonRechazar->Accion();
+            } else
+                if (event->key() == Qt::Key_C)
+                    BotonCentrar->Accion();
+    }
+
+    // Abre los documentos con el espacio.
+    if (event->key() == Qt::Key_Space)
+        if (this->IconoDocs->Mostrando())
+            this->IconoDocs->accionar();
+
+    // Apreta el boton de transcripcion
+    if (event->key() == Qt::Key_T)
+        ui->transcBoton->click();
+
+    // Apreta el boton de reglas
+    if (event->key() == Qt::Key_N)
+        ui->reglasBoton->click();
+
+    QWidget::keyPressEvent(event);
+}
 
 void GameScreen::changeEvent(QEvent *event)
 {

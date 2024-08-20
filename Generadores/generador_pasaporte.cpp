@@ -22,8 +22,7 @@ Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules) {
 
     this->rules = rules;
 
-    this->nacionalidades = this->rules->getPaises();
-    this->max_nacionalidades = rules->getMaxPaises();
+    this->nacionalidades = this->rules->getPaises(this->max_nacionalidades);
 
     quint32 Semilla = static_cast<quint32>(time(NULL));
     this->rand.seed(Semilla);
@@ -117,10 +116,10 @@ QString Generar_pasaporte::generar_nacionalidad(bool valido){
     return nacionalidad_generada;
 }
 QString Generar_pasaporte::generar_estado_civil(char genero, bool valido){
-    int tamanio_total = this->rules->getMaxEstadosCiviles(); // cant de estados civiles
+    int tamanio_total; // cant de estados civiles
     int tamanio_validos; // cant de estados civiles validos
     int valorCentinela; // para guardar el valor del rand;
-    QString * estados_civiles = this->rules->getEstadosCiviles(); // para conseguir estados civiles
+    QString * estados_civiles = this->rules->getEstadosCiviles(tamanio_total); // para conseguir estados civiles
     QString * estados_civiles_validos = this->rules->getEstadoCivilPermitido(tamanio_validos);
     QString estado_civil_generado;
     if(valido) { // generar estado civil valido;

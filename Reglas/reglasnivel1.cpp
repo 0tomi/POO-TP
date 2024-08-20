@@ -2,12 +2,8 @@
 #include <ctime>
 #include <QDebug>
 
-ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
-    // # Seteamos atributos principales
-    this->paises = atributos->getPaises(this->maxPaises);
-    this->tipoVisitas = atributos->getVisitas(this->maxTiposVisitas);
-    this->estadosCiviles = atributos->getEstadosCiviles(this->maxEstadosCiviles);
-
+ReglasNivel1::ReglasNivel1(): Reglas()
+{
     // Inicializamos la semilla del generador
     quint32 Semilla = static_cast<quint32>(time(NULL));
     Random.seed(Semilla);
@@ -22,8 +18,6 @@ ReglasNivel1::ReglasNivel1(AtributosComunes* atributos){
     // Sumamos Astana (el pais del juego) al array de paises.
     SumarAstana();
 }
-
-
 
 void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
 {
@@ -40,10 +34,10 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
 
 void ReglasNivel1::setEstadoCivilValidos(){
     // Generamos la cantidad de tipos de estados civiles validos
-    this->maxEstadosCivilPermitidos = Random.bounded(maxEstadosCiviles) + 1;
+    this->maxEstadosCivilPermitidos = Random.bounded(MaxEstadosCiviles) + 1;
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
-    if (this->maxEstadosCivilPermitidos == maxEstadosCiviles)
+    if (this->maxEstadosCivilPermitidos == MaxEstadosCiviles)
         this->estadoCivilValidos = estadosCiviles;
     else
         SeleccionarEstadosCivilesValidos(this->maxEstadosCivilPermitidos);
@@ -54,7 +48,7 @@ void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
     int sorteo, cantidadEstadosValidos = 0;
 
     if (CantidadECValidos < 2){
-        sorteo = Random.bounded(maxEstadosCiviles);
+        sorteo = Random.bounded(MaxEstadosCiviles);
         estadoCivilValidos[0] = estadosCiviles[sorteo];
     } else {
         for (int i = 0; i < CantidadECValidos; i++)
@@ -64,10 +58,10 @@ void ReglasNivel1::SeleccionarEstadosCivilesValidos(int CantidadECValidos){
 
 void ReglasNivel1::setTipoDeVisitaValidas(){
     // Generamos la cantidad de tipos de visitas validas
-    this->maxVisitasPermitidas = Random.bounded(maxTiposVisitas) +1;
+    this->maxVisitasPermitidas = Random.bounded(MaxTipoVisitas) +1;
 
     // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
-    if (this->maxVisitasPermitidas == maxTiposVisitas)
+    if (this->maxVisitasPermitidas == MaxTipoVisitas)
         this->tipoDeVisitaValida = tipoVisitas;
     else
         SeleccionarVisitasValidas(this->maxVisitasPermitidas);
@@ -77,7 +71,7 @@ void ReglasNivel1::SeleccionarVisitasValidas(int CantidadVisitasValidas){
     tipoDeVisitaValida = new QString[CantidadVisitasValidas];
 
     if (CantidadVisitasValidas == 1){
-        int sorteo = Random.bounded(maxTiposVisitas);
+        int sorteo = Random.bounded(MaxTipoVisitas);
         tipoDeVisitaValida[0] = tipoVisitas[sorteo];   /// CAMBIOS QUE TENGO QUE HACER
     } else {
         for (int i = 0; i < CantidadVisitasValidas; i++)
@@ -206,16 +200,6 @@ int ReglasNivel1::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
 }
 
-// Destructor
-ReglasNivel1::~ReglasNivel1()
-{
-    delete[] paisesValidos;
-    if (tipoDeVisitaValida != tipoVisitas)
-        delete[] tipoDeVisitaValida;
-    if (estadoCivilValidos != estadosCiviles)
-        delete[] estadoCivilValidos;
-}
-
 QString *ReglasNivel1::getTipoDeVisitaValida() const
 {
     return tipoDeVisitaValida;
@@ -226,32 +210,12 @@ int ReglasNivel1::getMaxVisitasPermitidas() const
     return maxVisitasPermitidas;
 }
 
-QString *ReglasNivel1::getPaises() const
+// Destructor
+ReglasNivel1::~ReglasNivel1()
 {
-    return paises;
-}
-
-int ReglasNivel1::getMaxPaises() const
-{
-    return maxPaises;
-}
-
-QString *ReglasNivel1::getTipoVisitas() const
-{
-    return tipoVisitas;
-}
-
-int ReglasNivel1::getMaxTiposVisitas() const
-{
-    return maxTiposVisitas;
-}
-
-QString *ReglasNivel1::getEstadosCiviles() const
-{
-    return estadosCiviles;
-}
-
-int ReglasNivel1::getMaxEstadosCiviles() const
-{
-    return maxEstadosCiviles;
+    delete[] paisesValidos;
+    if (tipoDeVisitaValida != tipoVisitas)
+        delete[] tipoDeVisitaValida;
+    if (estadoCivilValidos != estadosCiviles)
+        delete[] estadoCivilValidos;
 }

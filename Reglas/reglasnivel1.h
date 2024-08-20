@@ -2,7 +2,6 @@
 #define REGLASNIVEL1_H
 
 #include "reglas.h"
-#include "../AtributosComunes/atributoscomunes.h"
 #include <QString>
 #include <QRandomGenerator>
 
@@ -11,8 +10,8 @@ using namespace std;
 class ReglasNivel1: public Reglas{
 public:
     // constructores:
-    ReglasNivel1(AtributosComunes *atributos);
-    ReglasNivel1(AtributosComunes *atributos, int cantidadMinimaPaisesPermitidos);
+    ReglasNivel1();
+    ReglasNivel1(int cantidadMinimaPaisesPermitidos);
     ~ReglasNivel1();
 
     // metodos:
@@ -30,29 +29,9 @@ public:
     QString *getTipoDeVisitaValida() const;
     int getMaxVisitasPermitidas() const;
 
-    // Getters comunes
-    QString *getPaises() const;
-    int getMaxPaises() const;
-
-    QString *getTipoVisitas() const;
-    int getMaxTiposVisitas() const;
-
-    QString *getEstadosCiviles() const;
-    int getMaxEstadosCiviles() const;
-
 private:
     // Generador de numeros
     QRandomGenerator Random;
-
-    // # Conjunto de elementos de los cuales obtendremos las reglas #
-    QString* paises;
-    int maxPaises;
-
-    QString* tipoVisitas;
-    int maxTiposVisitas;
-
-    QString* estadosCiviles;
-    int maxEstadosCiviles;
 
     // # Conjunto de reglas #
     int fechaMin, fechaMax; // va a ser solo el anio

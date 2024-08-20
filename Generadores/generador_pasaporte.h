@@ -1,7 +1,6 @@
 #ifndef GENERADOR_PASAPORTE_H
 #define GENERADOR_PASAPORTE_H
 #include "../Documentos/pasaporte.h"
-#include "../AtributosComunes/atributoscomunes.h"
 #include "../Reglas/ReglasNivel1.h"
 #include "../lectorarchivos.h"
 #include "../NPC/npccomun.h"

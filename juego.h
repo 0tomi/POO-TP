@@ -2,7 +2,6 @@
 #define JUEGO_H
 
 #include "Reglas/reglasnivel5.h"
-#include "AtributosComunes/atributoscomunes.h"
 #include "Generadores/colanpc.h"
 
 // Falta completar
@@ -16,7 +15,6 @@ public:
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
     ColaNPC *getCola();
-    AtributosComunes *getAtributos();
 
     // A futuro para cuando tengamos la funcion de guardar partida
     void SetPartida(string DireccionPartida);
@@ -74,9 +72,6 @@ private:
     void setUpNivel3();
     void setUpNivel4();
     void setUpNivel5();
-
-    // Atributos
-    AtributosComunes atributos;
 
     // Reglas
     ReglasNivel1 reglasLVL1;
