@@ -60,7 +60,7 @@ PantallaMenu::~PantallaMenu()
 }
 
 void PantallaMenu::keyPressEvent(QKeyEvent *event)
-{
+{   
     if (!CheatsActivados){
         bool TeclaIncorrecta = true;
         if (SecuenciaMagica == 0 && event->key() == Qt::Key_H)
@@ -83,6 +83,7 @@ void PantallaMenu::keyPressEvent(QKeyEvent *event)
         else if (SecuenciaMagica == 7)
             DesbloquearCheats();
     }
+
     QWidget::keyPressEvent(event);
 }
 
