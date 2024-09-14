@@ -31,7 +31,6 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     setUpIconoDocsUI();
 
     // Agregamos el libro de reglas
-    // ACA ES DONDE SE DEBERIA PASAR POR CONSTRUCTOR EL PUNTERO DE JUEGO
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
 
     SpawnearBotones();
@@ -175,7 +174,7 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::EmpezarJuego()
 {
-    IntroNivel.start(60);
+    IntroNivel.start(30000); // 30 segundos
     ui->reglasBoton->click();
 }
 
