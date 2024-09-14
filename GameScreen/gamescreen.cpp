@@ -22,6 +22,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ColaNPC* Cola = juego->getCola();
 
     tiempoPartida.setSingleShot(true);
+    IntroNivel.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
@@ -30,7 +31,6 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     setUpIconoDocsUI();
 
     // Agregamos el libro de reglas
-    // ACA ES DONDE SE DEBERIA PASAR POR CONSTRUCTOR EL PUNTERO DE JUEGO
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
 
     SpawnearBotones();
@@ -149,6 +149,9 @@ void GameScreen::RealizarConexionesPrincipales()
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
 
+    // Connectamos temporizador de intro del nivel.
+    connect(&IntroNivel, &QTimer::timeout, this, &GameScreen::arrancarJuego);
+
     // Conectamos el quedarse sin npcs con el final de la partida
     connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 
@@ -171,6 +174,13 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::EmpezarJuego()
 {
+    IntroNivel.start(30000); // 30 segundos
+    ui->reglasBoton->click();
+}
+
+void GameScreen::arrancarJuego()
+{
+    qDebug() << "Arranco";
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego

@@ -74,8 +74,10 @@ private:
     QSpacerItem* EspaciadorBotones;
 
     // Controlar tiempo en partida
+    QTimer IntroNivel;
     QTimer TiempoDia;
     void ActualizarTiempo();
+    void arrancarJuego();
     int TiempoActual;
 
     // Botones

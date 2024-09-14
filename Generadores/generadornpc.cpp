@@ -40,7 +40,7 @@ GeneradorNPC::GeneradorNPC(QRandomGenerator * generador): generadorSkin(generado
 }
 
 
-// Esto necesita rework a futuro para distinguir entre caras de Mujeres y Hombres
+// A futuro rework para que segun la dificultad sea mas dificil que tenga imagen fake
 NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez, int nivel){
     NPCcomun* NPCaCrear;
     // 0: Aldeano, 1: Refugiado, 2: Diplomatico, 3: Revolucionario
@@ -63,14 +63,29 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez, int nivel){
     NPCaCrear->setSkinDocs(NPCaCrear->getSkin());
 
     // Si el NPC es fake, añadimos la posibilidad de contener una imagen falsa.
-    if (!Validez){
-        qDebug() << "se activo";
-        int falsificarImagen = Random->bounded(20);
-        if (falsificarImagen < 1)
-            NPCaCrear->setSkinDocs(generadorSkin.getSimilarSkin(NPCaCrear->getSkin(), NPCaCrear->getGenero(), nivel));
-    }
+    if (!Validez)
+        GenerarImagenDocumentosFalsa(NPCaCrear, nivel);
 
     return NPCaCrear;
+}
+
+void GeneradorNPC::GenerarImagenDocumentosFalsa(NPCcomun* npc, int nivel)
+{
+    int Chances;
+    switch (nivel) {
+    case 1: Chances = 7;
+        break;
+    case 2: Chances = 5;
+        break;
+    case 3: Chances = 3;
+        break;
+    default: Chances = 1;
+        break;
+    }
+
+    int falsificarImagen = Random->bounded(20);
+    if (falsificarImagen < Chances)
+        npc->setSkinDocs(generadorSkin.getSimilarSkin(npc->getSkin(), npc->getGenero(), nivel));
 }
 
 // ######## Generadores de dialogos #############
