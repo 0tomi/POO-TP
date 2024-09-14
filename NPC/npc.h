@@ -34,6 +34,7 @@ protected:
     int Tipo;
     Documentacion* documentos[10];
     QString dialogo;
+    QString * datosFalsos;
 };
 
 #endif // NPC_H
