@@ -55,6 +55,9 @@ private:
     QString generarDialogosAcomps(int CantidadAcompaniantes);
 
     char generos[3] = {'M', 'H', 'X'};
+
+    // Generar imagen falsa
+    void GenerarImagenDocumentosFalsa(NPCcomun * NPCaCrear, int nivel);
 };
 
 #endif // GENERADORNPC_H

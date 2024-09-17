@@ -87,7 +87,12 @@ Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
 // En desarrollo
 Skin GeneradorSkin::getSimilarSkin(Skin SkinActual, char Genero, int nivel)
 {
-    /* int Facciones;       En proceso pa dsps
+    Skin newSkin;
+    newSkin = SkinActual;
+
+    int Facciones;
+    int sorteo;
+
     switch(nivel){
     case 1: Facciones = 3;
         break;
@@ -99,9 +104,32 @@ Skin GeneradorSkin::getSimilarSkin(Skin SkinActual, char Genero, int nivel)
         break;
     default: Facciones = 1;
         break;
-    } */
+    }
 
-    return getSkin(qrand->bounded(4), Genero);
+    while (Facciones){
+        sorteo = qrand->bounded(20);
+        if (sorteo > 17)
+            newSkin.setCara(pickSkin(this->LinksCaras, this->topeLinksCaras));
+        else{
+            sorteo = qrand->bounded(6);
+            switch (sorteo){
+            case 0: newSkin.setPelo(pickSkinConGenero(this->LinksPelo, this->topeLinksPelo, Genero));
+                break;
+            case 1: newSkin.setBoca(pickSkin(LinksBocas, topeLinksBocas));
+                break;
+            case 2: newSkin.setNariz(pickSkin(LinksNariz, topeLinksNariz));
+                break;
+            case 3: newSkin.setOjos(pickSkin(LinksOjos, topeLinksOjos));
+                break;
+            case 4: newSkin.setCejas(pickSkin(LinksCejas, topeLinksCejas));
+                break;
+            }
+        }
+
+        Facciones--;
+    }
+
+    return newSkin;
 }
 
 QString GeneradorSkin::pickSkinConGenero(QString * listaSkins[], int topeSkins, char Genero)
