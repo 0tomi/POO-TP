@@ -28,12 +28,16 @@ public:
     virtual ListaAcompaniantes * getListaAcompaniantes();
     virtual Pasaporte *getPasaporte();
 
+    QString getDatosFalsos();
+    void setDatosFalsos(QString newDatosFalsos);
+
 protected:
     bool Validez;
     char Genero;
     int Tipo;
     Documentacion* documentos[10];
     QString dialogo;
+    QString * datosFalsos;
 };
 
 #endif // NPC_H

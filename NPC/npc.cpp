@@ -5,6 +5,11 @@ NPC::NPC(char Gen, int Type, bool newValidez){
     this->Genero = Gen;
     this->Tipo = Type;
     this->Validez = newValidez;
+
+    if (newValidez)
+        this->datosFalsos = nullptr;
+    else this->datosFalsos = new QString;
+
     if (Type != 3)
         dialogo = "";
 
@@ -73,9 +78,28 @@ Pasaporte *NPC::getPasaporte()
     return dynamic_cast<Pasaporte*>(documentos[0]);
 }
 
+QString NPC::getDatosFalsos()
+{
+    // Si no posee datos falsos mandamos un QString vacio
+    if (!datosFalsos)
+        return "";
+
+    auto datos = *datosFalsos;
+    return datos;
+}
+
+void NPC::setDatosFalsos(QString newDatosFalsos)
+{
+    if (!datosFalsos)
+        return;
+    // Si tiene datos falsos los colocamos aqui
+    *datosFalsos += newDatosFalsos;
+}
 
 NPC::~NPC()
 {
     for (int i = 0; i < 10; i++)
         delete documentos[i];
+    if (datosFalsos)
+        delete datosFalsos;
 }

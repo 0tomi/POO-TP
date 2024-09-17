@@ -84,8 +84,10 @@ void GeneradorNPC::GenerarImagenDocumentosFalsa(NPCcomun* npc, int nivel)
     }
 
     int falsificarImagen = Random->bounded(20);
-    if (falsificarImagen < Chances)
+    if (falsificarImagen < Chances){
+        npc->setDatosFalsos("Foto de identificacion invalida\n");
         npc->setSkinDocs(generadorSkin.getSimilarSkin(npc->getSkin(), npc->getGenero(), nivel));
+    }
 }
 
 // ######## Generadores de dialogos #############
@@ -200,12 +202,12 @@ QString GeneradorNPC::generarDialogosAcomps(int CantidadRealAcomp)
 
 void GeneradorNPC::GenerarDialogosNivel4(NPC *info)
 {
-    GenerarDialogosNivel1(info);
+
 }
 
 void GeneradorNPC::GenerarDialogosNivel5(NPC *info)
 {
-    GenerarDialogosNivel1(info);
+
 }
 
 void GeneradorNPC::SortearDialogo(NPC *info, QString * dialogos, int &tope)
