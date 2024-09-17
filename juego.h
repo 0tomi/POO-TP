@@ -3,13 +3,18 @@
 
 #include "Reglas/reglasnivel5.h"
 #include "Generadores/colanpc.h"
+#include "SaveSlots/PlayerStats.h"
 
 // Falta completar
 class Juego{
 public:
     Juego();
     void setDificultad(int dificultad);
-    void PrepararJuego(int Nivel = 1, int Dificultad = 2); // Modo normal por default
+
+    // Preparar Juego
+    void PrepararJuego(int Dificultad);
+    void PrepararJuego(int Nivel, int Dificultad); // Modo normal por default
+    void PrepararJuego(int Nivel, int Dificultad, PlayerStats);
     void setDefaultStats();
 
     // Esto despues lo eliminamos

@@ -164,6 +164,13 @@ void GameScreen::RealizarConexionesPrincipales()
 
 /// #################################### PREPRARAR JUEGO ###################################################
 
+void GameScreen::PrepararJuego(int Dificultad)
+{
+    juego->PrepararJuego(Dificultad);
+    libroReglasUI->setUpLevel(1);
+    GestorDocs.setUpNivel(1);
+}
+
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
     juego->PrepararJuego(Nivel, Dificultad);

@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QSpacerItem>
 
+#include "../SaveSlots/PlayerStats.h"
 #include "../NPC/npcgenericoui.h"
 #include "../Documentos/uaderpass.h"
 #include "../Gestores/gestornpcsui.h"
@@ -30,8 +31,12 @@ class GameScreen : public QWidget
 public:
     explicit GameScreen(Juego* newJuego, QWidget *parent = nullptr);
     ~GameScreen();
+
     void EmpezarJuego();
+    void PrepararJuego(int Dificultad = 2);
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
+    void PrepararJuego(int Nivel, int Dificultad, PlayerStats);
+
     /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas
     void Restart();
 

@@ -13,6 +13,14 @@ Juego::Juego():
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
+void Juego::PrepararJuego(int Dificultad)
+{
+    NivelActual = 1;
+    setDificultad(Dificultad);
+    setDefaultStats();
+    setUpNivel1();
+}
+
 void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
     NivelActual = Nivel;
@@ -34,7 +42,19 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
         break;
     default: setUpNivel5();
         break;
-        }
+    }
+}
+
+void Juego::PrepararJuego(int Nivel, int Dificultad, PlayerStats stats)
+{
+    PrepararJuego(Nivel, Dificultad);
+
+    // Le damos al jugador las estadisticas que posee.
+    SocialCreditsEarnedInLevel = 0;
+    TotalSocialCredits = stats.TotalSocialCredits;
+    Multas = stats.Multas;
+    CantidadNPCsRechazados = stats.CantidadNPCsRechazados;
+    CantidadNPCsAceptados = stats.CantidadNPCsAceptados;
 }
 
 void Juego::setDificultad(int dificultad)
