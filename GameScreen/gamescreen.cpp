@@ -271,6 +271,9 @@ void GameScreen::Rechazo()
 
 void GameScreen::SelloDocumento(bool Boton)
 {
+    if (!GestorNPC.getValidez())
+        qDebug() << GestorNPC.getDatosFalsos();
+
     GestorNPC.Salir(Boton);
     IconoDocs->BloquearDocumento();
 

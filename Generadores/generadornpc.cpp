@@ -64,10 +64,11 @@ NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez, int nivel){
 
     // Si el NPC es fake, añadimos la posibilidad de contener una imagen falsa.
     if (!Validez){
-        qDebug() << "se activo";
         int falsificarImagen = Random->bounded(20);
-        if (falsificarImagen < 1)
+        if (falsificarImagen < 1){
+            NPCaCrear->setDatosFalsos("Foto de identificacion invalida\n");
             NPCaCrear->setSkinDocs(generadorSkin.getSimilarSkin(NPCaCrear->getSkin(), NPCaCrear->getGenero(), nivel));
+        }
     }
 
     return NPCaCrear;
@@ -185,12 +186,12 @@ QString GeneradorNPC::generarDialogosAcomps(int CantidadRealAcomp)
 
 void GeneradorNPC::GenerarDialogosNivel4(NPC *info)
 {
-    GenerarDialogosNivel1(info);
+
 }
 
 void GeneradorNPC::GenerarDialogosNivel5(NPC *info)
 {
-    GenerarDialogosNivel1(info);
+
 }
 
 void GeneradorNPC::SortearDialogo(NPC *info, QString * dialogos, int &tope)

@@ -72,7 +72,6 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
     ui->Nariz->setPixmap(nariz);
     ui->Pelo->setPixmap(pelo);
 
-    qDebug() << skinNPC.getGorro();
     // Gorro
     if (skinNPC.getGorro() != ""){
         gorro.load(skinNPC.getGorro());

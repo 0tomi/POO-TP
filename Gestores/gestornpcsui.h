@@ -34,6 +34,7 @@ public:
 
     bool getValidez();
     int getTipo();
+    QString getDatosFalsos();
 
     void Pausar();
     void Reanudar();

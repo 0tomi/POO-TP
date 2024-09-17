@@ -190,6 +190,11 @@ int GestorNPCsUI::getTipo()
     return NPCenEscena->getTipo();
 }
 
+QString GestorNPCsUI::getDatosFalsos()
+{
+    return NPCenEscena->getDatosFalsos();
+}
+
 void GestorNPCsUI::Centrar()
 {
     Dialogos->Centrar();

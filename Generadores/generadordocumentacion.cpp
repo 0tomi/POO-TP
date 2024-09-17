@@ -78,6 +78,8 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     else
         GenerarCantidadDocsInvalidos();
 
+    if (!Validez)
+        NPC2Generate->setDatosFalsos(logDatosFalsos());
 
     GenerarDocumentosNivel1(Index);
 
@@ -93,6 +95,21 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     if (NivelActual >= 5){
         GenerarDocumentosNivel5(Index);
     }
+}
+
+QString GeneradorDocumentacion::logDatosFalsos()
+{
+    QString log = "";
+    if (!DocsValidos[0])
+        log = "Documento de de identificacion invalido\n";
+    if (!DocsValidos[1])
+        log += "Documento de estancia invalido\n";
+    if (!DocsValidos[2])
+        log += "Pais de residencia invalido\n";
+    if (!DocsValidos[3])
+        log += "Lista de acompañantes invalida\n";
+
+    return log;
 }
 
 /// #################################### GENERADORES SEGUN NIVEL ############################################
@@ -168,6 +185,10 @@ void GeneradorDocumentacion::GenerarCantidadDocsInvalidos()
                 DocsValidos[i] = true;
         }
     }
+
+    // Dejamos el resto de documentos en true para los logs.
+    for (int i = MaxDocumentos; i < 10; i++)
+        DocsValidos[i] = true;
 }
 
 /// #################################### SETTERS ###################################################
