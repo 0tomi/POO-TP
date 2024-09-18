@@ -10,9 +10,9 @@
 class GenerarEstancia {
 public:
     // Constructor
-    GenerarEstancia(ReglasNivel1 * rules, LocuraCaracteres *  randomizador);
+    GenerarEstancia();
+    void Inicializar(ReglasNivel1 * rules, LocuraCaracteres *  randomizador);
     ~GenerarEstancia();
-    void resetReglas(ReglasNivel1 * rules);
 
     // Getter
     Estancia* getEstancia(bool valido, int Dificultad); // Estancia a generar

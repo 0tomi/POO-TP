@@ -179,6 +179,14 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     GestorDocs.setUpNivel(Nivel);
 }
 
+void GameScreen::PrepararJuego(int Nivel, int Dificultad, PlayerStats stats)
+{
+    juego->PrepararJuego(Nivel, Dificultad, stats);
+    libroReglasUI->setUpLevel(Nivel);
+    // more stuff to do
+    GestorDocs.setUpNivel(Nivel);
+}
+
 void GameScreen::EmpezarJuego()
 {
     IntroNivel.start(30000); // 30 segundos

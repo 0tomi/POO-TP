@@ -17,7 +17,8 @@ struct nodoNPC{
 class ColaNPC{
 public:
     ColaNPC();
-    void setUpGenerador(Reglas ** rules);
+    void Inicializar(int Nivel, int Dificultad, Reglas ** rules);
+
     void addNPC(int Tipo, bool Validez);
     void addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
 
@@ -27,7 +28,6 @@ public:
 
     // Vaciar cola tiene que eliminar los NPCS restantes, junto con sus documentos y demas
     void vaciarCola();
-    void actualizarReglas(Reglas** rules);
     void setNivel(int Nivel);
     void setDificultad(int Dificultad);
 

@@ -4,7 +4,14 @@
 
 /// ########################## Constructor ###############################
 
-GenerarEstancia::GenerarEstancia(ReglasNivel1 * rules, LocuraCaracteres *  randomizador)
+GenerarEstancia::GenerarEstancia()
+{
+    // Inicializamos la semilla del random
+    quint32 Semilla = static_cast<quint32>(time(NULL));
+    NumRandom.seed(Semilla);
+}
+
+void GenerarEstancia::Inicializar(ReglasNivel1 *rules, LocuraCaracteres *randomizador)
 {
     this->tipoVisitas = rules->getTipoVisitas(this->maxTipoVisitas);
 
@@ -15,27 +22,12 @@ GenerarEstancia::GenerarEstancia(ReglasNivel1 * rules, LocuraCaracteres *  rando
 
     ObtenerVisitasInvalidas();
 
-    // Inicializamos la semilla del random
-    quint32 Semilla = static_cast<quint32>(time(NULL));
-    NumRandom.seed(Semilla);
     locura = randomizador;
 }
 
 GenerarEstancia::~GenerarEstancia()
 {
 
-}
-
-/// ########################## Reset reglas ###############################
-void GenerarEstancia::resetReglas(ReglasNivel1 * rules)
-{
-    this->tipoVisitas = rules->getTipoVisitas(this->maxTipoVisitas);
-
-    tipoVisitasValidas = rules->getTipoDeVisitaValida();
-    maxVisitasValidas = rules->getMaxVisitasPermitidas();
-
-    duracMaximaEstancia = rules->getDuracionEstanciaPermitida();
-    ObtenerVisitasInvalidas();
 }
 
 /// ########################## Getters ###############################

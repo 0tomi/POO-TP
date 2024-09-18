@@ -11,9 +11,10 @@ ColaNPC::ColaNPC():
     this->sizeOriginal = 0;
 }
 
-void ColaNPC::setUpGenerador(Reglas **rules)
+void ColaNPC::Inicializar(int Nivel, int Dificultad, Reglas **rules)
 {
-    GenerarDocumentacion.setUp(rules);
+    // Aca irian las reglas que le pase juego al leer los niveles
+    GenerarDocumentacion.Inicializar(Nivel, Dificultad, rules);
 }
 
 ColaNPC::~ColaNPC()
@@ -113,11 +114,6 @@ void ColaNPC::setDificultad(int newDificultad)
 void ColaNPC::setNivel(int Nivel)
 {
     GenerarDocumentacion.setNivel(Nivel);
-}
-
-void ColaNPC::actualizarReglas(Reglas **newRules)
-{
-    GenerarDocumentacion.actualizarReglas(newRules);
 }
 
 /// #################################### GETTERS ###################################################

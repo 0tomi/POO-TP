@@ -1,12 +1,15 @@
 #include "generador_paisresidencia.h"
 
 
-generador_paisresidencia::generador_paisresidencia(ReglasNivel1 * rules) : Generar_pasaporte(rules) {
-    this->rules = rules;
+generador_paisresidencia::generador_paisresidencia(){
     quint32 Semilla = static_cast<quint32>(time(NULL));
     this->rand.seed(Semilla);
-    this->locura = new LocuraCaracteres(&this->rand);
+}
 
+void generador_paisresidencia::Inicializar(ReglasNivel1 *rules)
+{
+    this->rules = rules;
+    this->locura = new LocuraCaracteres(&this->rand);
 }
 
 PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)

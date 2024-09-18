@@ -3,7 +3,7 @@
 #include <ctime>
 
 
-Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules) {
+Generar_pasaporte::Generar_pasaporte() {
     LectorArchivos archivo(":/Resources/ArchivosTexto/mujeres.txt");
     this->nombre_mujeres = archivo.getArray();
     this->max_mujeres = archivo.getTopeArray();
@@ -20,15 +20,15 @@ Generar_pasaporte::Generar_pasaporte(ReglasNivel1 * rules) {
     this->apellidos = archivo.getArray();
     this->max_apellidos = archivo.getTopeArray();
 
-    this->rules = rules;
-
-    this->nacionalidades = this->rules->getPaises(this->max_nacionalidades);
-
     quint32 Semilla = static_cast<quint32>(time(NULL));
     this->rand.seed(Semilla);
 }
 
-
+void Generar_pasaporte::Inicializar(ReglasNivel1 *rules)
+{
+    this->rules = rules;
+    this->nacionalidades = this->rules->getPaises(this->max_nacionalidades);
+}
 
 // Función para obtener el número de días en un mes y año dados
 int Generar_pasaporte::obt_dias(int mes, int año) {
@@ -193,9 +193,4 @@ Pasaporte * Generar_pasaporte::crear_pasaporte(bool Validez, NPCcomun * InfoNPC,
     Pasaporte_generado->setSkinNPC(InfoNPC->getSkinDocs());
 
     return this->Pasaporte_generado;
-}
-
-void Generar_pasaporte::restartReglas(ReglasNivel1 *newrules)
-{
-    this->rules = newrules;
 }

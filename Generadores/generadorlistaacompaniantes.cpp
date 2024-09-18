@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-GeneradorListaAcompaniantes::GeneradorListaAcompaniantes(QRandomGenerator * generador) {
+GeneradorListaAcompaniantes::GeneradorListaAcompaniantes() {
     LectorArchivos archivo(":/Resources/ArchivosTexto/mujeres.txt");
     this->nombresMujeres = archivo.getArray();
     this->maxMujeres = archivo.getTopeArray();
@@ -19,7 +19,12 @@ GeneradorListaAcompaniantes::GeneradorListaAcompaniantes(QRandomGenerator * gene
     this->apellidos = archivo.getArray();
     this->maxApellidos = archivo.getTopeArray();
 
-    numRandom = generador;
+
+}
+
+void GeneradorListaAcompaniantes::Inicializar(QRandomGenerator *generador)
+{
+    this->numRandom = generador;
 }
 
 GeneradorListaAcompaniantes::~GeneradorListaAcompaniantes() {}

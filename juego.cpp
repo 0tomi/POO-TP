@@ -8,7 +8,6 @@ Juego::Juego():
     , reglasLVL4(&reglasLVL3), reglasLVL5(&reglasLVL4)
     , Cola()
 {
-    Cola.setUpGenerador(reglas);
     setDefaultStats();
 }
 
@@ -25,9 +24,8 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
     NivelActual = Nivel;
 
-    // Colocamos la dificultad
     setDificultad(Dificultad);
-    Cola.setDificultad(Dificultad);
+
     // Reseteamos la cantidad ganada en el nivel
     this->SocialCreditsEarnedInLevel = 0;
     // El else vendra cuando implementemos las partidas guardadas
@@ -162,31 +160,47 @@ void Juego::RestarSocialCredits(int Tipo)
 /// pero por motivos de testeo lo vamos a dejar asi.
 void Juego::setUpNivel1()
 {
+    // Aca previamente tocaria una lectura del nivel concreto a iniciar
+    // donde obtengamos los datos que necesitamos para cada nivel
+    Cola.Inicializar(NivelActual, Dificultad, reglas);
+
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
     Cola.addNPC(NivelActual, 5, 3, 4, 2, 4);
 }
 
 void Juego::setUpNivel2()
 {
-    // A desarrollar
+    // Aca previamente tocaria una lectura del nivel concreto a iniciar
+    // donde obtengamos los datos que necesitamos para cada nivel
+
+    Cola.Inicializar(NivelActual, Dificultad, reglas);
     Cola.addNPC(NivelActual, 7, 4, 2, 5, 5);
 }
 
 void Juego::setUpNivel3()
 {
-    // A desarrollar
+    // Aca previamente tocaria una lectura del nivel concreto a iniciar
+    // donde obtengamos los datos que necesitamos para cada nivel
+
+    Cola.Inicializar(NivelActual, Dificultad, reglas);
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 void Juego::setUpNivel4()
 {
-    // A desarrollar
+    // Aca previamente tocaria una lectura del nivel concreto a iniciar
+    // donde obtengamos los datos que necesitamos para cada nivel
+
+    Cola.Inicializar(NivelActual, Dificultad, reglas);
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
 void Juego::setUpNivel5()
 {
-    // A desarrollar
+    // Aca previamente tocaria una lectura del nivel concreto a iniciar
+    // donde obtengamos los datos que necesitamos para cada nivel
+
+    Cola.Inicializar(NivelActual, Dificultad, reglas);
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 

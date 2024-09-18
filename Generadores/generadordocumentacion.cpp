@@ -3,65 +3,42 @@
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
-GeneradorDocumentacion::GeneradorDocumentacion(): NumeroRandom(static_cast<quint32>(time(NULL)))
+GeneradorDocumentacion::GeneradorDocumentacion():
+    NumeroRandom(static_cast<quint32>(time(NULL))),
+    randomizadorCaracteres(&NumeroRandom)
 {
     NivelActual = 1;
     DificultadJuego = 1;
     SetDificultadNivel();
 
     // Seteamos el randomizador de caracteres
-    randomizadorCaracteres = new LocuraCaracteres(&NumeroRandom);
 }
 
-void GeneradorDocumentacion::setUp(Reglas ** rules)
+void GeneradorDocumentacion::Inicializar(int Nivel, int Dificultad, Reglas **rules)
 {
-    // Asignamos las reglas correspondientes
+    this->setNivel(Nivel);
+    this->setDificultad(Dificultad);
+    this->InicializarGeneradores(rules);
+}
+
+void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules)
+{
+    /// Work in progress
     reglasNivel1 = dynamic_cast<ReglasNivel1*>(rules[0]);
     reglasNivel2 = dynamic_cast<ReglasNivel2*>(rules[1]);
     reglasNivel3 = dynamic_cast<ReglasNivel3*>(rules[2]);
     reglasNivel4 = dynamic_cast<ReglasNivel4*>(rules[3]);
     reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
 
-    // Pendiente a implementar
-    // News de generadores NIVEL 1
-    // Generador pasaportes
-    generadorPasaporte = new Generar_pasaporte(reglasNivel1);
-
-    // Generador estancia
-    generadorEstancia = new GenerarEstancia(reglasNivel1, randomizadorCaracteres);
-
-    // Generador Lista Acomp
-    generadorListaAcomp = new GeneradorListaAcompaniantes(&NumeroRandom);
-
-    // Generador Pais Residencia
-    generadorPaisResidencia = new generador_paisresidencia(reglasNivel1);
-
-    // Siguientes generadores
+    generadorPasaporte.Inicializar(reglasNivel1);
+    generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres);
+    generadorListaAcomp.Inicializar(&NumeroRandom);
+    generadorPaisResidencia.Inicializar(reglasNivel1);
 }
 
 GeneradorDocumentacion::~GeneradorDocumentacion()
 {
-    delete generadorEstancia;
-    delete generadorPasaporte;
-    delete randomizadorCaracteres;
-    delete generadorPaisResidencia;
     // delete de los siguientes generadores
-}
-
-/// #################################### ACTUALIZAR REGLAS ###################################################
-void GeneradorDocumentacion::actualizarReglas(Reglas **newRules)
-{
-    reglasNivel1 = dynamic_cast<ReglasNivel1*>(newRules[0]);
-    reglasNivel2 = dynamic_cast<ReglasNivel2*>(newRules[1]);
-    reglasNivel3 = dynamic_cast<ReglasNivel3*>(newRules[2]);
-    reglasNivel4 = dynamic_cast<ReglasNivel4*>(newRules[3]);
-    reglasNivel5 = dynamic_cast<ReglasNivel5*>(newRules[4]);
-
-    // Reset de reglas del generador de pasaporte
-    generadorPasaporte->restartReglas(reglasNivel1);
-
-    // Reset de reglas del generador de estancia
-    generadorEstancia->resetReglas(reglasNivel1);
 }
 
 /// #################################### GETTERS ###################################################
@@ -126,12 +103,12 @@ QString GeneradorDocumentacion::logDatosFalsos()
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    Pasaporte* nuevoPasaporte = generadorPasaporte->crear_pasaporte(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate), DificultadJuego);
+    Pasaporte* nuevoPasaporte = generadorPasaporte.crear_pasaporte(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate), DificultadJuego);
     NPC2Generate->addDocumento(nuevoPasaporte, Index);
     Index++;
 
     // Generador de Estancias
-    Estancia* nuevaEstancia = generadorEstancia->getEstancia(DocsValidos[Index], DificultadJuego);
+    Estancia* nuevaEstancia = generadorEstancia.getEstancia(DocsValidos[Index], DificultadJuego);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
     Index++;
 }
@@ -139,7 +116,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
     // Generador de Residencia
-    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia->CrearPaisResidencia(NPC2Generate->getPasaporte(),DocsValidos[Index], DificultadJuego);
+    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.CrearPaisResidencia(NPC2Generate->getPasaporte(),DocsValidos[Index], DificultadJuego);
     NPC2Generate->addDocumento(nuevoPaisResidencia,Index);
     Index++;
 }
@@ -147,7 +124,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
     // Generador de Lista de Acompañantes
-    ListaAcompaniantes * nuevaLista = generadorListaAcomp->getListaAcompaniantes(DocsValidos[Index]);
+    ListaAcompaniantes * nuevaLista = generadorListaAcomp.getListaAcompaniantes(DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaLista, Index);
     Index++;
 }

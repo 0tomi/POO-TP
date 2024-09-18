@@ -39,7 +39,6 @@ GeneradorNPC::GeneradorNPC(QRandomGenerator * generador): generadorSkin(generado
     this->topeDialogosAcomp = lector.getTopeArray();
 }
 
-
 // A futuro rework para que segun la dificultad sea mas dificil que tenga imagen fake
 NPC* GeneradorNPC::getNPCgenerico(int tipo, bool Validez, int nivel){
     NPCcomun* NPCaCrear;

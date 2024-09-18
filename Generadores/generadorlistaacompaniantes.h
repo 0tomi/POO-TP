@@ -27,7 +27,9 @@ private:
     char getGeneroRandom();
     int generarRandomExcluido(int excluded);
 public:
-    GeneradorListaAcompaniantes(QRandomGenerator * generador);
+    GeneradorListaAcompaniantes();
+    void Inicializar(QRandomGenerator * generador);
+
     ~GeneradorListaAcompaniantes();
 
     ListaAcompaniantes * getListaAcompaniantes(bool validez);

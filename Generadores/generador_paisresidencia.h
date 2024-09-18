@@ -25,7 +25,8 @@ private:
     QString generar_fecha(bool valido) override;
     void CamposLocura(int Probabilidades);
 public:
-    generador_paisresidencia(ReglasNivel1 * rules);
+    generador_paisresidencia();
+    void Inicializar(ReglasNivel1 * rules);
     PaisResidencia * CrearPaisResidencia(Pasaporte * Pasaporte2copy, bool valido, int dificultad);
     void resetRules(ReglasNivel1 * rules);
 };

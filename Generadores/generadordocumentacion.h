@@ -18,20 +18,21 @@ using namespace std;
 class GeneradorDocumentacion{
 public:
     GeneradorDocumentacion(); // en ultima instancia se le puede pasar la clase NPC pero no esta definida
-    void setUp(Reglas** rules);
+    void Inicializar(int Nivel, int Dificultad, Reglas** rules);
     void getDocumentos(NPC* info, bool validez);
-    void actualizarReglas(Reglas** rules);
     void setNivel(int Nivel);
     void setDificultad(int Dificultad);
     ~GeneradorDocumentacion();
 
 private:
+    void InicializarGeneradores(Reglas **rules);
+
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
-    GenerarEstancia* generadorEstancia;
-    Generar_pasaporte * generadorPasaporte;
-    GeneradorListaAcompaniantes * generadorListaAcomp;
-    LocuraCaracteres * randomizadorCaracteres;
-    generador_paisresidencia * generadorPaisResidencia;
+    GenerarEstancia generadorEstancia;
+    Generar_pasaporte generadorPasaporte;
+    GeneradorListaAcompaniantes generadorListaAcomp;
+    LocuraCaracteres randomizadorCaracteres;
+    generador_paisresidencia generadorPaisResidencia;
 
     // Datos del juego:
     ReglasNivel1* reglasNivel1;

@@ -35,8 +35,8 @@ protected:
     QString generar_nacionalidad(bool valido);
     virtual QString generar_fecha(bool valido);
 public:
-    Generar_pasaporte(ReglasNivel1 * rules); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
+    Generar_pasaporte(); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
+    void Inicializar(ReglasNivel1 * rules);
     Pasaporte * crear_pasaporte(bool Validez, NPCcomun * InfoNPC, int dificultad);
-    void restartReglas(ReglasNivel1 * rules);
 };
 #endif // GENERADOR_PASAPORTE_H
