@@ -71,7 +71,6 @@ private:
     ColaNPC Cola;
 
     // Niveles:
-    void ResetJuego();
     void setUpNivel1();
     void setUpNivel2();
     void setUpNivel3();

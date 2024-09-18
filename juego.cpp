@@ -88,22 +88,6 @@ void Juego::setDefaultStats()
     CantidadNPCsAceptados = 0;
 }
 
-void Juego::ResetJuego()
-{
-    // Necesita rework a futuro esto
-    // Creamos nuevas reglas
-    for (int i = 0; i < 5; i++)
-        delete reglas[i];
-
-    reglas[0] = new ReglasNivel1();
-    reglas[1] = new ReglasNivel2(reglas[0]);
-    reglas[2] = new ReglasNivel3(reglas[1]);
-    reglas[3] = new ReglasNivel4(reglas[2]);
-    reglas[4] = new ReglasNivel5(reglas[3]);
-
-    Cola.actualizarReglas(reglas);
-}
-
 /// #################################### TOMA DE DECISIONES ###################################################
 void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
 {
