@@ -27,6 +27,11 @@ MainWindow::MainWindow(QWidget *parent)
         QWidget * pantallaActual = pantallas->currentWidget();
         pantallaActual->setFocus(); // polimorfismo locura
     });
+
+    /// ##################### TEST ################################
+    connect(gameScreen, &GameScreen::LogJugador, [this](QString dato){
+        qDebug() << dato;
+    });
 }
 
 MainWindow::~MainWindow()

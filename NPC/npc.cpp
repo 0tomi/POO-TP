@@ -80,9 +80,8 @@ Pasaporte *NPC::getPasaporte()
 
 QString NPC::getDatosFalsos()
 {
-    // Si no posee datos falsos mandamos un QString vacio
     if (!datosFalsos)
-        return "";
+        return "Documentacion valida";
 
     auto datos = *datosFalsos;
     return datos;

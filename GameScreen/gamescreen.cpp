@@ -237,7 +237,7 @@ void GameScreen::ReanudarJuego()
 
 void GameScreen::FinalDePartida()
 {
-    // Indicamos que termino el nivel
+    emit LogJugador("Juego terminado");
     // Si queda un NPC en escena, lo hacemos salir junto a sus documentos.
     if (GestorNPC.MostrandoElNPC()){
         if (GestorDocs.getMostrando())
@@ -260,14 +260,18 @@ void GameScreen::FinalDePartida()
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
     } else
-        qDebug() << "Se detuvo forzosamente el juego";
+        emit LogJugador("Juego terminado forzosamente");
 }
 
 void GameScreen::Decidir()
 {
-    if (juego->getTotalSocialCredits() < 0)
+    if (juego->getTotalSocialCredits() < 0){
+        emit LogJugador("Jugador perdio");
         emit NivelTerminado(true);
-    else emit NivelTerminado(false);
+    } else {
+        emit LogJugador("Jugador perdio");
+        emit NivelTerminado(false);
+    }
 }
 
 void GameScreen::ActualizarTiempo()
@@ -284,6 +288,7 @@ void GameScreen::Acepto()
 {
     juego->addNPCaceptado();
     GestorDocs.Aprobado();
+    emit LogJugador("Jugador acepto a la persona");
     SelloDocumento(true);
 }
 
@@ -291,20 +296,25 @@ void GameScreen::Rechazo()
 {
     juego->addNPCrechazado();
     GestorDocs.Rechazar();
-    SelloDocumento(false);
+    emit LogJugador("Jugador rechazo a la persona");
+    SelloDocumento(false);   
 }
 
 void GameScreen::SelloDocumento(bool Boton)
 {
-    if (!GestorNPC.getValidez())
-        qDebug() << GestorNPC.getDatosFalsos();
-
-    GestorNPC.Salir(Boton);
-    IconoDocs->BloquearDocumento();
-
     juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
-    qDebug() << "Puntaje actual: " << juego->getSocialCreditsEarnedInLevel();
+    if (Boton == GestorNPC.getValidez())
+        emit LogJugador("Jugador tomo la decision correcta.");
+    else{
+        emit LogJugador("Jugador tomo decision equivocada.\nError cometido: ");
+        emit LogJugador(GestorNPC.getDatosFalsos());
+    }
+
+    IconoDocs->BloquearDocumento();
+    GestorNPC.Salir(Boton);
+
+    emit LogJugador("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
 }
 
 /// #################################### Libro de Reglas ###################################################
@@ -321,7 +331,6 @@ void GameScreen::MostrarReglas()
         MostrandoReglas = true;
     }
 }
-
 /// #################################### EVENTOS DE VENTANA ###################################################
 
 void GameScreen::keyPressEvent(QKeyEvent *event)
