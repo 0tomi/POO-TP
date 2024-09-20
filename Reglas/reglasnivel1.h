@@ -4,6 +4,7 @@
 #include "reglas.h"
 #include <QString>
 #include <QRandomGenerator>
+#include <vector>
 
 using namespace std;
 
@@ -13,6 +14,21 @@ public:
     ReglasNivel1();
     ReglasNivel1(int cantidadMinimaPaisesPermitidos);
     ~ReglasNivel1();
+
+    // Generadores
+    void generar_Paises(int Cantidad_Paises_Permitidos);
+    void generar_Paises(vector<QString>& Lista_PaisesPermitidos);
+
+    void generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos);
+    void generar_EstadosCiviles(vector<QString>& Lista_EstadosCiviles_Permitidos);
+
+    void generar_Fechas(int Rango);
+    void set_Fechas(int FechaMinima, int FechaMaxima);
+
+    void generar_DuracionEstancia(int duracion);
+
+    void generar_TiposVisita(int Cantidad_Visitas_Permitidas);
+    void generar_TiposVisita(vector<QString>& Lista_Visitas_Permitidas);
 
     // metodos:
     void resetReglas(int cantidadMinimaPaisesPermitidos);
@@ -62,6 +78,8 @@ private:
     bool checkIfValido(int indice);
 
     void SumarAstana();
+    bool ValidarNombres(vector<QString>& Lista, QString * Lista2, int max);
+    bool ValidarDatos(vector<QString>& Lista, int CantidadMinima, int CantidadMax, QString * Lista2, int maxLista2);
 };
 
 
