@@ -57,7 +57,46 @@ int Generar_pasaporte::obt_dias(int mes, int año) {
     }
 }
 
-// como generar documentos validos o no
+// ################################################# GENERADORES DE CAMPOS ######################################
+
+void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
+    if (valido){
+        for (int i = 0; i < 3; ++i)
+            this->campos_validos[i] = true;
+    } else {
+        int cantidadCamposInvalidos = 0;
+        int sorteo;
+        // Hasta no generarse por lo menos 1 campo valido, no sale del while.
+        qDebug() << "Bucle de generar campos invalidos pasaporte";
+        while (!cantidadCamposInvalidos)
+            for (int i = 0; i < 3; ++i){
+                sorteo = this->rand.bounded(10);
+                if (sorteo < Probabilidad){
+                    this->campos_validos[i] = false;
+                    cantidadCamposInvalidos++;
+                }
+            }
+    }
+}
+
+void Generar_pasaporte::CamposLocura(int Probabilidades)
+{
+    int cantidadCamposInvalidos = 0;
+    int sorteo;
+    // Hasta no generarse por lo menos 1 campo valido, no sale del while.
+    qDebug() << "Bucle de generar campos invalidos Pais de residencia";
+    while (!cantidadCamposInvalidos){
+        for (int i = 0; i < 3; ++i){
+            sorteo = this->rand.bounded(10);
+            if (sorteo < Probabilidades){
+                this->campos_locura[i] = false;
+                cantidadCamposInvalidos++;
+            }
+        }
+    }
+}
+
+// ################################################# GENERADORES DE DATOS ######################################
 QString Generar_pasaporte::generar_fecha(bool valido){
     int generar_anio , generar_mes , generar_dia , cant_dias ;  // cant dias es porque no todos los meses tienen la misma cantidad de dias
     int fecha_min  = this->rules->getFechaMinPermitida();
@@ -78,29 +117,14 @@ QString Generar_pasaporte::generar_fecha(bool valido){
         generar_dia = 1 + this->rand.bounded(cant_dias);
     }
     QString fecha = QString::number(generar_dia) + "/" +  QString::number(generar_mes) + "/" +  QString::number(generar_anio);
+    if (this->campos_locura[0]){ // Para implementar locuracaracteres
+        this->locura->CambiarCadena(this->dificultad, fecha);
+    }
     return fecha;
 }
 
-void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
-    if (valido){
-        for (int i = 0; i < 3; ++i)
-            this->campos_validos[i] = true;
-    } else {
-        int cantidadCamposInvalidos = 0;
-        int sorteo;
-        // Hasta no generarse por lo menos 1 campo valido, no sale del while.
-        qDebug() << "Bucle de generar campos invalidos pasaporte";
-        while (!cantidadCamposInvalidos)
-            for (int i = 0; i < 3; ++i){
-                sorteo = this->rand.bounded(10);
-                if (sorteo < Probabilidad){
-                   this->campos_validos[i] = false;
-                    cantidadCamposInvalidos++;
-                }
-            }
-    }
-}
-//me llega si es valido, reglas, genero
+
+
 QString Generar_pasaporte::generar_nacionalidad(bool valido){
     int tamanio;
     int * indices_paises = this->rules->getPaisesPermitidos(tamanio); // para conseguir las nacionalidades permitidas
@@ -113,8 +137,12 @@ QString Generar_pasaporte::generar_nacionalidad(bool valido){
         indice_generar = this->rand.bounded(this->max_nacionalidades - tamanio);
         nacionalidad_generada = this->nacionalidades[indice_generar];
     }
+    if (this->campos_locura[1]){ // Para implementar locuracaracteres
+        this->locura->CambiarCadena(this->dificultad, nacionalidad_generada);
+    }
     return nacionalidad_generada;
 }
+
 QString Generar_pasaporte::generar_estado_civil(char genero, bool valido){
     int tamanio_total; // cant de estados civiles
     int tamanio_validos; // cant de estados civiles validos
@@ -145,8 +173,12 @@ QString Generar_pasaporte::generar_estado_civil(char genero, bool valido){
         estado_civil_generado += "x";
         break;
     }
+    if (this->campos_locura[2]){  // Para implementar locuracaracteres
+        this->locura->CambiarCadena(this->dificultad, estado_civil_generado);
+    }
     return estado_civil_generado;
 }
+
 QString Generar_pasaporte::generar_nombre(char genero){
     QString nombre_generado; // string con el nombre que se va a pickear
     int valor_centinela; //para pickear indice
@@ -167,9 +199,11 @@ QString Generar_pasaporte::generar_nombre(char genero){
     return nombre_generado;
 }
 
+// ################################################# CREAR PASAPORTE ######################################
 Pasaporte * Generar_pasaporte::crear_pasaporte(bool Validez, NPCcomun * InfoNPC, int dificultad){
     int Probabilidades;
-    switch (dificultad){
+    this->dificultad = dificultad;
+    switch (this->dificultad){
         // Modo facil
     case 1: Probabilidades = 7;
         break;
@@ -181,7 +215,8 @@ Pasaporte * Generar_pasaporte::crear_pasaporte(bool Validez, NPCcomun * InfoNPC,
         break;
     }
 
-    generar_camposValidos(Validez, Probabilidades);
+    this->generar_camposValidos(Validez, Probabilidades);
+    this->CamposLocura(Probabilidades);
 
     QString fecha_generada = generar_fecha(this->campos_validos[0]);
     QString nacionalidad_generada = generar_nacionalidad(this->campos_validos[1]);
