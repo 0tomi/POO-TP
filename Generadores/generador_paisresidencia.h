@@ -26,6 +26,7 @@ private:
     void CamposLocura(int Probabilidades);
 public:
     generador_paisresidencia();
+    ~generador_paisresidencia();
     void Inicializar(ReglasNivel1 * rules);
     PaisResidencia * CrearPaisResidencia(Pasaporte * Pasaporte2copy, bool valido, int dificultad);
     void resetRules(ReglasNivel1 * rules);

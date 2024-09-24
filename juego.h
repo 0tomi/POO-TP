@@ -14,7 +14,7 @@ public:
     // Preparar Juego
     void PrepararJuego(int Dificultad);
     void PrepararJuego(int Nivel, int Dificultad); // Modo normal por default
-    void PrepararJuego(int Nivel, int Dificultad, PlayerStats);
+    void PrepararJuego(PlayerStats);
     void setDefaultStats();
 
     // Esto despues lo eliminamos

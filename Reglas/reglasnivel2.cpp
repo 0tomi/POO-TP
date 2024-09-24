@@ -1,6 +1,6 @@
 #include "reglasnivel2.h"
 
-ReglasNivel2::ReglasNivel2(Reglas *reglasLvL1)
+ReglasNivel2::ReglasNivel2(): Reglas()
 {
-    this->reglasNivel1 = reglasLvL1;
+    this->paises
 }
