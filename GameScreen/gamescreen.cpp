@@ -179,12 +179,12 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     GestorDocs.setUpNivel(Nivel);
 }
 
-void GameScreen::PrepararJuego(int Nivel, int Dificultad, PlayerStats stats)
+void GameScreen::PrepararJuego(PlayerStats stats)
 {
-    juego->PrepararJuego(Nivel, Dificultad, stats);
-    libroReglasUI->setUpLevel(Nivel);
+    juego->PrepararJuego(stats);
+    libroReglasUI->setUpLevel(stats.Nivel);
     // more stuff to do
-    GestorDocs.setUpNivel(Nivel);
+    GestorDocs.setUpNivel(stats.Nivel);
 }
 
 void GameScreen::EmpezarJuego()

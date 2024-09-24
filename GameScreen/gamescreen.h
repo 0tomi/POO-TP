@@ -35,7 +35,7 @@ public:
     void EmpezarJuego();
     void PrepararJuego(int Dificultad = 2);
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
-    void PrepararJuego(int Nivel, int Dificultad, PlayerStats);
+    void PrepararJuego(PlayerStats);
 
     /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas
     void Restart();
