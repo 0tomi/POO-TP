@@ -1,8 +1,8 @@
 #include "generador_paisresidencia.h"
-
+#include <QTime>
 
 generador_paisresidencia::generador_paisresidencia(){
-    quint32 Semilla = static_cast<quint32>(time(NULL));
+    quint32 Semilla = QTime::currentTime().msec();
     this->rand.seed(Semilla);
     this->locura = new LocuraCaracteres(&this->rand);
 }

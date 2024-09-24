@@ -1,12 +1,11 @@
 #ifndef REGLASNIVEL4_H
 #define REGLASNIVEL4_H
-#include "reglasnivel3.h"
+#include "reglas.h"
 
 class ReglasNivel4: public Reglas
 {
 public:
-    ReglasNivel4(Reglas *reglasNivel3);
-    Reglas *reglasNivel3;
+    ReglasNivel4();
 };
 
 #endif // REGLASNIVEL4_H

@@ -1,6 +1,6 @@
 #include "reglasnivel4.h"
 
-ReglasNivel4::ReglasNivel4(Reglas *reglasLvL3)
+ReglasNivel4::ReglasNivel4()
 {
-    this->reglasNivel3 = reglasLvL3;
+
 }
