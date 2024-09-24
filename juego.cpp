@@ -43,9 +43,9 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
     }
 }
 
-void Juego::PrepararJuego(int Nivel, int Dificultad, PlayerStats stats)
+void Juego::PrepararJuego(PlayerStats stats)
 {
-    PrepararJuego(Nivel, Dificultad);
+    PrepararJuego(stats.Nivel, stats.Dificultad);
 
     // Le damos al jugador las estadisticas que posee.
     SocialCreditsEarnedInLevel = 0;
