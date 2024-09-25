@@ -13,13 +13,13 @@ IntroPantalla::IntroPantalla(Juego *game, QWidget *parent):
 
 void IntroPantalla::Mostrar()
 {
-    this->show();
     this->libro->Entrar();
 }
 
 void IntroPantalla::setUp(int nivel)
 {
     this->libro->setUpLevel(nivel);
+    this->show();
 }
 
 IntroPantalla::~IntroPantalla()

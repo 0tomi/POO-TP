@@ -7,6 +7,7 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
 {
     ui->setupUi(this);
     setFixedSize(708,688);
+    juego = datos;
 
     setUpLevel(1);
 
@@ -15,9 +16,6 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
     ui->Anterior->hide();
 
     ui->LibroReglas->setCurrentIndex(PaginaActual);
-
-    // Setup de reglas
-    juego = datos;
 
     setBotones();
     hide();
@@ -124,7 +122,8 @@ void libroreglas::IrPagAnterior(){
 
 void libroreglas::setDatosPag1(){
     // Reglas 1 esta en la posicion 0
-    ReglasNivel1 * rules = dynamic_cast<ReglasNivel1*>(juego->getReglas(0));
+    Reglas* test = juego->getReglas(0);
+    ReglasNivel1 * rules = dynamic_cast<ReglasNivel1*>(test);
 
     setPaises(rules);
     setFechas(rules);

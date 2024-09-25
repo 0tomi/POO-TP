@@ -171,6 +171,7 @@ void GameScreen::PrepararJuego(int Dificultad)
     juego->PrepararJuego(Dificultad);
     libroReglasUI->setUpLevel(1);
     GestorDocs.setUpNivel(1);
+    introPantalla->setUp(1);
 }
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
@@ -179,6 +180,7 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
     GestorDocs.setUpNivel(Nivel);
+    introPantalla->setUp(Nivel);
 }
 
 void GameScreen::PrepararJuego(PlayerStats stats)
@@ -187,6 +189,7 @@ void GameScreen::PrepararJuego(PlayerStats stats)
     libroReglasUI->setUpLevel(stats.Nivel);
     // more stuff to do
     GestorDocs.setUpNivel(stats.Nivel);
+    introPantalla->setUp(stats.Nivel);
 }
 
 void GameScreen::Iniciar()
@@ -196,6 +199,7 @@ void GameScreen::Iniciar()
 
 void GameScreen::arrancarJuego()
 {
+    introPantalla->hide();
     qDebug() << "Arranco";
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
