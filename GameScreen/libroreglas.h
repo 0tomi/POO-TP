@@ -22,7 +22,7 @@ public:
 
 private:
     Ui::libroreglas *ui;
-    Reglas * reglas[5];
+    Juego* juego;
 
     void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();

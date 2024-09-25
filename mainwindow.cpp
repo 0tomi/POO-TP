@@ -186,7 +186,7 @@ void MainWindow::IniciarJuego()
 {
     // Desconectamos la animacion para poder usar despues la pantalla de transicion
     disconnect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
-    gameScreen->EmpezarJuego(); // Aca dsps iria el nivel de juego que toca.
+    gameScreen->Iniciar(); // Aca dsps iria el nivel de juego que toca.
 }
 
 /// ################################## PANTALLA DE INICIO #############################################

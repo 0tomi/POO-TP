@@ -22,7 +22,6 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ColaNPC* Cola = juego->getCola();
 
     tiempoPartida.setSingleShot(true);
-    IntroNivel.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
@@ -32,6 +31,10 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     // Agregamos el libro de reglas
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
+
+    introPantalla = new IntroPantalla(juego, this);
+    introPantalla->setFixedSize(1920,1080);
+    introPantalla->hide();
 
     SpawnearBotones();
     RealizarConexionesPrincipales();
@@ -149,9 +152,6 @@ void GameScreen::RealizarConexionesPrincipales()
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
 
-    // Connectamos temporizador de intro del nivel.
-    connect(&IntroNivel, &QTimer::timeout, this, &GameScreen::arrancarJuego);
-
     // Conectamos el quedarse sin npcs con el final de la partida
     connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 
@@ -160,6 +160,8 @@ void GameScreen::RealizarConexionesPrincipales()
 
     // Conectamos el gestor de NPCs al gestor de Documentos
     connect(&GestorNPC, &GestorNPCsUI::setDocsInfo, &GestorDocs, &GestorDocumentosUI::setDocumento);
+
+    connect(introPantalla, &IntroPantalla::ClickeoEmpezar, this, &GameScreen::arrancarJuego);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
@@ -187,10 +189,9 @@ void GameScreen::PrepararJuego(PlayerStats stats)
     GestorDocs.setUpNivel(stats.Nivel);
 }
 
-void GameScreen::EmpezarJuego()
+void GameScreen::Iniciar()
 {
-    IntroNivel.start(30000); // 30 segundos
-    ui->reglasBoton->click();
+    introPantalla->Mostrar();
 }
 
 void GameScreen::arrancarJuego()

@@ -190,7 +190,7 @@ void Juego::setUpNivel5()
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
-    return (numero < 5)? reglas[numero]: nullptr;
+    return reglas[numero];
 }
 
 ColaNPC *Juego::getCola()

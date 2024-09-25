@@ -19,6 +19,7 @@
 #include "../Gestores/gestordocumentosui.h"
 #include "../Documentos/transcriptordialogos.h"
 #include "../Documentos/docsiconui.h"
+#include "intropantalla.h"
 
 namespace Ui {
 class GameScreen;
@@ -32,7 +33,7 @@ public:
     explicit GameScreen(Juego* newJuego, QWidget *parent = nullptr);
     ~GameScreen();
 
-    void EmpezarJuego();
+    void Iniciar();
     void PrepararJuego(int Dificultad = 2);
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
     void PrepararJuego(PlayerStats);
@@ -77,10 +78,10 @@ private:
     BotonesCustom* BotonAprobar;
     BotonesCustom* BotonRechazar;
     BotonesCustom* BotonCentrar;
+    BotonesCustom* BotonLlamarNPC;
     QSpacerItem* EspaciadorBotones;
 
     // Controlar tiempo en partida
-    QTimer IntroNivel;
     QTimer TiempoDia;
     void ActualizarTiempo();
     void arrancarJuego();
@@ -108,6 +109,9 @@ private:
     QTimer bloquearBotonReglas;
     bool MostrandoReglas;
     void MostrarReglas();
+
+    // Intro del juego
+    IntroPantalla* introPantalla;
 };
 
 #endif // GAMESCREEN_H

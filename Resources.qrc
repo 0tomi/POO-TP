@@ -144,7 +144,7 @@
         <file>Resources/NPCs/Cuerpo10.png</file>
         <file>Resources/NPCs/Cuerpo11.png</file>
         <file>Resources/MaterialPantallas/BotonEscanerApretado.png</file>
-        <file>Resources/MaterialPantallas/BotonEscanerSinApretar (1).png</file>
+        <file>Resources/MaterialPantallas/BotonEscanerSinApretar.png</file>
         <file>Resources/MaterialPantallas/BotonLlamarNPC.png</file>
         <file>Resources/MaterialPantallas/BotonLlamarNPCApretado.png</file>
     </qresource>
