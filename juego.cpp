@@ -4,8 +4,8 @@
 /// #################################### CONSTRUCTOR ###################################################
 Juego::Juego():
     reglasLVL1()
-    , reglasLVL2(&reglasLVL1), reglasLVL3(&reglasLVL2)
-    , reglasLVL4(&reglasLVL3), reglasLVL5(&reglasLVL4)
+    , reglasLVL2(), reglasLVL3()
+    , reglasLVL4(), reglasLVL5()
     , Cola()
 {
     setDefaultStats();

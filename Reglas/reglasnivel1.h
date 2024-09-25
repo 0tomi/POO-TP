@@ -74,13 +74,9 @@ private:
     void SeleccionarVisitasValidas(int CantidadVisitasValidas);
 
     void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
+    void SumarAstana();
+
     bool checkRepetidos(int dato);
     bool checkIfValido(int indice);
-
-    void SumarAstana();
-    bool ValidarNombres(vector<QString>& Lista, QString * Lista2, int max);
-    bool ValidarDatos(vector<QString>& Lista, int CantidadMinima, int CantidadMax, QString * Lista2, int maxLista2);
 };
-
-
 #endif // REGLASNIVEL1_H

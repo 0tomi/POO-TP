@@ -4,7 +4,13 @@
 #include <QRandomGenerator>
 
 #include "../Documentos/documentacion.h"
+
+#include "../Reglas/reglasnivel1.h"
+#include "../Reglas/reglasnivel2.h"
+#include "../Reglas/reglasnivel3.h"
+#include "../Reglas/reglasnivel4.h"
 #include "../Reglas/reglasnivel5.h"
+
 #include "../NPC/npc.h"
 #include "generarestancia.h"
 #include "generador_pasaporte.h"

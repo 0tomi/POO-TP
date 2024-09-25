@@ -16,7 +16,7 @@ private:
     bool camposLocura[3]; // 1 nombre , 2 fecha, 3 pais de residencia
     //campos locura es para ver si se usa locura caracteres o no, si es false no se usa locura si es true si
 
-    QRandomGenerator  rand;
+    QRandomGenerator rand;
     PaisResidencia * PaisResidenciaCreado;
     LocuraCaracteres * locura;
 
@@ -26,6 +26,7 @@ private:
     void CamposLocura(int Probabilidades);
 public:
     generador_paisresidencia();
+    ~generador_paisresidencia();
     void Inicializar(ReglasNivel1 * rules);
     PaisResidencia * CrearPaisResidencia(Pasaporte * Pasaporte2copy, bool valido, int dificultad);
     void resetRules(ReglasNivel1 * rules);

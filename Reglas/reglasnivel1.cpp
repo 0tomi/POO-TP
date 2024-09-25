@@ -1,12 +1,13 @@
 #include "reglasnivel1.h"
-#include <ctime>
+#include <QTime>
 #include <QDebug>
 
-ReglasNivel1::ReglasNivel1(): Reglas()
+ReglasNivel1::ReglasNivel1(): Reglas(), Random(QTime::currentTime().msec())
 {
-    // Inicializamos la semilla del generador
-    quint32 Semilla = static_cast<quint32>(time(NULL));
-    Random.seed(Semilla);
+    paisesInvalidos = nullptr;
+    paisesValidos = nullptr;
+    tipoDeVisitaValida = nullptr;
+    estadoCivilValidos = nullptr;
 
     // # Inicializamos las reglas
     setPaisesPermitidos(6);
@@ -14,9 +15,6 @@ ReglasNivel1::ReglasNivel1(): Reglas()
     setDuracionEstanciaValida(9,3);
     setTipoDeVisitaValidas();
     setEstadoCivilValidos();
-
-    // Sumamos Astana (el pais del juego) al array de paises.
-    SumarAstana();
 }
 
 void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
@@ -35,15 +33,23 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
 /// ####################### Generadores de parametros #######################
 void ReglasNivel1::generar_Paises(int Cantidad_Paises_Permitidos)
 {
+    LimpiarDatos(paisesValidos);
+    LimpiarDatos(paisesInvalidos);
+
     if (Cantidad_Paises_Permitidos < 1 || Cantidad_Paises_Permitidos > maxPaises)
         setPaisesPermitidos(Random.bounded(4));
     else
         setPaisesPermitidos(Cantidad_Paises_Permitidos);
+
+    SumarAstana();
 }
 
 void ReglasNivel1::generar_Paises(vector<QString>& Lista_PaisesPermitidos)
 {
     // Esta funcion no checkea si hay paises repetidos
+
+    LimpiarDatos(paisesValidos);
+    LimpiarDatos(paisesInvalidos);
 
     if (!ValidarDatos(Lista_PaisesPermitidos, 1, maxPaises-2, paises, maxPaises)){
         setPaisesPermitidos(Random.bounded(4));
@@ -67,10 +73,15 @@ void ReglasNivel1::generar_Paises(vector<QString>& Lista_PaisesPermitidos)
         else
             paisesInvalidos[indicesInvalidos++] = i;
     }
+
+    // Sumamos Astana (el pais del juego) al array de paises.
+    SumarAstana();
 }
 
 void ReglasNivel1::generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos)
 {
+    LimpiarDatos(estadoCivilValidos);
+
     int MAXestadosCiviles = 4;
     if (Cantidad_EstadosCiviles_Permitidos < 1 || Cantidad_EstadosCiviles_Permitidos > MAXestadosCiviles)
         setEstadoCivilValidos();
@@ -87,6 +98,8 @@ void ReglasNivel1::generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos
 void ReglasNivel1::generar_EstadosCiviles(vector<QString> &Lista_EstadosCiviles_Permitidos)
 {
     // Esta funcion no checkea si hay estados repetidos
+    LimpiarDatos(estadoCivilValidos);
+
     int MAXEstadosCiviles = 4;
     if (!ValidarDatos(Lista_EstadosCiviles_Permitidos, 1, MAXEstadosCiviles-1, estadosCiviles, MAXEstadosCiviles)){
         setEstadoCivilValidos();
@@ -128,6 +141,8 @@ void ReglasNivel1::generar_DuracionEstancia(int duracion)
 
 void ReglasNivel1::generar_TiposVisita(int Cantidad_Visitas_Permitidas)
 {
+    LimpiarDatos(tipoDeVisitaValida);
+
     if (Cantidad_Visitas_Permitidas < 1){
         setTipoDeVisitaValidas();
         return;
@@ -144,6 +159,8 @@ void ReglasNivel1::generar_TiposVisita(int Cantidad_Visitas_Permitidas)
 
 void ReglasNivel1::generar_TiposVisita(vector<QString> &Lista_Visitas_Permitidas)
 {
+    LimpiarDatos(tipoDeVisitaValida);
+
     int MAXTiposVisita = 3;
     if (!ValidarDatos(Lista_Visitas_Permitidas, 1, MAXTiposVisita, tipoVisitas, MAXTiposVisita)){
         setTipoDeVisitaValidas();
@@ -155,41 +172,6 @@ void ReglasNivel1::generar_TiposVisita(vector<QString> &Lista_Visitas_Permitidas
 
     for (int i = 0; i < maxVisitasPermitidas; ++i)
         tipoDeVisitaValida[i] = Lista_Visitas_Permitidas[i];
-}
-
-bool ReglasNivel1::ValidarDatos(vector<QString> &Lista, int CantidadMinima, int CantidadMax, QString *Lista2, int maxLista2)
-{
-    if (Lista.size() < CantidadMinima || Lista.size() > CantidadMax)
-        return false;
-
-    if (!ValidarNombres(Lista, Lista2, maxLista2))
-        return false;
-
-    return true;
-}
-
-bool ReglasNivel1::ValidarNombres(vector<QString>& Lista, QString * Lista2, int max)
-{
-    bool NombreValido;
-    QString Nombre1, Nombre2;
-    for (int i = 0; i < Lista.size(); ++i){
-        NombreValido = false;
-        Nombre1 = Lista[i].toLower();
-
-        for (int j = 0; j < max; ++j){
-            Nombre2 = Lista2[j].toLower();
-            if (Nombre1 == Nombre2){
-                NombreValido = true;
-                // Si es valido porque lo encontro, lo dejamos como esta escrito en la lista original.
-                Lista[i] = Lista[j];
-            }
-        }
-
-        if (!NombreValido)
-            return false;
-    }
-
-    return true;
 }
 
 /// ####################### Setters de parametros #######################
