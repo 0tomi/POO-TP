@@ -12,7 +12,7 @@ IntroPantalla::IntroPantalla(Juego *game, QWidget *parent):
     this->libro->hide();
 
     animacionSalida = new QPropertyAnimation(this, "pos");
-    animacionSalida->setDuration(2000);
+    animacionSalida->setDuration(1500);
     animacionSalida->setEasingCurve(QEasingCurve::OutExpo);
 
     connect(ui->TerminarIntro, &QPushButton::clicked, this, &IntroPantalla::Salir);
@@ -45,4 +45,9 @@ void IntroPantalla::setUp(int nivel)
 IntroPantalla::~IntroPantalla()
 {
     delete ui;
+}
+
+void IntroPantalla::setVolumenes(float volumen)
+{
+    libro->setVolume(volumen);
 }

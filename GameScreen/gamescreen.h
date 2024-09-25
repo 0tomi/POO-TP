@@ -45,6 +45,7 @@ public slots:
     void PausarJuego();
     void ReanudarJuego();
     void FinalDePartida();
+    void setVolumenes(float);
 
 signals:
     void NivelTerminado(bool Perdio);
@@ -78,7 +79,6 @@ private:
     BotonesCustom* BotonAprobar;
     BotonesCustom* BotonRechazar;
     BotonesCustom* BotonCentrar;
-    BotonesCustom* BotonLlamarNPC;
     QSpacerItem* EspaciadorBotones;
 
     // Controlar tiempo en partida

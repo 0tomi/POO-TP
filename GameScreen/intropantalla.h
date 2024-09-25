@@ -19,6 +19,9 @@ public:
     void setUp(int nivel);
     ~IntroPantalla();
 
+public slots:
+    void setVolumenes(float);
+
 signals:
     void ClickeoEmpezar();
 

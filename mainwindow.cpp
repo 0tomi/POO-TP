@@ -88,6 +88,7 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::return2lastWidget, this, &MainWindow::PrepararSalirPantallaPausa);
     connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::VolverInicio);
     connect(pantallaPausa, &PantallaPausa::clickedTutorial, this, &MainWindow::PrepararTutorial);
+    connect(pantallaPausa, &PantallaPausa::soundVolume, gameScreen , &GameScreen::setVolumenes);
 }
 
 void MainWindow::ConeccionesPantallaMenu()

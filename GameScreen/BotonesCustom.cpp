@@ -87,6 +87,11 @@ bool BotonesCustom::getBotonBloqueado() const
     return BotonBloqueado;
 }
 
+void BotonesCustom::setVolumen(float volumen)
+{
+    sonido2.setVolume(volumen);
+}
+
 void BotonesCustom::PausarBoton()
 {
     ui->Boton->setStyleSheet(SkinBotonBlock);

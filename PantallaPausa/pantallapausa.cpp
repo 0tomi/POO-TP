@@ -15,6 +15,23 @@ PantallaPausa::PantallaPausa(QWidget *parent)
     connect(ui->quitButtonConfirmed, &QPushButton::clicked, this, &PantallaPausa::buttonQuitClicked);
     connect(ui->noReturnButton, &QPushButton::clicked, this, &PantallaPausa::setInicio);
     connect(ui->tutorialButton, &QPushButton::clicked, this, &PantallaPausa::clickedTutorial);
+
+    connect(ui->soundButton, &QPushButton::clicked, this, [this](){
+        ui->Menus->setCurrentIndex(2);
+    });
+    connect(ui->volverApausa, &QPushButton::clicked, this, [this](){
+        ui->Menus->setCurrentIndex(0);
+    });
+
+    ui->VolumenMusica->setRange(0, 100);
+    ui->VolumenSonidos->setRange(0,100);
+    ui->VolumenMusica->setTickPosition(QSlider::NoTicks);
+    ui->VolumenSonidos->setTickPosition(QSlider::NoTicks);
+
+    connect(ui->VolumenSonidos, &QSlider::valueChanged, this, &PantallaPausa::soundSliderChanged);
+    connect(ui->VolumenMusica, &QSlider::valueChanged, this, &PantallaPausa::musicSliderChanged);
+    ui->VolumenMusica->setValue(100);
+    ui->VolumenSonidos->setValue(100);
 }
 
 void PantallaPausa::setInicio()
@@ -42,6 +59,18 @@ void PantallaPausa::setFullScreenButton()
 void PantallaPausa::setWindowedButton()
 {
     ui->stackedWidget->setCurrentWidget(ui->ActivarModoVentana);
+}
+
+void PantallaPausa::musicSliderChanged(int dato)
+{
+    float valor = dato/ 100.0;
+    emit musicVolume(valor);
+}
+
+void PantallaPausa::soundSliderChanged(int dato)
+{
+    float valor = dato/ 100.0;
+    emit soundVolume(valor);
 }
 
 void PantallaPausa::buttonFullScreenClicked()

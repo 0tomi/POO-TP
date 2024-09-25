@@ -3,9 +3,13 @@
 #include <QDebug>
 libroreglas::libroreglas(Juego * datos, QWidget *parent)
     : DocumentosUI(parent)
-    , ui(new Ui::libroreglas)
+    , ui(new Ui::libroreglas), pasarPagina(this), moverLibro(this)
 {
     ui->setupUi(this);
+    pasarPagina.setSource(QUrl("qrc:/Resources/Sonidos/Libro/PasarPagina.WAV"));
+    moverLibro.setSource(QUrl("qrc:/Resources/Sonidos/Libro/LibroMovimiento.WAV"));
+    setVolume(1.0);
+
     setFixedSize(708,688);
     juego = datos;
 
@@ -50,7 +54,20 @@ void libroreglas::setUpLevel(int level)
 void libroreglas::Entrar()
 {
     raise();
+    moverLibro.play();
     DocumentosUI::Entrar();
+}
+
+void libroreglas::Sacar()
+{
+    moverLibro.play();
+    DocumentosUI::Sacar();
+}
+
+void libroreglas::setVolume(float volumen)
+{
+    pasarPagina.setVolume(volumen);
+    moverLibro.setVolume(volumen - 0.2);
 }
 
 void setDocumentacionInfo(Documentacion *documento){
@@ -87,6 +104,7 @@ void libroreglas::setBotones(){
 }
 
 void libroreglas::IrPagSiguiente(){
+    pasarPagina.play();
     PaginaActual++;
     ui->Anterior->show();
 
@@ -98,6 +116,7 @@ void libroreglas::IrPagSiguiente(){
 
 void libroreglas::SaltarPagina(int pagina)
 {
+    pasarPagina.play();
     if (pagina != 0)
         ui->Anterior->show();
     else
@@ -111,6 +130,7 @@ void libroreglas::SaltarPagina(int pagina)
 }
 
 void libroreglas::IrPagAnterior(){
+    pasarPagina.play();
     PaginaActual--;
     ui->Siguiente->show();
 

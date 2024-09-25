@@ -147,5 +147,7 @@
         <file>Resources/MaterialPantallas/BotonEscanerSinApretar.png</file>
         <file>Resources/MaterialPantallas/BotonLlamarNPC.png</file>
         <file>Resources/MaterialPantallas/BotonLlamarNPCApretado.png</file>
+        <file>Resources/Sonidos/Libro/LibroMovimiento.WAV</file>
+        <file>Resources/Sonidos/Libro/PasarPagina.WAV</file>
     </qresource>
 </RCC>

@@ -27,11 +27,14 @@ signals:
     void quit();
     void return2lastWidget();
     void clickedTutorial();
-
+    void musicVolume(float);
+    void soundVolume(float);
 private:
     Ui::PantallaPausa *ui;
 
 private slots:
+    void musicSliderChanged(int);
+    void soundSliderChanged(int);
     void buttonFullScreenClicked();
     void buttonWindowedClicked();
     void buttonQuitClicked();

@@ -134,6 +134,14 @@ void GameScreen::SetearConexionesDocumentos()
 }
 
 /// #################################### CONEXIONES ###################################################
+void GameScreen::setVolumenes(float volumen)
+{
+    introPantalla->setVolumenes(volumen);
+    BotonAprobar->setVolumen(volumen);
+    BotonCentrar->setVolumen(volumen);
+    BotonRechazar->setVolumen(volumen);
+    libroReglasUI->setVolume(volumen);
+}
 
 void GameScreen::RealizarConexionesPrincipales()
 {
