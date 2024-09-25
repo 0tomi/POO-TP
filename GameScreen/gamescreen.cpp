@@ -199,8 +199,6 @@ void GameScreen::Iniciar()
 
 void GameScreen::arrancarJuego()
 {
-    introPantalla->hide();
-    qDebug() << "Arranco";
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego

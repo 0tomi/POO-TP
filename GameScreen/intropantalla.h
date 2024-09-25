@@ -23,9 +23,12 @@ signals:
     void ClickeoEmpezar();
 
 private:
+    QPropertyAnimation * animacionSalida;
     Ui::IntroPantalla *ui;
+    QWidget * padre;
     Juego* juego;
     libroreglas * libro;
+    void Salir();
 };
 
 #endif // INTROPANTALLA_H
