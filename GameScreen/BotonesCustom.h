@@ -27,6 +27,7 @@ public:
     void setSkinBotonUnblock(QString newSkinBotonUnblock);
 
     bool getBotonBloqueado() const;
+    void setVolumen(float);
 
 signals:
     void BotonApretado();

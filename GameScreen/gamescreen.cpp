@@ -22,7 +22,6 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ColaNPC* Cola = juego->getCola();
 
     tiempoPartida.setSingleShot(true);
-    IntroNivel.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
@@ -32,6 +31,10 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     // Agregamos el libro de reglas
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
+
+    introPantalla = new IntroPantalla(juego, this);
+    introPantalla->setFixedSize(1920,1080);
+    introPantalla->hide();
 
     SpawnearBotones();
     RealizarConexionesPrincipales();
@@ -131,6 +134,14 @@ void GameScreen::SetearConexionesDocumentos()
 }
 
 /// #################################### CONEXIONES ###################################################
+void GameScreen::setVolumenes(float volumen)
+{
+    introPantalla->setVolumenes(volumen);
+    BotonAprobar->setVolumen(volumen);
+    BotonCentrar->setVolumen(volumen);
+    BotonRechazar->setVolumen(volumen);
+    libroReglasUI->setVolume(volumen);
+}
 
 void GameScreen::RealizarConexionesPrincipales()
 {
@@ -149,9 +160,6 @@ void GameScreen::RealizarConexionesPrincipales()
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
 
-    // Connectamos temporizador de intro del nivel.
-    connect(&IntroNivel, &QTimer::timeout, this, &GameScreen::arrancarJuego);
-
     // Conectamos el quedarse sin npcs con el final de la partida
     connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 
@@ -160,6 +168,8 @@ void GameScreen::RealizarConexionesPrincipales()
 
     // Conectamos el gestor de NPCs al gestor de Documentos
     connect(&GestorNPC, &GestorNPCsUI::setDocsInfo, &GestorDocs, &GestorDocumentosUI::setDocumento);
+
+    connect(introPantalla, &IntroPantalla::ClickeoEmpezar, this, &GameScreen::arrancarJuego);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
@@ -169,6 +179,7 @@ void GameScreen::PrepararJuego(int Dificultad)
     juego->PrepararJuego(Dificultad);
     libroReglasUI->setUpLevel(1);
     GestorDocs.setUpNivel(1);
+    introPantalla->setUp(1);
 }
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
@@ -177,6 +188,7 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
     GestorDocs.setUpNivel(Nivel);
+    introPantalla->setUp(Nivel);
 }
 
 void GameScreen::PrepararJuego(PlayerStats stats)
@@ -185,17 +197,16 @@ void GameScreen::PrepararJuego(PlayerStats stats)
     libroReglasUI->setUpLevel(stats.Nivel);
     // more stuff to do
     GestorDocs.setUpNivel(stats.Nivel);
+    introPantalla->setUp(stats.Nivel);
 }
 
-void GameScreen::EmpezarJuego()
+void GameScreen::Iniciar()
 {
-    IntroNivel.start(30000); // 30 segundos
-    ui->reglasBoton->click();
+    introPantalla->Mostrar();
 }
 
 void GameScreen::arrancarJuego()
 {
-    qDebug() << "Arranco";
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego
