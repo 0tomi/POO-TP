@@ -1,6 +1,6 @@
 #include "../Generadores/generador_pasaporte.h"
 #include <QDebug>
-#include <ctime>
+#include <QTime>
 
 
 Generar_pasaporte::Generar_pasaporte() {
@@ -20,7 +20,7 @@ Generar_pasaporte::Generar_pasaporte() {
     this->apellidos = archivo.getArray();
     this->max_apellidos = archivo.getTopeArray();
 
-    quint32 Semilla = static_cast<quint32>(time(NULL));
+    quint32 Semilla = QTime::currentTime().msec();;
     this->rand.seed(Semilla);
 }
 

@@ -4,8 +4,8 @@
 /// #################################### CONSTRUCTOR ###################################################
 Juego::Juego():
     reglasLVL1()
-    , reglasLVL2(&reglasLVL1), reglasLVL3(&reglasLVL2)
-    , reglasLVL4(&reglasLVL3), reglasLVL5(&reglasLVL4)
+    , reglasLVL2(), reglasLVL3()
+    , reglasLVL4(), reglasLVL5()
     , Cola()
 {
     setDefaultStats();
@@ -43,9 +43,9 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
     }
 }
 
-void Juego::PrepararJuego(int Nivel, int Dificultad, PlayerStats stats)
+void Juego::PrepararJuego(PlayerStats stats)
 {
-    PrepararJuego(Nivel, Dificultad);
+    PrepararJuego(stats.Nivel, stats.Dificultad);
 
     // Le damos al jugador las estadisticas que posee.
     SocialCreditsEarnedInLevel = 0;
@@ -89,16 +89,22 @@ void Juego::setDefaultStats()
 }
 
 /// #################################### TOMA DE DECISIONES ###################################################
-void Juego::EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador)
+bool Juego::EvaluarDecision(bool& Veredicto, int TipoNPC, bool ValidezNPC, bool DecisionJugador)
 {
+    Veredicto = true;
+    bool Multa = false;
     bool AprobarRefugiado = (TipoNPC == 3) && (DecisionJugador);
-    if (AprobarRefugiado)
-        RestarSocialCredits(TipoNPC);
-    else
-        if ((DecisionJugador != ValidezNPC) && TipoNPC != 3)
-            RestarSocialCredits(TipoNPC);
-        else
+    if (AprobarRefugiado){
+        Multa = RestarSocialCredits(TipoNPC);
+        Veredicto = false;
+    } else {
+        if ((DecisionJugador != ValidezNPC) && TipoNPC != 3){
+            Multa = RestarSocialCredits(TipoNPC);
+            Veredicto = false;
+        } else
             SumarSocialCredits(TipoNPC);
+    }
+    return Multa;
 }
 
 void Juego::SumarSocialCredits(int Tipo)
@@ -119,8 +125,9 @@ void Juego::SumarSocialCredits(int Tipo)
     TotalSocialCredits += (SocialCredits * BonificadorGanarCreditosDificultad);
 }
 
-void Juego::RestarSocialCredits(int Tipo)
+bool Juego::RestarSocialCredits(int Tipo)
 {
+    bool Multa = false;
     int SocialCredits;
     switch(Tipo){
     case 0: SocialCredits = 15;
@@ -129,14 +136,17 @@ void Juego::RestarSocialCredits(int Tipo)
         break;
     case 2: SocialCredits = 25;
         addMulta();
+        Multa = true;
         break;
     default: SocialCredits = 25;
         addMulta();
+        Multa = true;
         break;
     };
 
     SocialCreditsEarnedInLevel -= (SocialCredits * BonificadorPerderCreditosDificultad);
     TotalSocialCredits -= (SocialCredits * BonificadorGanarCreditosDificultad);
+    return Multa;
 }
 
 /// #################################### SETUP DE NIVELES ###################################################
@@ -156,7 +166,7 @@ void Juego::setUpNivel2()
 {
     // Aca previamente tocaria una lectura del nivel concreto a iniciar
     // donde obtengamos los datos que necesitamos para cada nivel
-
+    reglasLVL2.generar_PaisesPermitidos(6);
     Cola.Inicializar(NivelActual, Dificultad, reglas);
     Cola.addNPC(NivelActual, 7, 4, 2, 5, 5);
 }
@@ -190,7 +200,7 @@ void Juego::setUpNivel5()
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
-    return (numero < 5)? reglas[numero]: nullptr;
+    return reglas[numero];
 }
 
 ColaNPC *Juego::getCola()

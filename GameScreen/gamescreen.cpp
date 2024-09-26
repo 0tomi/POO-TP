@@ -22,7 +22,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ColaNPC* Cola = juego->getCola();
 
     tiempoPartida.setSingleShot(true);
-    IntroNivel.setSingleShot(true);
+    volumenActual = 1.0;
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
@@ -32,6 +32,10 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
 
     // Agregamos el libro de reglas
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
+
+    introPantalla = new IntroPantalla(juego, this);
+    introPantalla->setFixedSize(1920,1080);
+    introPantalla->hide();
 
     SpawnearBotones();
     RealizarConexionesPrincipales();
@@ -113,7 +117,11 @@ void GameScreen::setUpIconoDocsUI()
     connect(IconoDocs, &DocsIconUI::Cerrado, &GestorDocs, &GestorDocumentosUI::Salir);
 
     // Cuando entregamos el documento, sale el npc.
-    connect(IconoDocs, &DocsIconUI::animacionSalirTerminada, &GestorNPC, &GestorNPCsUI::SalirEntidades);
+    connect(IconoDocs, &DocsIconUI::animacionSalirTerminada, [this](){
+        GestorNPC.SalirEntidades();
+        SelloDocumento(this->DecisionJugador);
+    });
+//&GestorNPC, &GestorNPCsUI::SalirEntidades);
 
     SetearConexionesDocumentos();
 }
@@ -131,6 +139,19 @@ void GameScreen::SetearConexionesDocumentos()
 }
 
 /// #################################### CONEXIONES ###################################################
+void GameScreen::setVolumenes(float volumen)
+{
+    this->volumenActual = volumen;
+    introPantalla->setVolumenes(volumen);
+    BotonAprobar->setVolumen(volumen);
+    BotonCentrar->setVolumen(volumen);
+    BotonRechazar->setVolumen(volumen);
+    libroReglasUI->setVolume(volumen);
+    GestorNPC.setVolumen(volumen);
+    for (int i = 0; i < Notificaciones.size(); ++i)
+        if (Notificaciones[i])
+            Notificaciones[i]->setVolume(volumen);
+}
 
 void GameScreen::RealizarConexionesPrincipales()
 {
@@ -149,9 +170,6 @@ void GameScreen::RealizarConexionesPrincipales()
     // Conectamos el temporizador de partida para terminar la partida.
     connect(&tiempoPartida, &QTimer::timeout, this, &GameScreen::FinalDePartida);
 
-    // Connectamos temporizador de intro del nivel.
-    connect(&IntroNivel, &QTimer::timeout, this, &GameScreen::arrancarJuego);
-
     // Conectamos el quedarse sin npcs con el final de la partida
     connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 
@@ -160,6 +178,8 @@ void GameScreen::RealizarConexionesPrincipales()
 
     // Conectamos el gestor de NPCs al gestor de Documentos
     connect(&GestorNPC, &GestorNPCsUI::setDocsInfo, &GestorDocs, &GestorDocumentosUI::setDocumento);
+
+    connect(introPantalla, &IntroPantalla::ClickeoEmpezar, this, &GameScreen::arrancarJuego);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
@@ -169,6 +189,7 @@ void GameScreen::PrepararJuego(int Dificultad)
     juego->PrepararJuego(Dificultad);
     libroReglasUI->setUpLevel(1);
     GestorDocs.setUpNivel(1);
+    introPantalla->setUp(1);
 }
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
@@ -177,25 +198,27 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
     GestorDocs.setUpNivel(Nivel);
+    introPantalla->setUp(Nivel);
 }
 
-void GameScreen::PrepararJuego(int Nivel, int Dificultad, PlayerStats stats)
+void GameScreen::PrepararJuego(PlayerStats stats)
 {
-    juego->PrepararJuego(Nivel, Dificultad, stats);
-    libroReglasUI->setUpLevel(Nivel);
+    juego->PrepararJuego(stats);
+    libroReglasUI->setUpLevel(stats.Nivel);
     // more stuff to do
-    GestorDocs.setUpNivel(Nivel);
+    GestorDocs.setUpNivel(stats.Nivel);
+    introPantalla->setUp(stats.Nivel);
 }
 
-void GameScreen::EmpezarJuego()
+void GameScreen::Iniciar()
 {
-    IntroNivel.start(30000); // 30 segundos
-    ui->reglasBoton->click();
+    CantidadNotificaciones = 0;
+    Notificaciones.clear();
+    introPantalla->Mostrar();
 }
 
 void GameScreen::arrancarJuego()
 {
-    qDebug() << "Arranco";
     tiempoPartida.start(8*60*1000); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego
@@ -261,6 +284,8 @@ void GameScreen::FinalDePartida()
         else pantallaPerdiste->Iniciar(false);
     } else
         emit LogJugador("Juego terminado forzosamente");
+
+    MatarNotificaciones();
 }
 
 void GameScreen::Decidir()
@@ -289,7 +314,9 @@ void GameScreen::Acepto()
     juego->addNPCaceptado();
     GestorDocs.Aprobado();
     emit LogJugador("Jugador acepto a la persona");
-    SelloDocumento(true);
+    DecisionJugador = true;
+    IconoDocs->BloquearDocumento();
+    GestorNPC.Salir(true);
 }
 
 void GameScreen::Rechazo()
@@ -297,22 +324,24 @@ void GameScreen::Rechazo()
     juego->addNPCrechazado();
     GestorDocs.Rechazar();
     emit LogJugador("Jugador rechazo a la persona");
-    SelloDocumento(false);   
+    DecisionJugador = false;
+    IconoDocs->BloquearDocumento();
+    GestorNPC.Salir(false);
 }
 
 void GameScreen::SelloDocumento(bool Boton)
 {
-    juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
+    bool Veredicto;
+    bool Multa = juego->EvaluarDecision(Veredicto, GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
-    if (Boton == GestorNPC.getValidez())
+    if (Veredicto)
         emit LogJugador("Jugador tomo la decision correcta.");
     else{
+        QString ErrorCometido = GestorNPC.getDatosFalsos();
+        CrearNotificacion(Multa, ErrorCometido);
         emit LogJugador("Jugador tomo decision equivocada.\nError cometido: ");
-        emit LogJugador(GestorNPC.getDatosFalsos());
+        emit LogJugador(ErrorCometido);
     }
-
-    IconoDocs->BloquearDocumento();
-    GestorNPC.Salir(Boton);
 
     emit LogJugador("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
 }
@@ -330,6 +359,29 @@ void GameScreen::MostrarReglas()
         libroReglasUI->Entrar();
         MostrandoReglas = true;
     }
+}
+
+void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
+{
+    Notificacion* nuevaNotificacion = new Notificacion(CantidadNotificaciones, Multa, Motivo, this->volumenActual, ui->Escritorio);
+    nuevaNotificacion->Entrar();
+    connect(nuevaNotificacion, &Notificacion::QuiereCerrarNotificacion, this, &GameScreen::MatarNotificacion);
+    Notificaciones.push_back(nuevaNotificacion);
+    CantidadNotificaciones++;
+}
+
+void GameScreen::MatarNotificaciones()
+{
+    if (CantidadNotificaciones)
+        for (int i = 0; i < Notificaciones.size(); ++i)
+            if (Notificaciones[i])
+                delete Notificaciones[i];
+}
+
+void GameScreen::MatarNotificacion(int Numero)
+{
+    delete Notificaciones[Numero];
+    Notificaciones[Numero] = nullptr;
 }
 /// #################################### EVENTOS DE VENTANA ###################################################
 

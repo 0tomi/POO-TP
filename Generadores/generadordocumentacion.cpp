@@ -18,22 +18,30 @@ void GeneradorDocumentacion::Inicializar(int Nivel, int Dificultad, Reglas **rul
 {
     this->setNivel(Nivel);
     this->setDificultad(Dificultad);
-    this->InicializarGeneradores(rules);
+    this->InicializarGeneradores(rules, Nivel);
 }
 
-void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules)
+void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
 {
     /// Work in progress
     reglasNivel1 = dynamic_cast<ReglasNivel1*>(rules[0]);
-    reglasNivel2 = dynamic_cast<ReglasNivel2*>(rules[1]);
-    reglasNivel3 = dynamic_cast<ReglasNivel3*>(rules[2]);
-    reglasNivel4 = dynamic_cast<ReglasNivel4*>(rules[3]);
-    reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
-
     generadorPasaporte.Inicializar(reglasNivel1);
     generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres);
-    generadorListaAcomp.Inicializar(&NumeroRandom);
-    generadorPaisResidencia.Inicializar(reglasNivel1);
+
+    if (nivel > 1){
+        reglasNivel2 = dynamic_cast<ReglasNivel2*>(rules[1]);
+        generadorPaisResidencia.Inicializar(reglasNivel1, reglasNivel2);
+    }
+    if (nivel > 2){
+        reglasNivel3 = dynamic_cast<ReglasNivel3*>(rules[2]);
+        generadorListaAcomp.Inicializar(&NumeroRandom); // Falta aniadir los requerimientos de nivel 3
+    }
+    if (nivel > 3){
+        reglasNivel4 = dynamic_cast<ReglasNivel4*>(rules[3]);
+    }
+    if (nivel > 4){
+        reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
+    }
 }
 
 GeneradorDocumentacion::~GeneradorDocumentacion()

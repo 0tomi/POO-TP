@@ -10,6 +10,11 @@ NPC::NPC(char Gen, int Type, bool newValidez){
         this->datosFalsos = nullptr;
     else this->datosFalsos = new QString;
 
+    if (this->Tipo == 3){
+        this->datosFalsos = new QString;
+        *datosFalsos = "No pueden pasar revolucionarios.\n";
+    }
+
     if (Type != 3)
         dialogo = "";
 

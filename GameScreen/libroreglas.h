@@ -5,6 +5,7 @@
 #include "../juego.h"
 #include "../Documentos/documentosui.h"
 #include <QString>
+#include <QSoundEffect>
 
 namespace Ui {
 class libroreglas;
@@ -18,11 +19,15 @@ public:
     explicit libroreglas(Juego * datos, QWidget *parent = nullptr);
     ~libroreglas();
     void setUpLevel(int level);
-    virtual void Entrar() override;
+    void Entrar() override;
+    void Sacar() override;
+    void setVolume(float);
 
 private:
+    QSoundEffect moverLibro;
+    QSoundEffect pasarPagina;
     Ui::libroreglas *ui;
-    Reglas * reglas[5];
+    Juego* juego;
 
     void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();
@@ -30,6 +35,7 @@ private:
     void IrPagSiguiente();
     void SaltarPagina(int pagina);
     void setDatosPag1();
+    void setDatosNivel2();
 
     int CantidadPaginas;
     int PaginaActual;

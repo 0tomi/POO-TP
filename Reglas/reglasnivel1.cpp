@@ -1,12 +1,13 @@
 #include "reglasnivel1.h"
-#include <ctime>
+#include <QTime>
 #include <QDebug>
 
-ReglasNivel1::ReglasNivel1(): Reglas()
+ReglasNivel1::ReglasNivel1(): Reglas(), Random(QTime::currentTime().msec())
 {
-    // Inicializamos la semilla del generador
-    quint32 Semilla = static_cast<quint32>(time(NULL));
-    Random.seed(Semilla);
+    paisesInvalidos = nullptr;
+    paisesValidos = nullptr;
+    tipoDeVisitaValida = nullptr;
+    estadoCivilValidos = nullptr;
 
     // # Inicializamos las reglas
     setPaisesPermitidos(6);
@@ -14,9 +15,6 @@ ReglasNivel1::ReglasNivel1(): Reglas()
     setDuracionEstanciaValida(9,3);
     setTipoDeVisitaValidas();
     setEstadoCivilValidos();
-
-    // Sumamos Astana (el pais del juego) al array de paises.
-    SumarAstana();
 }
 
 void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
@@ -31,6 +29,152 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos)
     setTipoDeVisitaValidas();
     setEstadoCivilValidos();
 }
+
+/// ####################### Generadores de parametros #######################
+void ReglasNivel1::generar_Paises(int Cantidad_Paises_Permitidos)
+{
+    LimpiarDatos(paisesValidos);
+    LimpiarDatos(paisesInvalidos);
+
+    if (Cantidad_Paises_Permitidos < 1 || Cantidad_Paises_Permitidos > maxPaises)
+        setPaisesPermitidos(Random.bounded(4));
+    else
+        setPaisesPermitidos(Cantidad_Paises_Permitidos);
+
+    SumarAstana();
+}
+
+void ReglasNivel1::generar_Paises(vector<QString>& Lista_PaisesPermitidos)
+{
+    // Esta funcion no checkea si hay paises repetidos
+
+    LimpiarDatos(paisesValidos);
+    LimpiarDatos(paisesInvalidos);
+
+    if (!ValidarDatos(Lista_PaisesPermitidos, 1, maxPaises-2, paises, maxPaises)){
+        setPaisesPermitidos(Random.bounded(4));
+        return;
+    }
+
+    int MAXPAISESInvalidos = maxPaises - Lista_PaisesPermitidos.size();
+    this->paisesValidos = new int[Lista_PaisesPermitidos.size()];
+    this->paisesInvalidos = new int[MAXPAISESInvalidos];
+
+    int indicesInvalidos = 0, indiceValidos = 0;
+    bool PaisValido;
+    for (int i = 0; i < maxPaises; ++i){
+        PaisValido = false;
+        for (int j = 0; j < Lista_PaisesPermitidos.size(); ++j)
+            if (paises[i] == Lista_PaisesPermitidos[i])
+                PaisValido = true;
+
+        if (PaisValido)
+            paisesValidos[indiceValidos++] = i;
+        else
+            paisesInvalidos[indicesInvalidos++] = i;
+    }
+
+    // Sumamos Astana (el pais del juego) al array de paises.
+    SumarAstana();
+}
+
+void ReglasNivel1::generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos)
+{
+    LimpiarDatos(estadoCivilValidos);
+
+    int MAXestadosCiviles = 4;
+    if (Cantidad_EstadosCiviles_Permitidos < 1 || Cantidad_EstadosCiviles_Permitidos > MAXestadosCiviles)
+        setEstadoCivilValidos();
+    else{
+        this->maxEstadosCivilPermitidos = Cantidad_EstadosCiviles_Permitidos;
+        // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
+        if (this->maxEstadosCivilPermitidos == MaxEstadosCiviles)
+            this->estadoCivilValidos = estadosCiviles;
+        else
+            SeleccionarEstadosCivilesValidos(this->maxEstadosCivilPermitidos);
+    }
+}
+
+void ReglasNivel1::generar_EstadosCiviles(vector<QString> &Lista_EstadosCiviles_Permitidos)
+{
+    // Esta funcion no checkea si hay estados repetidos
+    LimpiarDatos(estadoCivilValidos);
+
+    int MAXEstadosCiviles = 4;
+    if (!ValidarDatos(Lista_EstadosCiviles_Permitidos, 1, MAXEstadosCiviles-1, estadosCiviles, MAXEstadosCiviles)){
+        setEstadoCivilValidos();
+        return;
+    }
+
+    maxEstadosCivilPermitidos = Lista_EstadosCiviles_Permitidos.size();
+    estadoCivilValidos = new QString[maxEstadosCivilPermitidos];
+
+    for (int i = 0; i < maxEstadosCivilPermitidos; ++i)
+        estadoCivilValidos[i] = Lista_EstadosCiviles_Permitidos[i];
+}
+
+void ReglasNivel1::generar_Fechas(int Rango)
+{
+    if (Rango == 0){
+        setFechasValidas();
+        return;
+    }
+
+    this->fechaMin = Random.bounded(1900,2000);
+    this->fechaMax = this->fechaMin + Rango;
+}
+
+void ReglasNivel1::set_Fechas(int FechaMinima, int FechaMaxima)
+{
+    this->fechaMin = FechaMinima;
+    this->fechaMax = FechaMaxima;
+}
+
+void ReglasNivel1::generar_DuracionEstancia(int duracion)
+{
+    if (duracion < 1)
+        setDuracionEstanciaValida(3, 9);
+    else{
+        this->duracionDeEstanciaValida = duracion;
+    }
+}
+
+void ReglasNivel1::generar_TiposVisita(int Cantidad_Visitas_Permitidas)
+{
+    LimpiarDatos(tipoDeVisitaValida);
+
+    if (Cantidad_Visitas_Permitidas < 1){
+        setTipoDeVisitaValidas();
+        return;
+    }
+
+    this->maxVisitasPermitidas = Cantidad_Visitas_Permitidas;
+    // Si obtuvimos la misma cantidad, devuelvo el array original directamente.
+    if (this->maxVisitasPermitidas == MaxTipoVisitas)
+        this->tipoDeVisitaValida = tipoVisitas;
+    else
+        SeleccionarVisitasValidas(this->maxVisitasPermitidas);
+
+}
+
+void ReglasNivel1::generar_TiposVisita(vector<QString> &Lista_Visitas_Permitidas)
+{
+    LimpiarDatos(tipoDeVisitaValida);
+
+    int MAXTiposVisita = 3;
+    if (!ValidarDatos(Lista_Visitas_Permitidas, 1, MAXTiposVisita, tipoVisitas, MAXTiposVisita)){
+        setTipoDeVisitaValidas();
+        return;
+    }
+
+    this->maxVisitasPermitidas = Lista_Visitas_Permitidas.size();
+    this->tipoDeVisitaValida = new QString [maxVisitasPermitidas];
+
+    for (int i = 0; i < maxVisitasPermitidas; ++i)
+        tipoDeVisitaValida[i] = Lista_Visitas_Permitidas[i];
+}
+
+/// ####################### Setters de parametros #######################
 
 void ReglasNivel1::setEstadoCivilValidos(){
     // Generamos la cantidad de tipos de estados civiles validos
@@ -102,11 +246,7 @@ void ReglasNivel1::setFechasValidas(){
 }
 
 void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
-    // Generar cantidad de paises permitidos:
-    int cantidadPaisesPermitidos;
-    do{
-        cantidadPaisesPermitidos = Random.bounded(maxPaises) +1;
-    }while(cantidadPaisesPermitidos == maxPaises || cantidadPaisesPermitidos < cantidadMinimaPaisesPermitidos);
+    int cantidadPaisesPermitidos = cantidadMinimaPaisesPermitidos;
 
     // Preparar el array de paises y su tope
     this->paisesValidos = new int[cantidadPaisesPermitidos];
@@ -171,7 +311,6 @@ void ReglasNivel1::SumarAstana()
 }
 
 // Getters
-
 int* ReglasNivel1::getPaisesPermitidos(int &max) const{
     max = this->maxPaisesPermitidos;
     return this->paisesValidos;

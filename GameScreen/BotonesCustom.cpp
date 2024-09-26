@@ -6,6 +6,15 @@ BotonesCustom::BotonesCustom(QWidget *parent):
     , ui(new Ui::BotonesCustom)
 {
     ui->setupUi(this);
+    sonido2.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
+    sonido2.setVolume(0.5);
+
+    // Colocamos la imagen que va a tener el boton segun el estado.
+    SkinBotonUnblock = "";
+    SkinBotonBlock = "";
+
+    // Le damos la apariencia de no estar apretado al boton.
+    ui->Boton->setStyleSheet(SkinBotonUnblock);
 
     // Conectamos el temporizador al apretar los botones
     TemporizadorBotones.setSingleShot(true);
@@ -85,6 +94,11 @@ void BotonesCustom::CrearSkinBoton(QString Estado1, QString &Direccion)
 bool BotonesCustom::getBotonBloqueado() const
 {
     return BotonBloqueado;
+}
+
+void BotonesCustom::setVolumen(float volumen)
+{
+    sonido2.setVolume(volumen);
 }
 
 void BotonesCustom::PausarBoton()

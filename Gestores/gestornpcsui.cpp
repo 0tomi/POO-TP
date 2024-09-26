@@ -123,7 +123,6 @@ void GestorNPCsUI::SalirEntidades()
     if (Rechazado)
         NPCcomunUI->Rechazado();
 
-    Dialogos->ForzarSalir();
     NPCcomunUI->Sacar();
 
     MostrandoNPC = false;
@@ -135,6 +134,7 @@ void GestorNPCsUI::SalirEntidades()
 /// #################################### Terminar nivel ###################################################
 void GestorNPCsUI::TerminoNivel()
 {
+    Dialogos->ForzarSalir();
     DesconectarNPCs();
     if (transcriptorDialogos->getMostrando())
         transcriptorDialogos->Sacar();
@@ -198,4 +198,9 @@ QString GestorNPCsUI::getDatosFalsos()
 void GestorNPCsUI::Centrar()
 {
     Dialogos->Centrar();
+}
+
+void GestorNPCsUI::setVolumen(float vol)
+{
+    Dialogos->setVolume(vol);
 }

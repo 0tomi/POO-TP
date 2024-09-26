@@ -5,6 +5,8 @@
 #include <QTimer>
 #include <QPropertyAnimation>
 #include <QGraphicsOpacityEffect>
+#include <QRandomGenerator>
+#include <QSoundEffect>
 
 namespace Ui {
 class GlobosDialogoUI;
@@ -23,6 +25,7 @@ public:
     void CorrerMensaje(); // A futuro, para acumular mensajes.
     ~GlobosDialogoUI();
     void Centrar();
+    void setVolume(float);
 
 public slots:
     void setMensaje(const QString &newMensaje); // Recibe el mensaje y lo setea.
@@ -33,6 +36,7 @@ signals:
     void MensajeTerminado();
 
 private:
+    QRandomGenerator Random;
     QWidget * padre;
     Ui::GlobosDialogoUI *ui;
 
@@ -51,11 +55,14 @@ private:
     void EsconderDialogo();
 
     void CalcularPosicionDelGlobo(int &X, int &Y);
-    void setMostrandose();
     bool Mostrandose;
 
     int tamanioNormalGloboX, tamanioNormalGloboY;
     int tamanioAumentadoGloboX, tamanioAumentadoGloboY;
+
+    QUrl URLSonidos[4];
+    QSoundEffect Sonido;
+    void ReproducirSonido();
 private slots:
     void TerminarMensaje();
 };

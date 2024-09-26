@@ -19,6 +19,8 @@
 #include "../Gestores/gestordocumentosui.h"
 #include "../Documentos/transcriptordialogos.h"
 #include "../Documentos/docsiconui.h"
+#include "intropantalla.h"
+#include "notificacion.h"
 
 namespace Ui {
 class GameScreen;
@@ -32,10 +34,10 @@ public:
     explicit GameScreen(Juego* newJuego, QWidget *parent = nullptr);
     ~GameScreen();
 
-    void EmpezarJuego();
+    void Iniciar();
     void PrepararJuego(int Dificultad = 2);
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
-    void PrepararJuego(int Nivel, int Dificultad, PlayerStats);
+    void PrepararJuego(PlayerStats);
 
     /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas
     void Restart();
@@ -44,6 +46,7 @@ public slots:
     void PausarJuego();
     void ReanudarJuego();
     void FinalDePartida();
+    void setVolumenes(float);
 
 signals:
     void NivelTerminado(bool Perdio);
@@ -63,6 +66,7 @@ private:
     int tiempoRestante;
 
     bool Pausado;
+    bool DecisionJugador;
 
     // Documentos que deja el NPC
     DocsIconUI * IconoDocs;
@@ -80,7 +84,6 @@ private:
     QSpacerItem* EspaciadorBotones;
 
     // Controlar tiempo en partida
-    QTimer IntroNivel;
     QTimer TiempoDia;
     void ActualizarTiempo();
     void arrancarJuego();
@@ -108,6 +111,17 @@ private:
     QTimer bloquearBotonReglas;
     bool MostrandoReglas;
     void MostrarReglas();
+
+    // Intro del juego
+    IntroPantalla* introPantalla;
+
+    // Notificaciones
+    float volumenActual;
+    vector<Notificacion*> Notificaciones;
+    int CantidadNotificaciones = 0;
+    void CrearNotificacion(bool Multa, QString& Motivo);
+    void MatarNotificaciones();
+    void MatarNotificacion(int Numero);
 };
 
 #endif // GAMESCREEN_H

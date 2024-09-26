@@ -3,10 +3,15 @@
 #include <QDebug>
 libroreglas::libroreglas(Juego * datos, QWidget *parent)
     : DocumentosUI(parent)
-    , ui(new Ui::libroreglas)
+    , ui(new Ui::libroreglas), pasarPagina(this), moverLibro(this)
 {
     ui->setupUi(this);
+    pasarPagina.setSource(QUrl("qrc:/Resources/Sonidos/Libro/PasarPagina.WAV"));
+    moverLibro.setSource(QUrl("qrc:/Resources/Sonidos/Libro/LibroMovimiento.WAV"));
+    setVolume(1.0);
+
     setFixedSize(708,688);
+    juego = datos;
 
     setUpLevel(1);
 
@@ -16,23 +21,21 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
 
     ui->LibroReglas->setCurrentIndex(PaginaActual);
 
-    // Setup de reglas
-    for (int i = 0; i < 5; i++)
-        reglas[i] = datos->getReglas(i);
-
     setBotones();
-    setDatosPag1();
     hide();
 }
 
 void libroreglas::setUpLevel(int level)
 {
+    setDatosPag1();
+
     CantidadPaginas = 3;
     ui->Nivel2Boton1->hide();
     ui->Nivel2Boton2->hide();
     ui->Nivel3Boton1->hide();
 
     if (level >= 2){
+        setDatosNivel2();
         CantidadPaginas = 4;
         ui->Nivel2Boton1->show();
         ui->Nivel2Boton2->show();
@@ -52,7 +55,20 @@ void libroreglas::setUpLevel(int level)
 void libroreglas::Entrar()
 {
     raise();
+    moverLibro.play();
     DocumentosUI::Entrar();
+}
+
+void libroreglas::Sacar()
+{
+    moverLibro.play();
+    DocumentosUI::Sacar();
+}
+
+void libroreglas::setVolume(float volumen)
+{
+    pasarPagina.setVolume(volumen);
+    moverLibro.setVolume(volumen - 0.2);
 }
 
 void setDocumentacionInfo(Documentacion *documento){
@@ -89,6 +105,7 @@ void libroreglas::setBotones(){
 }
 
 void libroreglas::IrPagSiguiente(){
+    pasarPagina.play();
     PaginaActual++;
     ui->Anterior->show();
 
@@ -100,6 +117,7 @@ void libroreglas::IrPagSiguiente(){
 
 void libroreglas::SaltarPagina(int pagina)
 {
+    pasarPagina.play();
     if (pagina != 0)
         ui->Anterior->show();
     else
@@ -113,6 +131,7 @@ void libroreglas::SaltarPagina(int pagina)
 }
 
 void libroreglas::IrPagAnterior(){
+    pasarPagina.play();
     PaginaActual--;
     ui->Siguiente->show();
 
@@ -124,13 +143,29 @@ void libroreglas::IrPagAnterior(){
 
 void libroreglas::setDatosPag1(){
     // Reglas 1 esta en la posicion 0
-    ReglasNivel1 * rules = dynamic_cast<ReglasNivel1*>(reglas[0]);
+    Reglas* test = juego->getReglas(0);
+    ReglasNivel1 * rules = dynamic_cast<ReglasNivel1*>(test);
 
     setPaises(rules);
     setFechas(rules);
     setEstadoCivil(rules);
     setDuracionEstancia(rules);
     setTipoDeVisita(rules);
+}
+
+void libroreglas::setDatosNivel2()
+{
+    ReglasNivel2* reglas = dynamic_cast<ReglasNivel2*>(juego->getReglas(1));
+    QString texto;
+    int max;
+
+    QString* paises = reglas->getPaisesInvalidos(max);
+
+    for (int i = 0; i < max; i++)
+        texto += "- " + paises[i] + "\n";
+
+    ui->PaisesResidenciaInvalidos->setText(texto);
+    delete[] paises;
 }
 
 void libroreglas::setPaises(ReglasNivel1 * datos){
@@ -146,7 +181,7 @@ void libroreglas::setPaises(ReglasNivel1 * datos){
     ui->PaisesPermitidos->setText(Texto);
 }
 void libroreglas::setFechas(ReglasNivel1 * datos){
-    QString Texto = "Solo se permitirá la entrada a personas:\n";
+    QString Texto = "Solo se permiten personas:\n";
     int fechaMin = datos->getFechaMinPermitida();
     int fechaMax = datos->getFechaMaxPermitida();
     Texto += "Mayores de:" + QString::number(fechaMin) + " (inclusivo)\n";
@@ -157,7 +192,7 @@ void libroreglas::setFechas(ReglasNivel1 * datos){
 void libroreglas::setEstadoCivil(ReglasNivel1 * datos){
     int max;
     QString * EstadosCivilesValidos = datos->getEstadoCivilPermitido(max);
-    QString Texto = "Solo Podran ingresar los siguientes estados civiles:\n";
+    QString Texto = "Solo podran ingresar los \nsiguientes estados civiles:\n";
     for (int i = 0; i < max; ++i) {
         Texto += EstadosCivilesValidos[i] + "o/a/x" + "\n";
     }
@@ -171,7 +206,7 @@ void libroreglas::setDuracionEstancia(ReglasNivel1 * datos){
     ui->DuracionPermitida->setText(Texto);
 }
 void libroreglas::setTipoDeVisita(ReglasNivel1 * datos){
-    QString Texto = "Solo se permitirá la entrada a los siguientes\n tipos de visita:\n";
+    QString Texto = "Solo se permitirá la \nentrada a los siguientes\n tipos de visita:\n";
     QString * tipoVisita = datos->getTipoDeVisitaValida();
     int Max = datos->getMaxVisitasPermitidas();
     for (int i = 0; i < Max ; ++i) {

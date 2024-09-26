@@ -143,5 +143,20 @@
         <file>Resources/NPCs/Cuerpo9.png</file>
         <file>Resources/NPCs/Cuerpo10.png</file>
         <file>Resources/NPCs/Cuerpo11.png</file>
+        <file>Resources/MaterialPantallas/BotonEscanerApretado.png</file>
+        <file>Resources/MaterialPantallas/BotonEscanerSinApretar.png</file>
+        <file>Resources/MaterialPantallas/BotonLlamarNPC.png</file>
+        <file>Resources/MaterialPantallas/BotonLlamarNPCApretado.png</file>
+        <file>Resources/Sonidos/Libro/LibroMovimiento.WAV</file>
+        <file>Resources/Sonidos/Libro/PasarPagina.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound1.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound2.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound3.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound4.WAV</file>
+        <file>Resources/Documentos/Notificaciones/multa.png</file>
+        <file>Resources/Documentos/Notificaciones/notificacion.png</file>
+        <file>Resources/Documentos/Notificaciones/sin multa.png</file>
+        <file>Resources/Documentos/Notificaciones/NotificacionEntrada.WAV</file>
+        <file>Resources/Documentos/Notificaciones/NotificacionSalida.WAV</file>
     </qresource>
 </RCC>
