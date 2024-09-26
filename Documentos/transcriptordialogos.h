@@ -2,6 +2,7 @@
 #define TRANSCRIPTORDIALOGOS_H
 
 #include <QWidget>
+#include <QSoundEffect>
 #include "documentosui.h"
 
 namespace Ui {
@@ -18,6 +19,7 @@ public:
     void setDocumentacionInfo(Documentacion *documento) override;
     virtual void Entrar() override;
     virtual void Sacar() override;
+    //void setVolume(float);
 
     bool getMostrando() const;
 
@@ -31,6 +33,8 @@ protected:
     void PrepararAnimacionSalida() override;
 
 private:
+    QSoundEffect sonido;
+q
     Ui::TranscriptorDialogos *ui;
     QString DialogoRecibido;
     bool Mostrando;
