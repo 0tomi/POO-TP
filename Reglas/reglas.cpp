@@ -49,12 +49,14 @@ bool Reglas::ValidarDatos(vector<QString> &Lista, int CantidadMinima, int Cantid
     return true;
 }
 
-bool Reglas::checkRepetidos(std::vector<QString> &Lista)
+bool Reglas::checkRepetidos(std::vector<QString> &Lista, int CantidadInsertada)
 {
-    for (int i = 0; i < Lista.size()-1; ++i)
-        for (int j = i+1; j < Lista.size(); ++i)
-            if (Lista[i] == Lista[j])
+    for (int i = 0; i < CantidadInsertada-1; ++i)
+        for (int j = i+1; j < CantidadInsertada; ++j)
+            if (Lista[i] == Lista[j]){
+                qDebug() << i << Lista[i] << j << Lista[j];
                 return true;
+            }
 
     return false;
 }

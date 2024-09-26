@@ -24,12 +24,12 @@ void ReglasNivel2::generar_PaisesPermitidos(int Cantidad)
     while(Cantidad){
         do{
             paisesValidos[i] = paises[Random.bounded(maxPaises)];
-        }while(checkRepetidos(paisesValidos));
+        }while(checkRepetidos(paisesValidos, i+1));
         i++; Cantidad--;
     }
 
     i = 0;
-    for (int j = 0; i < maxPaises; ++j)
+    for (int j = 0; j < maxPaises; ++j)
         if (!checkValidez(paises[j], paisesValidos)){
             paisesInvalidos[i] = paises[j];
             i++;
@@ -56,7 +56,17 @@ void ReglasNivel2::generar_PaisesPermitidos(std::vector<QString>& Lista_PaisesPe
         }
 }
 
-QString *ReglasNivel2::getPaisesValidos(int &Max)
+std::vector<QString> ReglasNivel2::getPaisesValidos() const
+{
+    return paisesValidos;
+}
+
+std::vector<QString> ReglasNivel2::getPaisesInvalidos() const
+{
+    return paisesInvalidos;
+}
+
+QString *ReglasNivel2::getPaisesValidos(int &Max) const
 {
     Max = paisesValidos.size();
     QString* paises_Validos = new QString[Max];
@@ -66,7 +76,7 @@ QString *ReglasNivel2::getPaisesValidos(int &Max)
     return paises_Validos;
 }
 
-QString *ReglasNivel2::getPaisesInvalidos(int &Max)
+QString *ReglasNivel2::getPaisesInvalidos(int &Max) const
 {
     Max = paisesInvalidos.size();
     QString* paises_Invalidos = new QString[Max];

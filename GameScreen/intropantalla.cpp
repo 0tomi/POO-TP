@@ -18,6 +18,9 @@ IntroPantalla::IntroPantalla(Juego *game, QWidget *parent):
     connect(ui->TerminarIntro, &QPushButton::clicked, this, &IntroPantalla::Salir);
     connect(animacionSalida, &QAbstractAnimation::finished, [this](){
         this->hide();
+        int CentroX = (padre->width() - this->width()) / 2;
+        int CentroY = (padre->height() - this->height()) / 2;
+        this->move(QPoint(CentroX, CentroY));
         emit ClickeoEmpezar();
     });
 }

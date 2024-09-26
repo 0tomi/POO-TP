@@ -1,9 +1,7 @@
 #include "generador_paisresidencia.h"
-#include <QTime>
 
-generador_paisresidencia::generador_paisresidencia(){
-    quint32 Semilla = QTime::currentTime().msec();
-    this->rand.seed(Semilla);
+generador_paisresidencia::generador_paisresidencia(): Generar_pasaporte()
+{
     this->locura = new LocuraCaracteres(&this->rand);
 }
 
@@ -12,9 +10,13 @@ generador_paisresidencia::~generador_paisresidencia()
     delete locura;
 }
 
-void generador_paisresidencia::Inicializar(ReglasNivel1 *rules)
+void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2)
 {
-    this->rules = rules;
+    this->rules = rules1;
+    this->ruleslvl2 = rules2;
+
+    paisesValidos = ruleslvl2->getPaisesValidos();
+    paisesInvalidos = ruleslvl2->getPaisesInvalidos();
 }
 
 PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)
@@ -23,9 +25,10 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
         this->camposValidos[i] = true;
         this->camposLocura[i] = true;
     }
+
     this->Pasaporte2Copy = Pasaporte2copy;
     this->dificultad = dificultad;
-    int Probabilidades;
+
     switch (dificultad){
         // Modo facil
     case 1: Probabilidades = 7;
@@ -37,8 +40,9 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
     default: Probabilidades = 5;
         break;
     }
+
     if(valido){
-        QString PaisResidenciaGenerado = this->generar_nacionalidad(valido);
+        QString PaisResidenciaGenerado = this->generar_paisresidencia(valido);
         this->PaisResidenciaCreado = new PaisResidencia(this->Pasaporte2Copy->getnombre(), this->Pasaporte2Copy->getfecha_nacimiento(), PaisResidenciaGenerado);
     } else{
         this->CamposLocura(Probabilidades);
@@ -83,20 +87,41 @@ QString generador_paisresidencia::generar_nombre(char genero)
 
 QString generador_paisresidencia::generar_paisresidencia(bool valido)
 {
-    int tamanio;
-    int indice_generar; //para usar rand y elegir alguno de los indices;
-    QString nacionalidad_generada = this->Pasaporte2Copy->getnacionalidad();
-    if (!valido){
-        if (this->camposLocura[2]){
-            QString nacionalidad_pasaporte = this->Pasaporte2Copy->getnacionalidad();
-            nacionalidad_generada = this->locura->CambiarCadena(this->dificultad,nacionalidad_pasaporte);
-        } else{
-            indice_generar = this->rand.bounded(this->max_nacionalidades - tamanio);
-            nacionalidad_generada = this->nacionalidades[indice_generar];
-        }
+    QString nacionalidad_generada;
+    if (valido){
+        nacionalidad_generada = generarPaisValido();
+    } else {
+        nacionalidad_generada = generarPaisInvalido();
     }
 
     return nacionalidad_generada;
+}
+
+QString generador_paisresidencia::generarPaisValido()
+{
+    int sorteo = rand.bounded(10);
+    if (sorteo <= Probabilidades)
+        return Pasaporte2Copy->getnacionalidad();
+
+    QString NuevoPais = paisesValidos[rand.bounded(paisesValidos.size())];
+    return NuevoPais;
+}
+
+QString generador_paisresidencia::generarPaisInvalido()
+{
+    int sorteo = rand.bounded(10);
+    QString paisGenerado;
+
+    if (this->camposLocura[2]){
+        paisGenerado = this->Pasaporte2Copy->getnacionalidad();
+        paisGenerado = this->locura->CambiarCadena(this->dificultad, paisGenerado);
+        return paisGenerado;
+    }
+
+    sorteo = this->rand.bounded(paisesInvalidos.size());
+    paisGenerado = this->paisesInvalidos[sorteo];
+
+    return paisGenerado;
 }
 
 QString generador_paisresidencia::generar_fecha(bool valido)
@@ -129,8 +154,7 @@ void generador_paisresidencia::CamposLocura(int Probabilidades)
 {
     int cantidadCamposInvalidos = 0;
     int sorteo;
-    // Hasta no generarse por lo menos 1 campo valido, no sale del while.
-    qDebug() << "Bucle de generar campos invalidos Pais de residencia";
+
     while (!cantidadCamposInvalidos){
         for (int i = 0; i < 3; ++i){
             sorteo = this->rand.bounded(10);
@@ -140,9 +164,4 @@ void generador_paisresidencia::CamposLocura(int Probabilidades)
             }
         }
     }
-}
-
-void generador_paisresidencia::resetRules(ReglasNivel1 *rules)
-{
-    this->rules = rules;
 }

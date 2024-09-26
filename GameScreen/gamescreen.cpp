@@ -141,6 +141,7 @@ void GameScreen::setVolumenes(float volumen)
     BotonCentrar->setVolumen(volumen);
     BotonRechazar->setVolumen(volumen);
     libroReglasUI->setVolume(volumen);
+    GestorNPC.setVolumen(volumen);
 }
 
 void GameScreen::RealizarConexionesPrincipales()

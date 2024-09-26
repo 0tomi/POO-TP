@@ -35,6 +35,7 @@ void libroreglas::setUpLevel(int level)
     ui->Nivel3Boton1->hide();
 
     if (level >= 2){
+        setDatosNivel2();
         CantidadPaginas = 4;
         ui->Nivel2Boton1->show();
         ui->Nivel2Boton2->show();
@@ -152,6 +153,21 @@ void libroreglas::setDatosPag1(){
     setTipoDeVisita(rules);
 }
 
+void libroreglas::setDatosNivel2()
+{
+    ReglasNivel2* reglas = dynamic_cast<ReglasNivel2*>(juego->getReglas(1));
+    QString texto;
+    int max;
+
+    QString* paises = reglas->getPaisesInvalidos(max);
+
+    for (int i = 0; i < max; i++)
+        texto += "- " + paises[i] + "\n";
+
+    ui->PaisesResidenciaInvalidos->setText(texto);
+    delete[] paises;
+}
+
 void libroreglas::setPaises(ReglasNivel1 * datos){
     int maxIndices;
     int maxPaises;
@@ -165,7 +181,7 @@ void libroreglas::setPaises(ReglasNivel1 * datos){
     ui->PaisesPermitidos->setText(Texto);
 }
 void libroreglas::setFechas(ReglasNivel1 * datos){
-    QString Texto = "Solo se permitirá la entrada a personas:\n";
+    QString Texto = "Solo se permiten personas:\n";
     int fechaMin = datos->getFechaMinPermitida();
     int fechaMax = datos->getFechaMaxPermitida();
     Texto += "Mayores de:" + QString::number(fechaMin) + " (inclusivo)\n";
@@ -176,7 +192,7 @@ void libroreglas::setFechas(ReglasNivel1 * datos){
 void libroreglas::setEstadoCivil(ReglasNivel1 * datos){
     int max;
     QString * EstadosCivilesValidos = datos->getEstadoCivilPermitido(max);
-    QString Texto = "Solo Podran ingresar los siguientes estados civiles:\n";
+    QString Texto = "Solo podran ingresar los \nsiguientes estados civiles:\n";
     for (int i = 0; i < max; ++i) {
         Texto += EstadosCivilesValidos[i] + "o/a/x" + "\n";
     }
@@ -190,7 +206,7 @@ void libroreglas::setDuracionEstancia(ReglasNivel1 * datos){
     ui->DuracionPermitida->setText(Texto);
 }
 void libroreglas::setTipoDeVisita(ReglasNivel1 * datos){
-    QString Texto = "Solo se permitirá la entrada a los siguientes\n tipos de visita:\n";
+    QString Texto = "Solo se permitirá la \nentrada a los siguientes\n tipos de visita:\n";
     QString * tipoVisita = datos->getTipoDeVisitaValida();
     int Max = datos->getMaxVisitasPermitidas();
     for (int i = 0; i < Max ; ++i) {

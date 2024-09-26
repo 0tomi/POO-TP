@@ -149,5 +149,12 @@
         <file>Resources/MaterialPantallas/BotonLlamarNPCApretado.png</file>
         <file>Resources/Sonidos/Libro/LibroMovimiento.WAV</file>
         <file>Resources/Sonidos/Libro/PasarPagina.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound1.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound2.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound3.WAV</file>
+        <file>Resources/Sonidos/Dialogos/DialogoSound4.WAV</file>
+        <file>Resources/Documentos/Notificaciones/multa.png</file>
+        <file>Resources/Documentos/Notificaciones/notificacion.png</file>
+        <file>Resources/Documentos/Notificaciones/sin multa.png</file>
     </qresource>
 </RCC>
