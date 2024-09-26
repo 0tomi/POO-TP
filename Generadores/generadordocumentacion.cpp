@@ -33,7 +33,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules)
     generadorPasaporte.Inicializar(reglasNivel1);
     generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres);
     generadorListaAcomp.Inicializar(&NumeroRandom);
-    generadorPaisResidencia.Inicializar(reglasNivel1);
+    generadorPaisResidencia.Inicializar(reglasNivel1, reglasNivel2);
 }
 
 GeneradorDocumentacion::~GeneradorDocumentacion()

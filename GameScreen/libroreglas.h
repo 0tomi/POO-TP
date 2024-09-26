@@ -35,6 +35,7 @@ private:
     void IrPagSiguiente();
     void SaltarPagina(int pagina);
     void setDatosPag1();
+    void setDatosNivel2();
 
     int CantidadPaginas;
     int PaginaActual;

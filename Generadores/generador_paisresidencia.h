@@ -1,5 +1,5 @@
 #include "generador_pasaporte.h"
-#include "../Reglas/ReglasNivel1.h"
+#include "../Reglas/ReglasNivel2.h"
 #include "../Documentos/paisresidencia.h"
 #include "locuracaracteres.h"
 #ifndef GENERADOR_PAISRESIDENCIA_H
@@ -9,6 +9,7 @@ class generador_paisresidencia : public Generar_pasaporte
 {
 private:
     int dificultad;
+    ReglasNivel2 * ruleslvl2;
     ReglasNivel1 * rules;
     Pasaporte * Pasaporte2Copy;
 
@@ -16,7 +17,6 @@ private:
     bool camposLocura[3]; // 1 nombre , 2 fecha, 3 pais de residencia
     //campos locura es para ver si se usa locura caracteres o no, si es false no se usa locura si es true si
 
-    QRandomGenerator rand;
     PaisResidencia * PaisResidenciaCreado;
     LocuraCaracteres * locura;
 
@@ -24,12 +24,12 @@ private:
     QString generar_paisresidencia(bool valido);
     QString generar_fecha(bool valido) override;
     void CamposLocura(int Probabilidades);
+
 public:
     generador_paisresidencia();
     ~generador_paisresidencia();
-    void Inicializar(ReglasNivel1 * rules);
+    void Inicializar(ReglasNivel1*, ReglasNivel2*);
     PaisResidencia * CrearPaisResidencia(Pasaporte * Pasaporte2copy, bool valido, int dificultad);
-    void resetRules(ReglasNivel1 * rules);
 };
 
 #endif // GENERADOR_PAISRESIDENCIA_H

@@ -55,7 +55,6 @@ private:
     void EsconderDialogo();
 
     void CalcularPosicionDelGlobo(int &X, int &Y);
-    void setMostrandose();
     bool Mostrandose;
 
     int tamanioNormalGloboX, tamanioNormalGloboY;

@@ -10,7 +10,6 @@ class Generar_pasaporte
 {
 private:
     bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
-    QRandomGenerator rand;
 protected:
     QString * nombre_mujeres;
     QString * nombre_hombres;
@@ -18,7 +17,7 @@ protected:
     QString * nacionalidades;
     QString * apellidos;
     ReglasNivel1 * rules;
-
+    QRandomGenerator rand;
 
 
     Pasaporte * Pasaporte_generado;
@@ -32,7 +31,7 @@ protected:
 
     virtual QString generar_nombre(char genero);
     QString generar_estado_civil(char genero, bool valido);
-    QString generar_nacionalidad(bool valido);
+    virtual QString generar_nacionalidad(bool valido);
     virtual QString generar_fecha(bool valido);
 public:
     Generar_pasaporte(); // el constructor va a ser para leer los archivos y para asignar reglas y atributos

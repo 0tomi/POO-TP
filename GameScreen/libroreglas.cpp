@@ -152,6 +152,20 @@ void libroreglas::setDatosPag1(){
     setTipoDeVisita(rules);
 }
 
+void libroreglas::setDatosNivel2()
+{
+    ReglasNivel2* reglas = dynamic_cast<ReglasNivel2*>(juego->getReglas(1));
+    QString texto;
+    int max;
+
+    QString* paises = reglas->getPaisesInvalidos(max);
+
+    for (int i = 0; i < max; i++)
+        texto += "- " + paises[i] + "\n";
+
+    ui->PaisesResidenciaInvalidos->setText(texto);
+}
+
 void libroreglas::setPaises(ReglasNivel1 * datos){
     int maxIndices;
     int maxPaises;

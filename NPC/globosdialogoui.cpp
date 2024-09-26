@@ -55,6 +55,7 @@ void GlobosDialogoUI::MostrarMensaje()
     emit Hablando(mensaje);
     TiempoVisualizacion.start(4000);
     ReproducirSonido();
+    Mostrandose = true;
 }
 
 void GlobosDialogoUI::PausarMensaje()
@@ -73,7 +74,7 @@ void GlobosDialogoUI::ReanudarMensaje()
 
 void GlobosDialogoUI::ForzarSalir()
 {
-    if (TiempoVisualizacion.isActive()){
+    if (Mostrandose){
         TiempoVisualizacion.stop();
         TerminarMensaje();
     }
@@ -113,7 +114,6 @@ void GlobosDialogoUI::SetearAnimacionEntrada()
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionEntrada->setDuration(500);
     animacionEntrada->setEasingCurve(QEasingCurve::OutExpo);
-    connect(animacionEntrada, &QPropertyAnimation::finished, this, &GlobosDialogoUI::setMostrandose);
 }
 
 void GlobosDialogoUI::PrepararAnimacionEntrada()
@@ -152,11 +152,6 @@ void GlobosDialogoUI::CalcularPosicionDelGlobo(int &X, int &Y)
     Y = Y-height();          // Altura en la cual se ve el widget por encima de la pantalla.
 }
 
-void GlobosDialogoUI::setMostrandose()
-{
-    Mostrandose = true;
-}
-
 void GlobosDialogoUI::ReproducirSonido()
 {
     int sorteo = Random.bounded(4);
@@ -169,6 +164,5 @@ void GlobosDialogoUI::TerminarMensaje()
     raise();
     animacionSalida->start();
     Mostrandose = false;
-    // Aca estaria la animacion de que se va el globo.
     emit MensajeTerminado();
 }
