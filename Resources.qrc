@@ -156,5 +156,7 @@
         <file>Resources/Documentos/Notificaciones/multa.png</file>
         <file>Resources/Documentos/Notificaciones/notificacion.png</file>
         <file>Resources/Documentos/Notificaciones/sin multa.png</file>
+        <file>Resources/Documentos/Notificaciones/NotificacionEntrada.WAV</file>
+        <file>Resources/Documentos/Notificaciones/NotificacionSalida.WAV</file>
     </qresource>
 </RCC>

@@ -26,7 +26,7 @@ public:
     void GuardarPartida();
 
     // Evaluar acciones del jugador
-    void EvaluarDecision(int TipoNPC, bool ValidezNPC, bool DecisionJugador);
+    bool EvaluarDecision(bool& Veredicto, int TipoNPC, bool ValidezNPC, bool DecisionJugador);
 
     // Getters y setters de las estadisticas
     int getSocialCreditsEarnedInLevel() const;
@@ -61,7 +61,7 @@ private:
     int CantidadNPCsRechazados;
     int CantidadNPCsAceptados;
     void SumarSocialCredits(int TipoNPC);
-    void RestarSocialCredits(int TipoNPC);
+    bool RestarSocialCredits(int TipoNPC);
 
     // Caracteristicas del nivel
     int MaxMultas;

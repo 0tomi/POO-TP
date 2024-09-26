@@ -20,6 +20,7 @@
 #include "../Documentos/transcriptordialogos.h"
 #include "../Documentos/docsiconui.h"
 #include "intropantalla.h"
+#include "notificacion.h"
 
 namespace Ui {
 class GameScreen;
@@ -65,6 +66,7 @@ private:
     int tiempoRestante;
 
     bool Pausado;
+    bool DecisionJugador;
 
     // Documentos que deja el NPC
     DocsIconUI * IconoDocs;
@@ -112,6 +114,14 @@ private:
 
     // Intro del juego
     IntroPantalla* introPantalla;
+
+    // Notificaciones
+    QTimer trampa;
+    vector<Notificacion*> Notificaciones;
+    int CantidadNotificaciones = 0;
+    void CrearNotificacion(bool Multa, QString& Motivo);
+    void MatarNotificaciones();
+    void MatarNotificacion(int Numero);
 };
 
 #endif // GAMESCREEN_H

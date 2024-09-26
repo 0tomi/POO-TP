@@ -22,6 +22,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ColaNPC* Cola = juego->getCola();
 
     tiempoPartida.setSingleShot(true);
+    trampa.setSingleShot(true);
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
@@ -116,7 +117,11 @@ void GameScreen::setUpIconoDocsUI()
     connect(IconoDocs, &DocsIconUI::Cerrado, &GestorDocs, &GestorDocumentosUI::Salir);
 
     // Cuando entregamos el documento, sale el npc.
-    connect(IconoDocs, &DocsIconUI::animacionSalirTerminada, &GestorNPC, &GestorNPCsUI::SalirEntidades);
+    connect(IconoDocs, &DocsIconUI::animacionSalirTerminada, [this](){
+        GestorNPC.SalirEntidades();
+        SelloDocumento(this->DecisionJugador);
+    });
+//&GestorNPC, &GestorNPCsUI::SalirEntidades);
 
     SetearConexionesDocumentos();
 }
@@ -142,6 +147,8 @@ void GameScreen::setVolumenes(float volumen)
     BotonRechazar->setVolumen(volumen);
     libroReglasUI->setVolume(volumen);
     GestorNPC.setVolumen(volumen);
+    for (int i = 0; i < Notificaciones.size(); ++i)
+        Notificaciones[i]->setVolume(volumen);
 }
 
 void GameScreen::RealizarConexionesPrincipales()
@@ -203,6 +210,8 @@ void GameScreen::PrepararJuego(PlayerStats stats)
 
 void GameScreen::Iniciar()
 {
+    CantidadNotificaciones = 0;
+    Notificaciones.clear();
     introPantalla->Mostrar();
 }
 
@@ -301,7 +310,9 @@ void GameScreen::Acepto()
     juego->addNPCaceptado();
     GestorDocs.Aprobado();
     emit LogJugador("Jugador acepto a la persona");
-    SelloDocumento(true);
+    DecisionJugador = true;
+    IconoDocs->BloquearDocumento();
+    GestorNPC.Salir(true);
 }
 
 void GameScreen::Rechazo()
@@ -309,22 +320,24 @@ void GameScreen::Rechazo()
     juego->addNPCrechazado();
     GestorDocs.Rechazar();
     emit LogJugador("Jugador rechazo a la persona");
-    SelloDocumento(false);   
+    DecisionJugador = false;
+    IconoDocs->BloquearDocumento();
+    GestorNPC.Salir(false);
 }
 
 void GameScreen::SelloDocumento(bool Boton)
 {
-    juego->EvaluarDecision(GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
+    bool Veredicto;
+    bool Multa = juego->EvaluarDecision(Veredicto, GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
-    if (Boton == GestorNPC.getValidez())
+    if (Veredicto)
         emit LogJugador("Jugador tomo la decision correcta.");
     else{
+        QString ErrorCometido = GestorNPC.getDatosFalsos();
+        CrearNotificacion(Multa, ErrorCometido);
         emit LogJugador("Jugador tomo decision equivocada.\nError cometido: ");
-        emit LogJugador(GestorNPC.getDatosFalsos());
+        emit LogJugador(ErrorCometido);
     }
-
-    IconoDocs->BloquearDocumento();
-    GestorNPC.Salir(Boton);
 
     emit LogJugador("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
 }
@@ -342,6 +355,21 @@ void GameScreen::MostrarReglas()
         libroReglasUI->Entrar();
         MostrandoReglas = true;
     }
+}
+
+void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
+{
+    Notificacion* nuevaNotificacion = new Notificacion(CantidadNotificaciones, Multa, Motivo, ui->Escritorio);
+    nuevaNotificacion->Entrar();
+    connect(nuevaNotificacion, &Notificacion::QuiereCerrarNotificacion, this, &GameScreen::MatarNotificacion);
+    Notificaciones.push_back(nuevaNotificacion);
+    CantidadNotificaciones++;
+}
+
+void GameScreen::MatarNotificacion(int Numero)
+{
+    delete Notificaciones[Numero];
+    Notificaciones[Numero] = nullptr;
 }
 /// #################################### EVENTOS DE VENTANA ###################################################
 
