@@ -85,9 +85,9 @@ QString generador_paisresidencia::generar_nombre(char genero)
 
 QString generador_paisresidencia::generar_paisresidencia(bool valido)
 {
-    QString nacionalidad_generada;
+    //QString nacionalidad_generada;
 
-    /*
+
     int tamanio;
     int indice_generar; //para usar rand y elegir alguno de los indices;
     QString nacionalidad_generada = this->Pasaporte2Copy->getnacionalidad();
@@ -100,7 +100,7 @@ QString generador_paisresidencia::generar_paisresidencia(bool valido)
             nacionalidad_generada = this->nacionalidades[indice_generar];
         }
     }
-    */
+
     return nacionalidad_generada;
 }
 

@@ -8,6 +8,7 @@ ReglasNivel2::ReglasNivel2(): Reglas(), Random(QTime::currentTime().msec())
 
 void ReglasNivel2::generar_PaisesPermitidos(int Cantidad)
 {
+    qDebug() << "generar Paises";
     paisesValidos.clear();
     paisesInvalidos.clear();
 
@@ -34,6 +35,14 @@ void ReglasNivel2::generar_PaisesPermitidos(int Cantidad)
             paisesInvalidos[i] = paises[j];
             i++;
         }
+
+    qDebug() << "Paises validos: ";
+    for (int i = 0; i < paisesValidos.size(); ++i)
+        qDebug() << paisesValidos[i];
+
+    qDebug() << "Paises invalidos: ";
+    for (int i = 0; i < paisesInvalidos.size(); ++i)
+        qDebug() << paisesInvalidos[i];
 }
 
 void ReglasNivel2::generar_PaisesPermitidos(std::vector<QString>& Lista_PaisesPermitidos)
