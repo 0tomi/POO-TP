@@ -22,8 +22,8 @@ void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * 
 PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)
 {
     for (int i = 0; i < 3; ++i){
-        this->camposValidos[i] = true;
-        this->camposLocura[i] = true;
+        this->campos_validos[i] = true;
+        this->campos_locura[i] = true;
     }
 
     this->Pasaporte2Copy = Pasaporte2copy;
@@ -48,8 +48,8 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
         this->CamposLocura(Probabilidades);
         generar_camposValidos(valido,Probabilidades);
         QString nuevoNombre = this->generar_nombre(this->Pasaporte2Copy->getgenero());
-        QString nuevaFecha = this->generar_fecha(this->camposValidos[1]);
-        QString nuevoPaisResidencia = this->generar_paisresidencia(this->camposValidos[2]);
+        QString nuevaFecha = this->generar_fecha(this->campos_validos[1]);
+        QString nuevoPaisResidencia = this->generar_paisresidencia(this->campos_validos[2]);
         this->PaisResidenciaCreado = new PaisResidencia(nuevoNombre,nuevaFecha,nuevoPaisResidencia);
     }
 
@@ -60,8 +60,8 @@ QString generador_paisresidencia::generar_nombre(char genero)
 {
     QString nombre_generado = this->Pasaporte2Copy->getnombre(); // string con el nombre que se va a pickear
     int valor_centinela; //para pickear indice
-    if (!this->camposValidos[0]){
-        if (this->camposLocura[0]){
+    if (!this->campos_validos[0]){
+        if (this->campos_locura[0]){
             nombre_generado = this->locura->CambiarCadena(this->dificultad,this->Pasaporte2Copy->getnombre());
         }else{
             do{
@@ -112,7 +112,7 @@ QString generador_paisresidencia::generarPaisInvalido()
     int sorteo = rand.bounded(10);
     QString paisGenerado;
 
-    if (this->camposLocura[2]){
+    if (this->campos_locura[2]){
         paisGenerado = this->Pasaporte2Copy->getnacionalidad();
         paisGenerado = this->locura->CambiarCadena(this->dificultad, paisGenerado);
         return paisGenerado;
@@ -131,7 +131,7 @@ QString generador_paisresidencia::generar_fecha(bool valido)
     int fecha_max = this->rules->getFechaMaxPermitida();
     QString fecha = this->Pasaporte2Copy->getfecha_nacimiento();
     if(!valido){
-        if (camposLocura[1]){
+        if (campos_locura[1]){
             QString fecha_pasaporte = this->Pasaporte2Copy->getfecha_nacimiento();
             fecha = this->locura->CambiarCadena(this->dificultad, fecha_pasaporte);
         }else{
@@ -150,18 +150,3 @@ QString generador_paisresidencia::generar_fecha(bool valido)
     return fecha;
 }
 
-void generador_paisresidencia::CamposLocura(int Probabilidades)
-{
-    int cantidadCamposInvalidos = 0;
-    int sorteo;
-
-    while (!cantidadCamposInvalidos){
-        for (int i = 0; i < 3; ++i){
-            sorteo = this->rand.bounded(10);
-            if (sorteo < Probabilidades){
-                this->camposLocura[i] = false;
-                cantidadCamposInvalidos++;
-            }
-        }
-    }
-}

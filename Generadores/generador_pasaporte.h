@@ -12,6 +12,8 @@ class Generar_pasaporte
 protected:
     bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
     bool campos_locura[3];     // 0 para la fecha, 1 para nacionalidad, 2 para el estado civil
+    //campos locura es para ver si se usa locura caracteres o no, si es false no se usa locura si es true si
+
     int dificultad;
 
     QString * nombre_mujeres;
