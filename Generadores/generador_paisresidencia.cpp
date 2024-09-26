@@ -3,17 +3,31 @@
 generador_paisresidencia::generador_paisresidencia(): Generar_pasaporte()
 {
     this->locura = new LocuraCaracteres(&this->rand);
+    this->paisesInvalidos = nullptr;
+    this->paisesValidos = nullptr;
 }
 
 generador_paisresidencia::~generador_paisresidencia()
 {
     delete locura;
+    if (paisesValidos){
+        delete paisesInvalidos;
+        delete paisesValidos;
+    }
 }
 
 void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2)
 {
     this->rules = rules1;
     this->ruleslvl2 = rules2;
+
+    if (paisesValidos){
+        delete paisesInvalidos;
+        delete paisesValidos;
+    }
+
+    paisesValidos = ruleslvl2->getPaisesValidos(maxValidos);
+    paisesInvalidos = ruleslvl2->getPaisesInvalidos(maxInvalidos);
 }
 
 PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)
@@ -26,7 +40,6 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
     this->Pasaporte2Copy = Pasaporte2copy;
     this->dificultad = dificultad;
 
-    int Probabilidades;
     switch (dificultad){
         // Modo facil
     case 1: Probabilidades = 7;
@@ -85,9 +98,15 @@ QString generador_paisresidencia::generar_nombre(char genero)
 
 QString generador_paisresidencia::generar_paisresidencia(bool valido)
 {
-    //QString nacionalidad_generada;
+    QString nacionalidad_generada;
+    if (valido){
+        nacionalidad_generada = generarPaisValido();
+    } else {
+        nacionalidad_generada = generarPaisInvalido();
+    }
 
-
+    return nacionalidad_generada;
+    /*
     int tamanio;
     int indice_generar; //para usar rand y elegir alguno de los indices;
     QString nacionalidad_generada = this->Pasaporte2Copy->getnacionalidad();
@@ -100,8 +119,18 @@ QString generador_paisresidencia::generar_paisresidencia(bool valido)
             nacionalidad_generada = this->nacionalidades[indice_generar];
         }
     }
+    */
 
-    return nacionalidad_generada;
+}
+
+QString generador_paisresidencia::generarPaisValido()
+{
+    int sorteo = rand.bounded(10);
+    if (sorteo < Probabilidades)
+        return Pasaporte2Copy->getnacionalidad();
+
+    QString NuevoPais = paisesValidos[rand.bounded(maxValidos)];
+    return NuevoPais;
 }
 
 QString generador_paisresidencia::generar_fecha(bool valido)
@@ -134,8 +163,7 @@ void generador_paisresidencia::CamposLocura(int Probabilidades)
 {
     int cantidadCamposInvalidos = 0;
     int sorteo;
-    // Hasta no generarse por lo menos 1 campo valido, no sale del while.
-    qDebug() << "Bucle de generar campos invalidos Pais de residencia";
+
     while (!cantidadCamposInvalidos){
         for (int i = 0; i < 3; ++i){
             sorteo = this->rand.bounded(10);

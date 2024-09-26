@@ -67,7 +67,7 @@ border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="PagInicial">
          <property name="minimumSize">
@@ -310,6 +310,12 @@ color: rgb(0, 0, 0);</string>
             <height>141</height>
            </rect>
           </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(0, 0, 0);
 </string>
@@ -326,6 +332,12 @@ color: rgb(0, 0, 0);</string>
             <width>281</width>
             <height>111</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="styleSheet">
            <string notr="true">
@@ -344,6 +356,12 @@ color: rgb(0, 0, 0);</string>
             <height>101</height>
            </rect>
           </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">
 color: rgb(0, 0, 0);</string>
@@ -360,6 +378,12 @@ color: rgb(0, 0, 0);</string>
             <width>291</width>
             <height>151</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(0, 0, 0);
@@ -1062,7 +1086,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <widget class="QLabel" name="PaisesResidenciaInvalidos">
              <property name="geometry">
               <rect>
-               <x>0</x>
+               <x>-10</x>
                <y>90</y>
                <width>291</width>
                <height>181</height>

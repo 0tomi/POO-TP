@@ -2,6 +2,7 @@
 #define REGLAS_H
 #include <QString>
 #include <vector>
+#include <QDebug>
 class Reglas
 {
 public:
@@ -27,7 +28,7 @@ protected:
 
     bool ValidarNombres(std::vector<QString>& Lista, QString * Lista2, int max);
     bool ValidarDatos(std::vector<QString>& Lista, int CantidadMinima, int CantidadMax, QString * Lista2, int maxLista2);
-    bool checkRepetidos(std::vector<QString>& Lista);
+    bool checkRepetidos(std::vector<QString>& Lista, int CantidadInsertada);
     bool checkValidez(QString& dato, std::vector<QString>& Lista) const;
 };
 
