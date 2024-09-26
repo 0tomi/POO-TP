@@ -81,6 +81,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NPC/skin.h NPC/skin.cpp
         SaveSlots/PlayerStats.h
         GameScreen/intropantalla.h GameScreen/intropantalla.cpp GameScreen/intropantalla.ui
+        GameScreen/notificacion.h GameScreen/notificacion.cpp GameScreen/notificacion.ui
 
 
 
