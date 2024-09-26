@@ -13,8 +13,10 @@ public:
     void generar_PaisesPermitidos(int Cantidad);
     void generar_PaisesPermitidos(std::vector<QString>& Lista_PaisesPermitidos);
 
-    QString * getPaisesValidos(int &Max);
-    QString* getPaisesInvalidos(int &Max);
+    std::vector<QString> getPaisesValidos() const;
+    std::vector<QString> getPaisesInvalidos() const;
+    QString* getPaisesValidos(int &Max) const;
+    QString* getPaisesInvalidos(int &Max) const;
 private:
     std::vector<QString> paisesValidos;
     std::vector<QString> paisesInvalidos;

@@ -165,7 +165,7 @@ void libroreglas::setDatosNivel2()
         texto += "- " + paises[i] + "\n";
 
     ui->PaisesResidenciaInvalidos->setText(texto);
-    delete paises;
+    delete[] paises;
 }
 
 void libroreglas::setPaises(ReglasNivel1 * datos){

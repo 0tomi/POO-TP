@@ -31,7 +31,7 @@ public:
     ~GeneradorDocumentacion();
 
 private:
-    void InicializarGeneradores(Reglas **rules);
+    void InicializarGeneradores(Reglas **rules, int nivel);
 
     // INSERTAR ACA GENERADORES DE DOCUMENTOS
     GenerarEstancia generadorEstancia;

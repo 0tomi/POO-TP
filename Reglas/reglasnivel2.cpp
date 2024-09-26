@@ -56,7 +56,17 @@ void ReglasNivel2::generar_PaisesPermitidos(std::vector<QString>& Lista_PaisesPe
         }
 }
 
-QString *ReglasNivel2::getPaisesValidos(int &Max)
+std::vector<QString> ReglasNivel2::getPaisesValidos() const
+{
+    return paisesValidos;
+}
+
+std::vector<QString> ReglasNivel2::getPaisesInvalidos() const
+{
+    return paisesInvalidos;
+}
+
+QString *ReglasNivel2::getPaisesValidos(int &Max) const
 {
     Max = paisesValidos.size();
     QString* paises_Validos = new QString[Max];
@@ -66,7 +76,7 @@ QString *ReglasNivel2::getPaisesValidos(int &Max)
     return paises_Validos;
 }
 
-QString *ReglasNivel2::getPaisesInvalidos(int &Max)
+QString *ReglasNivel2::getPaisesInvalidos(int &Max) const
 {
     Max = paisesInvalidos.size();
     QString* paises_Invalidos = new QString[Max];

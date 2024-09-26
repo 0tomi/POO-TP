@@ -22,9 +22,11 @@ private:
     PaisResidencia * PaisResidenciaCreado;
     LocuraCaracteres * locura;
 
-    QString * paisesValidos; QString * paisesInvalidos;
-    int maxValidos, maxInvalidos;
+    vector<QString> paisesValidos;
+    vector<QString> paisesInvalidos;
 
+    QString generarPaisValido();
+    QString generarPaisInvalido();
     QString generar_nombre(char genero) override;
     QString generar_paisresidencia(bool valido);
     QString generar_fecha(bool valido) override;
@@ -32,8 +34,6 @@ private:
 
 public:
     generador_paisresidencia();
-    QString generarPaisValido();
-    QString generarPaisInvalido();
     ~generador_paisresidencia();
     void Inicializar(ReglasNivel1*, ReglasNivel2*);
     PaisResidencia * CrearPaisResidencia(Pasaporte * Pasaporte2copy, bool valido, int dificultad);
