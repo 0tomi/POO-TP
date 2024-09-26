@@ -15,9 +15,6 @@ private:
     ReglasNivel1 * rules;
     Pasaporte * Pasaporte2Copy;
 
-    bool camposValidos[3]; // 1 nombre, 2 fecha, 3 pais de residencia
-    bool camposLocura[3]; // 1 nombre , 2 fecha, 3 pais de residencia
-    //campos locura es para ver si se usa locura caracteres o no, si es false no se usa locura si es true si
 
     PaisResidencia * PaisResidenciaCreado;
 
