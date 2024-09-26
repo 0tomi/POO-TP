@@ -22,6 +22,8 @@ Generar_pasaporte::Generar_pasaporte() {
 
     quint32 Semilla = QTime::currentTime().msec();;
     this->rand.seed(Semilla);
+
+    this->locura = new LocuraCaracteres(&this->rand);
 }
 
 void Generar_pasaporte::Inicializar(ReglasNivel1 *rules)
@@ -84,7 +86,7 @@ void Generar_pasaporte::CamposLocura(int Probabilidades)
     int cantidadCamposInvalidos = 0;
     int sorteo;
     // Hasta no generarse por lo menos 1 campo valido, no sale del while.
-    qDebug() << "Bucle de generar campos invalidos Pais de residencia";
+    qDebug() << "Bucle de generar campos locura Pais de residencia";
     while (!cantidadCamposInvalidos){
         for (int i = 0; i < 3; ++i){
             sorteo = this->rand.bounded(10);

@@ -20,7 +20,6 @@ private:
     //campos locura es para ver si se usa locura caracteres o no, si es false no se usa locura si es true si
 
     PaisResidencia * PaisResidenciaCreado;
-    LocuraCaracteres * locura;
 
     vector<QString> paisesValidos;
     vector<QString> paisesInvalidos;
