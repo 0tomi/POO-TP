@@ -199,3 +199,8 @@ void GestorNPCsUI::Centrar()
 {
     Dialogos->Centrar();
 }
+
+void GestorNPCsUI::setVolumen(float vol)
+{
+    Dialogos->setVolume(vol);
+}

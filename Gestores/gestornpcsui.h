@@ -24,6 +24,8 @@ public:
     void EmpezarJuego();
     void Centrar();
 
+    void setVolumen(float);
+
     void Entrar();
     void Salir(bool Boton);
 

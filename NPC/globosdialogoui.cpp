@@ -1,12 +1,20 @@
 #include "globosdialogoui.h"
 #include "ui_globosdialogoui.h"
+#include <QTime>
 
 GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::GlobosDialogoUI)
+    , ui(new Ui::GlobosDialogoUI), Random(QTime::currentTime().msec())
 {
     padre = parent;
     ui->setupUi(this);
+
+    URLSonidos[0].setUrl("qrc:/Resources/Sonidos/Dialogos/DialogoSound1.WAV");
+    URLSonidos[1].setUrl("qrc:/Resources/Sonidos/Dialogos/DialogoSound2.WAV");
+    URLSonidos[2].setUrl("qrc:/Resources/Sonidos/Dialogos/DialogoSound3.WAV");
+    URLSonidos[3].setUrl("qrc:/Resources/Sonidos/Dialogos/DialogoSound4.WAV");
+    Sonido.setVolume(1.0);
+
     tamanioNormalGloboX = 300; tamanioNormalGloboY = 90;
     tamanioAumentadoGloboX = tamanioNormalGloboX + 15;
     tamanioAumentadoGloboY = tamanioNormalGloboY + 40;
@@ -46,6 +54,7 @@ void GlobosDialogoUI::MostrarMensaje()
     raise();
     emit Hablando(mensaje);
     TiempoVisualizacion.start(4000);
+    ReproducirSonido();
 }
 
 void GlobosDialogoUI::PausarMensaje()
@@ -92,6 +101,11 @@ void GlobosDialogoUI::Centrar()
         move(X,Y);
         raise();
     }
+}
+
+void GlobosDialogoUI::setVolume(float vol)
+{
+    Sonido.setVolume(vol);
 }
 
 void GlobosDialogoUI::SetearAnimacionEntrada()
@@ -141,6 +155,13 @@ void GlobosDialogoUI::CalcularPosicionDelGlobo(int &X, int &Y)
 void GlobosDialogoUI::setMostrandose()
 {
     Mostrandose = true;
+}
+
+void GlobosDialogoUI::ReproducirSonido()
+{
+    int sorteo = Random.bounded(4);
+    Sonido.setSource(URLSonidos[sorteo]);
+    Sonido.play();
 }
 
 void GlobosDialogoUI::TerminarMensaje()
