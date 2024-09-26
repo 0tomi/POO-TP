@@ -116,7 +116,7 @@ private:
     IntroPantalla* introPantalla;
 
     // Notificaciones
-    QTimer trampa;
+    float volumenActual;
     vector<Notificacion*> Notificaciones;
     int CantidadNotificaciones = 0;
     void CrearNotificacion(bool Multa, QString& Motivo);
