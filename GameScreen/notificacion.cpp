@@ -1,7 +1,7 @@
 #include "notificacion.h"
 #include "ui_notificacion.h"
 
-Notificacion::Notificacion(int Numero, bool Multa, QString texto, QWidget *parent):
+Notificacion::Notificacion(int Numero, bool Multa, QString texto, float vol, QWidget *parent):
     DocumentosUI(parent)
     , ui(new Ui::Notificacion), sonidoEntrada(parent), sonidoSalida(parent)
 {
@@ -12,7 +12,7 @@ Notificacion::Notificacion(int Numero, bool Multa, QString texto, QWidget *paren
 
     sonidoEntrada.setSource(QUrl("qrc:/Resources/Documentos/Notificaciones/NotificacionEntrada.WAV"));
     sonidoSalida.setSource(QUrl("qrc:/Resources/Documentos/Notificaciones/NotificacionSalida.WAV"));
-    setVolume(1.0);
+    setVolume(vol);
 
     layout = new QHBoxLayout(ui->BotonCerrar);
     layout->setSpacing(0);

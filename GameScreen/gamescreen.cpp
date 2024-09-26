@@ -22,7 +22,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     ColaNPC* Cola = juego->getCola();
 
     tiempoPartida.setSingleShot(true);
-    trampa.setSingleShot(true);
+    volumenActual = 1.0;
 
     // Agregamos el NPC y Documentos a la escena
     GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
@@ -141,6 +141,7 @@ void GameScreen::SetearConexionesDocumentos()
 /// #################################### CONEXIONES ###################################################
 void GameScreen::setVolumenes(float volumen)
 {
+    this->volumenActual = volumen;
     introPantalla->setVolumenes(volumen);
     BotonAprobar->setVolumen(volumen);
     BotonCentrar->setVolumen(volumen);
@@ -148,7 +149,8 @@ void GameScreen::setVolumenes(float volumen)
     libroReglasUI->setVolume(volumen);
     GestorNPC.setVolumen(volumen);
     for (int i = 0; i < Notificaciones.size(); ++i)
-        Notificaciones[i]->setVolume(volumen);
+        if (Notificaciones[i])
+            Notificaciones[i]->setVolume(volumen);
 }
 
 void GameScreen::RealizarConexionesPrincipales()
@@ -282,6 +284,8 @@ void GameScreen::FinalDePartida()
         else pantallaPerdiste->Iniciar(false);
     } else
         emit LogJugador("Juego terminado forzosamente");
+
+    MatarNotificaciones();
 }
 
 void GameScreen::Decidir()
@@ -359,11 +363,19 @@ void GameScreen::MostrarReglas()
 
 void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
 {
-    Notificacion* nuevaNotificacion = new Notificacion(CantidadNotificaciones, Multa, Motivo, ui->Escritorio);
+    Notificacion* nuevaNotificacion = new Notificacion(CantidadNotificaciones, Multa, Motivo, this->volumenActual, ui->Escritorio);
     nuevaNotificacion->Entrar();
     connect(nuevaNotificacion, &Notificacion::QuiereCerrarNotificacion, this, &GameScreen::MatarNotificacion);
     Notificaciones.push_back(nuevaNotificacion);
     CantidadNotificaciones++;
+}
+
+void GameScreen::MatarNotificaciones()
+{
+    if (CantidadNotificaciones)
+        for (int i = 0; i < Notificaciones.size(); ++i)
+            if (Notificaciones[i])
+                delete Notificaciones[i];
 }
 
 void GameScreen::MatarNotificacion(int Numero)
