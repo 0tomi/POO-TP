@@ -109,7 +109,7 @@ QString generador_paisresidencia::generarPaisValido()
 
 QString generador_paisresidencia::generarPaisInvalido()
 {
-    int sorteo = rand.bounded(10);
+    int sorteo;
     QString paisGenerado;
 
     if (this->campos_locura[2]){
@@ -131,7 +131,7 @@ QString generador_paisresidencia::generar_fecha(bool valido)
     int fecha_max = this->rules->getFechaMaxPermitida();
     QString fecha = this->Pasaporte2Copy->getfecha_nacimiento();
     if(!valido){
-        if (campos_locura[1]){
+        if (this->campos_locura[1]){
             QString fecha_pasaporte = this->Pasaporte2Copy->getfecha_nacimiento();
             fecha = this->locura->CambiarCadena(this->dificultad, fecha_pasaporte);
         }else{
