@@ -16,7 +16,7 @@ class Notificacion : public DocumentosUI
     Q_OBJECT
 
 public:
-    explicit Notificacion(int Numero, bool Multa, QString motivos, QWidget *parent = nullptr);
+    explicit Notificacion(int Numero, bool Multa, QString motivos, float Volumen, QWidget *parent = nullptr);
     void setDocumentacionInfo(Documentacion *documento){};
     ~Notificacion();
     void setVolume(float);
