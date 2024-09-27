@@ -31,6 +31,9 @@ private:
     char getGeneroRandom();
     int generarRandomExcluido(int excluded);
     void generarCamposValidos(bool validez);
+
+    ListaAcompaniantes * generarLista(int valormin, int valormax, bool Validez, bool Dialogos);
+    ListaAcompaniantes* getListaFalsa();
 public:
     GeneradorListaAcompaniantes();
     void Inicializar(QRandomGenerator * generador, ReglasNivel3 * reglas);

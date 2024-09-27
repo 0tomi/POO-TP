@@ -80,36 +80,37 @@ QString GeneradorListaAcompaniantes::generarNombre(char genero) {
     return nombreResult;
 }
 
+// Metoods para generar
+ListaAcompaniantes *GeneradorListaAcompaniantes::generarLista(int valormin, int valormax, bool Validez, bool Dialogos)
+{
+    const int CANTIDAD_MINIMA_ACOMPS = 0;
+    int topeNombres = numRandom->bounded(valormin, valormax);
+    if (topeNombres == CANTIDAD_MINIMA_ACOMPS)
+        return new ListaAcompaniantes("Viaja sin acompañante", Validez, Dialogos);
+
+    QString * nombresAcomps = generarAcompaniantes(topeNombres);
+    return new ListaAcompaniantes(nombresAcomps, topeNombres, Validez, Dialogos);
+}
+
+ListaAcompaniantes *GeneradorListaAcompaniantes::getListaFalsa()
+{
+    const int CANTIDAD_MINIMA_ACOMPS = 0;
+    const int CANTIDAD_MAX_ACOMPS = 4;
+    if (this->maxAcompaniantesValidos == 3 || Campos[0])
+        return generarLista(CANTIDAD_MINIMA_ACOMPS, this->maxAcompaniantesValidos+1, false, false);
+
+    return generarLista(this->maxAcompaniantesValidos+1, CANTIDAD_MAX_ACOMPS, false, Campos[1]);
+}
 
 // <-------- METODOS PUBLICOS --------->
 ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes(bool validez) {
     generarCamposValidos(validez);
+    const int CANTIDAD_MINIMA_ACOMPS = 0;
     int topeNombres; QString * nombresAcomps;
-    if (validez){
-        if (this->maxAcompaniantesValidos == 0) {
-            QString msjSinAcomp = "Viaja sin acompañante";
-            return new ListaAcompaniantes(msjSinAcomp, validez, true);
-        } else {
-            topeNombres = numRandom->bounded(maxAcompaniantesValidos+1);
-            if (topeNombres == 0)
-                return new ListaAcompaniantes("Viaja sin acompañante", validez, true);
-
-            nombresAcomps = generarAcompaniantes(topeNombres);
-            return new ListaAcompaniantes(nombresAcomps, topeNombres, validez, true);
-        }
-    } else {
-        if (this->maxAcompaniantesValidos == 3) {
-            topeNombres = numRandom->bounded(maxAcompaniantesValidos+1);
-            nombresAcomps = generarAcompaniantes(topeNombres);
-
-            return new ListaAcompaniantes(nombresAcomps, topeNombres, validez, false);
-        }
-        if (Campos[0]){
-
-        }
-
-        return new ListaAcompaniantes(nombresAcomps, topeNombres, validez, Campos[1]);
-    }
+    if (validez)
+        return generarLista(CANTIDAD_MINIMA_ACOMPS, this->maxAcompaniantesValidos+1, validez, true);
+    else
+        return getListaFalsa();
 }
 
 int GeneradorListaAcompaniantes::generarRandomExcluido(int excluded) {
