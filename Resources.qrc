@@ -158,5 +158,9 @@
         <file>Resources/Documentos/Notificaciones/sin multa.png</file>
         <file>Resources/Documentos/Notificaciones/NotificacionEntrada.WAV</file>
         <file>Resources/Documentos/Notificaciones/NotificacionSalida.WAV</file>
+        <file>Resources/Sonidos/NotificacionEntradaTranscriptor.wav</file>
+        <file>Resources/Sonidos/NotificacionSalidaTranscriptor.wav</file>
+        <file>Resources/Sonidos/BotonesMenu.WAV</file>
+        <file>Resources/Sonidos/ModoDemonioBoton.WAV</file>
     </qresource>
 </RCC>

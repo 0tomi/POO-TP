@@ -12,11 +12,12 @@ private:
     int topeNombresAcomps;
     int CantAcompaniantes;
     bool validez;
+    bool dialogo;
 
 public:
     ListaAcompaniantes();
-    ListaAcompaniantes(QString mensajeSinAcomp, bool validez);
-    ListaAcompaniantes(QString* nombresAcomps, int topeNombresAcomps, bool validez);
+    ListaAcompaniantes(QString mensajeSinAcomp, bool validez, bool dialogo);
+    ListaAcompaniantes(QString* nombresAcomps, int topeNombresAcomps, bool validez, bool dialogo);
 
     // getters:
     QString getMensajeSinAcomp();
@@ -24,6 +25,7 @@ public:
     int getTopeNombresAcomps();
     bool getValidez() const;
     int getCantAcompaniantes() const;
+    bool getValidezDialogo() const;
 };
 
 #endif // LISTAACOMPANIANTES_H

@@ -175,7 +175,8 @@ void Juego::setUpNivel3()
 {
     // Aca previamente tocaria una lectura del nivel concreto a iniciar
     // donde obtengamos los datos que necesitamos para cada nivel
-
+    reglasLVL2.generar_PaisesPermitidos(6);
+    reglasLVL3.set_MaxAcompaniantes(2);
     Cola.Inicializar(NivelActual, Dificultad, reglas);
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
