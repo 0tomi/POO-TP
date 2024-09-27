@@ -203,4 +203,5 @@ void GestorNPCsUI::Centrar()
 void GestorNPCsUI::setVolumen(float vol)
 {
     Dialogos->setVolume(vol);
+    transcriptorDialogos->setVolume(vol);
 }

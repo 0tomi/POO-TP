@@ -41,6 +41,7 @@ void libroreglas::setUpLevel(int level)
         ui->Nivel2Boton2->show();
     }
     if (level >= 3){
+        setDatosNivel3();
         CantidadPaginas = 5;
         ui->Nivel3Boton1->show();
     }
@@ -156,6 +157,8 @@ void libroreglas::setDatosPag1(){
 void libroreglas::setDatosNivel2()
 {
     ReglasNivel2* reglas = dynamic_cast<ReglasNivel2*>(juego->getReglas(1));
+    if (!reglas)
+        qDebug() << "Fallo al castear reglas de nivel 2 en libro de reglas";
     QString texto;
     int max;
 
@@ -166,6 +169,24 @@ void libroreglas::setDatosNivel2()
 
     ui->PaisesResidenciaInvalidos->setText(texto);
     delete[] paises;
+}
+
+void libroreglas::setDatosNivel3()
+{
+    ReglasNivel3* reglas = dynamic_cast<ReglasNivel3*>(juego->getReglas(2));
+    if (!reglas)
+        qDebug() << "Fallo al castear reglas de nivel 3 en libro de reglas";
+
+    int maxAcompaniantes = reglas->getMaxAcompaniantes();
+    switch (maxAcompaniantes){
+    case 0: ui->CantAcompsPermitida->setText("No se permiten acompaniantes.");
+        break;
+    case 1: ui->CantAcompsPermitida->setText("Se permite como máximo 1 acompaniante.");
+        break;
+    case 2: ui->CantAcompsPermitida->setText("Se permite como máximo 2 acompaniantes.");
+        break;
+    default: ui->CantAcompsPermitida->setText("Se permite como máximo 3 acompaniantes.");
+    }
 }
 
 void libroreglas::setPaises(ReglasNivel1 * datos){

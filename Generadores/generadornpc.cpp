@@ -178,13 +178,13 @@ void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
     }
 
     QString dialogo;
-    bool validez = infoLista->getValidez();
+    bool validez = infoLista->getValidezDialogo();
     int CantidadAcompaniantes = infoLista->getCantAcompaniantes();
 
-    if (validez) { // si el documento es valido.. genero dialogos validos
+    if (validez) { // genero dialogos validos
         dialogo = dialogosAcomps[CantidadAcompaniantes];
         info->setDialogo(dialogo);
-    } else { // genero dialogos invalidos
+    } else {     // genero dialogos invalidos
         dialogo = generarDialogosAcomps(CantidadAcompaniantes);
         info->setDialogo(dialogo);
     }
