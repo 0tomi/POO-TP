@@ -160,5 +160,6 @@
         <file>Resources/Documentos/Notificaciones/NotificacionSalida.WAV</file>
         <file>Resources/Sonidos/NotificacionEntradaTranscriptor.wav</file>
         <file>Resources/Sonidos/NotificacionSalidaTranscriptor.wav</file>
+        <file>Resources/Sonidos/BotonesMenu.WAV</file>
     </qresource>
 </RCC>

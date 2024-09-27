@@ -29,13 +29,16 @@ private:
     Ui::libroreglas *ui;
     Juego* juego;
 
+    // Datos de niveles:
+    void setDatosPag1();
+    void setDatosNivel2();
+    void setDatosNivel3();
+
     void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();
     void IrPagAnterior();
     void IrPagSiguiente();
     void SaltarPagina(int pagina);
-    void setDatosPag1();
-    void setDatosNivel2();
 
     int CantidadPaginas;
     int PaginaActual;
