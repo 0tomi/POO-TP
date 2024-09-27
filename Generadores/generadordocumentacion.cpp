@@ -34,7 +34,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
     }
     if (nivel > 2){
         reglasNivel3 = dynamic_cast<ReglasNivel3*>(rules[2]);
-        generadorListaAcomp.Inicializar(&NumeroRandom); // Falta aniadir los requerimientos de nivel 3
+        generadorListaAcomp.Inicializar(&NumeroRandom, reglasNivel3); // Falta aniadir los requerimientos de nivel 3
     }
     if (nivel > 3){
         reglasNivel4 = dynamic_cast<ReglasNivel4*>(rules[3]);

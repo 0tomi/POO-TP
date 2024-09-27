@@ -3,10 +3,13 @@
 
 TranscriptorDialogos::TranscriptorDialogos(QWidget *parent)
     : DocumentosUI(parent)
-    , ui(new Ui::TranscriptorDialogos),
+    , ui(new Ui::TranscriptorDialogos), sonidoEntrada(parent), sonidoSalida(parent)
 {
 
     ui->setupUi(this);
+    sonidoEntrada.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionEntradaTranscriptor.wav"));
+    sonidoSalida.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionSalidaTranscriptor.wav"));
+    setVolume(1.0);
     hide();
     DialogoRecibido = "";
     Mostrando = false;
@@ -21,6 +24,7 @@ TranscriptorDialogos::~TranscriptorDialogos()
 void TranscriptorDialogos::Entrar()
 {
     ui->Dialogos->setText(this->DialogoRecibido);
+    sonidoEntrada.play();
     raise();
     DocumentosUI::Entrar();
     Mostrando = true;
@@ -28,8 +32,15 @@ void TranscriptorDialogos::Entrar()
 
 void TranscriptorDialogos::Sacar()
 {
+    sonidoSalida.play();
     DocumentosUI::Sacar();
     Mostrando = false;
+}
+
+void TranscriptorDialogos::setVolume(float vol)
+{
+    sonidoEntrada.setVolume(vol-0.2);
+    sonidoSalida.setVolume(vol-0.2);
 }
 
 void TranscriptorDialogos::CaptarMensaje(QString dialogo)

@@ -19,7 +19,7 @@ public:
     void setDocumentacionInfo(Documentacion *documento) override;
     virtual void Entrar() override;
     virtual void Sacar() override;
-    //void setVolume(float);
+    void setVolume(float);
 
     bool getMostrando() const;
 
@@ -33,8 +33,8 @@ protected:
     void PrepararAnimacionSalida() override;
 
 private:
-    QSoundEffect sonido;
-q
+    QSoundEffect sonidoEntrada;
+    QSoundEffect sonidoSalida;
     Ui::TranscriptorDialogos *ui;
     QString DialogoRecibido;
     bool Mostrando;
