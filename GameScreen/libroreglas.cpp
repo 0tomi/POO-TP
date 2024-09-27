@@ -41,6 +41,7 @@ void libroreglas::setUpLevel(int level)
         ui->Nivel2Boton2->show();
     }
     if (level >= 3){
+        setDatosNivel3();
         CantidadPaginas = 5;
         ui->Nivel3Boton1->show();
     }

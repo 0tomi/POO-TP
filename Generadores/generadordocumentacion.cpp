@@ -110,11 +110,12 @@ QString GeneradorDocumentacion::logDatosFalsos()
 /// #########################################################################################################
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
+    qDebug() << "Generando pasaporte";
     // Generador de pasaportes - DNI
     Pasaporte* nuevoPasaporte = generadorPasaporte.crear_pasaporte(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate), DificultadJuego);
     NPC2Generate->addDocumento(nuevoPasaporte, Index);
     Index++;
-
+    qDebug() << "Generando estancia";
     // Generador de Estancias
     Estancia* nuevaEstancia = generadorEstancia.getEstancia(DocsValidos[Index], DificultadJuego);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
@@ -123,6 +124,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
+    qDebug() << "Generando residencia";
     // Generador de Residencia
     PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.CrearPaisResidencia(NPC2Generate->getPasaporte(),DocsValidos[Index], DificultadJuego);
     NPC2Generate->addDocumento(nuevoPaisResidencia,Index);
@@ -131,10 +133,12 @@ void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 
 void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
+    qDebug() << "Genedrando lista de acompaniantes";
     // Generador de Lista de Acompañantes
     ListaAcompaniantes * nuevaLista = generadorListaAcomp.getListaAcompaniantes(DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaLista, Index);
     Index++;
+    qDebug() << "Lista de acompaniantes generada";
 }
 
 void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)

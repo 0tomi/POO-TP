@@ -40,7 +40,7 @@ char GeneradorListaAcompaniantes::getGeneroRandom() {
 QString *GeneradorListaAcompaniantes::generarAcompaniantes(int max)
 {
     QString* nombresAcomps = new QString[max];
-    for (int i = 0; i < maxAcompaniantesValidos; i++) {
+    for (int i = 0; i < max; i++) {
         char generoRandom = getGeneroRandom();
         switch (generoRandom) {
         case 'H':
