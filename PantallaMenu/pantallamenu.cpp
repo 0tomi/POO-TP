@@ -4,10 +4,13 @@
 /// ############################ CONSTRUCTOR ###############################
 PantallaMenu::PantallaMenu(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::PantallaMenu), GTALocura(this)
+    , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent)
 {
     ui->setupUi(this);
     GTALocura.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionGTA.wav"));
+    SonidosBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
+    SonidoModoDemonio.setSource(QUrl("qrc:/Resources/Sonidos/ModoDemonioBoton.WAV"));
+    setVolumen(1.0);
     GTALocura.setVolume(1.0);
 
     transicion = new PantallaTransicion(this);
@@ -57,6 +60,12 @@ void PantallaMenu::setInicio()
 PantallaMenu::~PantallaMenu()
 {
     delete ui;
+}
+
+void PantallaMenu::setVolumen(float vol)
+{
+    SonidosBotones.setVolume(vol);
+    SonidoModoDemonio.setVolume(vol);
 }
 
 void PantallaMenu::keyPressEvent(QKeyEvent *event)
@@ -112,17 +121,19 @@ void PantallaMenu::actualizarDificultad(int newDif)
 
 void PantallaMenu::switchCheatClicked()
 {
+    SonidosBotones.play();
     ui->menu->setCurrentWidget(ui->CheatPage);
 }
 
 /// ############################ Jugar ###############################
 void PantallaMenu::botonJugarClicked()
 {
+    SonidosBotones.play();
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
 }
 
 void PantallaMenu::switchSelectorDificultad()
-{    
+{
     ui->menu->setCurrentWidget(ui->dificultad);
     ui->BotonesSalir->setCurrentIndex(1);
     nivel = 1;
@@ -132,6 +143,7 @@ void PantallaMenu::switchSelectorDificultad()
 /// ############################ Dificultades ###############################
 void PantallaMenu::botonFacilclicked()
 {
+    SonidosBotones.play();
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchFacil);
     nivel = 1;
 }
@@ -147,6 +159,7 @@ void PantallaMenu::switchFacil()
 
 void PantallaMenu::botonNormalclicked()
 {
+    SonidosBotones.play();
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchNormal);
     nivel = 1;
 }
@@ -162,6 +175,7 @@ void PantallaMenu::switchNormal()
 
 void PantallaMenu::botonDemonioclicked()
 {
+    SonidoModoDemonio.play();
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchDemonio);
     nivel = 1;
 }
@@ -177,12 +191,14 @@ void PantallaMenu::switchDemonio()
 /// ############################ Empezar a jugar ###############################
 void PantallaMenu::botonStartclicked()
 {
+    SonidosBotones.play();
     emit clickedStart(nivel,dificultad);
     qDebug()<< "nivel" << nivel << "dificultad"<<dificultad;
 }
 /// ############################ Cargar partida ###############################
 void PantallaMenu::botonCargarclicked()
 {
+    SonidosBotones.play();
     transicion->ArrancarTransicion(700, this, &PantallaMenu::switchCargar);
 }
 
@@ -195,35 +211,40 @@ void PantallaMenu::switchCargar()
 
 void PantallaMenu::botonPartida1clicked()
 {
+    SonidosBotones.play();
     emit clickedPartida1();
 }
 
 void PantallaMenu::botonPartida2clicked()
 {
+    SonidosBotones.play();
     emit clickedPartida2();
 }
 
 void PantallaMenu::botonPartida3clicked()
 {
+    SonidosBotones.play();
     emit clickedPartida3();
 }
 
 /// ############################ Opciones ###############################
 void PantallaMenu::botonSettingsclicked()
 {
+    SonidosBotones.play();
     emit clickedSettings();
 }
 
 /// ############################ Salir ###############################
 void PantallaMenu::botonSalirclicked()
 {
+    SonidosBotones.play();
     emit clickedSalir();
-    qDebug() << "Quiere salir";
 }
 
 /// ############################ Volver ###############################
 void PantallaMenu::botonVolver1clicked()
 {
+    SonidosBotones.play();
     int indiceActual = ui->menu->currentIndex();
     switch (indiceActual){
     case 1: // cargar partida
@@ -251,6 +272,7 @@ void PantallaMenu::switchMenu()
 
 void PantallaMenu::tutorialButton()
 {
+    SonidosBotones.play();
     emit clickedTutorial();
 }
 

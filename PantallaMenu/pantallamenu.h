@@ -17,6 +17,8 @@ public:
     explicit PantallaMenu(QWidget *parent = nullptr);
     void setInicio();
     ~PantallaMenu();
+public slots:
+    void setVolumen(float);
 
 signals:
     void clickedJugar();
@@ -74,6 +76,8 @@ private slots:
 
 private:
     QSoundEffect GTALocura;
+    QSoundEffect SonidosBotones;
+    QSoundEffect SonidoModoDemonio;
     int dificultad = 1;
     int nivel = 1;
     Ui::PantallaMenu *ui;
