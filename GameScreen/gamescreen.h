@@ -50,7 +50,7 @@ public slots:
 
 signals:
     void NivelTerminado(bool Perdio);
-    void LogJugador(QString);
+    void EnviarLogs(QString);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla

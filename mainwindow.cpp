@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     ConeccionesPantallaPausa();
     ConeccionesPantallaMenu();
     ConeccionesPantallaEstadisticas();
-
+    ConeccionesLogs();
     // Mostrar en pantalla completa:
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     /// ##################### TEST ################################
-    connect(gameScreen, &GameScreen::LogJugador, [this](QString dato){
+    connect(gameScreen, &GameScreen::EnviarLogs, [this](QString dato){
         qDebug() << dato;
     });
 }
@@ -275,4 +275,15 @@ void MainWindow::SetTutorial()
 void MainWindow::SalirTutorial()
 {
     pantallas->setCurrentIndex(PantallaPreviaTutorial);
+}
+
+
+// ###################################### LOGS ###################################
+void MainWindow::ConeccionesLogs()
+{
+    this->log = new Logs;
+    connect(pantallaPausa, &PantallaPausa::EnviarLogs, log, &Logs::RecibirLogs);
+    connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,log,&Logs::RecibirLogs);
+    connect(pantallaMenu,&PantallaMenu::EnviarLogs,log, &Logs::RecibirLogs);
+    connect(gameScreen,&GameScreen::EnviarLogs,log,&Logs::RecibirLogs);
 }

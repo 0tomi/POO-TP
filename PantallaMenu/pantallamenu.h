@@ -33,7 +33,7 @@ signals:
     void clickedPartida2();
     void clickedPartida3();
     void clickedTutorial();
-
+    void EnviarLogs(QString Log);
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
     void ActualizarCont(int &, bool &);
