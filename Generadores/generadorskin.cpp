@@ -1,6 +1,12 @@
 #include "generadorskin.h"
 #include <QDebug>
 
+void GeneradorSkin::setSeed(quint32 seed)
+{
+    this->qrand->seed(seed);
+}
+
+
 GeneradorSkin::GeneradorSkin(QRandomGenerator *generador): lector(":/Resources/ArchivosTexto/URLCaras.txt")
 {
     // Colocamos el generador

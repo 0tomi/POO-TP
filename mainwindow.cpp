@@ -32,6 +32,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameScreen, &GameScreen::EnviarLogs, [this](QString dato){
         qDebug() << dato;
     });
+    connect(juego, &Juego::Log, [this](QString dato){
+        qDebug() << dato;
+    });
 }
 
 MainWindow::~MainWindow()

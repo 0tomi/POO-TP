@@ -9,6 +9,7 @@
 class LocuraCaracteres
 {
 public:
+    void setSeed(quint32 seed);
     LocuraCaracteres(QRandomGenerator * newGenerador);
     QString CambiarCadena(int Dificultad, QString cadena);
     QString CambiarCadena(QString Cadena, int CantCaracteres);

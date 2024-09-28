@@ -23,14 +23,16 @@ using namespace std;
 
 class GeneradorDocumentacion{
 public:
+    void setSeed(quint32 seed);
     GeneradorDocumentacion(); // en ultima instancia se le puede pasar la clase NPC pero no esta definida
-    void Inicializar(int Nivel, int Dificultad, Reglas** rules);
+    void Inicializar(int Nivel, int Dificultad, Reglas** rules, quint32 seed);
     void getDocumentos(NPC* info, bool validez);
     void setNivel(int Nivel);
     void setDificultad(int Dificultad);
     ~GeneradorDocumentacion();
 
 private:
+    quint32 semilla;
     void InicializarGeneradores(Reglas **rules, int nivel);
 
     // INSERTAR ACA GENERADORES DE DOCUMENTOS

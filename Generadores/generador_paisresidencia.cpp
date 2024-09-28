@@ -10,8 +10,9 @@ generador_paisresidencia::~generador_paisresidencia()
     delete locura;
 }
 
-void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2)
+void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2, quint32 seed)
 {
+    this->setSeed(seed);
     this->rules = rules1;
     this->ruleslvl2 = rules2;
 
@@ -164,4 +165,10 @@ void generador_paisresidencia::CamposLocura(int Probabilidades)
             }
         }
     }
+}
+
+void generador_paisresidencia::setSeed(quint32 seed)
+{
+    rand.seed(seed);
+    locura->setSeed(seed);
 }

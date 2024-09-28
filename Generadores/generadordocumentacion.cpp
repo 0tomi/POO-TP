@@ -14,23 +14,30 @@ GeneradorDocumentacion::GeneradorDocumentacion():
     // Seteamos el randomizador de caracteres
 }
 
-void GeneradorDocumentacion::Inicializar(int Nivel, int Dificultad, Reglas **rules)
+void GeneradorDocumentacion::Inicializar(int Nivel, int Dificultad, Reglas **rules, quint32 seed)
 {
+    this->setSeed(seed);
     this->setNivel(Nivel);
     this->setDificultad(Dificultad);
     this->InicializarGeneradores(rules, Nivel);
+}
+
+void GeneradorDocumentacion::setSeed(quint32 seed)
+{
+    this->semilla = seed;
+    this->NumeroRandom.seed(seed);
 }
 
 void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
 {
     /// Work in progress
     reglasNivel1 = dynamic_cast<ReglasNivel1*>(rules[0]);
-    generadorPasaporte.Inicializar(reglasNivel1);
-    generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres);
+    generadorPasaporte.Inicializar(reglasNivel1, this->semilla);
+    generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres, this->semilla);
 
     if (nivel > 1){
         reglasNivel2 = dynamic_cast<ReglasNivel2*>(rules[1]);
-        generadorPaisResidencia.Inicializar(reglasNivel1, reglasNivel2);
+        generadorPaisResidencia.Inicializar(reglasNivel1, reglasNivel2, this->semilla);
     }
     if (nivel > 2){
         reglasNivel3 = dynamic_cast<ReglasNivel3*>(rules[2]);
@@ -63,9 +70,6 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     else
         GenerarCantidadDocsInvalidos();
 
-    if (!Validez)
-        NPC2Generate->setDatosFalsos(logDatosFalsos());
-
     GenerarDocumentosNivel1(Index);
 
     if (NivelActual >= 2){
@@ -80,6 +84,9 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     if (NivelActual >= 5){
         GenerarDocumentosNivel5(Index);
     }
+
+    if (!Validez)
+        NPC2Generate->setDatosFalsos(logDatosFalsos());
 }
 
 QString GeneradorDocumentacion::logDatosFalsos()
@@ -113,12 +120,11 @@ QString GeneradorDocumentacion::logDatosFalsos()
 /// #########################################################################################################
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
-    qDebug() << "Generando pasaporte";
     // Generador de pasaportes - DNI
     Pasaporte* nuevoPasaporte = generadorPasaporte.crear_pasaporte(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate), DificultadJuego);
     NPC2Generate->addDocumento(nuevoPasaporte, Index);
     Index++;
-    qDebug() << "Generando estancia";
+
     // Generador de Estancias
     Estancia* nuevaEstancia = generadorEstancia.getEstancia(DocsValidos[Index], DificultadJuego);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
@@ -127,7 +133,6 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
-    qDebug() << "Generando residencia";
     // Generador de Residencia
     PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.CrearPaisResidencia(NPC2Generate->getPasaporte(),DocsValidos[Index], DificultadJuego);
     NPC2Generate->addDocumento(nuevoPaisResidencia,Index);
