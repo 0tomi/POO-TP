@@ -23,6 +23,8 @@ Logs::Logs() {
     stream << cantLogs + 1;
 
     archivoNumLogs.close();
+
+
 }
 
 void Logs::SaveLogs()
