@@ -1,10 +1,10 @@
 #include "generadordocumentacion.h"
-#include <ctime>
+#include <QTime>
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
 GeneradorDocumentacion::GeneradorDocumentacion():
-    NumeroRandom(static_cast<quint32>(time(NULL))),
+    NumeroRandom(QTime::currentTime().msec()),
     randomizadorCaracteres(&NumeroRandom)
 {
     NivelActual = 1;

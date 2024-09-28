@@ -76,6 +76,7 @@ private:
     GlobosDialogoUI* Dialogos;
 
     bool MostrandoNPC;
+    bool ColaVacia;
 
     int topeNPCs;
     int NivelActual;

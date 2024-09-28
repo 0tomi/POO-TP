@@ -30,7 +30,6 @@ public:
 
 private:
     vector<NPC*> VectorNPCs;
-    int sizeOriginal;
     int size;
     int nivelActual;
 

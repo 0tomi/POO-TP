@@ -1,13 +1,12 @@
 #include "colanpc.h"
-#include <ctime>
+#include <QTime>
 #include <QDebug>
 
 /// #################################### CONSTRUCTOR ###################################################
 ColaNPC::ColaNPC():
-    Random(time(NULL)), GenerarNPC(&Random), GenerarDocumentacion()
+    Random(QTime::currentTime().msec()), GenerarNPC(&Random), GenerarDocumentacion()
 {
     this->size = 0;
-    this->sizeOriginal = 0;
 }
 
 void ColaNPC::Inicializar(int Nivel, int Dificultad, Reglas **rules)
@@ -25,7 +24,6 @@ ColaNPC::~ColaNPC()
 void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
     this->size = 0;
-    this->sizeOriginal = 0;
     // Preparamos que nivel se usara.
     nivelActual = NivelActual;
     setNivel(nivelActual);
@@ -70,21 +68,16 @@ void ColaNPC::addNPC(int Tipo, bool Validez){
     // Generamos el dialogo del npc
     GenerarNPC.generarDialogos(newNPC, nivelActual);
 
-    // Genero el nodo de la cola donde estara el npc
     VectorNPCs.push_back(newNPC);
-
     size++;
-    sizeOriginal++;
 }
 /// #################################### Vaciar cola ###################################################
 void ColaNPC::vaciarCola()
 {
     for (NPC* ptr: VectorNPCs)
-        if (ptr)
-            delete ptr;
+        delete ptr;
     VectorNPCs.clear();
 
-    this->sizeOriginal = 0;
     this->size = 0;
 }
 
@@ -101,19 +94,7 @@ void ColaNPC::setNivel(int Nivel)
 
 /// #################################### GETTERS ###################################################
 NPC* ColaNPC::getNPC(){
-    // Si la cola esta vacia
-    if (this->size == 0)
-        return NULL;
-
-    // Se elimina el NPC anterior, si es que hay anterior.
-    if (size < sizeOriginal)
-        delete NPCaRetornar;
-
-    nodoNPC* node2remove = frente;
-    NPCaRetornar = frente->info;
-
-    frente = frente->link;
-    delete node2remove;
+    NPCaRetornar = VectorNPCs[size-1];
     size--;
 
     return NPCaRetornar;

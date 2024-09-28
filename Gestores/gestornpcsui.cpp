@@ -17,6 +17,7 @@ void GestorNPCsUI::setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs
 {
     Escenario = EscenarioNPCs;
     ColaNPCs = cola;
+    ColaVacia = true;
 
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
@@ -50,6 +51,7 @@ void GestorNPCsUI::EmpezarJuego()
     // Cuando sale un npc entra otro.
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
     NPCConectado = true;
+    ColaVacia = false;
 }
 
 /// #################################### Conexiones ###################################################
@@ -128,7 +130,7 @@ void GestorNPCsUI::SalirEntidades()
     MostrandoNPC = false;
 
     if (ColaNPCs->getSize() == 0)
-        emit ColaTerminada();
+        ColaVacia = true;
 }
 
 /// #################################### Terminar nivel ###################################################
@@ -161,6 +163,8 @@ void GestorNPCsUI::Reanudar()
 void GestorNPCsUI::emitirNPCTerminoSalir()
 {
     emit NPCTerminoSalir();
+    if (ColaVacia)
+        emit ColaTerminada();
 }
 
 void GestorNPCsUI::emitColaTerminada()
