@@ -35,7 +35,8 @@ private:
     std::list<QString> OcupacionNoPermitidos;
     std::list<QString> BienesTransportadosPermitidos;
     std::list<QString> BienesTransportadosNoPermitidos;
-    QRandomGenerator Random;
+    QRandomGenerator random;
+    std::vector<QString> generarVector(const std::list<QString>& lista) const;
 };
 
 #endif // REGLASNIVEL4_H
