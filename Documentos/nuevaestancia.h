@@ -12,18 +12,18 @@ class NuevaEstancia
 {
 public:
     NuevaEstancia();
-    NuevaEstancia(Estancia* estancia, vector<QString> paisesPaso, vector<QString> bienesTransp, QString ocupacion);
+    NuevaEstancia(Estancia* estancia, vector<QString> paisesPaso, vector<QString> bienesTransp, vector<QString> ocupacion);
 
     // getters:
     Estancia* getEstancia();
     vector<QString> getPaisesPaso();
     vector<QString> getBienesTransp();
-    QString getOcupacion();
+    vector<QString> getOcupacion();
 private:
     Estancia* estancia;
     vector<QString> paisesPaso;
     vector<QString> bienesTransp;
-    QString ocupacion;
+    vector<QString> ocupacion;
 };
 
 #endif // NUEVAESTANCIA_H

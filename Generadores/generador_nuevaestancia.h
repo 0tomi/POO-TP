@@ -20,7 +20,7 @@ public:
 
     vector<QString> generar_paisesPaso(bool valido);
     vector<QString> generar_bienesTransp(bool valido);
-    vector<QString> generar_ocupacion(bool valido); // como mucho 3
+    vector<QString> generar_ocupacion(bool valido);
 private:
     Estancia* estancia;
     vector<QString> paisesPaso;

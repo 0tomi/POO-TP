@@ -2,7 +2,7 @@
 
 NuevaEstancia::NuevaEstancia() {}
 
-NuevaEstancia::NuevaEstancia(Estancia* _estancia, vector<QString> _paisesPaso, vector<QString> _bienesTransp, QString _ocupacion) {
+NuevaEstancia::NuevaEstancia(Estancia* _estancia, vector<QString> _paisesPaso, vector<QString> _bienesTransp, vector<QString> _ocupacion) {
     estancia = _estancia;
     paisesPaso = _paisesPaso;
     bienesTransp = _bienesTransp;
@@ -21,6 +21,6 @@ vector<QString> NuevaEstancia::getBienesTransp() {
     return this->bienesTransp;
 }
 
-QString NuevaEstancia::getOcupacion() {
+vector<QString> NuevaEstancia::getOcupacion() {
     return this->ocupacion;
 }

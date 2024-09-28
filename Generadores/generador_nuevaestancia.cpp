@@ -30,31 +30,32 @@ void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel1 *reglasLvl1, Regl
 
 NuevaEstancia *Generador_NuevaEstancia::getNuevaEstancia(bool valido, int dificultad) {
     // switch(dificultad) {}
+
+    this->paisesPaso = generar_paisesPaso(valido);
+    this->bienesTransp = generar_bienesTransp(valido);
+    this->ocupacion = generar_ocupacion(valido);
     
-    if (valido) {
-        // generar campos randoms validos
-    } else {
-        // vector campos invalidos ...
-    }
+    NuevaEstancia newEstanciaLvl4(this->estancia, this->paisesPaso, this->bienesTransp, this->ocupacion);
 }
+
 
 vector<QString> Generador_NuevaEstancia::generar_paisesPaso(bool valido) {
     vector<QString> paisesPasoRandom;
     int cant = random.bounded(3);
     
     if (cant == 0) { // NO HAY PAISES DE PASO
-        paisesPasoRandom.push_back("");
+        paisesPasoRandom.push_back("No posee paises de paso");
         return paisesPasoRandom;
     }
     
     if (valido) { // genero campos randoms validos
         for (int i = 0; i < cant; i++) {
-            paisesPasoRandom.push_back(paisesPaso[random.bounded(cant)]);
+            paisesPasoRandom.push_back(paisesPaso[random.bounded(paisesPaso.size())]);
         }
     } else { // genero campos randoms incorrectos
         vector<QString> paisesPasoInvalidos = reglasLvl4->getPaisesNoPermitidos();
         for (int i = 0; i < cant; i++) {
-            paisesPasoRandom.push_back(paisesPasoInvalidos[random.bounded(cant)]);
+            paisesPasoRandom.push_back(paisesPasoInvalidos[random.bounded(paisesPasoInvalidos.size())]);
         }
     }
     
@@ -63,16 +64,46 @@ vector<QString> Generador_NuevaEstancia::generar_paisesPaso(bool valido) {
 
 vector<QString> Generador_NuevaEstancia::generar_bienesTransp(bool valido) {
     vector<QString> bienesTranspRandom;
-    int cant = random.bounded(4);
+    int cant = random.bounded(5);
     
     if (cant == 0) {
-        bienesTranspRandom.push_back("");
+        bienesTranspRandom.push_back("No transporta bienes");
         return bienesTranspRandom;
     }
     
-    if (valido) {
-        // ...
+    if (valido) { // genero campos randoms validos
+        for (int i = 0; i < cant; i++) {
+            bienesTranspRandom.push_back(bienesTransp[random.bounded(bienesTransp.size())]);
+        }
     } else {
-        //...
+        vector<QString> bienesTranspInvalidos = reglasLvl4->getBienesTransportadosNoPermitidos();
+        for (int i = 0; i < cant; i++) {
+            bienesTranspRandom.push_back(bienesTranspInvalidos[random.bounded(bienesTranspInvalidos.size())]);
+        }
     }
+    
+    return bienesTranspRandom;
+}
+
+vector<QString> Generador_NuevaEstancia::generar_ocupacion(bool valido) {
+    vector<QString> ocupacionesRandom;
+    int cant = random.bounded(3);
+    
+    if (cant == 0) {
+        ocupacionesRandom.push_back("Desocupado");
+        return ocupacionesRandom;
+    }
+    
+    if (valido) {
+        for (int i = 0; i < cant; i++) {
+            ocupacionesRandom.push_back(ocupacion[random.bounded(ocupacion.size())]);
+        }
+    } else {
+        vector<QString> ocupacionesInvalidas = reglasLvl4->getOcupacionNoPermitidos();
+        for (int i = 0; i < cant; i++) {
+            ocupacionesRandom.push_back(ocupacionesInvalidas[random.bounded(ocupacionesInvalidas.size())]);
+        }
+    }
+    
+    return ocupacionesRandom;
 }
