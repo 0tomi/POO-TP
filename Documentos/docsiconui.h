@@ -27,11 +27,13 @@ public:
 
     bool Mostrando() const;
 
+    void setFinalPartida(bool newFinalPartida);
+
 signals:
     void Abierto();
     void Cerrado();
     void animacionEntrarTerminada();
-    void animacionSalirTerminada();
+    void animacionSalirTerminada(bool Final);
 
 public slots:
     void emitAbierto();
@@ -59,6 +61,7 @@ private:
     void AbrirDocumento();
     bool BlockDocumento;
     bool mostrando;
+    bool FinalPartida;
 };
 
 #endif // DOCSICONUI_H

@@ -34,6 +34,7 @@ public:
     ~GestorDocumentosUI();
 
     bool getMostrando() const;
+    void TerminoNivel();
 
 public slots:
     void setDocumento(NPC* infoNPC);

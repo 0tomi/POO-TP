@@ -91,8 +91,11 @@ QString GeneradorDocumentacion::logDatosFalsos()
         log += "Documento de estancia invalido\n";
     if (!DocsValidos[2])
         log += "Pais de residencia invalido\n";
-    if (!DocsValidos[3])
+    if (!DocsValidos[3]){
         log += "Lista de acompañantes invalida\n";
+        if (listaAcompActual->getValidezDialogo())
+            log += "Mintió sobre la cantidad de gente que lo acompaña\n";
+    }
 
     return log;
 }
@@ -133,12 +136,11 @@ void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 
 void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
-    qDebug() << "Genedrando lista de acompaniantes";
     // Generador de Lista de Acompañantes
     ListaAcompaniantes * nuevaLista = generadorListaAcomp.getListaAcompaniantes(DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaLista, Index);
+    listaAcompActual = nuevaLista;
     Index++;
-    qDebug() << "Lista de acompaniantes generada";
 }
 
 void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
