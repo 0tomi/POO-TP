@@ -33,9 +33,10 @@ private:
     void CamposLocura(int Probabilidades);
 
 public:
+    void setSeed(quint32 seed);
     generador_paisresidencia();
     ~generador_paisresidencia();
-    void Inicializar(ReglasNivel1*, ReglasNivel2*);
+    void Inicializar(ReglasNivel1*, ReglasNivel2*, quint32 seed);
     PaisResidencia * CrearPaisResidencia(Pasaporte * Pasaporte2copy, bool valido, int dificultad);
 };
 

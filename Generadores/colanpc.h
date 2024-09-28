@@ -9,7 +9,8 @@
 class ColaNPC{
 public:
     ColaNPC();
-    void Inicializar(int Nivel, int Dificultad, Reglas ** rules);
+    void setSeed(quint32 seed);
+    void Inicializar(int Nivel, int Dificultad, Reglas ** rules, quint32 seed);
 
     void addNPC(int Tipo, bool Validez);
     void addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
@@ -29,6 +30,7 @@ public:
     ~ColaNPC();
 
 private:
+    quint32 semillaActual;
     vector<NPC*> VectorNPCs;
     int size;
     int nivelActual;

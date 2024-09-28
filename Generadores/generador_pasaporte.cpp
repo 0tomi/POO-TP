@@ -2,7 +2,6 @@
 #include <QDebug>
 #include <QTime>
 
-
 Generar_pasaporte::Generar_pasaporte() {
     LectorArchivos archivo(":/Resources/ArchivosTexto/mujeres.txt");
     this->nombre_mujeres = archivo.getArray();
@@ -24,8 +23,9 @@ Generar_pasaporte::Generar_pasaporte() {
     this->rand.seed(Semilla);
 }
 
-void Generar_pasaporte::Inicializar(ReglasNivel1 *rules)
+void Generar_pasaporte::Inicializar(ReglasNivel1 *rules, quint32 seed)
 {
+    this->setSeed(seed);
     this->rules = rules;
     this->nacionalidades = this->rules->getPaises(this->max_nacionalidades);
 }
@@ -81,6 +81,11 @@ QString Generar_pasaporte::generar_fecha(bool valido){
     return fecha;
 }
 
+void Generar_pasaporte::setSeed(quint32 seed)
+{
+    rand.seed(seed);
+}
+
 void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
     if (valido){
         for (int i = 0; i < 3; ++i)
@@ -89,7 +94,6 @@ void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
         int cantidadCamposInvalidos = 0;
         int sorteo;
         // Hasta no generarse por lo menos 1 campo valido, no sale del while.
-        qDebug() << "Bucle de generar campos invalidos pasaporte";
         while (!cantidadCamposInvalidos)
             for (int i = 0; i < 3; ++i){
                 sorteo = this->rand.bounded(10);

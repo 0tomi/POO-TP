@@ -9,10 +9,20 @@ ColaNPC::ColaNPC():
     this->size = 0;
 }
 
-void ColaNPC::Inicializar(int Nivel, int Dificultad, Reglas **rules)
+void ColaNPC::setSeed(quint32 seed)
+{
+    this->semillaActual = seed;
+    Random.seed(seed);
+    GenerarNPC.setSeed(seed);
+    GenerarDocumentacion.setSeed(seed);
+}
+
+void ColaNPC::Inicializar(int Nivel, int Dificultad, Reglas **rules, quint32 seed)
 {
     // Aca irian las reglas que le pase juego al leer los niveles
-    GenerarDocumentacion.Inicializar(Nivel, Dificultad, rules);
+    this->setSeed(seed);
+    GenerarNPC.setSeed(seed);
+    GenerarDocumentacion.Inicializar(Nivel, Dificultad, rules, this->semillaActual);
 }
 
 ColaNPC::~ColaNPC()
