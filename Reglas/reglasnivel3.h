@@ -1,7 +1,6 @@
 #ifndef REGLASNIVEL3_H
 #define REGLASNIVEL3_H
 #include "reglas.h"
-#include <QRandomGenerator>
 
 class ReglasNivel3: public Reglas
 {
@@ -12,7 +11,6 @@ public:
     int getMaxAcompaniantes() const;
 private:
     int maxAcompaniantes;
-    QRandomGenerator Random;
 };
 
 #endif // REGLASNIVEL3_H

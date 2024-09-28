@@ -12,6 +12,7 @@ class ReglasNivel1: public Reglas{
 public:
     // constructores:
     ReglasNivel1();
+    ReglasNivel1(quint32 Seed);
     ReglasNivel1(int cantidadMinimaPaisesPermitidos);
     ~ReglasNivel1();
 
@@ -31,7 +32,7 @@ public:
     void generar_TiposVisita(vector<QString>& Lista_Visitas_Permitidas);
 
     // metodos:
-    void resetReglas(int cantidadMinimaPaisesPermitidos);
+    void resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed);
 
     // Getters
     int* getPaisesPermitidos(int &max) const;
@@ -46,9 +47,6 @@ public:
     int getMaxVisitasPermitidas() const;
 
 private:
-    // Generador de numeros
-    QRandomGenerator Random;
-
     // # Conjunto de reglas #
     int fechaMin, fechaMax; // va a ser solo el anio
     int duracionDeEstanciaValida;

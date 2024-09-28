@@ -1,26 +1,177 @@
 #include "reglasnivel4.h"
 #include "../lectorarchivos.h"
-#include <QTime>
 
-ReglasNivel4::ReglasNivel4(): random(QTime::currentTime().msec())
+ReglasNivel4::ReglasNivel4()
 {
+    rand.seed(QTime::currentTime().msec());
     LectorArchivos lector(":/Niveles/Nivel4/Bienes.txt");
-    this->Bienes = lector.getList();
-    this->Ocupaciones = lector.getList(":/Niveles/Nivel4/Ocupaciones.txt");
-    this->PaisesPaso = lector.getList(":/Niveles/Nivel4/PaisesPaso.txt");
+    auto bienes = lector.getVector();
+    auto ocupaciones = lector.getVector(":/Niveles/Nivel4/Ocupaciones.txt");
+    auto paisesPaso = lector.getVector(":/Niveles/Nivel4/PaisesPaso.txt");
+
+    crearParDatos(bienes, this->Bienes);
+    crearParDatos(ocupaciones, this->Ocupaciones);
+    crearParDatos(paisesPaso, this->PaisesPaso);
 }
 
-void ReglasNivel4::setSeed(int Seed)
+void ReglasNivel4::crearParDatos(std::vector<QString> &vectorOriginal, std::vector<parDatos> &vectorPar)
 {
-    random.seed(Seed);
+    for (const auto& elemento: vectorOriginal)
+        vectorPar.push_back({elemento, false});
+}
+
+void ReglasNivel4::resetearParDatos(std::vector<parDatos> &vectorPar)
+{
+    for (auto& elemento: vectorPar)
+        elemento.Insertado = false;
+}
+
+int ReglasNivel4::checkCondiciones(int cantidad, int min, std::vector<parDatos>& vec)
+{
+    if (cantidad < 0 || cantidad > vec.size())
+        cantidad = rand.bounded(vec.size());
+
+    return cantidad;
+}
+
+bool ReglasNivel4::checkCondiciones(int min, std::vector<parDatos> &vec, std::vector<QString> &lista)
+{
+    auto tamanioLista = lista.size();
+    if (tamanioLista < min || tamanioLista > vec.size())
+        return false;
+    if (!checkTipado(vec, lista))
+        return false;
+
+    return true;
+}
+
+bool ReglasNivel4::checkTipado(std::vector<parDatos> &vec, std::vector<QString> &lista)
+{
+    bool ListaCorrecta = true;
+    for (auto& elemento: lista)
+        if (!checkTipado(elemento, vec))
+            ListaCorrecta = false;
+
+    return ListaCorrecta;
+}
+
+bool ReglasNivel4::checkTipado(QString &elemento, std::vector<parDatos> &vec)
+{
+    QString palabra1 = elemento.toLower(); QString palabra2;
+    for (auto& element: vec){
+        palabra2 = element.dato.toLower();
+        if (palabra1 == palabra2){
+            element.Insertado = true;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+std::list<QString> ReglasNivel4::generarPermitido(int cantidad, std::vector<parDatos> &vec)
+{
+    std::vector<QString> VectorPermitido;
+    VectorPermitido.resize(cantidad);
+
+    int CantidadInsertada = 0; int tamanio = vec.size(); int indice_random;
+    while (cantidad){
+        do{
+            indice_random = rand.bounded(tamanio);
+            VectorPermitido[CantidadInsertada] = vec[indice_random].dato;
+        }while(vec[indice_random].Insertado);
+
+        vec[indice_random].Insertado = true;
+        cantidad--; CantidadInsertada++;
+    }
+
+    std::list<QString> Lista2Return;
+    for (const auto& elemento: VectorPermitido)
+        Lista2Return.push_back(elemento);
+
+    return Lista2Return;
+}
+
+std::list<QString> ReglasNivel4::generarPermitido(std::vector<QString> &Permitidos)
+{
+    std::list<QString> Lista2Return;
+    for (const auto& elemento: Permitidos)
+        Lista2Return.push_back(elemento);
+
+    return Lista2Return;
+}
+
+std::list<QString> ReglasNivel4::generarNoPermitido(std::vector<parDatos> &total)
+{
+    std::list<QString> listaNoPermitidos;
+    for (auto& elemento: total)
+        if (!elemento.Insertado)
+            listaNoPermitidos.push_back(elemento.dato);
+
+    return listaNoPermitidos;
 }
 
 void ReglasNivel4::generar_PaisesPaso(int CantPermitida)
 {
-    if (CantPermitida < 0 || CantPermitida > PaisesPaso.size())
-        CantPermitida = random.bounded(PaisesPaso.size());
+    resetearParDatos(PaisesPaso);
+    const int MINIMA_CANTIDAD_PERMITIDA = 0;
+    CantPermitida = checkCondiciones(CantPermitida, MINIMA_CANTIDAD_PERMITIDA, PaisesPaso);
+    PaisesPermitidos = generarPermitido(CantPermitida, PaisesPaso);
+    PaisesNoPermitidos = generarNoPermitido(PaisesPaso);
+}
 
+void ReglasNivel4::generar_PaisesPaso(std::vector<QString> ListaPaisesPermitidos)
+{
+    resetearParDatos(this->PaisesPaso);
+    if (!checkCondiciones(0, this->PaisesPaso, ListaPaisesPermitidos)){
+        generar_PaisesPaso(rand.bounded(this->PaisesPaso.size()));
+        return;
+    }
 
+    this->PaisesPermitidos = generarPermitido(ListaPaisesPermitidos);
+    this->PaisesNoPermitidos = generarNoPermitido(this->PaisesPaso);
+}
+
+void ReglasNivel4::generar_Ocupacion(int CantPermitida)
+{
+    resetearParDatos(this->Ocupaciones);
+    const int MINIMA_CANTIDAD_PERMITIDA = 0;
+    CantPermitida = checkCondiciones(CantPermitida, MINIMA_CANTIDAD_PERMITIDA, this->Ocupaciones);
+    this->OcupacionPermitidos = generarPermitido(CantPermitida, this->Ocupaciones);
+    this->OcupacionNoPermitidos = generarNoPermitido(this->Ocupaciones);
+}
+
+void ReglasNivel4::generar_Ocupacion(std::vector<QString> ListaOcupacionPermitidos)
+{
+    resetearParDatos(this->Ocupaciones);
+    if (!checkCondiciones(0, this->Ocupaciones, ListaOcupacionPermitidos)){
+        generar_Ocupacion(rand.bounded(this->Ocupaciones.size()));
+        return;
+    }
+
+    this->OcupacionPermitidos = generarPermitido(ListaOcupacionPermitidos);
+    this->OcupacionNoPermitidos = generarNoPermitido(this->Ocupaciones);
+}
+
+void ReglasNivel4::generar_BienesTransportados(int CantPermitida)
+{
+    resetearParDatos(this->Bienes);
+    const int MINIMA_CANTIDAD_PERMITIDA = 0;
+    CantPermitida = checkCondiciones(CantPermitida, MINIMA_CANTIDAD_PERMITIDA, this->Bienes);
+    this->BienesPermitidos = generarPermitido(CantPermitida, this->Bienes);
+    this->BienesNoPermitidos = generarNoPermitido(this->Bienes);
+}
+
+void ReglasNivel4::generar_BienesTransportados(std::vector<QString> ListaBienesTransportadosPermitidos)
+{
+    resetearParDatos(this->Bienes);
+    if (!checkCondiciones(0, this->Bienes, ListaBienesTransportadosPermitidos)){
+        generar_BienesTransportados(rand.bounded(this->Bienes.size()));
+        return;
+    }
+
+    this->BienesPermitidos = generarPermitido(ListaBienesTransportadosPermitidos);
+    this->BienesPermitidos = generarNoPermitido(this->Bienes);
 }
 
 std::vector<QString> ReglasNivel4::getPaisesPermitidos() const
@@ -45,12 +196,12 @@ std::vector<QString> ReglasNivel4::getOcupacionNoPermitidos() const
 
 std::vector<QString> ReglasNivel4::getBienesTransportadosPermitidos() const
 {
-    return generarVector(BienesTransportadosPermitidos);
+    return generarVector(this->BienesPermitidos);
 }
 
 std::vector<QString> ReglasNivel4::getBienesTransportadosNoPermitidos() const
 {
-    return generarVector(BienesTransportadosNoPermitidos);
+    return generarVector(this->BienesNoPermitidos);
 }
 
 std::vector<QString> ReglasNivel4::generarVector(const std::list<QString> &lista) const
