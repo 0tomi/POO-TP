@@ -6,7 +6,6 @@
 ColaNPC::ColaNPC():
     Random(time(NULL)), GenerarNPC(&Random), GenerarDocumentacion()
 {
-    this->frente = this->fondo = NULL;
     this->size = 0;
     this->sizeOriginal = 0;
 }
@@ -20,7 +19,6 @@ void ColaNPC::Inicializar(int Nivel, int Dificultad, Reglas **rules)
 ColaNPC::~ColaNPC()
 {
     this->vaciarCola();
-    //delete NPCaRetornar;
 }
 
 /// #################################### Añadir NPCs a cola ###################################################
@@ -73,16 +71,7 @@ void ColaNPC::addNPC(int Tipo, bool Validez){
     GenerarNPC.generarDialogos(newNPC, nivelActual);
 
     // Genero el nodo de la cola donde estara el npc
-    nodoNPC* newNode = new nodoNPC;
-    newNode->info = newNPC;
-
-    // Acomodamos la cola de NPCs
-    if (this->size == 0){
-        this->frente = this->fondo = newNode;
-    } else {
-        this->fondo->link = newNode;
-        this->fondo = newNode;
-    }
+    VectorNPCs.push_back(newNPC);
 
     size++;
     sizeOriginal++;
@@ -90,16 +79,10 @@ void ColaNPC::addNPC(int Tipo, bool Validez){
 /// #################################### Vaciar cola ###################################################
 void ColaNPC::vaciarCola()
 {
-    nodoNPC* aux = this->frente;
-    nodoNPC* aux2;
-    while(aux != NULL){
-        aux2 = aux->link;
-        // Eliminamos el NPC
-        delete aux->info;
-        delete aux;
-
-        aux = aux2;
-    }
+    for (NPC* ptr: VectorNPCs)
+        if (ptr)
+            delete ptr;
+    VectorNPCs.clear();
 
     this->sizeOriginal = 0;
     this->size = 0;
