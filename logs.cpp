@@ -37,7 +37,6 @@ void Logs::SaveLogs()
     QTextStream stream(&archivo);
     for (QString& log : this->VectorLogs){
         stream << log;
-        qDebug() << "Log guardado";
     }
     this->VectorLogs.clear();
     archivo.close();
@@ -53,7 +52,7 @@ void Logs::RecibirLogs(QString Log)
     qDebug() << "Log Recibido: " << Log;
     QString CompleteLog = "[" + QDateTime::currentDateTime().toString("dd-MM-yyyy HH:mm:ss") + "]  " + Log + "\n";
     this->VectorLogs.push_back(CompleteLog);
-    if(this->VectorLogs.size() == 10 || Log.contains("terminado")){
+    if(this->VectorLogs.size() == 10 || Log.contains("salir")){
         SaveLogs();
     }
 }

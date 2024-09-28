@@ -11,7 +11,7 @@ class Juego: public QObject{
     Q_OBJECT
 
 signals:
-    void Log(QString);
+    void EnviarLog(QString);
 
 public:
     Juego();

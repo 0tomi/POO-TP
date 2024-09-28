@@ -211,18 +211,21 @@ void PantallaMenu::switchCargar()
 
 void PantallaMenu::botonPartida1clicked()
 {
+    emit EnviarLogs("Slot de partida 1 apretado");
     SonidosBotones.play();
     emit clickedPartida1();
 }
 
 void PantallaMenu::botonPartida2clicked()
 {
+    emit EnviarLogs("Slot de partida 2 apretado");
     SonidosBotones.play();
     emit clickedPartida2();
 }
 
 void PantallaMenu::botonPartida3clicked()
 {
+    emit EnviarLogs("Slot de partida 3 apretado");
     SonidosBotones.play();
     emit clickedPartida3();
 }

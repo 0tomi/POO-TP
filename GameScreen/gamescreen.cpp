@@ -262,7 +262,6 @@ void GameScreen::ReanudarJuego()
 
 void GameScreen::FinalDePartida()
 {
-    emit EnviarLogs("Juego terminado");
     MatarNotificaciones();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
@@ -277,6 +276,7 @@ void GameScreen::FinalDePartida()
     TiempoDia.stop();
 
     if (!Pausado){
+        emit EnviarLogs("Juego terminado");
         if (juego->getTotalSocialCredits() < 0)
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
@@ -369,7 +369,7 @@ void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
 void GameScreen::MatarNotificaciones()
 {
     if (CantidadNotificaciones){
-        qDebug() << "Cantidad de notificaciones:" << Notificaciones.size();
+        emit EnviarLogs( "Cantidad de notificaciones: " + QString::number(Notificaciones.size()));
         for (int i = 0; i < Notificaciones.size(); ++i)
             if (Notificaciones[i])
                 delete Notificaciones[i];

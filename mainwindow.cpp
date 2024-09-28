@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameScreen, &GameScreen::EnviarLogs, [this](QString dato){
         qDebug() << dato;
     });
-    connect(juego, &Juego::Log, [this](QString dato){
+    connect(juego, &Juego::EnviarLog, [this](QString dato){
         qDebug() << dato;
     });
 }
@@ -289,4 +289,5 @@ void MainWindow::ConeccionesLogs()
     connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,log,&Logs::RecibirLogs);
     connect(pantallaMenu,&PantallaMenu::EnviarLogs,log, &Logs::RecibirLogs);
     connect(gameScreen,&GameScreen::EnviarLogs,log,&Logs::RecibirLogs);
+    connect(juego,&Juego::EnviarLog,log,&Logs::RecibirLogs);
 }

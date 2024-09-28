@@ -9,6 +9,7 @@ Juego::Juego():
     , Cola()
 {
     this->SemillaMadre = QTime::currentTime().msec();
+    NivelActual = 1;
     setDefaultStats();
 }
 
@@ -16,7 +17,7 @@ Juego::Juego():
 void Juego::PrepararJuego(int Dificultad)
 {
     this->SemillaMadre = QTime::currentTime().msec();
-    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
+    emit EnviarLog("Semilla de inicio de juego: " + QString::number(SemillaMadre));
     NivelActual = 1;
     setDificultad(Dificultad);
     setDefaultStats();
@@ -26,7 +27,7 @@ void Juego::PrepararJuego(int Dificultad)
 void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
     this->SemillaMadre = QTime::currentTime().msec();
-    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
+    emit EnviarLog("Semilla de inicio de juego: " + QString::number(SemillaMadre));
     NivelActual = Nivel;
     setDificultad(Dificultad);
 
