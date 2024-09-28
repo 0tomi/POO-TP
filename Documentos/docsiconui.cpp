@@ -28,6 +28,7 @@ DocsIconUI::DocsIconUI(QWidget *parent)
     hide();
     BlockDocumento = false;
     mostrando = false;
+    FinalPartida = false;
 }
 
 
@@ -58,19 +59,23 @@ void DocsIconUI::accionar()
 
 void DocsIconUI::Entrar()
 {
-    this->PrepararAnimacionEntrada();
-    this->animacionEntrada->start();
-    this->show();
-    BlockDocumento = false;
-    this->mostrando = true;
+    if (!mostrando){
+        this->PrepararAnimacionEntrada();
+        this->animacionEntrada->start();
+        this->show();
+        BlockDocumento = false;
+        this->mostrando = true;
+    }
 }
 
 void DocsIconUI::Sacar()
 {
-    this->PrepararAnimacionSalida();
-    CerrarDocumento();
-    this->animacionSalida->start();
-    this->mostrando = false;
+    if (mostrando){
+        this->PrepararAnimacionSalida();
+        CerrarDocumento();
+        this->animacionSalida->start();
+        this->mostrando = false;
+    }
 }
 
 void DocsIconUI::mousePressEvent(QMouseEvent *event)
@@ -112,6 +117,11 @@ void DocsIconUI::AbrirDocumento()
     emitAbierto();
 }
 
+void DocsIconUI::setFinalPartida(bool newFinalPartida)
+{
+    FinalPartida = newFinalPartida;
+}
+
 bool DocsIconUI::Mostrando() const
 {
     return mostrando;
@@ -135,7 +145,7 @@ void DocsIconUI::emitCerrado()
 void DocsIconUI::emitAnimacionSalirTerminada()
 {
     hide();
-    emit animacionSalirTerminada();
+    emit animacionSalirTerminada(FinalPartida);
 }
 
 void DocsIconUI::emitAnimacionEntrarTerminada()
