@@ -3,7 +3,6 @@
 #include "reglas.h"
 #include <vector>
 #include <QString>
-#include <QRandomGenerator>
 
 
 class ReglasNivel2: public Reglas
@@ -20,7 +19,6 @@ public:
 private:
     std::vector<QString> paisesValidos;
     std::vector<QString> paisesInvalidos;
-    QRandomGenerator Random;
 
 };
 

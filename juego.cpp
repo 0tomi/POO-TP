@@ -8,6 +8,7 @@ Juego::Juego():
     , reglasLVL4(), reglasLVL5()
     , Cola()
 {
+    qDebug() << "Semilla de inicio de juego: " << QTime::currentTime().msec();
     setDefaultStats();
 }
 

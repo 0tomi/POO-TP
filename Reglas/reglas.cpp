@@ -1,7 +1,7 @@
 #include "reglas.h"
 #include "../lectorarchivos.h"
 
-Reglas::Reglas() {
+Reglas::Reglas(): rand(QTime::currentTime().msec()) {
     LectorArchivos lector(":/Resources/ArchivosTexto/paises.txt");
     this->paises = lector.getArray();
     this->maxPaises = lector.getTopeArray();
@@ -10,6 +10,11 @@ Reglas::Reglas() {
 Reglas::~Reglas()
 {
     //delete paises;
+}
+
+void Reglas::setSeed(quint32 seed)
+{
+    rand.seed(seed);
 }
 
 QString *Reglas::getPaises(int &max) const
@@ -66,6 +71,15 @@ bool Reglas::checkValidez(QString &dato, std::vector<QString> &Lista) const
     for (int i = 0; i < Lista.size(); ++i)
         if (Lista[i] == dato)
             return true;
+    return false;
+}
+
+bool Reglas::checkValidez(QString &dato, std::list<QString> &Lista) const
+{
+    for (const auto& elemento: Lista)
+        if (elemento == dato)
+            return true;
+
     return false;
 }
 
