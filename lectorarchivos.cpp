@@ -16,7 +16,6 @@ LectorArchivos::LectorArchivos(QString direccion){
 }
 
 void LectorArchivos::LeerArchivoNuevo(QString direccion){
-
     this->max = 20;
     int contador = 0;
 
