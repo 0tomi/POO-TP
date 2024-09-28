@@ -162,5 +162,8 @@
         <file>Resources/Sonidos/NotificacionSalidaTranscriptor.wav</file>
         <file>Resources/Sonidos/BotonesMenu.WAV</file>
         <file>Resources/Sonidos/ModoDemonioBoton.WAV</file>
+        <file>Niveles/Nivel4/Bienes.txt</file>
+        <file>Niveles/Nivel4/Ocupaciones.txt</file>
+        <file>Niveles/Nivel4/PaisesPaso.txt</file>
     </qresource>
 </RCC>

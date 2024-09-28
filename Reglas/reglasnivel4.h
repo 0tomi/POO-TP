@@ -2,6 +2,7 @@
 #define REGLASNIVEL4_H
 #include "reglas.h"
 #include <QRandomGenerator>
+#include <list>
 
 // Las reglas de la estancia se sacaran de las reglas de nivel 1
 class ReglasNivel4: public Reglas
@@ -24,12 +25,16 @@ public:
     std::vector<QString> getBienesTransportadosNoPermitidos() const;
 
 private:
-    std::vector<QString> PaisesPermitidos;
-    std::vector<QString> PaisesNoPermitidos;
-    std::vector<QString> OcupacionPermitidos;
-    std::vector<QString> OcupacionNoPermitidos;
-    std::vector<QString> BienesTransportadosPermitidos;
-    std::vector<QString> BienesTransportadosNoPermitidos;
+    std::list<QString> PaisesPaso;
+    std::list<QString> Ocupaciones;
+    std::list<QString> Bienes;
+
+    std::list<QString> PaisesPermitidos;
+    std::list<QString> PaisesNoPermitidos;
+    std::list<QString> OcupacionPermitidos;
+    std::list<QString> OcupacionNoPermitidos;
+    std::list<QString> BienesTransportadosPermitidos;
+    std::list<QString> BienesTransportadosNoPermitidos;
     QRandomGenerator Random;
 };
 

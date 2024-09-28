@@ -11,6 +11,11 @@ int LectorArchivos::getTopeArray(){
     return this->max;
 }
 
+LectorArchivos::LectorArchivos()
+{
+
+}
+
 LectorArchivos::LectorArchivos(QString direccion){
     this->LeerArchivoNuevo(direccion);
 }
@@ -50,6 +55,36 @@ void LectorArchivos::LeerArchivoNuevo(QString direccion){
     }
 
     ArchivoLectura.close();
+}
+
+std::vector<QString> LectorArchivos::getVector(QString direccion)
+{
+    this->LeerArchivoNuevo(direccion);
+    return this->getVector();
+}
+
+std::vector<QString> LectorArchivos::getVector() const
+{
+    std::vector<QString> Vector;
+    for (int i =0; i < this->max; ++i)
+        Vector.push_back(this->archivo[i]);
+
+    return Vector;
+}
+
+std::list<QString> LectorArchivos::getList(QString direccion)
+{
+    this->LeerArchivoNuevo(direccion);
+    return this->getList();
+}
+
+std::list<QString> LectorArchivos::getList() const
+{
+    std::list<QString> Lista;
+    for (int i =0; i < this->max; ++i)
+        Lista.push_back(this->archivo[i]);
+
+    return Lista;
 }
 
 void LectorArchivos::rescaleVector(int cont){
