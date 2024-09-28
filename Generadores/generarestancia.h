@@ -10,8 +10,9 @@
 class GenerarEstancia {
 public:
     // Constructor
+    void setSeed(quint32 seed);
     GenerarEstancia();
-    void Inicializar(ReglasNivel1 * rules, LocuraCaracteres *  randomizador);
+    void Inicializar(ReglasNivel1 * rules, LocuraCaracteres *  randomizador, quint32 seed);
     ~GenerarEstancia();
 
     // Getter

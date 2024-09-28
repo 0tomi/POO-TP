@@ -1,12 +1,18 @@
 #ifndef JUEGO_H
 #define JUEGO_H
 
+#include <QObject>
 #include "Reglas/reglasnivel5.h"
 #include "Generadores/colanpc.h"
 #include "SaveSlots/PlayerStats.h"
 
 // Falta completar
-class Juego{
+class Juego: public QObject{
+    Q_OBJECT
+
+signals:
+    void Log(QString);
+
 public:
     Juego();
     void setDificultad(int dificultad);
@@ -48,6 +54,7 @@ public:
     int getDificultad() const;
 
 private:
+    quint32 SemillaMadre;
     int NivelActual;
     int Dificultad;
 
