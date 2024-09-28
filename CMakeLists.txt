@@ -82,6 +82,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         SaveSlots/PlayerStats.h
         GameScreen/intropantalla.h GameScreen/intropantalla.cpp GameScreen/intropantalla.ui
         GameScreen/notificacion.h GameScreen/notificacion.cpp GameScreen/notificacion.ui
+        Generadores/generador_nuevaestancia.h Generadores/generador_nuevaestancia.cpp
+        Documentos/nuevaestancia.h Documentos/nuevaestancia.cpp
 
 
 

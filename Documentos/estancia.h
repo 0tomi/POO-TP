@@ -10,7 +10,7 @@ private:
     int duracionEst;
     QString tipoEst;
 public:
-    Estancia(int, QString);
+    Estancia(int duracEst, QString tipoEst);
 
     // getters:
     int getDuracEstancia();
