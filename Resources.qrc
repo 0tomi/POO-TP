@@ -162,5 +162,6 @@
         <file>Resources/Sonidos/NotificacionSalidaTranscriptor.wav</file>
         <file>Resources/Sonidos/BotonesMenu.WAV</file>
         <file>Resources/Sonidos/ModoDemonioBoton.WAV</file>
+        <file>Resources/ArchivosTexto/tips.txt</file>
     </qresource>
 </RCC>

@@ -36,7 +36,6 @@ void ReglasNivel4::generarOcupacionValida(vector<QString> ocupacionesValidas) {
     ocupacion = ocupacionesValidas[Random.bounded(ocupacionesValidas.size())];
 }
 
-
 // getters
 vector<QString> ReglasNivel4::getPaisesPasoValidos() const {
     return paisesPasoValidos;

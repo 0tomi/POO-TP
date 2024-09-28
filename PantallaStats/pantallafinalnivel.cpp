@@ -2,10 +2,13 @@
 #include "ui_pantallafinalnivel.h"
 
 #include <QDebug>
+#include <QFile>
+#include <QTime>
 
 PantallaFinalNivel::PantallaFinalNivel(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PantallaFinalNivel)
+    , Random(QTime::currentTime().msec())
 {
     ui->setupUi(this);
     // conecc.signal de salirBtn:
@@ -14,11 +17,50 @@ PantallaFinalNivel::PantallaFinalNivel(QWidget *parent)
     connect(ui->sigNivelBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSigNivelClicked);
     // Conectamos boton de reintentar
     connect(ui->reintentarBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onReintentarClicked);
+    
 }
 
 PantallaFinalNivel::~PantallaFinalNivel()
 {
     delete ui;
+}
+
+vector<QString> PantallaFinalNivel::getTips() {
+    return this->tips;
+}
+
+void PantallaFinalNivel::setTips(vector<QString> tipsNew) {
+    tips.resize(tipsNew.size());
+    for (int q = 0; q < tipsNew.size(); q++) {
+        this->tips[q] = tipsNew[q];
+    }
+}
+
+void leerArch(PantallaFinalNivel* pf) {
+    QFile archivo(":/Resources/ArchivosTexto/tips.txt");
+    if (!archivo.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "error al abrir archivo tips";
+        return;
+    }
+    
+    qDebug() << "Pudo leer el arch tips";
+    
+    vector<QString> tips = pf->getTips();
+    
+    while (!archivo.atEnd()) {
+        QByteArray linea = archivo.readLine();
+        QString tip = QString::fromUtf8(linea).trimmed();
+        if (!tip.isEmpty()) {
+            tips.push_back(tip);
+        }
+    }
+    archivo.close();
+    
+    pf->setTips(tips);
+    
+    for (int i = 0; i < tips.size(); i++) {
+        qDebug() << "tip: " << tips[i];
+    }
 }
 
 void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
@@ -42,6 +84,16 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
     if (perdio) {
         ui->stackedTitulos->setCurrentIndex(1);
         ui->stackedBotones->setCurrentIndex(1);
+        
+        // MOSTRAR TIPS:
+        leerArch(this);
+        for (int q = 0; q < this->tips.size(); q++) {
+            qDebug() << "tip de la clase: " << this->tips[q];
+        }
+        
+        QString tipRandom = this->tips[Random.bounded(this->tips.size())];
+        ui->tipsLabel->setText(tipRandom);
+        
     } else {
         ui->stackedTitulos->setCurrentIndex(0);
         ui->stackedBotones->setCurrentIndex(0);
