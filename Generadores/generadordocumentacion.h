@@ -54,7 +54,11 @@ private:
     // Datos del Documento a generar:
     NPC* NPC2Generate;
     Documentacion* Doc2Generate;
+
+    // Info para los logs de los docs falsos
     QString logDatosFalsos();
+    ListaAcompaniantes * listaAcompActual;
+
 
     // Seleccion de documentos que seran falsos
     bool DocsValidos[10];

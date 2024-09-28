@@ -30,6 +30,12 @@ bool GestorDocumentosUI::getMostrando() const
     return Mostrando;
 }
 
+void GestorDocumentosUI::TerminoNivel()
+{
+    if (Mostrando)
+        this->Salir();
+}
+
 /// #################################### SETTERS ###################################################
 
 void GestorDocumentosUI::setUp(int Level, QWidget *objeto)

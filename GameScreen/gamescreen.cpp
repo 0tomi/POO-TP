@@ -117,12 +117,14 @@ void GameScreen::setUpIconoDocsUI()
     connect(IconoDocs, &DocsIconUI::Cerrado, &GestorDocs, &GestorDocumentosUI::Salir);
 
     // Cuando entregamos el documento, sale el npc.
-    connect(IconoDocs, &DocsIconUI::animacionSalirTerminada, [this](){
-        GestorNPC.SalirEntidades();
-        SelloDocumento(this->DecisionJugador);
+    connect(IconoDocs, &DocsIconUI::animacionSalirTerminada, [this](bool FinalPartida){
+        if (!FinalPartida){
+            GestorNPC.SalirEntidades();
+            SelloDocumento(this->DecisionJugador);
+        }
     });
-//&GestorNPC, &GestorNPCsUI::SalirEntidades);
 
+    //&GestorNPC, &GestorNPCsUI::SalirEntidades);
     SetearConexionesDocumentos();
 }
 
@@ -212,7 +214,7 @@ void GameScreen::PrepararJuego(PlayerStats stats)
 
 void GameScreen::Iniciar()
 {
-    CantidadNotificaciones = 0;
+    IconoDocs->setFinalPartida(false);
     Notificaciones.clear();
     introPantalla->Mostrar();
 }
@@ -261,14 +263,11 @@ void GameScreen::ReanudarJuego()
 void GameScreen::FinalDePartida()
 {
     emit LogJugador("Juego terminado");
-    // Si queda un NPC en escena, lo hacemos salir junto a sus documentos.
-    if (GestorNPC.MostrandoElNPC()){
-        if (GestorDocs.getMostrando())
-            GestorDocs.Salir();
-        IconoDocs->Sacar();
-    }
-
+    MatarNotificaciones();
     GestorNPC.TerminoNivel();
+    GestorDocs.TerminoNivel();
+    IconoDocs->setFinalPartida(true);
+    IconoDocs->Sacar();
 
     if (MostrandoReglas)
         MostrarReglas();
@@ -284,8 +283,6 @@ void GameScreen::FinalDePartida()
         else pantallaPerdiste->Iniciar(false);
     } else
         emit LogJugador("Juego terminado forzosamente");
-
-    MatarNotificaciones();
 }
 
 void GameScreen::Decidir()
@@ -361,6 +358,7 @@ void GameScreen::MostrarReglas()
     }
 }
 
+/// #################################### NOTIFICACIONES ####################################
 void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
 {
     Notificacion* nuevaNotificacion = new Notificacion(CantidadNotificaciones, Multa, Motivo, this->volumenActual, ui->Escritorio);
@@ -372,10 +370,13 @@ void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
 
 void GameScreen::MatarNotificaciones()
 {
-    if (CantidadNotificaciones)
+    if (CantidadNotificaciones){
+        qDebug() << "Cantidad de notificaciones:" << Notificaciones.size();
         for (int i = 0; i < Notificaciones.size(); ++i)
             if (Notificaciones[i])
                 delete Notificaciones[i];
+    }
+    CantidadNotificaciones = 0;
 }
 
 void GameScreen::MatarNotificacion(int Numero)
