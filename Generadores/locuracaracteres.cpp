@@ -1,5 +1,10 @@
 #include "locuracaracteres.h"
 /// ########################## Constructor ###############################
+void LocuraCaracteres::setSeed(quint32 seed)
+{
+    this->random->seed(seed);
+}
+
 LocuraCaracteres::LocuraCaracteres(QRandomGenerator *newGenerador)
 {
     random = newGenerador;

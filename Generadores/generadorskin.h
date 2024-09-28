@@ -8,6 +8,7 @@
 class GeneradorSkin
 {
 public:
+    void setSeed(quint32 seed);
     GeneradorSkin(QRandomGenerator * generador);
     ~GeneradorSkin();
     Skin getSkin(int TipoNPC, char Genero);

@@ -4,6 +4,11 @@
 
 /// ########################## Constructor ###############################
 
+void GenerarEstancia::setSeed(quint32 seed)
+{
+    this->NumRandom.seed(seed);
+}
+
 GenerarEstancia::GenerarEstancia()
 {
     // Inicializamos la semilla del random
@@ -11,8 +16,9 @@ GenerarEstancia::GenerarEstancia()
     NumRandom.seed(Semilla);
 }
 
-void GenerarEstancia::Inicializar(ReglasNivel1 *rules, LocuraCaracteres *randomizador)
+void GenerarEstancia::Inicializar(ReglasNivel1 *rules, LocuraCaracteres *randomizador, quint32 seed)
 {
+    this->NumRandom.seed(seed);
     this->tipoVisitas = rules->getTipoVisitas(this->maxTipoVisitas);
 
     tipoVisitasValidas = rules->getTipoDeVisitaValida();
@@ -85,7 +91,6 @@ void GenerarEstancia::GenerarCamposValidos(int Probabilidad, bool Validez)
         int cantidadCamposInvalidos = 0;
         int sorteo;
         // Hasta no generarse por lo menos 1 campo valido, no sale del while.
-        qDebug() << "Bucle de campos invalidos estancia";
         while (!cantidadCamposInvalidos)
             for (int i = 0; i < 2; ++i){
                 sorteo = NumRandom.bounded(10);

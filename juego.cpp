@@ -8,13 +8,15 @@ Juego::Juego():
     , reglasLVL4(), reglasLVL5()
     , Cola()
 {
-    qDebug() << "Semilla de inicio de juego: " << QTime::currentTime().msec();
+    this->SemillaMadre = QTime::currentTime().msec();
     setDefaultStats();
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
 void Juego::PrepararJuego(int Dificultad)
 {
+    this->SemillaMadre = QTime::currentTime().msec();
+    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
     NivelActual = 1;
     setDificultad(Dificultad);
     setDefaultStats();
@@ -23,8 +25,9 @@ void Juego::PrepararJuego(int Dificultad)
 
 void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
+    this->SemillaMadre = QTime::currentTime().msec();
+    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
     NivelActual = Nivel;
-
     setDificultad(Dificultad);
 
     // Reseteamos la cantidad ganada en el nivel
@@ -157,7 +160,7 @@ void Juego::setUpNivel1()
 {
     // Aca previamente tocaria una lectura del nivel concreto a iniciar
     // donde obtengamos los datos que necesitamos para cada nivel
-    Cola.Inicializar(NivelActual, Dificultad, reglas);
+    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
 
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
     Cola.addNPC(NivelActual, 1, 1, 1, 1, 1);
@@ -168,7 +171,7 @@ void Juego::setUpNivel2()
     // Aca previamente tocaria una lectura del nivel concreto a iniciar
     // donde obtengamos los datos que necesitamos para cada nivel
     reglasLVL2.generar_PaisesPermitidos(6);
-    Cola.Inicializar(NivelActual, Dificultad, reglas);
+    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
     Cola.addNPC(NivelActual, 7, 4, 2, 5, 5);
 }
 
@@ -178,7 +181,7 @@ void Juego::setUpNivel3()
     // donde obtengamos los datos que necesitamos para cada nivel
     reglasLVL2.generar_PaisesPermitidos(6);
     reglasLVL3.set_MaxAcompaniantes(2);
-    Cola.Inicializar(NivelActual, Dificultad, reglas);
+    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
@@ -187,7 +190,7 @@ void Juego::setUpNivel4()
     // Aca previamente tocaria una lectura del nivel concreto a iniciar
     // donde obtengamos los datos que necesitamos para cada nivel
 
-    Cola.Inicializar(NivelActual, Dificultad, reglas);
+    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
@@ -196,7 +199,7 @@ void Juego::setUpNivel5()
     // Aca previamente tocaria una lectura del nivel concreto a iniciar
     // donde obtengamos los datos que necesitamos para cada nivel
 
-    Cola.Inicializar(NivelActual, Dificultad, reglas);
+    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
     Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
 }
 
