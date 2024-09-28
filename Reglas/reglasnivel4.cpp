@@ -1,50 +1,62 @@
 #include "reglasnivel4.h"
+#include "../lectorarchivos.h"
 #include <QTime>
 
-ReglasNivel4::ReglasNivel4(): Reglas(), Random(QTime::currentTime().msec()) {}
-
-void ReglasNivel4::generarPaisesPasoValidos(int cant, vector<QString>& listaPaisesPasoValidos) {
-    //if (!ValidarDatos())
-    paisesPasoValidos.clear();
-    
-    if (cant < 1)
-        cant = Random.bounded(listaPaisesPasoValidos.size()) + 1;
-    
-    paisesPasoValidos.resize(cant);
-    
-    for (int i = 0; i < cant; i++) {
-        int listLeng = listaPaisesPasoValidos.size();
-        paisesPasoValidos[i] = listaPaisesPasoValidos[Random.bounded(listLeng)];
-    }
+ReglasNivel4::ReglasNivel4(): random(QTime::currentTime().msec())
+{
+    LectorArchivos lector(":/Niveles/Nivel4/Bienes.txt");
+    this->Bienes = lector.getList();
+    this->Ocupaciones = lector.getList(":/Niveles/Nivel4/Ocupaciones.txt");
+    this->PaisesPaso = lector.getList(":/Niveles/Nivel4/PaisesPaso.txt");
 }
 
-void ReglasNivel4::generarBienesTranspValidos(int cant, vector<QString> &listaBienesTranspValidos) {
-    bienesTranspValidos.clear();
-    
-    if (cant < 1)
-        cant = Random.bounded(listaBienesTranspValidos.size()) + 1;
-    
-    bienesTranspValidos.resize(cant);
-    
-    for (int i = 0; i < cant; i++) {
-        int listLeng = listaBienesTranspValidos.size();
-        bienesTranspValidos[i] = listaBienesTranspValidos[Random.bounded(listLeng)];
-    }
+void ReglasNivel4::setSeed(int Seed)
+{
+    random.seed(Seed);
 }
 
-void ReglasNivel4::generarOcupacionValida(vector<QString> ocupacionesValidas) {
-    ocupacion = ocupacionesValidas[Random.bounded(ocupacionesValidas.size())];
+void ReglasNivel4::generar_PaisesPaso(int CantPermitida)
+{
+    if (CantPermitida < 0 || CantPermitida > PaisesPaso.size())
+        CantPermitida = random.bounded(PaisesPaso.size());
+
+
 }
 
-// getters
-vector<QString> ReglasNivel4::getPaisesPasoValidos() const {
-    return paisesPasoValidos;
+std::vector<QString> ReglasNivel4::getPaisesPermitidos() const
+{
+    return generarVector(PaisesPermitidos);
 }
 
-vector<QString> ReglasNivel4::getBienesTranspValidos() const {
-    return bienesTranspValidos;
+std::vector<QString> ReglasNivel4::getPaisesNoPermitidos() const
+{
+    return generarVector(PaisesNoPermitidos);
 }
 
-QString ReglasNivel4::getOcup() {
-    return ocupacion;
+std::vector<QString> ReglasNivel4::getOcupacionPermitidos() const
+{
+    return generarVector(OcupacionPermitidos);
+}
+
+std::vector<QString> ReglasNivel4::getOcupacionNoPermitidos() const
+{
+    return generarVector(OcupacionNoPermitidos);
+}
+
+std::vector<QString> ReglasNivel4::getBienesTransportadosPermitidos() const
+{
+    return generarVector(BienesTransportadosPermitidos);
+}
+
+std::vector<QString> ReglasNivel4::getBienesTransportadosNoPermitidos() const
+{
+    return generarVector(BienesTransportadosNoPermitidos);
+}
+
+std::vector<QString> ReglasNivel4::generarVector(const std::list<QString> &lista) const
+{
+    std::vector<QString> newVector;
+    for (const QString& element: lista)
+        newVector.push_back(element);
+    return newVector;
 }

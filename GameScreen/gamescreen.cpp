@@ -276,7 +276,6 @@ void GameScreen::FinalDePartida()
         tiempoPartida.stop();
     TiempoDia.stop();
 
-
     if (!Pausado){
         if (juego->getTotalSocialCredits() < 0)
            pantallaPerdiste->Iniciar(true);
