@@ -159,7 +159,7 @@ void Juego::setUpNivel1()
     Cola.Inicializar(NivelActual, Dificultad, reglas);
 
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
-    Cola.addNPC(NivelActual, 5, 3, 4, 2, 4);
+    Cola.addNPC(NivelActual, 1, 1, 1, 1, 1);
 }
 
 void Juego::setUpNivel2()
