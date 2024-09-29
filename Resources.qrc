@@ -165,5 +165,6 @@
         <file>Niveles/Nivel4/Bienes.txt</file>
         <file>Niveles/Nivel4/Ocupaciones.txt</file>
         <file>Niveles/Nivel4/PaisesPaso.txt</file>
+        <file>Niveles/Nivel5/Objetos.txt</file>
     </qresource>
 </RCC>
