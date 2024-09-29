@@ -16,7 +16,9 @@ Generador_NuevaEstancia::~Generador_NuevaEstancia() {
     this->reglasLvl4 = nullptr;
 }
 
-void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel1 *reglasLvl1, ReglasNivel4 *reglasLvl4, Estancia* estanciaOld) {
+void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel1 *reglasLvl1, ReglasNivel4 *reglasLvl4, Estancia* estanciaOld, quint32 intSeed) {
+    random.seed(intSeed); // inicializo semilla
+    
     this->estancia = estanciaOld;
     this->paisesPaso = reglasLvl4->getPaisesPermitidos();
     //this->paisesPasoInvalidos = reglasLvl4->getPaisesNoPermitidos();

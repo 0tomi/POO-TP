@@ -15,7 +15,7 @@ class Generador_NuevaEstancia
 public:
     Generador_NuevaEstancia();
     ~Generador_NuevaEstancia();
-    void inicializadorNivel4(ReglasNivel1* reglasLvl1, ReglasNivel4* reglasLvl4, Estancia* estanciaOld);
+    void inicializadorNivel4(ReglasNivel1* reglasLvl1, ReglasNivel4* reglasLvl4, Estancia* estanciaOld, quint32 intSeed);
     NuevaEstancia* getNuevaEstancia(bool valido, int dificultad);
 
     vector<QString> generar_paisesPaso(bool valido);
