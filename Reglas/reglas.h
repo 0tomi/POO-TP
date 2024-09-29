@@ -53,7 +53,7 @@ protected:
     std::list<QString> generarPermitido(std::vector<QString>& Permitidos);
     std::list<QString> generarNoPermitido(std::vector<parDatos>& total);
 
-    std::vector<QString> deshacerPar(const std::vector<parDatos>& par);
+    std::vector<QString> deshacerPar(const std::vector<parDatos>& par) const;
 };
 
 template<class Puntero>
