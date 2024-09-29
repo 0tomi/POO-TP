@@ -166,5 +166,7 @@
         <file>Niveles/Nivel4/Ocupaciones.txt</file>
         <file>Niveles/Nivel4/PaisesPaso.txt</file>
         <file>Niveles/Nivel5/Objetos.txt</file>
+        <file>Niveles/Nivel5/FotoEscannerEspalda.png</file>
+        <file>Niveles/Nivel5/FotoEscannerFrente.png</file>
     </qresource>
 </RCC>
