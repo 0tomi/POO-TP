@@ -55,6 +55,7 @@ public:
 
 private:
     quint32 SemillaMadre;
+    void setReglasSeed();
     int NivelActual;
     int Dificultad;
 
