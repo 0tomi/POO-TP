@@ -23,14 +23,6 @@ public:
     std::vector<QString> getBienesTransportadosNoPermitidos() const;
 
 private:
-    struct parDatos{
-        QString dato;
-        bool Insertado;
-    };
-
-    void crearParDatos(std::vector<QString>& vectorOriginal, std::vector<parDatos>& vectorPar);
-    void resetearParDatos(std::vector<parDatos>& vectorPar);
-
     std::vector<parDatos> PaisesPaso;
     std::vector<parDatos> Ocupaciones;
     std::vector<parDatos> Bienes;
@@ -41,15 +33,6 @@ private:
     std::list<QString> OcupacionNoPermitidos;
     std::list<QString> BienesPermitidos;
     std::list<QString> BienesNoPermitidos;
-    std::vector<QString> generarVector(const std::list<QString>& lista) const;
-
-    int checkCondiciones(int cantidad, int min, std::vector<parDatos>& vec);
-    bool checkCondiciones(int min, std::vector<parDatos>& vec, std::vector<QString>& lista);
-    bool checkTipado(std::vector<parDatos>& vec, std::vector<QString>& lista);
-    bool checkTipado(QString& elemento, std::vector<parDatos>& vec);
-    std::list<QString> generarPermitido(int cantidad, std::vector<parDatos>& vec);
-    std::list<QString> generarPermitido(std::vector<QString>& Permitidos);
-    std::list<QString> generarNoPermitido(std::vector<parDatos>& total);
 };
 
 #endif // REGLASNIVEL4_H
