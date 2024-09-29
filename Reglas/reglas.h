@@ -1,5 +1,6 @@
 #ifndef REGLAS_H
 #define REGLAS_H
+#include "../lectorarchivos.h"
 #include <QString>
 #include <vector>
 #include <QDebug>
@@ -51,6 +52,8 @@ protected:
     std::list<QString> generarPermitido(int cantidad, std::vector<parDatos>& vec);
     std::list<QString> generarPermitido(std::vector<QString>& Permitidos);
     std::list<QString> generarNoPermitido(std::vector<parDatos>& total);
+
+    std::vector<QString> deshacerPar(const std::vector<parDatos>& par);
 };
 
 template<class Puntero>

@@ -1,5 +1,4 @@
 #include "reglas.h"
-#include "../lectorarchivos.h"
 
 Reglas::Reglas(): rand(QTime::currentTime().msec()) {
     LectorArchivos lector(":/Resources/ArchivosTexto/paises.txt");
@@ -203,6 +202,15 @@ std::list<QString> Reglas::generarNoPermitido(std::vector<parDatos> &total)
             listaNoPermitidos.push_back(elemento.dato);
 
     return listaNoPermitidos;
+}
+
+std::vector<QString> Reglas::deshacerPar(const std::vector<parDatos> &par) const
+{
+    std::vector<QString> Vector;
+    for (const auto& elemento: par)
+        Vector.push_back(elemento.dato);
+
+    return Vector;
 }
 
 std::vector<QString> Reglas::generarVector(const std::list<QString> &lista) const
