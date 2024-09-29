@@ -30,14 +30,15 @@ void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel1 *reglasLvl1, Regl
     this->reglasLvl4 = reglasLvl4;
 }
 
-NuevaEstancia *Generador_NuevaEstancia::getNuevaEstancia(bool valido, int dificultad) {
+NuevaEstancia* Generador_NuevaEstancia::getNuevaEstancia(bool valido, int dificultad) {
     // switch(dificultad) {}
 
     this->paisesPaso = generar_paisesPaso(valido);
     this->bienesTransp = generar_bienesTransp(valido);
     this->ocupacion = generar_ocupacion(valido);
     
-    NuevaEstancia newEstanciaLvl4(this->estancia, this->paisesPaso, this->bienesTransp, this->ocupacion);
+    NuevaEstancia* newEst = new NuevaEstancia(this->estancia, this->paisesPaso, this->bienesTransp, this->ocupacion);
+    return newEst;
 }
 
 
