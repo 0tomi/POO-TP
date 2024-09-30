@@ -192,8 +192,10 @@ void PantallaMenu::switchDemonio()
 void PantallaMenu::botonStartclicked()
 {
     SonidosBotones.play();
-    emit clickedStart(nivel,dificultad);
-    emit EnviarLogs("nivel   " + QString::number(nivel) + "  dificultad  " + QString::number(dificultad));
+    transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSeleccionarSlotGuardado);
+
+    //emit clickedStart(nivel,dificultad);
+    //emit EnviarLogs("nivel   " + QString::number(nivel) + "  dificultad  " + QString::number(dificultad));
 }
 /// ############################ Cargar partida ###############################
 void PantallaMenu::botonCargarclicked()
@@ -258,10 +260,7 @@ void PantallaMenu::botonVolver1clicked()
     case 2: // Selector de dificultad
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchMenu);
         break;
-    case 3: // Descripcion de dificultad
-        transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
-        break;
-    case 4: // Cheat mode
+    default: // Descripcion de dificultad, Cheat mode, Seleccionar slot de guardado
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
         break;
     }
@@ -280,5 +279,10 @@ void PantallaMenu::tutorialButton()
     emit EnviarLogs("Se clickeo la pantalla Tutorial");
     SonidosBotones.play();
     emit clickedTutorial();
+}
+
+void PantallaMenu::switchSeleccionarSlotGuardado()
+{
+    ui->menu->setCurrentIndex(5);
 }
 

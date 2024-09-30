@@ -2,6 +2,7 @@
 #define PANTALLAPAUSA_H
 
 #include <QWidget>
+#include <QSoundEffect>
 
 namespace Ui {
 class PantallaPausa;
@@ -18,6 +19,7 @@ public:
     ~PantallaPausa();
 
 public slots:
+    void setVolumen(float);
     void setFullScreenButton();
     void setWindowedButton();
 
@@ -32,6 +34,7 @@ signals:
     void EnviarLogs(QString log);
 private:
     Ui::PantallaPausa *ui;
+    QSoundEffect SonidosBotones;
 
 private slots:
     void musicSliderChanged(int);

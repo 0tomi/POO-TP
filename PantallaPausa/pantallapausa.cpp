@@ -7,6 +7,9 @@ PantallaPausa::PantallaPausa(QWidget *parent)
 {
     ui->setupUi(this);
 
+    SonidosBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
+    this->setVolumen(1.0);
+
     connect(ui->returnButton, &QPushButton::clicked, this, &PantallaPausa::buttonReturnClicked);
     connect(ui->fullscreenButton, &QPushButton::clicked, this, &PantallaPausa::buttonFullScreenClicked);
     connect(ui->windowedButton, &QPushButton::clicked, this, &PantallaPausa::buttonWindowedClicked);
@@ -36,6 +39,7 @@ PantallaPausa::PantallaPausa(QWidget *parent)
 
 void PantallaPausa::setInicio()
 {
+    SonidosBotones.play();
     ui->Menus->setCurrentIndex(0);
 }
 
@@ -49,6 +53,11 @@ void PantallaPausa::BlockVolverMenu(bool estado)
 PantallaPausa::~PantallaPausa()
 {
     delete ui;
+}
+
+void PantallaPausa::setVolumen(float vol)
+{
+    this->SonidosBotones.setVolume(vol);
 }
 
 void PantallaPausa::setFullScreenButton()
@@ -70,11 +79,13 @@ void PantallaPausa::musicSliderChanged(int dato)
 void PantallaPausa::soundSliderChanged(int dato)
 {
     float valor = dato/ 100.0;
+    setVolumen(valor);
     emit soundVolume(valor);
 }
 
 void PantallaPausa::buttonFullScreenClicked()
 {
+    SonidosBotones.play();
     emit setFullScreen();
     ui->stackedWidget->setCurrentWidget(ui->ActivarModoVentana);
     emit EnviarLogs ("se clickeo boton de fullscreen");
@@ -82,6 +93,7 @@ void PantallaPausa::buttonFullScreenClicked()
 
 void PantallaPausa::buttonWindowedClicked()
 {
+    SonidosBotones.play();
     emit setWindowedScreen();
     ui->stackedWidget->setCurrentWidget(ui->ActivarPantallaCompleta);
     emit EnviarLogs ("se clickeo boton de ventana");
@@ -89,20 +101,21 @@ void PantallaPausa::buttonWindowedClicked()
 
 void PantallaPausa::buttonQuitClicked()
 {
+    SonidosBotones.play();
     emit quit();
 }
 
 void PantallaPausa::buttonReturnClicked()
 {
+    SonidosBotones.play();
     emit return2lastWidget();
 }
 
 void PantallaPausa::ConfirmarSalir()
 {
+    SonidosBotones.play();
     ui->Menus->setCurrentIndex(1);
 }
-
-
 
 void PantallaPausa::tutorialButton()
 {

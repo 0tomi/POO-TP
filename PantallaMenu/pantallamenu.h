@@ -73,6 +73,7 @@ private slots:
     void botonStartclicked();
 
     void tutorialButton();
+    void switchSeleccionarSlotGuardado();
 
 private:
     QSoundEffect GTALocura;
