@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(gameScreen, &GameScreen::EnviarLogs, [this](QString dato){
         qDebug() << dato;
     });
-    connect(juego, &Juego::EnviarLog, [this](QString dato){
+    connect(juego, &Juego::Log, [this](QString dato){
         qDebug() << dato;
     });
 }
@@ -284,10 +284,9 @@ void MainWindow::SalirTutorial()
 // ###################################### LOGS ###################################
 void MainWindow::ConeccionesLogs()
 {
-    this->log = new Logs;
-    connect(pantallaPausa, &PantallaPausa::EnviarLogs, log, &Logs::RecibirLogs);
-    connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,log,&Logs::RecibirLogs);
-    connect(pantallaMenu,&PantallaMenu::EnviarLogs,log, &Logs::RecibirLogs);
-    connect(gameScreen,&GameScreen::EnviarLogs,log,&Logs::RecibirLogs);
-    connect(juego,&Juego::EnviarLog,log,&Logs::RecibirLogs);
+    connect(pantallaPausa, &PantallaPausa::EnviarLogs, &log, &Logs::RecibirLogs);
+    connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,&log,&Logs::RecibirLogs);
+    connect(pantallaMenu,&PantallaMenu::EnviarLogs,&log, &Logs::RecibirLogs);
+    connect(gameScreen,&GameScreen::EnviarLogs,&log,&Logs::RecibirLogs);
+    connect(juego,&Juego::Log,&log,&Logs::RecibirLogs);
 }

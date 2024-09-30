@@ -87,7 +87,7 @@ private:
     void SalirTutorial();
 
     // Logs
-    Logs * log;
+    Logs log;
     void ConeccionesLogs();
 
     // Calcular el centro de la pantalla
