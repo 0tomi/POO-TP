@@ -262,7 +262,6 @@ void GameScreen::ReanudarJuego()
 
 void GameScreen::FinalDePartida()
 {
-    emit LogJugador("Juego terminado");
     MatarNotificaciones();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
@@ -277,22 +276,22 @@ void GameScreen::FinalDePartida()
     TiempoDia.stop();
 
     if (!Pausado){
+        emit EnviarLogs("Juego terminado");
         if (juego->getTotalSocialCredits() < 0)
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
     } else
-        emit LogJugador("Juego terminado forzosamente");
+        emit EnviarLogs("Juego terminado forzosamente");
 }
 
 void GameScreen::Decidir()
 {
     if (juego->getTotalSocialCredits() < 0){
-        emit LogJugador("Jugador perdio");
         emit NivelTerminado(true);
     } else {
-        emit LogJugador("Jugador perdio");
         emit NivelTerminado(false);
     }
+    emit EnviarLogs("Jugador perdio");
 }
 
 void GameScreen::ActualizarTiempo()
@@ -309,7 +308,7 @@ void GameScreen::Acepto()
 {
     juego->addNPCaceptado();
     GestorDocs.Aprobado();
-    emit LogJugador("Jugador acepto a la persona");
+    emit EnviarLogs("Jugador acepto a la persona");
     DecisionJugador = true;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(true);
@@ -319,7 +318,7 @@ void GameScreen::Rechazo()
 {
     juego->addNPCrechazado();
     GestorDocs.Rechazar();
-    emit LogJugador("Jugador rechazo a la persona");
+    emit EnviarLogs("Jugador rechazo a la persona");
     DecisionJugador = false;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(false);
@@ -331,15 +330,15 @@ void GameScreen::SelloDocumento(bool Boton)
     bool Multa = juego->EvaluarDecision(Veredicto, GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
     if (Veredicto)
-        emit LogJugador("Jugador tomo la decision correcta.");
+        emit EnviarLogs("Jugador tomo la decision correcta.");
     else{
         QString ErrorCometido = GestorNPC.getDatosFalsos();
         CrearNotificacion(Multa, ErrorCometido);
-        emit LogJugador("Jugador tomo decision equivocada.\nError cometido: ");
-        emit LogJugador(ErrorCometido);
+        emit EnviarLogs("Jugador tomo decision equivocada.\nError cometido: ");
+         emit EnviarLogs(GestorNPC.getDatosFalsos());
     }
 
-    emit LogJugador("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
+    emit EnviarLogs("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
 }
 
 /// #################################### Libro de Reglas ###################################################
@@ -370,7 +369,7 @@ void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
 void GameScreen::MatarNotificaciones()
 {
     if (CantidadNotificaciones){
-        qDebug() << "Cantidad de notificaciones:" << Notificaciones.size();
+        emit EnviarLogs( "Cantidad de notificaciones: " + QString::number(Notificaciones.size()));
         for (int i = 0; i < Notificaciones.size(); ++i)
             if (Notificaciones[i])
                 delete Notificaciones[i];

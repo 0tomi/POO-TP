@@ -193,7 +193,7 @@ void PantallaMenu::botonStartclicked()
 {
     SonidosBotones.play();
     emit clickedStart(nivel,dificultad);
-    qDebug()<< "nivel" << nivel << "dificultad"<<dificultad;
+    emit EnviarLogs("nivel   " + QString::number(nivel) + "  dificultad  " + QString::number(dificultad));
 }
 /// ############################ Cargar partida ###############################
 void PantallaMenu::botonCargarclicked()
@@ -211,18 +211,21 @@ void PantallaMenu::switchCargar()
 
 void PantallaMenu::botonPartida1clicked()
 {
+    emit EnviarLogs("Slot de partida 1 apretado");
     SonidosBotones.play();
     emit clickedPartida1();
 }
 
 void PantallaMenu::botonPartida2clicked()
 {
+    emit EnviarLogs("Slot de partida 2 apretado");
     SonidosBotones.play();
     emit clickedPartida2();
 }
 
 void PantallaMenu::botonPartida3clicked()
 {
+    emit EnviarLogs("Slot de partida 3 apretado");
     SonidosBotones.play();
     emit clickedPartida3();
 }
@@ -230,6 +233,7 @@ void PantallaMenu::botonPartida3clicked()
 /// ############################ Opciones ###############################
 void PantallaMenu::botonSettingsclicked()
 {
+    emit EnviarLogs ("Abriendo Settings");
     SonidosBotones.play();
     emit clickedSettings();
 }
@@ -237,6 +241,7 @@ void PantallaMenu::botonSettingsclicked()
 /// ############################ Salir ###############################
 void PantallaMenu::botonSalirclicked()
 {
+    emit EnviarLogs ("Quiere salir");
     SonidosBotones.play();
     emit clickedSalir();
 }
@@ -272,6 +277,7 @@ void PantallaMenu::switchMenu()
 
 void PantallaMenu::tutorialButton()
 {
+    emit EnviarLogs("Se clickeo la pantalla Tutorial");
     SonidosBotones.play();
     emit clickedTutorial();
 }

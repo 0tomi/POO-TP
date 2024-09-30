@@ -77,14 +77,14 @@ void PantallaPausa::buttonFullScreenClicked()
 {
     emit setFullScreen();
     ui->stackedWidget->setCurrentWidget(ui->ActivarModoVentana);
-    qDebug() << "se clickeo boton de fullscreen";
+    emit EnviarLogs ("se clickeo boton de fullscreen");
 }
 
 void PantallaPausa::buttonWindowedClicked()
 {
     emit setWindowedScreen();
     ui->stackedWidget->setCurrentWidget(ui->ActivarPantallaCompleta);
-    qDebug() << "se clickeo boton de ventana";
+    emit EnviarLogs ("se clickeo boton de ventana");
 }
 
 void PantallaPausa::buttonQuitClicked()
@@ -106,6 +106,7 @@ void PantallaPausa::ConfirmarSalir()
 
 void PantallaPausa::tutorialButton()
 {
+    emit EnviarLogs("Se clickeo la pantalla Tutorial");
     emit clickedTutorial();
 }
 

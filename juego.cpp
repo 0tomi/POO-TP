@@ -9,6 +9,7 @@ Juego::Juego():
     , Cola()
 {
     this->SemillaMadre = QTime::currentTime().msec();
+    NivelActual = 1;
     setDefaultStats();
 }
 

@@ -29,6 +29,7 @@ signals:
     void clickedTutorial();
     void musicVolume(float);
     void soundVolume(float);
+    void EnviarLogs(QString log);
 private:
     Ui::PantallaPausa *ui;
 
