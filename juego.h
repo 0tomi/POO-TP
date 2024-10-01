@@ -5,6 +5,7 @@
 #include "Reglas/reglasnivel5.h"
 #include "Generadores/colanpc.h"
 #include "SaveSlots/PlayerStats.h"
+#include "Niveles/lectorniveles.h"
 
 // Falta completar
 class Juego: public QObject{
@@ -79,6 +80,7 @@ private:
     ColaNPC Cola;
 
     // Niveles:
+    LectorNiveles lectorNiveles;
     void setUpNivel1();
     void setUpNivel2();
     void setUpNivel3();

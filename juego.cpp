@@ -163,10 +163,14 @@ void Juego::setUpNivel1()
 {
     // Aca previamente tocaria una lectura del nivel concreto a iniciar
     // donde obtengamos los datos que necesitamos para cada nivel
+    lectorNiveles.leerDatos(":/Niveles/Nivel1/Nivel1Settings.txt");
+    int CantAldeanos = lectorNiveles.obtenerValor("Cantidad de aldeanos");
+
+
     Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
 
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
-    Cola.addNPC(NivelActual, 1, 1, 1, 1, 1);
+    Cola.addNPC(NivelActual, CantAldeanos, 1, 1, 1, 1);
 }
 
 void Juego::setUpNivel2()
