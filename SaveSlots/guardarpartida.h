@@ -10,7 +10,7 @@ private:
     string SlotsGuardado[3];
 public:
     GuardarPartidas();
-    void GuardarPartida(PlayerStats datos, int slot );
+    void GuardarPartida(PlayerStats &datos, int slot );
     PlayerStats CargarPartida(int slot);
     bool* LeerPartidas();
 };

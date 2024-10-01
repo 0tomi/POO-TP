@@ -30,3 +30,13 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     archivoPartida.close();
     return datos;
 }
+bool* GuardarPartidas::LeerPartidas(){
+    bool* slots_disponibles=new bool[3];
+    for(int i=0; i<3; i++){
+        if(CargarPartida(i).Nivel==0){
+            slots_disponibles[i]=true;
+        }
+        else slots_disponibles[i]=false;
+    }
+    return slots_disponibles;
+}
