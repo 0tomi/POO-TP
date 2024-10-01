@@ -23,8 +23,7 @@ Logs::Logs() {
     stream << cantLogs + 1;
 
     archivoNumLogs.close();
-
-
+    qDebug() << "Directorio donde se guardan los logs: " << QCoreApplication::applicationDirPath();
 }
 
 void Logs::SaveLogs()
@@ -48,7 +47,6 @@ Logs::~Logs()
 
 void Logs::RecibirLogs(QString Log)
 {
-    qDebug() << QCoreApplication::applicationDirPath();
     qDebug() << "Log Recibido: " << Log;
     QString CompleteLog = "[" + QDateTime::currentDateTime().toString("dd-MM-yyyy HH:mm:ss") + "]  " + Log + "\n";
     this->VectorLogs.push_back(CompleteLog);

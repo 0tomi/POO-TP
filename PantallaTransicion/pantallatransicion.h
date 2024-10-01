@@ -23,6 +23,7 @@ public:
 
     template <typename T>
     void ArrancarTransicion(int Duracion, T* objeto, void (T::*metodo)());
+    void ArrancarTransicion(int duracion, std::function<void()> func);
 
 signals:
     void midAnimacion();
@@ -44,22 +45,22 @@ private:
 
 // Definición del método template
 // Definimos el metodo aca por temas del compilador, para que no se le mame la burra al c++ como diria el profe
-template <typename T>
-void PantallaTransicion::ArrancarTransicion(int Duracion, T* objeto, void (T::*metodo)()) {
-    // Configuramos el metodo que se ejecutará
-    metodo2ejecutar = [objeto, metodo]() {
-        (objeto->*metodo)();
-    };
+    template <typename T>
+    void PantallaTransicion::ArrancarTransicion(int Duracion, T* objeto, void (T::*metodo)()) {
+        // Configuramos el metodo que se ejecutará
+        metodo2ejecutar = [objeto, metodo]() {
+            (objeto->*metodo)();
+        };
 
-    iniciarTransicion->setDuration(Duracion); // duración en milisegundos
-    terminarTransicion->setDuration(Duracion);
+        iniciarTransicion->setDuration(Duracion); // duración en milisegundos
+        terminarTransicion->setDuration(Duracion);
 
-    // Colocamos la opacidad en 0 para arrancar la animacion
-    efecto->setOpacity(0);
+        // Colocamos la opacidad en 0 para arrancar la animacion
+        efecto->setOpacity(0);
 
-    show();
-    mostrando = true;
-    iniciarTransicion->start();
-}
+        show();
+        mostrando = true;
+        iniciarTransicion->start();
+    }
 
 #endif // PANTALLATRANSICION_H

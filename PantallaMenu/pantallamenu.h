@@ -28,10 +28,11 @@ signals:
     void clickedFacil();
     void clickedNormal();
     void clickedDemonio();
+    void slotSelectedForSave(int);
+    void slotSelectedForPlay(int);
+    void clickedStartDefault(int dificultad);
     void clickedStart(int nivel, int dificultad);
-    void clickedPartida1();
-    void clickedPartida2();
-    void clickedPartida3();
+    void clickedPartidaGuardada(int);
     void clickedTutorial();
     void EnviarLogs(QString Log);
 protected:
@@ -71,10 +72,17 @@ private slots:
     void switchMenu();
 
     void botonStartclicked();
+    void cheatStartClicked();
+    void SlotGuardadoSeleccionado(int);
 
     void tutorialButton();
-
 private:
+    void setBotonesPartidaOff();
+    void ConfigurarSonidos();
+    void ConfigurarBotonesDificultad();
+    void ConfigurarBotonesElegirPartidaGuardada();
+    void ConfigurarBotonesElegirRanura();
+
     QSoundEffect GTALocura;
     QSoundEffect SonidosBotones;
     QSoundEffect SonidoModoDemonio;

@@ -98,6 +98,7 @@ void MainWindow::ConeccionesPantallaPausa()
 void MainWindow::ConeccionesPantallaMenu()
 {
     // Cuando se clickee jugar, abrimos el juego:
+    connect(pantallaMenu, &PantallaMenu::clickedStartDefault, [this](int dif){this->TransicionJuego(1,dif);});
     connect(pantallaMenu, &PantallaMenu::clickedStart, this, &MainWindow::TransicionJuego);
     connect(pantallaMenu, &PantallaMenu::clickedSettings, this, &MainWindow::PrepararPantallaPausa);
     connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::close);

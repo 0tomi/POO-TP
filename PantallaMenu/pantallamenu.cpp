@@ -7,28 +7,20 @@ PantallaMenu::PantallaMenu(QWidget *parent)
     , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent)
 {
     ui->setupUi(this);
-    GTALocura.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionGTA.wav"));
-    SonidosBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
-    SonidoModoDemonio.setSource(QUrl("qrc:/Resources/Sonidos/ModoDemonioBoton.WAV"));
-    setVolumen(1.0);
-    GTALocura.setVolume(1.0);
+    this->ConfigurarSonidos();
+    this->setBotonesPartidaOff();
 
     transicion = new PantallaTransicion(this);
 
     connect(ui->botonJugar, &QPushButton::clicked, this, &PantallaMenu::botonJugarClicked);
-
     connect(ui->tutorialButton, &QPushButton::clicked, this, &PantallaMenu::clickedTutorial);
 
-    connect(ui->botonFacil, &QPushButton::clicked, this, &PantallaMenu::botonFacilclicked);
-    connect(ui->botonNormal, &QPushButton::clicked, this, &PantallaMenu::botonNormalclicked);
-    connect(ui->botonDemonio, &QPushButton::clicked, this, &PantallaMenu::botonDemonioclicked);
+    this->ConfigurarBotonesDificultad();
 
     connect(ui->botonCargar, &QPushButton::clicked, this, &PantallaMenu::botonCargarclicked);
     connect(ui->botonSettings, &QPushButton::clicked, this, &PantallaMenu::botonSettingsclicked);
 
-    connect(ui->botonPartida1, &QPushButton::clicked, this, &PantallaMenu::botonPartida1clicked);
-    connect(ui->botonPartida2, &QPushButton::clicked, this, &PantallaMenu::botonPartida2clicked);
-    connect(ui->botonPartida3, &QPushButton::clicked, this, &PantallaMenu::botonPartida3clicked);
+    this->ConfigurarBotonesElegirPartidaGuardada();
 
     connect(ui->botonSalir, &QPushButton::clicked, this, &PantallaMenu::botonSalirclicked);
     connect(ui->botonVolver1, &QPushButton::clicked, this, &PantallaMenu::botonVolver1clicked);
@@ -43,6 +35,8 @@ PantallaMenu::PantallaMenu(QWidget *parent)
 
     connect(ui->cheatPlayClicked, &QPushButton::clicked, this, &PantallaMenu::botonStartclicked);
 
+    this->ConfigurarBotonesElegirRanura();
+
     indiceMainMenu = 0;
     indicePrevio = 0;
 
@@ -50,6 +44,36 @@ PantallaMenu::PantallaMenu(QWidget *parent)
 
     ui->BotonesSalir->setCurrentIndex(0);
     ui->menu->setCurrentIndex(0);
+}
+
+void PantallaMenu::ConfigurarSonidos()
+{
+    GTALocura.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionGTA.wav"));
+    SonidosBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
+    SonidoModoDemonio.setSource(QUrl("qrc:/Resources/Sonidos/ModoDemonioBoton.WAV"));
+    setVolumen(1.0);
+    GTALocura.setVolume(1.0);
+}
+
+void PantallaMenu::ConfigurarBotonesDificultad()
+{
+    connect(ui->botonFacil, &QPushButton::clicked, this, &PantallaMenu::botonFacilclicked);
+    connect(ui->botonNormal, &QPushButton::clicked, this, &PantallaMenu::botonNormalclicked);
+    connect(ui->botonDemonio, &QPushButton::clicked, this, &PantallaMenu::botonDemonioclicked);
+}
+
+void PantallaMenu::ConfigurarBotonesElegirPartidaGuardada()
+{
+    connect(ui->botonPartida1, &QPushButton::clicked, this, &PantallaMenu::botonPartida1clicked);
+    connect(ui->botonPartida2, &QPushButton::clicked, this, &PantallaMenu::botonPartida2clicked);
+    connect(ui->botonPartida3, &QPushButton::clicked, this, &PantallaMenu::botonPartida3clicked);
+}
+
+void PantallaMenu::ConfigurarBotonesElegirRanura()
+{
+    connect(ui->boton_Ranura1, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(1);});
+    connect(ui->boton_Ranura2, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(2);});
+    connect(ui->boton_Ranura3, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(3);});
 }
 
 void PantallaMenu::setInicio()
@@ -145,14 +169,13 @@ void PantallaMenu::botonFacilclicked()
 {
     SonidosBotones.play();
     transicion->ArrancarTransicion(500, this, &PantallaMenu::switchFacil);
-    nivel = 1;
+    this->dificultad=1;
 }
 
 void PantallaMenu::switchFacil()
 {
     ui->menu->setCurrentWidget(ui->descrdificultad);
     ui->descripciones->setCurrentIndex(0);
-    dificultad=1;
 
     emit clickedFacil();
 }
@@ -192,8 +215,21 @@ void PantallaMenu::switchDemonio()
 void PantallaMenu::botonStartclicked()
 {
     SonidosBotones.play();
-    emit clickedStart(nivel,dificultad);
-    emit EnviarLogs("nivel   " + QString::number(nivel) + "  dificultad  " + QString::number(dificultad));
+    transicion->ArrancarTransicion(500, [this](){ui->menu->setCurrentIndex(5);});
+}
+
+void PantallaMenu::cheatStartClicked()
+{
+    emit EnviarLogs("Nivel: " + QString::number(this->nivel) + "| Dificultad: " + QString::number(this->dificultad));
+    emit clickedStart(this->nivel, this->dificultad);
+}
+
+void PantallaMenu::SlotGuardadoSeleccionado(int numero)
+{
+    emit EnviarLogs("Slot de guardado seleccionado: " + QString::number(numero));
+    emit EnviarLogs("Nivel: 1 | Dificultad: " + QString::number(dificultad));
+    emit slotSelectedForSave(numero);
+    emit clickedStartDefault(this->dificultad);
 }
 /// ############################ Cargar partida ###############################
 void PantallaMenu::botonCargarclicked()
@@ -213,21 +249,21 @@ void PantallaMenu::botonPartida1clicked()
 {
     emit EnviarLogs("Slot de partida 1 apretado");
     SonidosBotones.play();
-    emit clickedPartida1();
+    emit clickedPartidaGuardada(1);
 }
 
 void PantallaMenu::botonPartida2clicked()
 {
     emit EnviarLogs("Slot de partida 2 apretado");
     SonidosBotones.play();
-    emit clickedPartida2();
+    emit clickedPartidaGuardada(2);
 }
 
 void PantallaMenu::botonPartida3clicked()
 {
     emit EnviarLogs("Slot de partida 3 apretado");
     SonidosBotones.play();
-    emit clickedPartida3();
+    emit clickedPartidaGuardada(3);
 }
 
 /// ############################ Opciones ###############################
@@ -258,10 +294,7 @@ void PantallaMenu::botonVolver1clicked()
     case 2: // Selector de dificultad
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchMenu);
         break;
-    case 3: // Descripcion de dificultad
-        transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
-        break;
-    case 4: // Cheat mode
+    default: // Descripcion de dificultad, Cheat mode, Seleccionar slot de guardado
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
         break;
     }
@@ -280,5 +313,12 @@ void PantallaMenu::tutorialButton()
     emit EnviarLogs("Se clickeo la pantalla Tutorial");
     SonidosBotones.play();
     emit clickedTutorial();
+}
+
+void PantallaMenu::setBotonesPartidaOff()
+{
+    ui->botonPartida1->setDisabled(true);
+    ui->botonPartida2->setDisabled(true);
+    ui->botonPartida3->setDisabled(true);
 }
 

@@ -17,8 +17,8 @@ class Logs : public QObject
 private:
     int cantLogs;
     vector<QString>VectorLogs;
-    const QString DireccionTXT = QCoreApplication::applicationDirPath() + "/logs";
-    const QString CantLogsTXT = QCoreApplication::applicationDirPath() + "/cantlogs.txt";
+    const QString DireccionTXT = "../logs";
+    const QString CantLogsTXT = "../cantlogs.txt";
     const QString DireccionCarpeta = QCoreApplication::applicationDirPath();
 public:
     Logs();
