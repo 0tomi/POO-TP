@@ -92,7 +92,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <property name="maximumSize">
@@ -122,7 +122,7 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="maximumSize">
              <size>
               <width>1800</width>
-              <height>16777215</height>
+              <height>600</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -143,7 +143,7 @@ border-image: url(:/Resources/escritorio2.png);
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>350</width>
               <height>75</height>
              </size>
             </property>
@@ -182,7 +182,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>350</width>
               <height>75</height>
              </size>
             </property>
@@ -221,7 +221,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>350</width>
               <height>75</height>
              </size>
             </property>
@@ -299,7 +299,7 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -340,7 +340,7 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -381,7 +381,7 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1166,7 +1166,7 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1177,47 +1177,6 @@ background-color: #1e1532;</string>
             </property>
             <property name="text">
              <string>Ranura 1</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="boton_Ranura3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>1800</width>
-              <height>125</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>MS Sans Serif</family>
-              <pointsize>22</pointsize>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: white;
-background-color: #1e1532;</string>
-            </property>
-            <property name="text">
-             <string>Ranura 2</string>
             </property>
            </widget>
           </item>
@@ -1248,7 +1207,48 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Ranura 2</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_Ranura3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>125</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1272,7 +1272,7 @@ background-color: #1e1532;</string>
          <bool>true</bool>
         </property>
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1285,7 +1285,7 @@ background-color: #1e1532;</string>
         </property>
         <property name="maximumSize">
          <size>
-          <width>600</width>
+          <width>800</width>
           <height>150</height>
          </size>
         </property>
@@ -1296,7 +1296,7 @@ background-color: #1e1532;</string>
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="Salir">
          <layout class="QVBoxLayout" name="verticalLayout_10">
