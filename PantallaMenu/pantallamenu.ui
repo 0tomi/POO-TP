@@ -92,7 +92,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <property name="maximumSize">
@@ -1140,7 +1140,7 @@ background-color: #1e1532;</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="boton_Partida1">
+           <widget class="QPushButton" name="boton_Ranura1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -1181,7 +1181,7 @@ background-color: #1e1532;</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="boton_Partida2">
+           <widget class="QPushButton" name="boton_Ranura3">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -1222,7 +1222,7 @@ background-color: #1e1532;</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="boton_Partida3">
+           <widget class="QPushButton" name="boton_Ranura2">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
               <horstretch>0</horstretch>

@@ -20,9 +20,11 @@ PantallaPausa::PantallaPausa(QWidget *parent)
     connect(ui->tutorialButton, &QPushButton::clicked, this, &PantallaPausa::clickedTutorial);
 
     connect(ui->soundButton, &QPushButton::clicked, this, [this](){
+        SonidosBotones.play();
         ui->Menus->setCurrentIndex(2);
     });
     connect(ui->volverApausa, &QPushButton::clicked, this, [this](){
+        SonidosBotones.play();
         ui->Menus->setCurrentIndex(0);
     });
 

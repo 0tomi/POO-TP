@@ -59,3 +59,18 @@ bool PantallaTransicion::Mostrando() const
 {
     return mostrando;
 }
+
+void PantallaTransicion::ArrancarTransicion(int duracion, std::function<void ()> func)
+{
+    metodo2ejecutar = func;
+
+    iniciarTransicion->setDuration(duracion); // duración en milisegundos
+    terminarTransicion->setDuration(duracion);
+
+    // Colocamos la opacidad en 0 para arrancar la animacion
+    efecto->setOpacity(0);
+
+    show();
+    mostrando = true;
+    iniciarTransicion->start();
+}
