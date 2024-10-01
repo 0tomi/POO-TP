@@ -4,6 +4,7 @@ Cantidad de diplomaticos: 5
 Cantidad de revolucionarios: 5
 Cantidad de NPCs invalidos: 5
 Cantidad de paises validos: 3
+Nombres de paises validos:
 Cantidad de estados civiles validos: 2
 Rango de fechas de nacimiento validas: 0
 Fecha minima valida de nacimiento: 1800

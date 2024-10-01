@@ -19,6 +19,7 @@ void LectorNiveles::actualizarRuta(const QString &NEWrutaArchivo)
 
 // Método que lee el archivo y extrae los datos
 bool LectorNiveles::leerDatos() {
+    paisesValidos.clear();
     datos.clear();                  // Limpiamos el mapa cada que se lee un nuevo archivo
     QFile archivo(rutaArchivo);
     if (!archivo.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -27,16 +28,24 @@ bool LectorNiveles::leerDatos() {
     }
 
     QTextStream in(&archivo);
-    QRegularExpression regex(R"(.*: (\d+))");  // Expresión regular para capturar el número después de los dos puntos
+    QRegularExpression expNumeros(R"(.*: (\d+))");  // Expresión regular para capturar el número después de los dos puntos
+    QRegularExpression expPaises(R"(Nombres de paises validos: (.+))");  // Expresión regular para capturar países
 
     while (!in.atEnd()) {
         QString linea = in.readLine();
-        match = regex.match(linea);
+        matchNumeros = expNumeros.match(linea);
 
-        if (match.hasMatch()) {
+        if (matchNumeros.hasMatch()) {
             QString clave = linea.section(':', 0, 0).trimmed();  // Obtener el texto antes de los dos puntos
-            int valor = match.captured(1).toInt();               // Obtener el valor numérico después de los dos puntos
+            int valor = matchNumeros.captured(1).toInt();               // Obtener el valor numérico después de los dos puntos
             datos.insert(clave, valor);                          // Insertar en el mapa
+        }
+
+        // Capturar los nombres de países
+        matchPaises = expPaises.match(linea);
+        if (matchPaises.hasMatch()) {
+            QString paises = matchPaises.captured(1);            // Obtener la lista de países como una cadena
+            paisesValidos = paises.split(' ', Qt::SkipEmptyParts);  // Separar por espacios y almacenar en la lista
         }
     }
 

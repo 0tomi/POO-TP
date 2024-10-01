@@ -169,5 +169,6 @@
         <file>Niveles/Nivel5/FotoEscannerEspalda.png</file>
         <file>Niveles/Nivel5/FotoEscannerFrente.png</file>
         <file>Niveles/Nivel1/Nivel1Settings.txt</file>
+        <file>Resources/Musica/MenuMusica.WAV</file>
     </qresource>
 </RCC>

@@ -4,7 +4,7 @@
 /// ############################ CONSTRUCTOR ###############################
 PantallaMenu::PantallaMenu(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent)
+    , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent), Musica(parent)
 {
     ui->setupUi(this);
     this->ConfigurarSonidos();
@@ -44,6 +44,9 @@ PantallaMenu::PantallaMenu(QWidget *parent)
 
     ui->BotonesSalir->setCurrentIndex(0);
     ui->menu->setCurrentIndex(0);
+
+    Musica.setLoopCount(QSoundEffect::Infinite);
+    Musica.play();
 }
 
 void PantallaMenu::ConfigurarSonidos()
@@ -51,6 +54,8 @@ void PantallaMenu::ConfigurarSonidos()
     GTALocura.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionGTA.wav"));
     SonidosBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
     SonidoModoDemonio.setSource(QUrl("qrc:/Resources/Sonidos/ModoDemonioBoton.WAV"));
+    Musica.setSource(QUrl("qrc:/Resources/Musica/MenuMusica.WAV"));
+    setMusicVolume(1.0);
     setVolumen(1.0);
     GTALocura.setVolume(1.0);
 }
@@ -86,10 +91,25 @@ PantallaMenu::~PantallaMenu()
     delete ui;
 }
 
+void PantallaMenu::stopMusic()
+{
+    Musica.stop();
+}
+
+void PantallaMenu::continueMusic()
+{
+    Musica.play();
+}
+
 void PantallaMenu::setVolumen(float vol)
 {
     SonidosBotones.setVolume(vol);
     SonidoModoDemonio.setVolume(vol);
+}
+
+void PantallaMenu::setMusicVolume(float vol)
+{
+    Musica.setVolume(vol-0.4);
 }
 
 void PantallaMenu::keyPressEvent(QKeyEvent *event)
