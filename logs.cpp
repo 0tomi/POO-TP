@@ -23,14 +23,15 @@ Logs::Logs() {
     stream << cantLogs + 1;
 
     archivoNumLogs.close();
+    qDebug() << this->DireccionCarpeta;
     qDebug() << "Directorio donde se guardan los logs: " << QCoreApplication::applicationDirPath();
 }
 
 void Logs::SaveLogs()
 {
-    QFile archivo(this->DireccionTXT + QString::number(this->cantLogs) + ".txt");
+    QFile archivo(this->DireccionCarpeta + "/" + QString::number(this->cantLogs) + ".txt");
     if(!archivo.open(QIODevice::Text | QIODevice::Append)){
-        QMessageBox::critical(nullptr, "Error al abrir el archivo de logs en la direccion:", this->DireccionTXT);
+        QMessageBox::critical(nullptr, "Error al abrir el archivo de logs en la direccion:", this->DireccionCarpeta);
         QCoreApplication::exit(-1);
     }
     QTextStream stream(&archivo);
@@ -50,7 +51,7 @@ void Logs::RecibirLogs(QString Log)
     qDebug() << "Log Recibido: " << Log;
     QString CompleteLog = "[" + QDateTime::currentDateTime().toString("dd-MM-yyyy HH:mm:ss") + "]  " + Log + "\n";
     this->VectorLogs.push_back(CompleteLog);
-    if(this->VectorLogs.size() == 10 || Log.contains("salir")){
+    if(this->VectorLogs.size() == 1 || Log.contains("salir")){
         SaveLogs();
     }
 }
