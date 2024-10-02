@@ -80,7 +80,9 @@ private:
     ColaNPC Cola;
 
     // Niveles:
+    int CantNPCS[5]; // 0: Aldeanos, 1: Refugiados, 2: Diplomaticos, 3: Revolucionarios, 4: NPCs falsos
     LectorNiveles lectorNiveles;
+    void InicializarNivel1();
     void setUpNivel1();
     void setUpNivel2();
     void setUpNivel3();

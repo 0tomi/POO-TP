@@ -23,6 +23,8 @@ public:
     std::list<QString> getListaPaisesValidos() const;
 
 private:
+    QRegularExpression expNumeros;      // Expresión regular para capturar el número después de los dos puntos
+    QRegularExpression expPaises;       // Expresión regular para capturar países
     QRegularExpressionMatch matchNumeros;      // Para ubicar la informacion despues de los 2 puntos
     QRegularExpressionMatch matchPaises;
     QString rutaArchivo;               // Ruta del archivo de texto

@@ -4,13 +4,13 @@
 #include <QDebug>
 
 // Constructor que inicializa la ruta del archivo
-LectorNiveles::LectorNiveles()
+LectorNiveles::LectorNiveles(): expNumeros(R"(.*: (\d+))"), expPaises(R"(Nombres de paises validos: (.+))")
 {
 
 }
 
 LectorNiveles::LectorNiveles(const QString& rutaArchivo)
-    : rutaArchivo(rutaArchivo) {}
+    : rutaArchivo(rutaArchivo), expNumeros(R"(.*: (\d+))"), expPaises(R"(Nombres de paises validos: (.+))") {}
 
 void LectorNiveles::actualizarRuta(const QString &NEWrutaArchivo)
 {
@@ -28,9 +28,6 @@ bool LectorNiveles::leerDatos() {
     }
 
     QTextStream in(&archivo);
-    QRegularExpression expNumeros(R"(.*: (\d+))");  // Expresión regular para capturar el número después de los dos puntos
-    QRegularExpression expPaises(R"(Nombres de paises validos: (.+))");  // Expresión regular para capturar países
-
     while (!in.atEnd()) {
         QString linea = in.readLine();
         matchNumeros = expNumeros.match(linea);

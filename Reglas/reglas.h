@@ -60,7 +60,7 @@ template<class Puntero>
 void Reglas::LimpiarDatos(Puntero &datos)
 {
     if (datos){
-        delete datos;
+        delete[] datos;
         datos = nullptr;
     }
 }

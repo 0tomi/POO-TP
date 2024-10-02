@@ -157,20 +157,42 @@ bool Juego::RestarSocialCredits(int Tipo)
 }
 
 /// #################################### SETUP DE NIVELES ###################################################
-/// A futuro estaria bueno hacer que la cantidad de NPCs que pueda salir sea random,
-/// pero por motivos de testeo lo vamos a dejar asi.
 void Juego::setUpNivel1()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
     lectorNiveles.leerDatos(":/Niveles/Nivel1/Nivel1Settings.txt");
-    int CantAldeanos = lectorNiveles.obtenerValor("Cantidad de aldeanos");
-
+    this->InicializarNivel1();
 
     Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
 
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
-    Cola.addNPC(NivelActual, CantAldeanos, 1, 1, 1, 1);
+    Cola.addNPC(NivelActual, CantNPCS[0], CantNPCS[1], CantNPCS[2], CantNPCS[3], CantNPCS[4]);
+}
+
+void Juego::InicializarNivel1()
+{
+    QString Claves[] ={                                                                                                 // Indices:
+        "Cantidad de aldeanos", "Cantidad de refugiados", "Cantidad de diplomaticos", "Cantidad de revolucionarios",    // 0,1,2,3
+        "Cantidad de NPCs invalidos",                                                                                   // 4
+        "Cantidad de paises validos", "Cantidad de estados civiles validos", "Rango de fechas de nacimiento validas",   // 5,6,7
+        "Fecha minima valida de nacimiento", "Fecha maxima valida de nacimiento", "Duracion de estancia maxima permitida",  // 8,9,10
+        "Cantidad de tipos de visitas permitidas" // 11
+    };
+    int Valores[12];
+
+    for (int i = 0; i < 12; i++)
+        Valores[i] = lectorNiveles.obtenerValor(Claves[i]);
+
+    for (int i = 0; i < 5; i++)
+        CantNPCS[i] = Valores[i];
+
+    reglasLVL1.generar_Paises(Valores[5]);
+    reglasLVL1.generar_EstadosCiviles(Valores[6]);
+    if (!Valores[7])
+        reglasLVL1.set_Fechas(Valores[8], Valores[9]);
+    else reglasLVL1.generar_Fechas(Valores[7]);
+    reglasLVL1.generar_DuracionEstancia(Valores[10]);
+    reglasLVL1.generar_TiposVisita(Valores[11]);
+
 }
 
 void Juego::setUpNivel2()
