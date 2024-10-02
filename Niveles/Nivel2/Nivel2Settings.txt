@@ -11,5 +11,6 @@ Fecha minima valida de nacimiento: 1800
 Fecha maxima valida de nacimiento: 1900
 Duracion de estancia maxima permitida: 6
 Cantidad de tipos de visitas permitidas: 2
+Cantidad de paises de paso permitidos: 3
 
 

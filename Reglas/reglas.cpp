@@ -127,10 +127,10 @@ int Reglas::checkCondiciones(int cantidad, int min, std::vector<parDatos>& vec)
     return cantidad;
 }
 
-int Reglas::checkCondicionesExceso(int cantidad, int min, std::vector<parDatos> &vec)
+int Reglas::checkCondicionesCustom(int cantidad, int min, int max, std::vector<parDatos> &vec)
 {
-    if (cantidad < 0 || cantidad > vec.size() + 1)
-        cantidad = rand.bounded(vec.size());
+    if (cantidad < 0 || cantidad > max)
+        cantidad = rand.bounded(max);
 
     return cantidad;
 }
