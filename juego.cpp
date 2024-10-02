@@ -227,6 +227,14 @@ void Juego::InicializarNivel5()
     reglasLVL5.generar_ObjetosPermitidos(Cantidad);
 }
 
+void Juego::RandomizarParametros()
+{
+    QRandomGenerator rand;
+    for (int i = 0; i < 4; i++)
+        CantNPCS[i] = rand.bounded(20);
+    reglasLVL3.generar_MaxAcompaniantes();
+}
+
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
