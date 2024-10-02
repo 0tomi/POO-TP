@@ -80,14 +80,21 @@ private:
     ColaNPC Cola;
 
     // Niveles:
-    int CantNPCS[5]; // 0: Aldeanos, 1: Refugiados, 2: Diplomaticos, 3: Revolucionarios, 4: NPCs falsos
     LectorNiveles lectorNiveles;
+    const QString NIVEL1 = ":/Niveles/Nivel1/Nivel1Settings.txt";
+    const QString NIVEL2 = ":/Niveles/Nivel2/Nivel2Settings.txt";
+    const QString NIVEL3 = ":/Niveles/Nivel3/Nivel3Settings.txt";
+    const QString NIVEL4 = ":/Niveles/Nivel4/Nivel4Settings.txt";
+    const QString NIVEL5 = ":/Niveles/Nivel5/Nivel5Settings.txt";
+    int CantNPCS[5]; // 0: Aldeanos, 1: Refugiados, 2: Diplomaticos, 3: Revolucionarios, 4: NPCs falsos
+
     void InicializarNivel1();
-    void setUpNivel1();
-    void setUpNivel2();
-    void setUpNivel3();
-    void setUpNivel4();
-    void setUpNivel5();
+    void InicializarNivel2();
+    void InicializarNivel3();
+    void InicializarNivel4();
+    void InicializarNivel5();
+    void RandomizarParametros();
+    void setUpNivel(int Nivel);
 
     // Reglas
     ReglasNivel1 reglasLVL1;

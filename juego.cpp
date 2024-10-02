@@ -22,7 +22,7 @@ void Juego::PrepararJuego(int Dificultad)
     NivelActual = 1;
     setDificultad(Dificultad);
     setDefaultStats();
-    setUpNivel1();
+    setUpNivel(1);
 }
 
 void Juego::PrepararJuego(int Nivel, int Dificultad)
@@ -35,19 +35,7 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
 
     // Reseteamos la cantidad ganada en el nivel
     this->SocialCreditsEarnedInLevel = 0;
-    // El else vendra cuando implementemos las partidas guardadas
-    switch (Nivel) {
-    case 1: setUpNivel1();
-        break;
-    case 2: setUpNivel2();
-        break;
-    case 3: setUpNivel3();
-        break;
-    case 4: setUpNivel4();
-        break;
-    default: setUpNivel5();
-        break;
-    }
+    this->setUpNivel(Nivel);
 }
 
 void Juego::PrepararJuego(PlayerStats stats)
@@ -157,13 +145,29 @@ bool Juego::RestarSocialCredits(int Tipo)
 }
 
 /// #################################### SETUP DE NIVELES ###################################################
-void Juego::setUpNivel1()
+void Juego::setUpNivel(int Nivel)
 {
-    lectorNiveles.leerDatos(":/Niveles/Nivel1/Nivel1Settings.txt");
-    this->InicializarNivel1();
+    if (Nivel > 5)
+        Nivel = 5;
+
+    const QString Niveles[] = {NIVEL1, NIVEL2, NIVEL3, NIVEL4, NIVEL5};
+    auto Nivel2Cargar = &Niveles[Nivel - 1];
+
+    lectorNiveles.leerDatos(*Nivel2Cargar);
+
+    InicializarNivel1();
+    if (Nivel > 1)
+        InicializarNivel2();
+    if (Nivel > 2)
+        InicializarNivel3();
+    if (Nivel > 3)
+        InicializarNivel4();
+    if (Nivel == 5)
+        InicializarNivel5();
+    if (Nivel > 5)
+        RandomizarParametros();
 
     Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
     Cola.addNPC(NivelActual, CantNPCS[0], CantNPCS[1], CantNPCS[2], CantNPCS[3], CantNPCS[4]);
 }
@@ -195,42 +199,34 @@ void Juego::InicializarNivel1()
 
 }
 
-void Juego::setUpNivel2()
+void Juego::InicializarNivel2()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-    reglasLVL2.generar_PaisesPermitidos(6);
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 7, 4, 2, 5, 5);
+    int CantidadPaisesPermitidos = lectorNiveles.obtenerValor("Cantidad de paises de paso permitidos");
+    reglasLVL2.generar_PaisesPermitidos(CantidadPaisesPermitidos);
 }
 
-void Juego::setUpNivel3()
+void Juego::InicializarNivel3()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-    reglasLVL2.generar_PaisesPermitidos(6);
-    reglasLVL3.set_MaxAcompaniantes(2);
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
+    int Cantidad = lectorNiveles.obtenerValor("Cantidad maxima de acompaniantes permitidos");
+    reglasLVL3.set_MaxAcompaniantes(Cantidad);
 }
 
-void Juego::setUpNivel4()
+void Juego::InicializarNivel4()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
+    int CantidadPaises = lectorNiveles.obtenerValor("Cantidad de paises de paso permitidos");
+    reglasLVL4.generar_PaisesPaso(CantidadPaises);
+    int CantidadOcupaciones = lectorNiveles.obtenerValor("Cantidad de ocupaciones permitidos");
+    reglasLVL4.generar_PaisesPaso(CantidadOcupaciones);
+    int CantidadBienes = lectorNiveles.obtenerValor("Cantidad de bienes transportados permitidos");
+    reglasLVL4.generar_PaisesPaso(CantidadBienes);
 }
 
-void Juego::setUpNivel5()
+void Juego::InicializarNivel5()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
+    int Cantidad = lectorNiveles.obtenerValor("Cantidad de objetos permitidos");
+    reglasLVL5.generar_ObjetosPermitidos(Cantidad);
 }
+
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){

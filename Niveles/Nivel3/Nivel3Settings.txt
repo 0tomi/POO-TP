@@ -1,9 +1,11 @@
+[Configuraciones de juego]
 Cantidad de aldeanos: 5
 Cantidad de refugiados: 5
 Cantidad de diplomaticos: 5
 Cantidad de revolucionarios: 5
 Cantidad de NPCs invalidos: 5
 Cantidad de paises validos: 3
+[Configuraciones de nivel 1]
 Nombres de paises validos:
 Cantidad de estados civiles validos: 2
 Rango de fechas de nacimiento validas: 0
@@ -11,5 +13,7 @@ Fecha minima valida de nacimiento: 1800
 Fecha maxima valida de nacimiento: 1900
 Duracion de estancia maxima permitida: 6
 Cantidad de tipos de visitas permitidas: 2
-
-
+[Configuraciones de nivel 2]
+Cantidad de paises de paso permitidos: 3
+[Configuraciones de nivel 3]
+Cantidad maxima de acompaniantes permitidos: 2
