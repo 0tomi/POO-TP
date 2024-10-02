@@ -46,6 +46,7 @@ protected:
     void resetearParDatos(std::vector<parDatos>& vectorPar);
     std::vector<QString> generarVector(const std::list<QString>& lista) const;
     int checkCondiciones(int cantidad, int min, std::vector<parDatos>& vec);
+    int checkCondicionesExceso(int cantidad, int min, std::vector<parDatos>& vec);
     bool checkCondiciones(int min, std::vector<parDatos>& vec, std::vector<QString>& lista);
     bool checkTipado(std::vector<parDatos>& vec, std::vector<QString>& lista);
     bool checkTipado(QString& elemento, std::vector<parDatos>& vec);
