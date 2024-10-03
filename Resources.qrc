@@ -177,5 +177,8 @@
         <file>Resources/Sonidos/SonidoScanner.wav</file>
         <file>Resources/Sonidos/Libro/AbrirLibro.wav</file>
         <file>Resources/Sonidos/Libro/CerrarLibro.wav</file>
+        <file>SaveSlots/slot1.dat</file>
+        <file>SaveSlots/slot2.dat</file>
+        <file>SaveSlots/slot3.dat</file>
     </qresource>
 </RCC>

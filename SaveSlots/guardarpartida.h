@@ -2,15 +2,19 @@
 #define GUARDARPARTIDA_H
 #include <QMessageBox>
 #include "PlayerStats.h"
-#include <fstream>
-#include <string>
+#include <QString>
+
 using namespace std;
 class GuardarPartidas{
 private:
-    string SlotsGuardado[3];
+    const QString SLOT1 = ":/SaveSlots/slot1.dat";
+    const QString SLOT2 = ":/SaveSlots/slot2.dat";
+    const QString SLOT3 = ":/SaveSlots/slot3.dat";
+    const QString SlotsGuardado[3] = {SLOT1, SLOT2, SLOT3};
+
 public:
     GuardarPartidas();
-    void GuardarPartida(PlayerStats &datos, int slot );
+    void save(const PlayerStats &datos, int slot );
     PlayerStats CargarPartida(int slot);
     bool* LeerPartidas();
 };
