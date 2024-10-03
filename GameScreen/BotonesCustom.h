@@ -15,7 +15,7 @@ class BotonesCustom : public QWidget
     Q_OBJECT
 
 public:
-    enum TiposImagen {
+    enum class TiposImagen {
         Normal,
         Border
     };
