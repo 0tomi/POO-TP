@@ -17,8 +17,11 @@ public:
     explicit PantallaMenu(QWidget *parent = nullptr);
     void setInicio();
     ~PantallaMenu();
+    void stopMusic();
+    void continueMusic();
 public slots:
     void setVolumen(float);
+    void setMusicVolume(float);
 
 signals:
     void clickedJugar();
@@ -83,6 +86,7 @@ private:
     void ConfigurarBotonesElegirPartidaGuardada();
     void ConfigurarBotonesElegirRanura();
 
+    QSoundEffect Musica;
     QSoundEffect GTALocura;
     QSoundEffect SonidosBotones;
     QSoundEffect SonidoModoDemonio;
