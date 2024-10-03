@@ -33,7 +33,7 @@ PantallaMenu::PantallaMenu(QWidget *parent)
     connect(ui->SeleccionarDificultad, &QSpinBox::valueChanged, this, &PantallaMenu::actualizarDificultad);
     connect(ui->SeleccionarNivel, &QSpinBox::valueChanged, this, &PantallaMenu::actualizarNivel);
 
-    connect(ui->cheatPlayClicked, &QPushButton::clicked, this, &PantallaMenu::botonStartclicked);
+    connect(ui->cheatPlayClicked, &QPushButton::clicked, this, &PantallaMenu::cheatStartClicked);
 
     this->ConfigurarBotonesElegirRanura();
 

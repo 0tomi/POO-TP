@@ -3,7 +3,7 @@
 
 BotonesCustom::BotonesCustom(QWidget *parent):
     QWidget(parent)
-    , ui(new Ui::BotonesCustom)
+    , ui(new Ui::BotonesCustom), padre(parent)
 {
     ui->setupUi(this);
     sonido2.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
@@ -23,7 +23,7 @@ BotonesCustom::BotonesCustom(QWidget *parent):
 
 BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::BotonesCustom), sonido2(this)
+    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent)
 {
     ui->setupUi(this);
 
@@ -40,6 +40,35 @@ BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, QWidget *parent)
     // Conectamos el temporizador al apretar los botones
     TemporizadorBotones.setSingleShot(true);
     TiempoBloqueo = 1000;
+}
+
+BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo, QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent)
+{
+    ui->setupUi(this);
+
+    sonido2.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
+    sonido2.setVolume(1.0);
+
+    // Colocamos la imagen que va a tener el boton segun el estado.
+    CrearSkinBoton(Estado1, SkinBotonUnblock, tipo);
+    CrearSkinBoton(Estado2, SkinBotonBlock, tipo);
+
+    // Le damos la apariencia de no estar apretado al boton.
+    ui->Boton->setStyleSheet(SkinBotonUnblock);
+
+    // Conectamos el temporizador al apretar los botones
+    TemporizadorBotones.setSingleShot(true);
+    TiempoBloqueo = 1000;
+}
+
+void BotonesCustom::copyFormat()
+{
+    this->resize(padre->size());
+    this->setSizePolicy(padre->sizePolicy());
+    this->setMaximumSize(padre->maximumSize());
+    this->setMinimumSize(padre->minimumSize());
 }
 
 void BotonesCustom::SetTiempoBloqueo(int milisegundos)
@@ -89,6 +118,16 @@ void BotonesCustom::setSkinBotonBlock(QString newSkinBotonBlock)
 void BotonesCustom::CrearSkinBoton(QString Estado1, QString &Direccion)
 {
     Direccion = "border-image: url(" + Estado1 + ");";
+}
+
+void BotonesCustom::CrearSkinBoton(QString Estado1, QString &Direccion, TiposImagen tipos)
+{
+    switch (tipos){
+    case Normal: Direccion = "image: url(" + Estado1 + ");";
+        break;
+    case Border: Direccion = "border-image: url(" + Estado1 + ");";
+        break;
+    }
 }
 
 bool BotonesCustom::getBotonBloqueado() const

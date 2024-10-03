@@ -62,6 +62,7 @@ private:
     Ui::GameScreen *ui;
     PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
+    int nivelActual;
     QTimer tiempoPartida;
     int tiempoRestante;
 
@@ -81,6 +82,7 @@ private:
     BotonesCustom* BotonAprobar;
     BotonesCustom* BotonRechazar;
     BotonesCustom* BotonCentrar;
+    BotonesCustom * BotonScanner;
     QSpacerItem* EspaciadorBotones;
 
     // Controlar tiempo en partida
@@ -95,6 +97,7 @@ private:
     void BloquearBotones(bool Bloqueo);
     void DesbloquearBotones();
     bool BotonesBloqueados = false;
+    void setUpBotonEscanner();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

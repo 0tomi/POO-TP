@@ -49,6 +49,7 @@ GameScreen::~GameScreen()
     delete BotonRechazar;
     delete BotonCentrar;
     delete pantallaPerdiste;
+    delete BotonScanner;
 }
 
 void GameScreen::setUpLibroReglas()
@@ -86,6 +87,17 @@ void GameScreen::SpawnearBotones()
     ui->ContenedorBotones->layout()->addItem(EspaciadorBotones);
     ui->ContenedorBotones->layout()->addWidget(BotonAprobar);
     ui->ContenedorBotones->layout()->addWidget(BotonRechazar);
+    setUpBotonEscanner();
+}
+
+void GameScreen::setUpBotonEscanner()
+{
+    QString EscanerSinApretar = ":/Resources/MaterialPantallas/BotonEscanerSinApretar.png";
+    QString EscanerApretado = ":/Resources/MaterialPantallas/BotonEscanerApretado.png";
+
+    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal , ui->BotonEscannerUI);
+    BotonScanner->copyFormat();
+    ui->BotonEscannerUI->layout()->addWidget(BotonScanner);
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
@@ -192,6 +204,7 @@ void GameScreen::PrepararJuego(int Dificultad)
     libroReglasUI->setUpLevel(1);
     GestorDocs.setUpNivel(1);
     introPantalla->setUp(1);
+    this->nivelActual = 1;
 }
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
@@ -201,6 +214,7 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     // more stuff to do
     GestorDocs.setUpNivel(Nivel);
     introPantalla->setUp(Nivel);
+    this->nivelActual = Nivel;
 }
 
 void GameScreen::PrepararJuego(PlayerStats stats)
@@ -210,10 +224,15 @@ void GameScreen::PrepararJuego(PlayerStats stats)
     // more stuff to do
     GestorDocs.setUpNivel(stats.Nivel);
     introPantalla->setUp(stats.Nivel);
+    this->nivelActual = stats.Nivel;
 }
 
 void GameScreen::Iniciar()
 {
+    if (nivelActual >= 5)
+        BotonScanner->show();
+    else BotonScanner->hide();
+
     IconoDocs->setFinalPartida(false);
     Notificaciones.clear();
     introPantalla->Mostrar();
