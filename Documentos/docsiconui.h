@@ -5,6 +5,7 @@
 #include <QMouseEvent>
 #include <QCursor>
 #include <QPropertyAnimation>
+#include <QSoundEffect>
 
 namespace Ui {
 class DocsIconUI;
@@ -27,6 +28,7 @@ public:
 
     bool Mostrando() const;
 
+    void setVolumenes(float vol);
     void setFinalPartida(bool newFinalPartida);
 
 signals:
@@ -57,6 +59,7 @@ protected:
 
 private:
     Ui::DocsIconUI *ui;
+    QSoundEffect sonidoLibro[2]; // 0: Abrir, 1: Cerrar
     void CerrarDocumento();
     void AbrirDocumento();
     bool BlockDocumento;

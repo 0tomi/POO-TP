@@ -15,7 +15,7 @@ class BotonesCustom : public QWidget
     Q_OBJECT
 
 public:
-    enum class TiposImagen {
+    enum TiposImagen {
         Normal,
         Border
     };
@@ -23,6 +23,7 @@ public:
     explicit BotonesCustom(QWidget *parent = nullptr);
     explicit BotonesCustom(QString Estado1, QString Estado2, QWidget *parent = nullptr);
     explicit BotonesCustom(QString Estado1, QString Estado2, TiposImagen , QWidget *parent = nullptr);
+    explicit BotonesCustom(QString Estado1, QString Estado2, TiposImagen , QString SonidoCustom, QWidget *parent = nullptr);
     void copyFormat();
     void SetTiempoBloqueo(int milisegundos);
     void BloquearBoton(bool bloqueo);

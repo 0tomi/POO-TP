@@ -63,6 +63,27 @@ BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo,
     TiempoBloqueo = 1000;
 }
 
+BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo, QString SonidoCustom, QWidget *parent):
+    QWidget(parent)
+    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent)
+{
+    ui->setupUi(this);
+
+    sonido2.setSource(QUrl(SonidoCustom));
+    sonido2.setVolume(0.8);
+
+    // Colocamos la imagen que va a tener el boton segun el estado.
+    CrearSkinBoton(Estado1, SkinBotonUnblock, tipo);
+    CrearSkinBoton(Estado2, SkinBotonBlock, tipo);
+
+    // Le damos la apariencia de no estar apretado al boton.
+    ui->Boton->setStyleSheet(SkinBotonUnblock);
+
+    // Conectamos el temporizador al apretar los botones
+    TemporizadorBotones.setSingleShot(true);
+    TiempoBloqueo = 1000;
+}
+
 void BotonesCustom::copyFormat()
 {
     this->resize(padre->size());
@@ -137,7 +158,7 @@ bool BotonesCustom::getBotonBloqueado() const
 
 void BotonesCustom::setVolumen(float volumen)
 {
-    sonido2.setVolume(volumen);
+    sonido2.setVolume(volumen-0.2);
 }
 
 void BotonesCustom::PausarBoton()

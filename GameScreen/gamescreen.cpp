@@ -13,6 +13,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     Pausado = false;
 
     setUpLibroReglas();
+    setUpSonidos();
 
     pantallaPerdiste = new PantallaPerdiste(this);
     pantallaPerdiste->setFixedSize(1920,1080);
@@ -60,6 +61,11 @@ void GameScreen::setUpLibroReglas()
         ui->reglasBoton->setEnabled(true);
     });
 }
+
+void GameScreen::setUpSonidos()
+{
+
+}
 /// #################################### BOTONES ###################################################
 void GameScreen::SpawnearBotones()
 {
@@ -94,8 +100,9 @@ void GameScreen::setUpBotonEscanner()
 {
     QString EscanerSinApretar = ":/Resources/MaterialPantallas/BotonEscanerSinApretar.png";
     QString EscanerApretado = ":/Resources/MaterialPantallas/BotonEscanerApretado.png";
+    QString SonidoEscanner = "qrc:/Resources/Sonidos/SonidoScanner.wav";
 
-    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal , ui->BotonEscannerUI);
+    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, ui->BotonEscannerUI);
     BotonScanner->copyFormat();
     ui->BotonEscannerUI->layout()->addWidget(BotonScanner);
 }
@@ -160,11 +167,13 @@ void GameScreen::setVolumenes(float volumen)
     BotonAprobar->setVolumen(volumen);
     BotonCentrar->setVolumen(volumen);
     BotonRechazar->setVolumen(volumen);
+    BotonScanner->setVolumen(volumen);
     libroReglasUI->setVolume(volumen);
     GestorNPC.setVolumen(volumen);
     for (int i = 0; i < Notificaciones.size(); ++i)
         if (Notificaciones[i])
             Notificaciones[i]->setVolume(volumen);
+    IconoDocs->setVolumenes(volumen);
 }
 
 void GameScreen::RealizarConexionesPrincipales()

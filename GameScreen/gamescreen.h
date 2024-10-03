@@ -69,6 +69,9 @@ private:
     bool Pausado;
     bool DecisionJugador;
 
+    // Sonidos
+    void setUpSonidos();
+
     // Documentos que deja el NPC
     DocsIconUI * IconoDocs;
     void setUpIconoDocsUI();

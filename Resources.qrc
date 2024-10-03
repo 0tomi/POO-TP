@@ -174,5 +174,8 @@
         <file>Niveles/Nivel3/Nivel3Settings.txt</file>
         <file>Niveles/Nivel4/Nivel4Settings.txt</file>
         <file>Niveles/Nivel5/Nivel5Settings.txt</file>
+        <file>Resources/Sonidos/SonidoScanner.wav</file>
+        <file>Resources/Sonidos/Libro/AbrirLibro.wav</file>
+        <file>Resources/Sonidos/Libro/CerrarLibro.wav</file>
     </qresource>
 </RCC>
