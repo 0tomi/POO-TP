@@ -22,7 +22,7 @@ void Juego::PrepararJuego(int Dificultad)
     NivelActual = 1;
     setDificultad(Dificultad);
     setDefaultStats();
-    setUpNivel1();
+    setUpNivel(1);
 }
 
 void Juego::PrepararJuego(int Nivel, int Dificultad)
@@ -35,19 +35,7 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
 
     // Reseteamos la cantidad ganada en el nivel
     this->SocialCreditsEarnedInLevel = 0;
-    // El else vendra cuando implementemos las partidas guardadas
-    switch (Nivel) {
-    case 1: setUpNivel1();
-        break;
-    case 2: setUpNivel2();
-        break;
-    case 3: setUpNivel3();
-        break;
-    case 4: setUpNivel4();
-        break;
-    default: setUpNivel5();
-        break;
-    }
+    this->setUpNivel(Nivel);
 }
 
 void Juego::PrepararJuego(PlayerStats stats)
@@ -157,54 +145,96 @@ bool Juego::RestarSocialCredits(int Tipo)
 }
 
 /// #################################### SETUP DE NIVELES ###################################################
-/// A futuro estaria bueno hacer que la cantidad de NPCs que pueda salir sea random,
-/// pero por motivos de testeo lo vamos a dejar asi.
-void Juego::setUpNivel1()
+void Juego::setUpNivel(int Nivel)
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
+    if (Nivel > 5)
+        Nivel = 5;
 
+    const QString Niveles[] = {NIVEL1, NIVEL2, NIVEL3, NIVEL4, NIVEL5};
+    auto Nivel2Cargar = &Niveles[Nivel - 1];
+
+    lectorNiveles.leerDatos(*Nivel2Cargar);
+
+    InicializarNivel1();
+    if (Nivel > 1)
+        InicializarNivel2();
+    if (Nivel > 2)
+        InicializarNivel3();
+    if (Nivel > 3)
+        InicializarNivel4();
+    if (Nivel == 5)
+        InicializarNivel5();
+    if (Nivel > 5)
+        RandomizarParametros();
+
+    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
     // Aldeanos, Refugiados, Diplomaticos, Revolucionarios, Cantidad de NPCs falsos.
-    Cola.addNPC(NivelActual, 1, 1, 1, 1, 1);
+    Cola.addNPC(NivelActual, CantNPCS[0], CantNPCS[1], CantNPCS[2], CantNPCS[3], CantNPCS[4]);
 }
 
-void Juego::setUpNivel2()
+void Juego::InicializarNivel1()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-    reglasLVL2.generar_PaisesPermitidos(6);
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 7, 4, 2, 5, 5);
+    QString Claves[] ={                                                                                                 // Indices:
+        "Cantidad de aldeanos", "Cantidad de refugiados", "Cantidad de diplomaticos", "Cantidad de revolucionarios",    // 0,1,2,3
+        "Cantidad de NPCs invalidos",                                                                                   // 4
+        "Cantidad de paises validos", "Cantidad de estados civiles validos", "Rango de fechas de nacimiento validas",   // 5,6,7
+        "Fecha minima valida de nacimiento", "Fecha maxima valida de nacimiento", "Duracion de estancia maxima permitida",  // 8,9,10
+        "Cantidad de tipos de visitas permitidas" // 11
+    };
+    int Valores[12];
+
+    for (int i = 0; i < 12; i++)
+        Valores[i] = lectorNiveles.obtenerValor(Claves[i]);
+
+    for (int i = 0; i < 5; i++)
+        CantNPCS[i] = Valores[i];
+
+    reglasLVL1.generar_Paises(Valores[5]);
+    reglasLVL1.generar_EstadosCiviles(Valores[6]);
+    if (!Valores[7])
+        reglasLVL1.set_Fechas(Valores[8], Valores[9]);
+    else reglasLVL1.generar_Fechas(Valores[7]);
+    reglasLVL1.generar_DuracionEstancia(Valores[10]);
+    reglasLVL1.generar_TiposVisita(Valores[11]);
+
 }
 
-void Juego::setUpNivel3()
+void Juego::InicializarNivel2()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-    reglasLVL2.generar_PaisesPermitidos(6);
-    reglasLVL3.set_MaxAcompaniantes(2);
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
+    int CantidadPaisesPermitidos = lectorNiveles.obtenerValor("Cantidad de paises de paso permitidos");
+    reglasLVL2.generar_PaisesPermitidos(CantidadPaisesPermitidos);
 }
 
-void Juego::setUpNivel4()
+void Juego::InicializarNivel3()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
+    int Cantidad = lectorNiveles.obtenerValor("Cantidad maxima de acompaniantes permitidos");
+    reglasLVL3.set_MaxAcompaniantes(Cantidad);
 }
 
-void Juego::setUpNivel5()
+void Juego::InicializarNivel4()
 {
-    // Aca previamente tocaria una lectura del nivel concreto a iniciar
-    // donde obtengamos los datos que necesitamos para cada nivel
-
-    Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
-    Cola.addNPC(NivelActual, 8, 2, 3, 8, 6);
+    int CantidadPaises = lectorNiveles.obtenerValor("Cantidad de paises de paso permitidos");
+    reglasLVL4.generar_PaisesPaso(CantidadPaises);
+    int CantidadOcupaciones = lectorNiveles.obtenerValor("Cantidad de ocupaciones permitidos");
+    reglasLVL4.generar_PaisesPaso(CantidadOcupaciones);
+    int CantidadBienes = lectorNiveles.obtenerValor("Cantidad de bienes transportados permitidos");
+    reglasLVL4.generar_PaisesPaso(CantidadBienes);
 }
+
+void Juego::InicializarNivel5()
+{
+    int Cantidad = lectorNiveles.obtenerValor("Cantidad de objetos permitidos");
+    reglasLVL5.generar_ObjetosPermitidos(Cantidad);
+}
+
+void Juego::RandomizarParametros()
+{
+    QRandomGenerator rand;
+    for (int i = 0; i < 4; i++)
+        CantNPCS[i] = rand.bounded(20);
+    reglasLVL3.generar_MaxAcompaniantes();
+}
+
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
