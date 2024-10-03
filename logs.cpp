@@ -23,8 +23,7 @@ Logs::Logs() {
     stream << cantLogs + 1;
 
     archivoNumLogs.close();
-    qDebug() << this->DireccionCarpeta;
-    qDebug() << "Directorio donde se guardan los logs: " << QCoreApplication::applicationDirPath();
+    qDebug() << "Directorio donde se guardan los logs: " << this->DireccionCarpeta;
 }
 
 void Logs::SaveLogs()
