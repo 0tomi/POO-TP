@@ -83,6 +83,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         GameScreen/intropantalla.h GameScreen/intropantalla.cpp GameScreen/intropantalla.ui
         GameScreen/notificacion.h GameScreen/notificacion.cpp GameScreen/notificacion.ui
         SaveSlots/guardarpartida.h SaveSlots/guardarpartida.cpp
+        logs.h logs.cpp
+        Niveles/lectorniveles.h Niveles/lectorniveles.cpp
 
 
 

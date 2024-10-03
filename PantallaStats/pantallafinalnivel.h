@@ -23,7 +23,7 @@ signals:
     void salirClicked();
     void sigNivelClicked(int NextLevel, int Dificultad);
     void reintentarClicked(int NextLevel, int Dificultad);
-
+    void EnviarLogs(QString Log);
 private slots:
     void onSalirClicked();
     void onSigNivelClicked();

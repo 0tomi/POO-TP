@@ -17,8 +17,11 @@ public:
     explicit PantallaMenu(QWidget *parent = nullptr);
     void setInicio();
     ~PantallaMenu();
+    void stopMusic();
+    void continueMusic();
 public slots:
     void setVolumen(float);
+    void setMusicVolume(float);
 
 signals:
     void clickedJugar();
@@ -28,12 +31,13 @@ signals:
     void clickedFacil();
     void clickedNormal();
     void clickedDemonio();
+    void slotSelectedForSave(int);
+    void slotSelectedForPlay(int);
+    void clickedStartDefault(int dificultad);
     void clickedStart(int nivel, int dificultad);
-    void clickedPartida1();
-    void clickedPartida2();
-    void clickedPartida3();
+    void clickedPartidaGuardada(int);
     void clickedTutorial();
-
+    void EnviarLogs(QString Log);
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
     void ActualizarCont(int &, bool &);
@@ -71,10 +75,18 @@ private slots:
     void switchMenu();
 
     void botonStartclicked();
+    void cheatStartClicked();
+    void SlotGuardadoSeleccionado(int);
 
     void tutorialButton();
-
 private:
+    void setBotonesPartidaOff();
+    void ConfigurarSonidos();
+    void ConfigurarBotonesDificultad();
+    void ConfigurarBotonesElegirPartidaGuardada();
+    void ConfigurarBotonesElegirRanura();
+
+    QSoundEffect Musica;
     QSoundEffect GTALocura;
     QSoundEffect SonidosBotones;
     QSoundEffect SonidoModoDemonio;

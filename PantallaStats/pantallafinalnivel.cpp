@@ -68,20 +68,23 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
 void PantallaFinalNivel::onSalirClicked() {
     if (!Perdio)
         guardarPartida();
+    emit EnviarLogs("Boton de Salir Presionado");
     emit salirClicked();
 }
 
 void PantallaFinalNivel::onSigNivelClicked() {
+    emit EnviarLogs("Boton Siguiente Nivel Presionado");
     NivelActual++;
     emit sigNivelClicked(NivelActual, Dificultad);
 }
 
 void PantallaFinalNivel::onReintentarClicked()
 {
+    emit EnviarLogs("Boton Reintentar Presionado");
     emit reintentarClicked(1, Dificultad);
 }
 
 // metodos extra
 void PantallaFinalNivel::guardarPartida() {
-    qDebug() << "partida guardada";
+    emit EnviarLogs("partida guardada");
 }

@@ -12,8 +12,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
-    <height>300</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -92,7 +92,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <property name="maximumSize">
@@ -122,7 +122,7 @@ border-image: url(:/Resources/escritorio2.png);
             <property name="maximumSize">
              <size>
               <width>1800</width>
-              <height>16777215</height>
+              <height>600</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -143,7 +143,7 @@ border-image: url(:/Resources/escritorio2.png);
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>350</width>
               <height>75</height>
              </size>
             </property>
@@ -182,7 +182,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>350</width>
               <height>75</height>
              </size>
             </property>
@@ -221,7 +221,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>300</width>
+              <width>350</width>
               <height>75</height>
              </size>
             </property>
@@ -299,7 +299,7 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -340,7 +340,7 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -381,7 +381,7 @@ background-color: #1e1532;</string>
              </font>
             </property>
             <property name="cursor">
-             <cursorShape>ForbiddenCursor</cursorShape>
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -628,7 +628,7 @@ background-color: rgb(170, 85, 0);</string>
              </size>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page1">
              <property name="sizePolicy">
@@ -943,7 +943,7 @@ background-color: #1e1532;</string>
              <string notr="true">background-color: #3c2b61</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:26pt; color:#ffff00;&quot;&gt;Selecciona la dificultad y el nivel en el cual queres arrancar. Proximamente se permitira manipulacion de estadisticas.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:26pt; color:#ffff00;&quot;&gt;Selecciona la dificultad y el nivel en el cual queres arrancar.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -1101,6 +1101,169 @@ background-color: #1e1532;</string>
           </item>
          </layout>
         </widget>
+        <widget class="QWidget" name="SelectSaveSlot">
+         <property name="maximumSize">
+          <size>
+           <width>1800</width>
+           <height>1080</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_14">
+          <item>
+           <widget class="QLabel" name="descSelectSaveSlot">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1200</width>
+              <height>1000</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #3c2b61</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:26pt; color:#ffff00;&quot;&gt;Elige donde se guardara la partida.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_Ranura1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>125</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Ranura 1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_Ranura2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>125</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Ranura 2</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_Ranura3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1800</width>
+              <height>125</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: white;
+background-color: #1e1532;</string>
+            </property>
+            <property name="text">
+             <string>Ranura 3</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </item>
       <item alignment="Qt::AlignHCenter">
@@ -1109,7 +1272,7 @@ background-color: #1e1532;</string>
          <bool>true</bool>
         </property>
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1122,7 +1285,7 @@ background-color: #1e1532;</string>
         </property>
         <property name="maximumSize">
          <size>
-          <width>600</width>
+          <width>800</width>
           <height>150</height>
          </size>
         </property>
@@ -1133,7 +1296,7 @@ background-color: #1e1532;</string>
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="Salir">
          <layout class="QVBoxLayout" name="verticalLayout_10">

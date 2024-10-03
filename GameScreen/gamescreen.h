@@ -50,7 +50,7 @@ public slots:
 
 signals:
     void NivelTerminado(bool Perdio);
-    void LogJugador(QString);
+    void EnviarLogs(QString);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
@@ -62,11 +62,15 @@ private:
     Ui::GameScreen *ui;
     PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
+    int nivelActual;
     QTimer tiempoPartida;
     int tiempoRestante;
 
     bool Pausado;
     bool DecisionJugador;
+
+    // Sonidos
+    void setUpSonidos();
 
     // Documentos que deja el NPC
     DocsIconUI * IconoDocs;
@@ -81,6 +85,7 @@ private:
     BotonesCustom* BotonAprobar;
     BotonesCustom* BotonRechazar;
     BotonesCustom* BotonCentrar;
+    BotonesCustom * BotonScanner;
     QSpacerItem* EspaciadorBotones;
 
     // Controlar tiempo en partida
@@ -95,6 +100,7 @@ private:
     void BloquearBotones(bool Bloqueo);
     void DesbloquearBotones();
     bool BotonesBloqueados = false;
+    void setUpBotonEscanner();
 
     // no se como hacer esto asi q lo voy a hacer asi nomas
     void Acepto();

@@ -127,6 +127,14 @@ int Reglas::checkCondiciones(int cantidad, int min, std::vector<parDatos>& vec)
     return cantidad;
 }
 
+int Reglas::checkCondicionesCustom(int cantidad, int min, int max, std::vector<parDatos> &vec)
+{
+    if (cantidad < 0 || cantidad > max)
+        cantidad = rand.bounded(max);
+
+    return cantidad;
+}
+
 bool Reglas::checkCondiciones(int min, std::vector<parDatos> &vec, std::vector<QString> &lista)
 {
     auto tamanioLista = lista.size();

@@ -13,6 +13,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     Pausado = false;
 
     setUpLibroReglas();
+    setUpSonidos();
 
     pantallaPerdiste = new PantallaPerdiste(this);
     pantallaPerdiste->setFixedSize(1920,1080);
@@ -49,6 +50,7 @@ GameScreen::~GameScreen()
     delete BotonRechazar;
     delete BotonCentrar;
     delete pantallaPerdiste;
+    delete BotonScanner;
 }
 
 void GameScreen::setUpLibroReglas()
@@ -58,6 +60,11 @@ void GameScreen::setUpLibroReglas()
     connect(&bloquearBotonReglas, &QTimer::timeout, [this]() {
         ui->reglasBoton->setEnabled(true);
     });
+}
+
+void GameScreen::setUpSonidos()
+{
+
 }
 /// #################################### BOTONES ###################################################
 void GameScreen::SpawnearBotones()
@@ -86,6 +93,18 @@ void GameScreen::SpawnearBotones()
     ui->ContenedorBotones->layout()->addItem(EspaciadorBotones);
     ui->ContenedorBotones->layout()->addWidget(BotonAprobar);
     ui->ContenedorBotones->layout()->addWidget(BotonRechazar);
+    setUpBotonEscanner();
+}
+
+void GameScreen::setUpBotonEscanner()
+{
+    QString EscanerSinApretar = ":/Resources/MaterialPantallas/BotonEscanerSinApretar.png";
+    QString EscanerApretado = ":/Resources/MaterialPantallas/BotonEscanerApretado.png";
+    QString SonidoEscanner = "qrc:/Resources/Sonidos/SonidoScanner.wav";
+
+    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, ui->BotonEscannerUI);
+    BotonScanner->copyFormat();
+    ui->BotonEscannerUI->layout()->addWidget(BotonScanner);
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
@@ -148,11 +167,13 @@ void GameScreen::setVolumenes(float volumen)
     BotonAprobar->setVolumen(volumen);
     BotonCentrar->setVolumen(volumen);
     BotonRechazar->setVolumen(volumen);
+    BotonScanner->setVolumen(volumen);
     libroReglasUI->setVolume(volumen);
     GestorNPC.setVolumen(volumen);
     for (int i = 0; i < Notificaciones.size(); ++i)
         if (Notificaciones[i])
             Notificaciones[i]->setVolume(volumen);
+    IconoDocs->setVolumenes(volumen);
 }
 
 void GameScreen::RealizarConexionesPrincipales()
@@ -192,6 +213,7 @@ void GameScreen::PrepararJuego(int Dificultad)
     libroReglasUI->setUpLevel(1);
     GestorDocs.setUpNivel(1);
     introPantalla->setUp(1);
+    this->nivelActual = 1;
 }
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
@@ -201,6 +223,7 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     // more stuff to do
     GestorDocs.setUpNivel(Nivel);
     introPantalla->setUp(Nivel);
+    this->nivelActual = Nivel;
 }
 
 void GameScreen::PrepararJuego(PlayerStats stats)
@@ -210,10 +233,15 @@ void GameScreen::PrepararJuego(PlayerStats stats)
     // more stuff to do
     GestorDocs.setUpNivel(stats.Nivel);
     introPantalla->setUp(stats.Nivel);
+    this->nivelActual = stats.Nivel;
 }
 
 void GameScreen::Iniciar()
 {
+    if (nivelActual >= 5)
+        BotonScanner->show();
+    else BotonScanner->hide();
+
     IconoDocs->setFinalPartida(false);
     Notificaciones.clear();
     introPantalla->Mostrar();
@@ -262,7 +290,6 @@ void GameScreen::ReanudarJuego()
 
 void GameScreen::FinalDePartida()
 {
-    emit LogJugador("Juego terminado");
     MatarNotificaciones();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
@@ -277,22 +304,22 @@ void GameScreen::FinalDePartida()
     TiempoDia.stop();
 
     if (!Pausado){
+        emit EnviarLogs("Juego terminado");
         if (juego->getTotalSocialCredits() < 0)
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
     } else
-        emit LogJugador("Juego terminado forzosamente");
+        emit EnviarLogs("Juego terminado forzosamente");
 }
 
 void GameScreen::Decidir()
 {
     if (juego->getTotalSocialCredits() < 0){
-        emit LogJugador("Jugador perdio");
         emit NivelTerminado(true);
     } else {
-        emit LogJugador("Jugador perdio");
         emit NivelTerminado(false);
     }
+    emit EnviarLogs("Jugador perdio");
 }
 
 void GameScreen::ActualizarTiempo()
@@ -309,7 +336,7 @@ void GameScreen::Acepto()
 {
     juego->addNPCaceptado();
     GestorDocs.Aprobado();
-    emit LogJugador("Jugador acepto a la persona");
+    emit EnviarLogs("Jugador acepto a la persona");
     DecisionJugador = true;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(true);
@@ -319,7 +346,7 @@ void GameScreen::Rechazo()
 {
     juego->addNPCrechazado();
     GestorDocs.Rechazar();
-    emit LogJugador("Jugador rechazo a la persona");
+    emit EnviarLogs("Jugador rechazo a la persona");
     DecisionJugador = false;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(false);
@@ -331,15 +358,15 @@ void GameScreen::SelloDocumento(bool Boton)
     bool Multa = juego->EvaluarDecision(Veredicto, GestorNPC.getTipo(), GestorNPC.getValidez(), Boton);
 
     if (Veredicto)
-        emit LogJugador("Jugador tomo la decision correcta.");
+        emit EnviarLogs("Jugador tomo la decision correcta.");
     else{
         QString ErrorCometido = GestorNPC.getDatosFalsos();
         CrearNotificacion(Multa, ErrorCometido);
-        emit LogJugador("Jugador tomo decision equivocada.\nError cometido: ");
-        emit LogJugador(ErrorCometido);
+        emit EnviarLogs("Jugador tomo decision equivocada.\nError cometido: ");
+         emit EnviarLogs(GestorNPC.getDatosFalsos());
     }
 
-    emit LogJugador("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
+    emit EnviarLogs("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
 }
 
 /// #################################### Libro de Reglas ###################################################
@@ -370,7 +397,7 @@ void GameScreen::CrearNotificacion(bool Multa, QString& Motivo)
 void GameScreen::MatarNotificaciones()
 {
     if (CantidadNotificaciones){
-        qDebug() << "Cantidad de notificaciones:" << Notificaciones.size();
+        emit EnviarLogs( "Cantidad de notificaciones: " + QString::number(Notificaciones.size()));
         for (int i = 0; i < Notificaciones.size(); ++i)
             if (Notificaciones[i])
                 delete Notificaciones[i];

@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     ConeccionesPantallaPausa();
     ConeccionesPantallaMenu();
     ConeccionesPantallaEstadisticas();
-
+    ConeccionesLogs();
     // Mostrar en pantalla completa:
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     /// ##################### TEST ################################
-    connect(gameScreen, &GameScreen::LogJugador, [this](QString dato){
+    connect(gameScreen, &GameScreen::EnviarLogs, [this](QString dato){
         qDebug() << dato;
     });
     connect(juego, &Juego::Log, [this](QString dato){
@@ -93,11 +93,13 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::clickedTutorial, this, &MainWindow::PrepararTutorial);
     connect(pantallaPausa, &PantallaPausa::soundVolume, gameScreen , &GameScreen::setVolumenes);
     connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaMenu , &PantallaMenu::setVolumen);
+    connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaMenu, &PantallaMenu::setMusicVolume);
 }
 
 void MainWindow::ConeccionesPantallaMenu()
 {
     // Cuando se clickee jugar, abrimos el juego:
+    connect(pantallaMenu, &PantallaMenu::clickedStartDefault, [this](int dif){this->TransicionJuego(1,dif);});
     connect(pantallaMenu, &PantallaMenu::clickedStart, this, &MainWindow::TransicionJuego);
     connect(pantallaMenu, &PantallaMenu::clickedSettings, this, &MainWindow::PrepararPantallaPausa);
     connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::close);
@@ -173,6 +175,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::TransicionJuego(int Nivel, int Dificultad)
 {
+    pantallaMenu->stopMusic();
     transicion->ArrancarTransicion(1000, this, &MainWindow::PrepararJuego);
 
     // A futuro cambiar por los inputos de los botones.
@@ -206,6 +209,7 @@ void MainWindow::VolverInicio()
 
 void MainWindow::setInicio()
 {
+    pantallaMenu->continueMusic();
     pantallas->setCurrentWidget(pantallaMenu);
     pantallaMenu->setInicio();
 }
@@ -228,9 +232,10 @@ void MainWindow::PrepararSalirPantallaPausa()
 
 void MainWindow::PonerPantallaPausa()
 {
-    if (PantallaPrevia == 0 || PantallaPrevia == 3 || PantallaPrevia == 4)
+    if (PantallaPrevia == 0 || PantallaPrevia == 3 || PantallaPrevia == 4){
+        pantallaMenu->stopMusic();
         pantallaPausa->BlockVolverMenu(true);
-    else pantallaPausa->BlockVolverMenu(false);
+    } else pantallaPausa->BlockVolverMenu(false);
 
     pantallas->setCurrentWidget(pantallaPausa);
     pantallaPausa->setInicio();
@@ -239,6 +244,9 @@ void MainWindow::PonerPantallaPausa()
 void MainWindow::VolverPantallaAnterior()
 {
    pantallas->setCurrentIndex(PantallaPrevia);
+    if (pantallas->currentWidget() == pantallaMenu)
+       pantallaMenu->continueMusic();
+
     if (pantallas->currentWidget() == gameScreen)
         gameScreen->ReanudarJuego();
 }
@@ -272,10 +280,22 @@ void MainWindow::PrepararSalirTutorial()
 
 void MainWindow::SetTutorial()
 {
+    pantallaMenu->stopMusic();
     pantallas->setCurrentWidget(pantallaTutorial);
 }
 
 void MainWindow::SalirTutorial()
 {
     pantallas->setCurrentIndex(PantallaPreviaTutorial);
+}
+
+
+// ###################################### LOGS ###################################
+void MainWindow::ConeccionesLogs()
+{
+    connect(pantallaPausa, &PantallaPausa::EnviarLogs, &log, &Logs::RecibirLogs);
+    connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,&log,&Logs::RecibirLogs);
+    connect(pantallaMenu,&PantallaMenu::EnviarLogs,&log, &Logs::RecibirLogs);
+    connect(gameScreen,&GameScreen::EnviarLogs,&log,&Logs::RecibirLogs);
+    connect(juego,&Juego::Log,&log,&Logs::RecibirLogs);
 }

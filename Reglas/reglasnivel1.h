@@ -5,6 +5,7 @@
 #include <QString>
 #include <QRandomGenerator>
 #include <vector>
+#include <list>
 
 using namespace std;
 
@@ -18,10 +19,10 @@ public:
 
     // Generadores
     void generar_Paises(int Cantidad_Paises_Permitidos);
-    void generar_Paises(vector<QString>& Lista_PaisesPermitidos);
+    //void generar_Paises(vector<QString>& Lista_PaisesPermitidos); STANDBY HASTA ARREGLAR OTRAS COSAS
 
     void generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos);
-    void generar_EstadosCiviles(vector<QString>& Lista_EstadosCiviles_Permitidos);
+    //void generar_EstadosCiviles(vector<QString>& Lista_EstadosCiviles_Permitidos);
 
     void generar_Fechas(int Rango);
     void set_Fechas(int FechaMinima, int FechaMaxima);
@@ -29,7 +30,7 @@ public:
     void generar_DuracionEstancia(int duracion);
 
     void generar_TiposVisita(int Cantidad_Visitas_Permitidas);
-    void generar_TiposVisita(vector<QString>& Lista_Visitas_Permitidas);
+    //void generar_TiposVisita(vector<QString>& Lista_Visitas_Permitidas);
 
     // metodos:
     void resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed);
@@ -47,6 +48,12 @@ public:
     int getMaxVisitasPermitidas() const;
 
 private:
+    // Para proximo rework
+    list <QString> estadosCivilesValidos;
+    list <QString> estadosCivilesInvalidos;
+    list <QString> tiposVistaValida;
+    list <QString> tiposVisitaInvalida;
+
     // # Conjunto de reglas #
     int fechaMin, fechaMax; // va a ser solo el anio
     int duracionDeEstanciaValida;
@@ -64,12 +71,6 @@ private:
     // # Metodos para setear reglas validas #
     void setFechasValidas();
     void setDuracionEstanciaValida(int max, int min);
-
-    void setEstadoCivilValidos();
-    void SeleccionarEstadosCivilesValidos(int CantidadEstadosValidos);
-
-    void setTipoDeVisitaValidas();
-    void SeleccionarVisitasValidas(int CantidadVisitasValidas);
 
     void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
     void SumarAstana();

@@ -27,6 +27,7 @@ public:
     void setVolumen(float);
 
     void Entrar();
+    NPC* getNPC();
     void Salir(bool Boton);
 
     void TerminoNivel();

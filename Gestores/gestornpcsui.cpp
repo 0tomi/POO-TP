@@ -103,6 +103,11 @@ void GestorNPCsUI::Entrar()
     NPCcomunUI->Entrar();
 }
 
+NPC *GestorNPCsUI::getNPC()
+{
+    return NPCenEscena;
+}
+
 void GestorNPCsUI::ActualizarEstadoNPC()
 {
     MostrandoNPC = true;
