@@ -7,3 +7,4 @@ Shap
 Contamana
 Tarapoto
 Issano
+Aztana
