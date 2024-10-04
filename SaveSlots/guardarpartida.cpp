@@ -1,16 +1,17 @@
 #include "guardarpartida.h"
 #include <QFile>
 #include <QDataStream>
+#include <QDebug>
 
 GuardarPartidas::GuardarPartidas() {
-
+    SlotsGuardado[0] = ":/SaveSlots/slot1.dat";
+    SlotsGuardado[1] = ":/SaveSlots/slot2.dat";
+    SlotsGuardado[2] = ":/SaveSlots/slot3.dat";
 }
-
 
 void GuardarPartidas::save(const PlayerStats &datos, int slot){
     QFile file(SlotsGuardado[slot]);
 
-    // Abrir el archivo para escritura binaria
     if (!file.open(QIODevice::WriteOnly)) {
         QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para escribir: " + SlotsGuardado[slot]);
         return;
@@ -30,7 +31,6 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     QFile file(SlotsGuardado[slot]);
     PlayerStats stats;
 
-    // Abrir el archivo para lectura binaria
     if (!file.open(QIODevice::ReadOnly)) {
         QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para leer partida:" + SlotsGuardado[slot]);
         return emptySave;
@@ -59,10 +59,9 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
 bool* GuardarPartidas::LeerPartidas(){
     bool* slots_disponibles=new bool[3];
     for(int i=0; i<3; i++){
-        if(CargarPartida(i).Nivel==0){
-            slots_disponibles[i]=true;
-        }
-        else slots_disponibles[i]=false;
+        if(CargarPartida(i).Nivel==0)
+            slots_disponibles[i]=false;
+        else slots_disponibles[i]=true;
     }
     return slots_disponibles;
 }

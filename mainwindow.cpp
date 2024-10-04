@@ -5,7 +5,7 @@
 /// ############################### CONSTRUCTOR #######################################
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow), guardarPartida()
 {
     ui->setupUi(this);
     setWindowIcon(QIcon(":/Resources/th.jpeg"));

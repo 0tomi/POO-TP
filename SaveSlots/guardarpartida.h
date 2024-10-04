@@ -7,10 +7,7 @@
 using namespace std;
 class GuardarPartidas{
 private:
-    const QString SLOT1 = ":/SaveSlots/slot1.dat";
-    const QString SLOT2 = ":/SaveSlots/slot2.dat";
-    const QString SLOT3 = ":/SaveSlots/slot3.dat";
-    const QString SlotsGuardado[3] = {SLOT1, SLOT2, SLOT3};
+    QString SlotsGuardado[3];
     int currentSlot;
     PlayerStats emptySave = {0,0,0,0,0,0};
 public:
