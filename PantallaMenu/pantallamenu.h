@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSoundEffect>
 #include "../PantallaTransicion/pantallatransicion.h"
+#include "../SaveSlots/guardarpartida.h"
 
 namespace Ui {
 class PantallaMenu;
@@ -14,11 +15,15 @@ class PantallaMenu : public QWidget
     Q_OBJECT
 
 public:
-    explicit PantallaMenu(QWidget *parent = nullptr);
+    explicit PantallaMenu(GuardarPartidas *, QWidget *parent = nullptr);
     void setInicio();
     ~PantallaMenu();
+    void stopMusic();
+    void continueMusic();
+    void checkSaveSlots();
 public slots:
     void setVolumen(float);
+    void setMusicVolume(float);
 
 signals:
     void clickedJugar();
@@ -28,11 +33,12 @@ signals:
     void clickedFacil();
     void clickedNormal();
     void clickedDemonio();
+    void slotSelected2Save(int);
+    void slotSelected2Play(int);
+    void clickedStartDefault(int dificultad);
     void clickedStart(int nivel, int dificultad);
-    void clickedPartida1();
-    void clickedPartida2();
-    void clickedPartida3();
     void clickedTutorial();
+    void EnviarLogs(QString Log);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
@@ -71,15 +77,24 @@ private slots:
     void switchMenu();
 
     void botonStartclicked();
+    void cheatStartClicked();
+    void SlotGuardadoSeleccionado(int);
 
     void tutorialButton();
-
 private:
+    void setBotonesPartida(int num, bool);
+    void ConfigurarSonidos();
+    void ConfigurarBotonesDificultad();
+    void ConfigurarBotonesElegirPartidaGuardada();
+    void ConfigurarBotonesElegirRanura();
+
+    QSoundEffect Musica;
     QSoundEffect GTALocura;
     QSoundEffect SonidosBotones;
     QSoundEffect SonidoModoDemonio;
     int dificultad = 1;
     int nivel = 1;
+    GuardarPartidas * guardarPartida;
     Ui::PantallaMenu *ui;
     PantallaTransicion * transicion;
     int indicePrevio;

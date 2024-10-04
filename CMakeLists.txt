@@ -84,6 +84,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         GameScreen/notificacion.h GameScreen/notificacion.cpp GameScreen/notificacion.ui
         Generadores/generador_nuevaestancia.h Generadores/generador_nuevaestancia.cpp
         Documentos/nuevaestancia.h Documentos/nuevaestancia.cpp
+        SaveSlots/guardarpartida.h SaveSlots/guardarpartida.cpp
+        logs.h logs.cpp
+        Niveles/lectorniveles.h Niveles/lectorniveles.cpp
 
 
 

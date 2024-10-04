@@ -1,0 +1,8 @@
+Cerrajero
+Programador
+Albañil
+Contador
+Actor
+Cantante
+Artista
+Empresario

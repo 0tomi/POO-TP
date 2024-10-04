@@ -3,12 +3,16 @@
 
 DocsIconUI::DocsIconUI(QWidget *parent)
     : QStackedWidget(parent)
-    , ui(new Ui::DocsIconUI)
+    , ui(new Ui::DocsIconUI), sonidoLibro{QSoundEffect(this), QSoundEffect(this)}
 {
     ui->setupUi(this);
     padre = parent;
     setCurrentIndex(0);
     LibroAbierto = false;
+
+    sonidoLibro[0].setSource(QUrl("qrc:/Resources/Sonidos/Libro/AbrirLibro.wav"));
+    sonidoLibro[1].setSource(QUrl("qrc:/Resources/Sonidos/Libro/CerrarLibro.wav"));
+    setVolumenes(1.0);
 
     // Creamos las animaciones de entrada
     animacionEntrada = new QPropertyAnimation(this, "pos");
@@ -105,6 +109,7 @@ void DocsIconUI::PrepararAnimacionSalida()
 
 void DocsIconUI::CerrarDocumento()
 {
+    sonidoLibro[1].play();
     setCurrentIndex(0);
     LibroAbierto = false;
     emitCerrado();
@@ -112,6 +117,7 @@ void DocsIconUI::CerrarDocumento()
 
 void DocsIconUI::AbrirDocumento()
 {
+    sonidoLibro[0].play();
     setCurrentIndex(1);
     LibroAbierto = true;
     emitAbierto();
@@ -125,6 +131,12 @@ void DocsIconUI::setFinalPartida(bool newFinalPartida)
 bool DocsIconUI::Mostrando() const
 {
     return mostrando;
+}
+
+void DocsIconUI::setVolumenes(float vol)
+{
+    sonidoLibro[0].setVolume(vol);
+    sonidoLibro[1].setVolume(vol);
 }
 
 bool DocsIconUI::getLibroAbierto() const

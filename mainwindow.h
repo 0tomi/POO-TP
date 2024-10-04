@@ -8,6 +8,8 @@
 #include "PantallaPausa/pantallapausa.h"
 #include "PantallaTransicion/pantallatransicion.h"
 #include "GameScreen/pantallatutorial.h"
+#include "SaveSlots/guardarpartida.h"
+#include "logs.h"
 
 #include <QMainWindow>
 #include <QStackedWidget>
@@ -35,6 +37,7 @@ protected:
 
 private slots:
     void TransicionJuego(int Nivel = 1, int Dificultad = 2);
+    void TransicionJuegoConSave(PlayerStats& datos);
     void PrepararJuego();
     void IniciarJuego();
     void PrepararPantallaFinalNivel(bool Perdio);
@@ -44,6 +47,9 @@ private:
 
     // Juego
     Juego* juego;
+
+    // Guardar partida
+    GuardarPartidas guardarPartida;
 
     // Pantallas del juego:
     void CrearPantallasJuego();
@@ -84,6 +90,10 @@ private:
     void PrepararSalirTutorial();
     void SetTutorial();
     void SalirTutorial();
+
+    // Logs
+    Logs log;
+    void ConeccionesLogs();
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();

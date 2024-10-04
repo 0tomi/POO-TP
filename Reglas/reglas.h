@@ -1,5 +1,6 @@
 #ifndef REGLAS_H
 #define REGLAS_H
+#include "../lectorarchivos.h"
 #include <QString>
 #include <vector>
 #include <QDebug>
@@ -18,6 +19,11 @@ public:
     QString *getEstadosCiviles(int &max);
 
 protected:
+    struct parDatos{
+        QString dato;
+        bool Insertado;
+    };
+
     template <class Puntero>
     void LimpiarDatos(Puntero &datos);
 
@@ -35,13 +41,28 @@ protected:
     bool checkRepetidos(std::vector<QString>& Lista, int CantidadInsertada);
     bool checkValidez(QString& dato, std::vector<QString>& Lista) const;
     bool checkValidez(QString& dato, std::list<QString>& Lista) const;
+
+    std::vector<QString> generarVector(const std::list<QString>& lista) const;
+    int checkCondiciones(int cantidad, int min, std::vector<parDatos>& vec);
+    int checkCondicionesCustom(int cantidad, int min, int max, std::vector<parDatos>& vec);
+    bool checkCondiciones(int min, std::vector<parDatos>& ListaOriginal, std::vector<QString>& ListaSinEvaluar);
+    bool checkTipado(std::vector<parDatos>& vec, std::vector<QString>& lista);
+    bool checkTipado(QString& elemento, std::vector<parDatos>& vec);
+
+    std::list<QString> generarPermitido(int cantidad, std::vector<parDatos>& vec);
+    std::list<QString> generarPermitido(std::vector<QString>& Permitidos);
+    std::list<QString> generarNoPermitido(std::vector<parDatos>& total);
+
+    void crearParDatos(std::vector<QString>& vectorOriginal, std::vector<parDatos>& vectorPar);
+    void resetearParDatos(std::vector<parDatos>& vectorPar);
+    std::vector<QString> deshacerPar(const std::vector<parDatos>& par) const;
 };
 
 template<class Puntero>
 void Reglas::LimpiarDatos(Puntero &datos)
 {
     if (datos){
-        delete datos;
+        delete[] datos;
         datos = nullptr;
     }
 }
