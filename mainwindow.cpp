@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     ConeccionesPantallaMenu();
     ConeccionesPantallaEstadisticas();
     ConeccionesLogs();
+
     // Mostrar en pantalla completa:
     this->showFullScreen();
     pantallaPausa->setWindowedButton();
@@ -33,6 +34,9 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << dato;
     });
     connect(juego, &Juego::Log, [this](QString dato){
+        qDebug() << dato;
+    });
+    connect(&guardarPartida, &GuardarPartidas::Log, [this](QString dato){
         qDebug() << dato;
     });
 }
@@ -104,6 +108,13 @@ void MainWindow::ConeccionesPantallaMenu()
     connect(pantallaMenu, &PantallaMenu::clickedSettings, this, &MainWindow::PrepararPantallaPausa);
     connect(pantallaMenu, &PantallaMenu::clickedSalir, this, &MainWindow::close);
     connect(pantallaMenu, &PantallaMenu::clickedTutorial, this, &MainWindow::PrepararTutorial);
+    connect(pantallaMenu, &PantallaMenu::slotSelected2Save, [this](int slot){
+        guardarPartida.setCurrentSlot(slot);
+    });
+    connect(pantallaMenu, &PantallaMenu::slotSelected2Play, [this](int slot){
+        auto Save = guardarPartida.CargarPartida(slot);
+        TransicionJuegoConSave(Save);
+    });
 }
 
 void MainWindow::ConeccionesPantallaEstadisticas()
@@ -180,6 +191,18 @@ void MainWindow::TransicionJuego(int Nivel, int Dificultad)
 
     // A futuro cambiar por los inputos de los botones.
     gameScreen->PrepararJuego(Nivel, Dificultad);
+
+    // Conectamos el final de la animacion, para mostrar la ventana del juego.
+    connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
+}
+
+void MainWindow::TransicionJuegoConSave(PlayerStats &datos)
+{
+    pantallaMenu->stopMusic();
+    transicion->ArrancarTransicion(1000, this, &MainWindow::PrepararJuego);
+
+    // A futuro cambiar por los inputos de los botones.
+    gameScreen->PrepararJuego(datos);
 
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
     connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
@@ -299,4 +322,5 @@ void MainWindow::ConeccionesLogs()
     connect(pantallaMenu,&PantallaMenu::EnviarLogs,&log, &Logs::RecibirLogs);
     connect(gameScreen,&GameScreen::EnviarLogs,&log,&Logs::RecibirLogs);
     connect(juego,&Juego::Log,&log,&Logs::RecibirLogs);
+    connect(&guardarPartida, &GuardarPartidas::Log, &log, &Logs::RecibirLogs);
 }

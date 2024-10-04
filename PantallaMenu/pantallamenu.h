@@ -33,11 +33,10 @@ signals:
     void clickedFacil();
     void clickedNormal();
     void clickedDemonio();
-    void slotSelectedForSave(int);
-    void slotSelectedForPlay(int);
+    void slotSelected2Save(int);
+    void slotSelected2Play(int);
     void clickedStartDefault(int dificultad);
     void clickedStart(int nivel, int dificultad);
-    void clickedPartidaGuardada(int);
     void clickedTutorial();
     void EnviarLogs(QString Log);
 protected:

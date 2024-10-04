@@ -4,16 +4,26 @@
 #include <QDebug>
 
 GuardarPartidas::GuardarPartidas() {
-    SlotsGuardado[0] = ":/SaveSlots/slot1.dat";
-    SlotsGuardado[1] = ":/SaveSlots/slot2.dat";
-    SlotsGuardado[2] = ":/SaveSlots/slot3.dat";
+    QDir directorio;
+    if (directorio.mkpath(this->DireccionCarpeta)){
+        qDebug() << "Carpeta con saves creada";
+        SlotsGuardado[0] = DireccionCarpeta + "/slot1.dat";
+        SlotsGuardado[1] = DireccionCarpeta + "/slot2.dat";
+        SlotsGuardado[2] = DireccionCarpeta + "/slot3.dat";
+        qDebug() << SlotsGuardado[0];
+    } else{
+        qDebug() << "Carpeta con saves no creada";
+    }
 }
 
 void GuardarPartidas::save(const PlayerStats &datos, int slot){
+    if (slot < 0 || slot > 2)
+        slot = 0;
+
     QFile file(SlotsGuardado[slot]);
 
     if (!file.open(QIODevice::WriteOnly)) {
-        QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para escribir: " + SlotsGuardado[slot]);
+        emit Log("Error: No se pudo abrir el archivo para escritura: " + SlotsGuardado[slot]);
         return;
     }
 
@@ -32,7 +42,8 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     PlayerStats stats;
 
     if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para leer partida:" + SlotsGuardado[slot]);
+        qDebug() << "????????";
+        emit Log("Error: No se pudo abrir el siguiente archivo para su lectura: " + SlotsGuardado[slot]);
         return emptySave;
     }
 
@@ -41,10 +52,9 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
 
     // Verificar si esta bien escrito el struct, sino lo sobreescribe
     if (file.size() != sizeof(PlayerStats)) {
-        qWarning() << "La estructura no coincide con el tamaño esperado. Reiniciando los valores a 0.";
+        emit Log("La estructura del archvio de guardado: " + SlotsGuardado[slot] + "no coincide con el tamaño esperado. Reiniciando los valores a 0.");
         file.close();
 
-        save(emptySave, slot);
         return emptySave;
     }
 

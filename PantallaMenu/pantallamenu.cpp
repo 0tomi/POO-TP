@@ -266,7 +266,7 @@ void PantallaMenu::SlotGuardadoSeleccionado(int numero)
 {
     emit EnviarLogs("Slot de guardado seleccionado: " + QString::number(numero));
     emit EnviarLogs("Nivel: 1 | Dificultad: " + QString::number(dificultad));
-    emit slotSelectedForSave(numero);
+    emit slotSelected2Save(numero);
     emit clickedStartDefault(this->dificultad);
 }
 /// ############################ Cargar partida ###############################
@@ -287,21 +287,21 @@ void PantallaMenu::botonPartida1clicked()
 {
     emit EnviarLogs("Slot de partida 1 apretado");
     SonidosBotones.play();
-    emit clickedPartidaGuardada(1);
+    emit slotSelected2Play(1);
 }
 
 void PantallaMenu::botonPartida2clicked()
 {
     emit EnviarLogs("Slot de partida 2 apretado");
     SonidosBotones.play();
-    emit clickedPartidaGuardada(2);
+    emit slotSelected2Play(2);
 }
 
 void PantallaMenu::botonPartida3clicked()
 {
     emit EnviarLogs("Slot de partida 3 apretado");
     SonidosBotones.play();
-    emit clickedPartidaGuardada(3);
+    emit slotSelected2Play(3);
 }
 
 /// ############################ Opciones ###############################
