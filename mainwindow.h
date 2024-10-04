@@ -8,6 +8,7 @@
 #include "PantallaPausa/pantallapausa.h"
 #include "PantallaTransicion/pantallatransicion.h"
 #include "GameScreen/pantallatutorial.h"
+#include "SaveSlots/guardarpartida.h"
 #include "logs.h"
 
 #include <QMainWindow>
@@ -36,6 +37,7 @@ protected:
 
 private slots:
     void TransicionJuego(int Nivel = 1, int Dificultad = 2);
+    void TransicionJuegoConSave(PlayerStats& datos);
     void PrepararJuego();
     void IniciarJuego();
     void PrepararPantallaFinalNivel(bool Perdio);
@@ -45,6 +47,9 @@ private:
 
     // Juego
     Juego* juego;
+
+    // Guardar partida
+    GuardarPartidas guardarPartida;
 
     // Pantallas del juego:
     void CrearPantallasJuego();

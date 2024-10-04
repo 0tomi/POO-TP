@@ -315,11 +315,12 @@ void GameScreen::FinalDePartida()
 void GameScreen::Decidir()
 {
     if (juego->getTotalSocialCredits() < 0){
+        emit EnviarLogs("Jugador perdio");
         emit NivelTerminado(true);
     } else {
+        emit EnviarLogs("Jugador gano");
         emit NivelTerminado(false);
     }
-    emit EnviarLogs("Jugador perdio");
 }
 
 void GameScreen::ActualizarTiempo()
