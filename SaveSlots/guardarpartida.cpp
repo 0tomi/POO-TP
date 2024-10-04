@@ -42,7 +42,6 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     PlayerStats stats;
 
     if (!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "????????";
         emit Log("Error: No se pudo abrir el siguiente archivo para su lectura: " + SlotsGuardado[slot]);
         return emptySave;
     }

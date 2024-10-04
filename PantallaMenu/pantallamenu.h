@@ -39,6 +39,7 @@ signals:
     void clickedStart(int nivel, int dificultad);
     void clickedTutorial();
     void EnviarLogs(QString Log);
+
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
     void ActualizarCont(int &, bool &);
