@@ -2,13 +2,13 @@
 #include "ui_pantallamenu.h"
 #include <QCloseEvent>
 /// ############################ CONSTRUCTOR ###############################
-PantallaMenu::PantallaMenu(QWidget *parent)
+PantallaMenu::PantallaMenu(GuardarPartidas * gp, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent), Musica(parent)
 {
     ui->setupUi(this);
+    this->guardarPartida = gp;
     this->ConfigurarSonidos();
-    this->setBotonesPartidaOff();
 
     transicion = new PantallaTransicion(this);
 
@@ -99,6 +99,24 @@ void PantallaMenu::stopMusic()
 void PantallaMenu::continueMusic()
 {
     Musica.play();
+}
+
+void PantallaMenu::checkSaveSlots()
+{
+    auto Partidas = guardarPartida->LeerPartidas();
+    for (int i = 0; i < 3; i++)
+        setBotonesPartida(i, Partidas[i]);
+    delete[] Partidas;
+}
+
+void PantallaMenu::setBotonesPartida(int num, bool estado)
+{
+    if (num == 0)
+        ui->botonPartida1->setEnabled(estado);
+    if (num == 1)
+        ui->botonPartida2->setEnabled(estado);
+    if (num == 2)
+        ui->botonPartida3->setEnabled(estado);
 }
 
 void PantallaMenu::setVolumen(float vol)
@@ -333,12 +351,5 @@ void PantallaMenu::tutorialButton()
     emit EnviarLogs("Se clickeo la pantalla Tutorial");
     SonidosBotones.play();
     emit clickedTutorial();
-}
-
-void PantallaMenu::setBotonesPartidaOff()
-{
-    ui->botonPartida1->setDisabled(true);
-    ui->botonPartida2->setDisabled(true);
-    ui->botonPartida3->setDisabled(true);
 }
 

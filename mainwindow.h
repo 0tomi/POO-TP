@@ -8,6 +8,7 @@
 #include "PantallaPausa/pantallapausa.h"
 #include "PantallaTransicion/pantallatransicion.h"
 #include "GameScreen/pantallatutorial.h"
+#include "SaveSlots/guardarpartida.h"
 #include "logs.h"
 
 #include <QMainWindow>
@@ -45,6 +46,9 @@ private:
 
     // Juego
     Juego* juego;
+
+    // Guardar partida
+    GuardarPartidas guardarPartida;
 
     // Pantallas del juego:
     void CrearPantallasJuego();

@@ -12,7 +12,7 @@ void GuardarPartidas::save(const PlayerStats &datos, int slot){
 
     // Abrir el archivo para escritura binaria
     if (!file.open(QIODevice::WriteOnly)) {
-        QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para escribir.");
+        QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para escribir: " + SlotsGuardado[slot]);
         return;
     }
 
@@ -30,13 +30,10 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     QFile file(SlotsGuardado[slot]);
     PlayerStats stats;
 
-    // Estructura a retornar en caso de tener errores.
-    PlayerStats emptyStats = {0,0,0,0,0,0};
-
     // Abrir el archivo para lectura binaria
     if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para leer partida.");
-        return emptyStats;
+        QMessageBox::critical(nullptr, "Error", "No se pudo abrir el archivo para leer partida:" + SlotsGuardado[slot]);
+        return emptySave;
     }
 
     QDataStream in(&file);
@@ -47,8 +44,8 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
         qWarning() << "La estructura no coincide con el tamaño esperado. Reiniciando los valores a 0.";
         file.close();
 
-        save(emptyStats, slot);
-        return emptyStats;
+        save(emptySave, slot);
+        return emptySave;
     }
 
     // Leer los datos del archivo
@@ -68,4 +65,19 @@ bool* GuardarPartidas::LeerPartidas(){
         else slots_disponibles[i]=false;
     }
     return slots_disponibles;
+}
+
+void GuardarPartidas::saveCurrentSlot(const PlayerStats &data)
+{
+    save(data, currentSlot);
+}
+
+void GuardarPartidas::cleanCurrentSlot()
+{
+    saveCurrentSlot(emptySave);
+}
+
+void GuardarPartidas::setCurrentSlot(int slot)
+{
+    currentSlot = slot;
 }

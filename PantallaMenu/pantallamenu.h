@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSoundEffect>
 #include "../PantallaTransicion/pantallatransicion.h"
+#include "../SaveSlots/guardarpartida.h"
 
 namespace Ui {
 class PantallaMenu;
@@ -14,11 +15,12 @@ class PantallaMenu : public QWidget
     Q_OBJECT
 
 public:
-    explicit PantallaMenu(QWidget *parent = nullptr);
+    explicit PantallaMenu(GuardarPartidas *, QWidget *parent = nullptr);
     void setInicio();
     ~PantallaMenu();
     void stopMusic();
     void continueMusic();
+    void checkSaveSlots();
 public slots:
     void setVolumen(float);
     void setMusicVolume(float);
@@ -80,7 +82,7 @@ private slots:
 
     void tutorialButton();
 private:
-    void setBotonesPartidaOff();
+    void setBotonesPartida(int num, bool);
     void ConfigurarSonidos();
     void ConfigurarBotonesDificultad();
     void ConfigurarBotonesElegirPartidaGuardada();
@@ -92,6 +94,7 @@ private:
     QSoundEffect SonidoModoDemonio;
     int dificultad = 1;
     int nivel = 1;
+    GuardarPartidas * guardarPartida;
     Ui::PantallaMenu *ui;
     PantallaTransicion * transicion;
     int indicePrevio;

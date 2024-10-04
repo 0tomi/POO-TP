@@ -62,10 +62,10 @@ void MainWindow::CrearPantallasJuego()
 
     // Creamos las pantallas del juego
 
-    pantallaMenu = new PantallaMenu(this);
+    pantallaMenu = new PantallaMenu(&guardarPartida, this);
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
-    pantallaFinalNivel = new PantallaFinalNivel(this);
+    pantallaFinalNivel = new PantallaFinalNivel(&guardarPartida, this);
     transicion = new PantallaTransicion(this);
     // Tutorial
     pantallaTutorial = new PantallaTutorial(this);
@@ -209,6 +209,7 @@ void MainWindow::VolverInicio()
 
 void MainWindow::setInicio()
 {
+    pantallaMenu->checkSaveSlots();
     pantallaMenu->continueMusic();
     pantallas->setCurrentWidget(pantallaMenu);
     pantallaMenu->setInicio();
