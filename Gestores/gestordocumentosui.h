@@ -11,6 +11,7 @@
 #include "../Documentos/dni.h"
 #include "../NPC/npccomun.h"
 #include "../Documentos/paisresidenciaui.h"
+#include "../Documentos/nuevaestanciaui.h"
 
 class GestorDocumentosUI: public QWidget
 {
@@ -35,6 +36,7 @@ public:
 
     bool getMostrando() const;
     void TerminoNivel();
+    void setVolume(float vol);
 
 public slots:
     void setDocumento(NPC* infoNPC);
@@ -45,15 +47,17 @@ signals:
 private:
     QTimer *Temporizador; // Hasta no tener los pasaportes y DNIs, usare esto.
     QWidget *Escritorio;
-    DocumentosUI* documentosUI[10];
-    Documentacion* documentos[10];
+    const int MAX_Documentos = 5;
+    DocumentosUI* documentosUI[5];
+    Documentacion* documentos[5];
     UADERpass* pase;
+    NuevaEstanciaUI* nuevaEstancia;
     DNI* dniUI;
     PasaporteUI* pasaporteUI;
 
     bool tienePase;
     bool Mostrando = false;
-    int DocumentosEnEscena[10];
+    int DocumentosEnEscena[5];
     int topePerNPC;
     int topePerLevel;
 

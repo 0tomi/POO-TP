@@ -1,14 +1,15 @@
 #ifndef NUEVAESTANCIA_H
 #define NUEVAESTANCIA_H
 
-#include "./estancia.h"
+#include "estancia.h"
+#include "documentacion.h"
 
 #include <vector>
 #include <QString>
 
 using namespace std;
 
-class NuevaEstancia
+class NuevaEstancia: public Documentacion
 {
 public:
     NuevaEstancia();

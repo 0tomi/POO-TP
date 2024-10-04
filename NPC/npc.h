@@ -35,7 +35,8 @@ protected:
     bool Validez;
     char Genero;
     int Tipo;
-    Documentacion* documentos[10];
+    const int MAX_Documentos = 6;
+    Documentacion* documentos[6];
     QString dialogo;
     QString * datosFalsos;
 };

@@ -5,7 +5,6 @@
 Generador_NuevaEstancia::Generador_NuevaEstancia(): random(QTime::currentTime().msec()) {}
 
 Generador_NuevaEstancia::~Generador_NuevaEstancia() {
-    this->estancia = nullptr;
     this->paisesPaso.clear();
     //this->paisesPasoInvalidos.clear();
     this->bienesTransp.clear();
@@ -16,10 +15,9 @@ Generador_NuevaEstancia::~Generador_NuevaEstancia() {
     this->reglasLvl4 = nullptr;
 }
 
-void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel1 *reglasLvl1, ReglasNivel4 *reglasLvl4, Estancia* estanciaOld, quint32 intSeed) {
+void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel1 *reglasLvl1, ReglasNivel4 *reglasLvl4, quint32 intSeed) {
     random.seed(intSeed); // inicializo semilla
     
-    this->estancia = estanciaOld;
     this->paisesPaso = reglasLvl4->getPaisesPermitidos();
     //this->paisesPasoInvalidos = reglasLvl4->getPaisesNoPermitidos();
     this->bienesTransp = reglasLvl4->getBienesTransportadosPermitidos();
@@ -30,14 +28,14 @@ void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel1 *reglasLvl1, Regl
     this->reglasLvl4 = reglasLvl4;
 }
 
-NuevaEstancia* Generador_NuevaEstancia::getNuevaEstancia(bool valido, int dificultad) {
+NuevaEstancia* Generador_NuevaEstancia::getNuevaEstancia(Estancia* actualEstancia, bool valido, int dificultad) {
     // switch(dificultad) {}
 
     this->paisesPaso = generar_paisesPaso(valido);
     this->bienesTransp = generar_bienesTransp(valido);
     this->ocupacion = generar_ocupacion(valido);
     
-    NuevaEstancia* newEst = new NuevaEstancia(this->estancia, this->paisesPaso, this->bienesTransp, this->ocupacion);
+    NuevaEstancia* newEst = new NuevaEstancia(actualEstancia, this->paisesPaso, this->bienesTransp, this->ocupacion);
     return newEst;
 }
 

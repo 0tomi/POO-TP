@@ -15,14 +15,13 @@ class Generador_NuevaEstancia
 public:
     Generador_NuevaEstancia();
     ~Generador_NuevaEstancia();
-    void inicializadorNivel4(ReglasNivel1* reglasLvl1, ReglasNivel4* reglasLvl4, Estancia* estanciaOld, quint32 intSeed);
-    NuevaEstancia* getNuevaEstancia(bool valido, int dificultad);
+    void inicializadorNivel4(ReglasNivel1* reglasLvl1, ReglasNivel4* reglasLvl4, quint32 intSeed);
+    NuevaEstancia* getNuevaEstancia(Estancia*, bool valido, int dificultad);
 
     vector<QString> generar_paisesPaso(bool valido);
     vector<QString> generar_bienesTransp(bool valido);
     vector<QString> generar_ocupacion(bool valido);
 private:
-    Estancia* estancia;
     vector<QString> paisesPaso;
     //vector<QString> paisesPasoInvalidos;
     vector<QString> bienesTransp;

@@ -87,6 +87,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         SaveSlots/guardarpartida.h SaveSlots/guardarpartida.cpp
         logs.h logs.cpp
         Niveles/lectorniveles.h Niveles/lectorniveles.cpp
+        Documentos/nuevaestanciaui.h Documentos/nuevaestanciaui.cpp Documentos/nuevaestanciaui.ui
 
 
 
