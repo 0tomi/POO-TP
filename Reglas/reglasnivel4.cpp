@@ -14,6 +14,13 @@ ReglasNivel4::ReglasNivel4()
     crearParDatos(paisesPaso, this->PaisesPaso);
 }
 
+void ReglasNivel4::generar_Todo(int CantidadPaises, int CantidadOcupaciones, int CantidadBienes)
+{
+    generar_PaisesPaso(CantidadPaises);
+    generar_Ocupacion(CantidadOcupaciones);
+    generar_BienesTransportados(CantidadBienes);
+}
+
 void ReglasNivel4::generar_PaisesPaso(int CantPermitida)
 {
     resetearParDatos(PaisesPaso);

@@ -46,6 +46,9 @@
      <property name="styleSheet">
       <string notr="true"/>
      </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="Abierto">
       <property name="styleSheet">
        <string notr="true">#Abierto{border-image: url(:/Resources/Documentos/NuevaEstancia/documabierto.png);}</string>
@@ -103,7 +106,7 @@ border: none;</string>
         <string notr="true"/>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="Estancia">
         <property name="styleSheet">
@@ -113,7 +116,7 @@ border: none;</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>40</y>
+           <y>70</y>
            <width>231</width>
            <height>61</height>
           </rect>
@@ -139,7 +142,7 @@ border: none;</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>150</y>
+           <y>160</y>
            <width>231</width>
            <height>71</height>
           </rect>
@@ -165,7 +168,7 @@ border: none;</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>80</y>
+           <y>100</y>
            <width>231</width>
            <height>91</height>
           </rect>
@@ -208,6 +211,32 @@ border: none;</string>
          </property>
          <property name="text">
           <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="TituloMotivo_2">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>231</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Serif</family>
+           <pointsize>18</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 0);</string>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Datos de &lt;span style=&quot; color:#ff5500;&quot;&gt;estancia&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>

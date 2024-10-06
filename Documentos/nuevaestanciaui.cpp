@@ -37,6 +37,12 @@ void NuevaEstanciaUI::setDocumentacionInfo(Documentacion *documento)
     resetearApariencia();
 }
 
+void NuevaEstanciaUI::Entrar()
+{
+    resetearApariencia();
+    DocumentosUI::Entrar();
+}
+
 void NuevaEstanciaUI::setUpPaginaEstancia(Estancia *info)
 {
     if (!info) {
@@ -45,7 +51,7 @@ void NuevaEstanciaUI::setUpPaginaEstancia(Estancia *info)
     }
 
     ui->DescTipoEstancia->setText(info->getTipoEstancia());
-    ui->DescDuracEstancia->setText(QString::number(info->getDuracEstancia()));
+    ui->DescDuracEstancia->setText(QString::number(info->getDuracEstancia()) + " meses");
 }
 
 void NuevaEstanciaUI::setUpBotones()
@@ -57,7 +63,7 @@ void NuevaEstanciaUI::setUpBotones()
 
 void NuevaEstanciaUI::resetearApariencia()
 {
-    ui->Libro->setCurrentWidget(ui->Cerrado);
+    ui->Libro->setCurrentWidget(ui->Abierto);
     ui->Documentos->setCurrentIndex(0);
 }
 
@@ -65,17 +71,17 @@ void NuevaEstanciaUI::pasarPagina(int pag)
 {
     qDebug() << pag;
     if (pag == -1){
-        Sonidos[1].play();
-        ui->Libro->setCurrentWidget(ui->Cerrado);
+        //Sonidos[1].play();
+        //ui->Libro->setCurrentWidget(ui->Cerrado);
         return;
     }
 
-    if (pag == 0 && ui->Documentos->currentIndex() == 0){
-        Sonidos[0].play();
-        ui->Libro->setCurrentWidget(ui->Abierto);
-        ui->Documentos->setCurrentIndex(0);
-        return;
-    }
+    //if (pag == 0 && ui->Documentos->currentIndex() == 0){
+        //Sonidos[0].play();
+        //ui->Libro->setCurrentWidget(ui->Abierto);
+        //ui->Documentos->setCurrentIndex(0);
+        //return;
+    //}
 
     if (pag == ui->Documentos->count())
         return;

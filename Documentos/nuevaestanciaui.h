@@ -17,7 +17,8 @@ class NuevaEstanciaUI : public DocumentosUI
 
 public:
     explicit NuevaEstanciaUI(QWidget *parent = nullptr);
-    virtual void setDocumentacionInfo(Documentacion *documento);
+    virtual void setDocumentacionInfo(Documentacion *documento) override;
+    virtual void Entrar() override;
     void setVolume(float vol);
     ~NuevaEstanciaUI();
 

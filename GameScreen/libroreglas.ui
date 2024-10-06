@@ -67,7 +67,7 @@ border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="PagInicial">
          <property name="minimumSize">
@@ -92,7 +92,7 @@ border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
              <item>
               <widget class="QLabel" name="ImagenInicio">
                <property name="styleSheet">
-                <string notr="true">border-image: url(:/Resources/Documentos/NormativasIcono.png);</string>
+                <string notr="true">border-image: url(:/Resources/Documentos/NormativasIconoLibro.png);</string>
                </property>
                <property name="text">
                 <string/>
@@ -1196,7 +1196,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </font>
              </property>
              <property name="mouseTracking">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="styleSheet">
               <string notr="true">
@@ -1253,7 +1253,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </font>
              </property>
              <property name="mouseTracking">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="styleSheet">
               <string notr="true">
@@ -1370,7 +1370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                </font>
               </property>
               <property name="mouseTracking">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="styleSheet">
                <string notr="true">
@@ -1423,7 +1423,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 color: rgb(0, 0, 0);</string>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Datos previos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffaa00;&quot;&gt;Datos previos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1514,7 +1514,7 @@ que proveen la siguiente informacion:
 color: rgb(0, 0, 0);</string>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Países de paso permitidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffaa00;&quot;&gt;Países de paso permitidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1577,7 +1577,7 @@ color: rgb(0, 0, 0);</string>
 color: rgb(0, 0, 0);</string>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Ocupaciones permitidas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffaa00;&quot;&gt;Ocupaciones permitidas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1665,7 +1665,7 @@ color: rgb(0, 0, 0);</string>
 color: rgb(0, 0, 0);</string>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Bienes transportados permitidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffaa00;&quot;&gt;Bienes transportados permitidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

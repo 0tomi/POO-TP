@@ -71,19 +71,15 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     else
         GenerarCantidadDocsInvalidos();
 
-    qDebug() << "Generando docs nivel 1";
     GenerarDocumentosNivel1(Index);
 
     if (NivelActual >= 2){
-        qDebug() << "Generando docs nivel 2";
         GenerarDocumentosNivel2(Index);
     }
     if (NivelActual >= 3){
-        qDebug() << "Generando docs nivel 3";
         GenerarDocumentosNivel3(Index);
     }
     if (NivelActual >= 4){
-        qDebug() << "Generando docs nivel 4";
         GenerarDocumentosNivel4(Index);
     }
     if (NivelActual >= 5){

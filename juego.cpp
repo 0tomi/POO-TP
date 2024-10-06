@@ -216,9 +216,9 @@ void Juego::InicializarNivel4()
     int CantidadPaises = lectorNiveles.obtenerValor("Cantidad de paises de paso permitidos");
     reglasLVL4.generar_PaisesPaso(CantidadPaises);
     int CantidadOcupaciones = lectorNiveles.obtenerValor("Cantidad de ocupaciones permitidos");
-    reglasLVL4.generar_PaisesPaso(CantidadOcupaciones);
+    reglasLVL4.generar_Ocupacion(CantidadOcupaciones);
     int CantidadBienes = lectorNiveles.obtenerValor("Cantidad de bienes transportados permitidos");
-    reglasLVL4.generar_PaisesPaso(CantidadBienes);
+    reglasLVL4.generar_BienesTransportados(CantidadBienes);
 }
 
 void Juego::InicializarNivel5()

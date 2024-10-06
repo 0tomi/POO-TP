@@ -8,6 +8,7 @@ class ReglasNivel4: public Reglas
 {
 public:
     ReglasNivel4();
+    void generar_Todo(int CantidadPaises, int CantidadOcupaciones, int CantidadBienes);
     void generar_PaisesPaso(int CantPermitida);
     void generar_PaisesPaso(std::vector<QString> ListaPaisesPermitidos);
     void generar_Ocupacion(int CantPermitida);
