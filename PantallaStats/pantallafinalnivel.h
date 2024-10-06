@@ -24,7 +24,6 @@ public:
     void guardarPartida();
 
     vector<QString> getTips();
-    void setTips(vector<QString> tipsNew);
 signals:
     void salirClicked();
     void sigNivelClicked(int NextLevel, int Dificultad);

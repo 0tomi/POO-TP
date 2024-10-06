@@ -104,6 +104,7 @@ void GameScreen::setUpBotonEscanner()
 
     BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, ui->BotonEscannerUI);
     BotonScanner->copyFormat();
+    BotonScanner->setVolumen(0.6);
     ui->BotonEscannerUI->layout()->addWidget(BotonScanner);
 }
 
