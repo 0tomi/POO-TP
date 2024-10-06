@@ -45,6 +45,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
     }
     if (nivel > 3){
         reglasNivel4 = dynamic_cast<ReglasNivel4*>(rules[3]);
+        generadorNuevaEstancia.inicializadorNivel4(reglasNivel4, this->semilla, this->DificultadJuego);
     }
     if (nivel > 4){
         reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
@@ -53,7 +54,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
 
 GeneradorDocumentacion::~GeneradorDocumentacion()
 {
-    // delete de los siguientes generadores
+    // Como mudamos todo a estatico este metodo quedo obsoleto
 }
 
 /// #################################### GETTERS ###################################################
@@ -103,6 +104,8 @@ QString GeneradorDocumentacion::logDatosFalsos()
         if (listaAcompActual->getValidezDialogo())
             log += "Mintió sobre la cantidad de gente que lo acompaña\n";
     }
+    if (!DocsValidos[4])
+        log += "Datos previos invalidos\n";
 
     return log;
 }
@@ -128,6 +131,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
     // Generador de Estancias
     Estancia* nuevaEstancia = generadorEstancia.getEstancia(DocsValidos[Index], DificultadJuego);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
+    estanciaActual = nuevaEstancia;
     Index++;
 }
 
@@ -151,6 +155,8 @@ void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
 {
     // Nuevo documento de estancia
+    auto nuevaEstancia = generadorNuevaEstancia.getNuevaEstancia(estanciaActual ,DocsValidos[Index]);
+    NPC2Generate->addDocumento(nuevaEstancia, Index);
     Index++;
 }
 
@@ -215,7 +221,7 @@ void GeneradorDocumentacion::SetDificultadNivel()
         MaxDocumentosInvalidos = 2;
         break;
     case 4:
-        MaxDocumentos = 4;
+        MaxDocumentos = 5;
         MaxDocumentosInvalidos = 2;
         break;
     default:

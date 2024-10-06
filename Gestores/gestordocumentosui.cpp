@@ -9,17 +9,18 @@ GestorDocumentosUI::GestorDocumentosUI()
     connect(Temporizador, &QTimer::timeout, this, &GestorDocumentosUI::Termino);
 
     // Seteamos los documentos en nulo
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < MAX_Documentos; i++)
         documentos[i] = nullptr;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < MAX_Documentos; i++)
         documentosUI[i] = nullptr;
 
     pase = nullptr;
+    nuevaEstancia = nullptr;
 }
 
 GestorDocumentosUI::~GestorDocumentosUI()
 {
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < MAX_Documentos; i++)
         delete documentosUI[i];
     delete Temporizador;
     delete pase;
@@ -34,6 +35,12 @@ void GestorDocumentosUI::TerminoNivel()
 {
     if (Mostrando)
         this->Salir();
+}
+
+void GestorDocumentosUI::setVolume(float vol)
+{
+    if (nuevaEstancia)
+        nuevaEstancia->setVolume(vol);
 }
 
 /// #################################### SETTERS ###################################################
@@ -107,23 +114,18 @@ void GestorDocumentosUI::setUpLevel4()
     this->topePerLevel = 5;
     int Index = 4;
     if (documentosUI[Index] == nullptr){
-
-        // ######### Aca iria el NEW para el nuevo Doc Estancia ######
-
+        nuevaEstancia = new NuevaEstanciaUI(Escritorio);
+        documentosUI[Index] = nuevaEstancia;
         setUpDocumento(documentosUI[Index]);
     }
 }
 
 void GestorDocumentosUI::setUpLevel5()
 {
-    this->topePerLevel = 7;
+    this->topePerLevel = 6;
     int Index = 5;
     if (documentosUI[Index] == nullptr){
         // new Verificacion de antecedentes
-
-        Index++;
-        // new Busqueda elementos prohibidos
-
     }
 }
 
@@ -136,19 +138,20 @@ void GestorDocumentosUI::deleteDocumentos()
 void GestorDocumentosUI::setDocumento(NPC* npcInfo)
 {
     Documentacion** info = npcInfo->getDocumentos();
-    int Tipo = npcInfo->getTipo();
 
     for (int i = 0; i < topePerLevel; i++)
         if (info[i] != nullptr)
             documentos[i] = info[i];
 
+    if (documentos[4])
+        documentos[1] = nullptr;
+
+    int Tipo = npcInfo->getTipo();
     if (Tipo == 2)
         tienePase = true;
     else tienePase = false;
 
     NPCcomun* npcComunInfo;
-    // Aca iria la declaracion del npc especial.
-
     npcComunInfo = dynamic_cast<NPCcomun*> (npcInfo);
     if (!npcComunInfo)
         qDebug() << "El npc es de tipo especial"; // y aca iria el casteo al npc especial
@@ -166,7 +169,6 @@ void GestorDocumentosUI::setDocumento(NPC* npcInfo)
     for (int i = 0; i < topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->setDocumentacionInfo(documentos[i]);
-    // en desarrollo
 }
 
 void GestorDocumentosUI::Centrar()

@@ -18,7 +18,7 @@ NPC::NPC(char Gen, int Type, bool newValidez){
     if (Type != 3)
         dialogo = "";
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < MAX_Documentos; i++)
         documentos[i] = nullptr;
 }
 
@@ -46,13 +46,10 @@ void NPC::addDocumento(Documentacion *newDoc, int Index)
     Codigos internos de documentacion: (El pase diplomatico no esta incluido, todavia)
     0: Pasaporte / Dni
     1: Estancia
-    2: Pais de residencia   [EN DESARROLLO]
+    2: Pais de residencia
     3: Lista de acompaniantes
-    4: <a desarrollar>
-    5: <a desarrollar>
-    6: <a desarrollar>
-    7: <a desarrollar>
-    8: <a desarrollar>
+    4: NuevaEstancia
+    5: Antecedentes si llegamos.
   */
 
     documentos[Index] = newDoc;
@@ -102,7 +99,7 @@ void NPC::setDatosFalsos(QString newDatosFalsos)
 
 NPC::~NPC()
 {
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < MAX_Documentos; i++)
         delete documentos[i];
     if (datosFalsos)
         delete datosFalsos;

@@ -17,6 +17,7 @@
 #include "generadorlistaacompaniantes.h"
 #include "locuracaracteres.h"
 #include "generador_paisresidencia.h"
+#include "generador_nuevaestancia.h"
 
 
 using namespace std;
@@ -41,6 +42,7 @@ private:
     GeneradorListaAcompaniantes generadorListaAcomp;
     LocuraCaracteres randomizadorCaracteres;
     generador_paisresidencia generadorPaisResidencia;
+    Generador_NuevaEstancia generadorNuevaEstancia;
 
     // Datos del juego:
     ReglasNivel1* reglasNivel1;
@@ -60,7 +62,7 @@ private:
     // Info para los logs de los docs falsos
     QString logDatosFalsos();
     ListaAcompaniantes * listaAcompActual;
-
+    Estancia* estanciaActual;
 
     // Seleccion de documentos que seran falsos
     bool DocsValidos[10];

@@ -14,6 +14,13 @@ ReglasNivel4::ReglasNivel4()
     crearParDatos(paisesPaso, this->PaisesPaso);
 }
 
+void ReglasNivel4::generar_Todo(int CantidadPaises, int CantidadOcupaciones, int CantidadBienes)
+{
+    generar_PaisesPaso(CantidadPaises);
+    generar_Ocupacion(CantidadOcupaciones);
+    generar_BienesTransportados(CantidadBienes);
+}
+
 void ReglasNivel4::generar_PaisesPaso(int CantPermitida)
 {
     resetearParDatos(PaisesPaso);
@@ -75,6 +82,21 @@ void ReglasNivel4::generar_BienesTransportados(std::vector<QString> ListaBienesT
 
     this->BienesPermitidos = generarPermitido(ListaBienesTransportadosPermitidos);
     this->BienesPermitidos = generarNoPermitido(this->Bienes);
+}
+
+std::vector<QString> ReglasNivel4::getPaises() const
+{
+    return deshacerPar(PaisesPaso);
+}
+
+std::vector<QString> ReglasNivel4::getOcupaciones() const
+{
+    return deshacerPar(Ocupaciones);
+}
+
+std::vector<QString> ReglasNivel4::getBienes() const
+{
+    return deshacerPar(Bienes);
 }
 
 std::vector<QString> ReglasNivel4::getPaisesPermitidos() const

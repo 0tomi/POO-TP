@@ -56,7 +56,7 @@ Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
     int Duracion = GenerarDuracion(ValidezCampos[0]);
     QString TipoVisita = GenerarVisita(ValidezCampos[1]);
 
-    Estancia* estanciaAGenerar = new Estancia(Duracion, TipoVisita);
+    Estancia* estanciaAGenerar = new Estancia(Duracion, TipoVisita, valido);
     return estanciaAGenerar;
 }
 

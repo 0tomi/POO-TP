@@ -6,6 +6,7 @@
 #include "../Documentos/documentosui.h"
 #include <QString>
 #include <QSoundEffect>
+#include <QLabel>
 
 namespace Ui {
 class libroreglas;
@@ -33,11 +34,12 @@ private:
     void setDatosPag1();
     void setDatosNivel2();
     void setDatosNivel3();
+    void setDatosNivel4();
+    void setDatos(const vector<QString>& lineas, QLabel* lugarDondeSeColocaElTexto);
 
     void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();
-    void IrPagAnterior();
-    void IrPagSiguiente();
+    void PasarPagina(int pag);
     void SaltarPagina(int pagina);
 
     int CantidadPaginas;
