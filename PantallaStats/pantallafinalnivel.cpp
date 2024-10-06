@@ -9,9 +9,15 @@
 PantallaFinalNivel::PantallaFinalNivel(GuardarPartidas* sg, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PantallaFinalNivel)
-    , Random(QTime::currentTime().msec())
+    , Random(QTime::currentTime().msec()), sonidoBotones(parent), musica(parent)
 {
     ui->setupUi(this);
+
+    sonidoBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
+    musica.setSource(QUrl(""));
+    setMusicSound(1.0);
+    setVolumeSound(1.0);
+
     saveGame = sg;
     // conecc.signal de salirBtn:
     connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSalirClicked);
@@ -32,6 +38,16 @@ PantallaFinalNivel::~PantallaFinalNivel()
 
 vector<QString> PantallaFinalNivel::getTips() {
     return this->tips;
+}
+
+void PantallaFinalNivel::setVolumeSound(float vol)
+{
+    this->sonidoBotones.setVolume(vol-0.2);
+}
+
+void PantallaFinalNivel::setMusicSound(float vol)
+{
+    this->musica.setVolume(vol-0.2);
 }
 
 void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
