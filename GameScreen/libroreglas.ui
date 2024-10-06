@@ -67,7 +67,7 @@ border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="PagInicial">
          <property name="minimumSize">
@@ -239,7 +239,7 @@ color: rgb(0, 0, 0);</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="BotonIndiceNivel4">
+              <widget class="QPushButton" name="Nivel4Boton1">
                <property name="font">
                 <font>
                  <family>MS Serif</family>
@@ -1195,6 +1195,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <bold>true</bold>
               </font>
              </property>
+             <property name="mouseTracking">
+              <bool>false</bool>
+             </property>
              <property name="styleSheet">
               <string notr="true">
 color: rgb(0, 0, 0);</string>
@@ -1249,6 +1252,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <bold>true</bold>
               </font>
              </property>
+             <property name="mouseTracking">
+              <bool>false</bool>
+             </property>
              <property name="styleSheet">
               <string notr="true">
 color: rgb(0, 0, 0);</string>
@@ -1298,6 +1304,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <underline>true</underline>
                </font>
               </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 127);</string>
               </property>
@@ -1328,6 +1337,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <underline>true</underline>
                </font>
               </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 127);</string>
               </property>
@@ -1357,6 +1369,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <bold>true</bold>
                </font>
               </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
+              </property>
               <property name="styleSheet">
                <string notr="true">
 color: rgb(0, 0, 0);</string>
@@ -1384,61 +1399,284 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </layout>
         </widget>
         <widget class="QWidget" name="Nivel4page">
-         <widget class="QLabel" name="TituloEstancia_2">
-          <property name="geometry">
-           <rect>
-            <x>60</x>
-            <y>30</y>
-            <width>201</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>MS Serif</family>
-            <pointsize>16</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QWidget" name="PagIzq" native="true">
+            <widget class="QLabel" name="TituloNuevaEST">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>20</y>
+               <width>201</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
 color: rgb(0, 0, 0);</string>
-          </property>
-          <property name="text">
-           <string>Datos previos</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="TituloEstancia_3">
-          <property name="geometry">
-           <rect>
-            <x>60</x>
-            <y>80</y>
-            <width>611</width>
-            <height>241</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <family>MS Serif</family>
-            <pointsize>16</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Datos previos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+            <widget class="QLabel" name="DescNuevaEstancia">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>70</y>
+               <width>291</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
 color: rgb(0, 0, 0);</string>
-          </property>
-          <property name="text">
-           <string>A partir de ahora, la estancia
-vendra con mas documentos,</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
+             </property>
+             <property name="text">
+              <string>A partir de ahora, la estancia
+vendra con mas documentos,
+que proveen la siguiente informacion:
+</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QLabel" name="DescNuevaEstancia2">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>140</y>
+               <width>261</width>
+               <height>121</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 85, 255);</string>
+             </property>
+             <property name="text">
+              <string>- Países de paso
+- Ocupación
+- Bienes transportados</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QLabel" name="TituloNuevaEST_2">
+             <property name="geometry">
+              <rect>
+               <x>-10</x>
+               <y>270</y>
+               <width>331</width>
+               <height>81</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+color: rgb(0, 0, 0);</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Países de paso permitidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QLabel" name="ListaPaisesPermitidos">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>360</y>
+               <width>251</width>
+               <height>181</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 85, 255);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="PagDer" native="true">
+            <widget class="QLabel" name="TituloNuevaEST_3">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>10</y>
+               <width>291</width>
+               <height>81</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+color: rgb(0, 0, 0);</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Ocupaciones permitidas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QLabel" name="ListaOcupacionesPermitidas">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>100</y>
+               <width>251</width>
+               <height>161</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 85, 255);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QLabel" name="ListaBienesPermitidos">
+             <property name="geometry">
+              <rect>
+               <x>50</x>
+               <y>360</y>
+               <width>251</width>
+               <height>181</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 85, 255);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QLabel" name="TituloNuevaEST_4">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>270</y>
+               <width>331</width>
+               <height>81</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>MS Serif</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+color: rgb(0, 0, 0);</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; color:#ffff00;&quot;&gt;Bienes transportados permitidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>

@@ -45,7 +45,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
     }
     if (nivel > 3){
         reglasNivel4 = dynamic_cast<ReglasNivel4*>(rules[3]);
-        generadorNuevaEstancia.inicializadorNivel4(reglasNivel1, reglasNivel4, this->semilla);
+        generadorNuevaEstancia.inicializadorNivel4(reglasNivel4, this->semilla, this->DificultadJuego);
     }
     if (nivel > 4){
         reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
@@ -71,15 +71,19 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     else
         GenerarCantidadDocsInvalidos();
 
+    qDebug() << "Generando docs nivel 1";
     GenerarDocumentosNivel1(Index);
 
     if (NivelActual >= 2){
+        qDebug() << "Generando docs nivel 2";
         GenerarDocumentosNivel2(Index);
     }
     if (NivelActual >= 3){
+        qDebug() << "Generando docs nivel 3";
         GenerarDocumentosNivel3(Index);
     }
     if (NivelActual >= 4){
+        qDebug() << "Generando docs nivel 4";
         GenerarDocumentosNivel4(Index);
     }
     if (NivelActual >= 5){
@@ -155,7 +159,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
 {
     // Nuevo documento de estancia
-    auto nuevaEstancia = generadorNuevaEstancia.getNuevaEstancia(estanciaActual ,DocsValidos[Index], this->DificultadJuego);
+    auto nuevaEstancia = generadorNuevaEstancia.getNuevaEstancia(estanciaActual ,DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
     Index++;
 }

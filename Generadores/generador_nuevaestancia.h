@@ -15,24 +15,40 @@ class Generador_NuevaEstancia
 public:
     Generador_NuevaEstancia();
     ~Generador_NuevaEstancia();
-    void inicializadorNivel4(ReglasNivel1* reglasLvl1, ReglasNivel4* reglasLvl4, quint32 intSeed);
-    NuevaEstancia* getNuevaEstancia(Estancia*, bool valido, int dificultad);
-
-    vector<QString> generar_paisesPaso(bool valido);
-    vector<QString> generar_bienesTransp(bool valido);
-    vector<QString> generar_ocupacion(bool valido);
+    void inicializadorNivel4(ReglasNivel4* reglasLvl4, int dificultad, quint32 intSeed);
+    NuevaEstancia* getNuevaEstancia(Estancia*, bool valido);
 private:
-    vector<QString> paisesPaso;
-    //vector<QString> paisesPasoInvalidos;
-    vector<QString> bienesTransp;
-    //vector<QString> bienesTranspInvalidos;
-    vector<QString> ocupacion;
-    //vector<QString> ocupacionInvalida;
+    struct trioDatos{
+        QString dato;
+        bool Permitido;
+        bool Insertado;
+    };
 
-    ReglasNivel1* reglasLvl1;
+    const int MAX_OBJETOS = 4;
+
+    vector<trioDatos> paisesPaso;
+    int maxPaisesValidos;
+    vector<trioDatos> bienesTransp;
+    int maxBienesValidos;
+    vector<trioDatos> ocupacion;
+    int maxOcupacionesValidas;
+
     ReglasNivel4* reglasLvl4;
-
+    Estancia * estanciaActual;
     QRandomGenerator random;
+
+    int Dificultad;
+    bool ValidezPaginas[3];
+    void SortearPaginasFalsas(bool Validez);
+
+    vector<trioDatos> makeTrio(const vector<QString>& listaOriginal, const vector<QString>& listaPermit);
+    void resetTrio(vector<trioDatos>& trio);
+    bool esPermitido(QString dato,const vector<QString>& listaPermit);
+
+    vector<QString> generarDocumento(vector<trioDatos>& listaOriginal, QString& fraseCaso0,int MaxPermitido ,bool Validez);
+    void generarListaConDatosVerdaderos(vector<QString>& lista2Generar, vector<trioDatos>& listaOriginal, QString& fraseCaso0, int MaxPermitido);
+    void generarListaConDatosFalsos(vector<QString>& lista2Generar, vector<trioDatos>& listaOriginal, QString& fraseCaso0, int MaxPermitido);
+    bool checkSiHayObjetosNoPermitidos(vector<QString>& lista2Generar, vector<trioDatos>& listaOriginal);
 };
 
 #endif // GENERADOR_NUEVAESTANCIA_H

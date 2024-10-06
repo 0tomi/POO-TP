@@ -15,6 +15,10 @@ public:
     void generar_BienesTransportados(int CantPermitida);
     void generar_BienesTransportados(std::vector<QString> ListaBienesTransportadosPermitidos);
 
+    std::vector<QString> getPaises() const;
+    std::vector<QString> getOcupaciones() const;
+    std::vector<QString> getBienes() const;
+
     std::vector<QString> getPaisesPermitidos() const;
     std::vector<QString> getPaisesNoPermitidos() const;
     std::vector<QString> getOcupacionPermitidos() const;

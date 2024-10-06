@@ -77,6 +77,21 @@ void ReglasNivel4::generar_BienesTransportados(std::vector<QString> ListaBienesT
     this->BienesPermitidos = generarNoPermitido(this->Bienes);
 }
 
+std::vector<QString> ReglasNivel4::getPaises() const
+{
+    return deshacerPar(PaisesPaso);
+}
+
+std::vector<QString> ReglasNivel4::getOcupaciones() const
+{
+    return deshacerPar(Ocupaciones);
+}
+
+std::vector<QString> ReglasNivel4::getBienes() const
+{
+    return deshacerPar(Bienes);
+}
+
 std::vector<QString> ReglasNivel4::getPaisesPermitidos() const
 {
     return generarVector(PaisesPermitidos);

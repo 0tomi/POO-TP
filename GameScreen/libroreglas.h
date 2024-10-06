@@ -35,12 +35,11 @@ private:
     void setDatosNivel2();
     void setDatosNivel3();
     void setDatosNivel4();
-    void setDatos(vector<QString>& lineas, QLabel* &lugarDondeSeColocaElTexto);
+    void setDatos(const vector<QString>& lineas, QLabel* lugarDondeSeColocaElTexto);
 
     void setDocumentacionInfo(Documentacion *documento) override;
     void setBotones();
-    void IrPagAnterior();
-    void IrPagSiguiente();
+    void PasarPagina(int pag);
     void SaltarPagina(int pagina);
 
     int CantidadPaginas;

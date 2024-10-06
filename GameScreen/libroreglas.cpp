@@ -18,7 +18,6 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
     // Mostramos el indice y hacemos que el boton de anterior se oculte.
     PaginaActual = 0;   // Indice
     ui->Anterior->hide();
-
     ui->LibroReglas->setCurrentIndex(PaginaActual);
 
     setBotones();
@@ -33,6 +32,7 @@ void libroreglas::setUpLevel(int level)
     ui->Nivel2Boton1->hide();
     ui->Nivel2Boton2->hide();
     ui->Nivel3Boton1->hide();
+    ui->Nivel4Boton1->hide();
 
     if (level >= 2){
         setDatosNivel2();
@@ -46,7 +46,9 @@ void libroreglas::setUpLevel(int level)
         ui->Nivel3Boton1->show();
     }
     if (level >= 4){
-
+        setDatosNivel4();
+        CantidadPaginas = 6;
+        ui->Nivel4Boton1->show();
     }
     if (level >= 5){
 
@@ -77,8 +79,8 @@ void setDocumentacionInfo(Documentacion *documento){
 }
 
 void libroreglas::setBotones(){
-    connect(ui->Anterior, &QPushButton::clicked, this,&libroreglas::IrPagAnterior);
-    connect(ui->Siguiente, &QPushButton::clicked, this,&libroreglas::IrPagSiguiente);
+    connect(ui->Anterior, &QPushButton::clicked, [this](){ this->PasarPagina(ui->LibroReglas->currentIndex()-1); });
+    connect(ui->Siguiente, &QPushButton::clicked, [this](){ this->PasarPagina(ui->LibroReglas->currentIndex()+1); });
 
     // Botones del indice
     connect(ui->BotonPasaporteyEstancia, &QPushButton::clicked, [this]() {
@@ -103,17 +105,26 @@ void libroreglas::setBotones(){
     connect(ui->Nivel3Boton1, &QPushButton::clicked, [this]() {
         SaltarPagina(4);
     });
+
+    connect(ui->Nivel4Boton1, &QPushButton::clicked, [this]() {
+        SaltarPagina(5);
+    });
 }
 
-void libroreglas::IrPagSiguiente(){
+void libroreglas::PasarPagina(int pag)
+{
     pasarPagina.play();
-    PaginaActual++;
-    ui->Anterior->show();
+    // Caso primer pagina
+    if (pag == 0)
+        ui->Anterior->hide();
+    else ui->Anterior->show();
 
-    if (PaginaActual == CantidadPaginas-1)
+    // Caso ultima pagina
+    if (pag == CantidadPaginas-1)
         ui->Siguiente->hide();
+    else ui->Siguiente->show();
 
-    ui->LibroReglas->setCurrentIndex(PaginaActual);
+    ui->LibroReglas->setCurrentIndex(pag);
 }
 
 void libroreglas::SaltarPagina(int pagina)
@@ -131,21 +142,14 @@ void libroreglas::SaltarPagina(int pagina)
     PaginaActual = pagina;
 }
 
-void libroreglas::IrPagAnterior(){
-    pasarPagina.play();
-    PaginaActual--;
-    ui->Siguiente->show();
-
-    if (PaginaActual == 0)
-        ui->Anterior->hide();
-
-    ui->LibroReglas->setCurrentIndex(PaginaActual);
-}
-
 void libroreglas::setDatosPag1(){
     // Reglas 1 esta en la posicion 0
     Reglas* test = juego->getReglas(0);
     ReglasNivel1 * rules = dynamic_cast<ReglasNivel1*>(test);
+    if (!rules){
+        qDebug() << "Fallo al castear reglas de nivel 1 en libro de reglas";
+        return;
+    }
 
     setPaises(rules);
     setFechas(rules);
@@ -157,8 +161,10 @@ void libroreglas::setDatosPag1(){
 void libroreglas::setDatosNivel2()
 {
     ReglasNivel2* reglas = dynamic_cast<ReglasNivel2*>(juego->getReglas(1));
-    if (!reglas)
+    if (!reglas){
         qDebug() << "Fallo al castear reglas de nivel 2 en libro de reglas";
+        return;
+    }
     QString texto;
     int max;
 
@@ -174,8 +180,10 @@ void libroreglas::setDatosNivel2()
 void libroreglas::setDatosNivel3()
 {
     ReglasNivel3* reglas = dynamic_cast<ReglasNivel3*>(juego->getReglas(2));
-    if (!reglas)
+    if (!reglas){
         qDebug() << "Fallo al castear reglas de nivel 3 en libro de reglas";
+        return;
+    }
 
     int maxAcompaniantes = reglas->getMaxAcompaniantes();
     switch (maxAcompaniantes){
@@ -187,6 +195,27 @@ void libroreglas::setDatosNivel3()
         break;
     default: ui->CantAcompsPermitida->setText("Se permite como máximo 3 acompaniantes.");
     }
+}
+
+void libroreglas::setDatosNivel4()
+{
+    auto reglas = dynamic_cast<ReglasNivel4*>(juego->getReglas(3));
+    if (!reglas){
+        qDebug() << "Fallo al castear reglas de nivel 4 en el libro de reglas";
+        return;
+    }
+
+    setDatos(reglas->getBienesTransportadosPermitidos(), ui->ListaBienesPermitidos);
+    setDatos(reglas->getPaisesPermitidos(), ui->ListaPaisesPermitidos);
+    setDatos(reglas->getOcupacionPermitidos(), ui->ListaOcupacionesPermitidas);
+}
+
+void libroreglas::setDatos(const vector<QString> &lineas, QLabel* lugarDondeSeColocaElTexto)
+{
+    QString texto;
+    for (const auto& linea: lineas)
+        texto += "- " + linea + "\n";
+    lugarDondeSeColocaElTexto->setText(texto);
 }
 
 void libroreglas::setPaises(ReglasNivel1 * datos){
