@@ -48,6 +48,8 @@ void GestorDocumentosUI::setVolume(float vol)
 void GestorDocumentosUI::setUp(int Level, QWidget *objeto)
 {
     this->Escritorio = objeto;
+    for (int i = 0; i < MAX_Documentos; i++)
+        documentos[i] = nullptr;
     setUpNivel(Level);
 }
 
@@ -122,7 +124,7 @@ void GestorDocumentosUI::setUpLevel4()
 
 void GestorDocumentosUI::setUpLevel5()
 {
-    this->topePerLevel = 6;
+    this->topePerLevel = 5;
     int Index = 5;
     if (documentosUI[Index] == nullptr){
         // new Verificacion de antecedentes

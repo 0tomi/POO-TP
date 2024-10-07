@@ -102,7 +102,7 @@ void GameScreen::setUpBotonEscanner()
     QString EscanerApretado = ":/Resources/MaterialPantallas/BotonEscanerApretado.png";
     QString SonidoEscanner = "qrc:/Resources/Sonidos/SonidoScanner.wav";
 
-    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, ui->BotonEscannerUI);
+    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, 0.5, ui->BotonEscannerUI);
     BotonScanner->copyFormat();
     ui->BotonEscannerUI->layout()->addWidget(BotonScanner);
 }

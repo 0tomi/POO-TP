@@ -1,5 +1,6 @@
 #include "pantallafinalnivel.h"
 #include "ui_pantallafinalnivel.h"
+#include "../lectorarchivos.h"
 
 #include <QDebug>
 #include <QFile>
@@ -8,9 +9,15 @@
 PantallaFinalNivel::PantallaFinalNivel(GuardarPartidas* sg, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PantallaFinalNivel)
-    , Random(QTime::currentTime().msec())
+    , Random(QTime::currentTime().msec()), sonidoBotones(parent), musica(parent)
 {
     ui->setupUi(this);
+
+    sonidoBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
+    musica.setSource(QUrl(""));
+    setMusicSound(1.0);
+    setVolumeSound(1.0);
+
     saveGame = sg;
     // conecc.signal de salirBtn:
     connect(ui->salirBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSalirClicked);
@@ -18,6 +25,9 @@ PantallaFinalNivel::PantallaFinalNivel(GuardarPartidas* sg, QWidget *parent)
     connect(ui->sigNivelBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onSigNivelClicked);
     // Conectamos boton de reintentar
     connect(ui->reintentarBtn, &QPushButton::clicked, this, &PantallaFinalNivel::onReintentarClicked);
+
+    LectorArchivos lector(":/Resources/ArchivosTexto/tips.txt");
+    this->tips = lector.getVector();
     
 }
 
@@ -30,38 +40,14 @@ vector<QString> PantallaFinalNivel::getTips() {
     return this->tips;
 }
 
-void PantallaFinalNivel::setTips(vector<QString> tipsNew) {
-    tips.resize(tipsNew.size());
-    for (int q = 0; q < tipsNew.size(); q++) {
-        this->tips[q] = tipsNew[q];
-    }
+void PantallaFinalNivel::setVolumeSound(float vol)
+{
+    this->sonidoBotones.setVolume(vol-0.2);
 }
 
-void leerArch(PantallaFinalNivel* pf) {
-    QFile archivo(":/Resources/ArchivosTexto/tips.txt");
-    if (!archivo.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "error al abrir archivo tips";
-        return;
-    }
-    
-    qDebug() << "Pudo leer el arch tips";
-    
-    vector<QString> tips = pf->getTips();
-    
-    while (!archivo.atEnd()) {
-        QByteArray linea = archivo.readLine();
-        QString tip = QString::fromUtf8(linea).trimmed();
-        if (!tip.isEmpty()) {
-            tips.push_back(tip);
-        }
-    }
-    archivo.close();
-    
-    pf->setTips(tips);
-    
-    for (int i = 0; i < tips.size(); i++) {
-        qDebug() << "tip: " << tips[i];
-    }
+void PantallaFinalNivel::setMusicSound(float vol)
+{
+    this->musica.setVolume(vol-0.2);
 }
 
 void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
@@ -90,13 +76,8 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
         ui->stackedTitulos->setCurrentIndex(1);
         ui->stackedBotones->setCurrentIndex(1);
         
-        // MOSTRAR TIPS:
-        leerArch(this);
-        for (int q = 0; q < this->tips.size(); q++) {
-            qDebug() << "tip de la clase: " << this->tips[q];
-        }
-        
         QString tipRandom = this->tips[Random.bounded(this->tips.size())];
+        qDebug() << "Tipo seleccionado: " << tipRandom;
         ui->tipsLabel->setText(tipRandom);
         
     } else {

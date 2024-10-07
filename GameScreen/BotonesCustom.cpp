@@ -3,7 +3,7 @@
 
 BotonesCustom::BotonesCustom(QWidget *parent):
     QWidget(parent)
-    , ui(new Ui::BotonesCustom), padre(parent)
+    , ui(new Ui::BotonesCustom), padre(parent), volMax(0.2)
 {
     ui->setupUi(this);
     sonido2.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
@@ -23,7 +23,7 @@ BotonesCustom::BotonesCustom(QWidget *parent):
 
 BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent)
+    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent), volMax(0.2)
 {
     ui->setupUi(this);
 
@@ -44,7 +44,7 @@ BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, QWidget *parent)
 
 BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent)
+    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent), volMax(0.2)
 {
     ui->setupUi(this);
 
@@ -65,7 +65,28 @@ BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo,
 
 BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo, QString SonidoCustom, QWidget *parent):
     QWidget(parent)
-    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent)
+    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent), volMax(0.2)
+{
+    ui->setupUi(this);
+
+    sonido2.setSource(QUrl(SonidoCustom));
+    sonido2.setVolume(0.8);
+
+    // Colocamos la imagen que va a tener el boton segun el estado.
+    CrearSkinBoton(Estado1, SkinBotonUnblock, tipo);
+    CrearSkinBoton(Estado2, SkinBotonBlock, tipo);
+
+    // Le damos la apariencia de no estar apretado al boton.
+    ui->Boton->setStyleSheet(SkinBotonUnblock);
+
+    // Conectamos el temporizador al apretar los botones
+    TemporizadorBotones.setSingleShot(true);
+    TiempoBloqueo = 1000;
+}
+
+BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo, QString SonidoCustom, float VolMax, QWidget *parent):
+    QWidget(parent)
+    , ui(new Ui::BotonesCustom), sonido2(this), padre(parent), volMax(VolMax)
 {
     ui->setupUi(this);
 
@@ -158,7 +179,7 @@ bool BotonesCustom::getBotonBloqueado() const
 
 void BotonesCustom::setVolumen(float volumen)
 {
-    sonido2.setVolume(volumen-0.2);
+    sonido2.setVolume(volumen-volMax);
 }
 
 void BotonesCustom::PausarBoton()

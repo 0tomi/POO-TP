@@ -8,6 +8,7 @@
 #include <vector>
 #include <QString>
 #include <QRandomGenerator>
+#include <QSoundEffect>
 
 namespace Ui {
 class PantallaFinalNivel;
@@ -24,7 +25,10 @@ public:
     void guardarPartida();
 
     vector<QString> getTips();
-    void setTips(vector<QString> tipsNew);
+public slots:
+    void setVolumeSound(float vol);
+    void setMusicSound(float vol);
+
 signals:
     void salirClicked();
     void sigNivelClicked(int NextLevel, int Dificultad);
@@ -38,6 +42,8 @@ private slots:
 private:
     GuardarPartidas * saveGame;
     Ui::PantallaFinalNivel *ui;
+    QSoundEffect sonidoBotones;
+    QSoundEffect musica;
     const QString COLOR_ROJO = "color: rgb(255, 0, 0);";
     const QString COLOR_BLANCO = "color: rgb(255, 255, 255);";
     int NivelActual;

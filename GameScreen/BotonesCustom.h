@@ -24,6 +24,7 @@ public:
     explicit BotonesCustom(QString Estado1, QString Estado2, QWidget *parent = nullptr);
     explicit BotonesCustom(QString Estado1, QString Estado2, TiposImagen , QWidget *parent = nullptr);
     explicit BotonesCustom(QString Estado1, QString Estado2, TiposImagen , QString SonidoCustom, QWidget *parent = nullptr);
+    explicit BotonesCustom(QString Estado1, QString Estado2, TiposImagen , QString SonidoCustom, float VolMax, QWidget *parent = nullptr);
     void copyFormat();
     void SetTiempoBloqueo(int milisegundos);
     void BloquearBoton(bool bloqueo);
@@ -54,6 +55,7 @@ private:
     const QString ImagenNormal = "image";
     const QString ImagenStretch = "border-image";
     QSoundEffect sonido2;
+    float volMax;
 
     void CrearSkinBoton(QString Estado1, QString &Direccion);
     void CrearSkinBoton(QString Estado1, QString &Direccion, TiposImagen);
