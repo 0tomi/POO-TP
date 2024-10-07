@@ -88,6 +88,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         logs.h logs.cpp
         Niveles/lectorniveles.h Niveles/lectorniveles.cpp
         Documentos/nuevaestanciaui.h Documentos/nuevaestanciaui.cpp Documentos/nuevaestanciaui.ui
+        Generadores/generador_radiografia.h Generadores/generador_radiografia.cpp
+        Documentos/radiografia.h Documentos/radiografia.cpp
 
 
 
