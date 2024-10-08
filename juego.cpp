@@ -27,7 +27,7 @@ void Juego::PrepararJuego(int Dificultad)
 
 void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
-    this->SemillaMadre = 464;//QTime::currentTime().msec();
+    this->SemillaMadre = QTime::currentTime().msec();
     emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
     setReglasSeed();
     NivelActual = Nivel;
@@ -48,6 +48,19 @@ void Juego::PrepararJuego(PlayerStats stats)
     Multas = stats.Multas;
     CantidadNPCsRechazados = stats.CantidadNPCsRechazados;
     CantidadNPCsAceptados = stats.CantidadNPCsAceptados;
+}
+
+void Juego::PrepararJuego(int Nivel, int Dificultad, quint32 SeedPersonalizada)
+{
+    this->SemillaMadre = SeedPersonalizada;
+    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
+    setReglasSeed();
+    NivelActual = Nivel;
+    setDificultad(Dificultad);
+
+    // Reseteamos la cantidad ganada en el nivel
+    this->SocialCreditsEarnedInLevel = 0;
+    this->setUpNivel(Nivel);
 }
 
 void Juego::setDificultad(int dificultad)
