@@ -114,12 +114,14 @@ void PantallaMenu::checkSaveSlots()
 
 void PantallaMenu::setBotonesPartida(int num, bool estado)
 {
-    if (num == 0)
-        desbloquearBotonGuardado(ui->botonPartida1);
-    if (num == 1)
-        desbloquearBotonGuardado(ui->botonPartida2);
-    if (num == 2)
-        desbloquearBotonGuardado(ui->botonPartida3);
+    if (estado){
+        if (num == 0)
+            desbloquearBotonGuardado(ui->botonPartida1);
+        if (num == 1)
+            desbloquearBotonGuardado(ui->botonPartida2);
+        if (num == 2)
+            desbloquearBotonGuardado(ui->botonPartida3);
+    }
 }
 
 void PantallaMenu::bloquearBotonGuardado(QPushButton *boton)
