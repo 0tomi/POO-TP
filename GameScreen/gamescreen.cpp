@@ -5,7 +5,8 @@
 /// #################################### CONSTRUCTOR ###################################################
 GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::GameScreen)
+    , ui(new Ui::GameScreen), Musica(this), MusicaSources{ QUrl("qrc:/Resources/Musica/MusicaJuego1.WAV")
+    , QUrl("qrc:/Resources/Musica/MusicaJuego2.WAV"), QUrl("qrc:/Resources/Musica/MusicaJuego3.WAV")}
 {
     ui->setupUi(this);
 
@@ -64,7 +65,9 @@ void GameScreen::setUpLibroReglas()
 
 void GameScreen::setUpSonidos()
 {
-
+    Musica.setSource(MusicaSources[1]);
+    Musica.setLoopCount(QSoundEffect::Infinite);
+    Musica.setVolume(0.3);
 }
 /// #################################### BOTONES ###################################################
 void GameScreen::SpawnearBotones()
@@ -176,6 +179,11 @@ void GameScreen::setVolumenes(float volumen)
     IconoDocs->setVolumenes(volumen);
 }
 
+void GameScreen::setMusicVolume(float vol)
+{
+    Musica.setVolume(vol-0.3);
+}
+
 void GameScreen::RealizarConexionesPrincipales()
 {
     // Conecto los botones para que segun lo que haga el usuario, se evalue una cosa u otra.
@@ -250,9 +258,15 @@ void GameScreen::PrepararJuego(PlayerStats stats)
 
 void GameScreen::Iniciar()
 {
-    if (nivelActual >= 5)
+    if (nivelActual >= 5){
         BotonScanner->show();
-    else BotonScanner->hide();
+        Musica.setSource(MusicaSources[2]);
+        Musica.setVolume(0.4);
+    } else {
+        BotonScanner->hide();
+        Musica.setSource(MusicaSources[0]);
+        Musica.setVolume(0.3);
+    }
 
     IconoDocs->setFinalPartida(false);
     Notificaciones.clear();
@@ -268,6 +282,7 @@ void GameScreen::arrancarJuego()
     TiempoActual = 0;
     ActualizarTiempo();
 
+    Musica.play();
     GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
 }
@@ -285,6 +300,7 @@ void GameScreen::Restart()
 void GameScreen::PausarJuego()
 {
     GestorNPC.Pausar();
+    Musica.stop();
     tiempoRestante = tiempoPartida.remainingTime();
     tiempoPartida.stop();
     Pausado = true;
@@ -293,6 +309,7 @@ void GameScreen::PausarJuego()
 void GameScreen::ReanudarJuego()
 {
     GestorNPC.Reanudar();
+    Musica.play();
     tiempoPartida.start(tiempoRestante);
 
     Pausado = false;
@@ -302,6 +319,7 @@ void GameScreen::ReanudarJuego()
 
 void GameScreen::FinalDePartida()
 {
+    Musica.stop();
     MatarNotificaciones();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();

@@ -48,6 +48,7 @@ public slots:
     void ReanudarJuego();
     void FinalDePartida();
     void setVolumenes(float);
+    void setMusicVolume(float vol);
 
 signals:
     void NivelTerminado(bool Perdio);
@@ -71,6 +72,8 @@ private:
     bool DecisionJugador;
 
     // Sonidos
+    QSoundEffect Musica;
+    QUrl MusicaSources[3];
     void setUpSonidos();
 
     // Documentos que deja el NPC
