@@ -36,15 +36,16 @@ public:
     void resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed);
 
     // Getters
-    int* getPaisesPermitidos(int &max) const;
-    QString* getEstadoCivilPermitido(int &max) const;
-    int *getPaisesInvalidos(int &max) const;
+    vector<QString> getPaisesPermitidos() const;
+    vector<QString> getEstadoCivilPermitido() const;
+    vector<QString>getPaisesInvalidos() const;
+    vector<QString> getEstadoCivilInvalido() const;
     //QString* getTipoVisitaPermitida(int &max);
     int getFechaMinPermitida();
     int getFechaMaxPermitida();
     int getDuracionEstanciaPermitida();
 
-    QString *getTipoDeVisitaValida() const;
+    vector<QString>getTipoDeVisitaValida() const;
     int getMaxVisitasPermitidas() const;
 
 private:
@@ -53,14 +54,16 @@ private:
     list <QString> estadosCivilesInvalidos;
     list <QString> tiposVistaValida;
     list <QString> tiposVisitaInvalida;
+    vector <QString> PaisesValidos;
+    vector <QString> PaisesInvalidos;
 
     // # Conjunto de reglas #
     int fechaMin, fechaMax; // va a ser solo el anio
     int duracionDeEstanciaValida;
-    int* paisesValidos;
-    int* paisesInvalidos;
-    QString* tipoDeVisitaValida;
-    QString* estadoCivilValidos;
+    vector<parDatos> parpaisesValidos;
+    vector<parDatos> parpaisesInvalidos;
+    vector<QString> tipoDeVisitaValida;
+    vector<QString> estadoCivilValidos;
 
     // Tope de arrays:
     int maxPaisesPermitidos;

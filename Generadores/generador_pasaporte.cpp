@@ -4,19 +4,19 @@
 
 Generar_pasaporte::Generar_pasaporte() {
     LectorArchivos archivo(":/Resources/ArchivosTexto/mujeres.txt");
-    this->nombre_mujeres = archivo.getArray();
+    this->nombre_mujeres = archivo.getVector();
     this->max_mujeres = archivo.getTopeArray();
 
     archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/hombres.txt");
-    this->nombre_hombres = archivo.getArray();
+    this->nombre_hombres = archivo.getVector();
     this->max_hombres = archivo.getTopeArray();
 
     archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/x.txt");
-    this->nombre_x = archivo.getArray();
+    this->nombre_x = archivo.getVector();
     this->max_x = archivo.getTopeArray();
 
     archivo.LeerArchivoNuevo(":/Resources/ArchivosTexto/apellidos.txt");
-    this->apellidos = archivo.getArray();
+    this->apellidos = archivo.getVector();
     this->max_apellidos = archivo.getTopeArray();
 
     quint32 Semilla = QTime::currentTime().msec();;
@@ -27,7 +27,7 @@ void Generar_pasaporte::Inicializar(ReglasNivel1 *rules, quint32 seed)
 {
     this->setSeed(seed);
     this->rules = rules;
-    this->nacionalidades = this->rules->getPaises(this->max_nacionalidades);
+    this->nacionalidades = this->rules->getPaises();
 }
 
 // Función para obtener el número de días en un mes y año dados
@@ -104,39 +104,27 @@ void Generar_pasaporte::generar_camposValidos(bool valido, int Probabilidad){
             }
     }
 }
-//me llega si es valido, reglas, genero
+
 QString Generar_pasaporte::generar_nacionalidad(bool valido){
-    int tamanio;
-    int * indices_paises = this->rules->getPaisesPermitidos(tamanio); // para conseguir las nacionalidades permitidas
-    int indice_generar; //para usar rand y elegir alguno de los indices;
-    QString nacionalidad_generada;
     if(valido){ // genera una nacionalidad valida
-        indice_generar = this->rand.bounded(tamanio);
-        nacionalidad_generada = nacionalidades[indices_paises[indice_generar]];
+        vector<QString>PaisesValidos = this->rules->getPaisesPermitidos();
+        return PaisesValidos[this->rand.bounded(PaisesValidos.size())];
     } else{
-        indice_generar = this->rand.bounded(this->max_nacionalidades - tamanio);
-        nacionalidad_generada = this->nacionalidades[indice_generar];
+        vector<QString>PaisesInvalidos = this->rules->getPaisesInvalidos();
+        return PaisesInvalidos[this->rand.bounded(PaisesInvalidos.size())];
     }
-    return nacionalidad_generada;
 }
 QString Generar_pasaporte::generar_estado_civil(char genero, bool valido){
-    int tamanio_total; // cant de estados civiles
-    int tamanio_validos; // cant de estados civiles validos
     int valorCentinela; // para guardar el valor del rand;
-    QString * estados_civiles = this->rules->getEstadosCiviles(tamanio_total); // para conseguir estados civiles
-    QString * estados_civiles_validos = this->rules->getEstadoCivilPermitido(tamanio_validos);
     QString estado_civil_generado;
     if(valido) { // generar estado civil valido;
-        valorCentinela = this->rand.bounded(tamanio_validos);
-
+        vector<QString> estados_civiles_validos = this->rules->getEstadoCivilPermitido();
+        valorCentinela = this->rand.bounded(estados_civiles_validos.size());
         estado_civil_generado = estados_civiles_validos[valorCentinela];
-
     } else{ // genera estado civil invalido
-        if (tamanio_total - tamanio_validos)
-            valorCentinela = tamanio_validos + this->rand.bounded(tamanio_total - tamanio_validos);
-        else
-            valorCentinela = rand.bounded(tamanio_total);
-        estado_civil_generado = estados_civiles[valorCentinela];
+        vector<QString> estados_civiles_invalidos = this->rules->getEstadoCivilInvalido();
+        valorCentinela = this->rand.bounded(estados_civiles_invalidos.size());
+        estado_civil_generado = estados_civiles_invalidos[valorCentinela];
     }
     switch (genero){
     case 'H': // hombre
@@ -156,16 +144,13 @@ QString Generar_pasaporte::generar_nombre(char genero){
     int valor_centinela; //para pickear indice
     switch (genero){
     case 'H':
-        valor_centinela = this->rand.bounded(this->max_hombres);
-        nombre_generado = this->nombre_hombres[valor_centinela];
+        nombre_generado = this->nombre_hombres[this->rand.bounded(this->nombre_hombres.size())];
         break;
     case 'M':
-        valor_centinela = this->rand.bounded(this->max_mujeres);
-        nombre_generado = this->nombre_mujeres[valor_centinela];
+        nombre_generado = this->nombre_mujeres[this->rand.bounded(this->nombre_mujeres.size())];
         break;
     case 'X':
-        valor_centinela = this->rand.bounded(this->max_x);
-        nombre_generado = this->nombre_x[valor_centinela];
+        nombre_generado = this->nombre_x[this->rand.bounded(this->nombre_x.size())];
     }
     nombre_generado += " " + this->apellidos[this->rand.bounded(this->max_apellidos)];
     return nombre_generado;

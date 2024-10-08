@@ -1,14 +1,11 @@
 #include "reglasnivel1.h"
+#include "qlabel.h"
 #include <QTime>
 #include <QDebug>
 
 ReglasNivel1::ReglasNivel1(): Reglas()
 {
-    paisesInvalidos = nullptr;
-    paisesValidos = nullptr;
     tipoDeVisitaValida = nullptr;
-    estadoCivilValidos = nullptr;
-
     // # Inicializamos las reglas
     setPaisesPermitidos(6);
     setFechasValidas();
@@ -20,10 +17,7 @@ ReglasNivel1::ReglasNivel1(): Reglas()
 ReglasNivel1::ReglasNivel1(quint32 Seed): Reglas()
 {
     rand.seed(Seed);
-    paisesInvalidos = nullptr;
-    paisesValidos = nullptr;
     tipoDeVisitaValida = nullptr;
-    estadoCivilValidos = nullptr;
 
     // # Inicializamos las reglas
     setPaisesPermitidos(6);
@@ -48,8 +42,8 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed)
 /// ####################### Generadores de parametros #######################
 void ReglasNivel1::generar_Paises(int Cantidad_Paises_Permitidos)
 {
-    LimpiarDatos(paisesValidos);
-    LimpiarDatos(paisesInvalidos);
+    LimpiarDatos(PaisesValidos);
+    LimpiarDatos(PaisesInvalidos);
 
     if (Cantidad_Paises_Permitidos < 1 || Cantidad_Paises_Permitidos > maxPaises)
         setPaisesPermitidos(rand.bounded(4));
@@ -132,91 +126,61 @@ void ReglasNivel1::setFechasValidas(){
 }
 
 void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
-    int cantidadPaisesPermitidos = cantidadMinimaPaisesPermitidos;
 
-    // Preparar el array de paises y su tope
-    this->paisesValidos = new int[cantidadPaisesPermitidos];
-    this->maxPaisesPermitidos = cantidadPaisesPermitidos;
 
-    // El -1 significa que no tiene cargado ningun dato todavia, es como inicializarlo en 0.
-    for (int i = 0; i < cantidadPaisesPermitidos; i++)
-        paisesValidos[i] = -1;
+    crearParDatos(this->paises, this->parpaisesValidos);
+    this->maxPaisesPermitidos = cantidadMinimaPaisesPermitidos;
 
-    // Seleccionar paises permitidos
-    int i = 0;
-    while (cantidadPaisesPermitidos){
-        do{
-            paisesValidos[i] = rand.bounded(maxPaises);
-        }while(checkRepetidos(paisesValidos[i]));
+    this->PaisesValidos = generarVector(generarPermitido(this->maxPaisesPermitidos,this->parpaisesValidos));
 
-        i++;
-        cantidadPaisesPermitidos--;
-    }
+    crearParDatos(this->paises,this->parpaisesInvalidos);
 
-    // Crear array de paises no permitidos
-    maxPaisesInvalidos = maxPaises - maxPaisesPermitidos;
-    paisesInvalidos = new int[maxPaisesInvalidos];
-    int Contador = 0;
-    for (int i = 0; i < maxPaises; i++){
-        if(!checkIfValido(i)){
-            paisesInvalidos[Contador] = i;
-            Contador++;
-        }
-    }
+    this->PaisesInvalidos = generarVector(generarNoPermitido(this->parpaisesInvalidos));
 }
 
-bool ReglasNivel1::checkRepetidos(int dato){
+/*bool ReglasNivel1::checkRepetidos(int dato){
     int ocurrencias = 0;
     for (int i = 0; i < this->maxPaisesPermitidos; i++){
-        if (paisesValidos[i] == dato)
+        if (PaisesValidos[i] == dato)
             ocurrencias++;
         if (ocurrencias == 2)
             return true;
     }
 
     return false;
-}
+}*/
 
-bool ReglasNivel1::checkIfValido(int indice)
+/*bool ReglasNivel1::checkIfValido(int indice)
 {
     for (int i = 0; i < maxPaisesPermitidos; i++){
-        if (indice == paisesValidos[i])
+        if (indice == PaisesValidos[i])
             return true;
     }
     return false;
-}
+}*/
 
 void ReglasNivel1::SumarAstana()
 {
-    QString * aux = new QString[this->maxPaises+1];
-    aux[0] = "Astana";
-    for (int i = 1; i < this->maxPaises; i++)
-        aux[i] = this->paises[i-1];
-    delete[] this->paises;
-    this->paises = aux;
+    this->paises.push_back("astana");
 }
 
 // Getters
-int* ReglasNivel1::getPaisesPermitidos(int &max) const{
-    max = this->maxPaisesPermitidos;
-    return this->paisesValidos;
+vector<QString> ReglasNivel1::getPaisesPermitidos() const{
+    return this->PaisesValidos;
 }
 
-QString* ReglasNivel1::getEstadoCivilPermitido(int &max) const{
-    max = estadosCivilesValidos.size();
-    QString * array = new QString[max];
-
-    int i = 0;
-    for (const auto& element: estadosCivilesValidos)
-        array[i++] = element;
-
-    return array;
+vector<QString> ReglasNivel1::getEstadoCivilPermitido() const{
+    return this->estadoCivilValidos;
 }
 
-int *ReglasNivel1::getPaisesInvalidos(int &max) const
+vector<QString> ReglasNivel1::getPaisesInvalidos() const
 {
-    max = maxPaisesInvalidos;
-    return paisesInvalidos;
+    return this->PaisesInvalidos;
+}
+
+vector<QString> ReglasNivel1::getEstadoCivilInvalido() const
+{
+    return generarVector(this->estadosCivilesInvalidos);
 }
 
 int ReglasNivel1::getFechaMinPermitida(){
@@ -231,16 +195,9 @@ int ReglasNivel1::getDuracionEstanciaPermitida(){
     return this->duracionDeEstanciaValida;
 }
 
-QString *ReglasNivel1::getTipoDeVisitaValida() const
+vector<QString>ReglasNivel1::getTipoDeVisitaValida() const
 {
-    int max = tiposVistaValida.size();
-    QString * array = new QString[max];
-
-    int i = 0;
-    for (const auto& element: tiposVistaValida)
-        array[i++] = element;
-
-    return array;
+    return generarVector(this->tiposVistaValida);
 }
 
 int ReglasNivel1::getMaxVisitasPermitidas() const
@@ -251,9 +208,5 @@ int ReglasNivel1::getMaxVisitasPermitidas() const
 // Destructor
 ReglasNivel1::~ReglasNivel1()
 {
-    delete[] paisesValidos;
-    if (tipoDeVisitaValida != tipoVisitas)
-        delete[] tipoDeVisitaValida;
-    if (estadoCivilValidos != estadosCiviles)
-        delete[] estadoCivilValidos;
+
 }

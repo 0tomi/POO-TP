@@ -11,11 +11,11 @@ class Generar_pasaporte
 private:
     bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
 protected:
-    QString * nombre_mujeres;
-    QString * nombre_hombres;
-    QString * nombre_x;
-    QString * nacionalidades;
-    QString * apellidos;
+    vector<QString>  nombre_mujeres;
+    vector<QString>  nombre_hombres;
+    vector<QString>  nombre_x;
+    vector<QString>  nacionalidades;
+    vector<QString>  apellidos;
     ReglasNivel1 * rules;
     QRandomGenerator rand;
 
