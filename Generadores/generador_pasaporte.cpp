@@ -28,6 +28,12 @@ void Generar_pasaporte::Inicializar(ReglasNivel1 *rules, quint32 seed)
     this->setSeed(seed);
     this->rules = rules;
     this->nacionalidades = this->rules->getPaises(this->max_nacionalidades);
+
+    qDebug() << "Paises no permitidos del generador: ";
+    int max;
+    auto test = rules->getPaisesInvalidos(max);
+    for (int i = 0; i < max; i++)
+        qDebug() << nacionalidades[test[i]];
 }
 
 // Función para obtener el número de días en un mes y año dados

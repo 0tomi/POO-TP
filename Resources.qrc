@@ -185,5 +185,8 @@
         <file>Resources/Documentos/NuevaEstancia/paiseses de paso.png</file>
         <file>Resources/Documentos/NuevaEstancia/EstanciaNuevoDOC.png</file>
         <file>Resources/Documentos/NormativasIconoLibro.png</file>
+        <file>Resources/Musica/MusicaJuego1.WAV</file>
+        <file>Resources/Musica/MusicaJuego2.WAV</file>
+        <file>Resources/Musica/MusicaJuego3.WAV</file>
     </qresource>
 </RCC>

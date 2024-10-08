@@ -16,7 +16,7 @@ Juego::Juego():
 /// #################################### PREPRARAR JUEGO ###################################################
 void Juego::PrepararJuego(int Dificultad)
 {
-    this->SemillaMadre = 286;//QTime::currentTime().msec();
+    this->SemillaMadre = QTime::currentTime().msec();
     emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
     setReglasSeed();
     NivelActual = 1;
@@ -27,7 +27,7 @@ void Juego::PrepararJuego(int Dificultad)
 
 void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
-    this->SemillaMadre = 286;//QTime::currentTime().msec();
+    this->SemillaMadre = 464;//QTime::currentTime().msec();
     emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
     setReglasSeed();
     NivelActual = Nivel;
