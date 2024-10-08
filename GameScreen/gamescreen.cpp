@@ -35,7 +35,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
 
     introPantalla = new IntroPantalla(juego, this);
-    introPantalla->setFixedSize(1920,1080);
+    introPantalla->acomodarPantalla();
     introPantalla->hide();
 
     SpawnearBotones();
@@ -457,6 +457,7 @@ void GameScreen::resizeEvent(QResizeEvent *event)
 {
     // En caso de cambiar la ventana, ajustamos el tamaño del NPC
     QWidget::resizeEvent(event);
+    this->introPantalla->acomodarPantalla();
     if (GestorNPC.MostrandoElNPC())
         GestorNPC.Centrar();
     if (pantallaPerdiste->getMostrandoPantalla())
