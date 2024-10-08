@@ -18,14 +18,6 @@ void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * 
 
     paisesValidos = ruleslvl2->getPaisesValidos();
     paisesInvalidos = ruleslvl2->getPaisesInvalidos();
-
-    qDebug() << "Paises validos generador de Residencia:";
-    for (const auto& e: paisesInvalidos)
-        qDebug() << e;
-
-    qDebug() << "Paises invalidos generador de Residencia:";
-    for (const auto& e: paisesInvalidos)
-        qDebug() << e;
 }
 
 PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)
