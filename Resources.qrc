@@ -185,5 +185,8 @@
         <file>Resources/Documentos/NuevaEstancia/paiseses de paso.png</file>
         <file>Resources/Documentos/NuevaEstancia/EstanciaNuevoDOC.png</file>
         <file>Resources/Documentos/NormativasIconoLibro.png</file>
+        <file>Niveles/Nivel5/Espalda.png</file>
+        <file>Niveles/Nivel5/fondoscanner.png</file>
+        <file>Niveles/Nivel5/Frente.png</file>
     </qresource>
 </RCC>
