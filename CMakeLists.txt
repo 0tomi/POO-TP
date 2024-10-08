@@ -90,6 +90,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/nuevaestanciaui.h Documentos/nuevaestanciaui.cpp Documentos/nuevaestanciaui.ui
         Generadores/generador_radiografia.h Generadores/generador_radiografia.cpp
         Documentos/radiografia.h Documentos/radiografia.cpp
+        Documentos/radiografiaui.h Documentos/radiografiaui.cpp Documentos/radiografiaui.ui
 
 
 
