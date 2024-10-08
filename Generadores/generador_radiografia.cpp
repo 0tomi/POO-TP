@@ -16,7 +16,9 @@ void generador_Radiografia::inicializar(ReglasNivel4 * rules, quint32 semilla, i
 
 radiografia* generador_Radiografia::generar_radiografia(bool validez)
 {
-    this->Elementos.clear();
+    if (!this->Elementos.empty())
+        this->Elementos.clear();
+
     switch (this->dificultad){
         // Modo facil
     case 1: this->cantElementos = this->random.bounded(2);
@@ -41,7 +43,10 @@ radiografia* generador_Radiografia::generar_radiografia(bool validez)
             int cantValida; int cantInvalida;
             cantInvalida = this->random.bounded(1,this->cantElementos);
             generar_invalidos(cantInvalida);
-            if (cantInvalida != this->cantElementos) cantValida = this->cantElementos - cantInvalida;
+            if (cantInvalida != this->cantElementos){
+                cantValida = this->cantElementos - cantInvalida;
+                generar_validos(cantValida);
+            }
 
         }
     }
@@ -82,9 +87,9 @@ void generador_Radiografia::generar_invalidos(int cant2Generate)
         ParDatos nuevoElemento;
         int sorteo;
         do {
-            sorteo = this->random.bounded(this->ObjetosValidos.size());
+            sorteo = this->random.bounded(this->ObjetosInvalidos.size());
         } while (ObjetosUsados[sorteo]);
-        nuevoElemento.Objeto = this->ObjetosValidos[sorteo];
+        nuevoElemento.Objeto = this->ObjetosInvalidos[sorteo];
         ObjetosUsados[sorteo] = true;
         do {
             nuevoElemento.ParteCuerpo = this->random.bounded(this->MAX_PARTESCUERPO);

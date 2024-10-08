@@ -13,6 +13,7 @@ private:
     vector<ParDatos>Elementos;
 public:
     radiografia(vector<ParDatos>&Elements);
+    vector<ParDatos> GetVector() const;
 };
 
 #endif // RADIOGRAFIA_H
