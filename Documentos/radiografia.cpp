@@ -1,3 +1,6 @@
 #include "radiografia.h"
 
-radiografia::radiografia() {}
+radiografia::radiografia(vector<ParDatos> &Elements)
+{
+    this->Elementos = Elements;
+}
