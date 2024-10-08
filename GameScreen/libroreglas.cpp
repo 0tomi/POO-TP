@@ -219,14 +219,11 @@ void libroreglas::setDatos(const vector<QString> &lineas, QLabel* lugarDondeSeCo
 }
 
 void libroreglas::setPaises(ReglasNivel1 * datos){
-    int maxIndices;
-    int maxPaises;
-    QString * Paises = datos->getPaises(maxPaises);
-    int * IndicesInv = datos->getPaisesInvalidos(maxIndices);
+    vector<QString>  invalidos = datos->getPaisesInvalidos();
 
     QString Texto = "Paises no permitidos:\n";
-    for(int i = 0; i < maxIndices; i++){
-        Texto += Paises[IndicesInv[i]] + "\n";
+    for(int i = 0; i < invalidos.size(); i++){
+        Texto += invalidos[i] + "\n";
     }
     ui->PaisesPermitidos->setText(Texto);
 }
@@ -240,10 +237,9 @@ void libroreglas::setFechas(ReglasNivel1 * datos){
 }
 
 void libroreglas::setEstadoCivil(ReglasNivel1 * datos){
-    int max;
-    QString * EstadosCivilesValidos = datos->getEstadoCivilPermitido(max);
+    vector<QString>  EstadosCivilesValidos = datos->getEstadoCivilPermitido();
     QString Texto = "Solo podran ingresar los \nsiguientes estados civiles:\n";
-    for (int i = 0; i < max; ++i) {
+    for (int i = 0; i < EstadosCivilesValidos.size(); ++i) {
         Texto += EstadosCivilesValidos[i] + "o/a/x" + "\n";
     }
 
@@ -257,9 +253,8 @@ void libroreglas::setDuracionEstancia(ReglasNivel1 * datos){
 }
 void libroreglas::setTipoDeVisita(ReglasNivel1 * datos){
     QString Texto = "Solo se permitirá la \nentrada a los siguientes\n tipos de visita:\n";
-    QString * tipoVisita = datos->getTipoDeVisitaValida();
-    int Max = datos->getMaxVisitasPermitidas();
-    for (int i = 0; i < Max ; ++i) {
+    vector<QString> tipoVisita = datos->getTipoDeVisitaValida();
+    for (int i = 0; i < tipoVisita.size() ; ++i) {
         Texto += tipoVisita[i] + "\n";
     }
 

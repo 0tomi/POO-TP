@@ -19,7 +19,7 @@ GenerarEstancia::GenerarEstancia()
 void GenerarEstancia::Inicializar(ReglasNivel1 *rules, LocuraCaracteres *randomizador, quint32 seed)
 {
     this->NumRandom.seed(seed);
-    this->tipoVisitas = rules->getTipoVisitas(this->maxTipoVisitas);
+    this->tipoVisitas = rules->getTipoVisitas();
 
     tipoVisitasValidas = rules->getTipoDeVisitaValida();
     maxVisitasValidas = rules->getMaxVisitasPermitidas();

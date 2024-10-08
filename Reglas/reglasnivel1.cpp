@@ -5,7 +5,6 @@
 
 ReglasNivel1::ReglasNivel1(): Reglas()
 {
-    tipoDeVisitaValida = nullptr;
     // # Inicializamos las reglas
     setPaisesPermitidos(6);
     setFechasValidas();
@@ -17,7 +16,6 @@ ReglasNivel1::ReglasNivel1(): Reglas()
 ReglasNivel1::ReglasNivel1(quint32 Seed): Reglas()
 {
     rand.seed(Seed);
-    tipoDeVisitaValida = nullptr;
 
     // # Inicializamos las reglas
     setPaisesPermitidos(6);
@@ -42,8 +40,6 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed)
 /// ####################### Generadores de parametros #######################
 void ReglasNivel1::generar_Paises(int Cantidad_Paises_Permitidos)
 {
-    LimpiarDatos(PaisesValidos);
-    LimpiarDatos(PaisesInvalidos);
 
     if (Cantidad_Paises_Permitidos < 1 || Cantidad_Paises_Permitidos > maxPaises)
         setPaisesPermitidos(rand.bounded(4));

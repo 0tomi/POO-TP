@@ -24,10 +24,10 @@ private:
     int dificultad;
     bool ValidezCampos[2];
 
-    QString* tipoVisitas;
+    vector<QString> tipoVisitas;
     int maxTipoVisitas;
 
-    QString* tipoVisitasValidas;
+    vector<QString> tipoVisitasValidas;
     int maxVisitasValidas;
     int duracMaximaEstancia;
 

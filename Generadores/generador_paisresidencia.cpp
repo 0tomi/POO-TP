@@ -110,7 +110,6 @@ QString generador_paisresidencia::generarPaisValido()
 
 QString generador_paisresidencia::generarPaisInvalido()
 {
-    int sorteo = rand.bounded(10);
     QString paisGenerado;
 
     if (this->camposLocura[2]){
@@ -119,7 +118,7 @@ QString generador_paisresidencia::generarPaisInvalido()
         return paisGenerado;
     }
 
-    sorteo = this->rand.bounded(paisesInvalidos.size());
+    int sorteo = this->rand.bounded(paisesInvalidos.size());
     paisGenerado = this->paisesInvalidos[sorteo];
 
     return paisGenerado;

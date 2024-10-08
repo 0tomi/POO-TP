@@ -64,7 +64,6 @@ private:
     vector<parDatos> parpaisesInvalidos;
     vector<QString> tipoDeVisitaValida;
     vector<QString> estadoCivilValidos;
-
     // Tope de arrays:
     int maxPaisesPermitidos;
     int maxPaisesInvalidos;
