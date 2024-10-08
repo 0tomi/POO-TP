@@ -17,7 +17,7 @@ PantallaPausa::PantallaPausa(QWidget *parent)
     connect(ui->quitButton, &QPushButton::clicked, this, &PantallaPausa::ConfirmarSalir);
     connect(ui->quitButtonConfirmed, &QPushButton::clicked, this, &PantallaPausa::buttonQuitClicked);
     connect(ui->noReturnButton, &QPushButton::clicked, this, &PantallaPausa::setInicio);
-    connect(ui->tutorialButton, &QPushButton::clicked, this, &PantallaPausa::clickedTutorial);
+    connect(ui->tutorialButton, &QPushButton::clicked, [this](){SonidosBotones.play(); emit clickedTutorial();});
 
     connect(ui->soundButton, &QPushButton::clicked, this, [this](){
         SonidosBotones.play();

@@ -104,6 +104,9 @@ void PantallaMenu::continueMusic()
 void PantallaMenu::checkSaveSlots()
 {
     auto Partidas = guardarPartida->LeerPartidas();
+    bloquearBotonGuardado(ui->botonPartida1);
+    bloquearBotonGuardado(ui->botonPartida2);
+    bloquearBotonGuardado(ui->botonPartida3);
     for (int i = 0; i < 3; i++)
         setBotonesPartida(i, Partidas[i]);
     delete[] Partidas;
@@ -112,11 +115,23 @@ void PantallaMenu::checkSaveSlots()
 void PantallaMenu::setBotonesPartida(int num, bool estado)
 {
     if (num == 0)
-        ui->botonPartida1->setEnabled(estado);
+        desbloquearBotonGuardado(ui->botonPartida1);
     if (num == 1)
-        ui->botonPartida2->setEnabled(estado);
+        desbloquearBotonGuardado(ui->botonPartida2);
     if (num == 2)
-        ui->botonPartida3->setEnabled(estado);
+        desbloquearBotonGuardado(ui->botonPartida3);
+}
+
+void PantallaMenu::bloquearBotonGuardado(QPushButton *boton)
+{
+    boton->setDisabled(true);
+    boton->setStyleSheet("color: white; background-color: #1e1532;");
+}
+
+void PantallaMenu::desbloquearBotonGuardado(QPushButton *boton)
+{
+    boton->setEnabled(true);
+    boton->setStyleSheet("color: white; background-color: rgb(170, 0, 255);");
 }
 
 void PantallaMenu::setVolumen(float vol)
