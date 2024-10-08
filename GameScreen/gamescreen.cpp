@@ -218,6 +218,7 @@ void GameScreen::PrepararJuego(int Dificultad)
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
+    qDebug() << "Nivel actual: " << Nivel;
     juego->PrepararJuego(Nivel, Dificultad);
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
