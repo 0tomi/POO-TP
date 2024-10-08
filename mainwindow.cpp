@@ -98,6 +98,10 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::soundVolume, gameScreen , &GameScreen::setVolumenes);
     connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaMenu , &PantallaMenu::setVolumen);
     connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaMenu, &PantallaMenu::setMusicVolume);
+    connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaFinalNivel , &PantallaFinalNivel::setSoundVolume);
+    connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaFinalNivel, &PantallaFinalNivel::setMusicVolume);
+    connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaTutorial , &PantallaTutorial::setSoundVolume);
+    connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaTutorial, &PantallaTutorial::setMusicVolume);
 }
 
 void MainWindow::ConeccionesPantallaMenu()
@@ -241,7 +245,8 @@ void MainWindow::setInicio()
 /// ################################## PANTALLA DE PAUSA #############################################
 void MainWindow::PrepararPantallaPausa()
 {
-    PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
+    if (pantallas->currentWidget() != pantallaTutorial)
+        PantallaPrevia = pantallas->currentIndex(); // Guardamos la pantalla previa
 
     if (pantallas->currentWidget() == gameScreen)
         gameScreen->PausarJuego();

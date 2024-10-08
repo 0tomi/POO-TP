@@ -42,7 +42,7 @@
     <widget class="QStackedWidget" name="Menus">
      <property name="styleSheet">
       <string notr="true">#Menus{
-border-image: url(:/Resources/escritorio2.png);
+	border-image: url(:/Resources/FondoLocuraWorking.png);
 }</string>
      </property>
      <property name="currentIndex">
@@ -106,7 +106,7 @@ border-image: url(:/Resources/escritorio2.png);
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>MENU DE PAUSA (WORK IN PROGRESS)</string>
+             <string>Menú de pausa</string>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -209,7 +209,7 @@ background-color: #1e1532;</string>
              </sizepolicy>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="ActivarPantallaCompleta">
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -258,6 +258,9 @@ background-color: #1e1532;</string>
                   <pointsize>22</pointsize>
                   <bold>true</bold>
                  </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">color: white;

@@ -15,8 +15,8 @@ PantallaFinalNivel::PantallaFinalNivel(GuardarPartidas* sg, QWidget *parent)
 
     sonidoBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
     musica.setSource(QUrl(""));
-    setMusicSound(1.0);
-    setVolumeSound(1.0);
+    setMusicVolume(1.0);
+    setSoundVolume(1.0);
 
     saveGame = sg;
     // conecc.signal de salirBtn:
@@ -40,12 +40,12 @@ vector<QString> PantallaFinalNivel::getTips() {
     return this->tips;
 }
 
-void PantallaFinalNivel::setVolumeSound(float vol)
+void PantallaFinalNivel::setSoundVolume(float vol)
 {
     this->sonidoBotones.setVolume(vol-0.2);
 }
 
-void PantallaFinalNivel::setMusicSound(float vol)
+void PantallaFinalNivel::setMusicVolume(float vol)
 {
     this->musica.setVolume(vol-0.2);
 }
@@ -105,11 +105,13 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
 
 // Signals
 void PantallaFinalNivel::onSalirClicked() {
+    sonidoBotones.play();
     emit EnviarLogs("Boton de Salir Presionado");
     emit salirClicked();
 }
 
 void PantallaFinalNivel::onSigNivelClicked() {
+    sonidoBotones.play();
     emit EnviarLogs("Boton Siguiente Nivel Presionado");
     NivelActual++;
     emit sigNivelClicked(NivelActual, Dificultad);
@@ -117,6 +119,7 @@ void PantallaFinalNivel::onSigNivelClicked() {
 
 void PantallaFinalNivel::onReintentarClicked()
 {
+    sonidoBotones.play();
     emit EnviarLogs("Boton Reintentar Presionado");
     emit reintentarClicked(1, Dificultad);
 }

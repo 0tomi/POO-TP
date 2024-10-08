@@ -92,7 +92,7 @@ border-image: url(:/Resources/escritorio2.png);
          </size>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="pprincipal">
          <property name="maximumSize">
@@ -306,7 +306,7 @@ background-color: #1e1532;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">color: white;
-background-color: #1e1532;</string>
+background-color: rgb(170, 0, 255);</string>
             </property>
             <property name="text">
              <string>Partida guardada 1</string>

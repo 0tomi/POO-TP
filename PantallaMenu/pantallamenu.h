@@ -3,6 +3,7 @@
 #include<QString>
 #include <QWidget>
 #include <QSoundEffect>
+#include <QPushButton>
 #include "../PantallaTransicion/pantallatransicion.h"
 #include "../SaveSlots/guardarpartida.h"
 
@@ -82,6 +83,8 @@ private slots:
 
     void tutorialButton();
 private:
+    void bloquearBotonGuardado(QPushButton * boton);
+    void desbloquearBotonGuardado(QPushButton * boton);
     void setBotonesPartida(int num, bool);
     void ConfigurarSonidos();
     void ConfigurarBotonesDificultad();

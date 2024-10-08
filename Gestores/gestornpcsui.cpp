@@ -22,7 +22,7 @@ void GestorNPCsUI::setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
     NPCcomunUI = new NPCGenericoUI(Escenario);
-    Escenario->layout()->addWidget(NPCcomunUI);
+    //Escenario->layout()->addWidget(NPCcomunUI);
 
     // Spawneamos el transcriptor
     transcriptorDialogos = new TranscriptorDialogos(EscenarioTranscriptor);
@@ -207,6 +207,7 @@ QString GestorNPCsUI::getDatosFalsos()
 void GestorNPCsUI::Centrar()
 {
     Dialogos->Centrar();
+    NPCcomunUI->Centrar();
 }
 
 void GestorNPCsUI::setVolumen(float vol)

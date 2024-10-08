@@ -2,6 +2,7 @@
 #define PANTALLATUTORIAL_H
 
 #include <QWidget>
+#include <QSoundEffect>
 
 namespace Ui {
 class PantallaTutorial;
@@ -13,9 +14,12 @@ class PantallaTutorial : public QWidget
 
 public:
     explicit PantallaTutorial(QWidget *parent = nullptr);
+    void setSoundVolume(float vol);
+    void setMusicVolume(float vol);
     ~PantallaTutorial();
 
 private:
+    QSoundEffect sonidoBotones, musica;
     Ui::PantallaTutorial *ui;
     void setBotones();
     void IrPagAnterior();

@@ -15,6 +15,7 @@ class IntroPantalla : public QWidget
 
 public:
     explicit IntroPantalla(Juego*, QWidget *parent = nullptr);
+    void acomodarPantalla();
     void Mostrar();
     void setUp(int nivel);
     ~IntroPantalla();

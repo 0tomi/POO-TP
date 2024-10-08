@@ -3,9 +3,15 @@
 
 PantallaTutorial::PantallaTutorial(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::PantallaTutorial)
+    , ui(new Ui::PantallaTutorial), sonidoBotones(parent), musica(parent)
 {
     ui->setupUi(this);
+
+    sonidoBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
+    musica.setSource(QUrl(""));
+    setMusicVolume(1.0);
+    setSoundVolume(1.0);
+
     ui->PagTutorial->setCurrentIndex(PaginaActual);
     CantidadPaginas = ui->PagTutorial->count();
     this->PaginaActual = 0;
@@ -17,6 +23,16 @@ PantallaTutorial::PantallaTutorial(QWidget *parent)
         ui->Anterior_2->setEnabled(false);
         ui->Siguiente_2->setEnabled(false);
     }
+}
+
+void PantallaTutorial::setSoundVolume(float vol)
+{
+    sonidoBotones.setVolume(vol-0.2);
+}
+
+void PantallaTutorial::setMusicVolume(float vol)
+{
+    musica.setVolume(vol-0.2);
 }
 
 PantallaTutorial::~PantallaTutorial()
@@ -34,6 +50,7 @@ void PantallaTutorial::setBotones()
 void PantallaTutorial::IrPagAnterior()
 {
     if (PaginaActual > 0) {
+        sonidoBotones.play();
         PaginaActual--;
         ui->PagTutorial->setCurrentIndex(PaginaActual);
         actualizarBotones();
@@ -43,6 +60,7 @@ void PantallaTutorial::IrPagAnterior()
 void PantallaTutorial::IrPagSiguiente()
 {
     if (PaginaActual < CantidadPaginas - 1) {
+        sonidoBotones.play();
         PaginaActual++;
         ui->PagTutorial->setCurrentIndex(PaginaActual);
         actualizarBotones();
@@ -51,6 +69,7 @@ void PantallaTutorial::IrPagSiguiente()
 
 void PantallaTutorial::SalirTutorial()
 {
+    sonidoBotones.play();
     emit TerminarTutorial();
 }
 

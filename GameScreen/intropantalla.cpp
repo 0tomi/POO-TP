@@ -25,6 +25,11 @@ IntroPantalla::IntroPantalla(Juego *game, QWidget *parent):
     });
 }
 
+void IntroPantalla::acomodarPantalla()
+{
+    this->resize(padre->size());
+}
+
 void IntroPantalla::Mostrar()
 {
     this->libro->Entrar();

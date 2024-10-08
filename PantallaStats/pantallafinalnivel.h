@@ -26,8 +26,8 @@ public:
 
     vector<QString> getTips();
 public slots:
-    void setVolumeSound(float vol);
-    void setMusicSound(float vol);
+    void setSoundVolume(float vol);
+    void setMusicVolume(float vol);
 
 signals:
     void salirClicked();
