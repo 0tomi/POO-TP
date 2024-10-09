@@ -5,24 +5,12 @@
 
 ReglasNivel1::ReglasNivel1(): Reglas()
 {
-    // # Inicializamos las reglas
-    setPaisesPermitidos(6);
-    setFechasValidas();
-    setDuracionEstanciaValida(9,3);
-    generar_EstadosCiviles(2);
-    generar_TiposVisita(2);
 }
 
 ReglasNivel1::ReglasNivel1(quint32 Seed): Reglas()
 {
     rand.seed(Seed);
 
-    // # Inicializamos las reglas
-    setPaisesPermitidos(6);
-    setFechasValidas();
-    setDuracionEstanciaValida(9,3);
-    generar_EstadosCiviles(2);
-    generar_TiposVisita(2);
 }
 
 void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed)
