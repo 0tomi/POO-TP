@@ -60,7 +60,7 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
 QString generador_paisresidencia::generar_nombre(char genero)
 {
     QString nombre_generado = this->Pasaporte2Copy->getnombre(); // string con el nombre que se va a pickear
-    int valor_centinela; //para pickear indice
+
     if (!this->camposValidos[0]){
         if (this->camposLocura[0]){
             nombre_generado = this->locura->CambiarCadena(this->dificultad,this->Pasaporte2Copy->getnombre());
@@ -68,20 +68,19 @@ QString generador_paisresidencia::generar_nombre(char genero)
             do{
                 switch (genero){
                 case 'H':
-                    valor_centinela = this->rand.bounded(this->max_hombres);
-                    nombre_generado = this->nombre_hombres[valor_centinela];
+
+                    nombre_generado = this->nombre_hombres[this->rand.bounded(this->nombre_hombres.size())];
                     break;
                 case 'M':
-                    valor_centinela = this->rand.bounded(this->max_mujeres);
-                    nombre_generado = this->nombre_mujeres[valor_centinela];
+                    nombre_generado = this->nombre_mujeres[this->rand.bounded(this->nombre_mujeres.size())];
                     break;
                 case 'X':
-                    valor_centinela = this->rand.bounded(this->max_x);
-                    nombre_generado = this->nombre_x[valor_centinela];
+
+                    nombre_generado = this->nombre_x[this->rand.bounded(this->nombre_x.size())];
                 }
             }while(nombre_generado != this->Pasaporte2Copy->getnombre());
         }
-        nombre_generado += " " + this->apellidos[this->rand.bounded(this->max_apellidos)];
+        nombre_generado += " " + this->apellidos[this->rand.bounded(this->apellidos.size())];
     }
     return nombre_generado;
 }

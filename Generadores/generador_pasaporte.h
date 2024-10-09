@@ -15,17 +15,17 @@ protected:
     vector<QString>  nombre_hombres;
     vector<QString>  nombre_x;
     vector<QString>  nacionalidades;
+    vector<QString>  PaisesValidos;
+    vector<QString>  PaisesInvalidos;
     vector<QString>  apellidos;
+    vector<QString>  estados_civiles_invalidos;
+    vector<QString>  estados_civiles_validos;
     ReglasNivel1 * rules;
     QRandomGenerator rand;
 
 
     Pasaporte * Pasaporte_generado;
-    int max_hombres; // tamanio del array de nombres de hombres
-    int max_mujeres; // tamanio del array de nombres de mujeres
-    int max_x;  // tamanio del array de nombres de x
-    int max_nacionalidades; // cantidad total de nacionalidades
-    int max_apellidos; // cantidad total de apellidos
+
     int obt_dias(int mes, int año);
     void generar_camposValidos(bool valido, int dificultad);
 
@@ -35,7 +35,7 @@ protected:
     virtual QString generar_fecha(bool valido);
 public:
     void setSeed(quint32 seed);
-    Generar_pasaporte(); // el constructor va a ser para leer los archivos y para asignar reglas y atributos
+    Generar_pasaporte(); // el constructor va a ser para leer los archivos
     void Inicializar(ReglasNivel1 * rules, quint32 seed);
     Pasaporte * crear_pasaporte(bool Validez, NPCcomun * InfoNPC, int dificultad);
 };
