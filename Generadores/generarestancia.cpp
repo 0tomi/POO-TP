@@ -107,7 +107,7 @@ QString GenerarEstancia::GenerarVisita(bool validez)
             Visita = tipoVisitasInvalidas[Sorteo];
         } else {
             // Ponemos cualquier texto, pero con letras cambiadas
-            Sorteo = NumRandom.bounded(maxTipoVisitas);
+            Sorteo = NumRandom.bounded(this->tipoVisitas.size());
             Visita = locura->CambiarCadena(dificultad, tipoVisitas[Sorteo]);
         }
     }

@@ -102,8 +102,8 @@ void ReglasNivel1::setDuracionEstanciaValida(int max, int min){
 void ReglasNivel1::setFechasValidas(){
     // Genera fechas de entre 1900 y 2000
     do{
-        fechaMax = rand.bounded(1900,2000);
-        fechaMin = rand.bounded(1900,2000);
+        this->fechaMax = rand.bounded(1900,2000);
+        this->fechaMin = rand.bounded(1900,2000);
 
         // Si se generan al reves las fechas las intercambio
         if (fechaMax < fechaMin){

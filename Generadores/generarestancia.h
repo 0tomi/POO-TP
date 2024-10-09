@@ -25,7 +25,6 @@ private:
     bool ValidezCampos[2];
 
     vector<QString> tipoVisitas;
-    int maxTipoVisitas;
 
     vector<QString> tipoVisitasValidas;
     vector<QString> tipoVisitasInvalidas;

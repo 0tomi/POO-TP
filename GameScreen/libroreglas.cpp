@@ -166,15 +166,13 @@ void libroreglas::setDatosNivel2()
         return;
     }
     QString texto;
-    int max;
 
-    QString* paises = reglas->getPaisesInvalidos(max);
+    vector<QString> paisesInvalidos = reglas->getPaisesInvalidos();
 
-    for (int i = 0; i < max; i++)
-        texto += "- " + paises[i] + "\n";
+    for (int i = 0; i < paisesInvalidos.size(); i++)
+        texto += "- " + paisesInvalidos[i] + "\n";
 
     ui->PaisesResidenciaInvalidos->setText(texto);
-    delete[] paises;
 }
 
 void libroreglas::setDatosNivel3()
