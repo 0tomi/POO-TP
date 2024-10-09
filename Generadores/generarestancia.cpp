@@ -16,31 +16,23 @@ GenerarEstancia::GenerarEstancia()
     NumRandom.seed(Semilla);
 }
 
-void GenerarEstancia::Inicializar(ReglasNivel1 *rules, LocuraCaracteres *randomizador, quint32 seed)
+void GenerarEstancia::Inicializar(ReglasNivel1 *rules, LocuraCaracteres *randomizador, quint32 seed, int dif)
 {
     this->NumRandom.seed(seed);
     this->tipoVisitas = rules->getTipoVisitas();
 
     tipoVisitasValidas = rules->getTipoDeVisitaValida();
-    maxVisitasValidas = rules->getMaxVisitasPermitidas();
+    maxVisitasValidas = tipoVisitasValidas.size();
+
+    tipoVisitasInvalidas = rules->getTipoVisitaInvalida();
+    maxVisitasInvalidas = tipoVisitasInvalidas.size();
 
     duracMaximaEstancia = rules->getDuracionEstanciaPermitida();
 
-    ObtenerVisitasInvalidas();
-
     locura = randomizador;
-}
 
-GenerarEstancia::~GenerarEstancia()
-{
-
-}
-
-/// ########################## Getters ###############################
-Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
-    int Probabilidades;
-    dificultad = Dificultad;
-    switch (Dificultad){
+    dificultad = dif;
+    switch (dif){
         // Modo facil
     case 1: Probabilidades = 7;
         break;
@@ -51,7 +43,10 @@ Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
     default: Probabilidades = 5;
         break;
     }
+}
 
+/// ########################## Getters ###############################
+Estancia* GenerarEstancia::getEstancia(bool valido) {
     GenerarCamposValidos(Probabilidades, valido);
     int Duracion = GenerarDuracion(ValidezCampos[0]);
     QString TipoVisita = GenerarVisita(ValidezCampos[1]);
@@ -60,27 +55,6 @@ Estancia* GenerarEstancia::getEstancia(bool valido, int Dificultad) {
     return estanciaAGenerar;
 }
 
-/// ########################## Obtener visitas invalidas ###############################
-void GenerarEstancia::ObtenerVisitasInvalidas()
-{
-    // Buscamos las visitas invalidas, para no tener que calcularlas despues
-    bool NoValido;
-    int Indice = 0;
-    maxVisitasInvalidas = 0;
-    // Buscamos 1x1 los tipos de visitas que hay
-    for (int i = 0; i < maxTipoVisitas; i++){
-        NoValido = true;
-        for (int j = 0; j < maxVisitasInvalidas; j++)
-            // Si el tipo de visita valida coincide con el que estamos viendo, lo damos como valido.
-            if (tipoVisitasValidas[j] == tipoVisitas[i])
-                NoValido = false;
-        // Si es no valido, lo sumamos a nuestra lista de indices.
-        if (NoValido){
-            IndicesTiposVisitasInvalidas[Indice] = i;
-            maxVisitasInvalidas++; Indice++;
-        }
-    }
-}
 /// ########################## Generadores ###############################
 void GenerarEstancia::GenerarCamposValidos(int Probabilidad, bool Validez)
 {
@@ -130,7 +104,7 @@ QString GenerarEstancia::GenerarVisita(bool validez)
         if (Sorteo < 5){
             Sorteo = NumRandom.bounded(maxVisitasInvalidas);
             // Colocamos uno de los indices de visitas invalidas.
-            Visita = tipoVisitas[ IndicesTiposVisitasInvalidas[Sorteo] ];
+            Visita = tipoVisitasInvalidas[Sorteo];
         } else {
             // Ponemos cualquier texto, pero con letras cambiadas
             Sorteo = NumRandom.bounded(maxTipoVisitas);

@@ -56,7 +56,7 @@ void PantallaMenu::ConfigurarSonidos()
     SonidosBotones.setSource(QUrl("qrc:/Resources/Sonidos/BotonesMenu.WAV"));
     SonidoModoDemonio.setSource(QUrl("qrc:/Resources/Sonidos/ModoDemonioBoton.WAV"));
     Musica.setSource(QUrl("qrc:/Resources/Musica/MenuMusica.WAV"));
-    setMusicVolume(1.0);
+    setMusicVolume(0.5);
     setVolumen(1.0);
     GTALocura.setVolume(1.0);
 }

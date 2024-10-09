@@ -12,12 +12,12 @@ public:
     // Constructor
     void setSeed(quint32 seed);
     GenerarEstancia();
-    void Inicializar(ReglasNivel1 * rules, LocuraCaracteres *  randomizador, quint32 seed);
-    ~GenerarEstancia();
+    void Inicializar(ReglasNivel1 * rules, LocuraCaracteres *  randomizador, quint32 seed, int Dificultad);
 
     // Getter
-    Estancia* getEstancia(bool valido, int Dificultad); // Estancia a generar
+    Estancia* getEstancia(bool valido); // Estancia a generar
 private:
+    int Probabilidades;
     QRandomGenerator NumRandom;
     LocuraCaracteres * locura;
 
@@ -28,12 +28,12 @@ private:
     int maxTipoVisitas;
 
     vector<QString> tipoVisitasValidas;
+    vector<QString> tipoVisitasInvalidas;
     int maxVisitasValidas;
     int duracMaximaEstancia;
 
     int IndicesTiposVisitasInvalidas[5];
     int maxVisitasInvalidas;
-    void ObtenerVisitasInvalidas();
 
     // Metodos auxiliares
     void GenerarCamposValidos(int Probabilidad, bool Validez);
