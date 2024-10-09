@@ -32,12 +32,12 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
 {
     /// Work in progress
     reglasNivel1 = dynamic_cast<ReglasNivel1*>(rules[0]);
-    generadorPasaporte.Inicializar(reglasNivel1, this->semilla);
+    generadorPasaporte.Inicializar(reglasNivel1, this->semilla, this->DificultadJuego);
     generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres, this->semilla, this->DificultadJuego);
 
     if (nivel > 1){
         reglasNivel2 = dynamic_cast<ReglasNivel2*>(rules[1]);
-        generadorPaisResidencia.Inicializar(reglasNivel1, reglasNivel2, this->semilla);
+        generadorPaisResidencia.Inicializar(reglasNivel1, reglasNivel2, this->semilla, this->DificultadJuego);
     }
     if (nivel > 2){
         reglasNivel3 = dynamic_cast<ReglasNivel3*>(rules[2]);
@@ -124,12 +124,12 @@ QString GeneradorDocumentacion::logDatosFalsos()
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    Pasaporte* nuevoPasaporte = generadorPasaporte.crear_pasaporte(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate), DificultadJuego);
+    Pasaporte* nuevoPasaporte = generadorPasaporte.generar(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate));
     NPC2Generate->addDocumento(nuevoPasaporte, Index);
     Index++;
 
     // Generador de Estancias
-    Estancia* nuevaEstancia = generadorEstancia.getEstancia(DocsValidos[Index]);
+    Estancia* nuevaEstancia = generadorEstancia.generar(DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
     estanciaActual = nuevaEstancia;
     Index++;
@@ -138,7 +138,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
     // Generador de Residencia
-    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.CrearPaisResidencia(NPC2Generate->getPasaporte(),DocsValidos[Index], DificultadJuego);
+    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.generar(NPC2Generate->getPasaporte(),DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevoPaisResidencia,Index);
     Index++;
 }
@@ -146,7 +146,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 {
     // Generador de Lista de Acompañantes
-    ListaAcompaniantes * nuevaLista = generadorListaAcomp.getListaAcompaniantes(DocsValidos[Index]);
+    ListaAcompaniantes * nuevaLista = generadorListaAcomp.generar(DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaLista, Index);
     listaAcompActual = nuevaLista;
     Index++;
@@ -155,7 +155,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel3(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
 {
     // Nuevo documento de estancia
-    auto nuevaEstancia = generadorNuevaEstancia.getNuevaEstancia(estanciaActual ,DocsValidos[Index]);
+    auto nuevaEstancia = generadorNuevaEstancia.generar(estanciaActual ,DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
     Index++;
 }

@@ -7,6 +7,7 @@ PantallaTransicion::PantallaTransicion(QWidget *parent)
     , ui(new Ui::PantallaTransicion)
 {
     ui->setupUi(this);
+    ui->Cargando->hide();
 
     mostrando = false;
 
@@ -52,6 +53,7 @@ void PantallaTransicion::TerminarTransicion()
 {
     mostrando = false;
     emit terminoAnimacion();
+    ui->Cargando->hide();
     hide();
 }
 
@@ -62,6 +64,23 @@ bool PantallaTransicion::Mostrando() const
 
 void PantallaTransicion::ArrancarTransicion(int duracion, std::function<void ()> func)
 {
+    ui->Cargando->hide();
+    metodo2ejecutar = func;
+
+    iniciarTransicion->setDuration(duracion); // duración en milisegundos
+    terminarTransicion->setDuration(duracion);
+
+    // Colocamos la opacidad en 0 para arrancar la animacion
+    efecto->setOpacity(0);
+
+    show();
+    mostrando = true;
+    iniciarTransicion->start();
+}
+
+void PantallaTransicion::ArrancarTransicionCargando(int duracion, std::function<void ()> func)
+{
+    ui->Cargando->show();
     metodo2ejecutar = func;
 
     iniciarTransicion->setDuration(duracion); // duración en milisegundos

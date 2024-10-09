@@ -24,6 +24,7 @@ public:
     template <typename T>
     void ArrancarTransicion(int Duracion, T* objeto, void (T::*metodo)());
     void ArrancarTransicion(int duracion, std::function<void()> func);
+    void ArrancarTransicionCargando(int duracion, std::function<void()> func);
 
 signals:
     void midAnimacion();

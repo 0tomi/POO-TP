@@ -26,6 +26,7 @@ protected:
 
     Pasaporte * Pasaporte_generado;
 
+    int Probabilidades;
     int obt_dias(int mes, int año);
     void generar_camposValidos(bool valido, int dificultad);
 
@@ -36,7 +37,7 @@ protected:
 public:
     void setSeed(quint32 seed);
     Generar_pasaporte(); // el constructor va a ser para leer los archivos
-    void Inicializar(ReglasNivel1 * rules, quint32 seed);
-    Pasaporte * crear_pasaporte(bool Validez, NPCcomun * InfoNPC, int dificultad);
+    void Inicializar(ReglasNivel1 * rules, quint32 seed, int dificultad);
+    Pasaporte * generar(bool Validez, NPCcomun * InfoNPC);
 };
 #endif // GENERADOR_PASAPORTE_H

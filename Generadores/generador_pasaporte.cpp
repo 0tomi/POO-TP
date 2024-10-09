@@ -21,7 +21,7 @@ Generar_pasaporte::Generar_pasaporte() {
     this->rand.seed(Semilla);
 }
 
-void Generar_pasaporte::Inicializar(ReglasNivel1 *rules, quint32 seed)
+void Generar_pasaporte::Inicializar(ReglasNivel1 *rules, quint32 seed, int dificultad)
 {
     this->setSeed(seed);
     this->rules = rules;
@@ -30,6 +30,18 @@ void Generar_pasaporte::Inicializar(ReglasNivel1 *rules, quint32 seed)
     this->estados_civiles_invalidos = this->rules->getEstadoCivilInvalido();
     this->PaisesValidos = this->rules->getPaisesPermitidos();
     this->PaisesInvalidos = this->rules->getPaisesPermitidos();
+
+    switch (dificultad){
+        // Modo facil
+    case 1: Probabilidades = 7;
+        break;
+        // Modo demonio
+    case 3: Probabilidades = 3;
+        break;
+        // Modo normal
+    default: Probabilidades = 5;
+        break;
+    }
 }
 
 // Función para obtener el número de días en un mes y año dados
@@ -154,20 +166,7 @@ QString Generar_pasaporte::generar_nombre(char genero){
     return nombre_generado;
 }
 
-Pasaporte * Generar_pasaporte::crear_pasaporte(bool Validez, NPCcomun * InfoNPC, int dificultad){
-    int Probabilidades;
-    switch (dificultad){
-        // Modo facil
-    case 1: Probabilidades = 7;
-        break;
-        // Modo demonio
-    case 3: Probabilidades = 3;
-        break;
-        // Modo normal
-    default: Probabilidades = 5;
-        break;
-    }
-
+Pasaporte * Generar_pasaporte::generar(bool Validez, NPCcomun * InfoNPC){
     generar_camposValidos(Validez, Probabilidades);
 
     qDebug() << "Generando fecha valida: ";

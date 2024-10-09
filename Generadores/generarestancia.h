@@ -15,7 +15,7 @@ public:
     void Inicializar(ReglasNivel1 * rules, LocuraCaracteres *  randomizador, quint32 seed, int Dificultad);
 
     // Getter
-    Estancia* getEstancia(bool valido); // Estancia a generar
+    Estancia* generar(bool valido); // Estancia a generar
 private:
     int Probabilidades;
     QRandomGenerator NumRandom;

@@ -46,7 +46,7 @@ void GenerarEstancia::Inicializar(ReglasNivel1 *rules, LocuraCaracteres *randomi
 }
 
 /// ########################## Getters ###############################
-Estancia* GenerarEstancia::getEstancia(bool valido) {
+Estancia* GenerarEstancia::generar(bool valido) {
     GenerarCamposValidos(Probabilidades, valido);
     int Duracion = GenerarDuracion(ValidezCampos[0]);
     QString TipoVisita = GenerarVisita(ValidezCampos[1]);

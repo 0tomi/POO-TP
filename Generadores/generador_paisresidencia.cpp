@@ -10,7 +10,7 @@ generador_paisresidencia::~generador_paisresidencia()
     delete locura;
 }
 
-void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2, quint32 seed)
+void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2, quint32 seed, int dificultad)
 {
     this->setSeed(seed);
     this->rules = rules1;
@@ -18,16 +18,7 @@ void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * 
 
     paisesValidos = ruleslvl2->getPaisesValidos();
     paisesInvalidos = ruleslvl2->getPaisesInvalidos();
-}
 
-PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)
-{
-    for (int i = 0; i < 3; ++i){
-        this->camposValidos[i] = true;
-        this->camposLocura[i] = true;
-    }
-
-    this->Pasaporte2Copy = Pasaporte2copy;
     this->dificultad = dificultad;
 
     switch (dificultad){
@@ -41,6 +32,17 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
     default: Probabilidades = 5;
         break;
     }
+}
+
+PaisResidencia *generador_paisresidencia::generar(Pasaporte *Pasaporte2copy, bool valido)
+{
+    for (int i = 0; i < 3; ++i){
+        this->camposValidos[i] = true;
+        this->camposLocura[i] = true;
+    }
+
+    this->Pasaporte2Copy = Pasaporte2copy;
+
 
     if(valido){
         QString PaisResidenciaGenerado = this->generar_paisresidencia(valido);
