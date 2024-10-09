@@ -8,7 +8,7 @@ Reglas::Reglas(): rand(QTime::currentTime().msec()) {
 
 Reglas::~Reglas()
 {
-    //delete paises;
+
 }
 
 void Reglas::setSeed(quint32 seed)

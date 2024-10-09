@@ -77,7 +77,7 @@ private:
     void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
     void SumarAstana();
 
-    bool checkRepetidos(int dato);
-    bool checkIfValido(int indice);
+    //bool checkRepetidos(int dato);
+    //bool checkIfValido(int indice);
 };
 #endif // REGLASNIVEL1_H
