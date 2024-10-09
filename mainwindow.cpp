@@ -96,6 +96,7 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::VolverInicio);
     connect(pantallaPausa, &PantallaPausa::clickedTutorial, this, &MainWindow::PrepararTutorial);
     connect(pantallaPausa, &PantallaPausa::soundVolume, gameScreen , &GameScreen::setVolumenes);
+    connect(pantallaPausa, &PantallaPausa::musicVolume, gameScreen, &GameScreen::setMusicVolume);
     connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaMenu , &PantallaMenu::setVolumen);
     connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaMenu, &PantallaMenu::setMusicVolume);
     connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaFinalNivel , &PantallaFinalNivel::setSoundVolume);
