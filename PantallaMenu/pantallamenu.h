@@ -38,6 +38,7 @@ signals:
     void slotSelected2Play(int);
     void clickedStartDefault(int dificultad);
     void clickedStart(int nivel, int dificultad);
+    void clickedStartCheat(int lvl, int dif, quint32 seed);
     void clickedTutorial();
     void EnviarLogs(QString Log);
 
@@ -97,6 +98,7 @@ private:
     QSoundEffect SonidoModoDemonio;
     int dificultad = 1;
     int nivel = 1;
+    quint32 seedPersonalizada;
     GuardarPartidas * guardarPartida;
     Ui::PantallaMenu *ui;
     PantallaTransicion * transicion;

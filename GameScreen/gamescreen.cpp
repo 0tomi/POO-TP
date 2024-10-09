@@ -227,6 +227,17 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
     this->nivelActual = Nivel;
 }
 
+void GameScreen::PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed)
+{
+    qDebug() << "Nivel actual: " << LvL;
+    juego->PrepararJuego(LvL, Dificultad, seed);
+    libroReglasUI->setUpLevel(LvL);
+    // more stuff to do
+    GestorDocs.setUpNivel(LvL);
+    introPantalla->setUp(LvL);
+    this->nivelActual = LvL;
+}
+
 void GameScreen::PrepararJuego(PlayerStats stats)
 {
     juego->PrepararJuego(stats);

@@ -20,8 +20,13 @@ private:
     const QString BuildPath = QCoreApplication::applicationDirPath();
     const QString DireccionCarpeta = BuildPath + "/logs";
     const QString CantLogsTXT = DireccionCarpeta + "/cantlogs.txt";
+    bool LogsActivados;
 public:
-    Logs();
+    enum EstadoLog{
+        Activado,
+        Desactivado
+    };
+    Logs(EstadoLog);
     void SaveLogs();
     ~Logs();
 public slots:
