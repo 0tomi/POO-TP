@@ -87,7 +87,6 @@ void ReglasNivel1::generar_DuracionEstancia(int duracion)
 
 void ReglasNivel1::generar_TiposVisita(int Cantidad_Visitas_Permitidas)
 {
-    tiposVistaValida.clear();
     vector TiposVisita = {tipoVisitas[0], tipoVisitas[1], tipoVisitas[2]};
     vector <parDatos> TiposVisitaPar;
     crearParDatos(TiposVisita, TiposVisitaPar);
@@ -192,6 +191,11 @@ int ReglasNivel1::getDuracionEstanciaPermitida(){
 vector<QString>ReglasNivel1::getTipoDeVisitaValida() const
 {
     return generarVector(this->tiposVistaValida);
+}
+
+vector<QString> ReglasNivel1::getTipoVisitaInvalida() const
+{
+    return generarVector(this->tiposVisitaInvalida);
 }
 
 int ReglasNivel1::getMaxVisitasPermitidas() const

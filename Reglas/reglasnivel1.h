@@ -46,6 +46,7 @@ public:
     int getDuracionEstanciaPermitida();
 
     vector<QString>getTipoDeVisitaValida() const;
+    vector<QString> getTipoVisitaInvalida() const;
     int getMaxVisitasPermitidas() const;
 
 private:

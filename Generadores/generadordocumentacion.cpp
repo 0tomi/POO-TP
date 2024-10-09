@@ -33,7 +33,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
     /// Work in progress
     reglasNivel1 = dynamic_cast<ReglasNivel1*>(rules[0]);
     generadorPasaporte.Inicializar(reglasNivel1, this->semilla);
-    generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres, this->semilla);
+    generadorEstancia.Inicializar(reglasNivel1, &randomizadorCaracteres, this->semilla, this->DificultadJuego);
 
     if (nivel > 1){
         reglasNivel2 = dynamic_cast<ReglasNivel2*>(rules[1]);
@@ -129,7 +129,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
     Index++;
 
     // Generador de Estancias
-    Estancia* nuevaEstancia = generadorEstancia.getEstancia(DocsValidos[Index], DificultadJuego);
+    Estancia* nuevaEstancia = generadorEstancia.getEstancia(DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevaEstancia, Index);
     estanciaActual = nuevaEstancia;
     Index++;
