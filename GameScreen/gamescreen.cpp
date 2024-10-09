@@ -5,8 +5,8 @@
 /// #################################### CONSTRUCTOR ###################################################
 GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::GameScreen), Musica(this), MusicaSources{ QUrl("qrc:/Resources/Musica/MusicaJuego1.WAV")
-    , QUrl("qrc:/Resources/Musica/MusicaJuego2.WAV"), QUrl("qrc:/Resources/Musica/MusicaJuego3.WAV")}
+    , ui(new Ui::GameScreen), Musica{ QSoundEffect(this), QSoundEffect(this), QSoundEffect(this)}
+    , random(QTime::currentTime().msec()), currentMusic(0)
 {
     ui->setupUi(this);
 
@@ -65,9 +65,13 @@ void GameScreen::setUpLibroReglas()
 
 void GameScreen::setUpSonidos()
 {
-    Musica.setSource(MusicaSources[1]);
-    Musica.setLoopCount(QSoundEffect::Infinite);
-    Musica.setVolume(0.3);
+    Musica[0].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego1.WAV"));
+    Musica[1].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego2.WAV"));
+    Musica[2].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego3.WAV"));
+    for (int i = 0; i < 3; i++){
+        Musica[i].setLoopCount(QSoundEffect::Infinite);
+        Musica[i].setVolume(0.3);
+    }
 }
 /// #################################### BOTONES ###################################################
 void GameScreen::SpawnearBotones()
@@ -181,7 +185,9 @@ void GameScreen::setVolumenes(float volumen)
 
 void GameScreen::setMusicVolume(float vol)
 {
-    Musica.setVolume(vol-0.3);
+    Musica[0].setVolume(vol-0.3);
+    Musica[1].setVolume(vol-0.3);
+    Musica[2].setVolume(vol-0.3);
 }
 
 void GameScreen::RealizarConexionesPrincipales()
@@ -226,7 +232,6 @@ void GameScreen::PrepararJuego(int Dificultad)
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
-    qDebug() << "Nivel actual: " << Nivel;
     juego->PrepararJuego(Nivel, Dificultad);
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
@@ -237,7 +242,6 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed)
 {
-    qDebug() << "Nivel actual: " << LvL;
     juego->PrepararJuego(LvL, Dificultad, seed);
     libroReglasUI->setUpLevel(LvL);
     // more stuff to do
@@ -260,12 +264,12 @@ void GameScreen::Iniciar()
 {
     if (nivelActual >= 5){
         BotonScanner->show();
-        Musica.setSource(MusicaSources[2]);
-        Musica.setVolume(0.4);
+        currentMusic = 2;
+        Musica[2].setVolume(0.4);
     } else {
         BotonScanner->hide();
-        Musica.setSource(MusicaSources[0]);
-        Musica.setVolume(0.3);
+        currentMusic = random.bounded(2);
+        Musica[currentMusic].setVolume(0.3);
     }
 
     IconoDocs->setFinalPartida(false);
@@ -282,7 +286,7 @@ void GameScreen::arrancarJuego()
     TiempoActual = 0;
     ActualizarTiempo();
 
-    Musica.play();
+    Musica[currentMusic].play();
     GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
 }
@@ -300,7 +304,7 @@ void GameScreen::Restart()
 void GameScreen::PausarJuego()
 {
     GestorNPC.Pausar();
-    Musica.stop();
+    Musica[currentMusic].stop();
     tiempoRestante = tiempoPartida.remainingTime();
     tiempoPartida.stop();
     Pausado = true;
@@ -309,7 +313,7 @@ void GameScreen::PausarJuego()
 void GameScreen::ReanudarJuego()
 {
     GestorNPC.Reanudar();
-    Musica.play();
+    Musica[currentMusic].play();
     tiempoPartida.start(tiempoRestante);
 
     Pausado = false;
@@ -319,7 +323,7 @@ void GameScreen::ReanudarJuego()
 
 void GameScreen::FinalDePartida()
 {
-    Musica.stop();
+    Musica[currentMusic].stop();
     MatarNotificaciones();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();

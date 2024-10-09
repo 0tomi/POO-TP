@@ -72,8 +72,9 @@ private:
     bool DecisionJugador;
 
     // Sonidos
-    QSoundEffect Musica;
-    QUrl MusicaSources[3];
+    QRandomGenerator random;
+    QSoundEffect Musica[3];
+    int currentMusic;
     void setUpSonidos();
 
     // Documentos que deja el NPC
