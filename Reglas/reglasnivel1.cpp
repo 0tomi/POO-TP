@@ -50,9 +50,8 @@ void ReglasNivel1::generar_Paises(int Cantidad_Paises_Permitidos)
 void ReglasNivel1::generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos)
 {
     estadosCivilesValidos.clear();
-    vector EstadosCiviles = {estadosCiviles[0], estadosCiviles[1], estadosCiviles[2], estadosCiviles[3]};
     vector <parDatos> EstadosCivilesPar;
-    crearParDatos(EstadosCiviles, EstadosCivilesPar);
+    crearParDatos(this->estadosCiviles, EstadosCivilesPar);
 
     Cantidad_EstadosCiviles_Permitidos = checkCondiciones(Cantidad_EstadosCiviles_Permitidos, 1, EstadosCivilesPar);
     estadosCivilesValidos = generarPermitido(Cantidad_EstadosCiviles_Permitidos, EstadosCivilesPar);
@@ -87,9 +86,8 @@ void ReglasNivel1::generar_DuracionEstancia(int duracion)
 
 void ReglasNivel1::generar_TiposVisita(int Cantidad_Visitas_Permitidas)
 {
-    vector TiposVisita = {tipoVisitas[0], tipoVisitas[1], tipoVisitas[2]};
     vector <parDatos> TiposVisitaPar;
-    crearParDatos(TiposVisita, TiposVisitaPar);
+    crearParDatos(this->tipoVisitas, TiposVisitaPar);
     Cantidad_Visitas_Permitidas = checkCondiciones(Cantidad_Visitas_Permitidas, 1, TiposVisitaPar);
     tiposVistaValida = generarPermitido(Cantidad_Visitas_Permitidas, TiposVisitaPar);
     tiposVisitaInvalida = generarNoPermitido(TiposVisitaPar);
@@ -131,26 +129,6 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
     this->PaisesInvalidos = generarVector(generarNoPermitido(this->parpaisesInvalidos));
 }
 
-/*bool ReglasNivel1::checkRepetidos(int dato){
-    int ocurrencias = 0;
-    for (int i = 0; i < this->maxPaisesPermitidos; i++){
-        if (PaisesValidos[i] == dato)
-            ocurrencias++;
-        if (ocurrencias == 2)
-            return true;
-    }
-
-    return false;
-}*/
-
-/*bool ReglasNivel1::checkIfValido(int indice)
-{
-    for (int i = 0; i < maxPaisesPermitidos; i++){
-        if (indice == PaisesValidos[i])
-            return true;
-    }
-    return false;
-}*/
 
 void ReglasNivel1::SumarAstana()
 {
