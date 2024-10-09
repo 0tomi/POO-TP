@@ -3,12 +3,12 @@
 
 #include <QWidget>
 #include <Qlabel>
-#include <map>
+#include <QMap>
 #include <QString>
 #include <QPixmap>
 #include"documentosui.h"
 #include "radiografia.h"
-
+#include "../lectorarchivos.h"
 
 namespace Ui {
 class radiografiaui;
@@ -26,7 +26,9 @@ public:
 private:
     Ui::radiografiaui *ui;
     QLabel *labelsCuerpo[10];
-    std::map<QString, QPixmap>items;
+    QMap<QString, QPixmap>items;
+    vector<QString>objetos;
+    void setmap();
 
 };
 

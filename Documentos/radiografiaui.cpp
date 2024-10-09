@@ -16,11 +16,22 @@ radiografiaui::radiografiaui(QWidget *parent)
     this->labelsCuerpo[7]=ui->espalda3;
     this->labelsCuerpo[8]=ui->espalda4;
     this->labelsCuerpo[9]=ui->espalda5;
-
+    LectorArchivos lector(":/Niveles/Nivel5/Objetos.txt");
+    this->objetos=lector.getVector();
+    setmap();
 }
 void radiografiaui::setLabels(radiografia* datos){
 
 }
+void radiografiaui::setmap(){
+    for(int i=0;this->objetos.size();i++){
+        QString ruta= ":/Niveles/Nivel5/carpeta"+this->objetos[i]+".png";//poner la ruta bien cuando tengamos la carpeta
+        QPixmap pixmap(ruta);
+        this->items.insert(this->objetos[i], pixmap);
+
+    }
+}
+
 radiografiaui::~radiografiaui()
 {
     delete ui;
