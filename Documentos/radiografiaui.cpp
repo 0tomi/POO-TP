@@ -2,7 +2,7 @@
 #include "ui_radiografiaui.h"
 
 radiografiaui::radiografiaui(QWidget *parent)
-    : QWidget(parent)
+    : DocumentosUI(parent)
     , ui(new Ui::radiografiaui)
 {
     ui->setupUi(this);
@@ -16,8 +16,11 @@ radiografiaui::radiografiaui(QWidget *parent)
     this->labelsCuerpo[7]=ui->espalda3;
     this->labelsCuerpo[8]=ui->espalda4;
     this->labelsCuerpo[9]=ui->espalda5;
-}
 
+}
+void radiografiaui::setLabels(radiografia* datos){
+
+}
 radiografiaui::~radiografiaui()
 {
     delete ui;
