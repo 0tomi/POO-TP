@@ -186,5 +186,8 @@
         <file>Resources/Documentos/NormativasIconoLibro.png</file>
         <file>Niveles/Nivel5/ObjetosValidos.txt</file>
         <file>Niveles/Nivel5/ObjetosInvalidos.txt</file>
+        <file>Resources/Musica/MusicaJuego1.WAV</file>
+        <file>Resources/Musica/MusicaJuego2.WAV</file>
+        <file>Resources/Musica/MusicaJuego3.WAV</file>
     </qresource>
 </RCC>

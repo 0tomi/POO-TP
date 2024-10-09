@@ -21,6 +21,7 @@ public:
     void MostrarMensaje();
     void PausarMensaje();
     void ReanudarMensaje();
+    void InterrumpirMensaje(bool estado);
     void ForzarSalir();
     void CorrerMensaje(); // A futuro, para acumular mensajes.
     ~GlobosDialogoUI();
@@ -56,6 +57,7 @@ private:
 
     void CalcularPosicionDelGlobo(int &X, int &Y);
     bool Mostrandose;
+    bool interrumpirMensaje;
 
     int tamanioNormalGloboX, tamanioNormalGloboY;
     int tamanioAumentadoGloboX, tamanioAumentadoGloboY;

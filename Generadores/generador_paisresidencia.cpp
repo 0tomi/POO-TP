@@ -101,8 +101,9 @@ QString generador_paisresidencia::generar_paisresidencia(bool valido)
 QString generador_paisresidencia::generarPaisValido()
 {
     int sorteo = rand.bounded(10);
-    if (sorteo <= Probabilidades)
-        return Pasaporte2Copy->getnacionalidad();
+    auto nacionalidad = Pasaporte2Copy->getnacionalidad();
+    if (sorteo <= Probabilidades && checkearSiEsValido(nacionalidad))
+        return nacionalidad;
 
     QString NuevoPais = paisesValidos[rand.bounded(paisesValidos.size())];
     return NuevoPais;
@@ -171,4 +172,12 @@ void generador_paisresidencia::setSeed(quint32 seed)
 {
     rand.seed(seed);
     locura->setSeed(seed);
+}
+
+bool generador_paisresidencia::checkearSiEsValido(QString paisAevaluar)
+{
+    for (const auto& pais: paisesValidos)
+        if (paisAevaluar == pais)
+            return true;
+    return false;
 }

@@ -34,6 +34,7 @@ private:
 
 public:
     void setSeed(quint32 seed);
+    bool checkearSiEsValido(QString pais);
     generador_paisresidencia();
     ~generador_paisresidencia();
     void Inicializar(ReglasNivel1*, ReglasNivel2*, quint32 seed);

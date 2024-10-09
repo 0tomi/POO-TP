@@ -22,6 +22,7 @@ public:
     void PrepararJuego(int Dificultad);
     void PrepararJuego(int Nivel, int Dificultad); // Modo normal por default
     void PrepararJuego(PlayerStats);
+    void PrepararJuego(int Nivel, int Dificultad, quint32 SeedPersonalizada);
     void setDefaultStats();
 
     // Esto despues lo eliminamos

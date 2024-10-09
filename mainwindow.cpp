@@ -5,7 +5,7 @@
 /// ############################### CONSTRUCTOR #######################################
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow), guardarPartida()
+    , ui(new Ui::MainWindow), guardarPartida(), log(Logs::Desactivado)
 {
     ui->setupUi(this);
     setWindowIcon(QIcon(":/Resources/th.jpeg"));
@@ -119,6 +119,7 @@ void MainWindow::ConeccionesPantallaMenu()
         auto Save = guardarPartida.CargarPartida(slot);
         TransicionJuegoConSave(Save);
     });
+    connect(pantallaMenu, &PantallaMenu::clickedStartCheat, this, &MainWindow::TransicionJuegoCheat);
 }
 
 void MainWindow::ConeccionesPantallaEstadisticas()
@@ -207,6 +208,18 @@ void MainWindow::TransicionJuegoConSave(PlayerStats &datos)
 
     // A futuro cambiar por los inputos de los botones.
     gameScreen->PrepararJuego(datos);
+
+    // Conectamos el final de la animacion, para mostrar la ventana del juego.
+    connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
+}
+
+void MainWindow::TransicionJuegoCheat(int lvl, int dif, quint32 seed)
+{
+    pantallaMenu->stopMusic();
+    transicion->ArrancarTransicion(1000, this, &MainWindow::PrepararJuego);
+
+    // A futuro cambiar por los inputos de los botones.
+    gameScreen->PrepararJuegoCheat(lvl, dif, seed);
 
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
     connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);

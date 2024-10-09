@@ -4,7 +4,7 @@
 
 GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::GlobosDialogoUI), Random(QTime::currentTime().msec())
+    , ui(new Ui::GlobosDialogoUI), Random(QTime::currentTime().msec()), interrumpirMensaje(false)
 {
     padre = parent;
     ui->setupUi(this);
@@ -48,7 +48,8 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje)
 
 void GlobosDialogoUI::MostrarMensaje()
 {
-    // en desarrollo
+    if (interrumpirMensaje)
+        return;
     animacionEntrada->start();
     show();
     raise();
@@ -70,6 +71,11 @@ void GlobosDialogoUI::ReanudarMensaje()
 {
     if (Mostrandose)
         TiempoVisualizacion.start(tiempoRestante);
+}
+
+void GlobosDialogoUI::InterrumpirMensaje(bool estado)
+{
+    this->interrumpirMensaje = estado;
 }
 
 void GlobosDialogoUI::ForzarSalir()
