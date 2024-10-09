@@ -14,9 +14,9 @@ public:
 
     void setSeed(quint32);
     // Getters comunes
-    QString *getPaises(int &max) const;
-    QString *getTipoVisitas(int &max);
-    QString *getEstadosCiviles(int &max);
+    vector<QString> getPaises() const;
+    vector<QString> getTipoVisitas();
+    vector<QString>getEstadosCiviles();
 
 protected:
     struct parDatos{
@@ -28,9 +28,9 @@ protected:
     void LimpiarDatos(Puntero &datos);
 
     QRandomGenerator rand;
-    QString* paises; int maxPaises;
-    QString tipoVisitas[3] = {"Turismo", "Trabajo", "Estudios"};
-    QString estadosCiviles[4] = {"Solter", "Casad", "Divorciad", "Viud"};
+    vector<QString> paises; int maxPaises;
+    vector<QString> tipoVisitas = {"Turismo", "Trabajo", "Estudios"};
+    vector<QString> estadosCiviles = {"Solter", "Casad", "Divorciad", "Viud"};
     QString * copiarVector(QString*, int max);
 
     const int MaxEstadosCiviles = 4;

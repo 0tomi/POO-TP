@@ -37,8 +37,8 @@ public:
     bool checkearSiEsValido(QString pais);
     generador_paisresidencia();
     ~generador_paisresidencia();
-    void Inicializar(ReglasNivel1*, ReglasNivel2*, quint32 seed);
-    PaisResidencia * CrearPaisResidencia(Pasaporte * Pasaporte2copy, bool valido, int dificultad);
+    void Inicializar(ReglasNivel1*, ReglasNivel2*, quint32 seed, int dificultad);
+    PaisResidencia * generar(Pasaporte * Pasaporte2copy, bool valido);
 };
 
 #endif // GENERADOR_PAISRESIDENCIA_H
