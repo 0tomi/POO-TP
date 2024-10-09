@@ -28,6 +28,8 @@ private slots:
 
     void on_voltear2_clicked();
 
+    void on_botonsalir_clicked();
+
 private:
     Ui::radiografiaui *ui;
     QLabel *labelsCuerpo[10];

@@ -62,11 +62,14 @@ void radiografiaui::on_voltear1_clicked()
 
 void radiografiaui::on_voltear2_clicked()
 {
-    int indiceActual = ui->cuerpo->currentIndex(); // Obtener el índice actual
+    int indiceActual = ui->cuerpo->currentIndex();
+    int nuevoIndice = (indiceActual == 0) ? 1 : 0;
+    ui->cuerpo->setCurrentIndex(nuevoIndice);
+}
 
-    // Alternar entre las páginas 0 y 1
-    int nuevoIndice = (indiceActual == 0) ? 1 : 0; // Si está en 0, cambiar a 1 y viceversa
 
-    ui->cuerpo->setCurrentIndex(nuevoIndice); // Cambiar a la nueva página
+void radiografiaui::on_botonsalir_clicked()
+{
+    Sacar();
 }
 
