@@ -49,6 +49,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
     }
     if (nivel > 4){
         reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
+        generadorRadiografia.inicializar(nullptr, this->semilla, this->DificultadJuego);
     }
 }
 
@@ -163,6 +164,8 @@ void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel5(int &Index)
 {
     // Xray y Antecedentes
+    auto Radiografia = generadorRadiografia.generar_radiografia(DocsValidos[Index]);
+    NPC2Generate->addDocumento(Radiografia,Index);
     Index++; //Y otro index++ por si hacemos los antecedentes.
 }
 
