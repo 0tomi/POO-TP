@@ -4,7 +4,7 @@
 /// ############################ CONSTRUCTOR ###############################
 PantallaMenu::PantallaMenu(GuardarPartidas * gp, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent), Musica(parent)
+    , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent), Musica(parent), dificultad(1), nivel(1)
 {
     ui->setupUi(this);
     this->guardarPartida = gp;
@@ -32,6 +32,7 @@ PantallaMenu::PantallaMenu(GuardarPartidas * gp, QWidget *parent)
 
     connect(ui->SeleccionarDificultad, &QSpinBox::valueChanged, this, &PantallaMenu::actualizarDificultad);
     connect(ui->SeleccionarNivel, &QSpinBox::valueChanged, this, &PantallaMenu::actualizarNivel);
+    connect(ui->SeleccionarSeed, &QSpinBox::valueChanged, [this](int newSeed){this->seedPersonalizada = newSeed;});
 
     connect(ui->cheatPlayClicked, &QPushButton::clicked, this, &PantallaMenu::cheatStartClicked);
 
@@ -276,8 +277,8 @@ void PantallaMenu::botonStartclicked()
 
 void PantallaMenu::cheatStartClicked()
 {
-    emit EnviarLogs("Nivel: " + QString::number(this->nivel) + "| Dificultad: " + QString::number(this->dificultad));
-    emit clickedStart(this->nivel, this->dificultad);
+    emit EnviarLogs("Nivel: " + QString::number(this->nivel) + " | Dificultad: " + QString::number(this->dificultad) + " | Seed: " + QString::number(this->seedPersonalizada));
+    emit clickedStartCheat(this->nivel, this->dificultad, this->seedPersonalizada);
 }
 
 void PantallaMenu::SlotGuardadoSeleccionado(int numero)

@@ -188,5 +188,8 @@
         <file>Niveles/Nivel5/Espalda.png</file>
         <file>Niveles/Nivel5/fondoscanner.png</file>
         <file>Niveles/Nivel5/Frente.png</file>
+        <file>Resources/Musica/MusicaJuego1.WAV</file>
+        <file>Resources/Musica/MusicaJuego2.WAV</file>
+        <file>Resources/Musica/MusicaJuego3.WAV</file>
     </qresource>
 </RCC>

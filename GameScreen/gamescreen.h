@@ -37,6 +37,7 @@ public:
     void Iniciar();
     void PrepararJuego(int Dificultad = 2);
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
+    void PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed);
     void PrepararJuego(PlayerStats);
 
     /// PrepararJuego(int Nivel, int Dificultad, PlayerStats) A futuro para cuando tengamos partidas guardadas

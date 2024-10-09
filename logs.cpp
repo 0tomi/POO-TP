@@ -1,6 +1,17 @@
 #include "logs.h"
 
-Logs::Logs() {
+Logs::Logs(EstadoLog estado) {
+    switch (estado){
+    case Activado: LogsActivados = true;
+        break;
+    case Desactivado: LogsActivados = false;
+        break;
+    default: LogsActivados = true;
+    }
+
+    if (!LogsActivados)
+        return;
+
     QDir directorio;
     if (directorio.mkpath(this->DireccionCarpeta)){
         qDebug() << "creada";
@@ -28,6 +39,9 @@ Logs::Logs() {
 
 void Logs::SaveLogs()
 {
+    if (!LogsActivados)
+        return;
+
     QFile archivo(this->DireccionCarpeta + "/" + QString::number(this->cantLogs) + ".txt");
     if(!archivo.open(QIODevice::Text | QIODevice::Append)){
         QMessageBox::critical(nullptr, "Error al abrir el archivo de logs en la direccion:", this->DireccionCarpeta);

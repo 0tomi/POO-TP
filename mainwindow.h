@@ -38,6 +38,7 @@ protected:
 private slots:
     void TransicionJuego(int Nivel = 1, int Dificultad = 2);
     void TransicionJuegoConSave(PlayerStats& datos);
+    void TransicionJuegoCheat(int lvl, int dif, quint32 seed);
     void PrepararJuego();
     void IniciarJuego();
     void PrepararPantallaFinalNivel(bool Perdio);

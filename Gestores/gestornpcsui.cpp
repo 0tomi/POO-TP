@@ -49,6 +49,7 @@ void GestorNPCsUI::setUpTranscriptor(QPushButton *boton)
 void GestorNPCsUI::EmpezarJuego()
 {
     // Cuando sale un npc entra otro.
+    Dialogos->InterrumpirMensaje(false);
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::Entrar);
     NPCConectado = true;
     ColaVacia = false;
@@ -142,6 +143,7 @@ void GestorNPCsUI::SalirEntidades()
 void GestorNPCsUI::TerminoNivel()
 {
     Dialogos->ForzarSalir();
+    Dialogos->InterrumpirMensaje(true);
     DesconectarNPCs();
     if (transcriptorDialogos->getMostrando())
         transcriptorDialogos->Sacar();
