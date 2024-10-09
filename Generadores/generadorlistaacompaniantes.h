@@ -40,7 +40,7 @@ public:
 
     ~GeneradorListaAcompaniantes();
 
-    ListaAcompaniantes * getListaAcompaniantes(bool validez);
+    ListaAcompaniantes * generar(bool validez);
 };
 
 #endif // GENERADORLISTAACOMPANIANTES_H

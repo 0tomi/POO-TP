@@ -103,7 +103,7 @@ ListaAcompaniantes *GeneradorListaAcompaniantes::getListaFalsa()
 }
 
 // <-------- METODOS PUBLICOS --------->
-ListaAcompaniantes* GeneradorListaAcompaniantes::getListaAcompaniantes(bool validez) {
+ListaAcompaniantes* GeneradorListaAcompaniantes::generar(bool validez) {
     generarCamposValidos(validez);
     const int CANTIDAD_MINIMA_ACOMPS = 0;
     int topeNombres; QString * nombresAcomps;

@@ -2,13 +2,13 @@
 
 Reglas::Reglas(): rand(QTime::currentTime().msec()) {
     LectorArchivos lector(":/Resources/ArchivosTexto/paises.txt");
-    this->paises = lector.getArray();
+    this->paises = lector.getVector();
     this->maxPaises = lector.getTopeArray();
 }
 
 Reglas::~Reglas()
 {
-    //delete paises;
+
 }
 
 void Reglas::setSeed(quint32 seed)
@@ -16,22 +16,19 @@ void Reglas::setSeed(quint32 seed)
     rand.seed(seed);
 }
 
-QString *Reglas::getPaises(int &max) const
+vector <QString> Reglas::getPaises() const
 {
-    max = this->maxPaises;
     return paises;
 }
 
-QString *Reglas::getTipoVisitas(int &max)
-{
-    max = MaxTipoVisitas;
-    return copiarVector(this->tipoVisitas, MaxTipoVisitas);
+vector<QString> Reglas::getTipoVisitas()
+{  
+    return this->tipoVisitas;
 }
 
-QString *Reglas::getEstadosCiviles(int &max)
+vector<QString> Reglas::getEstadosCiviles()
 {
-    max = MaxEstadosCiviles;
-    return copiarVector(estadosCiviles, MaxEstadosCiviles);
+    return this->estadosCiviles;
 }
 
 QString *Reglas::copiarVector(QString * viejoVec, int max)

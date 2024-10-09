@@ -10,7 +10,7 @@ generador_paisresidencia::~generador_paisresidencia()
     delete locura;
 }
 
-void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2, quint32 seed)
+void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * rules2, quint32 seed, int dificultad)
 {
     this->setSeed(seed);
     this->rules = rules1;
@@ -18,16 +18,7 @@ void generador_paisresidencia::Inicializar(ReglasNivel1* rules1, ReglasNivel2 * 
 
     paisesValidos = ruleslvl2->getPaisesValidos();
     paisesInvalidos = ruleslvl2->getPaisesInvalidos();
-}
 
-PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasaporte2copy, bool valido, int dificultad)
-{
-    for (int i = 0; i < 3; ++i){
-        this->camposValidos[i] = true;
-        this->camposLocura[i] = true;
-    }
-
-    this->Pasaporte2Copy = Pasaporte2copy;
     this->dificultad = dificultad;
 
     switch (dificultad){
@@ -41,6 +32,17 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
     default: Probabilidades = 5;
         break;
     }
+}
+
+PaisResidencia *generador_paisresidencia::generar(Pasaporte *Pasaporte2copy, bool valido)
+{
+    for (int i = 0; i < 3; ++i){
+        this->camposValidos[i] = true;
+        this->camposLocura[i] = true;
+    }
+
+    this->Pasaporte2Copy = Pasaporte2copy;
+
 
     if(valido){
         QString PaisResidenciaGenerado = this->generar_paisresidencia(valido);
@@ -60,7 +62,7 @@ PaisResidencia *generador_paisresidencia::CrearPaisResidencia(Pasaporte *Pasapor
 QString generador_paisresidencia::generar_nombre(char genero)
 {
     QString nombre_generado = this->Pasaporte2Copy->getnombre(); // string con el nombre que se va a pickear
-    int valor_centinela; //para pickear indice
+
     if (!this->camposValidos[0]){
         if (this->camposLocura[0]){
             nombre_generado = this->locura->CambiarCadena(this->dificultad,this->Pasaporte2Copy->getnombre());
@@ -68,20 +70,19 @@ QString generador_paisresidencia::generar_nombre(char genero)
             do{
                 switch (genero){
                 case 'H':
-                    valor_centinela = this->rand.bounded(this->max_hombres);
-                    nombre_generado = this->nombre_hombres[valor_centinela];
+
+                    nombre_generado = this->nombre_hombres[this->rand.bounded(this->nombre_hombres.size())];
                     break;
                 case 'M':
-                    valor_centinela = this->rand.bounded(this->max_mujeres);
-                    nombre_generado = this->nombre_mujeres[valor_centinela];
+                    nombre_generado = this->nombre_mujeres[this->rand.bounded(this->nombre_mujeres.size())];
                     break;
                 case 'X':
-                    valor_centinela = this->rand.bounded(this->max_x);
-                    nombre_generado = this->nombre_x[valor_centinela];
+
+                    nombre_generado = this->nombre_x[this->rand.bounded(this->nombre_x.size())];
                 }
             }while(nombre_generado != this->Pasaporte2Copy->getnombre());
         }
-        nombre_generado += " " + this->apellidos[this->rand.bounded(this->max_apellidos)];
+        nombre_generado += " " + this->apellidos[this->rand.bounded(this->apellidos.size())];
     }
     return nombre_generado;
 }
@@ -111,7 +112,6 @@ QString generador_paisresidencia::generarPaisValido()
 
 QString generador_paisresidencia::generarPaisInvalido()
 {
-    int sorteo = rand.bounded(10);
     QString paisGenerado;
 
     if (this->camposLocura[2]){
@@ -120,7 +120,7 @@ QString generador_paisresidencia::generarPaisInvalido()
         return paisGenerado;
     }
 
-    sorteo = this->rand.bounded(paisesInvalidos.size());
+    int sorteo = this->rand.bounded(paisesInvalidos.size());
     paisGenerado = this->paisesInvalidos[sorteo];
 
     return paisGenerado;
