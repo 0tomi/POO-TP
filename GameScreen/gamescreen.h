@@ -21,6 +21,7 @@
 #include "../Documentos/docsiconui.h"
 #include "intropantalla.h"
 #include "notificacion.h"
+#include "../Documentos/radiografiaui.h"
 
 namespace Ui {
 class GameScreen;
