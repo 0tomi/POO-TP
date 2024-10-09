@@ -23,6 +23,11 @@ public:
     void setLabels(radiografia* datos);
     ~radiografiaui();
 
+private slots:
+    void on_voltear1_clicked();
+
+    void on_voltear2_clicked();
+
 private:
     Ui::radiografiaui *ui;
     QLabel *labelsCuerpo[10];
