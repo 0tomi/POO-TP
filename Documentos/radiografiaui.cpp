@@ -70,6 +70,14 @@ void radiografiaui::on_voltear2_clicked()
 
 void radiografiaui::on_botonsalir_clicked()
 {
-    Sacar();
+    DocumentosUI::Sacar();
 }
+
+void radiografiaui::entrarRadiografia()
+{
+    raise();
+    DocumentosUI::Entrar();
+}
+
+
 

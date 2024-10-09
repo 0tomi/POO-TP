@@ -20,23 +20,24 @@ class radiografiaui : public DocumentosUI
 
 public:
     explicit radiografiaui(QWidget *parent = nullptr);
-    void setLabels(radiografia* datos);
     ~radiografiaui();
-
+    void Sacar();
+    void Entrar();
 private slots:
     void on_voltear1_clicked();
 
     void on_voltear2_clicked();
 
     void on_botonsalir_clicked();
-
+    void entrarRadiografia();
+    void setLabels(radiografia* datos);
 private:
     Ui::radiografiaui *ui;
     QLabel *labelsCuerpo[10];
     QMap<QString, QPixmap>items;
     vector<QString>objetos;
     void setmap();
-
+    bool Mostrando;
 };
 
 #endif // RADIOGRAFIAUI_H

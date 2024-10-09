@@ -130,6 +130,8 @@ private:
     void CrearNotificacion(bool Multa, QString& Motivo);
     void MatarNotificaciones();
     void MatarNotificacion(int Numero);
+
+    // Radiografia
 };
 
 #endif // GAMESCREEN_H
