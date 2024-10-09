@@ -20,18 +20,30 @@ radiografiaui::radiografiaui(QWidget *parent)
     this->objetos=lector.getVector();
     setmap();
 }
-void radiografiaui::setLabels(radiografia* datos){
 
-}
 void radiografiaui::setmap(){
-    for(int i=0;this->objetos.size();i++){
+    for(int i=0;i < this->objetos.size();i++){
         QString ruta= ":/Niveles/Nivel5/carpeta"+this->objetos[i]+".png";//poner la ruta bien cuando tengamos la carpeta
         QPixmap pixmap(ruta);
         this->items.insert(this->objetos[i], pixmap);
 
     }
 }
-
+void radiografiaui::setLabels(radiografia* datos){
+    vector<ParDatos>objetosAniadir = datos->GetVector();
+    for (auto& label : this->labelsCuerpo) {
+        if (label) {
+            label->clear();  // Libera el QPixmap actual
+        }
+    }
+    if(objetosAniadir.empty()){
+        return;
+    }else {
+        for(int i = 0; i < objetosAniadir.size(); i++){
+            this->labelsCuerpo[objetosAniadir[i].ParteCuerpo]->setPixmap(this->items[objetosAniadir[i].Objeto]);
+        }
+    }
+}
 radiografiaui::~radiografiaui()
 {
     delete ui;
