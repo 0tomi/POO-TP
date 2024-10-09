@@ -64,7 +64,6 @@ private:
     vector<parDatos> parpaisesValidos;
     vector<parDatos> parpaisesInvalidos;
     vector<QString> tipoDeVisitaValida;
-    vector<QString> estadoCivilValidos;
     // Tope de arrays:
     int maxPaisesPermitidos;
     int maxPaisesInvalidos;
@@ -77,8 +76,5 @@ private:
 
     void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
     void SumarAstana();
-
-    //bool checkRepetidos(int dato);
-    //bool checkIfValido(int indice);
 };
 #endif // REGLASNIVEL1_H

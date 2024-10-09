@@ -141,7 +141,7 @@ vector<QString> ReglasNivel1::getPaisesPermitidos() const{
 }
 
 vector<QString> ReglasNivel1::getEstadoCivilPermitido() const{
-    return this->estadoCivilValidos;
+    return generarVector(this->estadosCivilesValidos);
 }
 
 vector<QString> ReglasNivel1::getPaisesInvalidos() const
