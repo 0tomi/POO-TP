@@ -45,8 +45,6 @@ void ReglasNivel1::generar_Paises(int Cantidad_Paises_Permitidos)
         setPaisesPermitidos(rand.bounded(4));
     else
         setPaisesPermitidos(Cantidad_Paises_Permitidos);
-
-    SumarAstana();
 }
 
 void ReglasNivel1::generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos)
@@ -128,7 +126,7 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
     this->maxPaisesPermitidos = cantidadMinimaPaisesPermitidos;
 
     this->PaisesValidos = generarVector(generarPermitido(this->maxPaisesPermitidos,this->parpaisesValidos));
-
+    SumarAstana();
     crearParDatos(this->paises,this->parpaisesInvalidos);
 
     this->PaisesInvalidos = generarVector(generarNoPermitido(this->parpaisesInvalidos));
@@ -157,7 +155,7 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
 
 void ReglasNivel1::SumarAstana()
 {
-    this->paises.push_back("astana");
+    this->PaisesValidos.push_back("astana");
 }
 
 // Getters
