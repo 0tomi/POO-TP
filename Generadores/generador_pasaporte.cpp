@@ -170,9 +170,13 @@ Pasaporte * Generar_pasaporte::crear_pasaporte(bool Validez, NPCcomun * InfoNPC,
 
     generar_camposValidos(Validez, Probabilidades);
 
+    qDebug() << "Generando fecha valida: ";
     QString fecha_generada = generar_fecha(this->campos_validos[0]);
+    qDebug() << "Generando nacionalidad: ";
     QString nacionalidad_generada = generar_nacionalidad(this->campos_validos[1]);
+    qDebug() << "Generando estado civil: ";
     QString estado_civil_generado = generar_estado_civil(InfoNPC->getGenero(), this->campos_validos[2]);
+    qDebug() << "Generando nombre: ";
     QString nombre_generado = generar_nombre(InfoNPC->getGenero());
 
     this->Pasaporte_generado = new Pasaporte(nombre_generado,fecha_generada,InfoNPC->getGenero(),nacionalidad_generada,estado_civil_generado);
