@@ -10,6 +10,11 @@
 #include "radiografia.h"
 #include "../lectorarchivos.h"
 
+/*  Falta:
+ *  - Meter sonidos al dar vuelta las hojas
+ *  - Sonido al cerrar la radiografia
+ *
+ */
 namespace Ui {
 class radiografiaui;
 }
@@ -20,16 +25,15 @@ class radiografiaui : public DocumentosUI
 
 public:
     explicit radiografiaui(QWidget *parent = nullptr);
+    virtual void setDocumentacionInfo(Documentacion *documento) override;
     ~radiografiaui();
-    void Sacar();
-    void Entrar();
+    //void Sacar(); Falta override y meterle sonidos al cerrarla
+    //void Entrar();
 private slots:
     void on_voltear1_clicked();
-
     void on_voltear2_clicked();
-
     void on_botonsalir_clicked();
-    void entrarRadiografia();
+
     void setLabels(radiografia* datos);
 private:
     Ui::radiografiaui *ui;

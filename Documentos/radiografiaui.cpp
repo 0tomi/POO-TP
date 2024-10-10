@@ -21,16 +21,23 @@ radiografiaui::radiografiaui(QWidget *parent)
     setmap();
 }
 
-void radiografiaui::setmap(){
-    for(int i=0;i < this->objetos.size();i++){
-        QString ruta= ":/Niveles/Nivel5/"+this->objetos[i]+".png";//poner la ruta bien cuando tengamos la carpeta
-        QPixmap pixmap(ruta);
-        this->items.insert(this->objetos[i], pixmap);
+void radiografiaui::setDocumentacionInfo(Documentacion *documento)
+{
+    auto Radiografia = dynamic_cast<radiografia*>(documento);
+    if (Radiografia)
+        setLabels(Radiografia);
+    else qDebug() << "Fallo al castear puntero de radiografia";
+}
 
+void radiografiaui::setmap(){
+    for(const auto& objeto: objetos){
+        QString ruta= ":/Niveles/Nivel5/Objetos/"+ objeto + ".png";//poner la ruta bien cuando tengamos la carpeta
+        QPixmap pixmap(ruta);
+        this->items.insert(objeto, pixmap);
     }
 }
 void radiografiaui::setLabels(radiografia* datos){
-    vector<ParDatos>* objetosAniadir = &datos->GetVector();
+    auto objetosAniadir = &datos->GetVector();
     for (auto& label : this->labelsCuerpo) {
         if (label) {
             label->clear();  // Libera el QPixmap actual
@@ -40,7 +47,7 @@ void radiografiaui::setLabels(radiografia* datos){
         return;
     }else {
         for (const auto& objeto: *objetosAniadir)
-            this->labelsCuerpo[objeto.ParteCuerpo]->setPixmap(this->items[objeto.Objeto]);
+            this->labelsCuerpo[objeto.ParteCuerpo]->setPixmap(this->items[objeto.Objeto]); // Esto es peligroso por como funcionan los mapas
     }
 }
 radiografiaui::~radiografiaui()
@@ -70,12 +77,6 @@ void radiografiaui::on_voltear2_clicked()
 void radiografiaui::on_botonsalir_clicked()
 {
     DocumentosUI::Sacar();
-}
-
-void radiografiaui::entrarRadiografia()
-{
-    raise();
-    DocumentosUI::Entrar();
 }
 
 

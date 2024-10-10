@@ -193,5 +193,17 @@
         <file>Resources/Musica/MusicaJuego2.WAV</file>
         <file>Resources/Musica/MusicaJuego3.WAV</file>
         <file>Niveles/Nivel5/Objetos.txt</file>
+        <file>Niveles/Nivel5/Objetos/Alcohol.png</file>
+        <file>Niveles/Nivel5/Objetos/Billetera.png</file>
+        <file>Niveles/Nivel5/Objetos/Cartas.png</file>
+        <file>Niveles/Nivel5/Objetos/Celular.png</file>
+        <file>Niveles/Nivel5/Objetos/Cigarrillos.png</file>
+        <file>Niveles/Nivel5/Objetos/Cuchillo.png</file>
+        <file>Niveles/Nivel5/Objetos/Drogas.png</file>
+        <file>Niveles/Nivel5/Objetos/Granada.png</file>
+        <file>Niveles/Nivel5/Objetos/Jeringa.png</file>
+        <file>Niveles/Nivel5/Objetos/Lapiz.png</file>
+        <file>Niveles/Nivel5/Objetos/Lentes.png</file>
+        <file>Niveles/Nivel5/Objetos/Pistola.png</file>
     </qresource>
 </RCC>
