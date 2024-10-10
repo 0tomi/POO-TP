@@ -112,6 +112,19 @@ void GameScreen::setUpBotonEscanner()
     BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, 0.5, ui->BotonEscannerUI);
     BotonScanner->copyFormat();
     ui->BotonEscannerUI->layout()->addWidget(BotonScanner);
+
+    // Falta implementar mas cosas de la radiografia
+    RadiografiaUI = new radiografiaui(ui->Escritorio);
+
+    dejo esto aca para que se bugee el codigo porque quedan cosas que hacer:
+    hacer que radiografia tenga estado de mostrandose o no, para que el boton pueda operar
+    hacer que radiografia se actualize cada vez que pasa un npc nuevo.
+
+    connect(BotonScanner, &BotonesCustom::BotonApretado, [this](){
+        auto Radiografia = GestorNPC.getNPC()->getDocumento(NPC::Radiografia);
+        RadiografiaUI->setDocumentacionInfo(Radiografia);
+        RadiografiaUI->Entrar();
+    });
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
