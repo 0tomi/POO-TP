@@ -14,7 +14,7 @@ private:
     vector<ParDatos>Elementos;
 public:
     radiografia(vector<ParDatos>&Elements);
-    vector<ParDatos> GetVector() const;
+    vector<ParDatos>& GetVector();
 };
 
 #endif // RADIOGRAFIA_H

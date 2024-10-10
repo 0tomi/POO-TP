@@ -5,7 +5,7 @@ radiografia::radiografia(vector<ParDatos> &Elements)
     this->Elementos = Elements;
 }
 
-vector<ParDatos>radiografia::GetVector() const
+vector<ParDatos>& radiografia::GetVector()
 {
     return this->Elementos;
 }

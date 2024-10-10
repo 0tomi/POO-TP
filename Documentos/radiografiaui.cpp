@@ -23,25 +23,24 @@ radiografiaui::radiografiaui(QWidget *parent)
 
 void radiografiaui::setmap(){
     for(int i=0;i < this->objetos.size();i++){
-        QString ruta= ":/Niveles/Nivel5/carpeta"+this->objetos[i]+".png";//poner la ruta bien cuando tengamos la carpeta
+        QString ruta= ":/Niveles/Nivel5/"+this->objetos[i]+".png";//poner la ruta bien cuando tengamos la carpeta
         QPixmap pixmap(ruta);
         this->items.insert(this->objetos[i], pixmap);
 
     }
 }
 void radiografiaui::setLabels(radiografia* datos){
-    vector<ParDatos>objetosAniadir = datos->GetVector();
+    vector<ParDatos>* objetosAniadir = &datos->GetVector();
     for (auto& label : this->labelsCuerpo) {
         if (label) {
             label->clear();  // Libera el QPixmap actual
         }
     }
-    if(objetosAniadir.empty()){
+    if(objetosAniadir->empty()){
         return;
     }else {
-        for(int i = 0; i < objetosAniadir.size(); i++){
-            this->labelsCuerpo[objetosAniadir[i].ParteCuerpo]->setPixmap(this->items[objetosAniadir[i].Objeto]);
-        }
+        for (const auto& objeto: *objetosAniadir)
+            this->labelsCuerpo[objeto.ParteCuerpo]->setPixmap(this->items[objeto.Objeto]);
     }
 }
 radiografiaui::~radiografiaui()
