@@ -126,7 +126,7 @@ void GeneradorNPC::GenerarDialogosNivel1(NPC *info)
 
 void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
 {
-    Estancia * infoEstancia = info->getEstancia();
+    auto infoEstancia = dynamic_cast<Estancia*>(info->getDocumento(NPC::estancia));
 
     if (!infoEstancia){
         qDebug() << "Puntero Estancia NULO";
@@ -177,7 +177,7 @@ void GeneradorNPC::GenerarDialogosNivel2(NPC *info)
 
 void GeneradorNPC::GenerarDialogosNivel3(NPC *info)
 {
-    ListaAcompaniantes * infoLista = info->getListaAcompaniantes();
+    auto infoLista = dynamic_cast<ListaAcompaniantes*>(info->getDocumento(NPC::listaAcompaniantes));
     if (!infoLista){
         qDebug() << "Puntero Acompaniantes NULO";
         return;

@@ -3,6 +3,8 @@
 
 #include "../NPC/npccomun.h"
 #include "generadorskin.h"
+#include "../Documentos/estancia.h"
+#include "../Documentos/listaacompaniantes.h"
 #include <QRandomGenerator>
 #include <QString>
 

@@ -49,6 +49,7 @@ void GeneradorDocumentacion::InicializarGeneradores(Reglas **rules, int nivel)
     }
     if (nivel > 4){
         reglasNivel5 = dynamic_cast<ReglasNivel5*>(rules[4]);
+        generadorRadiografia.inicializar(nullptr, this->semilla, this->DificultadJuego);
     }
 }
 
@@ -124,8 +125,8 @@ QString GeneradorDocumentacion::logDatosFalsos()
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    Pasaporte* nuevoPasaporte = generadorPasaporte.generar(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate));
-    NPC2Generate->addDocumento(nuevoPasaporte, Index);
+    pasaporteActual = generadorPasaporte.generar(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate));
+    NPC2Generate->addDocumento(pasaporteActual, Index);
     Index++;
 
     // Generador de Estancias
@@ -138,7 +139,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
     // Generador de Residencia
-    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.generar(NPC2Generate->getPasaporte(),DocsValidos[Index]);
+    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.generar(pasaporteActual, DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevoPaisResidencia,Index);
     Index++;
 }
@@ -163,6 +164,8 @@ void GeneradorDocumentacion::GenerarDocumentosNivel4(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel5(int &Index)
 {
     // Xray y Antecedentes
+    auto Radiografia = generadorRadiografia.generar_radiografia(DocsValidos[Index]);
+    NPC2Generate->addDocumento(Radiografia,Index);
     Index++; //Y otro index++ por si hacemos los antecedentes.
 }
 

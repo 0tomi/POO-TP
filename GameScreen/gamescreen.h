@@ -21,6 +21,7 @@
 #include "../Documentos/docsiconui.h"
 #include "intropantalla.h"
 #include "notificacion.h"
+#include "../Documentos/radiografiaui.h"
 
 namespace Ui {
 class GameScreen;
@@ -133,6 +134,8 @@ private:
     void CrearNotificacion(bool Multa, QString& Motivo);
     void MatarNotificaciones();
     void MatarNotificacion(int Numero);
+
+    // Radiografia
 };
 
 #endif // GAMESCREEN_H

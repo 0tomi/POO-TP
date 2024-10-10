@@ -166,7 +166,6 @@
         <file>Niveles/Nivel4/Bienes.txt</file>
         <file>Niveles/Nivel4/Ocupaciones.txt</file>
         <file>Niveles/Nivel4/PaisesPaso.txt</file>
-        <file>Niveles/Nivel5/Objetos.txt</file>
         <file>Niveles/Nivel5/FotoEscannerEspalda.png</file>
         <file>Niveles/Nivel5/FotoEscannerFrente.png</file>
         <file>Niveles/Nivel1/Nivel1Settings.txt</file>
@@ -185,8 +184,26 @@
         <file>Resources/Documentos/NuevaEstancia/paiseses de paso.png</file>
         <file>Resources/Documentos/NuevaEstancia/EstanciaNuevoDOC.png</file>
         <file>Resources/Documentos/NormativasIconoLibro.png</file>
+        <file>Niveles/Nivel5/Espalda.png</file>
+        <file>Niveles/Nivel5/fondoscanner.png</file>
+        <file>Niveles/Nivel5/Frente.png</file>
+        <file>Niveles/Nivel5/ObjetosValidos.txt</file>
+        <file>Niveles/Nivel5/ObjetosInvalidos.txt</file>
         <file>Resources/Musica/MusicaJuego1.WAV</file>
         <file>Resources/Musica/MusicaJuego2.WAV</file>
         <file>Resources/Musica/MusicaJuego3.WAV</file>
+        <file>Niveles/Nivel5/Objetos.txt</file>
+        <file>Niveles/Nivel5/Objetos/Alcohol.png</file>
+        <file>Niveles/Nivel5/Objetos/Billetera.png</file>
+        <file>Niveles/Nivel5/Objetos/Cartas.png</file>
+        <file>Niveles/Nivel5/Objetos/Celular.png</file>
+        <file>Niveles/Nivel5/Objetos/Cigarrillos.png</file>
+        <file>Niveles/Nivel5/Objetos/Cuchillo.png</file>
+        <file>Niveles/Nivel5/Objetos/Drogas.png</file>
+        <file>Niveles/Nivel5/Objetos/Granada.png</file>
+        <file>Niveles/Nivel5/Objetos/Jeringa.png</file>
+        <file>Niveles/Nivel5/Objetos/Lapiz.png</file>
+        <file>Niveles/Nivel5/Objetos/Lentes.png</file>
+        <file>Niveles/Nivel5/Objetos/Pistola.png</file>
     </qresource>
 </RCC>

@@ -18,7 +18,7 @@
 #include "locuracaracteres.h"
 #include "generador_paisresidencia.h"
 #include "generador_nuevaestancia.h"
-
+#include "generador_radiografia.h"
 
 using namespace std;
 
@@ -43,7 +43,7 @@ private:
     LocuraCaracteres randomizadorCaracteres;
     generador_paisresidencia generadorPaisResidencia;
     Generador_NuevaEstancia generadorNuevaEstancia;
-
+    generador_Radiografia generadorRadiografia;
     // Datos del juego:
     ReglasNivel1* reglasNivel1;
     ReglasNivel2* reglasNivel2;
@@ -63,6 +63,7 @@ private:
     QString logDatosFalsos();
     ListaAcompaniantes * listaAcompActual;
     Estancia* estanciaActual;
+    Pasaporte* pasaporteActual;
 
     // Seleccion de documentos que seran falsos
     bool DocsValidos[10];

@@ -212,9 +212,6 @@ void MainWindow::TransicionJuegoConSave(PlayerStats &datos)
         pantallas->setCurrentWidget(gameScreen);
     });
 
-    // A futuro cambiar por los inputos de los botones.
-    gameScreen->PrepararJuego(datos);
-
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
     connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
 }
@@ -227,9 +224,6 @@ void MainWindow::TransicionJuegoCheat(int lvl, int dif, quint32 seed)
         gameScreen->PrepararJuegoCheat(nivel, dificultad, seedPersonalizada);
         pantallas->setCurrentWidget(gameScreen);
     });
-
-    // A futuro cambiar por los inputos de los botones.
-    gameScreen->PrepararJuegoCheat(lvl, dif, seed);
 
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
     connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
