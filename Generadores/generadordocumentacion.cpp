@@ -125,8 +125,8 @@ QString GeneradorDocumentacion::logDatosFalsos()
 void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 {
     // Generador de pasaportes - DNI
-    Pasaporte* nuevoPasaporte = generadorPasaporte.generar(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate));
-    NPC2Generate->addDocumento(nuevoPasaporte, Index);
+    pasaporteActual = generadorPasaporte.generar(DocsValidos[Index], dynamic_cast<NPCcomun*>(NPC2Generate));
+    NPC2Generate->addDocumento(pasaporteActual, Index);
     Index++;
 
     // Generador de Estancias
@@ -139,7 +139,7 @@ void GeneradorDocumentacion::GenerarDocumentosNivel1(int &Index)
 void GeneradorDocumentacion::GenerarDocumentosNivel2(int &Index)
 {
     // Generador de Residencia
-    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.generar(NPC2Generate->getPasaporte(),DocsValidos[Index]);
+    PaisResidencia * nuevoPaisResidencia = generadorPaisResidencia.generar(pasaporteActual, DocsValidos[Index]);
     NPC2Generate->addDocumento(nuevoPaisResidencia,Index);
     Index++;
 }

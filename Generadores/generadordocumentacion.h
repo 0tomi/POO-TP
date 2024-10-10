@@ -63,6 +63,7 @@ private:
     QString logDatosFalsos();
     ListaAcompaniantes * listaAcompActual;
     Estancia* estanciaActual;
+    Pasaporte* pasaporteActual;
 
     // Seleccion de documentos que seran falsos
     bool DocsValidos[10];

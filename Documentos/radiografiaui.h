@@ -13,7 +13,8 @@
 /*  Falta:
  *  - Meter sonidos al dar vuelta las hojas
  *  - Sonido al cerrar la radiografia
- *
+ *  - Resize al pixelmap, para que se ajuste al tamanio del label sobre el que se aplica (Reescalar el pixmap)
+ *  - Asegurar mas el sistema de labels usando los mapas.
  */
 namespace Ui {
 class radiografiaui;

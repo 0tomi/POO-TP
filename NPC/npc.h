@@ -2,19 +2,20 @@
 #define NPC_H
 
 #include "../Documentos/documentacion.h"
-#include "../Documentos/estancia.h"
-#include "../Documentos/listaacompaniantes.h"
-#include "../Documentos/pasaporte.h"
 #include <QString>
 
 class NPC
 {
 public:
+    enum Documento{
+        pasaporte, estancia, paisDeResidencia,  listaAcompaniantes, nuevaEstancia, Radiografia
+    };
     explicit NPC(char Genero, int Tipo, bool Validez);
     virtual ~NPC();
 
     virtual char getGenero();
     virtual Documentacion** getDocumentos();
+    virtual Documentacion * getDocumento(Documento Tipo);
     virtual int getTipo();
     virtual bool getValidez() const;
 
@@ -22,11 +23,6 @@ public:
 
     QString getDialogo() const;
     void setDialogo(const QString newDialogo);
-
-    // Getters de documentos
-    virtual Estancia *getEstancia();
-    virtual ListaAcompaniantes * getListaAcompaniantes();
-    virtual Pasaporte *getPasaporte();
 
     QString getDatosFalsos();
     void setDatosFalsos(QString newDatosFalsos);
