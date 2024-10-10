@@ -14,8 +14,7 @@ public:
 
     std::vector<QString> getPaisesValidos() const;
     std::vector<QString> getPaisesInvalidos() const;
-    QString* getPaisesValidos(int &Max) const;
-    QString* getPaisesInvalidos(int &Max) const;
+
 
 private:
     std::vector<parDatos> paisesPar;

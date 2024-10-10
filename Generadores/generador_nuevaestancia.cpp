@@ -33,7 +33,7 @@ void Generador_NuevaEstancia::inicializadorNivel4(ReglasNivel4 *reglasLvl4, int 
     this->reglasLvl4 = reglasLvl4;
 }
 
-NuevaEstancia* Generador_NuevaEstancia::getNuevaEstancia(Estancia* actualEstancia, bool valido) {
+NuevaEstancia* Generador_NuevaEstancia::generar(Estancia* actualEstancia, bool valido) {
     estanciaActual = actualEstancia;
     SortearPaginasFalsas(valido);
 

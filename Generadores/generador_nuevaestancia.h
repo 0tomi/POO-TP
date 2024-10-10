@@ -16,7 +16,7 @@ public:
     Generador_NuevaEstancia();
     ~Generador_NuevaEstancia();
     void inicializadorNivel4(ReglasNivel4* reglasLvl4, int dificultad, quint32 intSeed);
-    NuevaEstancia* getNuevaEstancia(Estancia*, bool valido);
+    NuevaEstancia* generar(Estancia*, bool valido);
 private:
     struct trioDatos{
         QString dato;

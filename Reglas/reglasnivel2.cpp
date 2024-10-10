@@ -40,25 +40,4 @@ std::vector<QString> ReglasNivel2::getPaisesInvalidos() const
     return generarVector(paisesInvalidos);
 }
 
-QString *ReglasNivel2::getPaisesValidos(int &Max) const
-{
-    Max = paisesValidos.size();
-    QString* paises_Validos = new QString[Max];
 
-    int i = 0;
-    for (const auto& element: paisesValidos)
-        paises_Validos[i++] = element;
-
-    return paises_Validos;
-}
-
-QString *ReglasNivel2::getPaisesInvalidos(int &Max) const
-{
-    Max = paisesInvalidos.size();
-    QString* paises_Invalidos = new QString[Max];
-    int i = 0;
-    for (const auto& element: paisesValidos)
-        paises_Invalidos[i++] = element;
-
-    return paises_Invalidos;
-}

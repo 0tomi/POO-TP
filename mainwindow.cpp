@@ -96,6 +96,7 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::quit, this, &MainWindow::VolverInicio);
     connect(pantallaPausa, &PantallaPausa::clickedTutorial, this, &MainWindow::PrepararTutorial);
     connect(pantallaPausa, &PantallaPausa::soundVolume, gameScreen , &GameScreen::setVolumenes);
+    connect(pantallaPausa, &PantallaPausa::musicVolume, gameScreen, &GameScreen::setMusicVolume);
     connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaMenu , &PantallaMenu::setVolumen);
     connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaMenu, &PantallaMenu::setMusicVolume);
     connect(pantallaPausa, &PantallaPausa::soundVolume, pantallaFinalNivel , &PantallaFinalNivel::setSoundVolume);
@@ -192,10 +193,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::TransicionJuego(int Nivel, int Dificultad)
 {
     pantallaMenu->stopMusic();
-    transicion->ArrancarTransicion(1000, this, &MainWindow::PrepararJuego);
-
-    // A futuro cambiar por los inputos de los botones.
-    gameScreen->PrepararJuego(Nivel, Dificultad);
+    this->nivel = Nivel; this->dificultad = Dificultad;
+    transicion->ArrancarTransicionCargando(1000, [this](){
+        gameScreen->PrepararJuego(nivel, dificultad);
+        pantallas->setCurrentWidget(gameScreen);
+    });
 
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
     connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
@@ -204,7 +206,11 @@ void MainWindow::TransicionJuego(int Nivel, int Dificultad)
 void MainWindow::TransicionJuegoConSave(PlayerStats &datos)
 {
     pantallaMenu->stopMusic();
-    transicion->ArrancarTransicion(1000, this, &MainWindow::PrepararJuego);
+    this->stats = datos;
+    transicion->ArrancarTransicionCargando(1000, [this](){
+        gameScreen->PrepararJuego(this->stats);
+        pantallas->setCurrentWidget(gameScreen);
+    });
 
     // A futuro cambiar por los inputos de los botones.
     gameScreen->PrepararJuego(datos);
@@ -216,18 +222,17 @@ void MainWindow::TransicionJuegoConSave(PlayerStats &datos)
 void MainWindow::TransicionJuegoCheat(int lvl, int dif, quint32 seed)
 {
     pantallaMenu->stopMusic();
-    transicion->ArrancarTransicion(1000, this, &MainWindow::PrepararJuego);
+    this->nivel = lvl; this->dificultad = dif; this->seedPersonalizada = seed;
+    transicion->ArrancarTransicionCargando(1000, [this](){
+        gameScreen->PrepararJuegoCheat(nivel, dificultad, seedPersonalizada);
+        pantallas->setCurrentWidget(gameScreen);
+    });
 
     // A futuro cambiar por los inputos de los botones.
     gameScreen->PrepararJuegoCheat(lvl, dif, seed);
 
     // Conectamos el final de la animacion, para mostrar la ventana del juego.
     connect(transicion, &PantallaTransicion::terminoAnimacion, this, &MainWindow::IniciarJuego);
-}
-
-void MainWindow::PrepararJuego()
-{
-    pantallas->setCurrentWidget(gameScreen);    // Colocamos la pantalla de juego, aunque esto suceda a la mitad de animacion, por lo tanto no se ve.
 }
 
 void MainWindow::IniciarJuego()
