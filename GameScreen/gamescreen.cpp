@@ -17,7 +17,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     setUpSonidos();
 
     pantallaPerdiste = new PantallaPerdiste(this);
-    pantallaPerdiste->setFixedSize(1920,1080);
+    pantallaPerdiste->resize(this->size());
     pantallaPerdiste->hide();
 
     // Seteamos el juego, y obtenemos la cola de NPCs.
@@ -510,7 +510,7 @@ void GameScreen::resizeEvent(QResizeEvent *event)
     if (GestorNPC.MostrandoElNPC())
         GestorNPC.Centrar();
     if (pantallaPerdiste->getMostrandoPantalla())
-        pantallaPerdiste->setFixedSize(width(), height());
+        pantallaPerdiste->resize(this->size());
 }
 
 

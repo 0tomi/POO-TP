@@ -84,8 +84,14 @@ private slots:
 
     void tutorialButton();
 private:
-    void bloquearBotonGuardado(QPushButton * boton);
-    void desbloquearBotonGuardado(QPushButton * boton);
+    // Sistema de partidas guardadas:
+    const QString COLOR_DESBLOQUEADO = "color: white; background-color: rgb(170, 0, 255);";
+    const QString COLOR_BLOQUEADO = "color: white; background-color: #1e1532;";
+    GuardarPartidas * guardarPartida;
+    bool * Partidas;
+
+    void bloquearBotonGuardado(QPushButton * botonGuardado, QPushButton * botonRanura);
+    void desbloquearBotonGuardado(QPushButton * botonGuardado, QPushButton * botonRanura);
     void setBotonesPartida(int num, bool);
     void ConfigurarSonidos();
     void ConfigurarBotonesDificultad();
@@ -99,7 +105,6 @@ private:
     int dificultad = 1;
     int nivel = 1;
     quint32 seedPersonalizada;
-    GuardarPartidas * guardarPartida;
     Ui::PantallaMenu *ui;
     PantallaTransicion * transicion;
     int indicePrevio;

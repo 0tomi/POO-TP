@@ -80,6 +80,7 @@ void PantallaMenu::ConfigurarBotonesElegirRanura()
     connect(ui->boton_Ranura1, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(0);});
     connect(ui->boton_Ranura2, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(1);});
     connect(ui->boton_Ranura3, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(2);});
+    connect(ui->AceptarSobreescribir, &QPushButton::clicked, [this](){SonidosBotones.play(); emit clickedStartDefault(this->dificultad);});
 }
 
 void PantallaMenu::setInicio()
@@ -104,10 +105,10 @@ void PantallaMenu::continueMusic()
 
 void PantallaMenu::checkSaveSlots()
 {
-    auto Partidas = guardarPartida->LeerPartidas();
-    bloquearBotonGuardado(ui->botonPartida1);
-    bloquearBotonGuardado(ui->botonPartida2);
-    bloquearBotonGuardado(ui->botonPartida3);
+    Partidas = guardarPartida->LeerPartidas();
+    bloquearBotonGuardado(ui->botonPartida1, ui->boton_Ranura1);
+    bloquearBotonGuardado(ui->botonPartida2, ui->boton_Ranura2);
+    bloquearBotonGuardado(ui->botonPartida3, ui->boton_Ranura3);
     for (int i = 0; i < 3; i++)
         setBotonesPartida(i, Partidas[i]);
     delete[] Partidas;
@@ -119,23 +120,25 @@ void PantallaMenu::setBotonesPartida(int num, bool estado)
         return;
 
     if (num == 0)
-        desbloquearBotonGuardado(ui->botonPartida1);
+        desbloquearBotonGuardado(ui->botonPartida1, ui->boton_Ranura1);
     if (num == 1)
-        desbloquearBotonGuardado(ui->botonPartida2);
+        desbloquearBotonGuardado(ui->botonPartida2, ui->boton_Ranura2);
     if (num == 2)
-        desbloquearBotonGuardado(ui->botonPartida3);
+        desbloquearBotonGuardado(ui->botonPartida3, ui->boton_Ranura3);
 }
 
-void PantallaMenu::bloquearBotonGuardado(QPushButton *boton)
+void PantallaMenu::bloquearBotonGuardado(QPushButton * botonGuardado, QPushButton * botonRanura)
 {
-    boton->setDisabled(true);
-    boton->setStyleSheet("color: white; background-color: #1e1532;");
+    botonGuardado->setDisabled(true);
+    botonGuardado->setStyleSheet(COLOR_BLOQUEADO);
+    botonRanura->setStyleSheet(COLOR_BLOQUEADO);
 }
 
-void PantallaMenu::desbloquearBotonGuardado(QPushButton *boton)
+void PantallaMenu::desbloquearBotonGuardado(QPushButton * botonGuardado, QPushButton * botonRanura)
 {
-    boton->setEnabled(true);
-    boton->setStyleSheet("color: white; background-color: rgb(170, 0, 255);");
+    botonGuardado->setEnabled(true);
+    botonGuardado->setStyleSheet(COLOR_DESBLOQUEADO);
+    botonRanura->setStyleSheet(COLOR_DESBLOQUEADO);
 }
 
 void PantallaMenu::setVolumen(float vol)
@@ -283,11 +286,16 @@ void PantallaMenu::cheatStartClicked()
 
 void PantallaMenu::SlotGuardadoSeleccionado(int numero)
 {
+    SonidosBotones.play();
     emit EnviarLogs("Slot de guardado seleccionado: " + QString::number(numero));
     emit EnviarLogs("Nivel: 1 | Dificultad: " + QString::number(dificultad));
     emit slotSelected2Save(numero);
-    emit clickedStartDefault(this->dificultad);
+    if (Partidas[numero])
+        ui->menu->setCurrentWidget(ui->ConfirmarSobreescribir);
+    else
+        emit clickedStartDefault(this->dificultad);
 }
+
 /// ############################ Cargar partida ###############################
 void PantallaMenu::botonCargarclicked()
 {

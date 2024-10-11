@@ -38,7 +38,7 @@ void PantallaPerdiste::setSoundVolume(float vol)
 
 void PantallaPerdiste::Iniciar(bool Perdio)
 {
-    setFixedSize(padre->width(), padre->height());
+    this->resize(padre->size());
     MostrandoPantalla = true;
     opacityEffect->setOpacity(0.0);
     ui->stackedWidget->setGraphicsEffect(opacityEffect);
