@@ -25,7 +25,7 @@ public:
     void setSkinNPC(Skin skinNPC);
     void Rechazado();
     void Entrar() override;
-    void Sacar() override;
+    void Salir(bool Aceptado) override;
     void setSoundVolume(float vol);
 
 protected:

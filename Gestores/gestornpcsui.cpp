@@ -128,10 +128,7 @@ void GestorNPCsUI::Salir(bool boton)
 
 void GestorNPCsUI::SalirEntidades()
 {
-    if (Rechazado)
-        NPCcomunUI->Rechazado();
-
-    NPCcomunUI->Sacar();
+    NPCcomunUI->Salir(!this->Rechazado);
     Dialogos->ForzarSalir();
 
     MostrandoNPC = false;
