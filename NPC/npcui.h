@@ -21,7 +21,7 @@ public:
     virtual void setNPC(NPC* newNPCenEscena) = 0;
     virtual void Centrar();
     virtual void Entrar();
-    virtual void Sacar();
+    virtual void Salir(bool Aceptado);
     virtual ~NPCUI();
     void Pausar(bool Estado);
 
@@ -41,6 +41,7 @@ protected:
     QPropertyAnimation *animacionEntrada;
 
     void PrepararAnimacionSalida();
+    void PrepararAnimacionSalida2();
     QPropertyAnimation *animacionSalida;
 
     // Termino animacion

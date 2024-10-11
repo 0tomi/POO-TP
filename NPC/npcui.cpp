@@ -45,6 +45,18 @@ void NPCUI::Entrar()
     }
 }
 
+void NPCUI::Salir(bool Aceptado)
+{
+    if (Aceptado)
+        PrepararAnimacionSalida();
+    else
+        PrepararAnimacionSalida2();
+    Mostrandose = false;
+    animacionSalida->start();
+    disconnect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
+    emit Saliendo();
+}
+
 void NPCUI::PrepararAnimacionEntrada()
 {
     int centerX = (padre->width() - width()) / 2;
@@ -54,16 +66,6 @@ void NPCUI::PrepararAnimacionEntrada()
     animacionEntrada->setEndValue(QPoint(centerX,centerY));
 }
 
-
-void NPCUI::Sacar()
-{
-    PrepararAnimacionSalida();
-    Mostrandose = false;
-    animacionSalida->start();
-    disconnect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
-    emit Saliendo();
-}
-
 void NPCUI::PrepararAnimacionSalida()
 {
     int SalidaEscena = padre->width() + width();
@@ -71,6 +73,15 @@ void NPCUI::PrepararAnimacionSalida()
 
     animacionSalida->setStartValue(pos());
     animacionSalida->setEndValue(QPoint(SalidaEscena,centerY)); // SUMAR LA RESOLUCION DEL WIDGET + EL NPC
+}
+
+void NPCUI::PrepararAnimacionSalida2()
+{
+    int SalidaEscena = -width();
+    int centerY = (padre->height()) - (height()) + 50;
+
+    animacionSalida->setStartValue(pos());
+    animacionSalida->setEndValue(QPoint(SalidaEscena,centerY));
 }
 
 void NPCUI::TerminoAnimacion()

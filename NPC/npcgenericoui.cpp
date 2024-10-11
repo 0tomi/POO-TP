@@ -105,12 +105,14 @@ void NPCGenericoUI::Entrar()
     NPCUI::Entrar();
 }
 
-void NPCGenericoUI::Sacar()
+void NPCGenericoUI::Salir(bool Aceptado)
 {
-    // Desconectamos el parpadeo anterior para setear uno nuevo
     quejarse.stop();
     parpadeo.stop();
-    NPCUI::Sacar();
+
+    if (!Aceptado)
+        this->Rechazado();
+    NPCUI::Salir(Aceptado);
 }
 
 void NPCGenericoUI::setSoundVolume(float vol)
