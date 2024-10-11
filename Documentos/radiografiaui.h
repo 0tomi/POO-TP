@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QString>
 #include <QPixmap>
+#include <QDebug>
 #include"documentosui.h"
 #include "radiografia.h"
 #include "../lectorarchivos.h"

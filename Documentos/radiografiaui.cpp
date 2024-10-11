@@ -69,10 +69,15 @@ void radiografiaui::setLabels(radiografia* datos){
         for (const auto& objeto: *objetosAniadir){
             auto Item = objeto.Objeto;
             auto LabelActual = this->labelsCuerpo[objeto.ParteCuerpo];
+            auto iterador=items.find(Item);
 
-            QPixmap* PixmapActual = &items[Item];
-            auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-            LabelActual->setPixmap(PixmapReescalado);
+            if(iterador != items.end()){
+
+                QPixmap* PixmapActual = &iterador.value();
+                auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                LabelActual->setPixmap(PixmapReescalado);
+            }
+            else qDebug()<<"Objeto "<<Item<<" no encontrado en el mapa.";
         }
     }
 }
