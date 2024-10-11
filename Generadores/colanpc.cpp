@@ -33,8 +33,9 @@ ColaNPC::~ColaNPC()
 void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
     this->size = 0;
+    this->cantidadNPCsFalsos = CantidadInvalidos;
     // Preparamos que nivel se usara.
-    nivelActual = NivelActual;
+    this->nivelActual = NivelActual;
     setNivel(nivelActual);
 
     int totalNPCs = CantAldeano + CantRefugiados + CantDiplos + CantRevolucionarios;
@@ -42,30 +43,53 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
     int arrayTipos[] = {CantAldeano, CantRefugiados, CantDiplos, CantRevolucionarios};
 
+    while (!GenerarNPCs(totalNPCs, CantidadInvalidos, arrayTipos)){
+        arrayTipos[0] = CantAldeano; arrayTipos[1] = CantRefugiados; arrayTipos[2] = CantDiplos; arrayTipos[3] = CantRevolucionarios;
+    }
+}
+
+bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[])
+{
+    qDebug() << "Cantidad recibida para generar: " << CantidadTotal;
+    qDebug() << "Cantidad recibida de falsos para generar: " << CantidadFalsos;
+    this->vaciarCola();
+
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     int sorteo = Random.bounded(4);
     int sorteoValidez = Random.bounded(20);
     bool Validez = true;
 
-    qDebug() << "Bucle de generar NPCs";
-    while (totalNPCs){
-        // Si hay NPCs invalidos a colocar, sorteamos y decidimos si se generaran en la iteracion.
-        if (CantidadInvalidos)
-            if (sorteoValidez > 11){
+    while (CantidadTotal){
+        if (CantidadFalsos)
+            if (sorteoValidez > 9)
                 Validez = false;
-                CantidadInvalidos--;
-            }
-        // Genera el tipo de NPC, basado en si el contador llego a 0; si llega a 0 no genera mas npcs de ese tipo.
-        if (arrayTipos[sorteo]){
-            addNPC(sorteo, Validez); // Sumamos a la cola el npc con el tipo sorteado.
-            arrayTipos[sorteo]--;
-            totalNPCs--;            // Restamos el contador de tipos de npc, y el total.
+
+        if (CantidadTipos[sorteo]){
+            addNPC(sorteo, Validez);
+            CantidadTipos[sorteo]--;
+            CantidadTotal--;
+            if (!Validez)
+                CantidadFalsos--;
         }
+
         sorteo = Random.bounded(4);
         sorteoValidez = Random.bounded(20);
         Validez = true;
     }
+
+    qDebug() << "Cantidad generada: " << CantidadTotal;
+    qDebug() << "Cantidad falsa generada: " << CantidadFalsos;
+
+    if (CantidadTotal == 0 && CantidadFalsos == 0)
+        return true;
+    else return false;
 }
+
+int ColaNPC::getCantidadNPCsFalsos() const
+{
+    return cantidadNPCsFalsos;
+}
+
 
 void ColaNPC::addNPC(int Tipo, bool Validez){
     // Genero el NPC nuevo

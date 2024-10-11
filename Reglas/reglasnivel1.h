@@ -74,7 +74,6 @@ private:
     void setFechasValidas();
     void setDuracionEstanciaValida(int max, int min);
 
-    void setPaisesPermitidos(int cantidadMinimaPaisesPermitidos);
-    void SumarAstana();
+    void SumarAztana();
 };
 #endif // REGLASNIVEL1_H

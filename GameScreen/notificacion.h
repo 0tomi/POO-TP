@@ -17,7 +17,7 @@ class Notificacion : public DocumentosUI
 
 public:
     explicit Notificacion(int Numero, bool Multa, QString motivos, float Volumen, QWidget *parent = nullptr);
-    void setDocumentacionInfo(Documentacion *documento){};
+    void setDocumentacionInfo(Documentacion *documento) override{};
     ~Notificacion();
     void setVolume(float);
     void Entrar() override;
@@ -25,7 +25,7 @@ public:
 signals:
     void QuiereCerrarNotificacion(int);
 
-private:
+private:    
     Ui::Notificacion *ui;
     QTimer Temporizador;
     QPushButton * cerrar;

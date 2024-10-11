@@ -81,6 +81,7 @@ void GestorNPCsUI::DesconectarNPCs()
 void GestorNPCsUI::Entrar()
 {
     qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
+    qDebug() << "Cantidad de npcs falsos: " << ColaNPCs->getCantidadNPCsFalsos();
 
     NPCenEscena = ColaNPCs->getNPC();
     emit setDocsInfo(NPCenEscena);

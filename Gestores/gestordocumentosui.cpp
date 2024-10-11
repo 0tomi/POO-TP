@@ -169,7 +169,7 @@ void GestorDocumentosUI::setDocumento(NPC* npcInfo)
     // ### Seteamos el DNI o el Pasaporte segun corresponda
     if (documentos[0] != nullptr){
         auto identificacion = dynamic_cast<Pasaporte*> (documentos[0]);
-        if (identificacion->getnacionalidad() == "Astana")
+        if (identificacion->getnacionalidad() == "Aztana")
             documentosUI[0] = dniUI;
         else
             documentosUI[0] = pasaporteUI;

@@ -3,7 +3,7 @@ Cantidad de aldeanos: 2
 Cantidad de refugiados: 2
 Cantidad de diplomaticos: 2
 Cantidad de revolucionarios: 2
-Cantidad de NPCs invalidos: 8
+Cantidad de NPCs invalidos: 6
 [Configuraciones de nivel 1]
 Cantidad de paises validos: 3
 Nombres de paises validos:

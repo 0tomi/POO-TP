@@ -23,7 +23,7 @@ Notificacion::Notificacion(int Numero, bool Multa, QString texto, float vol, QWi
     cerrar->setStyleSheet("background-color: rgba(255, 255, 255, 0); border: none;");  // Hacerlo invisible
     ui->BotonCerrar->layout()->addWidget(cerrar);
 
-    ui->Motivos->setText(texto);
+    ui->MotivosV2->setText(texto);
     if (Multa)
         ui->stackedWidget->setCurrentIndex(0);
     else ui->stackedWidget->setCurrentIndex(1);

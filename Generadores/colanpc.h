@@ -29,10 +29,14 @@ public:
 
     ~ColaNPC();
 
+    int getCantidadNPCsFalsos() const;
+
 private:
+    bool GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[]);
     quint32 semillaActual;
     vector<NPC*> VectorNPCs;
     int size;
+    int cantidadNPCsFalsos;
     int nivelActual;
 
     NPC* NPCaRetornar;

@@ -18,7 +18,7 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed)
     // Inicializamos la semilla del generador
     rand.seed(seed);
 
-    setPaisesPermitidos(3);
+    generar_Paises(3);
     setFechasValidas();
     setDuracionEstanciaValida(9,3);
     generar_EstadosCiviles(2);
@@ -28,11 +28,13 @@ void ReglasNivel1::resetReglas(int cantidadMinimaPaisesPermitidos, quint32 seed)
 /// ####################### Generadores de parametros #######################
 void ReglasNivel1::generar_Paises(int Cantidad_Paises_Permitidos)
 {
+    vector<parDatos> parPaises;
+    crearParDatos(this->paises, parPaises);
+    Cantidad_Paises_Permitidos = this->checkCondiciones(Cantidad_Paises_Permitidos, 1, parPaises);
+    this->PaisesValidos = generarVector(generarPermitido(Cantidad_Paises_Permitidos, parPaises));
+    SumarAztana();
+    this->PaisesInvalidos = generarVector(generarNoPermitido(parPaises));
 
-    if (Cantidad_Paises_Permitidos < 1 || Cantidad_Paises_Permitidos > maxPaises)
-        setPaisesPermitidos(rand.bounded(4));
-    else
-        setPaisesPermitidos(Cantidad_Paises_Permitidos);
 }
 
 void ReglasNivel1::generar_EstadosCiviles(int Cantidad_EstadosCiviles_Permitidos)
@@ -104,23 +106,9 @@ void ReglasNivel1::setFechasValidas(){
     }while(fechaMax == fechaMin || (fechaMax - fechaMin) < 20 );
 }
 
-void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
-
-
-    crearParDatos(this->paises, this->parpaisesValidos);
-    this->maxPaisesPermitidos = cantidadMinimaPaisesPermitidos;
-
-    this->PaisesValidos = generarVector(generarPermitido(this->maxPaisesPermitidos,this->parpaisesValidos));
-    SumarAstana();
-    crearParDatos(this->paises,this->parpaisesInvalidos);
-
-    this->PaisesInvalidos = generarVector(generarNoPermitido(this->parpaisesInvalidos));
-}
-
-
-void ReglasNivel1::SumarAstana()
+void ReglasNivel1::SumarAztana()
 {
-    this->PaisesValidos.push_back("Astana");
+    this->PaisesValidos.push_back("Aztana");
 }
 
 // Getters

@@ -25,7 +25,6 @@ QString LocuraCaracteres::CambiarCadena(QString Cadena, int CantCaracteres)
 /// ······················· Cambiar la cadena  ······································
 QString LocuraCaracteres::Cambiar(QString Cadena)
 {
-    qDebug() << "Cadena original:" << Cadena;
     // Checkeo si la cadena es muy chica
     if (Cadena.length() <= 1)
         return CambiarLetra(Cadena[0]);
@@ -46,8 +45,6 @@ QString LocuraCaracteres::Cambiar(QString Cadena)
         else
             Cadena[indice] = CambiarNumero(caracter);
     }
-
-    qDebug() << "Cadena cambiada:" << Cadena;
 
     delete[] indices;
     return Cadena;
