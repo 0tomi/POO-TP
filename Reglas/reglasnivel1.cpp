@@ -120,7 +120,7 @@ void ReglasNivel1::setPaisesPermitidos(int cantidadMinimaPaisesPermitidos){
 
 void ReglasNivel1::SumarAstana()
 {
-    this->PaisesValidos.push_back("astana");
+    this->PaisesValidos.push_back("Astana");
 }
 
 // Getters
