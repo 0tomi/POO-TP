@@ -109,9 +109,23 @@ void GameScreen::setUpBotonEscanner()
     QString EscanerApretado = ":/Resources/MaterialPantallas/BotonEscanerApretado.png";
     QString SonidoEscanner = "qrc:/Resources/Sonidos/SonidoScanner.wav";
 
-    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, 0.5, ui->BotonEscannerUI);
+    BotonScanner = new BotonesCustom(EscanerSinApretar, EscanerApretado, BotonesCustom::Normal, SonidoEscanner, 0.6, ui->BotonEscannerUI);
     BotonScanner->copyFormat();
     ui->BotonEscannerUI->layout()->addWidget(BotonScanner);
+
+    // Falta implementar mas cosas de la radiografia
+    RadiografiaUI = new radiografiaui(ui->Escritorio);
+    GestorDocs.addRadiografia(RadiografiaUI);
+
+    //dejo esto aca para que se bugee el codigo porque quedan cosas que hacer:
+    //hacer que radiografia tenga estado de mostrandose o no, para que el boton pueda operar
+    //hacer que radiografia se actualize cada vez que pasa un npc nuevo.
+
+    connect(BotonScanner, &BotonesCustom::BotonApretado, [this](){
+        if (RadiografiaUI->getMostrando())
+            RadiografiaUI->Sacar();
+        else RadiografiaUI->Entrar();
+    });
 }
 
 void GameScreen::BloquearBotones(bool Bloqueo)
@@ -120,6 +134,8 @@ void GameScreen::BloquearBotones(bool Bloqueo)
     BotonCentrar->BloquearBoton(Bloqueo);
     BotonAprobar->BloquearBoton(Bloqueo);
     BotonRechazar->BloquearBoton(Bloqueo);
+    if (this->nivelActual >= 5)
+        BotonScanner->BloquearBoton(Bloqueo);
 }
 
 void GameScreen::DesbloquearBotones()

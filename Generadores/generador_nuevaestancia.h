@@ -49,6 +49,8 @@ private:
     void generarListaConDatosVerdaderos(vector<QString>& lista2Generar, vector<trioDatos>& listaOriginal, QString& fraseCaso0, int MaxPermitido);
     void generarListaConDatosFalsos(vector<QString>& lista2Generar, vector<trioDatos>& listaOriginal, QString& fraseCaso0, int MaxPermitido);
     bool checkSiHayObjetosNoPermitidos(vector<QString>& lista2Generar, vector<trioDatos>& listaOriginal);
+
+    void SetDatosFalsos(bool Validez, NuevaEstancia * doc);
 };
 
 #endif // GENERADOR_NUEVAESTANCIA_H

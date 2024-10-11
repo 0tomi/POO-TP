@@ -88,27 +88,7 @@ void GeneradorDocumentacion::getDocumentos(NPC *npc, bool Validez)
     }
 
     if (!Validez)
-        NPC2Generate->setDatosFalsos(logDatosFalsos());
-}
-
-QString GeneradorDocumentacion::logDatosFalsos()
-{
-    QString log = "";
-    if (!DocsValidos[0])
-        log = "Documento de de identificacion invalido\n";
-    if (!DocsValidos[1])
-        log += "Documento de estancia invalido\n";
-    if (!DocsValidos[2])
-        log += "Pais de residencia invalido\n";
-    if (!DocsValidos[3]){
-        log += "Lista de acompañantes invalida\n";
-        if (listaAcompActual->getValidezDialogo())
-            log += "Mintió sobre la cantidad de gente que lo acompaña\n";
-    }
-    if (!DocsValidos[4])
-        log += "Datos previos invalidos\n";
-
-    return log;
+        NPC2Generate->updateDatosFalsos();
 }
 
 /// #################################### GENERADORES SEGUN NIVEL ############################################

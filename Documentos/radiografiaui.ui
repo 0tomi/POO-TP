@@ -14,6 +14,18 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QWidget" name="fondo" native="true">
      <property name="styleSheet">
@@ -24,8 +36,8 @@ border-image:url(:/Niveles/Nivel5/fondoscanner.png)
      <widget class="QStackedWidget" name="cuerpo">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
+        <x>20</x>
+        <y>40</y>
         <width>201</width>
         <height>291</height>
        </rect>
@@ -181,10 +193,13 @@ border-image:url(:/Niveles/Nivel5/Espalda.png)}</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>320</y>
+        <y>340</y>
         <width>51</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">background: transparent;</string>
@@ -196,11 +211,14 @@ border-image:url(:/Niveles/Nivel5/Espalda.png)}</string>
      <widget class="QPushButton" name="voltear2">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>320</y>
+        <x>180</x>
+        <y>340</y>
         <width>51</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">background:transparent;
@@ -213,11 +231,14 @@ border-image:url(:/Niveles/Nivel5/Espalda.png)}</string>
      <widget class="QPushButton" name="botonsalir">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>210</x>
         <y>0</y>
         <width>31</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">background:transparent;</string>

@@ -136,6 +136,7 @@ private:
     void MatarNotificacion(int Numero);
 
     // Radiografia
+    radiografiaui * RadiografiaUI;
 };
 
 #endif // GAMESCREEN_H

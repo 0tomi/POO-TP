@@ -16,6 +16,7 @@ private:
     vector<QString>ObjetosValidos;
     vector<QString>ObjetosInvalidos;
     radiografia * radiografia2Generate;
+    void SetDatosFalsos(bool Validez, radiografia* doc);
 public:
     generador_Radiografia();
     void inicializar(ReglasNivel4 * rules, quint32 semilla, int dificultad);

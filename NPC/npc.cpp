@@ -86,6 +86,16 @@ void NPC::setDialogo(const QString newDialogo)
     dialogo += newDialogo;
 }
 
+void NPC::updateDatosFalsos()
+{
+    if (!datosFalsos)
+        return;
+
+    for (int i = 0; i < MAX_Documentos; i++)
+        if (documentos[i])
+            *datosFalsos += documentos[i]->getDatosFalsos();
+}
+
 QString NPC::getDatosFalsos()
 {
     if (!datosFalsos)

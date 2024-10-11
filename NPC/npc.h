@@ -24,6 +24,7 @@ public:
     QString getDialogo() const;
     void setDialogo(const QString newDialogo);
 
+    void updateDatosFalsos();
     QString getDatosFalsos();
     void setDatosFalsos(QString newDatosFalsos);
 

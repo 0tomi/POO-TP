@@ -52,7 +52,20 @@ Estancia* GenerarEstancia::generar(bool valido) {
     QString TipoVisita = GenerarVisita(ValidezCampos[1]);
 
     Estancia* estanciaAGenerar = new Estancia(Duracion, TipoVisita, valido);
+    SetDatosFalsos(valido, estanciaAGenerar);
     return estanciaAGenerar;
+}
+
+void GenerarEstancia::SetDatosFalsos(bool Validez, Estancia *doc)
+{
+    if (Validez)
+        return;
+
+    doc->addDatosFalsos("Estancia invalida: ");
+    if (!ValidezCampos[0])
+        doc->addDatosFalsos("- Duracion invalida");
+    if (!ValidezCampos[1])
+        doc->addDatosFalsos("- Tipo de visita invalida");
 }
 
 /// ########################## Generadores ###############################

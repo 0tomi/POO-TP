@@ -10,6 +10,7 @@ class Generar_pasaporte
 {
 private:
     bool campos_validos[3];    // 0 para la fecha, 1 para la nacionalidad, 2 para el estado civil;
+    void SetDatosFalsos(bool Validez, Pasaporte* doc);
 protected:
     vector<QString>  nombre_mujeres;
     vector<QString>  nombre_hombres;

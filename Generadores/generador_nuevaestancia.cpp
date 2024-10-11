@@ -47,6 +47,7 @@ NuevaEstancia* Generador_NuevaEstancia::generar(Estancia* actualEstancia, bool v
     auto Ocupacion = generarDocumento(this->ocupacion, fraseCaso0O, maxOcupacionesValidas, ValidezPaginas[2]);
     
     NuevaEstancia* newEst = new NuevaEstancia(actualEstancia, PaisesPaso, Bienes, Ocupacion);
+    SetDatosFalsos(valido, newEst);
     return newEst;
 }
 
@@ -191,5 +192,19 @@ bool Generador_NuevaEstancia::checkSiHayObjetosNoPermitidos(vector<QString> &lis
                 return true;
 
     return false;
+}
+
+void Generador_NuevaEstancia::SetDatosFalsos(bool Validez, NuevaEstancia * doc)
+{
+    if (Validez)
+        return;
+
+    doc->addDatosFalsos("Datos previos invalidos:");
+    if (!ValidezPaginas[0])
+        doc->addDatosFalsos("- Paises de paso invalidos");
+    if (!ValidezPaginas[1])
+        doc->addDatosFalsos("- Bienes transportados invalidos");
+    if (!ValidezPaginas[2])
+        doc->addDatosFalsos("- Ocupacion invalida");
 }
 

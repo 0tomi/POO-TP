@@ -3,9 +3,10 @@
 
 radiografiaui::radiografiaui(QWidget *parent)
     : DocumentosUI(parent)
-    , ui(new Ui::radiografiaui)
+    , ui(new Ui::radiografiaui), Mostrando(false)
 {
     ui->setupUi(this);
+    this->hide();
     this->labelsCuerpo[0]=ui->frente1;
     this->labelsCuerpo[1]=ui->frente2;
     this->labelsCuerpo[2]=ui->frente3;
@@ -29,6 +30,19 @@ void radiografiaui::setDocumentacionInfo(Documentacion *documento)
     else qDebug() << "Fallo al castear puntero de radiografia";
 }
 
+void radiografiaui::Entrar()
+{
+    ui->cuerpo->setCurrentIndex(0);
+    DocumentosUI::Entrar();
+    Mostrando = true;
+}
+
+void radiografiaui::Sacar()
+{
+    DocumentosUI::Sacar();
+    Mostrando = false;
+}
+
 void radiografiaui::setmap(){
     for(const auto& objeto: objetos){
         QString ruta= ":/Niveles/Nivel5/Objetos/"+ objeto + ".png";//poner la ruta bien cuando tengamos la carpeta
@@ -36,6 +50,12 @@ void radiografiaui::setmap(){
         this->items.insert(objeto, pixmap);
     }
 }
+
+bool radiografiaui::getMostrando() const
+{
+    return Mostrando;
+}
+
 void radiografiaui::setLabels(radiografia* datos){
     auto objetosAniadir = &datos->GetVector();
     for (auto& label : this->labelsCuerpo) {
@@ -46,8 +66,14 @@ void radiografiaui::setLabels(radiografia* datos){
     if(objetosAniadir->empty()){
         return;
     }else {
-        for (const auto& objeto: *objetosAniadir)
-            this->labelsCuerpo[objeto.ParteCuerpo]->setPixmap(this->items[objeto.Objeto]); // Esto es peligroso por como funcionan los mapas
+        for (const auto& objeto: *objetosAniadir){
+            auto Item = objeto.Objeto;
+            auto LabelActual = this->labelsCuerpo[objeto.ParteCuerpo];
+
+            QPixmap* PixmapActual = &items[Item];
+            auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            LabelActual->setPixmap(PixmapReescalado);
+        }
     }
 }
 radiografiaui::~radiografiaui()
@@ -76,7 +102,7 @@ void radiografiaui::on_voltear2_clicked()
 
 void radiografiaui::on_botonsalir_clicked()
 {
-    DocumentosUI::Sacar();
+    this->Sacar();
 }
 
 

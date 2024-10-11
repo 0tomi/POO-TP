@@ -20,7 +20,7 @@ ListaAcompaniantes::ListaAcompaniantes() {
     topeNombresAcomps = 0;
 }
 
-ListaAcompaniantes::ListaAcompaniantes(QString _mensajeSinAcomp, bool _validez,  bool _dialogo) {
+ListaAcompaniantes::ListaAcompaniantes(QString _mensajeSinAcomp, bool _validez,  bool _dialogo): Documentacion() {
     mensajeSinAcomp = _mensajeSinAcomp;
     validez = _validez;
     this->dialogo = _dialogo;
@@ -29,7 +29,7 @@ ListaAcompaniantes::ListaAcompaniantes(QString _mensajeSinAcomp, bool _validez, 
     CantAcompaniantes = 0;
 }
 
-ListaAcompaniantes::ListaAcompaniantes(QString* _nombresAcomps, int _topeNombresAcomps, bool _validez, bool _dialogo) {
+ListaAcompaniantes::ListaAcompaniantes(QString* _nombresAcomps, int _topeNombresAcomps, bool _validez, bool _dialogo): Documentacion() {
     nombresAcomps = _nombresAcomps;
     topeNombresAcomps = _topeNombresAcomps;
     validez = _validez;

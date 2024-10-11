@@ -55,6 +55,7 @@ void GestorDocumentosUI::setUp(int Level, QWidget *objeto)
 
 void GestorDocumentosUI::setUpNivel(int nivel)
 {
+    this->nivelActual = nivel;
     setUpLevel1();
     if (nivel >= 2)
         setUpLevel2();
@@ -64,6 +65,11 @@ void GestorDocumentosUI::setUpNivel(int nivel)
         setUpLevel4();
     if (nivel >= 5)
         setUpLevel5();
+}
+
+void GestorDocumentosUI::addRadiografia(radiografiaui *rad)
+{
+    documentosUI[5] = rad;
 }
 
 void GestorDocumentosUI::setUpLevel1()
@@ -124,17 +130,19 @@ void GestorDocumentosUI::setUpLevel4()
 
 void GestorDocumentosUI::setUpLevel5()
 {
-    this->topePerLevel = 5;
-    int Index = 5;
-    if (documentosUI[Index] == nullptr){
+    //this->topePerLevel = 5;
+    //int Index = 5;
+    //if (documentosUI[Index] == nullptr){
         // new Verificacion de antecedentes
-    }
+   // }
 }
 
 void GestorDocumentosUI::deleteDocumentos()
 {
     for (int i = 0; i < this->topePerLevel; i++)
         delete documentos[i];
+
+    delete documentos[5];
 }
 
 void GestorDocumentosUI::setDocumento(NPC* npcInfo)
@@ -153,14 +161,14 @@ void GestorDocumentosUI::setDocumento(NPC* npcInfo)
         tienePase = true;
     else tienePase = false;
 
-    NPCcomun* npcComunInfo;
-    npcComunInfo = dynamic_cast<NPCcomun*> (npcInfo);
-    if (!npcComunInfo)
-        qDebug() << "El npc es de tipo especial"; // y aca iria el casteo al npc especial
+    if (this->nivelActual >= 5) {
+        auto Radiografia = npcInfo->getDocumento(NPC::Radiografia);
+        documentosUI[5]->setDocumentacionInfo(Radiografia);
+    }
 
     // ### Seteamos el DNI o el Pasaporte segun corresponda
     if (documentos[0] != nullptr){
-        Pasaporte *identificacion = dynamic_cast<Pasaporte*> (documentos[0]);
+        auto identificacion = dynamic_cast<Pasaporte*> (documentos[0]);
         if (identificacion->getnacionalidad() == "Aztana")
             documentosUI[0] = dniUI;
         else
@@ -181,6 +189,9 @@ void GestorDocumentosUI::Centrar()
     for (int i = 0; i < topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->Centrar();
+
+    if (!documentosUI[5]->isHidden())
+        documentosUI[5]->Centrar();
 }
 
 void GestorDocumentosUI::Entrar()
@@ -201,6 +212,10 @@ void GestorDocumentosUI::Salir()
     for (int i = 0; i < this->topePerLevel; i++)
         if (documentos[i] != nullptr)
             documentosUI[i]->Sacar();
+
+    if (!documentosUI[5]->isHidden())
+        documentosUI[5]->Centrar();
+
     Mostrando = false;
 }
 
