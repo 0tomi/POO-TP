@@ -59,8 +59,6 @@ private:
     NPC* NPC2Generate;
     Documentacion* Doc2Generate;
 
-    // Info para los logs de los docs falsos
-    QString logDatosFalsos();
     ListaAcompaniantes * listaAcompActual;
     Estancia* estanciaActual;
     Pasaporte* pasaporteActual;

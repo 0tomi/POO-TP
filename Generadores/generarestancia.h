@@ -17,12 +17,13 @@ public:
     // Getter
     Estancia* generar(bool valido); // Estancia a generar
 private:
+    void SetDatosFalsos(bool Validez, Estancia * doc);
     int Probabilidades;
     QRandomGenerator NumRandom;
     LocuraCaracteres * locura;
 
     int dificultad;
-    bool ValidezCampos[2];
+    bool ValidezCampos[2];  // 0: Duracion, 1: Tipo de visita
 
     vector<QString> tipoVisitas;
 

@@ -1,6 +1,6 @@
 #include "../Documentos/pasaporte.h"
 
-Pasaporte::Pasaporte(QString nombre, QString fecha_nacimiento, char genero, QString nacionalidad, QString estado_civil): SkinNPC() {
+Pasaporte::Pasaporte(QString nombre, QString fecha_nacimiento, char genero, QString nacionalidad, QString estado_civil): SkinNPC(), Documentacion() {
     this->nombre = nombre;
     this->estado_civil = estado_civil;
     this->genero = genero;

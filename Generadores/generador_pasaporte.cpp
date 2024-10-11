@@ -45,6 +45,20 @@ void Generar_pasaporte::Inicializar(ReglasNivel1 *rules, quint32 seed, int dific
 }
 
 // Función para obtener el número de días en un mes y año dados
+void Generar_pasaporte::SetDatosFalsos(bool Validez, Pasaporte *doc)
+{
+    if (Validez)
+        return;
+
+    doc->addDatosFalsos("Pasaporte invalido:");
+    if (!campos_validos[0])
+        doc->addDatosFalsos("- Fecha invalida");
+    if (!campos_validos[1])
+        doc->addDatosFalsos("- Nacionalidad invalida");
+    if (!campos_validos[2])
+        doc->addDatosFalsos("- Estado civil invalido");
+}
+
 int Generar_pasaporte::obt_dias(int mes, int año) {
     switch (mes) {
     case 1:  // Enero
@@ -177,6 +191,6 @@ Pasaporte * Generar_pasaporte::generar(bool Validez, NPCcomun * InfoNPC){
     this->Pasaporte_generado = new Pasaporte(nombre_generado,fecha_generada,InfoNPC->getGenero(),nacionalidad_generada,estado_civil_generado);
     // Seteamos la Skin
     Pasaporte_generado->setSkinNPC(InfoNPC->getSkinDocs());
-
+    SetDatosFalsos(Validez, this->Pasaporte_generado);
     return this->Pasaporte_generado;
 }

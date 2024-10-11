@@ -27,9 +27,14 @@ class radiografiaui : public DocumentosUI
 public:
     explicit radiografiaui(QWidget *parent = nullptr);
     virtual void setDocumentacionInfo(Documentacion *documento) override;
+    virtual void Entrar() override;
+    virtual void Sacar() override;
+
     ~radiografiaui();
     //void Sacar(); Falta override y meterle sonidos al cerrarla
     //void Entrar();
+    bool getMostrando() const;
+
 private slots:
     void on_voltear1_clicked();
     void on_voltear2_clicked();

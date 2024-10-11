@@ -1,6 +1,6 @@
 #include "radiografia.h"
 
-radiografia::radiografia(vector<ParDatos> &Elements)
+radiografia::radiografia(vector<ParDatos> &Elements): Documentacion()
 {
     this->Elementos = Elements;
 }

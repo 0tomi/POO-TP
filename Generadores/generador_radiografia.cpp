@@ -1,5 +1,13 @@
 #include "generador_radiografia.h"
 
+void generador_Radiografia::SetDatosFalsos(bool Validez, radiografia *doc)
+{
+    if (Validez)
+        return;
+
+    doc->addDatosFalsos("Porta objetos prohibidos.");
+}
+
 generador_Radiografia::generador_Radiografia() {
     LectorArchivos archivo(":/Niveles/Nivel5/ObjetosValidos.txt");
     this->ObjetosValidos = archivo.getVector();
@@ -12,12 +20,6 @@ void generador_Radiografia::inicializar(ReglasNivel4 * rules, quint32 semilla, i
     this->dificultad = dificultad;
     this->rules = rules;
     this->random.seed(semilla);
-}
-
-radiografia* generador_Radiografia::generar_radiografia(bool validez)
-{
-    if (!this->Elementos.empty())
-        this->Elementos.clear();
 
     switch (this->dificultad){
         // Modo facil
@@ -30,6 +32,12 @@ radiografia* generador_Radiografia::generar_radiografia(bool validez)
     default: this->cantElementos = this->random.bounded(3);
         break;
     }
+}
+
+radiografia* generador_Radiografia::generar_radiografia(bool validez)
+{
+    if (!this->Elementos.empty())
+        this->Elementos.clear();
 
     if (this->cantElementos == 0 && validez){
         this->radiografia2Generate = new radiografia(this->Elementos);
@@ -51,6 +59,7 @@ radiografia* generador_Radiografia::generar_radiografia(bool validez)
         }
     }
     this->radiografia2Generate = new radiografia(this->Elementos);
+    SetDatosFalsos(validez, radiografia2Generate);
     return this->radiografia2Generate;
 }
 

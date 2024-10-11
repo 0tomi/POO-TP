@@ -91,7 +91,7 @@ BotonesCustom::BotonesCustom(QString Estado1, QString Estado2, TiposImagen tipo,
     ui->setupUi(this);
 
     sonido2.setSource(QUrl(SonidoCustom));
-    sonido2.setVolume(0.8);
+    sonido2.setVolume(VolMax);
 
     // Colocamos la imagen que va a tener el boton segun el estado.
     CrearSkinBoton(Estado1, SkinBotonUnblock, tipo);

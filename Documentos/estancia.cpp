@@ -5,7 +5,7 @@ bool Estancia::getValidez() const
     return Validez;
 }
 
-Estancia::Estancia(int _duracion, QString _tipo, bool valido) {
+Estancia::Estancia(int _duracion, QString _tipo, bool valido): Documentacion() {
     duracionEst = _duracion;
     tipoEst = _tipo;
     Validez = valido;

@@ -31,6 +31,7 @@ private:
     QString generar_paisresidencia(bool valido);
     QString generar_fecha(bool valido) override;
     void CamposLocura(int Probabilidades);
+    void SetDatosFalsos(bool validez, PaisResidencia* doc);
 
 public:
     void setSeed(quint32 seed);

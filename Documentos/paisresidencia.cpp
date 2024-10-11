@@ -1,6 +1,6 @@
 #include "paisresidencia.h"
 
-PaisResidencia::PaisResidencia(QString nombre,QString fecha,QString PaisDeResidencia) {
+PaisResidencia::PaisResidencia(QString nombre,QString fecha,QString PaisDeResidencia): Documentacion() {
     this->PaisDeResidencia = PaisDeResidencia;
     this->nombre = nombre;
     this->fecha_nacimiento = fecha;

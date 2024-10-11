@@ -34,6 +34,7 @@ private:
 
     ListaAcompaniantes * generarLista(int valormin, int valormax, bool Validez, bool Dialogos);
     ListaAcompaniantes* getListaFalsa();
+    void SetDatosFalsos(bool Validez, ListaAcompaniantes* doc);
 public:
     GeneradorListaAcompaniantes();
     void Inicializar(QRandomGenerator * generador, ReglasNivel3 * reglas);

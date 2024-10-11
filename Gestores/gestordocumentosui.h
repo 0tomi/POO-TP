@@ -12,6 +12,7 @@
 #include "../NPC/npccomun.h"
 #include "../Documentos/paisresidenciaui.h"
 #include "../Documentos/nuevaestanciaui.h"
+#include "../Documentos/radiografiaui.h"
 
 class GestorDocumentosUI: public QWidget
 {
@@ -22,6 +23,7 @@ public:
 
     void setUp(int Level, QWidget *objeto);
     void setUpNivel(int nivel);
+    void addRadiografia(radiografiaui * rad);
     void deleteDocumentos();
 
     void Centrar();
@@ -47,9 +49,9 @@ signals:
 private:
     QTimer *Temporizador; // Hasta no tener los pasaportes y DNIs, usare esto.
     QWidget *Escritorio;
-    const int MAX_Documentos = 5;
-    DocumentosUI* documentosUI[5];
-    Documentacion* documentos[5];
+    const int MAX_Documentos = 6;
+    DocumentosUI* documentosUI[6];
+    Documentacion* documentos[6];
     UADERpass* pase;
     NuevaEstanciaUI* nuevaEstancia;
     DNI* dniUI;
@@ -60,6 +62,7 @@ private:
     int DocumentosEnEscena[5];
     int topePerNPC;
     int topePerLevel;
+    int nivelActual;
 
     void Termino();
     void setUpDocumento(DocumentosUI *doc);

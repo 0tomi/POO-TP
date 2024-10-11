@@ -102,15 +102,31 @@ ListaAcompaniantes *GeneradorListaAcompaniantes::getListaFalsa()
     return generarLista(this->maxAcompaniantesValidos+1, CANTIDAD_MAX_ACOMPS, false, Campos[1]);
 }
 
+void GeneradorListaAcompaniantes::SetDatosFalsos(bool Validez, ListaAcompaniantes *doc)
+{
+    if (Validez)
+        return;
+
+    doc->addDatosFalsos("Lista de acompañantes invalida: ");
+    if (!Campos[0])
+        doc->addDatosFalsos("- Cantidad invalida");
+    if (!Campos[1])
+        doc->addDatosFalsos("- Mintio sobre la cantidad de acompañantes");
+}
+
 // <-------- METODOS PUBLICOS --------->
 ListaAcompaniantes* GeneradorListaAcompaniantes::generar(bool validez) {
     generarCamposValidos(validez);
     const int CANTIDAD_MINIMA_ACOMPS = 0;
     int topeNombres; QString * nombresAcomps;
+    ListaAcompaniantes * lista2Return;
     if (validez)
-        return generarLista(CANTIDAD_MINIMA_ACOMPS, this->maxAcompaniantesValidos+1, validez, true);
+        lista2Return = generarLista(CANTIDAD_MINIMA_ACOMPS, this->maxAcompaniantesValidos+1, validez, true);
     else
-        return getListaFalsa();
+        lista2Return = getListaFalsa();
+
+    SetDatosFalsos(validez, lista2Return);
+    return lista2Return;
 }
 
 int GeneradorListaAcompaniantes::generarRandomExcluido(int excluded) {

@@ -56,6 +56,7 @@ PaisResidencia *generador_paisresidencia::generar(Pasaporte *Pasaporte2copy, boo
         this->PaisResidenciaCreado = new PaisResidencia(nuevoNombre,nuevaFecha,nuevoPaisResidencia);
     }
 
+    SetDatosFalsos(valido, this->PaisResidenciaCreado);
     return this->PaisResidenciaCreado;
 }
 
@@ -166,6 +167,20 @@ void generador_paisresidencia::CamposLocura(int Probabilidades)
             }
         }
     }
+}
+
+void generador_paisresidencia::SetDatosFalsos(bool Validez, PaisResidencia *doc)
+{
+    if (Validez)
+        return;
+
+    doc->addDatosFalsos("Pais de residencia invalido:");
+    if (!camposValidos[0])
+        doc->addDatosFalsos("- Nombre no coincide");
+    if (!camposValidos[1])
+        doc->addDatosFalsos("- Fecha incorrecta");
+    if (!camposValidos[2])
+        doc->addDatosFalsos("- Pais de residencia incorrecto");
 }
 
 void generador_paisresidencia::setSeed(quint32 seed)

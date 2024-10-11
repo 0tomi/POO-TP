@@ -2,7 +2,7 @@
 
 NuevaEstancia::NuevaEstancia() {}
 
-NuevaEstancia::NuevaEstancia(Estancia* _estancia, vector<QString> _paisesPaso, vector<QString> _bienesTransp, vector<QString> _ocupacion) {
+NuevaEstancia::NuevaEstancia(Estancia* _estancia, vector<QString> _paisesPaso, vector<QString> _bienesTransp, vector<QString> _ocupacion): Documentacion() {
     estancia = _estancia;
     paisesPaso = _paisesPaso;
     bienesTransp = _bienesTransp;
