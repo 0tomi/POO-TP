@@ -48,6 +48,12 @@
 border-image: url(:/Resources/FondoLocuraWorking.png);}</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="rightMargin">
+       <number>60</number>
+      </property>
+      <property name="bottomMargin">
+       <number>60</number>
+      </property>
       <item alignment="Qt::AlignRight|Qt::AlignBottom">
        <widget class="QPushButton" name="TerminarIntro">
         <property name="sizePolicy">
@@ -58,7 +64,7 @@ border-image: url(:/Resources/FondoLocuraWorking.png);}</string>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
+          <width>150</width>
           <height>70</height>
          </size>
         </property>

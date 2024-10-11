@@ -138,9 +138,6 @@ private:
 
     // Radiografia
     radiografiaui * RadiografiaUI;
-
-    // NPC moviendose de fondo
-    NPCFondo * test;
 };
 
 #endif // GAMESCREEN_H
