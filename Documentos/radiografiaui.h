@@ -48,6 +48,7 @@ private:
     vector<QString>objetos;
     void setmap();
     bool Mostrando;
+
 };
 
 #endif // RADIOGRAFIAUI_H

@@ -74,10 +74,14 @@ void radiografiaui::setLabels(radiografia* datos){
             if(iterador != items.end()){
 
                 QPixmap* PixmapActual = &iterador.value();
+                if(PixmapActual->isNull()){
+                    qDebug()<<"La imagen para el objeto "<<Item<<" no se cargó bien.";
+                }else {
                 auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
                 LabelActual->setPixmap(PixmapReescalado);
+                }
             }
-            else qDebug()<<"Objeto "<<Item<<" no encontrado en el mapa.";
+            else qDebug()<<"Objeto "<<Item<<" no encontrado en el mapa.";//medio redundante capaz no hace falt
         }
     }
 }
