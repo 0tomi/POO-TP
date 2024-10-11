@@ -32,6 +32,7 @@ void radiografiaui::setDocumentacionInfo(Documentacion *documento)
 
 void radiografiaui::Entrar()
 {
+    ui->cuerpo->setCurrentIndex(0);
     DocumentosUI::Entrar();
     Mostrando = true;
 }
@@ -65,8 +66,14 @@ void radiografiaui::setLabels(radiografia* datos){
     if(objetosAniadir->empty()){
         return;
     }else {
-        for (const auto& objeto: *objetosAniadir)
-            this->labelsCuerpo[objeto.ParteCuerpo]->setPixmap(this->items[objeto.Objeto]); // Esto es peligroso por como funcionan los mapas
+        for (const auto& objeto: *objetosAniadir){
+            auto Item = objeto.Objeto;
+            auto LabelActual = this->labelsCuerpo[objeto.ParteCuerpo];
+
+            QPixmap* PixmapActual = &items[Item];
+            auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            LabelActual->setPixmap(PixmapReescalado);
+        }
     }
 }
 radiografiaui::~radiografiaui()

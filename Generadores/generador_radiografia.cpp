@@ -45,11 +45,12 @@ radiografia* generador_Radiografia::generar_radiografia(bool validez)
         if (validez){ // si es valido
             generar_validos();
         } else{ //si es invalido
+            qDebug() << "Cantidad de elementos del generador: " << cantElementos;
             if (this->cantElementos == 0){
                 this->cantElementos++; // para que al menos se genere un elemento invalido
             }
             int cantValida; int cantInvalida;
-            cantInvalida = this->random.bounded(1,this->cantElementos);
+            cantInvalida = this->random.bounded(this->cantElementos) + 1;
             generar_invalidos(cantInvalida);
             if (cantInvalida != this->cantElementos){
                 cantValida = this->cantElementos - cantInvalida;
