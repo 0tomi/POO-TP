@@ -358,6 +358,8 @@ void PantallaMenu::botonVolver1clicked()
     case 2: // Selector de dificultad
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchMenu);
         break;
+    case 6: ui->menu->setCurrentIndex(5);
+        break;
     default: // Descripcion de dificultad, Cheat mode, Seleccionar slot de guardado
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
         break;
