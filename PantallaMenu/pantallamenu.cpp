@@ -111,7 +111,6 @@ void PantallaMenu::checkSaveSlots()
     bloquearBotonGuardado(ui->botonPartida3, ui->boton_Ranura3);
     for (int i = 0; i < 3; i++)
         setBotonesPartida(i, Partidas[i]);
-    delete[] Partidas;
 }
 
 void PantallaMenu::setBotonesPartida(int num, bool estado)

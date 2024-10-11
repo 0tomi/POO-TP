@@ -42,6 +42,8 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     SpawnearBotones();
     RealizarConexionesPrincipales();
     BloquearBotones(true);
+
+    test = new NPCFondo(ui->Pasillo);
 }
 
 GameScreen::~GameScreen()

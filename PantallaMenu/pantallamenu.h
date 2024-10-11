@@ -88,7 +88,7 @@ private:
     const QString COLOR_DESBLOQUEADO = "color: white; background-color: rgb(170, 0, 255);";
     const QString COLOR_BLOQUEADO = "color: white; background-color: #1e1532;";
     GuardarPartidas * guardarPartida;
-    bool * Partidas;
+    vector<bool> Partidas;
 
     void bloquearBotonGuardado(QPushButton * botonGuardado, QPushButton * botonRanura);
     void desbloquearBotonGuardado(QPushButton * botonGuardado, QPushButton * botonRanura);

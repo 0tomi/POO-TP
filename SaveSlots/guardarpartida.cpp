@@ -65,8 +65,9 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     return stats;
 }
 
-bool* GuardarPartidas::LeerPartidas(){
-    bool* slots_disponibles=new bool[3];
+vector<bool> GuardarPartidas::LeerPartidas(){
+    vector<bool> slots_disponibles;
+    slots_disponibles.resize(3);
     for(int i=0; i<3; i++){
         if(CargarPartida(i).Nivel==0)
             slots_disponibles[i]=false;

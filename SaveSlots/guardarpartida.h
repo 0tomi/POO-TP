@@ -14,7 +14,7 @@ public:
     GuardarPartidas();
     void save(const PlayerStats &datos, int slot );
     PlayerStats CargarPartida(int slot);
-    bool* LeerPartidas();
+    vector<bool> LeerPartidas();
     void saveCurrentSlot(const PlayerStats&);
     void cleanCurrentSlot();
     void setCurrentSlot(int slot);

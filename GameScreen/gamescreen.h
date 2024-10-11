@@ -22,6 +22,7 @@
 #include "intropantalla.h"
 #include "notificacion.h"
 #include "../Documentos/radiografiaui.h"
+#include "../NPC/npcfondo.h"
 
 namespace Ui {
 class GameScreen;
@@ -137,6 +138,9 @@ private:
 
     // Radiografia
     radiografiaui * RadiografiaUI;
+
+    // NPC moviendose de fondo
+    NPCFondo * test;
 };
 
 #endif // GAMESCREEN_H

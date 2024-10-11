@@ -91,6 +91,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Generadores/generador_radiografia.h Generadores/generador_radiografia.cpp
         Documentos/radiografia.h Documentos/radiografia.cpp
         Documentos/radiografiaui.h Documentos/radiografiaui.cpp Documentos/radiografiaui.ui
+        NPC/npcfondo.h NPC/npcfondo.cpp NPC/npcfondo.ui
 
 
 
