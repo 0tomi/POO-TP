@@ -34,7 +34,7 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
     setDificultad(Dificultad);
 
     // Reseteamos la cantidad ganada en el nivel
-    this->SocialCreditsEarnedInLevel = 0;
+    setDefaultStats();
     this->setUpNivel(Nivel);
 }
 
@@ -43,7 +43,6 @@ void Juego::PrepararJuego(PlayerStats stats)
     PrepararJuego(stats.Nivel, stats.Dificultad);
 
     // Le damos al jugador las estadisticas que posee.
-    SocialCreditsEarnedInLevel = 0;
     TotalSocialCredits = stats.TotalSocialCredits;
     Multas = stats.Multas;
     CantidadNPCsRechazados = stats.CantidadNPCsRechazados;

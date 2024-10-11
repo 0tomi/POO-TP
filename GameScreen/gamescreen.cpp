@@ -166,7 +166,6 @@ void GameScreen::setUpIconoDocsUI()
         }
     });
 
-    //&GestorNPC, &GestorNPCsUI::SalirEntidades);
     SetearConexionesDocumentos();
 }
 

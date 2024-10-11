@@ -77,9 +77,9 @@ void PantallaMenu::ConfigurarBotonesElegirPartidaGuardada()
 
 void PantallaMenu::ConfigurarBotonesElegirRanura()
 {
-    connect(ui->boton_Ranura1, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(1);});
-    connect(ui->boton_Ranura2, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(2);});
-    connect(ui->boton_Ranura3, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(3);});
+    connect(ui->boton_Ranura1, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(0);});
+    connect(ui->boton_Ranura2, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(1);});
+    connect(ui->boton_Ranura3, &QPushButton::clicked, [this](){this->SlotGuardadoSeleccionado(2);});
 }
 
 void PantallaMenu::setInicio()
@@ -306,21 +306,21 @@ void PantallaMenu::botonPartida1clicked()
 {
     emit EnviarLogs("Slot de partida 1 apretado");
     SonidosBotones.play();
-    emit slotSelected2Play(1);
+    emit slotSelected2Play(0);
 }
 
 void PantallaMenu::botonPartida2clicked()
 {
     emit EnviarLogs("Slot de partida 2 apretado");
     SonidosBotones.play();
-    emit slotSelected2Play(2);
+    emit slotSelected2Play(1);
 }
 
 void PantallaMenu::botonPartida3clicked()
 {
     emit EnviarLogs("Slot de partida 3 apretado");
     SonidosBotones.play();
-    emit slotSelected2Play(3);
+    emit slotSelected2Play(2);
 }
 
 /// ############################ Opciones ###############################

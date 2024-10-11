@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QPropertyAnimation>
 #include <QGraphicsOpacityEffect>
+#include <QSoundEffect>
 
 namespace Ui {
 class PantallaPerdiste;
@@ -16,6 +17,7 @@ class PantallaPerdiste : public QWidget
 
 public:
     explicit PantallaPerdiste(QWidget *parent = nullptr);
+    void setSoundVolume(float vol);
     void Iniciar(bool Perdio);
     ~PantallaPerdiste();
 
@@ -30,6 +32,7 @@ private slots:
     void FinalizoAnimacion();
 
 private:
+    QSoundEffect sonidoGanar, sonidoPerder;
     bool MostrandoPantalla;
     Ui::PantallaPerdiste *ui;
     QWidget * padre;

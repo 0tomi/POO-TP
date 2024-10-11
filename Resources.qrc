@@ -205,5 +205,9 @@
         <file>Niveles/Nivel5/Objetos/Lapiz.png</file>
         <file>Niveles/Nivel5/Objetos/Lentes.png</file>
         <file>Niveles/Nivel5/Objetos/Pistola.png</file>
+        <file>Resources/Sonidos/AcordeonSonido.wav</file>
+        <file>Resources/Sonidos/NPCRechazado.wav</file>
+        <file>Resources/Sonidos/SonidosFinalNivel/SonidoGanar.WAV</file>
+        <file>Resources/Sonidos/SonidosFinalNivel/SonidoPerder.WAV</file>
     </qresource>
 </RCC>

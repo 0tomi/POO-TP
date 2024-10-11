@@ -3,11 +3,15 @@
 
 PantallaPerdiste::PantallaPerdiste(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::PantallaPerdiste)
+    , ui(new Ui::PantallaPerdiste), sonidoGanar(parent), sonidoPerder(parent)
 {
     ui->setupUi(this);
     padre = parent;
     MostrandoPantalla = false;
+
+    sonidoGanar.setSource(QUrl("qrc:/Resources/Sonidos/SonidosFinalNivel/SonidoGanar.WAV"));
+    sonidoPerder.setSource(QUrl("qrc:/Resources/Sonidos/SonidosFinalNivel/SonidoPerder.WAV"));
+    setSoundVolume(1.0);
 
     opacityEffect = new QGraphicsOpacityEffect(ui->stackedWidget);
     ui->stackedWidget->setGraphicsEffect(opacityEffect);
@@ -26,6 +30,12 @@ PantallaPerdiste::PantallaPerdiste(QWidget *parent)
     connect(&TiempoVisualizacion, &QTimer::timeout, this, &PantallaPerdiste::ArrancarFinal);
 }
 
+void PantallaPerdiste::setSoundVolume(float vol)
+{
+    sonidoGanar.setVolume(vol);
+    sonidoPerder.setVolume(vol);
+}
+
 void PantallaPerdiste::Iniciar(bool Perdio)
 {
     setFixedSize(padre->width(), padre->height());
@@ -33,10 +43,13 @@ void PantallaPerdiste::Iniciar(bool Perdio)
     opacityEffect->setOpacity(0.0);
     ui->stackedWidget->setGraphicsEffect(opacityEffect);
 
-    if (!Perdio)
+    if (!Perdio){
         ui->stackedWidget->setCurrentWidget(ui->Pasaste);
-    else
+        sonidoGanar.play();
+    } else {
         ui->stackedWidget->setCurrentWidget(ui->Perdiste);
+        sonidoPerder.play();
+    }
 
     show();
     inicio->start();

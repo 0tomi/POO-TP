@@ -34,6 +34,7 @@ public:
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
     void closeEvent(QCloseEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
 
 private slots:
     void TransicionJuego(int Nivel = 1, int Dificultad = 2);

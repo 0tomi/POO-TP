@@ -4,9 +4,11 @@
 
 NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     : NPCUI(parent)
-    , ui(new Ui::NPCGenericoUI)
+    , ui(new Ui::NPCGenericoUI), Rechazo(parent)
 {
     ui->setupUi(this);
+    Rechazo.setSource(QUrl("qrc:/Resources/Sonidos/NPCRechazado.wav"));
+    setSoundVolume(1.0);
 
     tiempoParpadeo = new QRandomGenerator(time(NULL));
     quejarse.setSingleShot(true);
@@ -91,6 +93,7 @@ void NPCGenericoUI::setSkinNPC(Skin skinNPC)
 void NPCGenericoUI::Rechazado()
 {
     parpadeo.stop();
+    Rechazo.play();
     ui->Boca->setPixmap(bocaCerrada);
     ui->Ojos->setPixmap(ojosCerrados);
 }
@@ -108,6 +111,11 @@ void NPCGenericoUI::Sacar()
     quejarse.stop();
     parpadeo.stop();
     NPCUI::Sacar();
+}
+
+void NPCGenericoUI::setSoundVolume(float vol)
+{
+    Rechazo.setVolume(vol-0.2);
 }
 
 
