@@ -7,6 +7,7 @@
 #include <QString>
 #include <QPixmap>
 #include <QDebug>
+#include <QMessageBox>
 #include"documentosui.h"
 #include "radiografia.h"
 #include "../lectorarchivos.h"

@@ -47,6 +47,10 @@ void radiografiaui::setmap(){
     for(const auto& objeto: objetos){
         QString ruta= ":/Niveles/Nivel5/Objetos/"+ objeto + ".png";//poner la ruta bien cuando tengamos la carpeta
         QPixmap pixmap(ruta);
+        if(pixmap.isNull()){
+            QMessageBox::critical(this, "Error de Carga",".");
+            qDebug()<<"La imagen para el objeto "<<objeto<<" no se cargó bien.";
+        }
         this->items.insert(objeto, pixmap);
     }
 }
@@ -71,15 +75,13 @@ void radiografiaui::setLabels(radiografia* datos){
             auto LabelActual = this->labelsCuerpo[objeto.ParteCuerpo];
             auto iterador=items.find(Item);
 
-            if(iterador != items.end()){
+            if((iterador != items.end()) &&(!iterador.value().isNull())){
 
                 QPixmap* PixmapActual = &iterador.value();
-                if(PixmapActual->isNull()){
-                    qDebug()<<"La imagen para el objeto "<<Item<<" no se cargó bien.";
-                }else {
+
                 auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
                 LabelActual->setPixmap(PixmapReescalado);
-                }
+
             }
             else qDebug()<<"Objeto "<<Item<<" no encontrado en el mapa.";//medio redundante capaz no hace falt
         }
