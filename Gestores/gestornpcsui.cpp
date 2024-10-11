@@ -132,6 +132,7 @@ void GestorNPCsUI::SalirEntidades()
         NPCcomunUI->Rechazado();
 
     NPCcomunUI->Sacar();
+    Dialogos->ForzarSalir();
 
     MostrandoNPC = false;
 
@@ -161,10 +162,12 @@ void GestorNPCsUI::TerminoNivel()
 void GestorNPCsUI::Pausar()
 {
     Dialogos->PausarMensaje();
+    NPCcomunUI->Pausar(true);
 }
 void GestorNPCsUI::Reanudar()
 {
     Dialogos->ReanudarMensaje();
+    NPCcomunUI->Pausar(false);
 }
 /// #################################### Señales ###################################################
 void GestorNPCsUI::emitirNPCTerminoSalir()
@@ -214,6 +217,7 @@ void GestorNPCsUI::Centrar()
 
 void GestorNPCsUI::setVolumen(float vol)
 {
+    NPCcomunUI->setSoundVolume(vol);
     Dialogos->setVolume(vol);
     transcriptorDialogos->setVolume(vol);
 }

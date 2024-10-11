@@ -28,17 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
         QWidget * pantallaActual = pantallas->currentWidget();
         pantallaActual->setFocus(); // polimorfismo locura
     });
-
-    /// ##################### TEST ################################
-    connect(gameScreen, &GameScreen::EnviarLogs, [this](QString dato){
-        qDebug() << dato;
-    });
-    connect(juego, &Juego::Log, [this](QString dato){
-        qDebug() << dato;
-    });
-    connect(&guardarPartida, &GuardarPartidas::Log, [this](QString dato){
-        qDebug() << dato;
-    });
 }
 
 MainWindow::~MainWindow()
@@ -186,6 +175,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
     } else {
         event->ignore();  // Ignorar el evento y no cerrar la ventana
     }
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QMainWindow::resizeEvent(event);
+    this->transicion->resize(this->size());
 }
 
 /// ################################## PANTALLA DE JUEGO #############################################

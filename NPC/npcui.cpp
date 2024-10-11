@@ -93,6 +93,19 @@ NPCUI::~NPCUI()
     delete animacionSalida;
 }
 
+void NPCUI::Pausar(bool Estado)
+{
+    if (Estado){
+        if (!emitirDialogo.isActive())
+            return;
+
+        remainingTime = emitirDialogo.remainingTime();
+        emitirDialogo.stop();
+    } else {
+        emitirDialogo.start(remainingTime);
+    }
+}
+
 void NPCUI::moveEvent(QMoveEvent *event)
 {
     if (Mostrandose)

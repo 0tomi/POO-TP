@@ -23,6 +23,7 @@ public:
     virtual void Entrar();
     virtual void Sacar();
     virtual ~NPCUI();
+    void Pausar(bool Estado);
 
 signals:
     void animacionSalirTerminada();
@@ -48,6 +49,7 @@ protected:
     bool Mostrandose;
 
     // Dialogos
+    int remainingTime;
     QTimer emitirDialogo;
     NPC* NPCrepresentado;
     QWidget * padre;

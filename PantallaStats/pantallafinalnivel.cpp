@@ -72,6 +72,7 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
 
     // Coloco los botones y etiquetas dependiendo de si perdio o gano
     if (perdio) {
+        ui->TIPLabel->show();
         saveGame->cleanCurrentSlot();
         ui->stackedTitulos->setCurrentIndex(1);
         ui->stackedBotones->setCurrentIndex(1);
@@ -81,6 +82,7 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
         ui->tipsLabel->setText(tipRandom);
         
     } else {
+        ui->TIPLabel->hide();
         saveGame->saveCurrentSlot(actualStats);
         ui->stackedTitulos->setCurrentIndex(0);
         ui->stackedBotones->setCurrentIndex(0);

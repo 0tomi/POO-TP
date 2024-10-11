@@ -8,6 +8,7 @@
 #include <QPixmap>
 #include <QRandomGenerator>
 #include <QLabel>
+#include <QSoundEffect>
 
 namespace Ui {
 class NPCGenericoUI;
@@ -25,6 +26,7 @@ public:
     void Rechazado();
     void Entrar() override;
     void Sacar() override;
+    void setSoundVolume(float vol);
 
 protected:
     void ReescalarNPC();
@@ -61,6 +63,9 @@ private:
     QPixmap ojosCerrados;
     QPixmap bocaCerrada;
     QPixmap nada;
+
+    // Sonido
+    QSoundEffect Rechazo;
 };
 
 #endif // NPCGENERICOUI_H

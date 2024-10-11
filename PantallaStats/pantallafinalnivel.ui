@@ -334,7 +334,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="TIPLabel">
         <property name="font">
          <font>
           <pointsize>24</pointsize>

@@ -12,7 +12,7 @@ PantallaTransicion::PantallaTransicion(QWidget *parent)
     mostrando = false;
 
     // Armo pantalla para las transiciones
-    setFixedSize(1920,1080);
+    this->resize(parent->size());
     hide();
 
     // Damos opacidad 0 para que aparezca la pantalla y no se vea
