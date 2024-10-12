@@ -5,7 +5,7 @@ void generador_Radiografia::SetDatosFalsos(bool Validez, radiografia *doc)
     if (Validez)
         return;
 
-    doc->addDatosFalsos("Porta objetos prohibidos.");
+    doc->addDatosFalsos(this->DatosFalsos);
 }
 
 generador_Radiografia::generador_Radiografia() {
@@ -100,6 +100,7 @@ void generador_Radiografia::generar_invalidos(int cant2Generate)
             sorteo = this->random.bounded(this->ObjetosInvalidos.size());
         } while (ObjetosUsados[sorteo]);
         nuevoElemento.Objeto = this->ObjetosInvalidos[sorteo];
+        this->DatosFalsos += nuevoElemento.Objeto + ", ";
         ObjetosUsados[sorteo] = true;
         do {
             nuevoElemento.ParteCuerpo = this->random.bounded(this->MAX_PARTESCUERPO);
