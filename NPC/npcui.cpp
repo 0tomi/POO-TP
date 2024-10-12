@@ -2,7 +2,7 @@
 #include "ui_npcui.h"
 
 NPCUI::NPCUI(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent), estadoAnimacionStandby(false)
 {
     padre = parent;
 
@@ -10,6 +10,9 @@ NPCUI::NPCUI(QWidget *parent)
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionEntrada->setDuration(1000);
     animacionEntrada->setEasingCurve(QEasingCurve::OutQuad);    // La animacion se desacelera conforme entra
+
+    animacionStandBy = new QPropertyAnimation(this, "pos");
+    animacionStandBy->setEasingCurve(QEasingCurve::InQuad);
 
     // Preparamos animaciones de salida del NPC
     animacionSalida = new QPropertyAnimation(this, "pos");
@@ -20,7 +23,14 @@ NPCUI::NPCUI(QWidget *parent)
     connect(animacionEntrada, &QPropertyAnimation::finished, [this](){
         emit animacionEntrarTerminada();
         Mostrandose = true;
+        PrepararAnimacionStandBy();
+        animacionStandBy->start();
     });
+    connect(animacionStandBy, &QPropertyAnimation::finished, [this](){
+        PrepararAnimacionStandBy();
+        animacionStandBy->start();
+    });
+
     emitirDialogo.setSingleShot(true);
 
     Mostrandose = false;
@@ -48,6 +58,7 @@ void NPCUI::Entrar()
 
 void NPCUI::Salir(bool Aceptado)
 {
+    animacionStandBy->stop();
     if (Aceptado)
         PrepararAnimacionSalida();
     else
@@ -103,6 +114,7 @@ NPCUI::~NPCUI()
 {
     delete animacionEntrada;
     delete animacionSalida;
+    delete animacionStandBy;
 }
 
 void NPCUI::Pausar(bool Estado)
@@ -115,5 +127,20 @@ void NPCUI::Pausar(bool Estado)
         emitirDialogo.stop();
     } else {
         emitirDialogo.start(remainingTime);
+    }
+}
+
+void NPCUI::PrepararAnimacionStandBy()
+{
+    animacionStandBy->setDuration(random.bounded(400,700));
+    int posY = padre->height() - height();
+    if (estadoAnimacionStandby){
+        animacionStandBy->setStartValue(this->pos());
+        animacionStandBy->setEndValue(QPoint(this->x(), posY));
+        estadoAnimacionStandby = false;
+    } else {
+        animacionStandBy->setStartValue(this->pos());
+        animacionStandBy->setEndValue(QPoint(this->x(), this->y() + random.bounded(5,15)));
+        estadoAnimacionStandby = true;
     }
 }
