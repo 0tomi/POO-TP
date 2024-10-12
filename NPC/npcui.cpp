@@ -28,6 +28,7 @@ NPCUI::NPCUI(QWidget *parent)
 
 void NPCUI::Centrar()
 {
+    qDebug() << "centrar ejecutado";
     int centerX = (padre->width() - width()) /2;
     int centerY = (padre->height() - height());
     move(centerX,centerY);
@@ -115,12 +116,4 @@ void NPCUI::Pausar(bool Estado)
     } else {
         emitirDialogo.start(remainingTime);
     }
-}
-
-void NPCUI::moveEvent(QMoveEvent *event)
-{
-    if (Mostrandose)
-        this->Centrar();
-    else
-        QWidget::moveEvent(event);
 }
