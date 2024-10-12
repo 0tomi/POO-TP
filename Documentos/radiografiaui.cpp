@@ -20,6 +20,9 @@ radiografiaui::radiografiaui(QWidget *parent)
     LectorArchivos lector(":/Niveles/Nivel5/Objetos.txt");
     this->objetos=lector.getVector();
     setmap();
+    voltearRadiografia.setSource(QUrl("qrc:/Resources/Sonidos/VoltearRadiografia.wav"));
+    cerrarRadiografia.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
+    setVolume(1.0);
 }
 
 void radiografiaui::setDocumentacionInfo(Documentacion *documento)
@@ -94,6 +97,7 @@ radiografiaui::~radiografiaui()
 
 void radiografiaui::on_voltear1_clicked()
 {
+    voltearRadiografia.play();
     int indiceActual = ui->cuerpo->currentIndex(); // Obtener el índice actual
 
     // Alternar entre las páginas 0 y 1
@@ -105,6 +109,7 @@ void radiografiaui::on_voltear1_clicked()
 
 void radiografiaui::on_voltear2_clicked()
 {
+    voltearRadiografia.play();
     int indiceActual = ui->cuerpo->currentIndex();
     int nuevoIndice = (indiceActual == 0) ? 1 : 0;
     ui->cuerpo->setCurrentIndex(nuevoIndice);
@@ -113,8 +118,12 @@ void radiografiaui::on_voltear2_clicked()
 
 void radiografiaui::on_botonsalir_clicked()
 {
+    cerrarRadiografia.play();
     this->Sacar();
 }
 
-
+void radiografiaui::setVolume(float volumen){
+    voltearRadiografia.setVolume(volumen -0.5);
+    cerrarRadiografia.setVolume(volumen);
+}
 

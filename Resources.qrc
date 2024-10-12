@@ -209,5 +209,7 @@
         <file>Resources/Sonidos/NPCRechazado.wav</file>
         <file>Resources/Sonidos/SonidosFinalNivel/SonidoGanar.WAV</file>
         <file>Resources/Sonidos/SonidosFinalNivel/SonidoPerder.WAV</file>
+        <file>../../../../../Downloads/VoltearRadiografia.mp3</file>
+        <file>Resources/Sonidos/VoltearRadiografia.wav</file>
     </qresource>
 </RCC>
