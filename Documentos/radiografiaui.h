@@ -6,6 +6,8 @@
 #include <QMap>
 #include <QString>
 #include <QPixmap>
+#include <QSoundEffect>
+#include <QMessageBox>
 #include"documentosui.h"
 #include "radiografia.h"
 #include "../lectorarchivos.h"
@@ -28,6 +30,7 @@ public:
     virtual void setDocumentacionInfo(Documentacion *documento) override;
     virtual void Entrar() override;
     virtual void Sacar() override;
+    void setVolume(float);
 
     ~radiografiaui();
     //void Sacar(); Falta override y meterle sonidos al cerrarla
@@ -47,6 +50,8 @@ private:
     vector<QString>objetos;
     void setmap();
     bool Mostrando;
+    QSoundEffect voltearRadiografia;
+    QSoundEffect cerrarRadiografia;
 };
 
 #endif // RADIOGRAFIAUI_H

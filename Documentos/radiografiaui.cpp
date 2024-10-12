@@ -19,7 +19,10 @@ radiografiaui::radiografiaui(QWidget *parent)
     this->labelsCuerpo[9]=ui->espalda5;
     LectorArchivos lector(":/Niveles/Nivel5/Objetos.txt");
     this->objetos=lector.getVector();
-    setmap();
+    this->setmap();
+    voltearRadiografia.setSource(QUrl("qrc:/Resources/Sonidos/VoltearRadiografia.wav"));
+    cerrarRadiografia.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
+    setVolume(1.0);
 }
 
 void radiografiaui::setDocumentacionInfo(Documentacion *documento)
@@ -47,6 +50,10 @@ void radiografiaui::setmap(){
     for(const auto& objeto: objetos){
         QString ruta= ":/Niveles/Nivel5/Objetos/"+ objeto + ".png";//poner la ruta bien cuando tengamos la carpeta
         QPixmap pixmap(ruta);
+        if(pixmap.isNull()){
+            QMessageBox::critical(this, "Error de Carga",".");
+            qDebug()<<"La imagen para el objeto "<<objeto<<" no se cargó bien.";
+        }
         this->items.insert(objeto, pixmap);
     }
 }
@@ -70,9 +77,15 @@ void radiografiaui::setLabels(radiografia* datos){
             auto Item = objeto.Objeto;
             auto LabelActual = this->labelsCuerpo[objeto.ParteCuerpo];
 
-            QPixmap* PixmapActual = &items[Item];
-            auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-            LabelActual->setPixmap(PixmapReescalado);
+            auto iterador=items.find(Item);
+            if((iterador != items.end()) &&(!iterador.value().isNull())){
+                //QPixmap* PixmapActual = &items[Item];
+                QPixmap* PixmapActual = &iterador.value();
+
+                auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                LabelActual->setPixmap(PixmapReescalado);
+            }
+              else qDebug()<<"Objeto "<<Item<<" no encontrado en el mapa.";//medio redundante capaz no hace falt
         }
     }
 }
@@ -83,6 +96,7 @@ radiografiaui::~radiografiaui()
 
 void radiografiaui::on_voltear1_clicked()
 {
+    voltearRadiografia.play();
     int indiceActual = ui->cuerpo->currentIndex(); // Obtener el índice actual
 
     // Alternar entre las páginas 0 y 1
@@ -94,6 +108,7 @@ void radiografiaui::on_voltear1_clicked()
 
 void radiografiaui::on_voltear2_clicked()
 {
+    voltearRadiografia.play();
     int indiceActual = ui->cuerpo->currentIndex();
     int nuevoIndice = (indiceActual == 0) ? 1 : 0;
     ui->cuerpo->setCurrentIndex(nuevoIndice);
@@ -102,8 +117,13 @@ void radiografiaui::on_voltear2_clicked()
 
 void radiografiaui::on_botonsalir_clicked()
 {
+    cerrarRadiografia.play();
     this->Sacar();
 }
 
+void radiografiaui::setVolume(float volumen){
+    voltearRadiografia.setVolume(volumen -0.8);
+    cerrarRadiografia.setVolume(volumen);
+}
 
 
