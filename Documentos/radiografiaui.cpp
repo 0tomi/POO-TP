@@ -122,7 +122,7 @@ void radiografiaui::on_botonsalir_clicked()
 }
 
 void radiografiaui::setVolume(float volumen){
-    voltearRadiografia.setVolume(volumen -0.5);
+    voltearRadiografia.setVolume(volumen -0.8);
     cerrarRadiografia.setVolume(volumen);
 }
 
