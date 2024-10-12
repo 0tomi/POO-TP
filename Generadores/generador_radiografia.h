@@ -15,7 +15,7 @@ private:
     vector<ParDatos>Elementos;
     vector<QString>ObjetosValidos;
     vector<QString>ObjetosInvalidos;
-    QString DatosFalsos = "Elementos Invalidos: "
+    QString DatosFalsos = "Elementos Invalidos: ";
     radiografia * radiografia2Generate;
     void SetDatosFalsos(bool Validez, radiografia* doc);
 public:
