@@ -64,7 +64,7 @@ void Logs::RecibirLogs(QString Log)
     qDebug() << "Log Recibido: " << Log;
     QString CompleteLog = "[" + QDateTime::currentDateTime().toString("dd-MM-yyyy HH:mm:ss") + "]  " + Log + "\n";
     this->VectorLogs.push_back(CompleteLog);
-    if(this->VectorLogs.size() == 1 || Log.contains("salir")){
+    if(this->VectorLogs.size() == 10 || Log.contains("salir")){
         SaveLogs();
     }
 }
