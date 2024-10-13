@@ -67,7 +67,7 @@ border-image: url(:/Resources/Documentos/LibroRaglasAbierto.png);
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>6</number>
         </property>
         <widget class="QWidget" name="PagInicial">
          <property name="minimumSize">
@@ -259,6 +259,24 @@ color: rgb(0, 0, 0);</string>
                </property>
               </widget>
              </item>
+             <item>
+              <widget class="QPushButton" name="Nivel5boton1">
+               <property name="font">
+                <font>
+                 <family>MS Serif</family>
+                 <pointsize>16</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 241, 49);
+color: rgb(0, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>Radiografia</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>
@@ -422,6 +440,12 @@ color: rgb(0, 0, 0);</string>
             <width>301</width>
             <height>151</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(0, 0, 0);
@@ -1305,7 +1329,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                </font>
               </property>
               <property name="mouseTracking">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 127);</string>
@@ -1338,7 +1362,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                </font>
               </property>
               <property name="mouseTracking">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(0, 0, 127);</string>
@@ -1677,6 +1701,133 @@ color: rgb(0, 0, 0);</string>
            </widget>
           </item>
          </layout>
+        </widget>
+        <widget class="QWidget" name="Nivel5Page">
+         <widget class="QLabel" name="ObjetosRadiografiaIlegales">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>190</y>
+            <width>281</width>
+            <height>311</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="EdadPermitida_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>301</width>
+            <height>111</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Serif</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">text-size: 20;
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Reglas &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Radiografia&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="indent">
+           <number>-1</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ObjetosRadiografiaLegales">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>200</y>
+            <width>271</width>
+            <height>291</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ObjetosRadiografiaIlegales_2">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>140</y>
+            <width>231</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Lista de Objetos Ilegales:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ObjetosRadiografiaIlegales_3">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>150</y>
+            <width>231</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Sans Serif</family>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+color: rgb(0, 0, 0);</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Lista de Objetos legales:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
         </widget>
        </widget>
       </item>
