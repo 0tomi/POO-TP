@@ -85,6 +85,7 @@ private:
     void DesconectarNPCs();
     bool NPCConectado;
     void ActualizarEstadoNPC();
+    void FinalizarEntidades();
 };
 
 #endif // GESTORNPCSUI_H

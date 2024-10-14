@@ -2,7 +2,7 @@
 #include "ui_npcui.h"
 
 NPCUI::NPCUI(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent), estadoAnimacionStandby(false)
 {
     padre = parent;
 
@@ -10,6 +10,9 @@ NPCUI::NPCUI(QWidget *parent)
     animacionEntrada = new QPropertyAnimation(this, "pos");
     animacionEntrada->setDuration(1000);
     animacionEntrada->setEasingCurve(QEasingCurve::OutQuad);    // La animacion se desacelera conforme entra
+
+    animacionStandBy = new QPropertyAnimation(this, "pos");
+    animacionStandBy->setEasingCurve(QEasingCurve::InQuad);
 
     // Preparamos animaciones de salida del NPC
     animacionSalida = new QPropertyAnimation(this, "pos");
@@ -20,7 +23,15 @@ NPCUI::NPCUI(QWidget *parent)
     connect(animacionEntrada, &QPropertyAnimation::finished, [this](){
         emit animacionEntrarTerminada();
         Mostrandose = true;
+        PrepararAnimacionStandBy();
+        animacionStandBy->start();
     });
+    connect(animacionStandBy, &QPropertyAnimation::finished, [this](){
+        PrepararAnimacionStandBy();
+        animacionStandBy->start();
+    });
+
+    connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
     emitirDialogo.setSingleShot(true);
 
     Mostrandose = false;
@@ -28,7 +39,6 @@ NPCUI::NPCUI(QWidget *parent)
 
 void NPCUI::Centrar()
 {
-    qDebug() << "centrar ejecutado";
     int centerX = (padre->width() - width()) /2;
     int centerY = (padre->height() - height());
     move(centerX,centerY);
@@ -36,25 +46,35 @@ void NPCUI::Centrar()
 
 void NPCUI::Entrar()
 {
+    if (Mostrandose)
+        return;
+
     PrepararAnimacionEntrada();
     animacionEntrada->start();
     this->show();
     emit Entrando();
+
     if (NPCrepresentado->getDialogo() != ""){
-        connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
-        emitirDialogo.start(1500);
+        emitirDialogo.start(random.bounded(1500,3000));
     }
 }
 
 void NPCUI::Salir(bool Aceptado)
 {
+    if (!Mostrandose)
+        return;
+
+    animacionStandBy->stop();
+    if (emitirDialogo.isActive())
+        emitirDialogo.stop();
+
     if (Aceptado)
         PrepararAnimacionSalida();
     else
         PrepararAnimacionSalida2();
+
     Mostrandose = false;
     animacionSalida->start();
-    disconnect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
     emit Saliendo();
 }
 
@@ -103,6 +123,7 @@ NPCUI::~NPCUI()
 {
     delete animacionEntrada;
     delete animacionSalida;
+    delete animacionStandBy;
 }
 
 void NPCUI::Pausar(bool Estado)
@@ -115,5 +136,38 @@ void NPCUI::Pausar(bool Estado)
         emitirDialogo.stop();
     } else {
         emitirDialogo.start(remainingTime);
+    }
+}
+
+void NPCUI::Finalizar()
+{
+    if (emitirDialogo.isActive())
+        emitirDialogo.stop();
+
+    if (Mostrandose)
+        this->Salir(true);
+
+    animacionStandBy->stop();
+    estadoAnimacionStandby = false;
+}
+
+void NPCUI::PrepararAnimacionStandBy()
+{
+    animacionStandBy->setDuration(random.bounded(300,700));
+    int posY = padre->height() - height();
+    if (estadoAnimacionStandby){
+        animacionStandBy->setStartValue(this->pos());
+        animacionStandBy->setEndValue(QPoint(this->x(), posY));
+        estadoAnimacionStandby = false;
+    } else {
+        int sorteo = random.bounded(10);
+        if (sorteo < 3) {
+            animacionStandBy->setStartValue(this->pos());
+            animacionStandBy->setEndValue(QPoint(this->x(), this->y() + random.bounded(5,15)));
+        } else {
+            animacionStandBy->setStartValue(this->pos());
+            animacionStandBy->setEndValue(this->pos());
+        }
+        estadoAnimacionStandby = true;
     }
 }

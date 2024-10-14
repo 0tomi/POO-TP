@@ -343,7 +343,6 @@ void GameScreen::FinalDePartida()
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
     IconoDocs->setFinalPartida(true);
-    IconoDocs->Sacar();
 
     if (MostrandoReglas)
         MostrarReglas();

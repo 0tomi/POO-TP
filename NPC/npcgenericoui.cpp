@@ -120,6 +120,14 @@ void NPCGenericoUI::setSoundVolume(float vol)
     Rechazo.setVolume(vol-0.2);
 }
 
+void NPCGenericoUI::Finalizar()
+{
+    parpadeo.stop();
+    quejarse.stop();
+
+    NPCUI::Finalizar();
+}
+
 
 void NPCGenericoUI::ReescalarNPC()
 {
