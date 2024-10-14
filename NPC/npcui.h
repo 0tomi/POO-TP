@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QResizeEvent>
 #include <QPropertyAnimation>
+#include <QRandomGenerator>
 #include "../NPC/npc.h"
 
 namespace Ui {
@@ -34,6 +35,11 @@ signals:
 
 protected:
     // Animaciones
+    QRandomGenerator random;
+    void PrepararAnimacionStandBy();
+    QPropertyAnimation * animacionStandBy;
+    bool estadoAnimacionStandby;
+
     void PrepararAnimacionEntrada();
     QPropertyAnimation *animacionEntrada;
 
