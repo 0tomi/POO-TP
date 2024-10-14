@@ -21,7 +21,7 @@ radiografiaui::radiografiaui(QWidget *parent)
     this->objetos=lector.getVector();
     this->setmap();
     voltearRadiografia.setSource(QUrl("qrc:/Resources/Sonidos/VoltearRadiografia.wav"));
-    cerrarRadiografia.setSource(QUrl("qrc:/Resources/Sonidos/SonidoBoton.wav"));
+    cerrarRadiografia.setSource(QUrl("qrc:/Resources/Sonidos/NotificacionSalidaTranscriptor.wav"));
     setVolume(1.0);
 }
 
