@@ -141,8 +141,6 @@ void GestorNPCsUI::SalirEntidades()
 /// #################################### Terminar nivel ###################################################
 void GestorNPCsUI::TerminoNivel()
 {
-    Dialogos->ForzarSalir();
-    Dialogos->InterrumpirMensaje(true);
     DesconectarNPCs();
     if (transcriptorDialogos->getMostrando())
         transcriptorDialogos->Sacar();
@@ -150,10 +148,17 @@ void GestorNPCsUI::TerminoNivel()
 
     // Si hay NPCs presentes, retiramos los documentos y el NPC.
     if (MostrandoNPC || ColaNPCs->getSize()){
-        SalirEntidades();
-
+        FinalizarEntidades();
         ColaNPCs->vaciarCola();
     }
+}
+
+void GestorNPCsUI::FinalizarEntidades()
+{
+    NPCcomunUI->Finalizar();
+    MostrandoNPC = false;
+
+    Dialogos->Finalizar();
 }
 
 /// #################################### Dialogos ###################################################

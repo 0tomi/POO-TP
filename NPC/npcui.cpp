@@ -31,6 +31,7 @@ NPCUI::NPCUI(QWidget *parent)
         animacionStandBy->start();
     });
 
+    connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
     emitirDialogo.setSingleShot(true);
 
     Mostrandose = false;
@@ -38,7 +39,6 @@ NPCUI::NPCUI(QWidget *parent)
 
 void NPCUI::Centrar()
 {
-    qDebug() << "centrar ejecutado";
     int centerX = (padre->width() - width()) /2;
     int centerY = (padre->height() - height());
     move(centerX,centerY);
@@ -46,26 +46,35 @@ void NPCUI::Centrar()
 
 void NPCUI::Entrar()
 {
+    if (Mostrandose)
+        return;
+
     PrepararAnimacionEntrada();
     animacionEntrada->start();
     this->show();
     emit Entrando();
+
     if (NPCrepresentado->getDialogo() != ""){
-        connect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
-        emitirDialogo.start(1500);
+        emitirDialogo.start(random.bounded(1500,3000));
     }
 }
 
 void NPCUI::Salir(bool Aceptado)
 {
+    if (!Mostrandose)
+        return;
+
     animacionStandBy->stop();
+    if (emitirDialogo.isActive())
+        emitirDialogo.stop();
+
     if (Aceptado)
         PrepararAnimacionSalida();
     else
         PrepararAnimacionSalida2();
+
     Mostrandose = false;
     animacionSalida->start();
-    disconnect(&emitirDialogo, &QTimer::timeout, this, &NPCUI::Hablar);
     emit Saliendo();
 }
 
@@ -128,6 +137,18 @@ void NPCUI::Pausar(bool Estado)
     } else {
         emitirDialogo.start(remainingTime);
     }
+}
+
+void NPCUI::Finalizar()
+{
+    if (emitirDialogo.isActive())
+        emitirDialogo.stop();
+
+    if (Mostrandose)
+        this->Salir(true);
+
+    animacionStandBy->stop();
+    estadoAnimacionStandby = false;
 }
 
 void NPCUI::PrepararAnimacionStandBy()

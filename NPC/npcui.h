@@ -25,6 +25,7 @@ public:
     virtual void Salir(bool Aceptado);
     virtual ~NPCUI();
     void Pausar(bool Estado);
+    virtual void Finalizar();
 
 signals:
     void animacionSalirTerminada();

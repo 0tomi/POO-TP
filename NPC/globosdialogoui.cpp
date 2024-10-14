@@ -25,6 +25,8 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     SetearAnimacionEntrada();
     SetearAnimacionSalida();
     Mostrandose = false;
+
+    connect(&TiempoVisualizacion, &QTimer::timeout, this, &GlobosDialogoUI::TerminarMensaje);
 }
 
 void GlobosDialogoUI::setMensaje(const QString &newMensaje)
@@ -41,7 +43,6 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje)
             setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
 
     emit MensajePreparado();
-    connect(&TiempoVisualizacion, &QTimer::timeout, this, &GlobosDialogoUI::TerminarMensaje);
     PrepararAnimacionEntrada();
     MostrarMensaje();
 }
@@ -84,6 +85,13 @@ void GlobosDialogoUI::ForzarSalir()
         TiempoVisualizacion.stop();
         TerminarMensaje();
     }
+}
+
+void GlobosDialogoUI::Finalizar()
+{
+    this->ForzarSalir();
+    this->InterrumpirMensaje(true);
+    this->Sonido.stop();
 }
 
 // ########## A futuro #############
@@ -160,6 +168,7 @@ void GlobosDialogoUI::CalcularPosicionDelGlobo(int &X, int &Y)
 
 void GlobosDialogoUI::ReproducirSonido()
 {
+    qDebug() << "NPC emitio sonido";
     int sorteo = Random.bounded(4);
     Sonido.setSource(URLSonidos[sorteo]);
     Sonido.play();

@@ -23,6 +23,7 @@ public:
     void ReanudarMensaje();
     void InterrumpirMensaje(bool estado);
     void ForzarSalir();
+    void Finalizar();
     void CorrerMensaje(); // A futuro, para acumular mensajes.
     ~GlobosDialogoUI();
     void Centrar();

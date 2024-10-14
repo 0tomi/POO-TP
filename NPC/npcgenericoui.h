@@ -27,6 +27,7 @@ public:
     void Entrar() override;
     void Salir(bool Aceptado) override;
     void setSoundVolume(float vol);
+    void Finalizar() override;
 
 protected:
     void ReescalarNPC();

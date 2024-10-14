@@ -50,8 +50,6 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 
 bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[])
 {
-    qDebug() << "Cantidad recibida para generar: " << CantidadTotal;
-    qDebug() << "Cantidad recibida de falsos para generar: " << CantidadFalsos;
     this->vaciarCola();
 
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
@@ -76,9 +74,6 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
         sorteoValidez = Random.bounded(20);
         Validez = true;
     }
-
-    qDebug() << "Cantidad generada: " << CantidadTotal;
-    qDebug() << "Cantidad falsa generada: " << CantidadFalsos;
 
     if (CantidadTotal == 0 && CantidadFalsos == 0)
         return true;

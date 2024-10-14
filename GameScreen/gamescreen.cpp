@@ -318,6 +318,7 @@ void GameScreen::Restart()
 
 void GameScreen::PausarJuego()
 {
+    qDebug() << "Juego pausado";
     GestorNPC.Pausar();
     Musica[currentMusic].stop();
     tiempoRestante = tiempoPartida.remainingTime();
@@ -327,6 +328,7 @@ void GameScreen::PausarJuego()
 
 void GameScreen::ReanudarJuego()
 {
+    qDebug() << "Juego reanudado";
     GestorNPC.Reanudar();
     Musica[currentMusic].play();
     tiempoPartida.start(tiempoRestante);
@@ -343,7 +345,6 @@ void GameScreen::FinalDePartida()
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
     IconoDocs->setFinalPartida(true);
-    IconoDocs->Sacar();
 
     if (MostrandoReglas)
         MostrarReglas();
