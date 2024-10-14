@@ -168,7 +168,6 @@ void GlobosDialogoUI::CalcularPosicionDelGlobo(int &X, int &Y)
 
 void GlobosDialogoUI::ReproducirSonido()
 {
-    qDebug() << "NPC emitio sonido";
     int sorteo = Random.bounded(4);
     Sonido.setSource(URLSonidos[sorteo]);
     Sonido.play();
