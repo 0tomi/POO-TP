@@ -32,6 +32,7 @@ ColaNPC::~ColaNPC()
 /// #################################### Añadir NPCs a cola ###################################################
 void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos)
 {
+    this->vaciarCola();
     this->size = 0;
     this->cantidadNPCsFalsos = CantidadInvalidos;
     // Preparamos que nivel se usara.
@@ -43,14 +44,24 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
     int arrayTipos[] = {CantAldeano, CantRefugiados, CantDiplos, CantRevolucionarios};
 
+    NPCSaGenerar.resize(totalNPCs);
+
+    // Generamos la lista de los NPCs que pasaran.
     while (!GenerarNPCs(totalNPCs, CantidadInvalidos, arrayTipos)){
         arrayTipos[0] = CantAldeano; arrayTipos[1] = CantRefugiados; arrayTipos[2] = CantDiplos; arrayTipos[3] = CantRevolucionarios;
     }
+
+    // Creamos los NPCs
+    for (const auto& NPCs : NPCSaGenerar)
+        addNPC(NPCs.Tipo, NPCs.Validez);
+
+    NPCSaGenerar.clear();
+    NPCSaGenerar.shrink_to_fit();
 }
 
 bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[])
 {
-    this->vaciarCola();
+    NPCSaGenerar.clear();
 
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     int sorteo = Random.bounded(4);
@@ -63,7 +74,7 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
                 Validez = false;
 
         if (CantidadTipos[sorteo]){
-            addNPC(sorteo, Validez);
+            NPCSaGenerar.push_back({sorteo, Validez});
             CantidadTipos[sorteo]--;
             CantidadTotal--;
             if (!Validez)
@@ -99,6 +110,7 @@ void ColaNPC::addNPC(int Tipo, bool Validez){
     VectorNPCs.push_back(newNPC);
     size++;
 }
+
 /// #################################### Vaciar cola ###################################################
 void ColaNPC::vaciarCola()
 {

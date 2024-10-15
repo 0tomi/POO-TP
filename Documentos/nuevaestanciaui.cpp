@@ -12,6 +12,7 @@ NuevaEstanciaUI::NuevaEstanciaUI(QWidget *parent)
     setVolume(1.0);
     setUpBotones();
     resetearApariencia();
+    DocumentosUI::DesactivarEventosMouse();
 }
 
 void NuevaEstanciaUI::setVolume(float vol)

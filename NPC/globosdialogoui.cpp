@@ -55,7 +55,7 @@ void GlobosDialogoUI::MostrarMensaje()
     show();
     raise();
     emit Hablando(mensaje);
-    TiempoVisualizacion.start(4000);
+    TiempoVisualizacion.start(6000);
     ReproducirSonido();
     Mostrandose = true;
 }
