@@ -32,6 +32,12 @@ public:
     int getCantidadNPCsFalsos() const;
 
 private:
+    struct dupla{
+        int Tipo;
+        bool Validez;
+    };
+    vector <dupla> NPCSaGenerar;
+
     bool GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[]);
     quint32 semillaActual;
     vector<NPC*> VectorNPCs;

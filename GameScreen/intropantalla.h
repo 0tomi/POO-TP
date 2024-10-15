@@ -18,7 +18,10 @@ public:
     void acomodarPantalla();
     void Mostrar();
     void setUp(int nivel);
+    void forzarSalir();
     ~IntroPantalla();
+
+    bool isActive() const;
 
 public slots:
     void setVolumenes(float);
@@ -27,12 +30,13 @@ signals:
     void ClickeoEmpezar();
 
 private:
+    void Salir();
     QPropertyAnimation * animacionSalida;
     Ui::IntroPantalla *ui;
     QWidget * padre;
     Juego* juego;
     libroreglas * libro;
-    void Salir();
+    bool activa;
 };
 
 #endif // INTROPANTALLA_H

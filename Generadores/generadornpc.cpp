@@ -218,7 +218,7 @@ void GeneradorNPC::GenerarDialogosNivel5(NPC *info)
 void GeneradorNPC::SortearDialogo(NPC *info, QString * dialogos, int &tope)
 {
     int sorteo = Random->bounded(tope);
-    QString dialogo = dialogos[sorteo] + "\n";
+    QString dialogo = dialogos[sorteo];
     info->setDialogo(dialogo);
 }
 

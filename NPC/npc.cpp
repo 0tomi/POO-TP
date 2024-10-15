@@ -83,7 +83,7 @@ QString NPC::getDialogo() const
 
 void NPC::setDialogo(const QString newDialogo)
 {
-    dialogo += newDialogo;
+    dialogo += newDialogo + "\n";
 }
 
 void NPC::updateDatosFalsos()

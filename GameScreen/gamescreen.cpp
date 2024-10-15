@@ -318,26 +318,34 @@ void GameScreen::Restart()
 
 void GameScreen::PausarJuego()
 {
+    Pausado = true;
+    if (introPantalla->isActive())
+        return;
+
     GestorNPC.Pausar();
     Musica[currentMusic].stop();
     tiempoRestante = tiempoPartida.remainingTime();
     tiempoPartida.stop();
-    Pausado = true;
 }
 
 void GameScreen::ReanudarJuego()
 {
+    Pausado = false;
+    if (introPantalla->isActive())
+        return;
+
     GestorNPC.Reanudar();
     Musica[currentMusic].play();
     tiempoPartida.start(tiempoRestante);
-
-    Pausado = false;
 }
 
 /// #################################### FINAL DE PARTIDA ###################################################
 
 void GameScreen::FinalDePartida()
 {
+    if (introPantalla->isActive())
+        introPantalla->forzarSalir();
+
     Musica[currentMusic].stop();
     MatarNotificaciones();
     GestorNPC.TerminoNivel();

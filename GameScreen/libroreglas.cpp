@@ -22,6 +22,8 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
 
     setBotones();
     hide();
+
+    DocumentosUI::DesactivarEventosMouse();
 }
 
 void libroreglas::setUpLevel(int level)
@@ -33,6 +35,7 @@ void libroreglas::setUpLevel(int level)
     ui->Nivel2Boton2->hide();
     ui->Nivel3Boton1->hide();
     ui->Nivel4Boton1->hide();
+    ui->Nivel5boton1->hide();
 
     if (level >= 2){
         setDatosNivel2();
@@ -51,7 +54,9 @@ void libroreglas::setUpLevel(int level)
         ui->Nivel4Boton1->show();
     }
     if (level >= 5){
-
+        setDatosNivel5();
+        CantidadPaginas = 7;
+        ui->Nivel5boton1->show();
     }
 }
 
@@ -108,6 +113,9 @@ void libroreglas::setBotones(){
 
     connect(ui->Nivel4Boton1, &QPushButton::clicked, [this]() {
         SaltarPagina(5);
+    });
+    connect(ui->Nivel5boton1,&QPushButton::clicked, [this](){
+        SaltarPagina(6);
     });
 }
 
@@ -206,6 +214,14 @@ void libroreglas::setDatosNivel4()
     setDatos(reglas->getBienesTransportadosPermitidos(), ui->ListaBienesPermitidos);
     setDatos(reglas->getPaisesPermitidos(), ui->ListaPaisesPermitidos);
     setDatos(reglas->getOcupacionPermitidos(), ui->ListaOcupacionesPermitidas);
+}
+
+void libroreglas::setDatosNivel5()
+{
+    LectorArchivos archivo(":/Niveles/Nivel5/ObjetosInvalidos.txt");
+    setDatos(archivo.getVector(),ui->ObjetosRadiografiaIlegales);
+    archivo.LeerArchivoNuevo(":/Niveles/Nivel5/ObjetosValidos.txt");
+    setDatos(archivo.getVector(),ui->ObjetosRadiografiaLegales);
 }
 
 void libroreglas::setDatos(const vector<QString> &lineas, QLabel* lugarDondeSeColocaElTexto)
