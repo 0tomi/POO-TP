@@ -135,7 +135,11 @@ void NPCUI::Pausar(bool Estado)
         remainingTime = emitirDialogo.remainingTime();
         emitirDialogo.stop();
     } else {
+        if (remainingTime == 0)
+            return;
+
         emitirDialogo.start(remainingTime);
+        remainingTime = 0;
     }
 }
 

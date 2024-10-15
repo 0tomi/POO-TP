@@ -34,10 +34,10 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje)
     mensaje = newMensaje;
     ui->Texto->setText(mensaje);
 
-    if (mensaje.length() > 45)
+    if (mensaje.length() > 60)
         setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY+15);
     else
-        if (mensaje.length() > 35)
+        if (mensaje.length() > 45)
             setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY);
         else
             setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
