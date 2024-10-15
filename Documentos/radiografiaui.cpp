@@ -77,9 +77,8 @@ void radiografiaui::setLabels(radiografia* datos){
             auto Item = objeto.Objeto;
             auto LabelActual = this->labelsCuerpo[objeto.ParteCuerpo];
 
-            auto iterador=items.find(Item);
-            if((iterador != items.end()) &&(!iterador.value().isNull())){
-                //QPixmap* PixmapActual = &items[Item];
+            auto iterador = items.find(Item);
+            if((iterador != items.end()) && (!iterador.value().isNull())){
                 QPixmap* PixmapActual = &iterador.value();
 
                 auto PixmapReescalado = PixmapActual->scaled(LabelActual->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
