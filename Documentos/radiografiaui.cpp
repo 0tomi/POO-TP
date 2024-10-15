@@ -37,6 +37,7 @@ void radiografiaui::Entrar()
 {
     ui->cuerpo->setCurrentIndex(0);
     DocumentosUI::Entrar();
+    this->raise();
     Mostrando = true;
 }
 

@@ -22,6 +22,8 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
 
     setBotones();
     hide();
+
+    DocumentosUI::DesactivarEventosMouse();
 }
 
 void libroreglas::setUpLevel(int level)

@@ -69,7 +69,6 @@ void NuevaEstanciaUI::resetearApariencia()
 
 void NuevaEstanciaUI::pasarPagina(int pag)
 {
-    qDebug() << pag;
     if (pag == -1){
         //Sonidos[1].play();
         //ui->Libro->setCurrentWidget(ui->Cerrado);
