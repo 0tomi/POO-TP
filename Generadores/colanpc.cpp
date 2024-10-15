@@ -48,7 +48,8 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 
     // Generamos la lista de los NPCs que pasaran.
     while (!GenerarNPCs(totalNPCs, CantidadInvalidos, arrayTipos)){
-        arrayTipos[0] = CantAldeano; arrayTipos[1] = CantRefugiados; arrayTipos[2] = CantDiplos; arrayTipos[3] = CantRevolucionarios;
+        arrayTipos[0] = CantAldeano; arrayTipos[1] = CantRefugiados;
+        arrayTipos[2] = CantDiplos; arrayTipos[3] = CantRevolucionarios;
     }
 
     // Creamos los NPCs
