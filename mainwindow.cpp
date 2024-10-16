@@ -54,7 +54,6 @@ void MainWindow::CrearPantallasJuego()
     setCentralWidget(pantallas);
 
     // Creamos las pantallas del juego
-
     pantallaMenu = new PantallaMenu(PantallaMenu::Activado, &guardarPartida, this);
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
