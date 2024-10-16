@@ -123,6 +123,7 @@ void DocumentosUI::DesactivarEventosMouse()
     // Este for each recorre el objeto, buscando todas lass labels
     // y desactiva la propiedad de captar eventos del mouse
     // esto nos sirve para que no bugeen el mouse al mover el objeto.
+
     foreach (QObject* obj, this->findChildren<QLabel*>()) {
         QLabel* label = qobject_cast<QLabel*>(obj);
         if (label) {

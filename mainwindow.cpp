@@ -55,7 +55,7 @@ void MainWindow::CrearPantallasJuego()
 
     // Creamos las pantallas del juego
 
-    pantallaMenu = new PantallaMenu(&guardarPartida, this);
+    pantallaMenu = new PantallaMenu(PantallaMenu::Activado, &guardarPartida, this);
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
     pantallaFinalNivel = new PantallaFinalNivel(&guardarPartida, this);

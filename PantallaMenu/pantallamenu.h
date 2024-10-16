@@ -16,7 +16,12 @@ class PantallaMenu : public QWidget
     Q_OBJECT
 
 public:
-    explicit PantallaMenu(GuardarPartidas *, QWidget *parent = nullptr);
+    enum ActivarCheats{
+        Activado,
+        Desactivado
+    };
+
+    explicit PantallaMenu(ActivarCheats tipo, GuardarPartidas *, QWidget *parent = nullptr);
     void setInicio();
     ~PantallaMenu();
     void stopMusic();

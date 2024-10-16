@@ -2,7 +2,7 @@
 #include "ui_pantallamenu.h"
 #include <QCloseEvent>
 /// ############################ CONSTRUCTOR ###############################
-PantallaMenu::PantallaMenu(GuardarPartidas * gp, QWidget *parent)
+PantallaMenu::PantallaMenu(ActivarCheats tipo, GuardarPartidas * gp, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent), Musica(parent), dificultad(1), nivel(1)
 {
@@ -41,7 +41,10 @@ PantallaMenu::PantallaMenu(GuardarPartidas * gp, QWidget *parent)
     indiceMainMenu = 0;
     indicePrevio = 0;
 
-    ui->botonCheat->hide();
+    if (tipo == Activado){
+        ui->botonCheat->show();
+        CheatsActivados = true;
+    } else ui->botonCheat->hide();
 
     ui->BotonesSalir->setCurrentIndex(0);
     ui->menu->setCurrentIndex(0);
