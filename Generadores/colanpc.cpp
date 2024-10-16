@@ -47,12 +47,18 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     NPCSaGenerar.resize(totalNPCs);
 
     // Generamos la lista de los NPCs que pasaran.
+    int intentos = 1;
     while (!GenerarNPCs(totalNPCs, CantidadInvalidos, arrayTipos)){
+        intentos++;
         arrayTipos[0] = CantAldeano; arrayTipos[1] = CantRefugiados;
         arrayTipos[2] = CantDiplos; arrayTipos[3] = CantRevolucionarios;
     }
+    qDebug() << "Cantidad de intentos en generar la lista de NPCs: " << intentos;
 
     // Creamos los NPCs
+    for (const auto& data: NPCSaGenerar)
+        qDebug() << "Validez: " << data.Validez;
+
     for (const auto& NPCs : NPCSaGenerar)
         addNPC(NPCs.Tipo, NPCs.Validez);
 
@@ -64,14 +70,18 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
 {
     NPCSaGenerar.clear();
 
+    // Como los QRandom son malisimos, generamos unos numeros antes de usar el QRandom asi queda mas aleatorio.
+    for (int i = 0; i < 30; i++)
+        Random.bounded(10);
+
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     int sorteo = Random.bounded(4);
-    int sorteoValidez = Random.bounded(20);
+    int sorteoValidez = Random.bounded(10);
     bool Validez = true;
 
     while (CantidadTotal){
         if (CantidadFalsos)
-            if (sorteoValidez > 9)
+            if (sorteoValidez < 5)
                 Validez = false;
 
         if (CantidadTipos[sorteo]){
@@ -83,7 +93,7 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
         }
 
         sorteo = Random.bounded(4);
-        sorteoValidez = Random.bounded(20);
+        sorteoValidez = Random.bounded(10);
         Validez = true;
     }
 

@@ -243,6 +243,8 @@ void GameScreen::RealizarConexionesPrincipales()
         GestorNPC.SalirForzado();
         IconoDocs->Sacar();
     });
+
+    connect(&GestorNPC, &GestorNPCsUI::logs, this, &GameScreen::EnviarLogs);
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################

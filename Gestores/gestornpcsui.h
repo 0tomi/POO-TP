@@ -47,6 +47,7 @@ public slots:
     void SalirEntidades();
 
 signals:
+    void logs(QString);
     void setDocsInfo(NPC * info);
     void NPCCambiado();
     void ColaTerminada();
@@ -86,6 +87,7 @@ private:
     bool NPCConectado;
     void ActualizarEstadoNPC();
     void FinalizarEntidades();
+    void GenerarLog (NPC* info);
 };
 
 #endif // GESTORNPCSUI_H

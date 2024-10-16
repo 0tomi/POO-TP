@@ -89,17 +89,37 @@ void GestorNPCsUI::Entrar()
         emit UltimoNPC();
     }
 
-    // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
-    qDebug() << NPCenEscena->getGenero();
-    qDebug() << NPCenEscena->getTipo();
-    qDebug() << NPCenEscena->getValidez();
-    // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
+    GenerarLog(NPCenEscena);
 
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     NPCcomunUI->setNPC(NPCenEscena);
 
     // Hacemos que pasen los NPC.
     NPCcomunUI->Entrar();
+}
+
+void GestorNPCsUI::GenerarLog(NPC *info)
+{
+    QString validez, tipo;
+    if (info->getValidez())
+        validez = "true";
+    else validez = "false";
+
+    auto Tipo = info->getTipo();
+    switch (Tipo) {
+    case 0: tipo = "Aldeano";
+        break;
+    case 1: tipo = "Refugiado";
+        break;
+    case 2: tipo = "Diplomatico";
+        break;
+    default: tipo = "Revolucionario";
+        break;
+    }
+
+    emit logs("Validez del NPC: " + validez);
+    emit logs("Tipo de NPC: " + tipo);
+    emit logs("Genero del NPC: " + QString(NPCenEscena->getGenero()));
 }
 
 NPC *GestorNPCsUI::getNPC()

@@ -156,6 +156,9 @@ void NPCGenericoUI::ReescalarNPC()
 
 void NPCGenericoUI::ReescalarLabel(QLabel *Label, QPixmap &ImagenLabel, double factorW, double factorH)
 {
+    if (ImagenLabel.isNull())
+        return;
+
     QSize nuevoTamanio(ImagenLabel.size().width() * factorW, ImagenLabel.size().height() * factorH);
     QPixmap imagenEscalada = ImagenLabel.scaled(nuevoTamanio, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     Label->setPixmap(imagenEscalada);

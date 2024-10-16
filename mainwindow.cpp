@@ -171,6 +171,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
                                                                QMessageBox::Yes);
     if (resBtn == QMessageBox::Yes) {
         event->accept();  // Aceptar el evento y cerrar la ventana
+        log.SaveLogs();
         QApplication::quit();  // Cerrar la aplicación
     } else {
         event->ignore();  // Ignorar el evento y no cerrar la ventana
