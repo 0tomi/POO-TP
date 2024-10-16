@@ -80,9 +80,6 @@ void GestorNPCsUI::DesconectarNPCs()
 /// #################################### Entrar entidades ###################################################
 void GestorNPCsUI::Entrar()
 {
-    qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
-    qDebug() << "Cantidad de npcs falsos: " << ColaNPCs->getCantidadNPCsFalsos();
-
     NPCenEscena = ColaNPCs->getNPC();
     emit setDocsInfo(NPCenEscena);
 
@@ -113,7 +110,7 @@ NPC *GestorNPCsUI::getNPC()
 void GestorNPCsUI::ActualizarEstadoNPC()
 {
     MostrandoNPC = true;
-    emit NPCTerminoEntrar();
+    emit NPCEntro();
 }
 
 /// #################################### Salir entidades ###################################################
@@ -172,6 +169,18 @@ void GestorNPCsUI::Reanudar()
     Dialogos->ReanudarMensaje();
     NPCcomunUI->Pausar(false);
 }
+
+void GestorNPCsUI::SalirForzado()
+{
+    NPCcomunUI->Salir(true);
+    Dialogos->ForzarSalir();
+
+    MostrandoNPC = false;
+
+    if (ColaNPCs->getSize() == 0)
+        ColaVacia = true;
+}
+
 /// #################################### Señales ###################################################
 void GestorNPCsUI::emitirNPCTerminoSalir()
 {

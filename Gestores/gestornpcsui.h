@@ -42,6 +42,7 @@ public:
     void Pausar();
     void Reanudar();
 
+    void SalirForzado();
 public slots:
     void SalirEntidades();
 
@@ -57,7 +58,6 @@ signals:
     void NPCEntro();
     void NPCSalio();
 
-    void NPCTerminoEntrar();
     void NPCTerminoSalir();
 
 private slots:

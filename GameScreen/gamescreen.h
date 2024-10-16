@@ -62,6 +62,7 @@ private slots:
     void Decidir();
 
 private:
+    int dificultad;
     Ui::GameScreen *ui;
     PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
@@ -137,6 +138,12 @@ private:
 
     // Radiografia
     radiografiaui * RadiografiaUI;
+
+    // Modo demonio
+    QTimer tiempoNPC;
+    const int tiempoPorNPC = 45 * 1000;
+    int remainingTiempoNPC;
+    bool ModoDemonActivo;
 };
 
 #endif // GAMESCREEN_H
