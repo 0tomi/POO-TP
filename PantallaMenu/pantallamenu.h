@@ -88,6 +88,8 @@ private slots:
     void SlotGuardadoSeleccionado(int);
 
     void tutorialButton();
+
+    void clickedCreditos();
 private:
     // Sistema de partidas guardadas:
     const QString COLOR_DESBLOQUEADO = "color: white; background-color: rgb(170, 0, 255);";
@@ -103,7 +105,7 @@ private:
     void ConfigurarBotonesElegirPartidaGuardada();
     void ConfigurarBotonesElegirRanura();
 
-    QSoundEffect Musica;
+    QSoundEffect Musica, MusicaCreditos;
     QSoundEffect GTALocura;
     QSoundEffect SonidosBotones;
     QSoundEffect SonidoModoDemonio;

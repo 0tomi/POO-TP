@@ -173,14 +173,8 @@ void libroreglas::setDatosNivel2()
         qDebug() << "Fallo al castear reglas de nivel 2 en libro de reglas";
         return;
     }
-    QString texto;
 
-    vector<QString> paisesInvalidos = reglas->getPaisesInvalidos();
-
-    for (int i = 0; i < paisesInvalidos.size(); i++)
-        texto += "- " + paisesInvalidos[i] + "\n";
-
-    ui->PaisesResidenciaInvalidos->setText(texto);
+    setDatos(reglas->getPaisesValidos(), ui->PaisesResidenciaInvalidos);
 }
 
 void libroreglas::setDatosNivel3()
@@ -233,14 +227,9 @@ void libroreglas::setDatos(const vector<QString> &lineas, QLabel* lugarDondeSeCo
 }
 
 void libroreglas::setPaises(ReglasNivel1 * datos){
-    vector<QString>  invalidos = datos->getPaisesInvalidos();
-
-    QString Texto = "Paises no permitidos:\n";
-    for(int i = 0; i < invalidos.size(); i++){
-        Texto += invalidos[i] + "\n";
-    }
-    ui->PaisesPermitidos->setText(Texto);
+    setDatos(datos->getPaisesPermitidos(), ui->PaisesPermitidos);
 }
+
 void libroreglas::setFechas(ReglasNivel1 * datos){
     QString Texto = "Solo se permiten personas:\n";
     int fechaMin = datos->getFechaMinPermitida();
@@ -260,13 +249,13 @@ void libroreglas::setEstadoCivil(ReglasNivel1 * datos){
     ui->EstadoCivilPermitido->setText(Texto);
 }
 void libroreglas::setDuracionEstancia(ReglasNivel1 * datos){
-    QString Texto = "La duracion maxima de estancia es de:\n";
+    QString Texto;
     int duracionMaxima = datos->getDuracionEstanciaPermitida();
     Texto += QString::number(duracionMaxima) + " Meses";
     ui->DuracionPermitida->setText(Texto);
 }
 void libroreglas::setTipoDeVisita(ReglasNivel1 * datos){
-    QString Texto = "Solo se permitirá la \nentrada a los siguientes\n tipos de visita:\n";
+    QString Texto;
     vector<QString> tipoVisita = datos->getTipoDeVisitaValida();
     for (int i = 0; i < tipoVisita.size() ; ++i) {
         Texto += tipoVisita[i] + "\n";

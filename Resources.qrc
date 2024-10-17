@@ -210,5 +210,8 @@
         <file>Resources/Sonidos/SonidosFinalNivel/SonidoGanar.WAV</file>
         <file>Resources/Sonidos/SonidosFinalNivel/SonidoPerder.WAV</file>
         <file>Resources/Sonidos/VoltearRadiografia.wav</file>
+        <file>Resources/Musica/MusicaJuego4.WAV</file>
+        <file>Resources/Musica/MusicaJuego5.WAV</file>
+        <file>Resources/Musica/MusicaJuego6.WAV</file>
     </qresource>
 </RCC>

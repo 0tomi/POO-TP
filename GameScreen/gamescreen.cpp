@@ -5,7 +5,7 @@
 /// #################################### CONSTRUCTOR ###################################################
 GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::GameScreen), Musica{ QSoundEffect(this), QSoundEffect(this), QSoundEffect(this)}
+    , ui(new Ui::GameScreen), Musica{ QSoundEffect(this), QSoundEffect(this), QSoundEffect(this), QSoundEffect(this), QSoundEffect(this), QSoundEffect(this)}
     , random(QTime::currentTime().msec()), currentMusic(0), ModoDemonActivo(false), dificultad(1), remainingTiempoNPC(0)
 {
     ui->setupUi(this);
@@ -65,8 +65,12 @@ void GameScreen::setUpSonidos()
 {
     Musica[0].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego1.WAV"));
     Musica[1].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego2.WAV"));
-    Musica[2].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego3.WAV"));
-    for (int i = 0; i < 3; i++){
+    Musica[2].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego4.WAV"));
+    Musica[3].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego5.WAV"));
+    Musica[4].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego6.WAV"));
+    Musica[5].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego3.WAV"));
+
+    for (int i = 0; i < 6; i++){
         Musica[i].setLoopCount(QSoundEffect::Infinite);
         Musica[i].setVolume(0.3);
     }
@@ -198,9 +202,8 @@ void GameScreen::setVolumenes(float volumen)
 
 void GameScreen::setMusicVolume(float vol)
 {
-    Musica[0].setVolume(vol-0.3);
-    Musica[1].setVolume(vol-0.3);
-    Musica[2].setVolume(vol-0.3);
+    for (int i = 0; i < 6; i++)
+        Musica[i].setVolume(vol-0.4);
 }
 
 void GameScreen::RealizarConexionesPrincipales()
@@ -293,11 +296,11 @@ void GameScreen::Iniciar()
     random.seed(juego->getSemillaMadre());
     if (nivelActual >= 5){
         BotonScanner->show();
-        currentMusic = 2;
-        Musica[2].setVolume(0.4);
+        currentMusic = 5;
+        Musica[5].setVolume(0.4);
     } else {
         BotonScanner->hide();
-        currentMusic = random.bounded(2);
+        currentMusic = random.bounded(5);
         Musica[currentMusic].setVolume(0.3);
     }
 

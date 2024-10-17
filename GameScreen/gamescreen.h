@@ -75,7 +75,7 @@ private:
 
     // Sonidos
     QRandomGenerator random;
-    QSoundEffect Musica[3];
+    QSoundEffect Musica[6];
     int currentMusic;
     void setUpSonidos();
 
