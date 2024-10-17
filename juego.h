@@ -55,6 +55,8 @@ public:
 
     int getDificultad() const;
 
+    quint32 getSemillaMadre() const;
+
 private:
     quint32 SemillaMadre;
     void setReglasSeed();

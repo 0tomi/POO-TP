@@ -313,6 +313,11 @@ int Juego::getDificultad() const
     return Dificultad;
 }
 
+quint32 Juego::getSemillaMadre() const
+{
+    return SemillaMadre;
+}
+
 void Juego::setReglasSeed()
 {
     for (int i = 0; i < 5; ++i)

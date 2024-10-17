@@ -290,6 +290,7 @@ void GameScreen::PrepararJuego(PlayerStats stats)
 
 void GameScreen::Iniciar()
 {
+    random.seed(juego->getSemillaMadre());
     if (nivelActual >= 5){
         BotonScanner->show();
         currentMusic = 2;
@@ -461,6 +462,7 @@ void GameScreen::SelloDocumento(bool Boton)
          emit EnviarLogs(GestorNPC.getDatosFalsos());
     }
 
+    emit EnviarLogs("Tamanio de la cola de NPCS: " + QString::number(juego->getCola()->getSize()));
     emit EnviarLogs("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
 }
 
