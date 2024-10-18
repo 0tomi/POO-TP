@@ -3,7 +3,8 @@
 #include <QString>
 #include <QRandomGenerator>
 #include "../NPC/skin.h"
-#include "../lectorarchivos.h"
+#include <vector>
+using namespace std;
 
 class GeneradorSkin
 {
@@ -14,35 +15,22 @@ public:
     Skin getSkin(int TipoNPC, char Genero);
     Skin getSimilarSkin(Skin skinActual, char Genero, int nivel);
 private:
-    LectorArchivos lector;
     QRandomGenerator * qrand;
-    QString pickSkinConGenero(QString * listaSkins[], int topeSkins, char Genero);
-    QString pickSkin(QString * listaSkins, int topeSkins);
+    QString pickSkinConGenero(vector <QString> listaSkins[], char Genero);
+    QString pickSkin(vector <QString> &listaSkins);
 
-    // ArrayS con direcciones donde se encuentran las caras de los npcs
-    QString LinksGorro[4] = {
-        ":/Resources/NPCs/Gorro1.png", ":/Resources/NPCs/Gorro2.png", ":/Resources/NPCs/Gorro3.png", ":/Resources/NPCs/Gorro4.png"
-    };
-    QString * LinksPelo[2];
-    QString* LinksCaras;     // Hombre y Mujer
-    QString* LinksCarasRevolucionario;
-    QString* LinksCarasRefugiado; // Hombre y Mujer
-    QString* LinksCejas;
-    QString* LinksOjos;
-    QString* LinksBocas;
-    QString* LinksNariz;
-    QString* LinksBarbas;
+    vector <QString> LinksPelo[2];
+    vector <QString> LinksCaras;     // Hombre y Mujer
+    vector <QString> LinksCarasRevolucionario;
+    vector <QString> LinksCarasRefugiado; // Hombre y Mujer
+    vector <QString> LinksCejas;
+    vector <QString> LinksOjos;
+    vector <QString> LinksBocas;
+    vector <QString> LinksNariz;
+    vector <QString> LinksBarbas;
+    vector <QString> LinksGorro;
 
-    int topeLinksGorro = 4;
-    int topeLinksPelo;
-    int topeLinksCaras;
-    int topeLinksRevolucionario;
-    int topeLinksRefugiado;
-    int topeLinksCejas;
-    int topeLinksOjos;
-    int topeLinksBocas;
-    int topeLinksNariz;
-    int topeLinksBarbas;
+    void LeerImagenes(vector <QString> &Links, QString RutaGenerica);
 };
 
 #endif // GENERADORSKIN_H

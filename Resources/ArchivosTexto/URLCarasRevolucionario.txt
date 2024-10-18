@@ -1,6 +1,0 @@
-:/Resources/NPCs/RevolucionarioCuerpo1.png
-:/Resources/NPCs/RevolucionarioCuerpo2.png
-:/Resources/NPCs/RevolucionarioCuerpo3.png
-:/Resources/NPCs/RevolucionarioCuerpo4.png
-:/Resources/NPCs/RevolucionarioCuerpo5.png
-:/Resources/NPCs/RevolucionarioCuerpo6.png

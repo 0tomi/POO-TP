@@ -1,2 +1,0 @@
-:/Resources/NPCs/PeloM1.png
-:/Resources/NPCs/PeloM2.png
