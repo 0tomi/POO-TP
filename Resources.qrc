@@ -213,5 +213,12 @@
         <file>Resources/Musica/MusicaJuego4.WAV</file>
         <file>Resources/Musica/MusicaJuego5.WAV</file>
         <file>Resources/Musica/MusicaJuego6.WAV</file>
+        <file>Resources/NPCs/Cuerpo12.png</file>
+        <file>Resources/NPCs/Cuerpo13.png</file>
+        <file>Resources/NPCs/Cuerpo14.png</file>
+        <file>Resources/NPCs/Cuerpo15.png</file>
+        <file>Resources/NPCs/Cuerpo16.png</file>
+        <file>Resources/NPCs/Cuerpo17.png</file>
+        <file>Resources/NPCs/Boca4.png</file>
     </qresource>
 </RCC>

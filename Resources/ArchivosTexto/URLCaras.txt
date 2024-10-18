@@ -9,3 +9,9 @@
 :/Resources/NPCs/Cuerpo9.png
 :/Resources/NPCs/Cuerpo10.png
 :/Resources/NPCs/Cuerpo11.png
+:/Resources/NPCs/Cuerpo12.png
+:/Resources/NPCs/Cuerpo13.png
+:/Resources/NPCs/Cuerpo14.png
+:/Resources/NPCs/Cuerpo15.png
+:/Resources/NPCs/Cuerpo16.png
+:/Resources/NPCs/Cuerpo17.png

@@ -1,3 +1,4 @@
 :/Resources/NPCs/Boca1.png
 :/Resources/NPCs/Boca2.png
 :/Resources/NPCs/Boca3.png
+:/Resources/NPCs/Boca4.png
