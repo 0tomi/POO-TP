@@ -206,5 +206,6 @@
         <file>Resources/NPCs/Cuerpo16.png</file>
         <file>Resources/NPCs/Cuerpo17.png</file>
         <file>Resources/NPCs/Boca4.png</file>
+        <file>Resources/Dialogos/DialogosQuejarse.txt</file>
     </qresource>
 </RCC>

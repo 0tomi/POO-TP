@@ -8,6 +8,7 @@ using namespace std;
 
 class LectorArchivos{
 public:
+    LectorArchivos();
     LectorArchivos(QString direccion);
     void LeerArchivoNuevo(QString direccion);
     std::vector<QString> getVector(QString direccion);

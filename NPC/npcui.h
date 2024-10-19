@@ -24,7 +24,7 @@ public:
     virtual void Entrar();
     virtual void Salir(bool Aceptado);
     virtual ~NPCUI();
-    void Pausar(bool Estado);
+    virtual void Pausar(bool Estado);
     virtual void Finalizar();
 
 signals:

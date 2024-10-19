@@ -1,12 +1,16 @@
 #include "ui_npcgenericoui.h"
 #include "npcgenericoui.h"
+#include "../lectorarchivos.h"
 #include <ctime>
 
 NPCGenericoUI::NPCGenericoUI(QWidget *parent)
     : NPCUI(parent)
-    , ui(new Ui::NPCGenericoUI), Rechazo(parent)
+    , ui(new Ui::NPCGenericoUI), Rechazo(parent), quejarseRemainingTime(0)
 {
     ui->setupUi(this);
+    LectorArchivos dialogos(":/Resources/Dialogos/DialogosQuejarse.txt");
+    dialogosQuejarse = dialogos.getVector();
+
     Rechazo.setSource(QUrl("qrc:/Resources/Sonidos/NPCRechazado.wav"));
     setSoundVolume(1.0);
 
@@ -120,6 +124,19 @@ void NPCGenericoUI::setSoundVolume(float vol)
     Rechazo.setVolume(vol-0.2);
 }
 
+void NPCGenericoUI::Pausar(bool Estado)
+{
+    if (Estado && quejarse.isActive()){
+        quejarseRemainingTime = quejarse.remainingTime();
+        quejarse.stop();
+    } else {
+        if (quejarseRemainingTime)
+            quejarse.start(quejarseRemainingTime);
+        quejarseRemainingTime = 0;
+    }
+    NPCUI::Pausar(Estado);
+}
+
 void NPCGenericoUI::Finalizar()
 {
     parpadeo.stop();
@@ -183,7 +200,8 @@ void NPCGenericoUI::reposLabel(QPoint pos, QLabel *label, double factorW, double
 
 void NPCGenericoUI::emitQuejarse()
 {
-    emit QuiereHablar("¿Cuánto más te vas a demorar?");
+    auto cantidadDialogos = dialogosQuejarse.size();
+    emit QuiereHablar(dialogosQuejarse[random.bounded(cantidadDialogos)]);
     quejarse.start(tiempoParpadeo->bounded(15000,75000));
 }
 
