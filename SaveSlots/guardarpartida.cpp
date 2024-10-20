@@ -17,6 +17,7 @@ GuardarPartidas::GuardarPartidas() {
 }
 
 void GuardarPartidas::save(PlayerStats &datos, int slot){
+    emit Log("Guardando datos en: " + SlotsGuardado[slot]);
     if (slot < 0 || slot > 2)
         slot = 0;
 
@@ -28,6 +29,7 @@ void GuardarPartidas::save(PlayerStats &datos, int slot){
 
     file.write(reinterpret_cast<char*> (&datos), sizeof(PlayerStats));
     file.close();
+    emit Log("Datos guardados exitosamente.");
 }
 
 PlayerStats GuardarPartidas::CargarPartida(int slot){
@@ -67,7 +69,7 @@ vector<bool> GuardarPartidas::LeerPartidas(){
 
 void GuardarPartidas::saveCurrentSlot(PlayerStats &data)
 {
-    save(data, currentSlot);
+    save(data, this->currentSlot);
 }
 
 void GuardarPartidas::cleanCurrentSlot()

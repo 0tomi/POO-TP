@@ -425,8 +425,8 @@ void GameScreen::FinalDePartida()
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
     } else {
-        emit EnviarLogs("Juego terminado forzosamente");
         emit Guardar(playerStats);
+        emit EnviarLogs("Juego terminado forzosamente");
     }
 }
 

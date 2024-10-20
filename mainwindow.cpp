@@ -16,7 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     ConexionesPantallaPausa();
     ConexionesPantallaMenu();
     ConexionesPantallaEstadisticas();
-    ConeccionesLogs();
+    ConexionesPantallaGameScreen();
+    ConexionesLogs();
 
     // Mostrar en pantalla completa:
     this->showFullScreen();
@@ -333,7 +334,7 @@ void MainWindow::SalirTutorial()
 
 
 // ###################################### LOGS ###################################
-void MainWindow::ConeccionesLogs()
+void MainWindow::ConexionesLogs()
 {
     connect(pantallaPausa, &PantallaPausa::EnviarLogs, &log, &Logs::RecibirLogs);
     connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,&log,&Logs::RecibirLogs);

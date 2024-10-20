@@ -100,7 +100,7 @@ private:
 
     // Logs
     Logs log;
-    void ConeccionesLogs();
+    void ConexionesLogs();
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();
