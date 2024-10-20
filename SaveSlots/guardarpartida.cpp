@@ -17,6 +17,7 @@ GuardarPartidas::GuardarPartidas() {
 }
 
 void GuardarPartidas::save(PlayerStats &datos, int slot){
+    emit Log("Guardando datos en: " + SlotsGuardado[slot]);
     if (slot < 0 || slot > 2)
         slot = 0;
 
@@ -28,6 +29,7 @@ void GuardarPartidas::save(PlayerStats &datos, int slot){
 
     file.write(reinterpret_cast<char*> (&datos), sizeof(PlayerStats));
     file.close();
+    emit Log("Datos guardados exitosamente.");
 }
 
 PlayerStats GuardarPartidas::CargarPartida(int slot){
@@ -42,7 +44,7 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     // Verificar si esta bien escrito el struct, sino lo sobreescribe
     auto TamanioStats = sizeof(PlayerStats);
     if (file.size() != TamanioStats) {
-        emit Log("La estructura del archvio de guardado: " + SlotsGuardado[slot] + "no coincide con el tamaño esperado. Reiniciando los valores a 0.");
+        emit Log("La estructura del archvio de guardado: " + SlotsGuardado[slot] + " no coincide con el tamaño esperado. Reiniciando los valores a 0.");
         file.close();
 
         return emptySave;
@@ -67,7 +69,7 @@ vector<bool> GuardarPartidas::LeerPartidas(){
 
 void GuardarPartidas::saveCurrentSlot(PlayerStats &data)
 {
-    save(data, currentSlot);
+    save(data, this->currentSlot);
 }
 
 void GuardarPartidas::cleanCurrentSlot()

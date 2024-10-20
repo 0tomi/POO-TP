@@ -54,6 +54,7 @@ public slots:
 signals:
     void NivelTerminado(bool Perdio);
     void EnviarLogs(QString);
+    void Guardar(PlayerStats&);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
@@ -62,12 +63,14 @@ private slots:
     void Decidir();
 
 private:
+    PlayerStats playerStats;
     int dificultad;
     Ui::GameScreen *ui;
     PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
     int nivelActual;
     QTimer tiempoPartida;
+    int tiempo;
     int tiempoRestante;
 
     bool Pausado;
@@ -97,6 +100,7 @@ private:
 
     // Controlar tiempo en partida
     QTimer TiempoDia;
+    int cantidadTiempoDia;
     void ActualizarTiempo();
     void arrancarJuego();
     int TiempoActual;

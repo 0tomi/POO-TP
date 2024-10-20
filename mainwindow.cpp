@@ -13,10 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     CrearPantallasJuego();
 
-    ConeccionesPantallaPausa();
-    ConeccionesPantallaMenu();
-    ConeccionesPantallaEstadisticas();
-    ConeccionesLogs();
+    ConexionesPantallaPausa();
+    ConexionesPantallaMenu();
+    ConexionesPantallaEstadisticas();
+    ConexionesPantallaGameScreen();
+    ConexionesLogs();
 
     // Mostrar en pantalla completa:
     this->showFullScreen();
@@ -75,7 +76,7 @@ void MainWindow::CrearPantallasJuego()
 }
 
 /// ################################### CONEXIONES DE PANTALLAS #######################################
-void MainWindow::ConeccionesPantallaPausa()
+void MainWindow::ConexionesPantallaPausa()
 {
     // Conectamos las señales del menu de pausa
     connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
@@ -93,7 +94,7 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaTutorial, &PantallaTutorial::setMusicVolume);
 }
 
-void MainWindow::ConeccionesPantallaMenu()
+void MainWindow::ConexionesPantallaMenu()
 {
     // Cuando se clickee jugar, abrimos el juego:
     connect(pantallaMenu, &PantallaMenu::clickedStartDefault, [this](int dif){this->TransicionJuego(1,dif);});
@@ -111,14 +112,20 @@ void MainWindow::ConeccionesPantallaMenu()
     connect(pantallaMenu, &PantallaMenu::clickedStartCheat, this, &MainWindow::TransicionJuegoCheat);
 }
 
-void MainWindow::ConeccionesPantallaEstadisticas()
+void MainWindow::ConexionesPantallaEstadisticas()
 {
     connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
     connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::TransicionJuego);
     connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
+}
 
+void MainWindow::ConexionesPantallaGameScreen()
+{
     // Conectamos el final de la partida con el nivel terminado
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
+    connect(gameScreen, &GameScreen::Guardar, [this](PlayerStats &stats){
+        guardarPartida.saveCurrentSlot(stats);
+    });
 }
 /// ################################## PANTALLA DE ESTADISTICAS #############################################
 
@@ -327,7 +334,7 @@ void MainWindow::SalirTutorial()
 
 
 // ###################################### LOGS ###################################
-void MainWindow::ConeccionesLogs()
+void MainWindow::ConexionesLogs()
 {
     connect(pantallaPausa, &PantallaPausa::EnviarLogs, &log, &Logs::RecibirLogs);
     connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,&log,&Logs::RecibirLogs);

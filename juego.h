@@ -28,6 +28,8 @@ public:
     // Esto despues lo eliminamos
     Reglas* getReglas(int numero);
     ColaNPC *getCola();
+    PlayerStats getDatosJugador();
+    void updateDatosJugador(PlayerStats &stats);
 
     // A futuro para cuando tengamos la funcion de guardar partida
     void SetPartida(string DireccionPartida);

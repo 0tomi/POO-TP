@@ -66,15 +66,18 @@ private:
 
     QStackedWidget *pantallas;
     int PantallaPrevia;
+
+    // GameScreen
     GameScreen *gameScreen;
+    void ConexionesPantallaGameScreen();
 
     // Pantalla de estadisticas
     PantallaFinalNivel *pantallaFinalNivel;
-    void ConeccionesPantallaEstadisticas();
+    void ConexionesPantallaEstadisticas();
 
     // Pantalla de menu
     PantallaMenu * pantallaMenu;
-    void ConeccionesPantallaMenu();
+    void ConexionesPantallaMenu();
 
     // Pantalla de pausa
     PantallaPausa * pantallaPausa;
@@ -82,7 +85,7 @@ private:
     void PrepararSalirPantallaPausa();
     void PonerPantallaPausa();
     void VolverPantallaAnterior();
-    void ConeccionesPantallaPausa();
+    void ConexionesPantallaPausa();
 
     // Transicion
     PantallaTransicion * transicion;
@@ -97,7 +100,7 @@ private:
 
     // Logs
     Logs log;
-    void ConeccionesLogs();
+    void ConexionesLogs();
 
     // Calcular el centro de la pantalla
     void CalcularCentroDePantalla();

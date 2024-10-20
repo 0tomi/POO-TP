@@ -47,6 +47,9 @@ void Juego::PrepararJuego(PlayerStats stats)
     Multas = stats.Multas;
     CantidadNPCsRechazados = stats.CantidadNPCsRechazados;
     CantidadNPCsAceptados = stats.CantidadNPCsAceptados;
+
+    if (stats.tiempoPartida > 0)
+        SocialCreditsEarnedInLevel = stats.socialCreditsEarnedInLVL;
 }
 
 void Juego::PrepararJuego(int Nivel, int Dificultad, quint32 SeedPersonalizada)
@@ -256,6 +259,31 @@ Reglas* Juego::getReglas(int numero){
 ColaNPC *Juego::getCola()
 {
     return &Cola;
+}
+
+PlayerStats Juego::getDatosJugador()
+{
+    PlayerStats stats;
+    stats.Nivel = this->NivelActual;
+    stats.Dificultad = this->Dificultad;
+    stats.CantidadNPCsAceptados = this->CantidadNPCsAceptados;
+    stats.CantidadNPCsRechazados = this->CantidadNPCsRechazados;
+    stats.Multas = this->Multas;
+    stats.TotalSocialCredits = this->TotalSocialCredits;
+    stats.socialCreditsEarnedInLVL = 0;
+    stats.seed = this->SemillaMadre;
+    stats.tiempoFondo = 0; stats.tiempoPartida = 0; stats.cantNPCsPasados = 0; stats.cantidadTiempoDia = 0;
+
+    return stats;
+}
+
+void Juego::updateDatosJugador(PlayerStats &stats)
+{
+    stats.CantidadNPCsAceptados = this->CantidadNPCsAceptados;
+    stats.CantidadNPCsRechazados = this->CantidadNPCsRechazados;
+    stats.Multas = this->Multas;
+    stats.TotalSocialCredits = this->TotalSocialCredits;
+    stats.socialCreditsEarnedInLVL = this->SocialCreditsEarnedInLevel;
 }
 
 int Juego::getSocialCreditsEarnedInLevel() const
