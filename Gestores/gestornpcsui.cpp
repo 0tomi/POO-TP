@@ -3,7 +3,7 @@
 
 /// #################################### CONSTRUCTOR ###################################################
 GestorNPCsUI::GestorNPCsUI(){
-
+    cantidad_NPCs_pasados = 0;
 }
 
 GestorNPCsUI::~GestorNPCsUI()
@@ -12,12 +12,19 @@ GestorNPCsUI::~GestorNPCsUI()
     delete Dialogos;
     delete transcriptorDialogos;
 }
+
+void GestorNPCsUI::setUpPartidaEmpezada(int cantidad)
+{
+    this->cantidad_NPCs_pasados = cantidad;
+    this->ColaNPCs->setUpColaEmpezada(cantidad_NPCs_pasados);
+}
 /// #################################### SetUps ###################################################
 void GestorNPCsUI::setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs, ColaNPC* cola)
 {
     Escenario = EscenarioNPCs;
     ColaNPCs = cola;
     ColaVacia = true;
+    this->cantidad_NPCs_pasados = 0;
 
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
@@ -68,6 +75,7 @@ void GestorNPCsUI::RealizarConexionesDeNPCs()
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);
 
     // Aca irian las conecciones del NPC especial
+
 }
 
 void GestorNPCsUI::DesconectarNPCs()
@@ -96,6 +104,7 @@ void GestorNPCsUI::Entrar()
 
     // Hacemos que pasen los NPC.
     NPCcomunUI->Entrar();
+    this->cantidad_NPCs_pasados++;
 }
 
 void GestorNPCsUI::GenerarLog(NPC *info)
@@ -158,6 +167,7 @@ void GestorNPCsUI::SalirEntidades()
 /// #################################### Terminar nivel ###################################################
 void GestorNPCsUI::TerminoNivel()
 {
+    this->cantidad_NPCs_pasados = 0;
     DesconectarNPCs();
     if (transcriptorDialogos->getMostrando())
         transcriptorDialogos->Sacar();
@@ -212,6 +222,11 @@ void GestorNPCsUI::emitirNPCTerminoSalir()
 void GestorNPCsUI::emitColaTerminada()
 {
     emit ColaTerminada();
+}
+
+int GestorNPCsUI::getCantidad_NPCs_pasados() const
+{
+    return cantidad_NPCs_pasados;
 }
 
 /// #################################### Getters ###################################################

@@ -18,6 +18,7 @@ class GestorNPCsUI: public QWidget
 public:
     GestorNPCsUI();
     ~GestorNPCsUI();
+    void setUpPartidaEmpezada(int cantidad_NPCs_pasados);
     void setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs, ColaNPC* cola);
     void setUpTranscriptor(QPushButton *boton);
 
@@ -43,6 +44,8 @@ public:
     void Reanudar();
 
     void SalirForzado();
+    int getCantidad_NPCs_pasados() const;
+
 public slots:
     void SalirEntidades();
 
@@ -81,6 +84,7 @@ private:
     bool ColaVacia;
 
     int topeNPCs;
+    int cantidad_NPCs_pasados;
     int NivelActual;
     void RealizarConexionesDeNPCs();
     void DesconectarNPCs();

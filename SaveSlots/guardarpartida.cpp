@@ -42,7 +42,7 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     // Verificar si esta bien escrito el struct, sino lo sobreescribe
     auto TamanioStats = sizeof(PlayerStats);
     if (file.size() != TamanioStats) {
-        emit Log("La estructura del archvio de guardado: " + SlotsGuardado[slot] + "no coincide con el tamaño esperado. Reiniciando los valores a 0.");
+        emit Log("La estructura del archvio de guardado: " + SlotsGuardado[slot] + " no coincide con el tamaño esperado. Reiniciando los valores a 0.");
         file.close();
 
         return emptySave;

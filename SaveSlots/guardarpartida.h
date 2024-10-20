@@ -27,6 +27,6 @@ private:
     const QString DireccionCarpeta = BuildPath + "/SavedGames";
     QString SlotsGuardado[3];
     int currentSlot;
-    PlayerStats emptySave = {0,0,0,0,0,0};
+    PlayerStats emptySave = {0,0,0,0,0,0,0,0,0,0,0,0};
 };
 #endif // GUARDARPARTIDA_H

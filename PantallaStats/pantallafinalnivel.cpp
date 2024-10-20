@@ -52,16 +52,10 @@ void PantallaFinalNivel::setMusicVolume(float vol)
 
 void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
     this->Perdio = perdio;
-    PlayerStats actualStats;
-    actualStats.Nivel = juegoInfo->getNivelActual() + 1;
-    actualStats.Dificultad = juegoInfo->getDificultad();
-    actualStats.CantidadNPCsAceptados = juegoInfo->getCantidadNPCsAceptados();
-    actualStats.CantidadNPCsRechazados = juegoInfo->getCantidadNPCsRechazados();
-    actualStats.Multas = juegoInfo->getMultas();
-    actualStats.TotalSocialCredits = juegoInfo->getTotalSocialCredits();
+    PlayerStats actualStats = juegoInfo->getDatosJugador();
+
     int cantCredsSocsObtDia = juegoInfo->getSocialCreditsEarnedInLevel();
     int maxMultas = juegoInfo->getMaxMultas();
-    actualStats.seed = QTime::currentTime().msec();
 
     NivelActual = juegoInfo->getNivelActual();
     Dificultad =  juegoInfo->getDificultad();
@@ -83,6 +77,7 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
         ui->tipsLabel->setText(tipRandom);
         
     } else {
+        actualStats.Nivel++;
         ui->TIPLabel->hide();
         saveGame->saveCurrentSlot(actualStats);
         ui->stackedTitulos->setCurrentIndex(0);

@@ -24,6 +24,14 @@ void ColaNPC::Inicializar(int Nivel, int Dificultad, Reglas **rules, quint32 see
     GenerarDocumentacion.Inicializar(Nivel, Dificultad, rules, this->semillaActual);
 }
 
+void ColaNPC::setUpColaEmpezada(int cantidad_NPCs_pasados)
+{
+    if (cantidad_NPCs_pasados > this->size)
+        return;
+
+    this->size -= cantidad_NPCs_pasados;
+}
+
 ColaNPC::~ColaNPC()
 {
     this->vaciarCola();

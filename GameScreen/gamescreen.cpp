@@ -248,12 +248,23 @@ void GameScreen::RealizarConexionesPrincipales()
     });
 
     connect(&GestorNPC, &GestorNPCsUI::logs, this, &GameScreen::EnviarLogs);
+
+    connect(&GestorNPC, &GestorNPCsUI::NPCTerminoSalir, [this](){
+        juego->updateDatosJugador(playerStats);
+        playerStats.cantidadTiempoDia = TiempoDia.remainingTime();
+        playerStats.tiempoFondo = TiempoActual;
+        playerStats.tiempoPartida = tiempoPartida.remainingTime();
+        playerStats.cantNPCsPasados = GestorNPC.getCantidad_NPCs_pasados();
+    });
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
 
 void GameScreen::PrepararJuego(int Dificultad)
 {
+    tiempo = 8*60*1000;
+    TiempoActual = 0;
+    cantidadTiempoDia = 52 * 1000;
     juego->PrepararJuego(Dificultad);
     libroReglasUI->setUpLevel(1);
     GestorDocs.setUpNivel(1);
@@ -263,6 +274,9 @@ void GameScreen::PrepararJuego(int Dificultad)
 
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
+    tiempo = 8*60*1000;
+    TiempoActual = 0;
+    cantidadTiempoDia = 52 * 1000;
     juego->PrepararJuego(Nivel, Dificultad);
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
@@ -273,6 +287,9 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed)
 {
+    tiempo = 8*60*1000;
+    TiempoActual = 0;
+    cantidadTiempoDia = 52 * 1000;
     juego->PrepararJuego(LvL, Dificultad, seed);
     libroReglasUI->setUpLevel(LvL);
     // more stuff to do
@@ -289,6 +306,13 @@ void GameScreen::PrepararJuego(PlayerStats stats)
     GestorDocs.setUpNivel(stats.Nivel);
     introPantalla->setUp(stats.Nivel);
     this->nivelActual = stats.Nivel;
+
+    if (stats.tiempoPartida > 0){
+        TiempoActual = stats.tiempoFondo;
+        tiempo = stats.tiempoPartida;
+        cantidadTiempoDia = stats.cantidadTiempoDia;
+        GestorNPC.setUpPartidaEmpezada(stats.cantNPCsPasados);
+    }
 }
 
 void GameScreen::Iniciar()
@@ -304,6 +328,7 @@ void GameScreen::Iniciar()
         Musica[currentMusic].setVolume(0.3);
     }
 
+    playerStats = juego->getDatosJugador();
     IconoDocs->setFinalPartida(false);
     Notificaciones.clear();
     introPantalla->Mostrar();
@@ -316,11 +341,10 @@ void GameScreen::Iniciar()
 
 void GameScreen::arrancarJuego()
 {
-    tiempoPartida.start(8*60*1000); // 8 Minutos
+    tiempoPartida.start(tiempo); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego
-    TiempoDia.start(52 * 1000); // Cada 52 segundos el tiempo cambia
-    TiempoActual = 0;
+    TiempoDia.start(cantidadTiempoDia);
     ActualizarTiempo();
 
     Musica[currentMusic].play();
@@ -400,8 +424,10 @@ void GameScreen::FinalDePartida()
         if (juego->getTotalSocialCredits() < 0)
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
-    } else
+    } else {
         emit EnviarLogs("Juego terminado forzosamente");
+        emit Guardar(playerStats);
+    }
 }
 
 void GameScreen::Decidir()

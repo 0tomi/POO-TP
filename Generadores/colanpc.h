@@ -11,6 +11,7 @@ public:
     ColaNPC();
     void setSeed(quint32 seed);
     void Inicializar(int Nivel, int Dificultad, Reglas ** rules, quint32 seed);
+    void setUpColaEmpezada(int cantidad_NPCs_pasados);
 
     void addNPC(int Tipo, bool Validez);
     void addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
