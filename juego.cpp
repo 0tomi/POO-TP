@@ -40,7 +40,7 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
 
 void Juego::PrepararJuego(PlayerStats stats)
 {
-    PrepararJuego(stats.Nivel, stats.Dificultad);
+    PrepararJuego(stats.Nivel, stats.Dificultad, stats.seed);
 
     // Le damos al jugador las estadisticas que posee.
     TotalSocialCredits = stats.TotalSocialCredits;

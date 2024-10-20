@@ -61,6 +61,7 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
     actualStats.TotalSocialCredits = juegoInfo->getTotalSocialCredits();
     int cantCredsSocsObtDia = juegoInfo->getSocialCreditsEarnedInLevel();
     int maxMultas = juegoInfo->getMaxMultas();
+    actualStats.seed = QTime::currentTime().msec();
 
     NivelActual = juegoInfo->getNivelActual();
     Dificultad =  juegoInfo->getDificultad();
