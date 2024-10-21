@@ -250,7 +250,7 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(&GestorNPC, &GestorNPCsUI::logs, this, &GameScreen::EnviarLogs);
 
     connect(&GestorNPC, &GestorNPCsUI::NPCTerminoSalir, [this](){
-        if (juego->getCola()->getSize() == 0)
+        if (juego->getCola()->getSize() == 0 || !tiempoPartida.isActive())
             return;
 
         juego->updateDatosJugador(playerStats);

@@ -38,6 +38,19 @@ void Juego::PrepararJuego(int Nivel, int Dificultad)
     this->setUpNivel(Nivel);
 }
 
+void Juego::PrepararJuego(int Nivel, int Dificultad, quint32 SeedPersonalizada)
+{
+    this->SemillaMadre = SeedPersonalizada;
+    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
+    setReglasSeed();
+    NivelActual = Nivel;
+    setDificultad(Dificultad);
+
+    // Reseteamos la cantidad ganada en el nivel
+    this->SocialCreditsEarnedInLevel = 0;
+    this->setUpNivel(Nivel);
+}
+
 void Juego::PrepararJuego(PlayerStats stats)
 {
     PrepararJuego(stats.Nivel, stats.Dificultad, stats.seed);
@@ -50,19 +63,6 @@ void Juego::PrepararJuego(PlayerStats stats)
 
     if (stats.tiempoPartida > 0)
         SocialCreditsEarnedInLevel = stats.socialCreditsEarnedInLVL;
-}
-
-void Juego::PrepararJuego(int Nivel, int Dificultad, quint32 SeedPersonalizada)
-{
-    this->SemillaMadre = SeedPersonalizada;
-    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
-    setReglasSeed();
-    NivelActual = Nivel;
-    setDificultad(Dificultad);
-
-    // Reseteamos la cantidad ganada en el nivel
-    this->SocialCreditsEarnedInLevel = 0;
-    this->setUpNivel(Nivel);
 }
 
 void Juego::setDificultad(int dificultad)
