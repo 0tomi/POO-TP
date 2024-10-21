@@ -53,6 +53,7 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
     // Leer los datos del archivo
     file.read(reinterpret_cast<char*> (&stats), TamanioStats);
     file.close();
+
     return stats;
 }
 
