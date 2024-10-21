@@ -262,24 +262,12 @@ void GameScreen::RealizarConexionesPrincipales()
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
-
-void GameScreen::PrepararJuego(int Dificultad)
-{
-    tiempo = 8*60*1000;
-    TiempoActual = 0;
-    cantidadTiempoDia = 52 * 1000;
-    juego->PrepararJuego(Dificultad);
-    libroReglasUI->setUpLevel(1);
-    GestorDocs.setUpNivel(1);
-    introPantalla->setUp(1);
-    this->nivelActual = 1;
-}
-
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
     tiempo = 8*60*1000;
     TiempoActual = 0;
     cantidadTiempoDia = 52 * 1000;
+    playerStats = juego->getEmptyDatosJugador();
     juego->PrepararJuego(Nivel, Dificultad);
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
@@ -293,6 +281,7 @@ void GameScreen::PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed)
     tiempo = 8*60*1000;
     TiempoActual = 0;
     cantidadTiempoDia = 52 * 1000;
+    playerStats = juego->getEmptyDatosJugador();
     juego->PrepararJuego(LvL, Dificultad, seed);
     libroReglasUI->setUpLevel(LvL);
     // more stuff to do
@@ -303,9 +292,12 @@ void GameScreen::PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed)
 
 void GameScreen::PrepararJuego(PlayerStats stats)
 {
+    tiempo = 8*60*1000;
+    TiempoActual = 0;
+    cantidadTiempoDia = 52 * 1000;
+    playerStats = stats;
     juego->PrepararJuego(stats);
     libroReglasUI->setUpLevel(stats.Nivel);
-    // more stuff to do
     GestorDocs.setUpNivel(stats.Nivel);
     introPantalla->setUp(stats.Nivel);
     this->nivelActual = stats.Nivel;

@@ -19,7 +19,6 @@ public:
     void setDificultad(int dificultad);
 
     // Preparar Juego
-    void PrepararJuego(int Dificultad);
     void PrepararJuego(int Nivel, int Dificultad); // Modo normal por default
     void PrepararJuego(PlayerStats);
     void PrepararJuego(int Nivel, int Dificultad, quint32 SeedPersonalizada);
@@ -29,6 +28,7 @@ public:
     Reglas* getReglas(int numero);
     ColaNPC *getCola();
     PlayerStats getDatosJugador();
+    PlayerStats getEmptyDatosJugador();
     void updateDatosJugador(PlayerStats &stats);
 
     // A futuro para cuando tengamos la funcion de guardar partida

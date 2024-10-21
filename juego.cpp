@@ -14,17 +14,6 @@ Juego::Juego():
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
-void Juego::PrepararJuego(int Dificultad)
-{
-    this->SemillaMadre = QTime::currentTime().msec();
-    emit Log("Semilla de inicio de juego: " + QString::number(SemillaMadre));
-    setReglasSeed();
-    NivelActual = 1;
-    setDificultad(Dificultad);
-    setDefaultStats();
-    setUpNivel(1);
-}
-
 void Juego::PrepararJuego(int Nivel, int Dificultad)
 {
     this->SemillaMadre = QTime::currentTime().msec();
@@ -275,6 +264,11 @@ PlayerStats Juego::getDatosJugador()
     stats.tiempoFondo = 0; stats.tiempoPartida = 0; stats.cantNPCsPasados = 0; stats.cantidadTiempoDia = 0;
 
     return stats;
+}
+
+PlayerStats Juego::getEmptyDatosJugador()
+{
+    return {0,0,0,0,0,0,0,0,0,0,0,this->SemillaMadre};
 }
 
 void Juego::updateDatosJugador(PlayerStats &stats)
