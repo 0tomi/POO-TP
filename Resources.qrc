@@ -207,5 +207,6 @@
         <file>Resources/NPCs/Cuerpo17.png</file>
         <file>Resources/NPCs/Boca4.png</file>
         <file>Resources/Dialogos/DialogosQuejarse.txt</file>
+        <file>Resources/Sonidos/SonidoError.wav</file>
     </qresource>
 </RCC>

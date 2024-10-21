@@ -10,7 +10,7 @@ Notificacion::Notificacion(int Numero, bool Multa, QString texto, float vol, QWi
     ui->setupUi(this);
     Temporizador.setSingleShot(true);
 
-    sonidoEntrada.setSource(QUrl("qrc:/Resources/Documentos/Notificaciones/NotificacionEntrada.WAV"));
+    sonidoEntrada.setSource(QUrl("qrc:/Resources/Sonidos/SonidoError.wav"));
     sonidoSalida.setSource(QUrl("qrc:/Resources/Documentos/Notificaciones/NotificacionSalida.WAV"));
     setVolume(vol);
 
@@ -50,7 +50,7 @@ Notificacion::~Notificacion()
 
 void Notificacion::setVolume(float vol)
 {
-    sonidoEntrada.setVolume(vol - 0.2);
+    sonidoEntrada.setVolume(vol);
     sonidoSalida.setVolume(vol - 0.2);
 }
 
