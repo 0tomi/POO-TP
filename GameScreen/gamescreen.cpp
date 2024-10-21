@@ -250,6 +250,9 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(&GestorNPC, &GestorNPCsUI::logs, this, &GameScreen::EnviarLogs);
 
     connect(&GestorNPC, &GestorNPCsUI::NPCTerminoSalir, [this](){
+        if (juego->getCola()->getSize() == 0)
+            return;
+
         juego->updateDatosJugador(playerStats);
         playerStats.cantidadTiempoDia = TiempoDia.remainingTime();
         playerStats.tiempoFondo = TiempoActual;
