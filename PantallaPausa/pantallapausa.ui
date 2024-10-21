@@ -46,7 +46,7 @@
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -400,7 +400,7 @@ background-color: rgb(95, 0, 0);</string>
           <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿&lt;span style=&quot; color:#aa0000;&quot;&gt;Seguro&lt;/span&gt; que quieres terminar la partida y volver al menú principal?&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#717171;&quot;&gt;El progreso&lt;/span&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt; NO &lt;/span&gt;&lt;span style=&quot; color:#717171;&quot;&gt;se guardá&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿&lt;span style=&quot; color:#aa0000;&quot;&gt;Seguro&lt;/span&gt; que quieres terminar la partida y volver al menú principal?&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#717171;&quot;&gt;Tranquilo, la partida se &lt;/span&gt;&lt;span style=&quot; color:#820000;&quot;&gt;guardará &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#820000;&quot;&gt;en el punto donde la dejaste&lt;/span&gt;&lt;span style=&quot; color:#717171;&quot;&gt; para que puedas &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#717171;&quot;&gt;continuarla más tarde.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
