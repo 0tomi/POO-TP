@@ -208,5 +208,12 @@
         <file>Resources/NPCs/Boca4.png</file>
         <file>Resources/Dialogos/DialogosQuejarse.txt</file>
         <file>Resources/Sonidos/SonidoError.wav</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo7.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo8.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo9.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo10.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo11.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo12.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo13.png</file>
     </qresource>
 </RCC>
