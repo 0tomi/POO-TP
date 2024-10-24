@@ -65,8 +65,10 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     qDebug() << "Cantidad de intentos en generar la lista de NPCs: " << intentos;
 
     // Creamos los NPCs
-    for (const auto& NPCs : NPCSaGenerar)
+    for (const auto& NPCs : NPCSaGenerar){
+        qDebug() << NPCs.Validez;
         addNPC(NPCs.Tipo, NPCs.Validez);
+    }
 
     NPCSaGenerar.clear();
     NPCSaGenerar.shrink_to_fit();
