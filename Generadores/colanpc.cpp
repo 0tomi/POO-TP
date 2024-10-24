@@ -52,7 +52,7 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
     int arrayTipos[] = {CantAldeano, CantRefugiados, CantDiplos, CantRevolucionarios};
 
-    NPCSaGenerar.reserve(totalNPCs);
+    NPCSaGenerar.resize(totalNPCs);
     VectorNPCs.reserve(totalNPCs);
 
     // Generamos la lista de los NPCs que pasaran.
