@@ -75,8 +75,9 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 }
 
 bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[])
-{    
-    qDebug() << "Bucle Tipos";
+{
+    // Primero generamos los tipos de NPC que pueden salir
+    // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     int sorteo = Random.bounded(4);
     int Cant2Generar = CantidadTotal;
     while (Cant2Generar) {
@@ -88,8 +89,7 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
         sorteo = Random.bounded(4);
     }
 
-    // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
-    qDebug() << "Bucle validez";
+    // Luego definimos la validez de los mismos
     int sorteoValidez = Random.bounded(CantidadTotal);
     while (CantidadFalsos){
         if (NPCSaGenerar[sorteoValidez].Validez){
@@ -99,7 +99,7 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
         sorteoValidez = Random.bounded(CantidadTotal);
     }
 
-    if (CantidadTotal == 0 && CantidadFalsos == 0)
+    if (Cant2Generar == 0 && CantidadFalsos == 0)
         return true;
     else return false;
 }

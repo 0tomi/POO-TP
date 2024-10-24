@@ -16,8 +16,10 @@ public:
     Skin getSimilarSkin(Skin skinActual, char Genero, int nivel);
 private:
     QRandomGenerator * qrand;
+    QRandomGenerator randomCuerpos;
     QString pickSkinConGenero(vector <QString> listaSkins[], char Genero);
     QString pickSkin(vector <QString> &listaSkins);
+    QString pickCuerpo(vector <QString> &listaSkins);
 
     vector <QString> LinksPelo[2];
     vector <QString> LinksCaras;     // Hombre y Mujer

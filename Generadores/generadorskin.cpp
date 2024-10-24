@@ -5,6 +5,7 @@
 void GeneradorSkin::setSeed(quint32 seed)
 {
     this->qrand->seed(seed);
+    this->randomCuerpos.seed(seed);
 }
 
 
@@ -53,13 +54,13 @@ Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
 
     switch(TipoNPC){
     case 1: // Refugiado
-        newSkin.setCara(pickSkin(LinksCarasRefugiado));
+        newSkin.setCara(pickCuerpo(LinksCarasRefugiado));
         break;
     case 3: // Revolucionario
-        newSkin.setCara(pickSkin(LinksCarasRevolucionario));
+        newSkin.setCara(pickCuerpo(LinksCarasRevolucionario));
         break;
     default:
-        newSkin.setCara(pickSkin(LinksCaras));
+        newSkin.setCara(pickCuerpo(LinksCaras));
         break;
     }
 
@@ -143,5 +144,11 @@ QString GeneradorSkin::pickSkinConGenero(vector <QString> listaSkins[], char Gen
 QString GeneradorSkin::pickSkin(vector <QString> &listaSkins)
 {
     int sorteo = qrand->bounded(listaSkins.size());
+    return listaSkins[sorteo];
+}
+
+QString GeneradorSkin::pickCuerpo(vector<QString> &listaSkins)
+{
+    int sorteo = randomCuerpos.bounded(listaSkins.size());
     return listaSkins[sorteo];
 }
