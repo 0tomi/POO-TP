@@ -52,7 +52,7 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
     // Para simplificar el codigo vamos a usar un array que guarde los contadores de los tipos
     int arrayTipos[] = {CantAldeano, CantRefugiados, CantDiplos, CantRevolucionarios};
 
-    NPCSaGenerar.resize(totalNPCs);
+    NPCSaGenerar.reserve(totalNPCs);
     VectorNPCs.reserve(totalNPCs);
 
     // Generamos la lista de los NPCs que pasaran.
@@ -75,9 +75,18 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 }
 
 bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[])
-{
-    for (int i = 0; i < CantidadTotal; i++)
-        NPCSaGenerar[i].Validez = true;
+{    
+    qDebug() << "Bucle Tipos";
+    int sorteo = Random.bounded(4);
+    int Cant2Generar = CantidadTotal;
+    while (Cant2Generar) {
+        if (CantidadTipos[sorteo]){
+            NPCSaGenerar.push_back({sorteo, true});
+            CantidadTipos[sorteo]--;
+            Cant2Generar--;
+        }
+        sorteo = Random.bounded(4);
+    }
 
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     qDebug() << "Bucle validez";
@@ -88,19 +97,6 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
             CantidadFalsos--;
         }
         sorteoValidez = Random.bounded(CantidadTotal);
-    }
-
-    qDebug() << "Bucle Tipos";
-    int sorteo = Random.bounded(4);
-    int i = 0, Cant2Generar = CantidadTotal;
-    while (Cant2Generar) {
-        if (CantidadTipos[sorteo]){
-            NPCSaGenerar[i].Tipo = sorteo;
-            CantidadTipos[sorteo]--;
-            Cant2Generar--;
-            i++;
-        }
-        sorteo = Random.bounded(4);
     }
 
     if (CantidadTotal == 0 && CantidadFalsos == 0)
