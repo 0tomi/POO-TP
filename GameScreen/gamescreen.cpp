@@ -174,13 +174,13 @@ void GameScreen::setUpIconoDocsUI()
 void GameScreen::SetearConexionesDocumentos()
 {
     // Bloqueamos los botones al estar el documento cerrado o abierto.
-    connect(IconoDocs, &DocsIconUI::Abierto, [this]() {
-        this->DesbloquearBotones();
-    });
+    //connect(IconoDocs, &DocsIconUI::Abierto, [this]() {
+    //    this->DesbloquearBotones();
+    //});
 
-    connect(IconoDocs, &DocsIconUI::Cerrado, [this]() {
-        this->BloquearBotones(true);
-    });
+    //connect(IconoDocs, &DocsIconUI::Cerrado, [this]() {
+    //    this->BloquearBotones(true);
+    //});
 }
 
 /// #################################### CONEXIONES ###################################################
@@ -231,6 +231,7 @@ void GameScreen::RealizarConexionesPrincipales()
         if (dificultad == 3){
             tiempoNPC.start(tiempoPorNPC);
         }
+        BloquearBotones(false);
     });
 
     // Conectmaos el boton de reglas
@@ -457,6 +458,7 @@ void GameScreen::Acepto()
     DecisionJugador = true;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(true);
+    BloquearBotones(true);
 }
 
 void GameScreen::Rechazo()
@@ -470,6 +472,7 @@ void GameScreen::Rechazo()
     DecisionJugador = false;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(false);
+    BloquearBotones(true);
 }
 
 void GameScreen::SelloDocumento(bool Boton)
