@@ -45,6 +45,7 @@ private slots:
     void setLabels(radiografia* datos);
 private:
     Ui::radiografiaui *ui;
+    radiografia * datos;
     QLabel *labelsCuerpo[10];
     QMap<QString, QPixmap>items;
     vector<QString>objetos;
