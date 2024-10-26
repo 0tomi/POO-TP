@@ -103,7 +103,7 @@ void LocuraCaracteres::AlgoritmoDeReservoirByTomi(QString CadenaLocura)
     int temp = cantCaracteres;
     int sorteo;
     while (temp) {
-        sorteo = random->bounded(tamanio);
+        sorteo = random->bounded(1, tamanio);
         if (caracteres2cambiar[sorteo]){
             if (CadenaLocura[sorteo].isLetterOrNumber()){
                 caracteres2cambiar[sorteo] = false;
