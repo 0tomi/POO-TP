@@ -75,7 +75,7 @@ void ColaNPC::addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int C
 }
 
 bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[])
-{
+{    
     // Primero generamos los tipos de NPC que pueden salir
     // Tipos: 0 Aldeano, 1 Refugiado, 2 Diplomatico, 3 Revolucionario
     int sorteo = Random.bounded(4);
@@ -88,6 +88,10 @@ bool ColaNPC::GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTip
         }
         sorteo = Random.bounded(4);
     }
+
+    // Generamos 100 randoms porque el generador de numeros aleatorios es malisimo
+    for (int i = 0; i < 100; i++)
+        Random.bounded(CantidadTotal);
 
     // Luego definimos la validez de los mismos
     int sorteoValidez = Random.bounded(CantidadTotal);

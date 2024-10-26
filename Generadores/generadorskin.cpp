@@ -143,12 +143,20 @@ QString GeneradorSkin::pickSkinConGenero(vector <QString> listaSkins[], char Gen
 
 QString GeneradorSkin::pickSkin(vector <QString> &listaSkins)
 {
+    // Generamos algunos numeros aleatorios para mejorar la aleateoridad
+    for (int i = 0; i < 20; i++)
+        qrand->bounded(listaSkins.size());
+
     int sorteo = qrand->bounded(listaSkins.size());
     return listaSkins[sorteo];
 }
 
 QString GeneradorSkin::pickCuerpo(vector<QString> &listaSkins)
 {
+    // Generamos algunos numeros aleatorios para mejorar la aleateoridad
+    for (int i = 0; i < 20; i++)
+        randomCuerpos.bounded(listaSkins.size());
+
     int sorteo = randomCuerpos.bounded(listaSkins.size());
     return listaSkins[sorteo];
 }
