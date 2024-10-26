@@ -34,19 +34,16 @@ QString LocuraCaracteres::Cambiar(QString Cadena)
         cantCaracteres = Cadena.length();
 
     // Iteramos por los caracteres seleccionados cambiandolos
-    int * indices = AlgoritmoDeReservoirByTomi(Cadena);
-    int indice;
-    QChar caracter;
+    AlgoritmoDeReservoirByTomi(Cadena);
     for (int i = 0; i < cantCaracteres; i++){
-        indice = indices[i];
-        caracter = Cadena[indice];
-        if (caracter.isLetter())
-            Cadena[indice] = CambiarLetra(caracter);
-        else
-            Cadena[indice] = CambiarNumero(caracter);
+        if (!caracteres2cambiar[i]){
+            if (Cadena[i].isLetter())
+                Cadena[i] = CambiarLetra(Cadena[i]);
+            else
+                Cadena[i] = CambiarNumero(Cadena[i]);
+        }
     }
 
-    delete[] indices;
     return Cadena;
 }
 /// ······················· Cambiar caracteres especificos  ······································
@@ -80,34 +77,38 @@ void LocuraCaracteres::setDificultad(int Dificultad)
 {
     switch (Dificultad){
         /// Modo facil
-    case 1: cantCaracteres = 4;
+    case 1: cantCaracteres = 3;
         break;
         /// Modo demonio
     case 3: cantCaracteres = 1;
         break;
         /// Modo normal
-    default: cantCaracteres = 3;
+    default: cantCaracteres = 2;
             break;
     }
 }
 
 /// ······················· Algoritmo locura que me encontre por internet  ······································
-int * LocuraCaracteres::AlgoritmoDeReservoirByTomi(QString CadenaLocura)
+void LocuraCaracteres::AlgoritmoDeReservoirByTomi(QString CadenaLocura)
 {
-    // Armamos array con los indices donde estaran las letras a cambiar
-    int * indices = new int[cantCaracteres];
+    caracteres2cambiar.resize(CadenaLocura.size());
+    for (auto el: caracteres2cambiar)
+        el = true;
 
-    // Metemos los primeros elementos del conjunto
-    for (int i = 0; i < cantCaracteres; i++)
-        indices[i] = i;
+    int tamanio = CadenaLocura.size();
+    // odiamos a qrandom y a rand
+    for (int i = 0; i < 100; i++)
+        random->bounded(tamanio);
 
-    int Sorteo; QChar Caracter;
-    for (int i = cantCaracteres; i < CadenaLocura.length(); i++){
-        Sorteo = random->bounded(i);
-        Caracter = CadenaLocura[i];
-        if (Sorteo < cantCaracteres && Caracter.isLetterOrNumber())
-            indices[Sorteo] = i;
+    int temp = cantCaracteres;
+    int sorteo;
+    while (temp) {
+        sorteo = random->bounded(tamanio);
+        if (caracteres2cambiar[sorteo]){
+            if (CadenaLocura[sorteo].isLetterOrNumber()){
+                caracteres2cambiar[sorteo] = false;
+                temp--;
+            }
+        }
     }
-
-    return indices;
 }
