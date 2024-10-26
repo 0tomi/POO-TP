@@ -27,14 +27,17 @@ radiografiaui::radiografiaui(QWidget *parent)
 
 void radiografiaui::setDocumentacionInfo(Documentacion *documento)
 {
-    auto Radiografia = dynamic_cast<radiografia*>(documento);
-    if (Radiografia)
-        setLabels(Radiografia);
-    else qDebug() << "Fallo al castear puntero de radiografia";
+    datos = dynamic_cast<radiografia*>(documento);
+    if (!datos)
+        qDebug() << "Fallo al castear puntero de radiografia";
 }
 
 void radiografiaui::Entrar()
 {
+    if (datos)
+        this->setLabels(datos);
+    else qDebug() << "No hay puntero de radiografia";
+
     ui->cuerpo->setCurrentIndex(0);
     DocumentosUI::Entrar();
     this->raise();

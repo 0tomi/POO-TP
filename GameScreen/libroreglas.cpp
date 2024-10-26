@@ -64,6 +64,10 @@ void libroreglas::Entrar()
 {
     raise();
     moverLibro.play();
+    // Mostramos el indice y hacemos que el boton de anterior se oculte.
+    PaginaActual = 0;   // Indice
+    ui->Anterior->hide();
+    ui->LibroReglas->setCurrentIndex(PaginaActual);
     DocumentosUI::Entrar();
 }
 
