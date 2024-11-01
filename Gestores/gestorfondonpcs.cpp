@@ -31,7 +31,7 @@ void GestorFondoNPCs::start(int CantNPCs)
         npc->move(QPoint(x, npc->y()));
         x += npc->width() + 15;
         connect(npc, &NPCFondo::Salio, this, &GestorFondoNPCs::NPCterminoSalir);
-        //connect(npc, &NPCFondo::Posicion, this, &GestorFondoNPCs::NPCactualizoPosicion);
+        connect(npc, &NPCFondo::Posicion, this, &GestorFondoNPCs::NPCactualizoPosicion);
     }
 
     this->ultimoNPCenSalir = cantidad_spawnear-1;
@@ -58,9 +58,15 @@ void GestorFondoNPCs::updateCantidadNPCs(int cantidad)
 
 void GestorFondoNPCs::resizeNPCs()
 {
-    for (auto& npc: npcs)
+    if (npcs.size() == 0)
+        return;
+
+
+    for (auto &npc : npcs){
+        int y = fondo->height() - npc->height();
         if (!npc->isHidden())
-            npc->move(npc->x(), fondo->height() - npc->height());
+            npc->move(npc->x(), y);
+    }
 }
 
 void GestorFondoNPCs::pasarNPC()

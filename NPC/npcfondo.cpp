@@ -61,7 +61,7 @@ void NPCFondo::moverAdelanteSinAdelantar()
 
     int y = padre->height() - this->height();
 
-    this->PrepararAnimacionAdelantar(this->x() + 130, y);
+    this->PrepararAnimacionAdelantar(this->x() + 50, y);
     animacionAdelantar->start();
     this->raise();
 }
@@ -137,10 +137,10 @@ void NPCFondo::updateLocation(QPoint point)
 {
     int other_x = point.x();
 
-    if (other_x > this->x() + 10 || other_x < this->x() - 10)
+    if (other_x > this->x() + 100 || other_x < this->x() - 100)
         return;
 
-    this->moverAdelante();
+    this->moverAdelanteSinAdelantar();
 }
 
 void NPCFondo::PrepararAnimacionAdelantar(int x, int y)

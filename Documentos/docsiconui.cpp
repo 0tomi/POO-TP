@@ -45,14 +45,15 @@ DocsIconUI::~DocsIconUI()
 
 void DocsIconUI::BloquearDocumento()
 {
-    CerrarDocumento();
+    if (LibroAbierto)
+        CerrarDocumento();
     BlockDocumento = true;
 }
 
 void DocsIconUI::accionar()
 {
     if (BlockDocumento){
-        Sacar();
+        SacarSinSonido();
     } else {
         if (LibroAbierto)
             CerrarDocumento();
@@ -77,6 +78,15 @@ void DocsIconUI::Sacar()
     if (mostrando){
         this->PrepararAnimacionSalida();
         CerrarDocumento();
+        this->animacionSalida->start();
+        this->mostrando = false;
+    }
+}
+
+void DocsIconUI::SacarSinSonido()
+{
+    if (mostrando){
+        this->PrepararAnimacionSalida();
         this->animacionSalida->start();
         this->mostrando = false;
     }
@@ -126,7 +136,7 @@ void DocsIconUI::AbrirDocumento()
 void DocsIconUI::setFinalPartida(bool newFinalPartida)
 {
     FinalPartida = newFinalPartida;
-    this->Sacar();
+    this->SacarSinSonido();
 }
 
 bool DocsIconUI::Mostrando() const

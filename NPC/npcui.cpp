@@ -39,9 +39,22 @@ NPCUI::NPCUI(QWidget *parent)
 
 void NPCUI::Centrar()
 {
+    bool running_animation = false;
+    if (animacionStandBy->state() == QAbstractAnimation::Running){
+        animacionStandBy->stop();
+        this->estadoAnimacionStandby = false;
+        running_animation = true;
+    }
+
     int centerX = (padre->width() - width()) /2;
     int centerY = (padre->height() - height());
     move(centerX,centerY);
+
+    if (running_animation){
+        PrepararAnimacionStandBy();
+        animacionStandBy->start();
+    }
+
 }
 
 void NPCUI::Entrar()

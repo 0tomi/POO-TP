@@ -21,6 +21,7 @@ public:
 
     virtual void Entrar();
     virtual void Sacar();
+    virtual void SacarSinSonido();
 
     bool getLibroAbierto() const;
     void BloquearDocumento();

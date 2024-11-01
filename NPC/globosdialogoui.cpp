@@ -34,13 +34,19 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje)
     mensaje = newMensaje;
     ui->Texto->setText(mensaje);
 
-    if (mensaje.length() > 60)
+    qDebug() << "Longitud del mensaje " << mensaje.length();
+
+    if (mensaje.length() > 60){
         setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY+15);
-    else
-        if (mensaje.length() > 35)
+        qDebug() << "Aplicado mensaje grande";
+    } else
+        if (mensaje.length() > 50){
+            qDebug() << "Aplicado mensaje mediano";
             setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY);
-        else
-            setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
+    } else {
+            qDebug() << "Aplicado mensaje chico";
+            setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);  
+    }
 
     emit MensajePreparado();
     PrepararAnimacionEntrada();

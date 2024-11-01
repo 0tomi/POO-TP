@@ -409,9 +409,9 @@ void GameScreen::FinalDePartida()
 
     Musica[currentMusic].stop();
     MatarNotificaciones();
+    GestorFondo.pasarNPC();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
-    GestorFondo.pasarNPC();
     IconoDocs->setFinalPartida(true);
 
     if (MostrandoReglas)
