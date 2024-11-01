@@ -28,9 +28,9 @@ NPCFondo::NPCFondo(QWidget *parent)
     animacionAdelantar = new QPropertyAnimation(this, "pos");
     animacionAdelantar->setDuration(1000);
     animacionAdelantar->setEasingCurve(QEasingCurve::OutQuad);    // La animacion se desacelera conforme entra
-    connect(animacionAdelantar, &QAbstractAnimation::finished, this, [this](){
-        emit Posicion(this->pos());
-    });
+    //connect(animacionAdelantar, &QAbstractAnimation::finished, this, [this](){
+        //emit Posicion(this->pos());
+    //});
 
     this->move(QPoint(0, padre->height() - this->height()));
     this->show();
@@ -46,6 +46,18 @@ void NPCFondo::moverAdelante()
         this->salir();
         return;
     }
+
+    int y = padre->height() - this->height();
+
+    this->PrepararAnimacionAdelantar(this->x() + 130, y);
+    animacionAdelantar->start();
+    this->raise();
+}
+
+void NPCFondo::moverAdelanteSinAdelantar()
+{
+    if (this->isHidden())
+        return;
 
     int y = padre->height() - this->height();
 
@@ -116,6 +128,8 @@ NPCFondo::~NPCFondo()
 {
     delete ui;
     delete animacionAdelantar;
+    delete animacionEntrar;
+    delete animacionSalir;
 }
 
 // checkeamos si un NPC se superpone con otro, dado el caso lo movemos.
