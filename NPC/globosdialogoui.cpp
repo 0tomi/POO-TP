@@ -25,6 +25,8 @@ GlobosDialogoUI::GlobosDialogoUI(QWidget *parent)
     SetearAnimacionEntrada();
     SetearAnimacionSalida();
     Mostrandose = false;
+
+    connect(&TiempoVisualizacion, &QTimer::timeout, this, &GlobosDialogoUI::TerminarMensaje);
 }
 
 void GlobosDialogoUI::setMensaje(const QString &newMensaje)
@@ -32,7 +34,7 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje)
     mensaje = newMensaje;
     ui->Texto->setText(mensaje);
 
-    if (mensaje.length() > 45)
+    if (mensaje.length() > 60)
         setFixedSize(tamanioAumentadoGloboX,tamanioAumentadoGloboY+15);
     else
         if (mensaje.length() > 35)
@@ -41,7 +43,6 @@ void GlobosDialogoUI::setMensaje(const QString &newMensaje)
             setFixedSize(tamanioNormalGloboX,tamanioNormalGloboY);
 
     emit MensajePreparado();
-    connect(&TiempoVisualizacion, &QTimer::timeout, this, &GlobosDialogoUI::TerminarMensaje);
     PrepararAnimacionEntrada();
     MostrarMensaje();
 }
@@ -54,7 +55,7 @@ void GlobosDialogoUI::MostrarMensaje()
     show();
     raise();
     emit Hablando(mensaje);
-    TiempoVisualizacion.start(4000);
+    TiempoVisualizacion.start(6000);
     ReproducirSonido();
     Mostrandose = true;
 }
@@ -84,6 +85,13 @@ void GlobosDialogoUI::ForzarSalir()
         TiempoVisualizacion.stop();
         TerminarMensaje();
     }
+}
+
+void GlobosDialogoUI::Finalizar()
+{
+    this->ForzarSalir();
+    this->InterrumpirMensaje(true);
+    this->Sonido.stop();
 }
 
 // ########## A futuro #############

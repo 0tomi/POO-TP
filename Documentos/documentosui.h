@@ -45,6 +45,8 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent *event) override;
     QPoint m_dragStartPosition;
 
+    virtual void DesactivarEventosMouse();
+
     QWidget * padre;
 private:
     Ui::DocumentosUI *ui;

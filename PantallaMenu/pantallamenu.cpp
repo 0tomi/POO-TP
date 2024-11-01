@@ -2,9 +2,10 @@
 #include "ui_pantallamenu.h"
 #include <QCloseEvent>
 /// ############################ CONSTRUCTOR ###############################
-PantallaMenu::PantallaMenu(GuardarPartidas * gp, QWidget *parent)
+PantallaMenu::PantallaMenu(ActivarCheats tipo, GuardarPartidas * gp, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::PantallaMenu), GTALocura(this), SonidosBotones(parent), SonidoModoDemonio(parent), Musica(parent), dificultad(1), nivel(1)
+    , MusicaCreditos(this)
 {
     ui->setupUi(this);
     this->guardarPartida = gp;
@@ -35,18 +36,21 @@ PantallaMenu::PantallaMenu(GuardarPartidas * gp, QWidget *parent)
     connect(ui->SeleccionarSeed, &QSpinBox::valueChanged, [this](int newSeed){this->seedPersonalizada = newSeed;});
 
     connect(ui->cheatPlayClicked, &QPushButton::clicked, this, &PantallaMenu::cheatStartClicked);
+    connect(ui->botonCreditos, &QPushButton::clicked, this, &PantallaMenu::clickedCreditos);
 
     this->ConfigurarBotonesElegirRanura();
 
     indiceMainMenu = 0;
     indicePrevio = 0;
 
-    ui->botonCheat->hide();
+    if (tipo == Activado){
+        ui->botonCheat->show();
+        CheatsActivados = true;
+    } else ui->botonCheat->hide();
 
     ui->BotonesSalir->setCurrentIndex(0);
     ui->menu->setCurrentIndex(0);
 
-    Musica.setLoopCount(QSoundEffect::Infinite);
     Musica.play();
 }
 
@@ -59,6 +63,10 @@ void PantallaMenu::ConfigurarSonidos()
     setMusicVolume(0.5);
     setVolumen(1.0);
     GTALocura.setVolume(1.0);
+    Musica.setLoopCount(QSoundEffect::Infinite);
+    MusicaCreditos.setSource(QUrl("qrc:/Resources/Musica/MusicaJuego6.WAV"));
+    MusicaCreditos.setLoopCount(QSoundEffect::Infinite);
+    MusicaCreditos.setVolume(0.3);
 }
 
 void PantallaMenu::ConfigurarBotonesDificultad()
@@ -149,6 +157,7 @@ void PantallaMenu::setVolumen(float vol)
 void PantallaMenu::setMusicVolume(float vol)
 {
     Musica.setVolume(vol-0.4);
+    MusicaCreditos.setVolume(vol-0.4);
 }
 
 void PantallaMenu::keyPressEvent(QKeyEvent *event)
@@ -360,6 +369,9 @@ void PantallaMenu::botonVolver1clicked()
         break;
     case 6: ui->menu->setCurrentIndex(5);
         break;
+    case 7: MusicaCreditos.stop();
+        transicion->ArrancarTransicion(500, this, &PantallaMenu::switchMenu);
+        break;
     default: // Descripcion de dificultad, Cheat mode, Seleccionar slot de guardado
         transicion->ArrancarTransicion(500, this, &PantallaMenu::switchSelectorDificultad);
         break;
@@ -369,6 +381,9 @@ void PantallaMenu::botonVolver1clicked()
 
 void PantallaMenu::switchMenu()
 {
+    if (!Musica.isPlaying())
+        Musica.play();
+
     ui->menu->setCurrentIndex(0);
     ui->BotonesSalir->setCurrentIndex(0);
 }
@@ -379,5 +394,15 @@ void PantallaMenu::tutorialButton()
     emit EnviarLogs("Se clickeo la pantalla Tutorial");
     SonidosBotones.play();
     emit clickedTutorial();
+}
+
+void PantallaMenu::clickedCreditos()
+{
+    Musica.stop();
+    transicion->ArrancarTransicion(500, [this](){
+        ui->BotonesSalir->setCurrentIndex(1);
+        ui->menu->setCurrentWidget(ui->Creditos);
+        MusicaCreditos.play();
+    });
 }
 

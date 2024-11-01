@@ -3,7 +3,7 @@
 
 /// #################################### CONSTRUCTOR ###################################################
 GestorNPCsUI::GestorNPCsUI(){
-
+    cantidad_NPCs_pasados = 0;
 }
 
 GestorNPCsUI::~GestorNPCsUI()
@@ -12,12 +12,19 @@ GestorNPCsUI::~GestorNPCsUI()
     delete Dialogos;
     delete transcriptorDialogos;
 }
+
+void GestorNPCsUI::setUpPartidaEmpezada(int cantidad)
+{
+    this->cantidad_NPCs_pasados = cantidad;
+    this->ColaNPCs->setUpColaEmpezada(cantidad_NPCs_pasados);
+}
 /// #################################### SetUps ###################################################
 void GestorNPCsUI::setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs, ColaNPC* cola)
 {
     Escenario = EscenarioNPCs;
     ColaNPCs = cola;
     ColaVacia = true;
+    this->cantidad_NPCs_pasados = 0;
 
     // Spawneamos NPC
     Dialogos = new GlobosDialogoUI(Escenario);
@@ -68,6 +75,7 @@ void GestorNPCsUI::RealizarConexionesDeNPCs()
     connect(NPCcomunUI, &NPCUI::animacionSalirTerminada, this, &GestorNPCsUI::emitirNPCTerminoSalir);
 
     // Aca irian las conecciones del NPC especial
+
 }
 
 void GestorNPCsUI::DesconectarNPCs()
@@ -80,8 +88,6 @@ void GestorNPCsUI::DesconectarNPCs()
 /// #################################### Entrar entidades ###################################################
 void GestorNPCsUI::Entrar()
 {
-    qDebug() << "Tamanio de cola: " << ColaNPCs->getSize();
-
     NPCenEscena = ColaNPCs->getNPC();
     emit setDocsInfo(NPCenEscena);
 
@@ -91,17 +97,38 @@ void GestorNPCsUI::Entrar()
         emit UltimoNPC();
     }
 
-    // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
-    qDebug() << NPCenEscena->getGenero();
-    qDebug() << NPCenEscena->getTipo();
-    qDebug() << NPCenEscena->getValidez();
-    // ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ## ## DEBUG ##
+    GenerarLog(NPCenEscena);
 
     // ### Aca iria un IF para checkear si el NPC es de tipo especial o comun, y decidir cual setear.
     NPCcomunUI->setNPC(NPCenEscena);
 
     // Hacemos que pasen los NPC.
     NPCcomunUI->Entrar();
+    this->cantidad_NPCs_pasados++;
+}
+
+void GestorNPCsUI::GenerarLog(NPC *info)
+{
+    QString validez, tipo;
+    if (info->getValidez())
+        validez = "true";
+    else validez = "false";
+
+    auto Tipo = info->getTipo();
+    switch (Tipo) {
+    case 0: tipo = "Aldeano";
+        break;
+    case 1: tipo = "Refugiado";
+        break;
+    case 2: tipo = "Diplomatico";
+        break;
+    default: tipo = "Revolucionario";
+        break;
+    }
+
+    emit logs("Validez del NPC: " + validez);
+    emit logs("Tipo de NPC: " + tipo);
+    emit logs("Genero del NPC: " + QString(NPCenEscena->getGenero()));
 }
 
 NPC *GestorNPCsUI::getNPC()
@@ -112,7 +139,7 @@ NPC *GestorNPCsUI::getNPC()
 void GestorNPCsUI::ActualizarEstadoNPC()
 {
     MostrandoNPC = true;
-    emit NPCTerminoEntrar();
+    emit NPCEntro();
 }
 
 /// #################################### Salir entidades ###################################################
@@ -140,8 +167,7 @@ void GestorNPCsUI::SalirEntidades()
 /// #################################### Terminar nivel ###################################################
 void GestorNPCsUI::TerminoNivel()
 {
-    Dialogos->ForzarSalir();
-    Dialogos->InterrumpirMensaje(true);
+    this->cantidad_NPCs_pasados = 0;
     DesconectarNPCs();
     if (transcriptorDialogos->getMostrando())
         transcriptorDialogos->Sacar();
@@ -149,10 +175,17 @@ void GestorNPCsUI::TerminoNivel()
 
     // Si hay NPCs presentes, retiramos los documentos y el NPC.
     if (MostrandoNPC || ColaNPCs->getSize()){
-        SalirEntidades();
-
+        FinalizarEntidades();
         ColaNPCs->vaciarCola();
     }
+}
+
+void GestorNPCsUI::FinalizarEntidades()
+{
+    NPCcomunUI->Finalizar();
+    MostrandoNPC = false;
+
+    Dialogos->Finalizar();
 }
 
 /// #################################### Dialogos ###################################################
@@ -166,6 +199,18 @@ void GestorNPCsUI::Reanudar()
     Dialogos->ReanudarMensaje();
     NPCcomunUI->Pausar(false);
 }
+
+void GestorNPCsUI::SalirForzado()
+{
+    NPCcomunUI->Salir(true);
+    Dialogos->ForzarSalir();
+
+    MostrandoNPC = false;
+
+    if (ColaNPCs->getSize() == 0)
+        ColaVacia = true;
+}
+
 /// #################################### Señales ###################################################
 void GestorNPCsUI::emitirNPCTerminoSalir()
 {
@@ -177,6 +222,11 @@ void GestorNPCsUI::emitirNPCTerminoSalir()
 void GestorNPCsUI::emitColaTerminada()
 {
     emit ColaTerminada();
+}
+
+int GestorNPCsUI::getCantidad_NPCs_pasados() const
+{
+    return cantidad_NPCs_pasados;
 }
 
 /// #################################### Getters ###################################################

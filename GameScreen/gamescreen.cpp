@@ -5,8 +5,8 @@
 /// #################################### CONSTRUCTOR ###################################################
 GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::GameScreen), Musica{ QSoundEffect(this), QSoundEffect(this), QSoundEffect(this)}
-    , random(QTime::currentTime().msec()), currentMusic(0)
+    , ui(new Ui::GameScreen), Musica{ QSoundEffect(this), QSoundEffect(this), QSoundEffect(this), QSoundEffect(this), QSoundEffect(this), QSoundEffect(this)}
+    , random(QTime::currentTime().msec()), currentMusic(0), ModoDemonActivo(false), dificultad(1), remainingTiempoNPC(0)
 {
     ui->setupUi(this);
 
@@ -20,14 +20,12 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     pantallaPerdiste->resize(this->size());
     pantallaPerdiste->hide();
 
-    // Seteamos el juego, y obtenemos la cola de NPCs.
-    ColaNPC* Cola = juego->getCola();
-
     tiempoPartida.setSingleShot(true);
+    tiempoNPC.setSingleShot(true);
     volumenActual = 1.0;
 
     // Agregamos el NPC y Documentos a la escena
-    GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, Cola);
+    GestorNPC.setUp(ui->Escritorio, ui->FondoNPC, juego->getCola());
     GestorNPC.setUpTranscriptor(ui->transcBoton);
     GestorDocs.setUp(1, ui->Escritorio);
     setUpIconoDocsUI();
@@ -67,8 +65,12 @@ void GameScreen::setUpSonidos()
 {
     Musica[0].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego1.WAV"));
     Musica[1].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego2.WAV"));
-    Musica[2].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego3.WAV"));
-    for (int i = 0; i < 3; i++){
+    Musica[2].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego4.WAV"));
+    Musica[3].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego5.WAV"));
+    Musica[4].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego6.WAV"));
+    Musica[5].setSource(QUrl("qrc:/Resources/Musica/MusicaJuego3.WAV"));
+
+    for (int i = 0; i < 6; i++){
         Musica[i].setLoopCount(QSoundEffect::Infinite);
         Musica[i].setVolume(0.3);
     }
@@ -154,7 +156,7 @@ void GameScreen::setUpIconoDocsUI()
     ui->MesaAzul->setLayout(layout);
 
     // Hacemos que los documentos entren en escena solo cuando se clickea el documento.
-    connect(&GestorNPC, &GestorNPCsUI::NPCTerminoEntrar, IconoDocs, &DocsIconUI::Entrar);
+    connect(&GestorNPC, &GestorNPCsUI::NPCEntro, IconoDocs, &DocsIconUI::Entrar);
     connect(IconoDocs, &DocsIconUI::Abierto, &GestorDocs, &GestorDocumentosUI::Entrar);
     connect(IconoDocs, &DocsIconUI::Cerrado, &GestorDocs, &GestorDocumentosUI::Salir);
 
@@ -172,13 +174,13 @@ void GameScreen::setUpIconoDocsUI()
 void GameScreen::SetearConexionesDocumentos()
 {
     // Bloqueamos los botones al estar el documento cerrado o abierto.
-    connect(IconoDocs, &DocsIconUI::Abierto, [this]() {
-        this->DesbloquearBotones();
-    });
+    //connect(IconoDocs, &DocsIconUI::Abierto, [this]() {
+    //    this->DesbloquearBotones();
+    //});
 
-    connect(IconoDocs, &DocsIconUI::Cerrado, [this]() {
-        this->BloquearBotones(true);
-    });
+    //connect(IconoDocs, &DocsIconUI::Cerrado, [this]() {
+    //    this->BloquearBotones(true);
+    //});
 }
 
 /// #################################### CONEXIONES ###################################################
@@ -200,9 +202,8 @@ void GameScreen::setVolumenes(float volumen)
 
 void GameScreen::setMusicVolume(float vol)
 {
-    Musica[0].setVolume(vol-0.3);
-    Musica[1].setVolume(vol-0.3);
-    Musica[2].setVolume(vol-0.3);
+    for (int i = 0; i < 6; i++)
+        Musica[i].setVolume(vol-0.4);
 }
 
 void GameScreen::RealizarConexionesPrincipales()
@@ -225,6 +226,14 @@ void GameScreen::RealizarConexionesPrincipales()
     // Conectamos el quedarse sin npcs con el final de la partida
     connect(&GestorNPC, &GestorNPCsUI::ColaTerminada, this, &GameScreen::FinalDePartida);
 
+    // Si estamos en modo demonio activamos el tiempo por npc
+    connect(&GestorNPC, &GestorNPCsUI::NPCEntro, [this](){
+        if (dificultad == 3){
+            tiempoNPC.start(tiempoPorNPC);
+        }
+        BloquearBotones(false);
+    });
+
     // Conectmaos el boton de reglas
     connect(ui->reglasBoton, &QPushButton::clicked, this, &GameScreen::MostrarReglas);
 
@@ -232,21 +241,34 @@ void GameScreen::RealizarConexionesPrincipales()
     connect(&GestorNPC, &GestorNPCsUI::setDocsInfo, &GestorDocs, &GestorDocumentosUI::setDocumento);
 
     connect(introPantalla, &IntroPantalla::ClickeoEmpezar, this, &GameScreen::arrancarJuego);
+
+    connect(&tiempoNPC, &QTimer::timeout, [this](){
+        this->DecisionJugador = false;
+        GestorNPC.SalirForzado();
+        IconoDocs->Sacar();
+    });
+
+    connect(&GestorNPC, &GestorNPCsUI::logs, this, &GameScreen::EnviarLogs);
+
+    connect(&GestorNPC, &GestorNPCsUI::NPCTerminoSalir, [this](){
+        if (juego->getCola()->getSize() == 0 || !tiempoPartida.isActive())
+            return;
+
+        juego->updateDatosJugador(playerStats);
+        playerStats.cantidadTiempoDia = TiempoDia.remainingTime();
+        playerStats.tiempoFondo = TiempoActual;
+        playerStats.tiempoPartida = tiempoPartida.remainingTime();
+        playerStats.cantNPCsPasados = GestorNPC.getCantidad_NPCs_pasados();
+    });
 }
 
 /// #################################### PREPRARAR JUEGO ###################################################
-
-void GameScreen::PrepararJuego(int Dificultad)
-{
-    juego->PrepararJuego(Dificultad);
-    libroReglasUI->setUpLevel(1);
-    GestorDocs.setUpNivel(1);
-    introPantalla->setUp(1);
-    this->nivelActual = 1;
-}
-
 void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 {
+    tiempo = 8*60*1000;
+    TiempoActual = 0;
+    cantidadTiempoDia = 52 * 1000;
+    playerStats = juego->getEmptyDatosJugador();
     juego->PrepararJuego(Nivel, Dificultad);
     libroReglasUI->setUpLevel(Nivel);
     // more stuff to do
@@ -257,6 +279,10 @@ void GameScreen::PrepararJuego(int Nivel, int Dificultad)
 
 void GameScreen::PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed)
 {
+    tiempo = 8*60*1000;
+    TiempoActual = 0;
+    cantidadTiempoDia = 52 * 1000;
+    playerStats = juego->getEmptyDatosJugador();
     juego->PrepararJuego(LvL, Dificultad, seed);
     libroReglasUI->setUpLevel(LvL);
     // more stuff to do
@@ -267,38 +293,54 @@ void GameScreen::PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed)
 
 void GameScreen::PrepararJuego(PlayerStats stats)
 {
+    tiempo = 8*60*1000;
+    TiempoActual = 0;
+    cantidadTiempoDia = 52 * 1000;
+    playerStats = stats;
     juego->PrepararJuego(stats);
     libroReglasUI->setUpLevel(stats.Nivel);
-    // more stuff to do
     GestorDocs.setUpNivel(stats.Nivel);
     introPantalla->setUp(stats.Nivel);
     this->nivelActual = stats.Nivel;
+
+    if (stats.tiempoPartida > 0){
+        TiempoActual = stats.tiempoFondo;
+        tiempo = stats.tiempoPartida;
+        cantidadTiempoDia = stats.cantidadTiempoDia;
+        GestorNPC.setUpPartidaEmpezada(stats.cantNPCsPasados);
+    }
 }
 
 void GameScreen::Iniciar()
 {
+    random.seed(juego->getSemillaMadre());
     if (nivelActual >= 5){
         BotonScanner->show();
-        currentMusic = 2;
-        Musica[2].setVolume(0.4);
+        currentMusic = 5;
+        Musica[5].setVolume(0.4);
     } else {
         BotonScanner->hide();
-        currentMusic = random.bounded(2);
+        currentMusic = random.bounded(5);
         Musica[currentMusic].setVolume(0.3);
     }
 
+    playerStats = juego->getDatosJugador();
     IconoDocs->setFinalPartida(false);
     Notificaciones.clear();
     introPantalla->Mostrar();
+    this->dificultad = juego->getDificultad();
+
+    auto Cola = juego->getCola();
+    emit EnviarLogs("Tamanio de la cola de NPCS: " + QString::number(Cola->getSize()));
+    emit EnviarLogs("Cantidad de NPCs falsos: " + QString::number(Cola->getCantidadNPCsFalsos()));
 }
 
 void GameScreen::arrancarJuego()
 {
-    tiempoPartida.start(8*60*1000); // 8 Minutos
+    tiempoPartida.start(tiempo); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego
-    TiempoDia.start(52 * 1000); // Cada 52 segundos el tiempo cambia
-    TiempoActual = 0;
+    TiempoDia.start(cantidadTiempoDia);
     ActualizarTiempo();
 
     Musica[currentMusic].play();
@@ -318,32 +360,53 @@ void GameScreen::Restart()
 
 void GameScreen::PausarJuego()
 {
+    Pausado = true;
+    if (introPantalla->isActive())
+        return;
+
     GestorNPC.Pausar();
     Musica[currentMusic].stop();
     tiempoRestante = tiempoPartida.remainingTime();
     tiempoPartida.stop();
-    Pausado = true;
+
+    if (!tiempoNPC.isActive()){
+        remainingTiempoNPC = 0;
+        return;
+    }
+
+    remainingTiempoNPC = tiempoNPC.remainingTime();
+    tiempoNPC.stop();
 }
 
 void GameScreen::ReanudarJuego()
 {
+    Pausado = false;
+    if (introPantalla->isActive())
+        return;
+
     GestorNPC.Reanudar();
     Musica[currentMusic].play();
     tiempoPartida.start(tiempoRestante);
 
-    Pausado = false;
+    if (remainingTiempoNPC != 0)
+        tiempoNPC.start(remainingTiempoNPC);
 }
 
 /// #################################### FINAL DE PARTIDA ###################################################
 
 void GameScreen::FinalDePartida()
 {
+    if (tiempoNPC.isActive())
+        tiempoNPC.stop();
+
+    if (introPantalla->isActive())
+        introPantalla->forzarSalir();
+
     Musica[currentMusic].stop();
     MatarNotificaciones();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
     IconoDocs->setFinalPartida(true);
-    IconoDocs->Sacar();
 
     if (MostrandoReglas)
         MostrarReglas();
@@ -357,8 +420,10 @@ void GameScreen::FinalDePartida()
         if (juego->getTotalSocialCredits() < 0)
            pantallaPerdiste->Iniciar(true);
         else pantallaPerdiste->Iniciar(false);
-    } else
+    } else {
+        emit Guardar(playerStats);
         emit EnviarLogs("Juego terminado forzosamente");
+    }
 }
 
 void GameScreen::Decidir()
@@ -384,22 +449,30 @@ void GameScreen::ActualizarTiempo()
 
 void GameScreen::Acepto()
 {
+    if (tiempoNPC.isActive())
+        tiempoNPC.stop();
+
     juego->addNPCaceptado();
     GestorDocs.Aprobado();
     emit EnviarLogs("Jugador acepto a la persona");
     DecisionJugador = true;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(true);
+    BloquearBotones(true);
 }
 
 void GameScreen::Rechazo()
 {
+    if (tiempoNPC.isActive())
+        tiempoNPC.stop();
+
     juego->addNPCrechazado();
     GestorDocs.Rechazar();
     emit EnviarLogs("Jugador rechazo a la persona");
     DecisionJugador = false;
     IconoDocs->BloquearDocumento();
     GestorNPC.Salir(false);
+    BloquearBotones(true);
 }
 
 void GameScreen::SelloDocumento(bool Boton)
@@ -416,6 +489,7 @@ void GameScreen::SelloDocumento(bool Boton)
          emit EnviarLogs(GestorNPC.getDatosFalsos());
     }
 
+    emit EnviarLogs("Tamanio de la cola de NPCS: " + QString::number(juego->getCola()->getSize()));
     emit EnviarLogs("Puntaje actual: " + QString::number(juego->getSocialCreditsEarnedInLevel()));
 }
 

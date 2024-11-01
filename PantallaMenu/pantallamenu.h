@@ -16,7 +16,12 @@ class PantallaMenu : public QWidget
     Q_OBJECT
 
 public:
-    explicit PantallaMenu(GuardarPartidas *, QWidget *parent = nullptr);
+    enum ActivarCheats{
+        Activado,
+        Desactivado
+    };
+
+    explicit PantallaMenu(ActivarCheats tipo, GuardarPartidas *, QWidget *parent = nullptr);
     void setInicio();
     ~PantallaMenu();
     void stopMusic();
@@ -83,6 +88,8 @@ private slots:
     void SlotGuardadoSeleccionado(int);
 
     void tutorialButton();
+
+    void clickedCreditos();
 private:
     // Sistema de partidas guardadas:
     const QString COLOR_DESBLOQUEADO = "color: white; background-color: rgb(170, 0, 255);";
@@ -98,7 +105,7 @@ private:
     void ConfigurarBotonesElegirPartidaGuardada();
     void ConfigurarBotonesElegirRanura();
 
-    QSoundEffect Musica;
+    QSoundEffect Musica, MusicaCreditos;
     QSoundEffect GTALocura;
     QSoundEffect SonidosBotones;
     QSoundEffect SonidoModoDemonio;

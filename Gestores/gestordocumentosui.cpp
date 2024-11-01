@@ -214,7 +214,7 @@ void GestorDocumentosUI::Salir()
             documentosUI[i]->Sacar();
 
     if (!documentosUI[5]->isHidden())
-        documentosUI[5]->Centrar();
+        documentosUI[5]->Sacar();
 
     Mostrando = false;
 }

@@ -1,2 +1,0 @@
-:/Resources/NPCs/CuerpoRefugiada1.png
-:/Resources/NPCs/CuerpoRefugiada2.png

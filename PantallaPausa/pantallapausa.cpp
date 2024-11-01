@@ -41,7 +41,6 @@ PantallaPausa::PantallaPausa(QWidget *parent)
 
 void PantallaPausa::setInicio()
 {
-    SonidosBotones.play();
     ui->Menus->setCurrentIndex(0);
 }
 

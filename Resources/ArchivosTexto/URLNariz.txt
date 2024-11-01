@@ -1,3 +1,0 @@
-:/Resources/NPCs/Nariz1.png
-:/Resources/NPCs/Nariz2.png
-:/Resources/NPCs/Nariz3.png

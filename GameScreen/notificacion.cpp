@@ -10,7 +10,7 @@ Notificacion::Notificacion(int Numero, bool Multa, QString texto, float vol, QWi
     ui->setupUi(this);
     Temporizador.setSingleShot(true);
 
-    sonidoEntrada.setSource(QUrl("qrc:/Resources/Documentos/Notificaciones/NotificacionEntrada.WAV"));
+    sonidoEntrada.setSource(QUrl("qrc:/Resources/Sonidos/SonidoError.wav"));
     sonidoSalida.setSource(QUrl("qrc:/Resources/Documentos/Notificaciones/NotificacionSalida.WAV"));
     setVolume(vol);
 
@@ -23,7 +23,7 @@ Notificacion::Notificacion(int Numero, bool Multa, QString texto, float vol, QWi
     cerrar->setStyleSheet("background-color: rgba(255, 255, 255, 0); border: none;");  // Hacerlo invisible
     ui->BotonCerrar->layout()->addWidget(cerrar);
 
-    ui->Motivos->setText(texto);
+    ui->MotivosV2->setText(texto);
     if (Multa)
         ui->stackedWidget->setCurrentIndex(0);
     else ui->stackedWidget->setCurrentIndex(1);
@@ -50,7 +50,7 @@ Notificacion::~Notificacion()
 
 void Notificacion::setVolume(float vol)
 {
-    sonidoEntrada.setVolume(vol - 0.2);
+    sonidoEntrada.setVolume(vol);
     sonidoSalida.setVolume(vol - 0.2);
 }
 

@@ -7,6 +7,7 @@
 #include <QString>
 #include <QSoundEffect>
 #include <QLabel>
+#include "../lectorarchivos.h"
 
 namespace Ui {
 class libroreglas;
@@ -29,12 +30,12 @@ private:
     QSoundEffect pasarPagina;
     Ui::libroreglas *ui;
     Juego* juego;
-
     // Datos de niveles:
     void setDatosPag1();
     void setDatosNivel2();
     void setDatosNivel3();
     void setDatosNivel4();
+    void setDatosNivel5();
     void setDatos(const vector<QString>& lineas, QLabel* lugarDondeSeColocaElTexto);
 
     void setDocumentacionInfo(Documentacion *documento) override;

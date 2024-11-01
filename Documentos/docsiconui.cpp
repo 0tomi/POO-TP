@@ -126,6 +126,7 @@ void DocsIconUI::AbrirDocumento()
 void DocsIconUI::setFinalPartida(bool newFinalPartida)
 {
     FinalPartida = newFinalPartida;
+    this->Sacar();
 }
 
 bool DocsIconUI::Mostrando() const

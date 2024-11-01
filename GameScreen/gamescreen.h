@@ -37,7 +37,6 @@ public:
     ~GameScreen();
 
     void Iniciar();
-    void PrepararJuego(int Dificultad = 2);
     void PrepararJuego(int Nivel = 1, int Dificultad = 2);
     void PrepararJuegoCheat(int LvL, int Dificultad, quint32 seed);
     void PrepararJuego(PlayerStats);
@@ -55,6 +54,7 @@ public slots:
 signals:
     void NivelTerminado(bool Perdio);
     void EnviarLogs(QString);
+    void Guardar(PlayerStats&);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override; // Para detectar cuando se presiona una tecla
@@ -63,11 +63,14 @@ private slots:
     void Decidir();
 
 private:
+    PlayerStats playerStats;
+    int dificultad;
     Ui::GameScreen *ui;
     PantallaPerdiste* pantallaPerdiste;
     Juego* juego;
     int nivelActual;
     QTimer tiempoPartida;
+    int tiempo;
     int tiempoRestante;
 
     bool Pausado;
@@ -75,7 +78,7 @@ private:
 
     // Sonidos
     QRandomGenerator random;
-    QSoundEffect Musica[3];
+    QSoundEffect Musica[6];
     int currentMusic;
     void setUpSonidos();
 
@@ -97,6 +100,7 @@ private:
 
     // Controlar tiempo en partida
     QTimer TiempoDia;
+    int cantidadTiempoDia;
     void ActualizarTiempo();
     void arrancarJuego();
     int TiempoActual;
@@ -138,6 +142,12 @@ private:
 
     // Radiografia
     radiografiaui * RadiografiaUI;
+
+    // Modo demonio
+    QTimer tiempoNPC;
+    const int tiempoPorNPC = 45 * 1000;
+    int remainingTiempoNPC;
+    bool ModoDemonActivo;
 };
 
 #endif // GAMESCREEN_H

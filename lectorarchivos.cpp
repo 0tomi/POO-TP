@@ -11,6 +11,11 @@ int LectorArchivos::getTopeArray(){
     return this->max;
 }
 
+LectorArchivos::LectorArchivos()
+{
+
+}
+
 LectorArchivos::LectorArchivos(QString direccion){
     this->LeerArchivoNuevo(direccion);
 }

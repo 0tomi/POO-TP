@@ -3,7 +3,7 @@
 
 IntroPantalla::IntroPantalla(Juego *game, QWidget *parent):
     QWidget(parent)
-    , ui(new Ui::IntroPantalla)
+    , ui(new Ui::IntroPantalla), activa(false)
 {
     ui->setupUi(this);
     this->padre = parent;
@@ -42,12 +42,20 @@ void IntroPantalla::Salir()
     animacionSalida->setStartValue(this->pos());
     animacionSalida->setEndValue(QPoint(centerX, padre->height()));
     animacionSalida->start();
+    this->activa = false;
 }
 
 void IntroPantalla::setUp(int nivel)
 {
     this->libro->setUpLevel(nivel);
     this->show();
+    this->activa = true;
+}
+
+void IntroPantalla::forzarSalir()
+{
+    this->libro->Sacar();
+    this->activa = false;
 }
 
 IntroPantalla::~IntroPantalla()
@@ -58,4 +66,9 @@ IntroPantalla::~IntroPantalla()
 void IntroPantalla::setVolumenes(float volumen)
 {
     libro->setVolume(volumen);
+}
+
+bool IntroPantalla::isActive() const
+{
+    return activa;
 }

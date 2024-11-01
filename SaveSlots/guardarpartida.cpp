@@ -16,25 +16,20 @@ GuardarPartidas::GuardarPartidas() {
     }
 }
 
-void GuardarPartidas::save(const PlayerStats &datos, int slot){
+void GuardarPartidas::save(PlayerStats &datos, int slot){
+    emit Log("Guardando datos en: " + SlotsGuardado[slot]);
     if (slot < 0 || slot > 2)
         slot = 0;
 
     QFile file(SlotsGuardado[slot]);
-
     if (!file.open(QIODevice::WriteOnly)) {
         emit Log("Error: No se pudo abrir el archivo para escritura: " + SlotsGuardado[slot]);
         return;
     }
 
-    QDataStream out(&file);
-    out.setVersion(QDataStream::Qt_6_0);    // Version mas nueva locura
-
-    // Escribimos los datos del struct en el archivo
-    out << datos.Nivel << datos.Dificultad << datos.TotalSocialCredits
-        << datos.Multas << datos.CantidadNPCsRechazados << datos.CantidadNPCsAceptados;
-
+    file.write(reinterpret_cast<char*> (&datos), sizeof(PlayerStats));
     file.close();
+    emit Log("Datos guardados exitosamente.");
 }
 
 PlayerStats GuardarPartidas::CargarPartida(int slot){
@@ -46,22 +41,19 @@ PlayerStats GuardarPartidas::CargarPartida(int slot){
         return emptySave;
     }
 
-    QDataStream in(&file);
-    in.setVersion(QDataStream::Qt_6_0); // Versión moderna locura
-
     // Verificar si esta bien escrito el struct, sino lo sobreescribe
-    if (file.size() != sizeof(PlayerStats)) {
-        emit Log("La estructura del archvio de guardado: " + SlotsGuardado[slot] + "no coincide con el tamaño esperado. Reiniciando los valores a 0.");
+    auto TamanioStats = sizeof(PlayerStats);
+    if (file.size() != TamanioStats) {
+        emit Log("La estructura del archvio de guardado: " + SlotsGuardado[slot] + " no coincide con el tamaño esperado. Reiniciando los valores a 0.");
         file.close();
 
         return emptySave;
     }
 
     // Leer los datos del archivo
-    in >> stats.Nivel >> stats.Dificultad >> stats.TotalSocialCredits
-        >> stats.Multas >> stats.CantidadNPCsRechazados >> stats.CantidadNPCsAceptados;
-
+    file.read(reinterpret_cast<char*> (&stats), TamanioStats);
     file.close();
+
     return stats;
 }
 
@@ -76,9 +68,9 @@ vector<bool> GuardarPartidas::LeerPartidas(){
     return slots_disponibles;
 }
 
-void GuardarPartidas::saveCurrentSlot(const PlayerStats &data)
+void GuardarPartidas::saveCurrentSlot(PlayerStats &data)
 {
-    save(data, currentSlot);
+    save(data, this->currentSlot);
 }
 
 void GuardarPartidas::cleanCurrentSlot()

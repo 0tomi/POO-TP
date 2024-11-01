@@ -12,10 +12,10 @@ class GuardarPartidas: public QObject{
 
 public:
     GuardarPartidas();
-    void save(const PlayerStats &datos, int slot );
+    void save(PlayerStats &datos, int slot );
     PlayerStats CargarPartida(int slot);
     vector<bool> LeerPartidas();
-    void saveCurrentSlot(const PlayerStats&);
+    void saveCurrentSlot(PlayerStats&);
     void cleanCurrentSlot();
     void setCurrentSlot(int slot);
 
@@ -27,6 +27,6 @@ private:
     const QString DireccionCarpeta = BuildPath + "/SavedGames";
     QString SlotsGuardado[3];
     int currentSlot;
-    PlayerStats emptySave = {0,0,0,0,0,0};
+    PlayerStats emptySave = {0,0,0,0,0,0,0,0,0,0,0,0};
 };
 #endif // GUARDARPARTIDA_H

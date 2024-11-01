@@ -18,6 +18,7 @@ class GestorNPCsUI: public QWidget
 public:
     GestorNPCsUI();
     ~GestorNPCsUI();
+    void setUpPartidaEmpezada(int cantidad_NPCs_pasados);
     void setUp(QWidget * EscenarioTranscriptor, QWidget *EscenarioNPCs, ColaNPC* cola);
     void setUpTranscriptor(QPushButton *boton);
 
@@ -42,10 +43,14 @@ public:
     void Pausar();
     void Reanudar();
 
+    void SalirForzado();
+    int getCantidad_NPCs_pasados() const;
+
 public slots:
     void SalirEntidades();
 
 signals:
+    void logs(QString);
     void setDocsInfo(NPC * info);
     void NPCCambiado();
     void ColaTerminada();
@@ -57,7 +62,6 @@ signals:
     void NPCEntro();
     void NPCSalio();
 
-    void NPCTerminoEntrar();
     void NPCTerminoSalir();
 
 private slots:
@@ -80,11 +84,14 @@ private:
     bool ColaVacia;
 
     int topeNPCs;
+    int cantidad_NPCs_pasados;
     int NivelActual;
     void RealizarConexionesDeNPCs();
     void DesconectarNPCs();
     bool NPCConectado;
     void ActualizarEstadoNPC();
+    void FinalizarEntidades();
+    void GenerarLog (NPC* info);
 };
 
 #endif // GESTORNPCSUI_H

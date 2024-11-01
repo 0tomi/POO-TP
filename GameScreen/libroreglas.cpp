@@ -22,6 +22,8 @@ libroreglas::libroreglas(Juego * datos, QWidget *parent)
 
     setBotones();
     hide();
+
+    DocumentosUI::DesactivarEventosMouse();
 }
 
 void libroreglas::setUpLevel(int level)
@@ -33,6 +35,7 @@ void libroreglas::setUpLevel(int level)
     ui->Nivel2Boton2->hide();
     ui->Nivel3Boton1->hide();
     ui->Nivel4Boton1->hide();
+    ui->Nivel5boton1->hide();
 
     if (level >= 2){
         setDatosNivel2();
@@ -51,7 +54,9 @@ void libroreglas::setUpLevel(int level)
         ui->Nivel4Boton1->show();
     }
     if (level >= 5){
-
+        setDatosNivel5();
+        CantidadPaginas = 7;
+        ui->Nivel5boton1->show();
     }
 }
 
@@ -59,6 +64,10 @@ void libroreglas::Entrar()
 {
     raise();
     moverLibro.play();
+    // Mostramos el indice y hacemos que el boton de anterior se oculte.
+    PaginaActual = 0;   // Indice
+    ui->Anterior->hide();
+    ui->LibroReglas->setCurrentIndex(PaginaActual);
     DocumentosUI::Entrar();
 }
 
@@ -108,6 +117,9 @@ void libroreglas::setBotones(){
 
     connect(ui->Nivel4Boton1, &QPushButton::clicked, [this]() {
         SaltarPagina(5);
+    });
+    connect(ui->Nivel5boton1,&QPushButton::clicked, [this](){
+        SaltarPagina(6);
     });
 }
 
@@ -165,14 +177,8 @@ void libroreglas::setDatosNivel2()
         qDebug() << "Fallo al castear reglas de nivel 2 en libro de reglas";
         return;
     }
-    QString texto;
 
-    vector<QString> paisesInvalidos = reglas->getPaisesInvalidos();
-
-    for (int i = 0; i < paisesInvalidos.size(); i++)
-        texto += "- " + paisesInvalidos[i] + "\n";
-
-    ui->PaisesResidenciaInvalidos->setText(texto);
+    setDatos(reglas->getPaisesValidos(), ui->PaisesResidenciaInvalidos);
 }
 
 void libroreglas::setDatosNivel3()
@@ -208,6 +214,14 @@ void libroreglas::setDatosNivel4()
     setDatos(reglas->getOcupacionPermitidos(), ui->ListaOcupacionesPermitidas);
 }
 
+void libroreglas::setDatosNivel5()
+{
+    LectorArchivos archivo(":/Niveles/Nivel5/ObjetosInvalidos.txt");
+    setDatos(archivo.getVector(),ui->ObjetosRadiografiaIlegales);
+    archivo.LeerArchivoNuevo(":/Niveles/Nivel5/ObjetosValidos.txt");
+    setDatos(archivo.getVector(),ui->ObjetosRadiografiaLegales);
+}
+
 void libroreglas::setDatos(const vector<QString> &lineas, QLabel* lugarDondeSeColocaElTexto)
 {
     QString texto;
@@ -217,14 +231,9 @@ void libroreglas::setDatos(const vector<QString> &lineas, QLabel* lugarDondeSeCo
 }
 
 void libroreglas::setPaises(ReglasNivel1 * datos){
-    vector<QString>  invalidos = datos->getPaisesInvalidos();
-
-    QString Texto = "Paises no permitidos:\n";
-    for(int i = 0; i < invalidos.size(); i++){
-        Texto += invalidos[i] + "\n";
-    }
-    ui->PaisesPermitidos->setText(Texto);
+    setDatos(datos->getPaisesPermitidos(), ui->PaisesPermitidos);
 }
+
 void libroreglas::setFechas(ReglasNivel1 * datos){
     QString Texto = "Solo se permiten personas:\n";
     int fechaMin = datos->getFechaMinPermitida();
@@ -244,13 +253,13 @@ void libroreglas::setEstadoCivil(ReglasNivel1 * datos){
     ui->EstadoCivilPermitido->setText(Texto);
 }
 void libroreglas::setDuracionEstancia(ReglasNivel1 * datos){
-    QString Texto = "La duracion maxima de estancia es de:\n";
+    QString Texto;
     int duracionMaxima = datos->getDuracionEstanciaPermitida();
     Texto += QString::number(duracionMaxima) + " Meses";
     ui->DuracionPermitida->setText(Texto);
 }
 void libroreglas::setTipoDeVisita(ReglasNivel1 * datos){
-    QString Texto = "Solo se permitirá la \nentrada a los siguientes\n tipos de visita:\n";
+    QString Texto;
     vector<QString> tipoVisita = datos->getTipoDeVisitaValida();
     for (int i = 0; i < tipoVisita.size() ; ++i) {
         Texto += tipoVisita[i] + "\n";

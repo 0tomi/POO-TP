@@ -4,7 +4,8 @@
 #include <QString>
 #include <QChar>
 #include <QRandomGenerator>
-
+#include <vector>
+using namespace std;
 
 class LocuraCaracteres
 {
@@ -14,6 +15,9 @@ public:
     QString CambiarCadena(int Dificultad, QString cadena);
     QString CambiarCadena(QString Cadena, int CantCaracteres);
 private:
+    // pair < posicion - insertado >
+    vector<bool> caracteres2cambiar;
+
     QString Cambiar(QString Cadena);
     QChar CambiarNumero(QChar numeroOriginal);
     QChar CambiarLetra(QChar letraOriginal);
@@ -24,7 +28,7 @@ private:
 
     int cantCaracteres;;
     void setDificultad(int Dificultad);
-    int * AlgoritmoDeReservoirByTomi(QString CadenaLocura);
+    void AlgoritmoDeReservoirByTomi(QString CadenaLocura);
 };
 
 #endif // LOCURACARACTERES_H

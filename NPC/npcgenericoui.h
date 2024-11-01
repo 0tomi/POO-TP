@@ -9,6 +9,7 @@
 #include <QRandomGenerator>
 #include <QLabel>
 #include <QSoundEffect>
+#include <vector>
 
 namespace Ui {
 class NPCGenericoUI;
@@ -27,6 +28,8 @@ public:
     void Entrar() override;
     void Salir(bool Aceptado) override;
     void setSoundVolume(float vol);
+    virtual void Pausar(bool Estado) override;
+    void Finalizar() override;
 
 protected:
     void ReescalarNPC();
@@ -41,7 +44,8 @@ protected:
 
 private:
     Ui::NPCGenericoUI *ui;
-    NPCcomun *NPCenEscena;
+    NPCcomun * NPCenEscena;
+    std::vector <QString> dialogosQuejarse;
 
     // Funcion para eliminar la hoja CSS de la ui, para que no se superponga con los pixmaps
     // (porque sino cada vez que se quiera hacer una modificacion hay que estar colocando las imagenes)
@@ -54,6 +58,7 @@ private:
     QRandomGenerator* tiempoParpadeo;
     QTimer parpadeo;
     QTimer quejarse;
+    int quejarseRemainingTime;
 
     void emitQuejarse();
     void Parpadear();

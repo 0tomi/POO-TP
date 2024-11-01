@@ -30,13 +30,6 @@
         <file>Resources/NPCs/BocaTriste.png</file>
         <file>Resources/ArchivosTexto/nombres.txt</file>
         <file>Resources/ArchivosTexto/paises.txt</file>
-        <file>Resources/ArchivosTexto/URLBarbas.txt</file>
-        <file>Resources/ArchivosTexto/URLBocas.txt</file>
-        <file>Resources/ArchivosTexto/URLCarasHombre.txt</file>
-        <file>Resources/ArchivosTexto/URLCarasMujer.txt</file>
-        <file>Resources/ArchivosTexto/URLCejas.txt</file>
-        <file>Resources/ArchivosTexto/URLNariz.txt</file>
-        <file>Resources/ArchivosTexto/URLOjos.txt</file>
         <file>Resources/MaterialPantallas/BotonAprobarApretado.png</file>
         <file>Resources/MaterialPantallas/BotonAprobarSinApretar.png</file>
         <file>Resources/MaterialPantallas/BotonDesaprobarApretado.png</file>
@@ -54,9 +47,6 @@
         <file>Resources/NPCs/CuerpoRefugiada2.png</file>
         <file>Resources/NPCs/CuerpoRefugiado1.png</file>
         <file>Resources/NPCs/CuerpoRefugiado2.png</file>
-        <file>Resources/ArchivosTexto/URLCarasRefugiadoHombre.txt</file>
-        <file>Resources/ArchivosTexto/URLCarasRefugiadoMujer.txt</file>
-        <file>Resources/ArchivosTexto/URLCarasRevolucionario.txt</file>
         <file>Resources/NPCs/GloboDialogoNPC.png</file>
         <file>Resources/NPCs/GloboDialogoNPC2.png</file>
         <file>Resources/ArchivosTexto/DialogosRevolucionario.txt</file>
@@ -109,9 +99,6 @@
         <file>Resources/NPCs/PeloH2.png</file>
         <file>Resources/NPCs/PeloM1.png</file>
         <file>Resources/NPCs/PeloM2.png</file>
-        <file>Resources/ArchivosTexto/URLCaras.txt</file>
-        <file>Resources/ArchivosTexto/URLPeloH.txt</file>
-        <file>Resources/ArchivosTexto/URLPeloM.txt</file>
         <file>Resources/NPCs/Gorro1.png</file>
         <file>Resources/NPCs/Gorro2.png</file>
         <file>Resources/NPCs/Gorro3.png</file>
@@ -125,7 +112,6 @@
         <file>Resources/NPCs/CuerpoRefugiado4.png</file>
         <file>Resources/NPCs/CuerpoRefugiado5.png</file>
         <file>Resources/NPCs/CuerpoRefugiado6.png</file>
-        <file>Resources/ArchivosTexto/URLCarasRefugiado.txt</file>
         <file>Resources/NPCs/Nariz2.png</file>
         <file>Resources/NPCs/Nariz3.png</file>
         <file>Resources/NPCs/Cejas2.png</file>
@@ -210,5 +196,25 @@
         <file>Resources/Sonidos/SonidosFinalNivel/SonidoGanar.WAV</file>
         <file>Resources/Sonidos/SonidosFinalNivel/SonidoPerder.WAV</file>
         <file>Resources/NPCs/NPCPasillo.png</file>
+        <file>Resources/Sonidos/VoltearRadiografia.wav</file>
+        <file>Resources/Musica/MusicaJuego4.WAV</file>
+        <file>Resources/Musica/MusicaJuego5.WAV</file>
+        <file>Resources/Musica/MusicaJuego6.WAV</file>
+        <file>Resources/NPCs/Cuerpo12.png</file>
+        <file>Resources/NPCs/Cuerpo13.png</file>
+        <file>Resources/NPCs/Cuerpo14.png</file>
+        <file>Resources/NPCs/Cuerpo15.png</file>
+        <file>Resources/NPCs/Cuerpo16.png</file>
+        <file>Resources/NPCs/Cuerpo17.png</file>
+        <file>Resources/NPCs/Boca4.png</file>
+        <file>Resources/Dialogos/DialogosQuejarse.txt</file>
+        <file>Resources/Sonidos/SonidoError.wav</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo7.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo8.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo9.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo10.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo11.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo12.png</file>
+        <file>Resources/NPCs/RevolucionarioCuerpo13.png</file>
     </qresource>
 </RCC>

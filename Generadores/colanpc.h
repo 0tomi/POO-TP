@@ -11,6 +11,7 @@ public:
     ColaNPC();
     void setSeed(quint32 seed);
     void Inicializar(int Nivel, int Dificultad, Reglas ** rules, quint32 seed);
+    void setUpColaEmpezada(int cantidad_NPCs_pasados);
 
     void addNPC(int Tipo, bool Validez);
     void addNPC(int NivelActual, int CantAldeano, int CantRefugiados, int CantDiplos, int CantRevolucionarios, int CantidadInvalidos);
@@ -29,10 +30,20 @@ public:
 
     ~ColaNPC();
 
+    int getCantidadNPCsFalsos() const;
+
 private:
+    struct dupla{
+        int Tipo;
+        bool Validez;
+    };
+    vector <dupla> NPCSaGenerar;
+
+    bool GenerarNPCs(int CantidadTotal, int CantidadFalsos, int CantidadTipos[]);
     quint32 semillaActual;
     vector<NPC*> VectorNPCs;
     int size;
+    int cantidadNPCsFalsos;
     int nivelActual;
 
     NPC* NPCaRetornar;

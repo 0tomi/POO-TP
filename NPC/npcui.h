@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QResizeEvent>
 #include <QPropertyAnimation>
+#include <QRandomGenerator>
 #include "../NPC/npc.h"
 
 namespace Ui {
@@ -23,7 +24,8 @@ public:
     virtual void Entrar();
     virtual void Salir(bool Aceptado);
     virtual ~NPCUI();
-    void Pausar(bool Estado);
+    virtual void Pausar(bool Estado);
+    virtual void Finalizar();
 
 signals:
     void animacionSalirTerminada();
@@ -33,10 +35,12 @@ signals:
     void QuiereHablar(const QString &dialogo);
 
 protected:
-    // Metodos del padre
-    void moveEvent(QMoveEvent * event) override;
-
     // Animaciones
+    QRandomGenerator random;
+    void PrepararAnimacionStandBy();
+    QPropertyAnimation * animacionStandBy;
+    bool estadoAnimacionStandby;
+
     void PrepararAnimacionEntrada();
     QPropertyAnimation *animacionEntrada;
 

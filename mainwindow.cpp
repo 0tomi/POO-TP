@@ -5,7 +5,7 @@
 /// ############################### CONSTRUCTOR #######################################
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow), guardarPartida(), log(Logs::Desactivado)
+    , ui(new Ui::MainWindow), guardarPartida(), log(Logs::Activado)
 {
     ui->setupUi(this);
     setWindowIcon(QIcon(":/Resources/th.jpeg"));
@@ -13,10 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     CrearPantallasJuego();
 
-    ConeccionesPantallaPausa();
-    ConeccionesPantallaMenu();
-    ConeccionesPantallaEstadisticas();
-    ConeccionesLogs();
+    ConexionesPantallaPausa();
+    ConexionesPantallaMenu();
+    ConexionesPantallaEstadisticas();
+    ConexionesPantallaGameScreen();
+    ConexionesLogs();
 
     // Mostrar en pantalla completa:
     this->showFullScreen();
@@ -54,8 +55,7 @@ void MainWindow::CrearPantallasJuego()
     setCentralWidget(pantallas);
 
     // Creamos las pantallas del juego
-
-    pantallaMenu = new PantallaMenu(&guardarPartida, this);
+    pantallaMenu = new PantallaMenu(PantallaMenu::Desactivado, &guardarPartida, this);
     gameScreen = new GameScreen(juego, this);
     pantallaPausa = new PantallaPausa(this);
     pantallaFinalNivel = new PantallaFinalNivel(&guardarPartida, this);
@@ -76,7 +76,7 @@ void MainWindow::CrearPantallasJuego()
 }
 
 /// ################################### CONEXIONES DE PANTALLAS #######################################
-void MainWindow::ConeccionesPantallaPausa()
+void MainWindow::ConexionesPantallaPausa()
 {
     // Conectamos las señales del menu de pausa
     connect(pantallaPausa, &PantallaPausa::setFullScreen, this, &MainWindow::showFullScreen);
@@ -94,7 +94,7 @@ void MainWindow::ConeccionesPantallaPausa()
     connect(pantallaPausa, &PantallaPausa::musicVolume, pantallaTutorial, &PantallaTutorial::setMusicVolume);
 }
 
-void MainWindow::ConeccionesPantallaMenu()
+void MainWindow::ConexionesPantallaMenu()
 {
     // Cuando se clickee jugar, abrimos el juego:
     connect(pantallaMenu, &PantallaMenu::clickedStartDefault, [this](int dif){this->TransicionJuego(1,dif);});
@@ -112,14 +112,20 @@ void MainWindow::ConeccionesPantallaMenu()
     connect(pantallaMenu, &PantallaMenu::clickedStartCheat, this, &MainWindow::TransicionJuegoCheat);
 }
 
-void MainWindow::ConeccionesPantallaEstadisticas()
+void MainWindow::ConexionesPantallaEstadisticas()
 {
     connect(pantallaFinalNivel, &PantallaFinalNivel::salirClicked, this, &MainWindow::VolverInicio);
     connect(pantallaFinalNivel, &PantallaFinalNivel::sigNivelClicked, this, &MainWindow::TransicionJuego);
     connect(pantallaFinalNivel, &PantallaFinalNivel::reintentarClicked, this, &MainWindow::TransicionJuego);
+}
 
+void MainWindow::ConexionesPantallaGameScreen()
+{
     // Conectamos el final de la partida con el nivel terminado
     connect(gameScreen, &GameScreen::NivelTerminado, this, &MainWindow::PrepararPantallaFinalNivel);
+    connect(gameScreen, &GameScreen::Guardar, [this](PlayerStats &stats){
+        guardarPartida.saveCurrentSlot(stats);
+    });
 }
 /// ################################## PANTALLA DE ESTADISTICAS #############################################
 
@@ -171,6 +177,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
                                                                QMessageBox::Yes);
     if (resBtn == QMessageBox::Yes) {
         event->accept();  // Aceptar el evento y cerrar la ventana
+        log.SaveLogs();
         QApplication::quit();  // Cerrar la aplicación
     } else {
         event->ignore();  // Ignorar el evento y no cerrar la ventana
@@ -327,7 +334,7 @@ void MainWindow::SalirTutorial()
 
 
 // ###################################### LOGS ###################################
-void MainWindow::ConeccionesLogs()
+void MainWindow::ConexionesLogs()
 {
     connect(pantallaPausa, &PantallaPausa::EnviarLogs, &log, &Logs::RecibirLogs);
     connect(pantallaFinalNivel,&PantallaFinalNivel::EnviarLogs,&log,&Logs::RecibirLogs);

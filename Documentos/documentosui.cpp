@@ -2,6 +2,7 @@
 #include "ui_documentosui.h"
 #include <QDebug>
 #include <QMouseEvent>
+#include <QLabel>
 
 DocumentosUI::DocumentosUI(QWidget *parent)
     : QWidget(parent)
@@ -114,5 +115,19 @@ void DocumentosUI::mouseMoveEvent(QMouseEvent *event) {
         int dy = event->pos().y() - m_dragStartPosition.y();
         // Movemos el widget a esas posiciones
         move(pos() + QPoint(dx, dy));
+    }
+}
+
+void DocumentosUI::DesactivarEventosMouse()
+{
+    // Este for each recorre el objeto, buscando todas lass labels
+    // y desactiva la propiedad de captar eventos del mouse
+    // esto nos sirve para que no bugeen el mouse al mover el objeto.
+
+    foreach (QObject* obj, this->findChildren<QLabel*>()) {
+        QLabel* label = qobject_cast<QLabel*>(obj);
+        if (label) {
+            label->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+        }
     }
 }
