@@ -19,6 +19,8 @@ public:
     void volverEntrar();
     void salir();
     void MoverAdelante(NPCFondo * anterior);
+    void setPrimero(bool);
+    bool isPrimero() const;
     ~NPCFondo();
 
 public slots:
@@ -31,6 +33,7 @@ signals:
 
 private:
     void PrepararAnimacionAdelantar(int x, int y);
+    bool primero;
     QPropertyAnimation * animacionAdelantar;
     QPropertyAnimation * animacionSalir;
     QPropertyAnimation * animacionEntrar;

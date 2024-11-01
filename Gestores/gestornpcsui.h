@@ -50,6 +50,7 @@ public slots:
     void SalirEntidades();
 
 signals:
+    void cantidadNPCs(int);
     void logs(QString);
     void setDocsInfo(NPC * info);
     void NPCCambiado();

@@ -14,6 +14,7 @@ NPCFondo::NPCFondo(QWidget *parent)
     connect(animacionSalir, &QAbstractAnimation::finished, this, [this](){
         this->hide();
         emit this->Salio();
+        this->primero = false;
     });
 
     animacionEntrar = new QPropertyAnimation(this, "pos");
@@ -31,19 +32,38 @@ NPCFondo::NPCFondo(QWidget *parent)
         emit Posicion(this->pos());
     });
 
-    this->move(QPoint(0, padre->height() / 3));
+    this->move(QPoint(0, padre->height() - this->height()));
     this->show();
+    this->primero = false;
 }
 
 void NPCFondo::moverAdelante()
 {
-    this->PrepararAnimacionAdelantar(this->x() + 15, this->y());
+    if (this->isHidden())
+        return;
+
+    if (primero) {
+        this->salir();
+        return;
+    }
+
+    int y = padre->height() - this->height();
+
+    this->PrepararAnimacionAdelantar(this->x() + 130, y);
     animacionAdelantar->start();
     this->raise();
 }
 
 void NPCFondo::moverAdelante(int x, int y)
 {
+    if (this->isHidden())
+        return;
+
+    if (primero) {
+        this->salir();
+        return;
+    }
+
     this->PrepararAnimacionAdelantar(x, y);
     animacionAdelantar->start();
     this->raise();
@@ -51,7 +71,7 @@ void NPCFondo::moverAdelante(int x, int y)
 
 void NPCFondo::volverEntrar()
 {
-    int y = padre->height() / 3;
+    int y = padre->height() - this->height();
     animacionEntrar->setStartValue(QPoint(-this->width(), y));
     animacionEntrar->setEndValue(QPoint(this->width(),y));
 
@@ -61,7 +81,7 @@ void NPCFondo::volverEntrar()
 
 void NPCFondo::salir()
 {
-    int y = padre->height() / 3;
+    int y = padre->height() - this->height();
     animacionSalir->setStartValue(this->pos());
     animacionSalir->setEndValue(QPoint(padre->width() + this->width(), y));
 
@@ -80,6 +100,16 @@ void NPCFondo::MoverAdelante(NPCFondo *anterior)
     PrepararAnimacionAdelantar(x,y);
     animacionAdelantar->start();
     this->raise();
+}
+
+void NPCFondo::setPrimero(bool estado)
+{
+    primero = estado;
+}
+
+bool NPCFondo::isPrimero() const
+{
+    return this->primero;
 }
 
 NPCFondo::~NPCFondo()

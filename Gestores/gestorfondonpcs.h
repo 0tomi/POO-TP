@@ -18,13 +18,18 @@ public:
     void clear();
 
 public slots:
-    void updateCantidadNPCs(int);
     void resizeNPCs();
     void pasarNPC();
+    void updateCantidadNPCs(int);
+
+private slots:
+    void NPCterminoSalir();
+    void NPCactualizoPosicion(QPoint);
 
 private:
     QWidget * fondo;
     QVector<NPCFondo*> npcs;
+    int ultimoNPCenSalir;
 
     int cantidadNPCs;
     int cantidadNPCsFondo;

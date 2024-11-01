@@ -260,6 +260,9 @@ void GameScreen::RealizarConexionesPrincipales()
         playerStats.tiempoFondo = TiempoActual;
         playerStats.tiempoPartida = tiempoPartida.remainingTime();
         playerStats.cantNPCsPasados = GestorNPC.getCantidad_NPCs_pasados();
+
+        GestorFondo.updateCantidadNPCs(juego->getCola()->getSize() - 1);
+        GestorFondo.pasarNPC();
     });
 }
 
@@ -408,6 +411,7 @@ void GameScreen::FinalDePartida()
     MatarNotificaciones();
     GestorNPC.TerminoNivel();
     GestorDocs.TerminoNivel();
+    GestorFondo.pasarNPC();
     IconoDocs->setFinalPartida(true);
 
     if (MostrandoReglas)
@@ -583,6 +587,7 @@ void GameScreen::resizeEvent(QResizeEvent *event)
     // En caso de cambiar la ventana, ajustamos el tamaño del NPC
     QWidget::resizeEvent(event);
     this->introPantalla->acomodarPantalla();
+    GestorFondo.resizeNPCs();
     if (GestorNPC.MostrandoElNPC())
         GestorNPC.Centrar();
     if (pantallaPerdiste->getMostrandoPantalla())

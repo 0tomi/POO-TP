@@ -91,6 +91,7 @@ void GestorNPCsUI::Entrar()
     NPCenEscena = ColaNPCs->getNPC();
     emit setDocsInfo(NPCenEscena);
 
+    emit cantidadNPCs(ColaNPCs->getSize());
     if (ColaNPCs->getSize() == 0){
         // Desconectamos la animacion de entrar
         DesconectarNPCs();
