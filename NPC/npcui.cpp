@@ -159,18 +159,22 @@ void NPCUI::PrepararAnimacionStandBy()
 {
     animacionStandBy->setDuration(random.bounded(300,700));
     int posY = padre->height() - height();
+    int centerX = (padre->width() - width()) /2;
+    QPoint puntoBase(centerX, posY);
     if (estadoAnimacionStandby){
         animacionStandBy->setStartValue(this->pos());
-        animacionStandBy->setEndValue(QPoint(this->x(), posY));
+        animacionStandBy->setEndValue(puntoBase);
         estadoAnimacionStandby = false;
     } else {
         int sorteo = random.bounded(10);
-        if (sorteo < 3) {
+        if (sorteo < 4) {
+            this->move(puntoBase);
             animacionStandBy->setStartValue(this->pos());
-            animacionStandBy->setEndValue(QPoint(this->x(), this->y() + random.bounded(5,15)));
+            animacionStandBy->setEndValue(QPoint(centerX, this->y() + random.bounded(5,15)));
         } else {
-            animacionStandBy->setStartValue(this->pos());
-            animacionStandBy->setEndValue(this->pos());
+            this->move(puntoBase);
+            animacionStandBy->setStartValue(puntoBase);
+            animacionStandBy->setEndValue(puntoBase);
         }
         estadoAnimacionStandby = true;
     }
