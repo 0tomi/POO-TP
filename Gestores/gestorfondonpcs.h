@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QVector>
+#include <QRandomGenerator>
 #include "../NPC/npcfondo.h"
 
 using namespace std;
@@ -13,6 +14,7 @@ class GestorFondoNPCs: public QObject
 public:
     GestorFondoNPCs();
     void setUp(QWidget * Fondo);
+    void setSeed(quint32 seed);
     ~GestorFondoNPCs();
     void start(int CantNPCs);
     void clear();
@@ -29,6 +31,7 @@ private slots:
 private:
     QWidget * fondo;
     QVector<NPCFondo*> npcs;
+    QRandomGenerator random;
     int ultimoNPCenSalir;
 
     int cantidadNPCs;

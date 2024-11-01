@@ -9,6 +9,11 @@ void GestorFondoNPCs::setUp(QWidget *Fondo)
     this->fondo = Fondo;
 }
 
+void GestorFondoNPCs::setSeed(quint32 seed)
+{
+    random.seed(seed);
+}
+
 GestorFondoNPCs::~GestorFondoNPCs()
 {
     this->clear();
