@@ -92,7 +92,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Documentos/radiografia.h Documentos/radiografia.cpp
         Documentos/radiografiaui.h Documentos/radiografiaui.cpp Documentos/radiografiaui.ui
         NPC/npcfondo.h NPC/npcfondo.cpp NPC/npcfondo.ui
-        NPC/gestorfondonpcs.h NPC/gestorfondonpcs.cpp
+        Gestores/gestorfondonpcs.h Gestores/gestorfondonpcs.cpp
 
 
 

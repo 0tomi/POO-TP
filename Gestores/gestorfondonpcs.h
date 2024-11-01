@@ -2,13 +2,20 @@
 #define GESTORFONDONPCS_H
 
 #include <QWidget>
-#include
+#include <QVector>
+#include "../NPC/npcfondo.h"
+
+using namespace std;
 
 class GestorFondoNPCs: public QObject
 {
     Q_OBJECT
 public:
-    GestorFondoNPCs(QWidget * Fondo);
+    GestorFondoNPCs();
+    void setUp(QWidget * Fondo);
+    ~GestorFondoNPCs();
+    void start(int CantNPCs);
+    void clear();
 
 public slots:
     void updateCantidadNPCs(int);
@@ -17,6 +24,8 @@ public slots:
 
 private:
     QWidget * fondo;
+    QVector<NPCFondo*> npcs;
+
     int cantidadNPCs;
     int cantidadNPCsFondo;
 };

@@ -21,6 +21,9 @@ public:
     void MoverAdelante(NPCFondo * anterior);
     ~NPCFondo();
 
+public slots:
+    void updateLocation(QPoint);
+
 signals:
     void Salio();
     void Entro();

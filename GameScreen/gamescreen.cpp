@@ -29,6 +29,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     GestorNPC.setUpTranscriptor(ui->transcBoton);
     GestorDocs.setUp(1, ui->Escritorio);
     setUpIconoDocsUI();
+    GestorFondo.setUp(ui->ParedConNPCs);
 
     // Agregamos el libro de reglas
     libroReglasUI = new libroreglas(juego, ui->Escritorio);
@@ -329,6 +330,7 @@ void GameScreen::Iniciar()
     Notificaciones.clear();
     introPantalla->Mostrar();
     this->dificultad = juego->getDificultad();
+    GestorFondo.start(juego->getCola()->getSize());
 
     auto Cola = juego->getCola();
     emit EnviarLogs("Tamanio de la cola de NPCS: " + QString::number(Cola->getSize()));

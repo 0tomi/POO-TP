@@ -9,8 +9,8 @@ NPCFondo::NPCFondo(QWidget *parent)
     padre = parent;
     // Preparamos animaciones de entrada del NPC
     animacionSalir = new QPropertyAnimation(this, "pos");
-    animacionAdelantar->setDuration(1000);
-    animacionAdelantar->setEasingCurve(QEasingCurve::OutQuad);
+    animacionSalir->setDuration(1000);
+    animacionSalir->setEasingCurve(QEasingCurve::OutQuad);
     connect(animacionSalir, &QAbstractAnimation::finished, this, [this](){
         this->hide();
         emit this->Salio();
@@ -32,6 +32,7 @@ NPCFondo::NPCFondo(QWidget *parent)
     });
 
     this->move(QPoint(0, padre->height() / 3));
+    this->show();
 }
 
 void NPCFondo::moverAdelante()

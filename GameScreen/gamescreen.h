@@ -22,7 +22,8 @@
 #include "intropantalla.h"
 #include "notificacion.h"
 #include "../Documentos/radiografiaui.h"
-#include "../NPC/npcfondo.h"
+#include "../Gestores/gestorfondonpcs.h"
+
 
 namespace Ui {
 class GameScreen;
@@ -89,6 +90,7 @@ private:
     // Gestores
     GestorNPCsUI GestorNPC;
     GestorDocumentosUI GestorDocs;
+    GestorFondoNPCs GestorFondo;
 
     void SetearConexionesDocumentos();
 
