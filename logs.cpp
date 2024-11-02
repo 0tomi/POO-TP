@@ -20,8 +20,9 @@ Logs::Logs(EstadoLog estado) {
     }
     QFile archivoNumLogs(this->CantLogsTXT);
     if(!archivoNumLogs.open(QIODevice::Text | QIODevice::ReadWrite)){
-        QMessageBox::critical(nullptr, "Error al abrir el archivo de cantidad de logs en la direccion:", this->CantLogsTXT);
-        QCoreApplication::exit(-1);
+        //QMessageBox::critical(nullptr, "Error al abrir el archivo de cantidad de logs en la direccion:", this->CantLogsTXT);
+        //QCoreApplication::exit(-1);
+        qDebug() << "No se pudo abrir el archivo de cantidad de logs";
     }
     QTextStream stream(&archivoNumLogs);
     if(archivoNumLogs.size() != 0){
@@ -44,8 +45,7 @@ void Logs::SaveLogs()
 
     QFile archivo(this->DireccionCarpeta + "/" + QString::number(this->cantLogs) + ".txt");
     if(!archivo.open(QIODevice::Text | QIODevice::Append)){
-        QMessageBox::critical(nullptr, "Error al abrir el archivo de logs en la direccion:", this->DireccionCarpeta);
-        QCoreApplication::exit(-1);
+        qDebug() << "No se pudo abrir el archivo de cantidad de logs";
     }
     QTextStream stream(&archivo);
     for (QString& log : this->VectorLogs){
