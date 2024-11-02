@@ -1,9 +1,9 @@
 #include "npcfondo.h"
 #include "ui_npcfondo.h"
 
-NPCFondo::NPCFondo(QWidget *parent)
+NPCFondo::NPCFondo(QRandomGenerator *  generador, QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::NPCFondo)
+    , ui(new Ui::NPCFondo), rand(generador), estadoStandBy(false)
 {
     ui->setupUi(this);
     padre = parent;
@@ -29,12 +29,20 @@ NPCFondo::NPCFondo(QWidget *parent)
     animacionAdelantar->setDuration(1000);
     animacionAdelantar->setEasingCurve(QEasingCurve::OutQuad);    // La animacion se desacelera conforme entra
     //connect(animacionAdelantar, &QAbstractAnimation::finished, this, [this](){
-        //emit Posicion(this->pos());
+        //if (standBy->state() == QAbstractAnimation::Stopped)
+            //standBy->stop();
     //});
+
+    standBy = new QPropertyAnimation(ui->label, "pos");
+    standBy->setEasingCurve(QEasingCurve::OutQuad);
+    connect(standBy, &QAbstractAnimation::finished, this, &NPCFondo::PrepararAnimacionStandBy);
 
     this->move(QPoint(0, padre->height() - this->height()));
     this->show();
     this->primero = false;
+
+    this->yNormal = ui->label->y();
+    PrepararAnimacionStandBy();
 }
 
 void NPCFondo::moverAdelante()
@@ -45,7 +53,7 @@ void NPCFondo::moverAdelante()
     if (primero) {
         this->salir();
         return;
-    }
+       }
 
     int y = padre->height() - this->height();
 
@@ -54,7 +62,7 @@ void NPCFondo::moverAdelante()
     this->raise();
 }
 
-void NPCFondo::moverAdelanteSinAdelantar()
+void NPCFondo::moverAdelanteSinSalir()
 {
     if (this->isHidden())
         return;
@@ -79,13 +87,15 @@ void NPCFondo::moverAdelante(int x, int y)
     this->PrepararAnimacionAdelantar(x, y);
     animacionAdelantar->start();
     this->raise();
+
+   // PrepararAnimacionStandBy();
 }
 
 void NPCFondo::volverEntrar()
 {
     int y = padre->height() - this->height();
     animacionEntrar->setStartValue(QPoint(-this->width(), y));
-    animacionEntrar->setEndValue(QPoint(this->width(),y));
+    animacionEntrar->setEndValue(QPoint(this->width() / 2 ,y));
 
     animacionEntrar->start();
     this->show();
@@ -130,6 +140,7 @@ NPCFondo::~NPCFondo()
     delete animacionAdelantar;
     delete animacionEntrar;
     delete animacionSalir;
+    delete standBy;
 }
 
 // checkeamos si un NPC se superpone con otro, dado el caso lo movemos.
@@ -140,7 +151,34 @@ void NPCFondo::updateLocation(QPoint point)
     if (other_x > this->x() + 100 || other_x < this->x() - 100)
         return;
 
-    this->moverAdelanteSinAdelantar();
+    this->moverAdelanteSinSalir();
+}
+
+void NPCFondo::PrepararAnimacionStandBy()
+{
+    standBy->setDuration(rand->bounded(300,700));
+
+    int posY = yNormal;
+    int x = ui->label->x();
+    QPoint puntoBase(x, posY);
+
+    if (estadoStandBy){
+        standBy->setStartValue(ui->label->pos());
+        standBy->setEndValue(puntoBase);
+        estadoStandBy = false;
+    } else {
+        int sorteo = rand->bounded(10);
+        if (sorteo < 3) {
+            standBy->setStartValue(ui->label->pos());
+            standBy->setEndValue(QPoint(x, yNormal + rand->bounded(10,20)));
+        } else {
+            standBy->setStartValue(puntoBase);
+            standBy->setEndValue(puntoBase);
+        }
+        estadoStandBy = true;
+    }
+
+    standBy->start();
 }
 
 void NPCFondo::PrepararAnimacionAdelantar(int x, int y)

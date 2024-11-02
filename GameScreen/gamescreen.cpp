@@ -351,6 +351,7 @@ void GameScreen::arrancarJuego()
     Musica[currentMusic].play();
     GestorNPC.EmpezarJuego();
     GestorNPC.Entrar();
+     this->setFocus();
 }
 
 /// #################################### REINICIAR ###################################################
@@ -395,6 +396,8 @@ void GameScreen::ReanudarJuego()
 
     if (remainingTiempoNPC != 0)
         tiempoNPC.start(remainingTiempoNPC);
+
+    this->setFocus();
 }
 
 /// #################################### FINAL DE PARTIDA ###################################################

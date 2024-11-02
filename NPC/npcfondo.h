@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPropertyAnimation>
+#include <QRandomGenerator>
 
 namespace Ui {
 class NPCFondo;
@@ -13,9 +14,9 @@ class NPCFondo : public QWidget
     Q_OBJECT
 
 public:
-    explicit NPCFondo(QWidget *parent = nullptr);
+    explicit NPCFondo(QRandomGenerator *  generador, QWidget *parent = nullptr);
     void moverAdelante();
-    void moverAdelanteSinAdelantar();
+    void moverAdelanteSinSalir();
     void moverAdelante(int x, int y);
     void volverEntrar();
     void salir();
@@ -32,12 +33,20 @@ signals:
     void Entro();
     void Posicion(QPoint);
 
+private slots:
+    void PrepararAnimacionStandBy();
+
 private:
     void PrepararAnimacionAdelantar(int x, int y);
     bool primero;
     QPropertyAnimation * animacionAdelantar;
     QPropertyAnimation * animacionSalir;
     QPropertyAnimation * animacionEntrar;
+    QPropertyAnimation * standBy;
+    bool estadoStandBy;
+    int yNormal;
+
+    QRandomGenerator * rand;
     QWidget * padre;
     Ui::NPCFondo *ui;
 };

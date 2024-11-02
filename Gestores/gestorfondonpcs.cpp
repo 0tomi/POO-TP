@@ -32,7 +32,7 @@ void GestorFondoNPCs::start(int CantNPCs)
     // Calculamos desde donde empezar a colocar los npcs, 130 es la cantidad de pixeles que ocupan.
     int x = this->fondo->width() - (cantidad_spawnear * 130);
     for (auto& npc: npcs){
-        npc = new NPCFondo(this->fondo);
+        npc = new NPCFondo(&random, this->fondo);
         npc->move(QPoint(x, npc->y()));
         x += npc->width() + 15;
         connect(npc, &NPCFondo::Salio, this, &GestorFondoNPCs::NPCterminoSalir);
@@ -90,7 +90,10 @@ void GestorFondoNPCs::NPCterminoSalir()
     else cantidadNPCsFondo = this->cantidadNPCs;
 
     ultimoNPCenSalir--;
-    if (ultimoNPCenSalir == -1 || npcs[ultimoNPCenSalir]->isHidden())
+    if (ultimoNPCenSalir == -1)
+        ultimoNPCenSalir = npcs.size()-1;
+
+    if (npcs[ultimoNPCenSalir]->isHidden())
         // buscamos el proximo npc que va a salir en caso de llegar al npc 0.
         for (int i = npcs.size(); npcs[i]->isHidden() || i >= 0; i--)
             ultimoNPCenSalir = i;
