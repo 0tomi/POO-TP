@@ -8,8 +8,6 @@
 #include <QSpacerItem>
 
 #include "../SaveSlots/PlayerStats.h"
-#include "../NPC/npcgenericoui.h"
-#include "../Documentos/uaderpass.h"
 #include "../Gestores/gestornpcsui.h"
 #include "../juego.h"
 #include "BotonesCustom.h"
@@ -17,7 +15,6 @@
 #include "../Documentos/docsiconui.h"
 #include "libroreglas.h"
 #include "../Gestores/gestordocumentosui.h"
-#include "../Documentos/transcriptordialogos.h"
 #include "../Documentos/docsiconui.h"
 #include "intropantalla.h"
 #include "notificacion.h"
