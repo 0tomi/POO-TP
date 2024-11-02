@@ -65,6 +65,8 @@ void DocsIconUI::accionar()
 void DocsIconUI::Entrar()
 {
     if (!mostrando){
+        if (LibroAbierto || currentIndex() == 0)
+            this->CerrarDocumento();
         this->PrepararAnimacionEntrada();
         this->animacionEntrada->start();
         this->show();
