@@ -12,6 +12,7 @@ public:
     void setSeed(quint32 seed);
     GeneradorSkin(QRandomGenerator * generador);
     ~GeneradorSkin();
+    void Inicializar(int Nivel, int Dificultad);
     Skin getSkin(int TipoNPC, char Genero);
     Skin getSimilarSkin(Skin skinActual, char Genero, int nivel);
 private:
@@ -19,6 +20,7 @@ private:
     QRandomGenerator randomCuerpos;
     QString pickSkinConGenero(vector <QString> listaSkins[], char Genero);
     QString pickSkin(vector <QString> &listaSkins);
+    QString pickCuerpo(vector <QString> &listaSkins, int max);
     QString pickCuerpo(vector <QString> &listaSkins);
 
     vector <QString> LinksPelo[2];
@@ -33,6 +35,7 @@ private:
     vector <QString> LinksGorro;
 
     void LeerImagenes(vector <QString> &Links, QString RutaGenerica);
+    int dificultad, nivel;
 };
 
 #endif // GENERADORSKIN_H

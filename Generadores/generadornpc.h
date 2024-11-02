@@ -15,7 +15,8 @@ public:
     void setSeed(quint32 seed);
     GeneradorNPC(QRandomGenerator * generador);
     NPC* getNPCgenerico(int tipo , bool Validez, int nivel);
-    void generarDialogos(NPC* npc, int nivel); // A dedesarrollar a futuro
+    void generarDialogos(NPC* npc, int nivel);
+    void Inicializar(int nivel, int dificultad);
 
     ~GeneradorNPC();
 private:

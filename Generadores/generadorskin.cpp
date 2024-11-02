@@ -46,6 +46,12 @@ GeneradorSkin::~GeneradorSkin()
 
 }
 
+void GeneradorSkin::Inicializar(int Nivel, int Dificultad)
+{
+    this->dificultad = Dificultad;
+    this->nivel = Nivel;
+}
+
 Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
 {
     Skin newSkin;
@@ -57,7 +63,9 @@ Skin GeneradorSkin::getSkin(int TipoNPC, char Genero)
         newSkin.setCara(pickCuerpo(LinksCarasRefugiado));
         break;
     case 3: // Revolucionario
-        newSkin.setCara(pickCuerpo(LinksCarasRevolucionario));
+        if (nivel > 3 || dificultad == 3)
+            newSkin.setCara(pickCuerpo(LinksCarasRevolucionario));
+        else newSkin.setCara(pickCuerpo(LinksCarasRevolucionario, 10));
         break;
     default:
         newSkin.setCara(pickCuerpo(LinksCaras));
@@ -148,6 +156,16 @@ QString GeneradorSkin::pickSkin(vector <QString> &listaSkins)
         qrand->bounded(listaSkins.size());
 
     int sorteo = qrand->bounded(listaSkins.size());
+    return listaSkins[sorteo];
+}
+
+QString GeneradorSkin::pickCuerpo(vector<QString> &listaSkins, int max)
+{
+    // Generamos algunos numeros aleatorios para mejorar la aleateoridad
+    for (int i = 0; i < 40; i++)
+        randomCuerpos.bounded(max);
+
+    int sorteo = randomCuerpos.bounded(max);
     return listaSkins[sorteo];
 }
 

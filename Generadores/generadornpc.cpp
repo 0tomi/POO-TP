@@ -109,6 +109,11 @@ void GeneradorNPC::generarDialogos(NPC *npc, int nivel)
         GenerarDialogosNivel5(npc);
 }
 
+void GeneradorNPC::Inicializar(int nivel, int dificultad)
+{
+    this->generadorSkin.Inicializar(nivel, dificultad);
+}
+
 GeneradorNPC::~GeneradorNPC()
 {
 

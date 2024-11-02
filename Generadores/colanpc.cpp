@@ -22,6 +22,7 @@ void ColaNPC::Inicializar(int Nivel, int Dificultad, Reglas **rules, quint32 see
     // Aca irian las reglas que le pase juego al leer los niveles
     this->setSeed(seed);
     GenerarDocumentacion.Inicializar(Nivel, Dificultad, rules, this->semillaActual);
+    GenerarNPC.Inicializar(Nivel, Dificultad);
 }
 
 void ColaNPC::setUpColaEmpezada(int cantidad_NPCs_pasados)
