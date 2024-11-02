@@ -49,6 +49,7 @@ void Juego::PrepararJuego(PlayerStats stats)
     Multas = stats.Multas;
     CantidadNPCsRechazados = stats.CantidadNPCsRechazados;
     CantidadNPCsAceptados = stats.CantidadNPCsAceptados;
+    CantidadERRORES = stats.CantidadErrores;
 
     if (stats.tiempoPartida > 0)
         SocialCreditsEarnedInLevel = stats.socialCreditsEarnedInLVL;
@@ -85,6 +86,7 @@ void Juego::setDefaultStats()
     Multas = 0;
     CantidadNPCsRechazados = 0;
     CantidadNPCsAceptados = 0;
+    CantidadERRORES = 0;
 }
 
 /// #################################### TOMA DE DECISIONES ###################################################
@@ -103,6 +105,10 @@ bool Juego::EvaluarDecision(bool& Veredicto, int TipoNPC, bool ValidezNPC, bool 
         } else
             SumarSocialCredits(TipoNPC);
     }
+
+    if (!Veredicto)
+        CantidadERRORES++;
+
     return Multa;
 }
 
@@ -257,6 +263,7 @@ PlayerStats Juego::getDatosJugador()
     stats.Dificultad = this->Dificultad;
     stats.CantidadNPCsAceptados = this->CantidadNPCsAceptados;
     stats.CantidadNPCsRechazados = this->CantidadNPCsRechazados;
+    stats.CantidadErrores = this->CantidadERRORES;
     stats.Multas = this->Multas;
     stats.TotalSocialCredits = this->TotalSocialCredits;
     stats.socialCreditsEarnedInLVL = 0;
@@ -268,13 +275,14 @@ PlayerStats Juego::getDatosJugador()
 
 PlayerStats Juego::getEmptyDatosJugador()
 {
-    return {0,0,0,0,0,0,0,0,0,0,0,this->SemillaMadre};
+    return {0,0,0,0,0,0,0,0,0,0,0,0,this->SemillaMadre};
 }
 
 void Juego::updateDatosJugador(PlayerStats &stats)
 {
     stats.CantidadNPCsAceptados = this->CantidadNPCsAceptados;
     stats.CantidadNPCsRechazados = this->CantidadNPCsRechazados;
+    stats.CantidadErrores = this->CantidadERRORES;
     stats.Multas = this->Multas;
     stats.TotalSocialCredits = this->TotalSocialCredits;
     stats.socialCreditsEarnedInLVL = this->SocialCreditsEarnedInLevel;
@@ -344,4 +352,9 @@ void Juego::setReglasSeed()
 {
     for (int i = 0; i < 5; ++i)
         reglas[i]->setSeed(this->SemillaMadre);
+}
+
+int Juego::getCantidadERRORES() const
+{
+    return CantidadERRORES;
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>608</height>
+    <width>1661</width>
+    <height>994</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -174,7 +174,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Cantidad personas aceptadas:</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Cantidad personas aceptadas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -207,7 +207,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Cantidad personas rechazadas:</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Cantidad personas rechazadas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -232,6 +232,42 @@
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="erroresCometidos_title">
+        <property name="font">
+         <font>
+          <family>MS Sans Serif</family>
+          <pointsize>22</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Cantidad de &lt;/span&gt;&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt;errores&lt;/span&gt;&lt;span style=&quot; font-weight:700;&quot;&gt; cometidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="erroresCometidos_cont">
+        <property name="font">
+         <font>
+          <family>MS Sans Serif</family>
+          <pointsize>25</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>000</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="cantMultasObt_title">
         <property name="font">
          <font>
@@ -240,7 +276,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Cantidad multas obtenidas:</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Cantidad multas obtenidas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -276,7 +312,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Creditos Sociales obtenidos en el dia:</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Creditos Sociales obtenidos en el dia:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -309,7 +345,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Creditos sociales totales:</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Creditos sociales totales:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

@@ -9,6 +9,7 @@ struct PlayerStats{
     int Multas;
     int CantidadNPCsRechazados;
     int CantidadNPCsAceptados;
+    int CantidadErrores;
     int tiempoPartida;
     int tiempoFondo;
     int cantNPCsPasados;

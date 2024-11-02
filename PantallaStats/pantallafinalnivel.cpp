@@ -84,6 +84,7 @@ void PantallaFinalNivel::setPantallaFinalUI(Juego* juegoInfo, bool perdio) {
         ui->stackedBotones->setCurrentIndex(0);
     }
 
+    ui->erroresCometidos_cont->setText(QString::number(actualStats.CantidadErrores));
     ui->cantPersAcept_label->setText(QString::number(actualStats.CantidadNPCsAceptados));
     ui->cantPersRech_label->setText(QString::number(actualStats.CantidadNPCsRechazados));
     ui->cantMultasObt_label->setText(QString::number(actualStats.Multas));

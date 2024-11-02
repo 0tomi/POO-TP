@@ -59,6 +59,8 @@ public:
 
     quint32 getSemillaMadre() const;
 
+    int getCantidadERRORES() const;
+
 private:
     quint32 SemillaMadre;
     void setReglasSeed();
@@ -74,6 +76,7 @@ private:
     int Multas;
     int CantidadNPCsRechazados;
     int CantidadNPCsAceptados;
+    int CantidadERRORES;
     void SumarSocialCredits(int TipoNPC);
     bool RestarSocialCredits(int TipoNPC);
 
