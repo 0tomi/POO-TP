@@ -75,6 +75,8 @@ void PantallaPerdiste::FinalizoAnimacion()
 {
     hide();
     MostrandoPantalla = false;
+    final->stop();
+    TiempoVisualizacion.stop();
     emit AnimacionTermino();
 }
 

@@ -73,6 +73,7 @@ private:
 
     bool Pausado;
     bool DecisionJugador;
+    bool gameHasBeenFinished;
 
     // Sonidos
     QRandomGenerator random;

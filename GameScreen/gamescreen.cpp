@@ -9,6 +9,7 @@ GameScreen::GameScreen(Juego* newJuego, QWidget *parent)
     , random(QTime::currentTime().msec()), currentMusic(0), ModoDemonActivo(false), dificultad(1), remainingTiempoNPC(0)
 {
     ui->setupUi(this);
+    gameHasBeenFinished = false;
 
     juego = newJuego;
     Pausado = false;
@@ -342,6 +343,7 @@ void GameScreen::Iniciar()
 
 void GameScreen::arrancarJuego()
 {
+    gameHasBeenFinished = false;
     tiempoPartida.start(tiempo); // 8 Minutos
 
     // Seteamos el pasaje de tiempo en el juego
@@ -437,6 +439,9 @@ void GameScreen::FinalDePartida()
 
 void GameScreen::Decidir()
 {
+    if (gameHasBeenFinished)
+        return;
+
     if (juego->getTotalSocialCredits() < 0){
         emit EnviarLogs("Jugador perdio");
         emit NivelTerminado(true);
@@ -444,6 +449,7 @@ void GameScreen::Decidir()
         emit EnviarLogs("Jugador gano");
         emit NivelTerminado(false);
     }
+    gameHasBeenFinished = true;
 }
 
 void GameScreen::ActualizarTiempo()
