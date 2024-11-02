@@ -31,10 +31,6 @@ public:
     PlayerStats getEmptyDatosJugador();
     void updateDatosJugador(PlayerStats &stats);
 
-    // A futuro para cuando tengamos la funcion de guardar partida
-    void SetPartida(string DireccionPartida);
-    void GuardarPartida();
-
     // Evaluar acciones del jugador
     bool EvaluarDecision(bool& Veredicto, int TipoNPC, bool ValidezNPC, bool DecisionJugador);
 
@@ -66,9 +62,6 @@ private:
     void setReglasSeed();
     int NivelActual;
     int Dificultad;
-
-    // Partida guardada o a guardar
-    string DireccionPartida;
 
     // Estadisticas del player
     int SocialCreditsEarnedInLevel;
