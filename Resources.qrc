@@ -216,5 +216,7 @@
         <file>Resources/NPCs/RevolucionarioCuerpo11.png</file>
         <file>Resources/NPCs/RevolucionarioCuerpo12.png</file>
         <file>Resources/NPCs/RevolucionarioCuerpo13.png</file>
+        <file>Resources/Tutorial/CapturaNueva.png</file>
+        <file>Resources/Tutorial/ImagenTutorial4b.png</file>
     </qresource>
 </RCC>

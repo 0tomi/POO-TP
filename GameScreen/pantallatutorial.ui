@@ -58,6 +58,9 @@
       </property>
       <item>
        <widget class="QStackedWidget" name="PagTutorial">
+        <property name="currentIndex">
+         <number>4</number>
+        </property>
         <widget class="QWidget" name="page">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
@@ -272,7 +275,7 @@ background-color: #221b15;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">image: url(:/Resources/Tutorial/ImagenTutorial4.png);</string>
+             <string notr="true">image: url(:/Resources/Tutorial/ImagenTutorial4b.png);</string>
             </property>
            </widget>
           </item>
@@ -308,13 +311,59 @@ background-color: #221b15;</string>
 background-color: #221b15;</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, &lt;span style=&quot; color:#ff0000;&quot;&gt;asi que ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tu jornada &lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;también terminará&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; si dejas pasar a todas las personas en la cola.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Esto de aquí arriba es el &lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Puedes ver el paso del tiempo desde aquí, no puedes quedarte hasta &lt;/p&gt;&lt;p&gt;pasadas las 8 de la noche, ya que &lt;span style=&quot; color:#ff0000;&quot;&gt;ahí terminará tu jornada laboral.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tu jornada &lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;también terminará&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; cuando te quedes sin personas por atender.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Puedes &lt;/span&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;ver&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; a las personas haciendo fila para pasar en el &lt;/span&gt;&lt;span style=&quot; color:#00557f;&quot;&gt;pasillo&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;, &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;eso te dara una idea de cuantos quedan.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
             <property name="wordWrap">
              <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="OtrosTips">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="Texto_6">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1019</width>
+              <height>700</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Sans Serif</family>
+              <pointsize>22</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+background-color: #221b15;</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffff7f;&quot;&gt;TIPs adicionales:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Apretando la tecla &lt;/span&gt;&lt;span style=&quot; color:#0055ff;&quot;&gt;ESC&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; puedes pausar el juego.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Tienes &lt;/span&gt;&lt;span style=&quot; color:#00557f;&quot;&gt;shortcuts&lt;/span&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt; para agilizar tu jornada laboral, &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;es recomendado aprender a usarlas.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Lista de shortcuts (Letras de las teclas):&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;A: Aprobar&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;D: Rechazar&lt;/span&gt;&lt;/p&gt;&lt;p&gt;C: Centrar&lt;/p&gt;&lt;p&gt;ESPACIO: Abrir/Cerrar documentos&lt;/p&gt;&lt;p&gt;T: Transcripción de dialogos&lt;/p&gt;&lt;p&gt;N: Libro de normas&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
