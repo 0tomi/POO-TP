@@ -352,7 +352,7 @@ void GameScreen::arrancarJuego()
 
     Musica[currentMusic].play();
     GestorNPC.EmpezarJuego();
-    GestorFondo.pasarNPC();
+    GestorFondo.pasarNPC();5
     GestorNPC.Entrar();
      this->setFocus();
 }
@@ -458,7 +458,7 @@ void GameScreen::ActualizarTiempo()
     ui->Pasillo->setCurrentIndex(TiempoActual);
     TiempoActual++;
     if (TiempoActual > 9)
-        TiempoActual = 0;
+        TiempoActual = 9;
 }
 
 /// #################################### DECISIONES DEL JUGADOR ###################################################
