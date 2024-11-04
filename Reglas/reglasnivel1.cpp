@@ -162,3 +162,17 @@ ReglasNivel1::~ReglasNivel1()
 {
 
 }
+
+void ReglasNivel1::generar_Todo(int CantPaises, int CantEstadosCiviles, int RangoFechas, int DuracionEst, int CantTiposVisita)
+{
+    this->generar_EstadosCiviles(CantEstadosCiviles);
+    this->generar_Paises(CantPaises);
+    this->generar_Fechas(RangoFechas);
+    this->generar_DuracionEstancia(DuracionEst);
+    this->generar_TiposVisita(CantTiposVisita);
+
+    /*
+     * Comprobamos que todos los parametros esten bien
+     * Es decir que no se hayan generado parametros que hagan que no se puedan crear cosas falsas.
+    */
+}
