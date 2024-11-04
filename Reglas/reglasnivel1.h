@@ -18,6 +18,8 @@ public:
     ~ReglasNivel1();
 
     // Generadores
+    void generar_Todo(int CantPaises, int CantEstadosCiviles, int RangoFechas, int DuracionEst, int CantTiposVisita);
+
     void generar_Paises(int Cantidad_Paises_Permitidos);
     //void generar_Paises(vector<QString>& Lista_PaisesPermitidos); STANDBY HASTA ARREGLAR OTRAS COSAS
 
