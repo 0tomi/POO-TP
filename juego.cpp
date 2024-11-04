@@ -157,6 +157,7 @@ bool Juego::RestarSocialCredits(int Tipo)
 /// #################################### SETUP DE NIVELES ###################################################
 void Juego::setUpNivel(int Nivel)
 {
+    int NivelAux = Nivel;
     if (Nivel > 5)
         Nivel = 5;
 
@@ -174,7 +175,7 @@ void Juego::setUpNivel(int Nivel)
         InicializarNivel4();
     if (Nivel == 5)
         InicializarNivel5();
-    if (Nivel > 5)
+    if (NivelAux > 5)
         RandomizarParametros();
 
     Cola.Inicializar(NivelActual, Dificultad, reglas, this->SemillaMadre);
@@ -242,9 +243,19 @@ void Juego::RandomizarParametros()
     QRandomGenerator rand;
     for (int i = 0; i < 4; i++)
         CantNPCS[i] = rand.bounded(20);
-    reglasLVL3.generar_MaxAcompaniantes();
-}
 
+    reglasLVL1.generar_DuracionEstancia(rand.bounded(4,12));
+    reglasLVL1.generar_EstadosCiviles(rand.bounded(2));
+    reglasLVL1.generar_Fechas(rand.bounded(100,200));
+    reglasLVL1.generar_Paises(rand.bounded(2,8));
+    reglasLVL1.generar_TiposVisita(rand.bounded(3) + 1);
+
+    reglasLVL2.generar_PaisesPermitidos(rand.bounded(8));
+
+    reglasLVL3.generar_MaxAcompaniantes();
+
+    reglasLVL4.generar_Todo(rand.bounded(7), rand.bounded(7), rand.bounded(7));
+}
 
 /// #################################### GETTERS & SETTERS ###################################################
 Reglas* Juego::getReglas(int numero){
