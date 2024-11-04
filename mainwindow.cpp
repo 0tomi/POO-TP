@@ -313,6 +313,7 @@ void MainWindow::CalcularCentroDePantalla()
 void MainWindow::PrepararTutorial()
 {
     PantallaPreviaTutorial = pantallas->currentIndex();
+    pantallaTutorial->iniciar();
     transicion->ArrancarTransicion(1000, this, &MainWindow::SetTutorial);
 }
 

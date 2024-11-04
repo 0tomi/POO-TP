@@ -565,7 +565,7 @@ void GameScreen::keyPressEvent(QKeyEvent *event)
     }
 
     // Abre los documentos con el espacio.
-    if (event->key() == Qt::Key_Space)
+    if (event->key() == Qt::Key_E)
         if (this->IconoDocs->Mostrando())
             this->IconoDocs->accionar();
 

@@ -12,9 +12,9 @@ PantallaTutorial::PantallaTutorial(QWidget *parent)
     setMusicVolume(1.0);
     setSoundVolume(1.0);
 
+    this->PaginaActual = 0;
     ui->PagTutorial->setCurrentIndex(PaginaActual);
     CantidadPaginas = ui->PagTutorial->count();
-    this->PaginaActual = 0;
 
     if (CantidadPaginas > 0) {
         setBotones();
@@ -33,6 +33,13 @@ void PantallaTutorial::setSoundVolume(float vol)
 void PantallaTutorial::setMusicVolume(float vol)
 {
     musica.setVolume(vol-0.2);
+}
+
+void PantallaTutorial::iniciar()
+{
+    this->ui->PagTutorial->setCurrentIndex(0);
+    this->PaginaActual = 0;
+    actualizarBotones();
 }
 
 PantallaTutorial::~PantallaTutorial()

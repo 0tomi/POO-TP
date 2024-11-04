@@ -16,6 +16,7 @@ public:
     explicit PantallaTutorial(QWidget *parent = nullptr);
     void setSoundVolume(float vol);
     void setMusicVolume(float vol);
+    void iniciar();
     ~PantallaTutorial();
 
 private:
