@@ -352,6 +352,7 @@ void GameScreen::arrancarJuego()
 
     Musica[currentMusic].play();
     GestorNPC.EmpezarJuego();
+    GestorFondo.pasarNPC();
     GestorNPC.Entrar();
      this->setFocus();
 }

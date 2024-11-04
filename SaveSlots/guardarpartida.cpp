@@ -70,6 +70,8 @@ vector<bool> GuardarPartidas::LeerPartidas(){
 
 void GuardarPartidas::saveCurrentSlot(PlayerStats &data)
 {
+    if (currentSlot < 0 || currentSlot > 2)
+        currentSlot = 0;
     save(data, this->currentSlot);
 }
 

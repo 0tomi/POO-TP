@@ -81,7 +81,7 @@
    <property name="font">
     <font>
      <family>Bell MT</family>
-     <pointsize>14</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">

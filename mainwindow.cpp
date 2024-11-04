@@ -107,6 +107,7 @@ void MainWindow::ConexionesPantallaMenu()
     });
     connect(pantallaMenu, &PantallaMenu::slotSelected2Play, [this](int slot){
         auto Save = guardarPartida.CargarPartida(slot);
+        guardarPartida.setCurrentSlot(slot);
         TransicionJuegoConSave(Save);
     });
     connect(pantallaMenu, &PantallaMenu::clickedStartCheat, this, &MainWindow::TransicionJuegoCheat);
